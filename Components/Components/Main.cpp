@@ -13,19 +13,6 @@ void MainComponent::OnDestroy() {}
 
 void MainComponent::Initialize() {
 
-	Main.SaveData = Instances.GetInstanceOf<USaveData_TA>();
-	Main.PlayerTitles = Instances.GetInstanceOf<UGFxData_PlayerTitles_TA>();
-	Main.ProductDatabase = Instances.GetInstanceOf<UProductDatabase_TA>();
-	Main.OnlineProductStore = Instances.GetInstanceOf<UOnlineProductStore_TA>();
-	Main.oSS = Instances.GetInstanceOf<UOnlineSubsystem>();
-
-	UOnlinePlayerAuthentication_X* PlayerAuthentication = Instances.GetInstanceOf<UOnlinePlayerAuthentication_TA>();
-
-	if (PlayerAuthentication)
-	{
-		Main.OriginalPlayerName = PlayerAuthentication->LoggedInPlayerName.ToString();
-		Main.LocalPlayerId = PlayerAuthentication->LoggedInPlayerId;
-	}
 }
 
 void MainComponent::SpawnNotification(const std::string& Title, const std::string& Content, int Duration, UClass* NotificationClass)
@@ -46,34 +33,7 @@ void MainComponent::SpawnNotification(const std::string& Title, const std::strin
 	}
 }
 
-void MainComponent::SetPlayerName(std::string Name)
-{
-	if (Main.EscapedNameCharacters)
-	{
-		Format::ParseEncodedStringInline(Name);
-	}
 
-	UOnlinePlayer_X* Player = Instances.GetInstanceOf<UOnlinePlayer_X>();
-	nullcheck(Player);
-
-	Player->SetPlayerName(Format::ToFString(Name));
-}
-
-void MainComponent::SetCustomPresence(std::string Presence)
-{
-	FString PresenceString = Format::ToFString(Presence);
-
-	if (Main.EscapedNameCharacters)
-	{
-		Format::ParseEncodedStringInline(Presence);
-	}
-
-	UOnlinePlayerFriends_X* PlayerFriends = Instances.GetInstanceOf<UOnlinePlayerFriends_X>();
-	nullcheck(PlayerFriends);
-
-	PlayerFriends->SetPlatformRichPresence(0, PresenceString, PresenceString);
-	PlayerFriends->SetEpicRichPresence(0, PresenceString, PresenceString);
-}
 
 std::vector<std::function<void()>> MainComponent::GameFunctions;
 

@@ -1,12 +1,12 @@
 /*
 #############################################################################################
-# Rocket League (1.0) SDK
-# Generated with the UE3SDKGenerator v2.2.5
+# RocketLeague (1.0.10897.0) SDK
+# Generated with the CodeRedGenerator v1.0.2
 # ========================================================================================= #
 # File: Core_parameters.hpp
 # ========================================================================================= #
 # Credits: TheFeckless, ItsBranK
-# Links: www.github.com/itsbrank/UE3SDKGenerator, www.twitter.com/itsbrank
+# Links: www.github.com/CodeRedModding/CodeRed-Generator, www.twitter.com/ItsBranK
 #############################################################################################
 */
 #pragma once
@@ -17,7 +17,7 @@
 
 /*
 # ========================================================================================= #
-# Function Parameters
+# Parameters
 # ========================================================================================= #
 */
 
@@ -82,7 +82,7 @@ struct UObject_execMarkPendingKill_Params
 struct UObject_execNotNone_Params
 {
 	class UObject*                                     O;                                                		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.SwapArrayItems
@@ -233,7 +233,7 @@ struct UObject_execGetObjectProviderW_Params
 // [0x00022401] 
 struct UObject_execIsAutomationTest_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.ToJson
@@ -247,7 +247,7 @@ struct UObject_execToJson_Params
 // [0x00020401] 
 struct UObject_execSetRooted_Params
 {
-	bool                                               bRooted : 1;                                      		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bRooted : 1;                                      		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function Core.Object.ProfNodeEvent
@@ -322,7 +322,7 @@ struct UObject_execCreateGuid_Params
 struct UObject_execIsGuidValid_Params
 {
 	struct FGuid                                       InGuid;                                           		// 0x0000 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.InvalidateGuid
@@ -466,7 +466,7 @@ struct UObject_execSolveVelocityQuadratic_Params
 	float                                              Speed;                                            		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	float                                              Accel;                                            		// 0x0008 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	float                                              Time;                                             		// 0x000C (0x0004) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.Sign
@@ -545,7 +545,7 @@ struct UObject_execGetTextArchetype_Params
 // [0x00020401] 
 struct UObject_execIsArchetype_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.UnsubscribeFromAllEvents
@@ -653,7 +653,7 @@ struct UObject_execTransformVectorByRotation_Params
 {
 	struct FRotator                                    SourceRotation;                                   		// 0x0000 (0x000C) [0x0000000000000080] (CPF_Parm)    
 	struct FVector                                     SourceVector;                                     		// 0x000C (0x000C) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bInverse : 1;                                     		// 0x0018 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bInverse : 1;                                     		// 0x0018 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	struct FVector                                     ReturnValue;                                      		// 0x001C (0x000C) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
@@ -669,7 +669,7 @@ struct UObject_execGetPackageName_Params
 // [0x00020401] 
 struct UObject_execIsPendingKill_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.RangeByteToFloatUnsigned
@@ -755,7 +755,7 @@ struct UObject_execGetAngularDistance_Params
 	struct FVector                                     AxisX;                                            		// 0x0014 (0x000C) [0x0000000000000080] (CPF_Parm)    
 	struct FVector                                     AxisY;                                            		// 0x0020 (0x000C) [0x0000000000000080] (CPF_Parm)    
 	struct FVector                                     AxisZ;                                            		// 0x002C (0x000C) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0038 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0038 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.GetDotDistance
@@ -767,7 +767,7 @@ struct UObject_execGetDotDistance_Params
 	struct FVector                                     AxisX;                                            		// 0x0014 (0x000C) [0x0000000000000080] (CPF_Parm)    
 	struct FVector                                     AxisY;                                            		// 0x0020 (0x000C) [0x0000000000000080] (CPF_Parm)    
 	struct FVector                                     AxisZ;                                            		// 0x002C (0x000C) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0038 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0038 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.LinePlaneIntersection
@@ -780,8 +780,8 @@ struct UObject_execLinePlaneIntersection_Params
 	struct FVector                                     PlaneNormal;                                      		// 0x0024 (0x000C) [0x0000000000000080] (CPF_Parm)    
 	struct FVector                                     Out_Intersection;                                 		// 0x0030 (0x000C) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
 	float                                              Out_T;                                            		// 0x003C (0x0004) [0x0000000000000190] (CPF_OptionalParm | CPF_Parm | CPF_OutParm)
-	bool                                               bCheckLineSegment : 1;                            		// 0x0040 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0044 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           bCheckLineSegment : 1;                            		// 0x0040 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0044 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 	// struct FVector                                     RayDir;                                           		// 0x0048 (0x000C) [0x0000000000000000]               
 };
 
@@ -854,7 +854,7 @@ struct UObject_execGetPerObjectConfigSections_Params
 	TArray<class FString>                              out_SectionNames;                                 		// 0x0008 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class UObject*                                     ObjectOuter;                                      		// 0x0018 (0x0008) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
 	int32_t                                            MaxResults;                                       		// 0x0020 (0x0004) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0024 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0024 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.ImportJSON
@@ -901,7 +901,7 @@ struct UObject_execDynamicLoadObject_Params
 {
 	class FString                                      ObjectName;                                       		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class UClass*                                      ObjectClass;                                      		// 0x0010 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               MayFail : 1;                                      		// 0x0018 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           MayFail : 1;                                      		// 0x0018 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	class UObject*                                     ReturnValue;                                      		// 0x0020 (0x0008) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
@@ -985,7 +985,7 @@ struct UObject_execDumpStateStack_Params
 // [0x00024401] 
 struct UObject_execPopState_Params
 {
-	bool                                               bPopAll : 1;                                      		// 0x0000 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bPopAll : 1;                                      		// 0x0000 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 };
 
 // Function Core.Object.PushState
@@ -1009,7 +1009,7 @@ struct UObject_execIsChildState_Params
 {
 	struct FName                                       TestState;                                        		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	struct FName                                       TestParentState;                                  		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.IsInState
@@ -1017,8 +1017,8 @@ struct UObject_execIsChildState_Params
 struct UObject_execIsInState_Params
 {
 	struct FName                                       TestState;                                        		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bTestStateStack : 1;                              		// 0x0008 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           bTestStateStack : 1;                              		// 0x0008 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.GotoState
@@ -1027,22 +1027,22 @@ struct UObject_execGotoState_Params
 {
 	struct FName                                       NewState;                                         		// 0x0000 (0x0008) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
 	struct FName                                       Label;                                            		// 0x0008 (0x0008) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
-	bool                                               bForceEvents : 1;                                 		// 0x0010 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
-	bool                                               bKeepStack : 1;                                   		// 0x0014 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bForceEvents : 1;                                 		// 0x0010 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bKeepStack : 1;                                   		// 0x0014 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 };
 
 // Function Core.Object.IsUTracing
 // [0x00022401] 
 struct UObject_execIsUTracing_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.SetUTracing
 // [0x00022401] 
 struct UObject_execSetUTracing_Params
 {
-	bool                                               bShouldUTrace : 1;                                		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bShouldUTrace : 1;                                		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function Core.Object.GetFuncName
@@ -1089,7 +1089,7 @@ struct UObject_execLocalize_Params
 	class FString                                      SectionName;                                      		// 0x0000 (0x0010) [0x0000000000400880] (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 	class FString                                      KeyName;                                          		// 0x0010 (0x0010) [0x0000000000400880] (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 	class FString                                      PackageName;                                      		// 0x0020 (0x0010) [0x0000000000400890] (CPF_OptionalParm | CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
-	bool                                               bOptional : 1;                                    		// 0x0030 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bOptional : 1;                                    		// 0x0030 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	class FString                                      ReturnValue;                                      		// 0x0038 (0x0010) [0x0000000000400580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 };
 
@@ -1106,7 +1106,7 @@ struct UObject_execLogInternal_Params
 {
 	class FString                                      S;                                                		// 0x0000 (0x0010) [0x0000000000400880] (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 	struct FName                                       Tag;                                              		// 0x0010 (0x0008) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
-	bool                                               bFileOnly : 1;                                    		// 0x0018 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bFileOnly : 1;                                    		// 0x0018 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 };
 
 // Function Core.Object.LinearColorLerp
@@ -1440,7 +1440,7 @@ struct UObject_execQuatSlerp_Params
 	struct FQuat                                       A;                                                		// 0x0000 (0x0010) [0x0000000000000080] (CPF_Parm)    
 	struct FQuat                                       B;                                                		// 0x0010 (0x0010) [0x0000000000000080] (CPF_Parm)    
 	float                                              Alpha;                                            		// 0x0020 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bShortestPath : 1;                                		// 0x0024 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bShortestPath : 1;                                		// 0x0024 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	struct FQuat                                       ReturnValue;                                      		// 0x0030 (0x0010) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
@@ -1606,7 +1606,7 @@ struct UObject_execNotEqual_NameName_Params
 {
 	struct FName                                       A;                                                		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	struct FName                                       B;                                                		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.EqualEqual_NameName
@@ -1615,7 +1615,7 @@ struct UObject_execEqualEqual_NameName_Params
 {
 	struct FName                                       A;                                                		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	struct FName                                       B;                                                		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.IsA
@@ -1623,7 +1623,7 @@ struct UObject_execEqualEqual_NameName_Params
 struct UObject_execIsA_Params
 {
 	struct FName                                       ClassName;                                        		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.ClassIsChildOf
@@ -1632,7 +1632,7 @@ struct UObject_execClassIsChildOf_Params
 {
 	class UClass*                                      TestClass;                                        		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UClass*                                      ParentClass;                                      		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.NotEqual_InterfaceInterface
@@ -1641,7 +1641,7 @@ struct UObject_execNotEqual_InterfaceInterface_Params
 {
 	class UInterface*                                  A;                                                		// 0x0000 (0x0010) [0x0000000000000080] (CPF_Parm)    
 	class UInterface*                                  B;                                                		// 0x0010 (0x0010) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.EqualEqual_InterfaceInterface
@@ -1650,7 +1650,7 @@ struct UObject_execEqualEqual_InterfaceInterface_Params
 {
 	class UInterface*                                  A;                                                		// 0x0000 (0x0010) [0x0000000000000080] (CPF_Parm)    
 	class UInterface*                                  B;                                                		// 0x0010 (0x0010) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.NotEqual_ObjectObject
@@ -1659,7 +1659,7 @@ struct UObject_execNotEqual_ObjectObject_Params
 {
 	class UObject*                                     A;                                                		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UObject*                                     B;                                                		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.EqualEqual_ObjectObject
@@ -1668,7 +1668,7 @@ struct UObject_execEqualEqual_ObjectObject_Params
 {
 	class UObject*                                     A;                                                		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UObject*                                     B;                                                		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.GetPathName
@@ -1692,7 +1692,7 @@ struct UObject_execSplitString_Params
 {
 	class FString                                      Source;                                           		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Delimiter;                                        		// 0x0010 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bCullEmpty : 1;                                   		// 0x0020 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bCullEmpty : 1;                                   		// 0x0020 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	TArray<class FString>                              ReturnValue;                                      		// 0x0028 (0x0010) [0x0000000000400580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 	// TArray<class FString>                              Result;                                           		// 0x0038 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 };
@@ -1704,7 +1704,7 @@ struct UObject_execParseStringIntoArray_Params
 	class FString                                      BaseString;                                       		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	TArray<class FString>                              Pieces;                                           		// 0x0010 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class FString                                      delim;                                            		// 0x0020 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bCullEmpty : 1;                                   		// 0x0030 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bCullEmpty : 1;                                   		// 0x0030 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function Core.Object.ContainsWhitespace
@@ -1712,7 +1712,7 @@ struct UObject_execParseStringIntoArray_Params
 struct UObject_execContainsWhitespace_Params
 {
 	class FString                                      Text;                                             		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.RepeatString
@@ -1732,7 +1732,7 @@ struct UObject_execJoinArrayQWord_Params
 {
 	TArray<uint64_t>                                   QWordArray;                                       		// 0x0000 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class FString                                      delim;                                            		// 0x0010 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bIgnoreBlanks : 1;                                		// 0x0020 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bIgnoreBlanks : 1;                                		// 0x0020 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	class FString                                      ReturnValue;                                      		// 0x0028 (0x0010) [0x0000000000400580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 	// TArray<class FString>                              StringArray;                                      		// 0x0038 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// uint64_t                                           QWordValue;                                       		// 0x0048 (0x0008) [0x0000000000000000]               
@@ -1744,7 +1744,7 @@ struct UObject_execJoinArrayInt_Params
 {
 	TArray<int32_t>                                    IntArray;                                         		// 0x0000 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class FString                                      delim;                                            		// 0x0010 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bIgnoreBlanks : 1;                                		// 0x0020 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bIgnoreBlanks : 1;                                		// 0x0020 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	class FString                                      ReturnValue;                                      		// 0x0028 (0x0010) [0x0000000000400580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 	// TArray<class FString>                              StringArray;                                      		// 0x0038 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// int32_t                                            IntValue;                                         		// 0x0048 (0x0004) [0x0000000000000000]               
@@ -1756,7 +1756,7 @@ struct UObject_execJoinArrayName_Params
 {
 	TArray<struct FName>                               NameArray;                                        		// 0x0000 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class FString                                      delim;                                            		// 0x0010 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bIgnoreBlanks : 1;                                		// 0x0020 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bIgnoreBlanks : 1;                                		// 0x0020 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	class FString                                      ReturnValue;                                      		// 0x0028 (0x0010) [0x0000000000400580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 	// TArray<class FString>                              StringArray;                                      		// 0x0038 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// struct FName                                       NameValue;                                        		// 0x0048 (0x0008) [0x0000000000000000]               
@@ -1768,7 +1768,7 @@ struct UObject_execJoinArrayStr_Params
 {
 	TArray<class FString>                              StringArray;                                      		// 0x0000 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class FString                                      delim;                                            		// 0x0010 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bIgnoreBlanks : 1;                                		// 0x0020 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bIgnoreBlanks : 1;                                		// 0x0020 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	class FString                                      ReturnValue;                                      		// 0x0028 (0x0010) [0x0000000000400580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 	// class FString                                      out_Result;                                       		// 0x0038 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 };
@@ -1780,7 +1780,7 @@ struct UObject_execJoinArray_Params
 	TArray<class FString>                              StringArray;                                      		// 0x0000 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class FString                                      out_Result;                                       		// 0x0010 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class FString                                      delim;                                            		// 0x0020 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bIgnoreBlanks : 1;                                		// 0x0030 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bIgnoreBlanks : 1;                                		// 0x0030 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 };
 
 // Function Core.Object.GetRightMost
@@ -1798,7 +1798,7 @@ struct UObject_execSplit_Params
 {
 	class FString                                      Text;                                             		// 0x0000 (0x0010) [0x0000000000400880] (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 	class FString                                      SplitStr;                                         		// 0x0010 (0x0010) [0x0000000000400880] (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
-	bool                                               bOmitSplitStr : 1;                                		// 0x0020 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bOmitSplitStr : 1;                                		// 0x0020 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	class FString                                      ReturnValue;                                      		// 0x0028 (0x0010) [0x0000000000400580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 	// int32_t                                            pos;                                              		// 0x0038 (0x0004) [0x0000000000000000]               
 };
@@ -1809,7 +1809,7 @@ struct UObject_execStartsWith_Params
 {
 	class FString                                      Src;                                              		// 0x0000 (0x0010) [0x0000000000400880] (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 	class FString                                      Prefix;                                           		// 0x0010 (0x0010) [0x0000000000400880] (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.Trim
@@ -1827,7 +1827,7 @@ struct UObject_execRepl_Params
 	class FString                                      Src;                                              		// 0x0000 (0x0010) [0x0000000000400880] (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 	class FString                                      Match;                                            		// 0x0010 (0x0010) [0x0000000000400880] (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 	class FString                                      With;                                             		// 0x0020 (0x0010) [0x0000000000400880] (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
-	bool                                               bCaseSensitive : 1;                               		// 0x0030 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bCaseSensitive : 1;                               		// 0x0030 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	class FString                                      ReturnValue;                                      		// 0x0038 (0x0010) [0x0000000000400580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 };
 
@@ -1897,8 +1897,8 @@ struct UObject_execInStr_Params
 {
 	class FString                                      S;                                                		// 0x0000 (0x0010) [0x0000000000400880] (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 	class FString                                      T;                                                		// 0x0010 (0x0010) [0x0000000000400880] (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
-	bool                                               bSearchFromRight : 1;                             		// 0x0020 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
-	bool                                               bIgnoreCase : 1;                                  		// 0x0024 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bSearchFromRight : 1;                             		// 0x0020 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bIgnoreCase : 1;                                  		// 0x0024 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	int32_t                                            StartPos;                                         		// 0x0028 (0x0004) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
 	int32_t                                            ReturnValue;                                      		// 0x002C (0x0004) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
@@ -1944,7 +1944,7 @@ struct UObject_execComplementEqual_StrStr_Params
 {
 	class FString                                      A;                                                		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      B;                                                		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.NotEqual_StrStr
@@ -1953,7 +1953,7 @@ struct UObject_execNotEqual_StrStr_Params
 {
 	class FString                                      A;                                                		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      B;                                                		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.EqualEqual_StrStr
@@ -1962,7 +1962,7 @@ struct UObject_execEqualEqual_StrStr_Params
 {
 	class FString                                      A;                                                		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      B;                                                		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.GreaterEqual_StrStr
@@ -1971,7 +1971,7 @@ struct UObject_execGreaterEqual_StrStr_Params
 {
 	class FString                                      A;                                                		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      B;                                                		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.LessEqual_StrStr
@@ -1980,7 +1980,7 @@ struct UObject_execLessEqual_StrStr_Params
 {
 	class FString                                      A;                                                		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      B;                                                		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.Greater_StrStr
@@ -1989,7 +1989,7 @@ struct UObject_execGreater_StrStr_Params
 {
 	class FString                                      A;                                                		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      B;                                                		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.Less_StrStr
@@ -1998,7 +1998,7 @@ struct UObject_execLess_StrStr_Params
 {
 	class FString                                      A;                                                		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      B;                                                		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.At_StrStr
@@ -2063,8 +2063,8 @@ struct UObject_execSClampRotAxis_Params
 	int32_t                                            MaxLimit;                                         		// 0x000C (0x0004) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            MinLimit;                                         		// 0x0010 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	float                                              InterpolationSpeed;                               		// 0x0014 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-	// bool                                               bClamped : 1;                                     		// 0x001C (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	// uint32_t                                           bClamped : 1;                                     		// 0x001C (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function Core.Object.ClampRotAxisFromRange
@@ -2148,7 +2148,7 @@ struct UObject_execRInterpTo_Params
 	struct FRotator                                    Target;                                           		// 0x000C (0x000C) [0x0000000000000080] (CPF_Parm)    
 	float                                              DeltaTime;                                        		// 0x0018 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	float                                              InterpSpeed;                                      		// 0x001C (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bConstantInterpSpeed : 1;                         		// 0x0020 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bConstantInterpSpeed : 1;                         		// 0x0020 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	struct FRotator                                    ReturnValue;                                      		// 0x0024 (0x000C) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
@@ -2168,7 +2168,7 @@ struct UObject_execRLerp_Params
 	struct FRotator                                    A;                                                		// 0x0000 (0x000C) [0x0000000000000080] (CPF_Parm)    
 	struct FRotator                                    B;                                                		// 0x000C (0x000C) [0x0000000000000080] (CPF_Parm)    
 	float                                              Alpha;                                            		// 0x0018 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bShortestPath : 1;                                		// 0x001C (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bShortestPath : 1;                                		// 0x001C (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	struct FRotator                                    ReturnValue;                                      		// 0x0020 (0x000C) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
@@ -2194,7 +2194,7 @@ struct UObject_execOrthoRotation_Params
 // [0x00026401]  (iNative[320])
 struct UObject_execRotRand_Params
 {
-	bool                                               bRoll : 1;                                        		// 0x0000 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bRoll : 1;                                        		// 0x0000 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	struct FRotator                                    ReturnValue;                                      		// 0x0004 (0x000C) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
@@ -2233,7 +2233,7 @@ struct UObject_execClockwiseFrom_IntInt_Params
 {
 	int32_t                                            A;                                                		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            B;                                                		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.SubtractEqual_RotatorRotator
@@ -2323,7 +2323,7 @@ struct UObject_execNotEqual_RotatorRotator_Params
 {
 	struct FRotator                                    A;                                                		// 0x0000 (0x000C) [0x0000000000000080] (CPF_Parm)    
 	struct FRotator                                    B;                                                		// 0x000C (0x000C) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.EqualEqual_RotatorRotator
@@ -2332,7 +2332,7 @@ struct UObject_execEqualEqual_RotatorRotator_Params
 {
 	struct FRotator                                    A;                                                		// 0x0000 (0x000C) [0x0000000000000080] (CPF_Parm)    
 	struct FRotator                                    B;                                                		// 0x000C (0x000C) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.GetRadiansBetweenVectors
@@ -2377,8 +2377,8 @@ struct UObject_execInCylinder_Params
 	struct FRotator                                    Dir;                                              		// 0x000C (0x000C) [0x0000000000000080] (CPF_Parm)    
 	float                                              Width;                                            		// 0x0018 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	struct FVector                                     A;                                                		// 0x001C (0x000C) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bIgnoreZ : 1;                                     		// 0x0028 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x002C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           bIgnoreZ : 1;                                     		// 0x0028 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x002C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 	// struct FVector                                     B;                                                		// 0x0030 (0x000C) [0x0000000000000000]               
 	// struct FVector                                     VDir;                                             		// 0x003C (0x000C) [0x0000000000000000]               
 };
@@ -2444,7 +2444,7 @@ struct UObject_execProjectOnToPlane_Params
 struct UObject_execIsZero_Params
 {
 	struct FVector                                     A;                                                		// 0x0000 (0x000C) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.ProjectOnTo
@@ -2618,7 +2618,7 @@ struct UObject_execNotEqual_VectorVector_Params
 {
 	struct FVector                                     A;                                                		// 0x0000 (0x000C) [0x0000000000000080] (CPF_Parm)    
 	struct FVector                                     B;                                                		// 0x000C (0x000C) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.EqualEqual_VectorVector
@@ -2627,7 +2627,7 @@ struct UObject_execEqualEqual_VectorVector_Params
 {
 	struct FVector                                     A;                                                		// 0x0000 (0x000C) [0x0000000000000080] (CPF_Parm)    
 	struct FVector                                     B;                                                		// 0x000C (0x000C) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.GreaterGreater_VectorRotator
@@ -3032,7 +3032,7 @@ struct UObject_execNotEqual_FloatFloat_Params
 {
 	float                                              A;                                                		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	float                                              B;                                                		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.ComplementEqual_FloatFloat
@@ -3041,7 +3041,7 @@ struct UObject_execComplementEqual_FloatFloat_Params
 {
 	float                                              A;                                                		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	float                                              B;                                                		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.EqualEqual_FloatFloat
@@ -3050,7 +3050,7 @@ struct UObject_execEqualEqual_FloatFloat_Params
 {
 	float                                              A;                                                		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	float                                              B;                                                		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.GreaterEqual_FloatFloat
@@ -3059,7 +3059,7 @@ struct UObject_execGreaterEqual_FloatFloat_Params
 {
 	float                                              A;                                                		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	float                                              B;                                                		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.LessEqual_FloatFloat
@@ -3068,7 +3068,7 @@ struct UObject_execLessEqual_FloatFloat_Params
 {
 	float                                              A;                                                		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	float                                              B;                                                		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.Greater_FloatFloat
@@ -3077,7 +3077,7 @@ struct UObject_execGreater_FloatFloat_Params
 {
 	float                                              A;                                                		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	float                                              B;                                                		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.Less_FloatFloat
@@ -3086,7 +3086,7 @@ struct UObject_execLess_FloatFloat_Params
 {
 	float                                              A;                                                		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	float                                              B;                                                		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.Subtract_FloatFloat
@@ -3245,7 +3245,7 @@ struct UObject_execNotEqual_QWordInt_Params
 {
 	uint64_t                                           A;                                                		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            B;                                                		// 0x0008 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.EqualEqual_QWordInt
@@ -3254,7 +3254,7 @@ struct UObject_execEqualEqual_QWordInt_Params
 {
 	uint64_t                                           A;                                                		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            B;                                                		// 0x0008 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.NotEqual_QWordQWord
@@ -3263,7 +3263,7 @@ struct UObject_execNotEqual_QWordQWord_Params
 {
 	uint64_t                                           A;                                                		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	uint64_t                                           B;                                                		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.EqualEqual_QWordQWord
@@ -3272,7 +3272,7 @@ struct UObject_execEqualEqual_QWordQWord_Params
 {
 	uint64_t                                           A;                                                		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	uint64_t                                           B;                                                		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.GreaterEqual_QWordQWord
@@ -3281,7 +3281,7 @@ struct UObject_execGreaterEqual_QWordQWord_Params
 {
 	uint64_t                                           A;                                                		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	uint64_t                                           B;                                                		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.LessEqual_QWordQWord
@@ -3290,7 +3290,7 @@ struct UObject_execLessEqual_QWordQWord_Params
 {
 	uint64_t                                           A;                                                		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	uint64_t                                           B;                                                		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.Greater_QWordQWord
@@ -3299,7 +3299,7 @@ struct UObject_execGreater_QWordQWord_Params
 {
 	uint64_t                                           A;                                                		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	uint64_t                                           B;                                                		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.Less_QWordQWord
@@ -3308,7 +3308,7 @@ struct UObject_execLess_QWordQWord_Params
 {
 	uint64_t                                           A;                                                		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	uint64_t                                           B;                                                		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.Subtract_QWordQWord
@@ -3430,7 +3430,7 @@ struct UObject_execNotEqual_IntInt_Params
 {
 	int32_t                                            A;                                                		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            B;                                                		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.EqualEqual_IntInt
@@ -3439,7 +3439,7 @@ struct UObject_execEqualEqual_IntInt_Params
 {
 	int32_t                                            A;                                                		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            B;                                                		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.GreaterEqual_IntInt
@@ -3448,7 +3448,7 @@ struct UObject_execGreaterEqual_IntInt_Params
 {
 	int32_t                                            A;                                                		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            B;                                                		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.LessEqual_IntInt
@@ -3457,7 +3457,7 @@ struct UObject_execLessEqual_IntInt_Params
 {
 	int32_t                                            A;                                                		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            B;                                                		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.Greater_IntInt
@@ -3466,7 +3466,7 @@ struct UObject_execGreater_IntInt_Params
 {
 	int32_t                                            A;                                                		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            B;                                                		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.Less_IntInt
@@ -3475,7 +3475,7 @@ struct UObject_execLess_IntInt_Params
 {
 	int32_t                                            A;                                                		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            B;                                                		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.GreaterGreaterGreater_IntInt
@@ -3647,53 +3647,53 @@ struct UObject_execMultiplyEqual_ByteByte_Params
 // [0x00023401]  (iNative[132])
 struct UObject_execOrOr_BoolBool_Params
 {
-	bool                                               A : 1;                                            		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
-	bool                                               B : 1;                                            		// 0x0004 (0x0004) [0x0000000000000280] [0x00000001] (CPF_Parm | CPF_SkipParm)
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           A : 1;                                            		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           B : 1;                                            		// 0x0004 (0x0004) [0x0000000000000280] [0x00000001] (CPF_Parm | CPF_SkipParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.XorXor_BoolBool
 // [0x00023401]  (iNative[131])
 struct UObject_execXorXor_BoolBool_Params
 {
-	bool                                               A : 1;                                            		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
-	bool                                               B : 1;                                            		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           A : 1;                                            		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           B : 1;                                            		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.AndAnd_BoolBool
 // [0x00023401]  (iNative[130])
 struct UObject_execAndAnd_BoolBool_Params
 {
-	bool                                               A : 1;                                            		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
-	bool                                               B : 1;                                            		// 0x0004 (0x0004) [0x0000000000000280] [0x00000001] (CPF_Parm | CPF_SkipParm)
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           A : 1;                                            		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           B : 1;                                            		// 0x0004 (0x0004) [0x0000000000000280] [0x00000001] (CPF_Parm | CPF_SkipParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.NotEqual_BoolBool
 // [0x00023401]  (iNative[243])
 struct UObject_execNotEqual_BoolBool_Params
 {
-	bool                                               A : 1;                                            		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
-	bool                                               B : 1;                                            		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           A : 1;                                            		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           B : 1;                                            		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.EqualEqual_BoolBool
 // [0x00023401]  (iNative[242])
 struct UObject_execEqualEqual_BoolBool_Params
 {
-	bool                                               A : 1;                                            		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
-	bool                                               B : 1;                                            		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           A : 1;                                            		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           B : 1;                                            		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.Object.Not_PreBool
 // [0x00023411]  (iNative[129])
 struct UObject_execNot_PreBool_Params
 {
-	bool                                               A : 1;                                            		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           A : 1;                                            		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.UTF8.DecodeInline
@@ -3804,7 +3804,7 @@ struct UObjectUtil_execIdenticalDeep_Params
 {
 	class UObject*                                     Left;                                             		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UObject*                                     Right;                                            		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.ObjectUtil.Identical
@@ -3813,7 +3813,7 @@ struct UObjectUtil_execIdentical_Params
 {
 	class UObject*                                     Left;                                             		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UObject*                                     Right;                                            		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.ObjectUtil.InitProperties
@@ -3829,7 +3829,7 @@ struct UObjectUtil_execAllCDOs_Params
 {
 	class UClass*                                      BaseClass;                                        		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UObject*                                     OutCDO;                                           		// 0x0008 (0x0008) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               bIncludeAbstract : 1;                             		// 0x0010 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bIncludeAbstract : 1;                             		// 0x0010 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 };
 
 // Function Core.ObjectUtil.GetCDO
@@ -3844,7 +3844,7 @@ struct UObjectUtil_execGetCDO_Params
 // [0x00022401] 
 struct UFileSystem_execIsCookedBuild_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.FileSystem.CloseLogFile
@@ -3865,7 +3865,7 @@ struct UFileSystem_execGetLogFileName_Params
 struct UFileSystem_execDeleteDirectoryTree_Params
 {
 	class FString                                      Path;                                             		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.FileSystem.DeleteFile
@@ -3873,7 +3873,7 @@ struct UFileSystem_execDeleteDirectoryTree_Params
 struct UFileSystem_execDeleteFileW_Params
 {
 	class FString                                      Path;                                             		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.FileSystem.AppendStringToFile
@@ -3882,7 +3882,7 @@ struct UFileSystem_execAppendStringToFile_Params
 {
 	class FString                                      Path;                                             		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Text;                                             		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.FileSystem.SaveStringToFile
@@ -3891,7 +3891,7 @@ struct UFileSystem_execSaveStringToFile_Params
 {
 	class FString                                      Path;                                             		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Text;                                             		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.FileSystem.SaveBytesToFile
@@ -3900,7 +3900,7 @@ struct UFileSystem_execSaveBytesToFile_Params
 {
 	class FString                                      Path;                                             		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	TArray<uint8_t>                                    Bytes;                                            		// 0x0010 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.FileSystem.LoadFileToBytes
@@ -3911,7 +3911,7 @@ struct UFileSystem_execLoadFileToBytes_Params
 	TArray<uint8_t>                                    OutBytes;                                         		// 0x0010 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	int32_t                                            StartOffset;                                      		// 0x0020 (0x0004) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
 	int32_t                                            Length;                                           		// 0x0024 (0x0004) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.FileSystem.LoadFileToString
@@ -3920,7 +3920,7 @@ struct UFileSystem_execLoadFileToString_Params
 {
 	class FString                                      Path;                                             		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      OutText;                                          		// 0x0010 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.FileSystem.GetFileSize
@@ -4118,7 +4118,7 @@ struct UDebugDrawer_eventDebugObject_Params
 struct UDebugDrawer_execShouldDisplayDebug_Params
 {
 	struct FName                                       Category;                                         		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.DebugDrawer.LogFunc
@@ -4134,7 +4134,7 @@ struct UCompression_execZLibCompress_Params
 {
 	TArray<uint8_t>                                    Uncompressed;                                     		// 0x0000 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	TArray<uint8_t>                                    OutCompressed;                                    		// 0x0010 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.StringObjectMap.Contains
@@ -4142,7 +4142,7 @@ struct UCompression_execZLibCompress_Params
 struct UStringObjectMap_execContains_Params
 {
 	class FString                                      Key;                                              		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.StringObjectMap.Remove
@@ -4158,7 +4158,7 @@ struct UStringObjectMap_execTryGetObjectW_Params
 {
 	class FString                                      Key;                                              		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class UObject*                                     OutValue;                                         		// 0x0010 (0x0008) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.StringObjectMap.TryGet
@@ -4208,7 +4208,7 @@ struct UStringMap_execAppend_Params
 struct UStringMap_execContains_Params
 {
 	class FString                                      Key;                                              		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.StringMap.Remove
@@ -4224,7 +4224,7 @@ struct UStringMap_execTryGet_Params
 {
 	class FString                                      Key;                                              		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      OutValue;                                         		// 0x0010 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.StringMap.Get
@@ -4393,7 +4393,7 @@ struct UObjectProvider_execAllObjects_Params
 struct UObjectProvider_execIsRegisteredForInjection_Params
 {
 	class UObject*                                     Subscriber;                                       		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function Core.ObjectProvider.InjectDelayed
@@ -4734,7 +4734,7 @@ struct U__AsyncTask__All_0x1_exec__AsyncTask__All_0x1_Params
 // [0x00022003] 
 struct U_LoggingDoc_execTestSpecialLogging_Params
 {
-	// bool                                               bCondition : 1;                                   		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bCondition : 1;                                   		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function Core.ArrayFuncs.GetRandomElement

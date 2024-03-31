@@ -1,12 +1,12 @@
 /*
 #############################################################################################
-# Rocket League (1.0) SDK
-# Generated with the UE3SDKGenerator v2.2.5
+# RocketLeague (1.0.10897.0) SDK
+# Generated with the CodeRedGenerator v1.0.2
 # ========================================================================================= #
 # File: IpDrv_structs.hpp
 # ========================================================================================= #
 # Credits: TheFeckless, ItsBranK
-# Links: www.github.com/itsbrank/UE3SDKGenerator, www.twitter.com/itsbrank
+# Links: www.github.com/CodeRedModding/CodeRed-Generator, www.twitter.com/ItsBranK
 #############################################################################################
 */
 #pragma once
@@ -17,7 +17,7 @@
 
 /*
 # ========================================================================================= #
-# Script Structs
+# Structs
 # ========================================================================================= #
 */
 
@@ -81,7 +81,7 @@ struct FDecodeImageTask
 // 0x0059
 struct FMcpClashMobChallengeFile
 {
-	unsigned long                                      should_keep_post_challenge : 1;                // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           should_keep_post_challenge : 1;                // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 	class FString                                      title_id;                                      // 0x0008 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	class FString                                      file_name;                                     // 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	class FString                                      dl_name;                                       // 0x0028 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -124,10 +124,10 @@ struct FMcpClashMobChallengeEvent
 	int32_t                                            goal_value;                                    // 0x0078 (0x0004) [0x0000000000000000]               
 	int32_t                                            goal_start_value;                              // 0x007C (0x0004) [0x0000000000000000]               
 	int32_t                                            goal_current_value;                            // 0x0080 (0x0004) [0x0000000000000000]               
-	unsigned long                                      has_started : 1;                               // 0x0084 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      is_visible : 1;                                // 0x0084 (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      has_completed : 1;                             // 0x0084 (0x0004) [0x0000000000000000] [0x00000004] 
-	unsigned long                                      was_successful : 1;                            // 0x0084 (0x0004) [0x0000000000000000] [0x00000008] 
+	uint32_t                                           has_started : 1;                               // 0x0084 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           is_visible : 1;                                // 0x0084 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           has_completed : 1;                             // 0x0084 (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           was_successful : 1;                            // 0x0084 (0x0004) [0x0000000000000000] [0x00000008] 
 	TArray<struct FMcpClashMobChallengeFile>           file_list;                                     // 0x0088 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	int32_t                                            facebook_likes;                                // 0x0098 (0x0004) [0x0000000000000000]               
 	int32_t                                            facebook_comments;                             // 0x009C (0x0004) [0x0000000000000000]               
@@ -151,18 +151,18 @@ struct FMcpClashMobChallengeUserStatus
 	int32_t                                            num_attempts;                                  // 0x0020 (0x0004) [0x0000000000000000]               
 	int32_t                                            num_successful_attempts;                       // 0x0024 (0x0004) [0x0000000000000000]               
 	int32_t                                            goal_progress;                                 // 0x0028 (0x0004) [0x0000000000000000]               
-	unsigned long                                      did_complete : 1;                              // 0x002C (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           did_complete : 1;                              // 0x002C (0x0004) [0x0000000000000000] [0x00000001] 
 	class FString                                      last_update_time;                              // 0x0030 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	int32_t                                            user_award_given;                              // 0x0040 (0x0004) [0x0000000000000000]               
 	class FString                                      accept_time;                                   // 0x0048 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      did_preregister : 1;                           // 0x0058 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           did_preregister : 1;                           // 0x0058 (0x0004) [0x0000000000000000] [0x00000001] 
 	class FString                                      facebook_like_time;                            // 0x0060 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      enrolled_via_facebook : 1;                     // 0x0070 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      liked_via_facebook : 1;                        // 0x0070 (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      commented_via_facebook : 1;                    // 0x0070 (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           enrolled_via_facebook : 1;                     // 0x0070 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           liked_via_facebook : 1;                        // 0x0070 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           commented_via_facebook : 1;                    // 0x0070 (0x0004) [0x0000000000000000] [0x00000004] 
 	class FString                                      twitter_retweet_time;                          // 0x0078 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      enrolled_via_twitter : 1;                      // 0x0088 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      retweeted : 1;                                 // 0x0088 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           enrolled_via_twitter : 1;                      // 0x0088 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           retweeted : 1;                                 // 0x0088 (0x0004) [0x0000000000000000] [0x00000002] 
 };
 
 // ScriptStruct IpDrv.OnlineTitleFileDownloadBase.FileNameToURLMapping
@@ -423,7 +423,7 @@ struct FMcpUserStatus
 	class FString                                      RegisteredDate;                                // 0x0040 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	class FString                                      LastActiveDate;                                // 0x0050 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	int32_t                                            DaysInactive;                                  // 0x0060 (0x0004) [0x0000000000000000]               
-	unsigned long                                      bIsBanned : 1;                                 // 0x0064 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bIsBanned : 1;                                 // 0x0064 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct IpDrv.McpUserManager.UserRequest
@@ -470,7 +470,7 @@ struct FClientConnectionRequest
 {
 	struct FUniqueNetId                                PlayerNetId;                                   // 0x0000 (0x0048) [0x0000000000400000] (CPF_NeedCtorLink)
 	uint8_t                                            NatType;                                       // 0x0048 (0x0001) [0x0000000000000000]               
-	unsigned long                                      bCanHostVs : 1;                                // 0x004C (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bCanHostVs : 1;                                // 0x004C (0x0004) [0x0000000000000000] [0x00000001] 
 	float                                              GoodHostRatio;                                 // 0x0050 (0x0004) [0x0000000000000000]               
 	TArray<struct FConnectionBandwidthStats>           BandwidthHistory;                              // 0x0058 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	int32_t                                            MinutesSinceLastTest;                          // 0x0068 (0x0004) [0x0000000000000000]               
@@ -496,10 +496,10 @@ struct FClientMeshBeaconConnection
 	struct FUniqueNetId                                PlayerNetId;                                   // 0x0000 (0x0048) [0x0000000000400000] (CPF_NeedCtorLink)
 	float                                              ElapsedHeartbeatTime;                          // 0x0048 (0x0004) [0x0000000000000000]               
 	struct FPointer                                    Socket;                                        // 0x0050 (0x0008) [0x0000000000003000] (CPF_Native | CPF_Transient)
-	unsigned long                                      bConnectionAccepted : 1;                       // 0x0058 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bConnectionAccepted : 1;                       // 0x0058 (0x0004) [0x0000000000000000] [0x00000001] 
 	struct FClientConnectionBandwidthTestData          BandwidthTest;                                 // 0x0060 (0x0030) [0x0000000000000000]               
 	uint8_t                                            NatType;                                       // 0x0090 (0x0001) [0x0000000000000000]               
-	unsigned long                                      bCanHostVs : 1;                                // 0x0094 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bCanHostVs : 1;                                // 0x0094 (0x0004) [0x0000000000000000] [0x00000001] 
 	float                                              GoodHostRatio;                                 // 0x0098 (0x0004) [0x0000000000000000]               
 	TArray<struct FConnectionBandwidthStats>           BandwidthHistory;                              // 0x00A0 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	int32_t                                            MinutesSinceLastTest;                          // 0x00B0 (0x0004) [0x0000000000000000]               
@@ -521,7 +521,7 @@ struct FEventUploadConfig
 	uint8_t                                            UploadType;                                    // 0x0000 (0x0001) [0x0000000000000002] (CPF_Const)   
 	class FString                                      UploadUrl;                                     // 0x0008 (0x0010) [0x0000000000400002] (CPF_Const | CPF_NeedCtorLink)
 	float                                              Timeout;                                       // 0x0018 (0x0004) [0x0000000000000002] (CPF_Const)   
-	unsigned long                                      bUseCompression : 1;                           // 0x001C (0x0004) [0x0000000000000002] [0x00000001] (CPF_Const)
+	uint32_t                                           bUseCompression : 1;                           // 0x001C (0x0004) [0x0000000000000002] [0x00000001] (CPF_Const)
 };
 
 // ScriptStruct IpDrv.OnlineNewsInterfaceMcp.NewsCacheEntry
@@ -533,7 +533,7 @@ struct FNewsCacheEntry
 	uint8_t                                            NewsType;                                      // 0x0011 (0x0001) [0x0000000000000002] (CPF_Const)   
 	class FString                                      NewsItem;                                      // 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	float                                              Timeout;                                       // 0x0028 (0x0004) [0x0000000000000002] (CPF_Const)   
-	unsigned long                                      bIsUnicode : 1;                                // 0x002C (0x0004) [0x0000000000000002] [0x00000001] (CPF_Const)
+	uint32_t                                           bIsUnicode : 1;                                // 0x002C (0x0004) [0x0000000000000002] [0x00000001] (CPF_Const)
 	struct FPointer                                    HttpDownloader;                                // 0x0030 (0x0008) [0x0000000000001002] (CPF_Const | CPF_Native)
 };
 
@@ -562,7 +562,7 @@ struct FPlaylist
 	class FString                                      Name;                                          // 0x0048 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	class FString                                      URL;                                           // 0x0058 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	int32_t                                            MatchType;                                     // 0x0068 (0x0004) [0x0000000000000000]               
-	unsigned long                                      bDisableDedicatedServerSearches : 1;           // 0x006C (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bDisableDedicatedServerSearches : 1;           // 0x006C (0x0004) [0x0000000000000000] [0x00000001] 
 	TArray<struct FName>                               MapCycle;                                      // 0x0070 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 };
 

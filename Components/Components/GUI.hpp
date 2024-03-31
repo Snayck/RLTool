@@ -17,13 +17,18 @@ public:
 
 public:
 	static bool IsOpen;
+	static bool hookEvent;
+	static bool hookInternal;
+	static bool hookCallFunc;
+	static bool isLogging;
+	static std::string whitelist;
+	static std::string blacklist;
+
 	int DisplayX;
 	int DisplayY;
 
 public:
 	static void InitImGui();
-
-	static void InitMainTab();
 
 	static LRESULT __stdcall WndProc(const HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 	static void Render();

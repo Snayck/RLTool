@@ -1,12 +1,12 @@
 /*
 #############################################################################################
-# Rocket League (1.0) SDK
-# Generated with the UE3SDKGenerator v2.2.5
+# RocketLeague (1.0.10897.0) SDK
+# Generated with the CodeRedGenerator v1.0.2
 # ========================================================================================= #
 # File: AkAudio_structs.hpp
 # ========================================================================================= #
 # Credits: TheFeckless, ItsBranK
-# Links: www.github.com/itsbrank/UE3SDKGenerator, www.twitter.com/itsbrank
+# Links: www.github.com/CodeRedModding/CodeRed-Generator, www.twitter.com/ItsBranK
 #############################################################################################
 */
 #pragma once
@@ -17,7 +17,7 @@
 
 /*
 # ========================================================================================= #
-# Script Structs
+# Structs
 # ========================================================================================= #
 */
 
@@ -102,7 +102,7 @@ struct FAkRevSimUpdateParams
 	float                                              EngineFrictionScale;                           // 0x0008 (0x0004) [0x0000000000000000]               
 	float                                              GroundFrictionScale;                           // 0x000C (0x0004) [0x0000000000000000]               
 	float                                              ClutchedGearRatio;                             // 0x0010 (0x0004) [0x0000000000000000]               
-	unsigned long                                      bEnableUpShifting : 1;                         // 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bEnableUpShifting : 1;                         // 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
 	struct FAkRevSimPhysicsControls                    Controls;                                      // 0x0018 (0x0020) [0x0000000000400000] (CPF_NeedCtorLink)
 	struct FAkRevSimFrame                              frame;                                         // 0x0038 (0x0010) [0x0000000000000000]               
 };

@@ -5,11 +5,13 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
     if (ul_reason_for_call == DLL_PROCESS_ATTACH)
     {
         DisableThreadLibraryCalls(hModule);
-        CreateThread(nullptr, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(Core.InitializeGlobals), hModule, 0, nullptr);
+        Core.InitializeThread();
     }
     if (ul_reason_for_call == DLL_PROCESS_DETACH)
     {
         GUI.Unload();
+        Events.DetachAllDetours();
+        Core.DestroyThread();
     }
 
     return TRUE;

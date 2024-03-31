@@ -1,12 +1,12 @@
 /*
 #############################################################################################
-# Rocket League (1.0) SDK
-# Generated with the UE3SDKGenerator v2.2.5
+# RocketLeague (1.0.10897.0) SDK
+# Generated with the CodeRedGenerator v1.0.2
 # ========================================================================================= #
 # File: Core_structs.hpp
 # ========================================================================================= #
 # Credits: TheFeckless, ItsBranK
-# Links: www.github.com/itsbrank/UE3SDKGenerator, www.twitter.com/itsbrank
+# Links: www.github.com/CodeRedModding/CodeRed-Generator, www.twitter.com/ItsBranK
 #############################################################################################
 */
 #pragma once
@@ -17,7 +17,7 @@
 
 /*
 # ========================================================================================= #
-# Script Structs
+# Structs
 # ========================================================================================= #
 */
 
@@ -117,7 +117,7 @@ struct FRotator
 		float fYaw = Yaw * (3.1415926535897932f / 32768);
 		float fPitch = Pitch * (3.1415926535897932f / 32768);
 		float CosPitch = cos(fPitch);
-
+		
 		Return.X = cos(fYaw) * CosPitch;
 		Return.Y = sin(fYaw) * CosPitch;
 		Return.Z = sin(fPitch);
@@ -125,6 +125,7 @@ struct FRotator
 		return Return;
 	}
 };
+
 
 // ScriptStruct Core.Object.Plane
 // 0x0004 (0x000C - 0x0010)
@@ -178,6 +179,35 @@ struct FColor
 	uint8_t                                            G;                                             // 0x0001 (0x0001) [0x0000000000000001] (CPF_Edit)    
 	uint8_t                                            R;                                             // 0x0002 (0x0001) [0x0000000000000001] (CPF_Edit)    
 	uint8_t                                            A;                                             // 0x0003 (0x0001) [0x0000000000000001] (CPF_Edit)    
+
+	static FLinearColor InvertColor(FLinearColor LinearColor)
+	{
+		LinearColor.R = 1 - LinearColor.R;
+		LinearColor.G = 1 - LinearColor.G;
+		LinearColor.B = 1 - LinearColor.B;
+		LinearColor.A = LinearColor.A;
+		return LinearColor;
+	}
+
+	static FLinearColor ToLinearColor(FColor Color)
+	{
+		FLinearColor LinearColor;
+		LinearColor.R = (Color.R > 0 ? (static_cast<float>(Color.R) / 255.0f) : 0);
+		LinearColor.G = (Color.G > 0 ? (static_cast<float>(Color.G) / 255.0f) : 0);
+		LinearColor.B = (Color.B > 0 ? (static_cast<float>(Color.B) / 255.0f) : 0);
+		LinearColor.A = (Color.A > 0 ? (static_cast<float>(Color.A) / 255.0f) : 0);
+		return LinearColor;
+	}
+
+	FLinearColor ToLinearColor()
+	{
+		FLinearColor LinearColor;
+		LinearColor.R = (R > 0 ? (static_cast<float>(R) / 255.0f) : 0);
+		LinearColor.G = (G > 0 ? (static_cast<float>(G) / 255.0f) : 0);
+		LinearColor.B = (B > 0 ? (static_cast<float>(B) / 255.0f) : 0);
+		LinearColor.A = (A > 0 ? (static_cast<float>(A) / 255.0f) : 0);
+		return LinearColor;
+	}
 };
 
 // ScriptStruct Core.Object.Vector2D
@@ -622,6 +652,21 @@ struct FUniqueNetId
 	class FString                                      EpicAccountId;                                 // 0x0030 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	uint8_t                                            Platform;                                      // 0x0040 (0x0001) [0x0000000000000000]               
 	uint8_t                                            SplitscreenID;                                 // 0x0041 (0x0001) [0x0000000000000000]               
+
+	bool operator==(const FUniqueNetId& Other) const
+	{
+		if (Uid == Other.Uid && EpicAccountId.ToString() == Other.EpicAccountId.ToString() && Platform == Other.Platform && SplitscreenID == Other.SplitscreenID)
+		{
+			return true;
+		}
+
+		return false;
+	}
+
+	bool operator!=(const FUniqueNetId& Other) const
+	{
+		return !(*this == Other);
+	}
 };
 
 // ScriptStruct Core._Types_Core.ProductHashID
@@ -644,19 +689,19 @@ struct FVoiceAudioDevice
 {
 	class FString                                      Id;                                            // 0x0000 (0x0010) [0x0000000040400000] (CPF_NeedCtorLink | CPF_EditInlineNotify)
 	class FString                                      Name;                                          // 0x0010 (0x0010) [0x0000000040400000] (CPF_NeedCtorLink | CPF_EditInlineNotify)
-	unsigned long                                      bDefault : 1;                                  // 0x0020 (0x0004) [0x0000000040000000] [0x00000001] (CPF_EditInlineNotify)
+	uint32_t                                           bDefault : 1;                                  // 0x0020 (0x0004) [0x0000000040000000] [0x00000001] (CPF_EditInlineNotify)
 };
 
 // ScriptStruct Core._Types_Core.VoiceRoomMemberStatus
 // 0x0004
 struct FVoiceRoomMemberStatus
 {
-	unsigned long                                      bLocal : 1;                                    // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bSpeaking : 1;                                 // 0x0000 (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      bSelfMuted : 1;                                // 0x0000 (0x0004) [0x0000000000000000] [0x00000004] 
-	unsigned long                                      bLocalMuted : 1;                               // 0x0000 (0x0004) [0x0000000000000000] [0x00000008] 
-	unsigned long                                      bAdminMuted : 1;                               // 0x0000 (0x0004) [0x0000000000000000] [0x00000010] 
-	unsigned long                                      bBlocked : 1;                                  // 0x0000 (0x0004) [0x0000000000000000] [0x00000020] 
+	uint32_t                                           bLocal : 1;                                    // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bSpeaking : 1;                                 // 0x0000 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bSelfMuted : 1;                                // 0x0000 (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           bLocalMuted : 1;                               // 0x0000 (0x0004) [0x0000000000000000] [0x00000008] 
+	uint32_t                                           bAdminMuted : 1;                               // 0x0000 (0x0004) [0x0000000000000000] [0x00000010] 
+	uint32_t                                           bBlocked : 1;                                  // 0x0000 (0x0004) [0x0000000000000000] [0x00000020] 
 };
 
 // ScriptStruct Core._Types_Core.ProductInstanceID
@@ -705,7 +750,7 @@ struct FRawDistributionFloat : FRawDistribution
 struct FMatineeRawDistributionFloat : FRawDistributionFloat
 {
 	float                                              MatineeValue;                                  // 0x0028 (0x0004) [0x0000000000000000]               
-	unsigned long                                      bInMatinee : 1;                                // 0x002C (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bInMatinee : 1;                                // 0x002C (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Core.DistributionVector.RawDistributionVector
@@ -721,7 +766,7 @@ struct FObjectProviderSubscription
 {
 	class UClass*                                      ObjClass;                                      // 0x0000 (0x0008) [0x0000000000000000]               
 	struct FScriptDelegate                             Callback;                                      // 0x0008 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      bFireOnce : 1;                                 // 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bFireOnce : 1;                                 // 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Core.ObjectProvider.ObjectProviderPendingCallback

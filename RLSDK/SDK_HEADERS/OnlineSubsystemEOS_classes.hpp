@@ -1,12 +1,12 @@
 /*
 #############################################################################################
-# Rocket League (1.0) SDK
-# Generated with the UE3SDKGenerator v2.2.5
+# RocketLeague (1.0.10897.0) SDK
+# Generated with the CodeRedGenerator v1.0.2
 # ========================================================================================= #
 # File: OnlineSubsystemEOS_classes.hpp
 # ========================================================================================= #
 # Credits: TheFeckless, ItsBranK
-# Links: www.github.com/itsbrank/UE3SDKGenerator, www.twitter.com/itsbrank
+# Links: www.github.com/CodeRedModding/CodeRed-Generator, www.twitter.com/ItsBranK
 #############################################################################################
 */
 #pragma once
@@ -188,8 +188,8 @@ public:
 	void OnStorePurchaseCompleteDelegate();
 	void OpenStoreForItems(uint8_t LocalUserNum, TArray<class FString> Targets);
 	void OpenStoreForDLC(uint8_t LocalUserNum, struct FName DLC);
-	void OpenErrorDialog(uint8_t LocalUserNum, uint8_t ErrorCode);
-	void OpenPS4DisplayMode(uint8_t LocalUserNum, uint8_t DisplayMode, TArray<class FString> Targets, int32_t ServiceLabel);
+	void OpenErrorDialog(uint8_t LocalUserNum, EPS4ErrorDialog ErrorCode);
+	void OpenPS4DisplayMode(uint8_t LocalUserNum, EPS4DisplayMode DisplayMode, TArray<class FString> optionalTargets, int32_t optionalServiceLabel);
 	void ResetControllerColor(int32_t ControllerId);
 	void SetControllerColor(int32_t ControllerId, struct FColor NewColor);
 	void InitializeTrophyAPI();
@@ -205,63 +205,63 @@ public:
 	void ClearCommerceDialogClosedDelegate(struct FScriptDelegate InDelegate);
 	void AddCommerceDialogClosedDelegate(struct FScriptDelegate InDelegate);
 	void OnCommerceDialogClosed();
-	uint8_t GetCurrentConnectionStatus();
+	EOnlineServerConnectionStatus GetCurrentConnectionStatus();
 	void ClearCloseKickPlayerDialogDelegate(struct FScriptDelegate InDelegate);
 	void AddCloseKickPlayerDialogDelegate(struct FScriptDelegate InDelegate);
 	void OnCloseKickPlayerDialog();
-	void OnPlayerTalkingStateChange(struct FUniqueNetId Player, unsigned long bIsTalking);
+	void OnPlayerTalkingStateChange(struct FUniqueNetId Player, bool bIsTalking);
 	bool SetVoiceReceiveVolume(float VoiceVolume);
 	int32_t GetDLCPurchaseTime(struct FName AppName);
 	bool SaveKey(class FString ProductKey);
 	bool GetLocalAccountNames(TArray<class FString>& Accounts);
-	bool DeleteLocalAccount(class FString Username, class FString Password);
-	bool RenameLocalAccount(class FString NewUserName, class FString OldUserName, class FString Password);
-	bool CreateLocalAccount(class FString Username, class FString Password);
+	bool DeleteLocalAccount(class FString Username, class FString optionalPassword);
+	bool RenameLocalAccount(class FString NewUserName, class FString OldUserName, class FString optionalPassword);
+	bool CreateLocalAccount(class FString Username, class FString optionalPassword);
 	void ClearCreateOnlineAccountCompletedDelegate(struct FScriptDelegate AccountCreateDelegate);
 	void AddCreateOnlineAccountCompletedDelegate(struct FScriptDelegate AccountCreateDelegate);
-	void OnCreateOnlineAccountCompleted(uint8_t ErrorStatus);
-	bool CreateOnlineAccount(class FString Username, class FString Password, class FString EmailAddress, class FString ProductKey);
+	void OnCreateOnlineAccountCompleted(EOnlineAccountCreateStatus ErrorStatus);
+	bool CreateOnlineAccount(class FString Username, class FString Password, class FString EmailAddress, class FString optionalProductKey);
 	bool IsKeyValid();
 	void ClearStorageDeviceChangeDelegate(struct FScriptDelegate StorageDeviceChangeDelegate);
 	void AddStorageDeviceChangeDelegate(struct FScriptDelegate StorageDeviceChangeDelegate);
 	void OnStorageDeviceChange();
-	uint8_t GetNATType();
+	ENATType GetNATType();
 	void ClearConnectionStatusChangeDelegate(struct FScriptDelegate ConnectionStatusDelegate);
 	void AddConnectionStatusChangeDelegate(struct FScriptDelegate ConnectionStatusDelegate);
-	void OnConnectionStatusChange(uint8_t ConnectionStatus);
+	void OnConnectionStatusChange(EOnlineServerConnectionStatus ConnectionStatus);
 	bool IsControllerConnected(int32_t ControllerId);
 	void ClearControllerChangeDelegate(struct FScriptDelegate ControllerChangeDelegate);
 	void AddControllerChangeDelegate(struct FScriptDelegate ControllerChangeDelegate);
-	void OnControllerChange(int32_t ControllerId, unsigned long bIsConnected);
-	void SetNetworkNotificationPosition(uint8_t NewPos);
-	uint8_t GetNetworkNotificationPosition();
-	void NotifyExternalUIChanged(unsigned long bIsOpening);
+	void OnControllerChange(int32_t ControllerId, bool bIsConnected);
+	void SetNetworkNotificationPosition(ENetworkNotificationPosition NewPos);
+	ENetworkNotificationPosition GetNetworkNotificationPosition();
+	void NotifyExternalUIChanged(bool bIsOpening);
 	void ClearExternalUIChangeDelegate(struct FScriptDelegate InDelegate);
 	void AddExternalUIChangeDelegate(struct FScriptDelegate InDelegate);
-	void OnExternalUIChange(unsigned long bIsOpening);
+	void OnExternalUIChange(bool bIsOpening);
 	void ClearLinkStatusChangeDelegate(struct FScriptDelegate LinkStatusDelegate);
 	void AddLinkStatusChangeDelegate(struct FScriptDelegate LinkStatusDelegate);
-	void OnLinkStatusChange(unsigned long bIsConnected);
+	void OnLinkStatusChange(bool bIsConnected);
 	bool HasLinkConnection();
 	bool RegisterStatGuid(struct FUniqueNetId PlayerID, class FString& ClientStatGuid);
 	class FString GetClientStatGuid();
 	void ClearRegisterHostStatGuidCompleteDelegateDelegate(struct FScriptDelegate RegisterHostStatGuidCompleteDelegate);
 	void AddRegisterHostStatGuidCompleteDelegate(struct FScriptDelegate RegisterHostStatGuidCompleteDelegate);
-	void OnFlushOnlineStatsComplete(struct FName SessionName, unsigned long bWasSuccessful);
-	void OnRegisterHostStatGuidComplete(unsigned long bWasSuccessful);
+	void OnFlushOnlineStatsComplete(struct FName SessionName, bool bWasSuccessful);
+	void OnRegisterHostStatGuidComplete(bool bWasSuccessful);
 	bool RegisterHostStatGuid(class FString& HostStatGuid);
 	class FString GetHostStatGuid();
 	bool WriteOnlinePlayerScores(TArray<struct FOnlinePlayerScore>& PlayerScores);
 	void FreeStats(class UOnlineStatsRead* StatsRead);
 	void ClearReadOnlineStatsCompleteDelegate(struct FScriptDelegate ReadOnlineStatsCompleteDelegate);
 	void AddReadOnlineStatsCompleteDelegate(struct FScriptDelegate ReadOnlineStatsCompleteDelegate);
-	void OnReadOnlineStatsComplete(unsigned long bWasSuccessful);
-	bool ReadOnlineStatsByRankAroundPlayer(uint8_t LocalUserNum, class UOnlineStatsRead* StatsRead, int32_t NumRows);
-	bool ReadOnlineStatsByRank(class UOnlineStatsRead* StatsRead, int32_t StartIndex, int32_t NumToRead);
+	void OnReadOnlineStatsComplete(bool bWasSuccessful);
+	bool ReadOnlineStatsByRankAroundPlayer(uint8_t LocalUserNum, class UOnlineStatsRead* StatsRead, int32_t optionalNumRows);
+	bool ReadOnlineStatsByRank(class UOnlineStatsRead* StatsRead, int32_t optionalStartIndex, int32_t optionalNumToRead);
 	bool ReadOnlineStatsForFriends(uint8_t LocalUserNum, class UOnlineStatsRead* StatsRead);
 	bool ReadOnlineStats(class UOnlineStatsRead* StatsRead, TArray<struct FUniqueNetId>& Players);
 	bool UnmuteAll(uint8_t LocalUserNum);
-	bool MuteAll(uint8_t LocalUserNum, unsigned long bAllowFriends);
+	bool MuteAll(uint8_t LocalUserNum, bool bAllowFriends);
 	bool SetSpeechRecognitionObject(uint8_t LocalUserNum, class USpeechRecognition* SpeechRecogObj);
 	bool SelectVocabulary(uint8_t LocalUserNum, int32_t VocabularyId);
 	void ClearRecognitionCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate RecognitionDelegate);
@@ -290,7 +290,7 @@ public:
 	bool eventInit();
 	bool InitEOS(class FString& SandboxId, class FString& DeploymentId);
 	void EventGetAppPriceInfoComplete(struct FName AppName, class FString Price, class FString DiscountPrice, int32_t DiscountPercentage);
-	void OnMicroTxnResponse(unsigned long bAuthorized, uint64_t OrderId);
+	void OnMicroTxnResponse(bool bAuthorized, uint64_t OrderId);
 };
 
 // Class OnlineSubsystemEOS.OnlineAuthInterfaceEOS
@@ -374,15 +374,15 @@ public:
 	void NotifyEventGeneralErrorOccurred(struct FScriptDelegate InCallback);
 	void EventGeneralErrorOccurred(class UErrorType* InErrorType);
 	void NotifyEventMaskStatusChanged(struct FScriptDelegate InCallback);
-	void EventMaskStatusChanged(uint64_t InMaskAreaHandle, struct FGameClipsMaskArea InMaskArea, uint8_t InNewMaskStatus);
+	void EventMaskStatusChanged(uint64_t InMaskAreaHandle, struct FGameClipsMaskArea InMaskArea, EGameClipsMaskStatus InNewMaskStatus);
 	void NotifyEventClipStatusChanged(struct FScriptDelegate InCallback);
-	void EventClipStatusChanged(class FString InEpicAccountId, int32_t InClipId, uint8_t InNewClipStatus);
+	void EventClipStatusChanged(class FString InEpicAccountId, int32_t InClipId, EGameClipsClipStatus InNewClipStatus);
 	void NotifyEventConnectionStatusChanged(struct FScriptDelegate InCallback);
-	void EventConnectionStatusChanged(class FString InEpicAccountId, uint8_t InConnection, uint8_t InNewConnectionStatus);
+	void EventConnectionStatusChanged(class FString InEpicAccountId, EGameClipsConnection InConnection, EGameClipsConnectionStatus InNewConnectionStatus);
 	void NotifyEventRecordingChanged(struct FScriptDelegate InCallback);
-	void EventRecordingChanged(uint8_t InNewRecording);
+	void EventRecordingChanged(EGameClipsRecording InNewRecording);
 	void NotifyEventAvailabilityChanged(struct FScriptDelegate InCallback);
-	void EventAvailabilityChanged(uint8_t InNewAvailability);
+	void EventAvailabilityChanged(EGameClipsAvailability InNewAvailability);
 	bool IsUploading();
 	bool IsRecording();
 	bool IsAvailable();
@@ -405,7 +405,7 @@ public:
 	struct FPointer                                    SessionsHandle;                                // 0x0318 (0x0008) [0x0000000000003002] (CPF_Const | CPF_Native | CPF_Transient)
 	struct FPointer                                    CurrentSearchHandle;                           // 0x0320 (0x0008) [0x0000000000003002] (CPF_Const | CPF_Native | CPF_Transient)
 	class UOnlinePlayerInterfaceEOS*                   PlayerInterfaceEOS;                            // 0x0328 (0x0008) [0x0000000000000000]               
-	unsigned long                                      bGameSessionUpdateInProgress : 1;              // 0x0330 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bGameSessionUpdateInProgress : 1;              // 0x0330 (0x0004) [0x0000000000000000] [0x00000001] 
 
 public:
 	static UClass* StaticClass()
@@ -422,7 +422,7 @@ public:
 
 	bool AcceptGameInvite(uint8_t LocalUserNum, struct FName SessionName);
 	bool FreeSearchResults(class UOnlineGameSearch* Search);
-	bool UpdateOnlineGame(struct FName SessionName, class UOnlineGameSettings* UpdatedGameSettings, unsigned long bShouldRefreshOnlineData);
+	bool UpdateOnlineGame(struct FName SessionName, class UOnlineGameSettings* UpdatedGameSettings, bool optionalBShouldRefreshOnlineData);
 };
 
 // Class OnlineSubsystemEOS.OnlinePersistentAuthInterfaceEOS
@@ -482,7 +482,7 @@ public:
 	class UOnlineProfileSettings*                      CachedProfile;                                 // 0x0100 (0x0008) [0x0000000000000000]               
 	TArray<struct FOnlineProfileSetting>               LastProfileSettings;                           // 0x0108 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	TArray<struct FScriptDelegate>                     ReadFriendsDelegates;                          // 0x0118 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	uint8_t                                            FriendsReadState;                              // 0x0128 (0x0001) [0x0000000000000000]               
+	EOnlineEnumerationReadState                        FriendsReadState;                              // 0x0128 (0x0001) [0x0000000000000000]               
 	TArray<struct FScriptDelegate>                     FriendsChangeDelegates;                        // 0x0130 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	TArray<struct FScriptDelegate>                     LoginFailedDelegates;                          // 0x0140 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	TArray<struct FScriptDelegate>                     LoginCancelledDelegates;                       // 0x0150 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -567,15 +567,15 @@ public:
 	void AddPlayerUnblockedDelegate(uint8_t LocalUserNum, struct FScriptDelegate InDelegate);
 	void AddPlayerBlockedDelegate(uint8_t LocalUserNum, struct FScriptDelegate InDelegate);
 	void AddBlockListUpdatedDelegate(uint8_t LocalUserNum, struct FScriptDelegate InDelegate);
-	void EpicIDToPlatformID(struct FUniqueNetId EpicAccountId, uint8_t TargetPlatform, struct FScriptDelegate Callback);
+	void EpicIDToPlatformID(struct FUniqueNetId EpicAccountId, EOnlinePlatform TargetPlatform, struct FScriptDelegate Callback);
 	void EpicIDToPlatformIDCallback(struct FUniqueNetId PlatformAccountId, class FString Error);
 	struct FUniqueNetId GetEpicAccountId(struct FUniqueNetId PlatformId);
-	bool ShowInviteUI(uint8_t LocalUserNum, class FString InviteText);
+	bool ShowInviteUI(uint8_t LocalUserNum, class FString optionalInviteText);
 	bool ShowGamerCardUI(uint8_t LocalUserNum, struct FUniqueNetId PlayerID);
 	void SetRichPresence(uint8_t LocalUserNum, class FString PresenceString, class FString GameDataString);
 	void GetFriendPresence(struct FOnlineFriend& FriendData);
 	bool RecordPlayersRecentlyMet(uint8_t LocalUserNum, class FString GameDescription, TArray<struct FUniqueNetId>& Players);
-	bool WordFilterSanitizeString(class FString Comment, struct FScriptDelegate SanitizeDelegate, struct FUniqueNetId PlayerID);
+	bool WordFilterSanitizeString(class FString Comment, struct FScriptDelegate SanitizeDelegate, struct FUniqueNetId optionalPlayerID);
 	void OnSanitizeStringComplete(struct FWordFilterResult Result);
 	bool HideKeyboardUI(uint8_t LocalUserNum);
 	void ClearReadPlayerCountryDelegate(uint8_t LocalUserNum, struct FScriptDelegate ReadPlayerCountryDelegate);
@@ -588,15 +588,15 @@ public:
 	void eventAddFriendPresenceChangeDelegate(uint8_t LocalUserNum, struct FScriptDelegate PresenceDelegate);
 	void FriendPresenceChange(struct FUniqueNetId PlayerID);
 	void OnAvatarChange(struct FUniqueNetId PlayerID);
-	bool UnlockAchievement(uint8_t LocalUserNum, int32_t AchievementId, float PercentComplete);
-	bool ReadAchievements(uint8_t LocalUserNum, int32_t TitleId, unsigned long bShouldReadText, unsigned long bShouldReadImages);
-	uint8_t GetAchievements(uint8_t LocalUserNum, int32_t TitleId, TArray<struct FAchievementDetails>& Achievements);
+	bool UnlockAchievement(uint8_t LocalUserNum, int32_t AchievementId, float optionalPercentComplete);
+	bool ReadAchievements(uint8_t LocalUserNum, int32_t optionalTitleId, bool optionalBShouldReadText, bool optionalBShouldReadImages);
+	EOnlineEnumerationReadState GetAchievements(uint8_t LocalUserNum, int32_t optionalTitleId, TArray<struct FAchievementDetails>& Achievements);
 	void ClearReadAchievementsCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate InDelegate);
 	void ClearUnlockAchievementCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate InDelegate);
 	void AddReadAchievementsCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate InDelegate);
 	void AddUnlockAchievementCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate InDelegate);
 	void OnReadAchievementsComplete(int32_t TitleId);
-	void OnUnlockAchievementComplete(unsigned long bWasSuccessful);
+	void OnUnlockAchievementComplete(bool bWasSuccessful);
 	bool ShowControllerUI();
 	class FString GetPlayerLanguage(uint8_t LocalUserNum);
 	bool ShowPlayersUI(uint8_t LocalUserNum);
@@ -608,51 +608,51 @@ public:
 	int32_t GetDeviceSelectionResults(uint8_t LocalUserNum, class FString& DeviceName);
 	void ClearDeviceSelectionDoneDelegate(uint8_t LocalUserNum, struct FScriptDelegate DeviceDelegate);
 	void AddDeviceSelectionDoneDelegate(uint8_t LocalUserNum, struct FScriptDelegate DeviceDelegate);
-	void OnDeviceSelectionComplete(unsigned long bWasSuccessful);
-	bool ShowDeviceSelectionUI(uint8_t LocalUserNum, int32_t SizeNeeded, unsigned long bForceShowUI);
+	void OnDeviceSelectionComplete(bool bWasSuccessful);
+	bool ShowDeviceSelectionUI(uint8_t LocalUserNum, int32_t SizeNeeded, bool optionalBForceShowUI);
 	bool ShowCustomPlayersUI(uint8_t LocalUserNum, class FString Title, class FString Description, TArray<struct FUniqueNetId>& Players);
 	bool IsUserSwitchActive();
-	void SetKickPlayerDialogActive(unsigned long Active);
+	void SetKickPlayerDialogActive(bool Active);
 	void SetKickPreviousUser(uint8_t LocalUserNum);
 	bool ShowLoginUIForOrphanedUser(uint8_t LocalUserNum);
 	TArray<bool> GetSyncedAchievements(uint8_t LocalUserNum);
 	bool IsGuestLogin(uint8_t LocalUserNum);
-	void RequestRestrictedFeatureMessaging(uint8_t LocalUserNum, uint8_t RestrictedFeature);
-	bool CanCommunicateVoice(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint);
-	bool CanCommunicateVideo(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint);
-	bool CanCommunicateText(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint);
-	bool CanShareUserCreatedContent(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint);
-	bool CanAccessPremiumVideoContent(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint);
-	bool CanAccessPremiumContent(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint);
-	bool CanUseCloudStorage(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint);
-	bool CanRecordDVRClips(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint);
-	bool CanBrowseInternet(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint);
-	bool CanShareWithSocialNetwork(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint);
-	bool CanShareKinectContent(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint);
-	bool CanUploadFitnessData(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint);
+	void RequestRestrictedFeatureMessaging(uint8_t LocalUserNum, EFeaturePrivilege RestrictedFeature);
+	bool CanCommunicateVoice(uint8_t LocalUserNum, bool optionalBAttemptToResolve, class FString optionalReason, EFeaturePrivilegeLevel& PrivilegeLevelHint);
+	bool CanCommunicateVideo(uint8_t LocalUserNum, bool optionalBAttemptToResolve, class FString optionalReason, EFeaturePrivilegeLevel& PrivilegeLevelHint);
+	bool CanCommunicateText(uint8_t LocalUserNum, bool optionalBAttemptToResolve, class FString optionalReason, EFeaturePrivilegeLevel& PrivilegeLevelHint);
+	bool CanShareUserCreatedContent(uint8_t LocalUserNum, bool optionalBAttemptToResolve, class FString optionalReason, EFeaturePrivilegeLevel& PrivilegeLevelHint);
+	bool CanAccessPremiumVideoContent(uint8_t LocalUserNum, bool optionalBAttemptToResolve, class FString optionalReason, EFeaturePrivilegeLevel& PrivilegeLevelHint);
+	bool CanAccessPremiumContent(uint8_t LocalUserNum, bool optionalBAttemptToResolve, class FString optionalReason, EFeaturePrivilegeLevel& PrivilegeLevelHint);
+	bool CanUseCloudStorage(uint8_t LocalUserNum, bool optionalBAttemptToResolve, class FString optionalReason, EFeaturePrivilegeLevel& PrivilegeLevelHint);
+	bool CanRecordDVRClips(uint8_t LocalUserNum, bool optionalBAttemptToResolve, class FString optionalReason, EFeaturePrivilegeLevel& PrivilegeLevelHint);
+	bool CanBrowseInternet(uint8_t LocalUserNum, bool optionalBAttemptToResolve, class FString optionalReason, EFeaturePrivilegeLevel& PrivilegeLevelHint);
+	bool CanShareWithSocialNetwork(uint8_t LocalUserNum, bool optionalBAttemptToResolve, class FString optionalReason, EFeaturePrivilegeLevel& PrivilegeLevelHint);
+	bool CanShareKinectContent(uint8_t LocalUserNum, bool optionalBAttemptToResolve, class FString optionalReason, EFeaturePrivilegeLevel& PrivilegeLevelHint);
+	bool CanUploadFitnessData(uint8_t LocalUserNum, bool optionalBAttemptToResolve, class FString optionalReason, EFeaturePrivilegeLevel& PrivilegeLevelHint);
 	void SetPrimaryPlayerGamepadToLastInput();
 	void ClearUserSwitchCompleteDelegate(struct FScriptDelegate UserSwitchCompleteDelegate);
 	void AddUserSwitchCompleteDelegate(struct FScriptDelegate UserSwitchCompleteDelegate);
 	void OnUserSwitchComplete(uint8_t LocalUserNum);
 	void ClearLoginStatusChangeDelegate(struct FScriptDelegate InDelegate, uint8_t LocalUserNum);
 	void AddLoginStatusChangeDelegate(struct FScriptDelegate InDelegate, uint8_t LocalUserNum);
-	void OnLoginStatusChange(uint8_t NewStatus, struct FUniqueNetId NewId);
+	void OnLoginStatusChange(ELoginStatus NewStatus, struct FUniqueNetId NewId);
 	bool GetPlayHistoryRegistrationKey(TArray<uint8_t>& Key);
-	bool CheckParentalControlInfo(unsigned long bShowUi);
+	bool CheckParentalControlInfo(bool bShowUi);
 	TArray<struct FName> GetActiveDiscDLC();
-	void SetOnlineSubscriptionRequirement(unsigned long bRequiresOnlineSubscription);
+	void SetOnlineSubscriptionRequirement(bool bRequiresOnlineSubscription);
 	int32_t GetControllerID(int32_t LocalPlayerNum);
 	TArray<struct FName> GetConnectedControllerNames();
 	void OnLocalPlayerRemoved(int32_t LocalPlayerNum);
 	void UnregisterController(int32_t LocalPlayerNum);
-	void RegisterController(int32_t LocalPlayerNum, int32_t ControllerId);
+	void RegisterController(int32_t LocalPlayerNum, int32_t optionalControllerId);
 	bool CanRegisterController(int32_t LocalPlayerNum);
 	bool ShowBindings(int32_t ControllerId);
 	void SetControllerLayout(int32_t ControllerId, struct FName LayoutName);
-	void SetInputAPI(uint8_t TargetAPI);
+	void SetInputAPI(EInputAPI TargetAPI);
 	void ClearInputAPIChangedDelegate(struct FScriptDelegate InputAPIChangedDelegate);
 	void AddInputAPIChangedDelegate(struct FScriptDelegate InputAPIChangedDelegate);
-	void OnInputAPIChanged(uint8_t TargetAPI);
+	void OnInputAPIChanged(EInputAPI TargetAPI);
 	void ClearUnregisteredControllerDelegate(struct FScriptDelegate UnregisteredControllerDelegate);
 	void ClearRegisteredControllerDelegate(struct FScriptDelegate RegisteredControllerDelegate);
 	void AddUnregisteredControllerDelegate(struct FScriptDelegate UnregisteredControllerDelegate);
@@ -663,7 +663,7 @@ public:
 	bool UpdateStat(uint8_t LocalUserNum, struct FName StatName, int32_t Points);
 	void ClearSaveDataNoSpaceDialogCompleteDelegate(struct FScriptDelegate DeviceDelegate);
 	void AddSaveDataNoSpaceDialogCompleteDelegate(struct FScriptDelegate DeviceDelegate);
-	void OnSaveDataNoSpaceDialogComplete(unsigned long bContinueWithoutSave);
+	void OnSaveDataNoSpaceDialogComplete(bool bContinueWithoutSave);
 	bool RecordPlayersRecentlyMetKeys(uint8_t LocalUserNum, TArray<struct FFriendHistoryKey>& PlayerKeys);
 	bool IsAchievementUnlocked(int32_t AchievementId);
 	bool ShowContentMarketplaceUI(uint8_t LocalUserNum);
@@ -677,25 +677,25 @@ public:
 	void ClearUserSignInCompleteDelegate(struct FScriptDelegate InDelegate);
 	void AddUserSignInCompleteDelegate(struct FScriptDelegate InDelegate);
 	void OnUserSignInComplete(uint8_t LocalUserNum);
-	bool ShowCustomMessageUI(uint8_t LocalUserNum, class FString MessageTitle, class FString NonEditableMessage, class FString EditableMessage, TArray<struct FUniqueNetId>& Recipients);
+	bool ShowCustomMessageUI(uint8_t LocalUserNum, class FString MessageTitle, class FString NonEditableMessage, class FString optionalEditableMessage, TArray<struct FUniqueNetId>& Recipients);
 	void ClearCrossTitleProfileSettings(uint8_t LocalUserNum, int32_t TitleId);
 	class UOnlineProfileSettings* GetCrossTitleProfileSettings(uint8_t LocalUserNum, int32_t TitleId);
 	void ClearReadCrossTitleProfileSettingsCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate InDelegate);
 	void AddReadCrossTitleProfileSettingsCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate InDelegate);
-	void OnReadCrossTitleProfileSettingsComplete(uint8_t LocalUserNum, int32_t TitleId, unsigned long bWasSuccessful);
+	void OnReadCrossTitleProfileSettingsComplete(uint8_t LocalUserNum, int32_t TitleId, bool bWasSuccessful);
 	bool ReadCrossTitleProfileSettings(uint8_t LocalUserNum, int32_t TitleId, class UOnlineProfileSettings* ProfileSettings);
 	void ClearWritePlayerStorageCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate InDelegate);
 	void AddWritePlayerStorageCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate InDelegate);
-	void OnWritePlayerStorageComplete(uint8_t LocalUserNum, unsigned long bWasSuccessful);
-	bool WritePlayerStorage(uint8_t LocalUserNum, class UOnlinePlayerStorage* PlayerStorage, int32_t DeviceID);
+	void OnWritePlayerStorageComplete(uint8_t LocalUserNum, bool bWasSuccessful);
+	bool WritePlayerStorage(uint8_t LocalUserNum, class UOnlinePlayerStorage* PlayerStorage, int32_t optionalDeviceID);
 	void ClearReadPlayerStorageForNetIdCompleteDelegate(struct FUniqueNetId NetId, struct FScriptDelegate InDelegate);
 	void AddReadPlayerStorageForNetIdCompleteDelegate(struct FUniqueNetId NetId, struct FScriptDelegate InDelegate);
-	void OnReadPlayerStorageForNetIdComplete(struct FUniqueNetId NetId, unsigned long bWasSuccessful);
+	void OnReadPlayerStorageForNetIdComplete(struct FUniqueNetId NetId, bool bWasSuccessful);
 	bool ReadPlayerStorageForNetId(uint8_t LocalUserNum, struct FUniqueNetId NetId, class UOnlinePlayerStorage* PlayerStorage);
 	void ClearReadPlayerStorageCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate InDelegate);
 	void AddReadPlayerStorageCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate InDelegate);
-	void OnReadPlayerStorageComplete(uint8_t LocalUserNum, unsigned long bWasSuccessful);
-	bool ReadPlayerStorage(uint8_t LocalUserNum, class UOnlinePlayerStorage* PlayerStorage, int32_t DeviceID);
+	void OnReadPlayerStorageComplete(uint8_t LocalUserNum, bool bWasSuccessful);
+	bool ReadPlayerStorage(uint8_t LocalUserNum, class UOnlinePlayerStorage* PlayerStorage, int32_t optionalDeviceID);
 	class UOnlinePlayerStorage* GetPlayerStorage(uint8_t LocalUserNum);
 	void RequestNativePlatformAuthTicket(int32_t LocalUserNum, struct FScriptDelegate Callback);
 	void OnRequestNativePlatformAuthTicketComplete(int32_t LocalUserNum, class FString PlatformAuthTicket);
@@ -711,13 +711,13 @@ public:
 	void GetFriendMessages(uint8_t LocalUserNum, TArray<struct FOnlineFriendMessage>& FriendMessages);
 	void ClearJoinFriendGameCompleteDelegate(struct FScriptDelegate JoinFriendGameCompleteDelegate);
 	void AddJoinFriendGameCompleteDelegate(struct FScriptDelegate JoinFriendGameCompleteDelegate);
-	void OnJoinFriendGameComplete(unsigned long bWasSuccessful);
+	void OnJoinFriendGameComplete(bool bWasSuccessful);
 	bool JoinFriendGame(uint8_t LocalUserNum, struct FUniqueNetId Friend);
 	void ClearReceivedGameInviteDelegate(uint8_t LocalUserNum, struct FScriptDelegate ReceivedGameInviteDelegate);
 	void AddReceivedGameInviteDelegate(uint8_t LocalUserNum, struct FScriptDelegate ReceivedGameInviteDelegate);
 	void OnReceivedGameInvite(uint8_t LocalUserNum, class FString InviterName);
-	bool SendGameInviteToFriends(uint8_t LocalUserNum, TArray<struct FUniqueNetId> Friends, class FString Text);
-	bool SendGameInviteToFriend(uint8_t LocalUserNum, struct FUniqueNetId Friend, class FString Text);
+	bool SendGameInviteToFriends(uint8_t LocalUserNum, TArray<struct FUniqueNetId> Friends, class FString optionalText);
+	bool SendGameInviteToFriend(uint8_t LocalUserNum, struct FUniqueNetId Friend, class FString optionalText);
 	bool SendMessageToFriendW(uint8_t LocalUserNum, struct FUniqueNetId Friend, class FString Message);
 	void ClearFriendInviteCanceledDelegate(uint8_t LocalUserNum, struct FScriptDelegate InviteDelegate);
 	void AddFriendInviteCanceledDelegate(uint8_t LocalUserNum, struct FScriptDelegate InviteDelegate);
@@ -728,7 +728,7 @@ public:
 	bool RemoveFriend(uint8_t LocalUserNum, struct FUniqueNetId FormerFriend);
 	void ClearRemoveFriendCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate RemoveFriendDelegate);
 	void AddRemoveFriendCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate RemoveFriendDelegate);
-	void OnRemoveFriendComplete(unsigned long bWasSuccessful, struct FUniqueNetId RemovedID);
+	void OnRemoveFriendComplete(bool bWasSuccessful, struct FUniqueNetId RemovedID);
 	bool DenyFriendInvite(uint8_t LocalUserNum, struct FUniqueNetId RequestingPlayer);
 	void ClearDenyFriendInviteCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate FriendDelegate);
 	void AddDenyFriendInviteCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate FriendDelegate);
@@ -739,35 +739,35 @@ public:
 	void OnAcceptFriendInviteComplete(struct FUniqueNetId FriendId, class UError* Error);
 	void ClearAddFriendByNameCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate FriendDelegate);
 	void AddAddFriendByNameCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate FriendDelegate);
-	void OnAddFriendByNameComplete(unsigned long bWasSuccessful);
-	bool AddFriendByName(uint8_t LocalUserNum, class FString FriendName, class FString Message);
+	void OnAddFriendByNameComplete(bool bWasSuccessful);
+	bool AddFriendByName(uint8_t LocalUserNum, class FString FriendName, class FString optionalMessage);
 	bool QueryUserByDisplayName(uint8_t LocalUserNum, class FString DisplayName);
 	void ClearQueryUserByDisplayNameCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate QueryDelegate);
 	void AddQueryUserByDisplayNameCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate QueryDelegate);
-	void OnQueryUserByDisplayName(unsigned long bWasSuccessful, class FString QueriedDisplayName, struct FUniqueNetId UserId);
-	bool AddFriend(uint8_t LocalUserNum, struct FUniqueNetId NewFriend, class FString Message);
+	void OnQueryUserByDisplayName(bool bWasSuccessful, class FString QueriedDisplayName, struct FUniqueNetId UserId);
+	bool AddFriend(uint8_t LocalUserNum, struct FUniqueNetId NewFriend, class FString optionalMessage);
 	void ClearAddFriendCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate FriendDelegate);
 	void AddAddFriendCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate FriendDelegate);
 	void OnAddFriendComplete(struct FUniqueNetId NewFriendId, class UError* Error);
 	class FString GetKeyboardInputResults(uint8_t& bWasCanceled);
 	void ClearKeyboardInputDoneDelegate(struct FScriptDelegate InputDelegate);
 	void AddKeyboardInputDoneDelegate(struct FScriptDelegate InputDelegate);
-	void OnKeyboardInputComplete(unsigned long bWasSuccessful);
-	bool ShowKeyboardUI(uint8_t LocalUserNum, class FString TitleText, class FString DescriptionText, unsigned long bIsPassword, unsigned long bShouldValidate, class FString DefaultText, int32_t MaxResultLength);
+	void OnKeyboardInputComplete(bool bWasSuccessful);
+	bool ShowKeyboardUI(uint8_t LocalUserNum, class FString TitleText, class FString DescriptionText, bool optionalBIsPassword, bool optionalBShouldValidate, class FString optionalDefaultText, int32_t optionalMaxResultLength);
 	void SetOnlineStatus(uint8_t LocalUserNum, int32_t StatusId, TArray<struct FLocalizedStringSetting>& LocalizedStringSettings, TArray<struct FSettingsProperty>& Properties);
-	uint8_t GetFriendsList(uint8_t LocalUserNum, int32_t Count, int32_t StartingAt, TArray<struct FOnlineFriend>& Friends);
+	EOnlineEnumerationReadState GetFriendsList(uint8_t LocalUserNum, int32_t optionalCount, int32_t optionalStartingAt, TArray<struct FOnlineFriend>& Friends);
 	void ClearReadFriendsCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate ReadFriendsCompleteDelegate);
 	void AddReadFriendsCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate ReadFriendsCompleteDelegate);
-	void OnReadFriendsComplete(unsigned long bWasSuccessful);
-	bool ReadFriendsList(uint8_t LocalUserNum, int32_t Count, int32_t StartingAt);
+	void OnReadFriendsComplete(bool bWasSuccessful);
+	bool ReadFriendsList(uint8_t LocalUserNum, int32_t optionalCount, int32_t optionalStartingAt);
 	void ClearWriteProfileSettingsCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate WriteProfileSettingsCompleteDelegate);
 	void AddWriteProfileSettingsCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate WriteProfileSettingsCompleteDelegate);
-	void OnWriteProfileSettingsComplete(uint8_t LocalUserNum, unsigned long bWasSuccessful);
+	void OnWriteProfileSettingsComplete(uint8_t LocalUserNum, bool bWasSuccessful);
 	bool WriteProfileSettings(uint8_t LocalUserNum, class UOnlineProfileSettings* ProfileSettings);
 	class UOnlineProfileSettings* GetProfileSettings(uint8_t LocalUserNum);
 	void ClearReadProfileSettingsCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate ReadProfileSettingsCompleteDelegate);
 	void AddReadProfileSettingsCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate ReadProfileSettingsCompleteDelegate);
-	void OnReadProfileSettingsComplete(uint8_t LocalUserNum, unsigned long bWasSuccessful);
+	void OnReadProfileSettingsComplete(uint8_t LocalUserNum, bool bWasSuccessful);
 	bool ReadProfileSettings(uint8_t LocalUserNum, class UOnlineProfileSettings* ProfileSettings);
 	void ClearFriendsChangeDelegate(uint8_t LocalUserNum, struct FScriptDelegate FriendsDelegate);
 	void eventAddFriendsChangeDelegate(uint8_t LocalUserNum, struct FScriptDelegate FriendsDelegate);
@@ -781,26 +781,26 @@ public:
 	bool IsMuted(uint8_t LocalUserNum, struct FUniqueNetId PlayerID);
 	bool AreAnyFriends(uint8_t LocalUserNum, TArray<struct FFriendsQuery>& Query);
 	bool IsFriend(uint8_t LocalUserNum, struct FUniqueNetId PlayerID);
-	bool CanShowPresenceInformation(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint);
-	bool CanViewPlayerProfiles(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint);
-	bool CanPurchaseContent(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint);
-	bool CanDownloadUserContent(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint);
-	uint8_t CanCommunicate(uint8_t LocalUserNum, uint8_t CommMethod, unsigned long bAttemptToResolve);
-	bool CanPlayOnline(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint);
+	bool CanShowPresenceInformation(uint8_t LocalUserNum, bool optionalBAttemptToResolve, class FString optionalReason, EFeaturePrivilegeLevel& PrivilegeLevelHint);
+	bool CanViewPlayerProfiles(uint8_t LocalUserNum, bool optionalBAttemptToResolve, class FString optionalReason, EFeaturePrivilegeLevel& PrivilegeLevelHint);
+	bool CanPurchaseContent(uint8_t LocalUserNum, bool optionalBAttemptToResolve, class FString optionalReason, EFeaturePrivilegeLevel& PrivilegeLevelHint);
+	bool CanDownloadUserContent(uint8_t LocalUserNum, bool optionalBAttemptToResolve, class FString optionalReason, EFeaturePrivilegeLevel& PrivilegeLevelHint);
+	EFeaturePrivilegeLevel CanCommunicate(uint8_t LocalUserNum, ECommunicationMethod CommMethod, bool optionalBAttemptToResolve);
+	bool CanPlayOnline(uint8_t LocalUserNum, bool optionalBAttemptToResolve, class FString optionalReason, EFeaturePrivilegeLevel& PrivilegeLevelHint);
 	class FString GetPlayerNickname(uint8_t LocalUserNum);
 	bool GetUniquePlayerId(uint8_t LocalUserNum, struct FUniqueNetId& PlayerID);
-	uint8_t GetLoginStatus(uint8_t LocalUserNum);
+	ELoginStatus GetLoginStatus(uint8_t LocalUserNum);
 	void ClearLogoutCompletedDelegate(uint8_t LocalUserNum, struct FScriptDelegate LogoutDelegate);
 	void AddLogoutCompletedDelegate(uint8_t LocalUserNum, struct FScriptDelegate LogoutDelegate);
-	void OnLogoutCompleted(unsigned long bWasSuccessful);
+	void OnLogoutCompleted(bool bWasSuccessful);
 	bool Logout(uint8_t LocalUserNum);
 	void ClearLoginFailedDelegate(uint8_t LocalUserNum, struct FScriptDelegate LoginFailedDelegate);
 	void AddLoginFailedDelegate(uint8_t LocalUserNum, struct FScriptDelegate LoginFailedDelegate);
-	void OnReceievedPinGrantCode(uint8_t Result, uint8_t LocalUserNum, class FString Code, class FString URL, int32_t SecondsUntilExpiration);
-	void OnLoginFailed(uint8_t LocalUserNum, uint8_t ErrorCode);
+	void OnReceievedPinGrantCode(EPinGrantResult Result, uint8_t LocalUserNum, class FString Code, class FString URL, int32_t SecondsUntilExpiration);
+	void OnLoginFailed(uint8_t LocalUserNum, EOnlineServerConnectionStatus ErrorCode);
 	bool AutoLogin();
-	bool Login(uint8_t LocalUserNum, class FString LoginName, class FString Password, unsigned long bWantsLocalOnly);
-	bool ShowLoginUI(uint8_t LocalUserNum, unsigned long bShowOnlineOnly);
+	bool Login(uint8_t LocalUserNum, class FString LoginName, class FString Password, bool optionalBWantsLocalOnly);
+	bool ShowLoginUI(uint8_t LocalUserNum, bool optionalBShowOnlineOnly);
 	void OnFriendsChange();
 	void OnMutingChange();
 	void OnLoginCancelled();
@@ -839,21 +839,21 @@ public:
 	class FString GetClientStatGuid();
 	void ClearRegisterHostStatGuidCompleteDelegateDelegate(struct FScriptDelegate RegisterHostStatGuidCompleteDelegate);
 	void AddRegisterHostStatGuidCompleteDelegate(struct FScriptDelegate RegisterHostStatGuidCompleteDelegate);
-	void OnRegisterHostStatGuidComplete(unsigned long bWasSuccessful);
+	void OnRegisterHostStatGuidComplete(bool bWasSuccessful);
 	bool RegisterHostStatGuid(class FString& HostStatGuid);
 	class FString GetHostStatGuid();
 	bool WriteOnlinePlayerScores(struct FName SessionName, int32_t LeaderboardId, TArray<struct FOnlinePlayerScore>& PlayerScores);
 	void ClearFlushOnlineStatsCompleteDelegate(struct FScriptDelegate FlushOnlineStatsCompleteDelegate);
 	void AddFlushOnlineStatsCompleteDelegate(struct FScriptDelegate FlushOnlineStatsCompleteDelegate);
-	void OnFlushOnlineStatsComplete(struct FName SessionName, unsigned long bWasSuccessful);
+	void OnFlushOnlineStatsComplete(struct FName SessionName, bool bWasSuccessful);
 	bool FlushOnlineStats(struct FName SessionName);
 	bool WriteOnlineStats(struct FName SessionName, struct FUniqueNetId Player, class UOnlineStatsWrite* StatsWrite);
 	void FreeStats(class UOnlineStatsRead* StatsRead);
 	void ClearReadOnlineStatsCompleteDelegate(struct FScriptDelegate ReadOnlineStatsCompleteDelegate);
 	void AddReadOnlineStatsCompleteDelegate(struct FScriptDelegate ReadOnlineStatsCompleteDelegate);
-	void OnReadOnlineStatsComplete(unsigned long bWasSuccessful);
-	bool ReadOnlineStatsByRankAroundPlayer(uint8_t LocalUserNum, class UOnlineStatsRead* StatsRead, int32_t NumRows);
-	bool ReadOnlineStatsByRank(uint8_t LocalUserNum, class UOnlineStatsRead* StatsRead, int32_t StartIndex, int32_t NumToRead);
+	void OnReadOnlineStatsComplete(bool bWasSuccessful);
+	bool ReadOnlineStatsByRankAroundPlayer(uint8_t LocalUserNum, class UOnlineStatsRead* StatsRead, int32_t optionalNumRows);
+	bool ReadOnlineStatsByRank(uint8_t LocalUserNum, class UOnlineStatsRead* StatsRead, int32_t optionalStartIndex, int32_t optionalNumToRead);
 	bool ReadOnlineStatsForFriends(uint8_t LocalUserNum, class UOnlineStatsRead* StatsRead);
 	bool ReadOnlineStats(uint8_t LocalUserNum, class UOnlineStatsRead* StatsRead, TArray<struct FUniqueNetId>& Players);
 };
@@ -891,21 +891,21 @@ public:
 	void ClearAllDelegates();
 	void ClearDeleteUserFileCompleteDelegate(struct FScriptDelegate DeleteUserFileCompleteDelegate);
 	void AddDeleteUserFileCompleteDelegate(struct FScriptDelegate DeleteUserFileCompleteDelegate);
-	bool DeleteUserFile(class FString UserId, class FString Filename, unsigned long bShouldCloudDelete, unsigned long bShouldLocallyDelete);
-	void OnDeleteUserFileComplete(unsigned long bWasSuccessful, class FString UserId, class FString Filename);
+	bool DeleteUserFile(class FString UserId, class FString Filename, bool bShouldCloudDelete, bool bShouldLocallyDelete);
+	void OnDeleteUserFileComplete(bool bWasSuccessful, class FString UserId, class FString Filename);
 	void ClearWriteUserFileCompleteDelegate(struct FScriptDelegate WriteUserFileCompleteDelegate);
 	void AddWriteUserFileCompleteDelegate(struct FScriptDelegate WriteUserFileCompleteDelegate);
 	bool WriteUserFile(class FString UserId, class FString Filename, TArray<uint8_t>& FileContents);
-	void OnWriteUserFileComplete(unsigned long bWasSuccessful, class FString UserId, class FString Filename);
+	void OnWriteUserFileComplete(bool bWasSuccessful, class FString UserId, class FString Filename);
 	void ClearReadUserFileCompleteDelegate(struct FScriptDelegate ReadUserFileCompleteDelegate);
 	void AddReadUserFileCompleteDelegate(struct FScriptDelegate ReadUserFileCompleteDelegate);
 	bool ReadUserFile(class FString UserId, class FString Filename);
-	void OnReadUserFileComplete(unsigned long bWasSuccessful, class FString UserId, class FString Filename);
+	void OnReadUserFileComplete(bool bWasSuccessful, class FString UserId, class FString Filename);
 	void GetUserFileList(class FString UserId, TArray<struct FEmsFile>& UserFiles);
 	void ClearEnumerateUserFileCompleteDelegate(struct FScriptDelegate EnumerateUserFileCompleteDelegate);
 	void AddEnumerateUserFileCompleteDelegate(struct FScriptDelegate EnumerateUserFileCompleteDelegate);
 	void EnumerateUserFiles(class FString UserId);
-	void OnEnumerateUserFilesComplete(unsigned long bWasSuccessful, class FString UserId);
+	void OnEnumerateUserFilesComplete(bool bWasSuccessful, class FString UserId);
 	bool ClearFile(class FString UserId, class FString Filename);
 	bool ClearFiles(class FString UserId);
 	bool GetFileContents(class FString UserId, class FString Filename, TArray<uint8_t>& FileContents);
@@ -946,7 +946,7 @@ public:
 
 	bool SetVoiceReceiveVolume(float VoiceVolume);
 	bool UnmuteAll(uint8_t LocalUserNum);
-	bool MuteAll(uint8_t LocalUserNum, unsigned long bAllowFriends);
+	bool MuteAll(uint8_t LocalUserNum, bool bAllowFriends);
 	bool SetSpeechRecognitionObject(uint8_t LocalUserNum, class USpeechRecognition* SpeechRecogObj);
 	bool SelectVocabulary(uint8_t LocalUserNum, int32_t VocabularyId);
 	void ClearRecognitionCompleteDelegate(uint8_t LocalUserNum, struct FScriptDelegate RecognitionDelegate);
@@ -958,8 +958,8 @@ public:
 	void StartNetworkedVoice(uint8_t LocalUserNum);
 	void ClearPlayerTalkingDelegate(struct FScriptDelegate TalkerDelegate);
 	void AddPlayerTalkingDelegate(struct FScriptDelegate TalkerDelegate);
-	bool UnmuteRemoteTalker(uint8_t LocalUserNum, struct FUniqueNetId PlayerID, unsigned long bIsSystemWide);
-	bool MuteRemoteTalker(uint8_t LocalUserNum, struct FUniqueNetId PlayerID, unsigned long bIsSystemWide);
+	bool UnmuteRemoteTalker(uint8_t LocalUserNum, struct FUniqueNetId PlayerID, bool optionalBIsSystemWide);
+	bool MuteRemoteTalker(uint8_t LocalUserNum, struct FUniqueNetId PlayerID, bool optionalBIsSystemWide);
 	bool SetRemoteTalkerPriority(uint8_t LocalUserNum, struct FUniqueNetId PlayerID, int32_t Priority);
 	bool IsHeadsetPresent(uint8_t LocalUserNum);
 	bool IsRemotePlayerTalking(struct FUniqueNetId PlayerID);
@@ -969,25 +969,25 @@ public:
 	bool UnregisterLocalTalker(uint8_t LocalUserNum);
 	bool RegisterLocalTalker(uint8_t LocalUserNum);
 	void OnRecognitionComplete();
-	void OnPlayerTalkingStateChange(struct FUniqueNetId Player, unsigned long bIsTalking);
-	void SetPlayerBlockStatus(unsigned long bBlocked, class FString& LocalEpicAccountId, class FString& TargetEpicAccountId, class FString& RoomName);
-	void SetPlayerMuteStatus(unsigned long bMuted, class FString& LocalEpicAccountId, class FString& TargetEpicAccountId, class FString& RoomName);
-	uint8_t GetUserState(class FString& EpicAccountId);
+	void OnPlayerTalkingStateChange(struct FUniqueNetId Player, bool bIsTalking);
+	void SetPlayerBlockStatus(bool bBlocked, class FString& LocalEpicAccountId, class FString& TargetEpicAccountId, class FString& RoomName);
+	void SetPlayerMuteStatus(bool bMuted, class FString& LocalEpicAccountId, class FString& TargetEpicAccountId, class FString& RoomName);
+	EPlayerVoiceTransitionState GetUserState(class FString& EpicAccountId);
 	class FString GetCurrentRoomNameForUser(class FString& EpicAccountId);
 	bool LeaveVoiceRoom(class FString& EpicAccountId, class FString& RoomName);
 	bool JoinVoiceRoom(class FString& EpicAccountId, class FString& RoomName, class FString& ClientBaseUrl, class FString& JoinToken);
 	bool SetAudioOutputDevice(float OutputVolume, class FString& EpicAccountId, class FString& DeviceID);
 	bool SetAudioInputDevice(float InputVolume, class FString& EpicAccountId, class FString& DeviceID);
-	void SetLocalPlayerRegisteredStatus(unsigned long bRegister, class FString& PlatformId);
+	void SetLocalPlayerRegisteredStatus(bool bRegister, class FString& PlatformId);
 	void CacheOutputAudioDevices();
 	void CacheInputAudioDevices();
 	void Init();
 	void EventPlayerStatusChanged(class FString EpicAccountId, class FString RoomName, struct FVoiceRoomMemberStatus MemberStatus);
 	void EventPlayerLeftVoiceRoom(class FString EpicAccountId, class FString RoomName);
 	void EventPlayerJoinedVoiceRoom(class FString EpicAccountId, class FString RoomName);
-	void EventRemovedFromVoiceRoom(class FString EpicAccountId, class FString RoomName, uint8_t RemovedResult);
-	void EventJoinedVoiceRoom(class FString EpicAccountId, class FString RoomName, uint8_t JoinResult);
-	void EventLeftVoiceRoom(class FString EpicAccountId, class FString RoomName, uint8_t LeaveResult);
+	void EventRemovedFromVoiceRoom(class FString EpicAccountId, class FString RoomName, EVoiceResultCode RemovedResult);
+	void EventJoinedVoiceRoom(class FString EpicAccountId, class FString RoomName, EVoiceResultCode JoinResult);
+	void EventLeftVoiceRoom(class FString EpicAccountId, class FString RoomName, EVoiceResultCode LeaveResult);
 };
 
 // Class OnlineSubsystemEOS.VideoRecorderEOS
@@ -1056,7 +1056,7 @@ public:
 		return uClassPointer;
 	};
 
-	void __OnlinePlayerInterfaceEOS__RequestNativePlatformAuthTicket_0x1(unsigned long bSuccess, class FString Code);
+	void __OnlinePlayerInterfaceEOS__RequestNativePlatformAuthTicket_0x1(bool bSuccess, class FString Code);
 };
 
 /*

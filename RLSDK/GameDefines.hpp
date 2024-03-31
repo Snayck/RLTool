@@ -1,6 +1,6 @@
 /*
 #############################################################################################
-# RocketLeague (1.0.0.0) SDK
+# RocketLeague (1.0.10897.0) SDK
 # Generated with the CodeRedGenerator v1.0.2
 # ========================================================================================= #
 # File: GameDefines.hpp
@@ -829,11 +829,6 @@ public:
 		}
 
 		return "";
-	}
-
-	bool IsValid() const
-	{
-		return !!ArrayData;
 	}
 
 	ElementPointer c_str() const

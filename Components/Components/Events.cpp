@@ -115,73 +115,7 @@ namespace Hooks
 		MainComponent::GameFunctions.clear();
 	}
 
-	void RichPresenceEdit(PreEvent& event)
-	{
-		/*UOnlinePlayerFriends_X_execSetEpicRichPresence_Params* Params = event.GetParams<UOnlinePlayerFriends_X_execSetEpicRichPresence_Params>();
-		if (Main.CustomPresenceEnabled)
-		{
-			if (Params) {
-				Params->PresenceString = Format::ToFString(Main.CustomPresence);
-			}
-		}*/
-
-	}
-
-	void PlayerBannerLoaded(PreEvent& event)
-	{
-
-	}
-
 	
-
-	void PriReplicatedEvent(PreEvent& event)
-	{
-		APRI_TA_eventReplicatedEvent_Params* Params = event.GetParams<APRI_TA_eventReplicatedEvent_Params>();
-		APRI_TA* Pri = event.GetCaller<APRI_TA>();
-
-		if (Params && Pri)
-		{
-			if (Pri->IsLocalPlayerPRI())
-			{
-				if (Params->VarName.ToString() == "ClientLoadouts")
-				{
-					for (int i = 0; i < Pri->ClientLoadouts.Loadouts[0].Products.Num(); i++)
-					{
-						memcpy_s(&Pri->ClientLoadouts.Loadouts[0].Products[i], sizeof(int32_t), &Main.LoadoutBlue[i], sizeof(int32_t));
-					}
-					for (int i = 0; i < Pri->ClientLoadouts.Loadouts[1].Products.Num(); i++)
-					{
-						memcpy_s(&Pri->ClientLoadouts.Loadouts[1].Products[i], sizeof(int32_t), &Main.LoadoutOrange[i], sizeof(int32_t));
-					}
-				}
-			}
-		}
-	}
-
-	
-	void onJoin(PreEvent& event) {
-
-		UGFxData_PlayerTitles_TA* Titles = Instances.GetInstanceOf<UGFxData_PlayerTitles_TA>();
-		if (Titles)
-		{
-			Main.PlayerCurrentTitle = Titles->PlayerTitles[Titles->SelectedTitle].Id;
-		}
-
-		UGFxData_Garage_TA* Garage = Instances.GetInstanceOf<UGFxData_Garage_TA>();
-
-		if (Garage)
-		{
-			ULoadoutSet_TA* LoadoutSet = Garage->LoadoutSet;
-			if (LoadoutSet)
-			{
-				ULoadout_TA* BlueLoadout = LoadoutSet->Loadouts[0];
-				ULoadout_TA* OrangeLoadout = LoadoutSet->Loadouts[1];
-
-				Main.LoadoutBlue = BlueLoadout->Products;
-				Main.LoadoutOrange = OrangeLoadout->Products;
-			}
-		}
-	}
 
 	void UpdatePriData(PreEvent& event)
 	{
@@ -189,10 +123,7 @@ namespace Hooks
 		{
 			if (UGFxData_PRI_TA* Pri = event.GetCaller<UGFxData_PRI_TA>())
 			{
-				if (Pri->PRI && Pri->PRI->IsLocalPlayerPRI() && Main.PlayerCurrentTitle.IsValid())
-				{
-					Pri->SetPlayerTitle(Main.PlayerCurrentTitle);
-				}
+				
 			}
 		}
 	}
@@ -210,20 +141,7 @@ namespace Hooks
 				return;
 			}
 
-			static FFontRenderInfo fontInfo;
-			Hud->Canvas->SetDrawColor(255, 255, 255, 255);
-			for (APawn* Pawn = Instances.IAWorldInfo()->PawnList; Pawn; Pawn = Pawn->NextPawn)
-			{
-				if (Instances.IAPlayerController() == nullptr || Pawn == nullptr || Pawn->bDeleteMe)
-					continue;
-
-				if (Pawn->Class->GetName() == "Car_TA") {
-					FVector pos = Drawing::CalculateScreenCoordinate(Pawn->Location);
-					Hud->Canvas->SetPos(pos.X, pos.Y, pos.Z);
-					if (Main.oSS && Pawn->PlayerReplicationInfo)
-						Hud->Canvas->DrawTextW(Main.oSS->GetPlayerIP(Pawn->PlayerReplicationInfo->UniqueId), 1, 1, 1, fontInfo);
-				}
-			}
+			
 		}
 
 		GRainbowColor::OnTick();
@@ -468,10 +386,264 @@ void EventsComponent::DetachAllDetours()
 	DetachCallFunctionDetour();
 }
 
+
+
+
+std::string removeProperty(const std::string& input) {
+	std::string output = input;
+	size_t pos = 0;
+	while ((pos = output.find("Property", pos)) != std::string::npos) {
+		output.erase(pos, 8); // Length of "Property" is 8
+	}
+	return output;
+}
+
+
+
+std::string processValue(UProperty* prop, void* params) {
+	if (prop->PropertyFlags & 0x400 || prop->PropertyFlags & 0x100) {}
+	else {
+		if (prop->IsA<UStructProperty>()) {
+
+			std::string w = "{ ";
+			for (UField* field = ((UStructProperty*)prop)->Struct->Children; field; field = field->Next) {
+				std::string item = (processValue(reinterpret_cast<UProperty*>(field), params) + ", ").c_str();
+				for (auto c : item)
+					w.push_back(c);
+			}
+			w.pop_back(); w.pop_back();
+			w.push_back(' '); w.push_back('}');
+
+			return w;
+		}
+		else if (prop->IsA<UStrProperty>()) {
+			FString* valueAddress = (FString*)((uintptr_t)params + prop->Offset);
+			if (params)
+				return "'" + (*valueAddress).ToString() + "'";
+		}
+		else if (prop->IsA<UQWordProperty>()) {
+			uint64_t* valueAddress = (uint64_t*)((uintptr_t)params + prop->Offset);
+			if (params)
+				return std::to_string(*valueAddress);
+		}
+		else if (prop->IsA<UObjectProperty>()) {
+			int* ptr = reinterpret_cast<int*>( ((UObjectProperty*)prop)->PropertyClass );
+			std::stringstream ss; ss << ptr;
+			return "'0x" + ss.str() + "'";
+		}
+		else if (prop->IsA<UComponentProperty>()) {
+
+		}
+		else if (prop->IsA<UClassProperty>()) {
+
+		}
+		else if (prop->IsA<UNameProperty>()) {
+			FName* valueAddress = (FName*)((uintptr_t)params + prop->Offset);
+			if (params)
+				return "'" + (*valueAddress).ToString() + "'";
+		}
+		else if (prop->IsA<UMapProperty>()) {
+
+		}
+		else if (prop->IsA<UIntProperty>()) {
+			int* valueAddress = (int*)((uintptr_t)params + prop->Offset);
+			if (params)
+				return std::to_string(*valueAddress);
+		}
+		else if (prop->IsA<UInterfaceProperty>()) {
+
+		}
+		else if (prop->IsA<UFloatProperty>()) {
+			float* valueAddress = (float*)((uintptr_t)params + prop->Offset);
+			if (params)
+				return std::to_string(*valueAddress);
+		}
+		else if (prop->IsA<UDelegateProperty>()) {
+
+		}
+		else if (prop->IsA<UByteProperty>()) {
+
+		}
+		else if (prop->IsA<UBoolProperty>()) {
+			bool* valueAddress = (bool*)((uintptr_t)params + prop->Offset);
+			if (params) {
+				int w = (*valueAddress & 1);
+				return std::to_string(w);
+			}
+		}
+		else if (prop->IsA<UArrayProperty>()) {
+			int* ptr = reinterpret_cast<int*>(((UArrayProperty*)prop)->Inner);
+			std::stringstream ss; ss << ptr;
+			return "'0x" + ss.str() + "'";
+		}
+
+		return "NOT HANDLED";
+	}
+	return "NOT PROCESSED";
+}
+
+std::string processType(UProperty* prop) {
+
+	if (prop->IsA<UStructProperty>()) {
+		return "Struct " + (((UStructProperty*)prop)->Struct)->GetName();
+	}
+	else if (prop->IsA<UStrProperty>()) {
+
+	}
+	else if (prop->IsA<UQWordProperty>()) {
+
+	}
+	else if (prop->IsA<UObjectProperty>()) {
+		return "Object " + (((UObjectProperty*)prop)->PropertyClass)->GetName();
+	}
+	else if (prop->IsA<UComponentProperty>()) {
+
+	}
+	else if (prop->IsA<UClassProperty>()) {
+
+	}
+	else if (prop->IsA<UNameProperty>()) {
+
+	}
+	else if (prop->IsA<UMapProperty>()) {
+
+	}
+	else if (prop->IsA<UIntProperty>()) {
+
+	}
+	else if (prop->IsA<UInterfaceProperty>()) {
+
+	}
+	else if (prop->IsA<UFloatProperty>()) {
+
+	}
+	else if (prop->IsA<UDelegateProperty>()) {
+
+	}
+	else if (prop->IsA<UByteProperty>()) {
+
+	}
+	else if (prop->IsA<UBoolProperty>()) {
+
+	}
+	else if (prop->IsA<UArrayProperty>()) {
+		std::string type = (processType(((UArrayProperty*)prop)->Inner));
+		return "Array<" + type + ">";
+	}
+
+	return removeProperty(prop->Class->GetName());
+}
+
+
+
+
+
+
+std::vector<EventsComponent::func> EventsComponent::functions = {};
+std::vector<std::string> blacklist = {};
+std::vector<std::string> whitelist = {};
+
+std::string toLowercase(const std::string& str) {
+	std::string result;
+	result.reserve(str.length());
+
+	for (char c : str) {
+		result.push_back(std::tolower(c));
+	}
+
+	return result;
+}
+
+bool containsSubstring(const std::string& str, const std::string& substr) {
+	return str.find(substr) != std::string::npos;
+}
+std::vector<std::string> splitString(const std::string& input, char delimiter = ',') {
+	std::vector<std::string> tokens;
+	std::istringstream stream(input);
+	std::string token;
+
+	while (std::getline(stream, token, delimiter)) {
+		tokens.push_back(token);
+	}
+
+	return tokens;
+}
+void addFunc(UObject* caller, UFunction* Function, void* paramsPointer) {
+	EventsComponent::func funct;
+	funct.functionData.function = *Function;
+	funct.functionData.callerObject = *caller;
+
+	std::vector<UProperty*> prop;
+
+	for (UField* field = Function->Children; field; field = field->Next) {
+		prop.push_back(reinterpret_cast<UProperty*>(field));
+	}
+
+	std::sort(prop.begin(), prop.end(), [](UProperty* PropertyA, UProperty* PropertyB) {
+		if ((PropertyA->Offset == PropertyB->Offset) && PropertyA->IsA<UBoolProperty>() && PropertyB->IsA<UBoolProperty>())
+		{
+			return (static_cast<UBoolProperty*>(PropertyA)->BitMask < static_cast<UBoolProperty*>(PropertyB)->BitMask);
+		}
+
+		return (PropertyA->Offset < PropertyB->Offset);
+		});
+
+	for (UProperty* a : prop) {
+		EventsComponent::prop p;
+		p.Property = *a;
+		p.value = processValue(a, paramsPointer);
+		p.type = processType(a);
+		funct.properties.push_back(p);
+	}
+
+	EventsComponent::functions.push_back(funct);
+}
+
+void handleFunc(UObject* caller, UFunction* Function, void* paramsPointer) {
+	if (EventsComponent::functions.size() < 1000) {
+
+		if (GUIComponent::whitelist != "") {
+			std::vector<std::string> tokens = splitString(GUIComponent::whitelist);
+
+			auto it = std::find_if(tokens.begin(), tokens.end(), [&](const std::string& str) {
+				return containsSubstring(toLowercase(Function->Name.ToString()), toLowercase(str));
+				});
+
+			if (it != tokens.end()) {
+
+			}
+			else {
+				return;
+			}
+		}
+
+		if (GUIComponent::blacklist != "") {
+			std::vector<std::string> tokens = splitString(GUIComponent::blacklist);
+
+			auto it = std::find_if(tokens.begin(), tokens.end(), [&](const std::string& str) {
+				return containsSubstring(toLowercase(Function->Name.ToString()), toLowercase(str));
+				});
+
+			if (it != tokens.end()) { 
+				return; 
+			}
+			else {
+
+			}
+		}
+		
+		addFunc(caller, Function, paramsPointer);
+		
+	}
+}
+
 void EventsComponent::ProcessEventDetour(class UObject* Caller, class UFunction* Function, void* Params, void* Result)
 {
 	if (ProcessEvent && Function)
 	{
+		if (GUIComponent::isLogging && GUIComponent::hookEvent)
+			handleFunc(Caller, Function, Params);
+
 		auto preIt = PreHookedEvents.find(Function->ObjectInternalInteger);
 		PreEvent event(Caller, Function, Params);
 
@@ -531,6 +703,9 @@ void EventsComponent::ProcessInternalDetour(class UObject* Caller, struct FFrame
 
 	if (ProcessInternal && Caller && Function)
 	{
+		if (GUIComponent::isLogging && GUIComponent::hookInternal)
+			handleFunc(Caller, Function, Params);
+
 		auto preIt = PreHookedEvents.find(Function->ObjectInternalInteger);
 		PreEvent event(Caller, Function, Params);
 
@@ -590,6 +765,9 @@ void EventsComponent::CallFunctionDetour(class UObject* Caller, struct FFrame& S
 
 	if (CallFunction && Function && Result)
 	{
+		if (GUIComponent::isLogging && GUIComponent::hookCallFunc)
+			handleFunc(Caller, Function, Params);
+
 		auto preIt = PreHookedEvents.find(Function->ObjectInternalInteger);
 		PreEvent event(Caller, Function, Params);
 
@@ -758,22 +936,13 @@ void EventsComponent::Initialize()
 	HookEventPre("Function Engine.Interaction.Tick", &Hooks::ExecuteFunctions);
 
 
-	HookEventPre("Function TAGame.PRI_TA.HandleLoadoutLoaded", &Hooks::PriReplicatedEvent);
 
 	HookEventPre("Function Engine.HUD.PostRender", &Hooks::HUDPostRender);
 	HookEventPre("Function Engine.PlayerController.PlayerTick", &Hooks::PlayerControllerTick);
 	HookEventPre("Function TAGame.GFxData_PRI_TA.UpdatePRIData", &Hooks::UpdatePriData);
-	HookEventPre("Function TAGame.PRI_TA.ReplicatedEvent", &Hooks::PriReplicatedEvent);
 	HookEventPost("Function TAGame.GameViewportClient_TA.HandleKeyPress", &Hooks::GameViewPortKeyPress);
 
 	HookEventPre("Function TAGame.GFxData_MainMenu_TA.MainMenuAdded", &Hooks::GFxDataMainMenuAdded);
-	HookEventPre("Function TAGame.GameEvent_Team_TA.OnAllTeamsCreated", &Hooks::onJoin);
-	HookEventPre("Function ProjectX.PsyNetBeacon_X.SendReservationMessage", &Hooks::onJoin);
-	
-	HookEventPre("Function ProjectX.OnlinePlayerFriends_X.SetPlatformRichPresence", &Hooks::RichPresenceEdit);
-	HookEventPre("Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.SetRichPresence", &Hooks::RichPresenceEdit);
-	HookEventPre("Function ProjectX.OnlinePlayerFriends_X.SetEpicRichPresence", &Hooks::RichPresenceEdit);
-
 
 
 	HookEventPre("Function TAGame.PlayerController_TA.ReplicateCameraRotation", [&](PreEvent event) {
@@ -782,16 +951,13 @@ void EventsComponent::Initialize()
 			Main.cameraLocation = event.GetCaller<APlayerController>()->PlayerCamera->Location;
 			Main.cameraRotator = event.GetCaller<APlayerController>()->PlayerCamera->Rotation;
 		}
-		if (Main.FieldOfViewEnabled) {
-			event.GetCaller<APlayerController>()->FOV(Main.FieldOfViewValue);
-		}
 		});
 
 	HookEventPre("Function TAGame.GFxData_Community_TA.HandleBlogChanged", [&](PreEvent event){
 		UGFxData_Community_TA* Community = event.GetCaller<UGFxData_Community_TA>();
 		
 		if (Community && Community->Config) {	
-			Community->Config->MotD = FString(L"@tvyt's profile mod<br>Snayck on UnknownCheats");
+			Community->Config->MotD = FString(L"@tvyt's function logger<br>Snayck on UnknownCheats");
 		}
 	});
 

@@ -1,12 +1,12 @@
 /*
 #############################################################################################
-# Rocket League (1.0) SDK
-# Generated with the UE3SDKGenerator v2.2.5
+# RocketLeague (1.0.10897.0) SDK
+# Generated with the CodeRedGenerator v1.0.2
 # ========================================================================================= #
 # File: AkAudio_parameters.hpp
 # ========================================================================================= #
 # Credits: TheFeckless, ItsBranK
-# Links: www.github.com/itsbrank/UE3SDKGenerator, www.twitter.com/itsbrank
+# Links: www.github.com/CodeRedModding/CodeRed-Generator, www.twitter.com/ItsBranK
 #############################################################################################
 */
 #pragma once
@@ -17,7 +17,7 @@
 
 /*
 # ========================================================================================= #
-# Function Parameters
+# Parameters
 # ========================================================================================= #
 */
 
@@ -117,7 +117,7 @@ struct UAkDevice_execSetListenerSpatialization_Params
 // [0x04022401] 
 struct UAkDevice_execSetSplitScreenListenerEnabled_Params
 {
-	bool                                               bEnable : 1;                                      		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bEnable : 1;                                      		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function AkAudio.AkDevice.SetSplitScreenListenerPosition
@@ -351,7 +351,7 @@ struct UAkMusicDevice_execEventTrackStart_Params
 // [0x00020003] 
 struct UAkParamGroup_execSetSendToSlapbacks_Params
 {
-	bool                                               bSend : 1;                                        		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bSend : 1;                                        		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function AkAudio.AkParamGroup.SetControllerId
@@ -534,7 +534,7 @@ struct UAkPlaySoundComponent_execSetSwitch_Params
 // [0x00020401] 
 struct UAkPlaySoundComponent_execIsPlaying_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function AkAudio.AkPlaySoundComponent.Stop
@@ -626,7 +626,7 @@ struct UAkSoundBanksInfo_execLoadForNativePlatform_Params
 // [0x04020803] 
 struct UAkSoundSource_eventSetSubtitlesEnabled_Params
 {
-	bool                                               bValue : 1;                                       		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bValue : 1;                                       		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function AkAudio.AkSoundSource.SetAttenuationScaling
@@ -654,7 +654,7 @@ struct UAkSoundSource_execRegisterReflectionEmitter_Params
 // [0x04020401] 
 struct UAkSoundSource_execIsPlayingAny_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function AkAudio.AkSoundSource.IsPlaying
@@ -662,7 +662,7 @@ struct UAkSoundSource_execIsPlayingAny_Params
 struct UAkSoundSource_execIsPlaying_Params
 {
 	class UAkSoundCue*                                 Sound;                                            		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function AkAudio.AkSoundSource.Seek
@@ -734,14 +734,14 @@ struct USeqAct_AkPlayMusicWithCues_eventTriggerEvents_Params
 struct USeqAct_AkPlaySound_execToggleSoundFor_Params
 {
 	class AActor*                                      A;                                                		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bPlay : 1;                                        		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bPlay : 1;                                        		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function AkAudio.SeqAct_AkPlaySound.ToggleSound
 // [0x00020003] 
 struct USeqAct_AkPlaySound_execToggleSound_Params
 {
-	bool                                               bPlay : 1;                                        		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bPlay : 1;                                        		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// class UObject*                                     O;                                                		// 0x0008 (0x0008) [0x0000000000000000]               
 	// class AActor*                                      A;                                                		// 0x0010 (0x0008) [0x0000000000000000]               
 };
@@ -772,14 +772,14 @@ struct AAkAmbientSoundActor_execOnToggle_Params
 struct USeqAct_AkPlaySoundAndSeek_execToggleSoundFor_Params
 {
 	class AActor*                                      A;                                                		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bPlay : 1;                                        		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bPlay : 1;                                        		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function AkAudio.SeqAct_AkPlaySoundAndSeek.ToggleSound
 // [0x00020003] 
 struct USeqAct_AkPlaySoundAndSeek_execToggleSound_Params
 {
-	bool                                               bPlay : 1;                                        		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bPlay : 1;                                        		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// class UObject*                                     O;                                                		// 0x0008 (0x0008) [0x0000000000000000]               
 	// class AActor*                                      A;                                                		// 0x0010 (0x0008) [0x0000000000000000]               
 };

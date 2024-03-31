@@ -1,12 +1,12 @@
 /*
 #############################################################################################
-# Rocket League (1.0) SDK
-# Generated with the UE3SDKGenerator v2.2.5
+# RocketLeague (1.0.10897.0) SDK
+# Generated with the CodeRedGenerator v1.0.2
 # ========================================================================================= #
 # File: OnlineSubsystemEOS_parameters.hpp
 # ========================================================================================= #
 # Credits: TheFeckless, ItsBranK
-# Links: www.github.com/itsbrank/UE3SDKGenerator, www.twitter.com/itsbrank
+# Links: www.github.com/CodeRedModding/CodeRed-Generator, www.twitter.com/ItsBranK
 #############################################################################################
 */
 #pragma once
@@ -17,7 +17,7 @@
 
 /*
 # ========================================================================================= #
-# Function Parameters
+# Parameters
 # ========================================================================================= #
 */
 
@@ -32,7 +32,7 @@ struct UOnlineSubsystemEOS_execTickEOSPlatform_Params
 // [0x00020401] 
 struct UOnlineSubsystemEOS_execManuallyTickEOSPlatform_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.FormatCurrency
@@ -71,28 +71,28 @@ struct UOnlineSubsystemEOS_execGetAppPriceInfo_Params
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0000 (0x0048) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	TArray<struct FName>                               AppNames;                                         		// 0x0048 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	struct FScriptDelegate                             Callback;                                         		// 0x0058 (0x0018) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0070 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0070 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.HandleBootMessage
 // [0x00020401] 
 struct UOnlineSubsystemEOS_execHandleBootMessage_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.GetOverlayEnabled
 // [0x00020003] 
 struct UOnlineSubsystemEOS_execGetOverlayEnabled_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.RefreshNetworkErrorToggle
 // [0x00020001] 
 struct UOnlineSubsystemEOS_execRefreshNetworkErrorToggle_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearUserRestoredDelegate
@@ -211,7 +211,7 @@ struct UOnlineSubsystemEOS_execInitializeTrophyAPI_Params
 // [0x00020001] 
 struct UOnlineSubsystemEOS_execAnyPlayerChatRestricted_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearUnlockedDLCChangeDelegate
@@ -294,7 +294,7 @@ struct UOnlineSubsystemEOS_execOnCommerceDialogClosed_Params
 // [0x00020003] 
 struct UOnlineSubsystemEOS_execGetCurrentConnectionStatus_Params
 {
-	uint8_t                                            ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	EOnlineServerConnectionStatus                      ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearCloseKickPlayerDialogDelegate
@@ -322,7 +322,7 @@ struct UOnlineSubsystemEOS_execOnCloseKickPlayerDialog_Params
 struct UOnlineSubsystemEOS_execOnPlayerTalkingStateChange_Params
 {
 	struct FUniqueNetId                                Player;                                           		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bIsTalking : 1;                                   		// 0x0048 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bIsTalking : 1;                                   		// 0x0048 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.SetVoiceReceiveVolume
@@ -330,7 +330,7 @@ struct UOnlineSubsystemEOS_execOnPlayerTalkingStateChange_Params
 struct UOnlineSubsystemEOS_execSetVoiceReceiveVolume_Params
 {
 	float                                              VoiceVolume;                                      		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.GetDLCPurchaseTime
@@ -346,7 +346,7 @@ struct UOnlineSubsystemEOS_execGetDLCPurchaseTime_Params
 struct UOnlineSubsystemEOS_execSaveKey_Params
 {
 	class FString                                      ProductKey;                                       		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.GetLocalAccountNames
@@ -354,7 +354,7 @@ struct UOnlineSubsystemEOS_execSaveKey_Params
 struct UOnlineSubsystemEOS_execGetLocalAccountNames_Params
 {
 	TArray<class FString>                              Accounts;                                         		// 0x0000 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.DeleteLocalAccount
@@ -363,7 +363,7 @@ struct UOnlineSubsystemEOS_execDeleteLocalAccount_Params
 {
 	class FString                                      Username;                                         		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Password;                                         		// 0x0010 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.RenameLocalAccount
@@ -373,7 +373,7 @@ struct UOnlineSubsystemEOS_execRenameLocalAccount_Params
 	class FString                                      NewUserName;                                      		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      OldUserName;                                      		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Password;                                         		// 0x0020 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0030 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0030 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.CreateLocalAccount
@@ -382,7 +382,7 @@ struct UOnlineSubsystemEOS_execCreateLocalAccount_Params
 {
 	class FString                                      Username;                                         		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Password;                                         		// 0x0010 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearCreateOnlineAccountCompletedDelegate
@@ -414,14 +414,14 @@ struct UOnlineSubsystemEOS_execCreateOnlineAccount_Params
 	class FString                                      Password;                                         		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      EmailAddress;                                     		// 0x0020 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      ProductKey;                                       		// 0x0030 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0040 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0040 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.IsKeyValid
 // [0x00020003] 
 struct UOnlineSubsystemEOS_execIsKeyValid_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearStorageDeviceChangeDelegate
@@ -448,7 +448,7 @@ struct UOnlineSubsystemEOS_execOnStorageDeviceChange_Params
 // [0x00020003] 
 struct UOnlineSubsystemEOS_execGetNATType_Params
 {
-	uint8_t                                            ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	ENATType                                           ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearConnectionStatusChangeDelegate
@@ -477,7 +477,7 @@ struct UOnlineSubsystemEOS_execOnConnectionStatusChange_Params
 struct UOnlineSubsystemEOS_execIsControllerConnected_Params
 {
 	int32_t                                            ControllerId;                                     		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearControllerChangeDelegate
@@ -499,7 +499,7 @@ struct UOnlineSubsystemEOS_execAddControllerChangeDelegate_Params
 struct UOnlineSubsystemEOS_execOnControllerChange_Params
 {
 	int32_t                                            ControllerId;                                     		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bIsConnected : 1;                                 		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bIsConnected : 1;                                 		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.SetNetworkNotificationPosition
@@ -513,14 +513,14 @@ struct UOnlineSubsystemEOS_execSetNetworkNotificationPosition_Params
 // [0x00020001] 
 struct UOnlineSubsystemEOS_execGetNetworkNotificationPosition_Params
 {
-	uint8_t                                            ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	ENetworkNotificationPosition                       ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.NotifyExternalUIChanged
 // [0x00020401] 
 struct UOnlineSubsystemEOS_execNotifyExternalUIChanged_Params
 {
-	bool                                               bIsOpening : 1;                                   		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bIsOpening : 1;                                   		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearExternalUIChangeDelegate
@@ -542,7 +542,7 @@ struct UOnlineSubsystemEOS_execAddExternalUIChangeDelegate_Params
 // [0x00120001] 
 struct UOnlineSubsystemEOS_execOnExternalUIChange_Params
 {
-	bool                                               bIsOpening : 1;                                   		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bIsOpening : 1;                                   		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearLinkStatusChangeDelegate
@@ -563,14 +563,14 @@ struct UOnlineSubsystemEOS_execAddLinkStatusChangeDelegate_Params
 // [0x00120001] 
 struct UOnlineSubsystemEOS_execOnLinkStatusChange_Params
 {
-	bool                                               bIsConnected : 1;                                 		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bIsConnected : 1;                                 		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.HasLinkConnection
 // [0x00020003] 
 struct UOnlineSubsystemEOS_execHasLinkConnection_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.RegisterStatGuid
@@ -579,7 +579,7 @@ struct UOnlineSubsystemEOS_execRegisterStatGuid_Params
 {
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      ClientStatGuid;                                   		// 0x0048 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0058 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0058 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.GetClientStatGuid
@@ -608,14 +608,14 @@ struct UOnlineSubsystemEOS_execAddRegisterHostStatGuidCompleteDelegate_Params
 struct UOnlineSubsystemEOS_execOnFlushOnlineStatsComplete_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.OnRegisterHostStatGuidComplete
 // [0x00120001] 
 struct UOnlineSubsystemEOS_execOnRegisterHostStatGuidComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.RegisterHostStatGuid
@@ -623,7 +623,7 @@ struct UOnlineSubsystemEOS_execOnRegisterHostStatGuidComplete_Params
 struct UOnlineSubsystemEOS_execRegisterHostStatGuid_Params
 {
 	class FString                                      HostStatGuid;                                     		// 0x0000 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.GetHostStatGuid
@@ -638,7 +638,7 @@ struct UOnlineSubsystemEOS_execGetHostStatGuid_Params
 struct UOnlineSubsystemEOS_execWriteOnlinePlayerScores_Params
 {
 	TArray<struct FOnlinePlayerScore>                  PlayerScores;                                     		// 0x0000 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.FreeStats
@@ -666,7 +666,7 @@ struct UOnlineSubsystemEOS_execAddReadOnlineStatsCompleteDelegate_Params
 // [0x00120001] 
 struct UOnlineSubsystemEOS_execOnReadOnlineStatsComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ReadOnlineStatsByRankAroundPlayer
@@ -676,7 +676,7 @@ struct UOnlineSubsystemEOS_execReadOnlineStatsByRankAroundPlayer_Params
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	class UOnlineStatsRead*                            StatsRead;                                        		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            NumRows;                                          		// 0x0010 (0x0004) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ReadOnlineStatsByRank
@@ -686,7 +686,7 @@ struct UOnlineSubsystemEOS_execReadOnlineStatsByRank_Params
 	class UOnlineStatsRead*                            StatsRead;                                        		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            StartIndex;                                       		// 0x0008 (0x0004) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
 	int32_t                                            NumToRead;                                        		// 0x000C (0x0004) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ReadOnlineStatsForFriends
@@ -695,7 +695,7 @@ struct UOnlineSubsystemEOS_execReadOnlineStatsForFriends_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	class UOnlineStatsRead*                            StatsRead;                                        		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ReadOnlineStats
@@ -704,7 +704,7 @@ struct UOnlineSubsystemEOS_execReadOnlineStats_Params
 {
 	TArray<struct FUniqueNetId>                        Players;                                          		// 0x0000 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class UOnlineStatsRead*                            StatsRead;                                        		// 0x0010 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.UnmuteAll
@@ -712,7 +712,7 @@ struct UOnlineSubsystemEOS_execReadOnlineStats_Params
 struct UOnlineSubsystemEOS_execUnmuteAll_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.MuteAll
@@ -720,8 +720,8 @@ struct UOnlineSubsystemEOS_execUnmuteAll_Params
 struct UOnlineSubsystemEOS_execMuteAll_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bAllowFriends : 1;                                		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           bAllowFriends : 1;                                		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.SetSpeechRecognitionObject
@@ -730,7 +730,7 @@ struct UOnlineSubsystemEOS_execSetSpeechRecognitionObject_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	class USpeechRecognition*                          SpeechRecogObj;                                   		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.SelectVocabulary
@@ -739,7 +739,7 @@ struct UOnlineSubsystemEOS_execSelectVocabulary_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            VocabularyId;                                     		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearRecognitionCompleteDelegate
@@ -771,7 +771,7 @@ struct UOnlineSubsystemEOS_execGetRecognitionResults_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	TArray<struct FSpeechRecognizedWord>               Words;                                            		// 0x0008 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.StopSpeechRecognition
@@ -779,7 +779,7 @@ struct UOnlineSubsystemEOS_execGetRecognitionResults_Params
 struct UOnlineSubsystemEOS_execStopSpeechRecognition_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.StartSpeechRecognition
@@ -787,7 +787,7 @@ struct UOnlineSubsystemEOS_execStopSpeechRecognition_Params
 struct UOnlineSubsystemEOS_execStartSpeechRecognition_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.StopNetworkedVoice
@@ -831,7 +831,7 @@ struct UOnlineSubsystemEOS_execUnmuteRemoteTalker_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.MuteRemoteTalker
@@ -840,7 +840,7 @@ struct UOnlineSubsystemEOS_execMuteRemoteTalker_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.SetRemoteTalkerPriority
@@ -850,7 +850,7 @@ struct UOnlineSubsystemEOS_execSetRemoteTalkerPriority_Params
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	int32_t                                            Priority;                                         		// 0x0050 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0054 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0054 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.IsHeadsetPresent
@@ -858,7 +858,7 @@ struct UOnlineSubsystemEOS_execSetRemoteTalkerPriority_Params
 struct UOnlineSubsystemEOS_execIsHeadsetPresent_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.IsRemotePlayerTalking
@@ -866,7 +866,7 @@ struct UOnlineSubsystemEOS_execIsHeadsetPresent_Params
 struct UOnlineSubsystemEOS_execIsRemotePlayerTalking_Params
 {
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0048 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0048 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.IsLocalPlayerTalking
@@ -874,7 +874,7 @@ struct UOnlineSubsystemEOS_execIsRemotePlayerTalking_Params
 struct UOnlineSubsystemEOS_execIsLocalPlayerTalking_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.UnregisterRemoteTalker
@@ -882,7 +882,7 @@ struct UOnlineSubsystemEOS_execIsLocalPlayerTalking_Params
 struct UOnlineSubsystemEOS_execUnregisterRemoteTalker_Params
 {
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0048 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0048 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.RegisterRemoteTalker
@@ -890,7 +890,7 @@ struct UOnlineSubsystemEOS_execUnregisterRemoteTalker_Params
 struct UOnlineSubsystemEOS_execRegisterRemoteTalker_Params
 {
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0048 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0048 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.UnregisterLocalTalker
@@ -898,7 +898,7 @@ struct UOnlineSubsystemEOS_execRegisterRemoteTalker_Params
 struct UOnlineSubsystemEOS_execUnregisterLocalTalker_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.RegisterLocalTalker
@@ -906,7 +906,7 @@ struct UOnlineSubsystemEOS_execUnregisterLocalTalker_Params
 struct UOnlineSubsystemEOS_execRegisterLocalTalker_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.GetPlayerUniqueNetIdFromIndex
@@ -930,7 +930,7 @@ struct UOnlineSubsystemEOS_eventGetPlayerNicknameFromIndex_Params
 // [0x400020C00] 
 struct UOnlineSubsystemEOS_eventInit_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.InitEOS
@@ -939,7 +939,7 @@ struct UOnlineSubsystemEOS_execInitEOS_Params
 {
 	class FString                                      SandboxId;                                        		// 0x0000 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class FString                                      DeploymentId;                                     		// 0x0010 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.EventGetAppPriceInfoComplete
@@ -956,7 +956,7 @@ struct UOnlineSubsystemEOS_execEventGetAppPriceInfoComplete_Params
 // [0x00120001] 
 struct UOnlineSubsystemEOS_execOnMicroTxnResponse_Params
 {
-	bool                                               bAuthorized : 1;                                  		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bAuthorized : 1;                                  		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	uint64_t                                           OrderId;                                          		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
 };
 
@@ -964,7 +964,7 @@ struct UOnlineSubsystemEOS_execOnMicroTxnResponse_Params
 // [0x400020002] 
 struct UOnlineAuthInterfaceEOS_execRequiresAuthTicket_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineAuthInterfaceEOS.RequestAuthTicket
@@ -973,7 +973,7 @@ struct UOnlineAuthInterfaceEOS_execRequestAuthTicket_Params
 {
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	struct FScriptDelegate                             Callback;                                         		// 0x0048 (0x0018) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0060 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0060 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineAuthInterfaceEOS.RequestMtxCode
@@ -982,7 +982,7 @@ struct UOnlineAuthInterfaceEOS_execRequestMtxCode_Params
 {
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	struct FScriptDelegate                             Callback;                                         		// 0x0048 (0x0018) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0060 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0060 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineFriendsInterfaceEOS.GetActivePlatformId
@@ -992,7 +992,7 @@ struct UOnlineFriendsInterfaceEOS_execGetActivePlatformId_Params
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                AccountId;                                        		// 0x0008 (0x0048) [0x0000000000400082] (CPF_Const | CPF_Parm | CPF_NeedCtorLink)
 	struct FUniqueNetId                                PlatformId;                                       		// 0x0050 (0x0048) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0098 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0098 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineFriendsInterfaceEOS.RequestLinkedAccounts
@@ -1002,7 +1002,7 @@ struct UOnlineFriendsInterfaceEOS_execRequestLinkedAccounts_Params
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	TArray<struct FUniqueNetId>                        AccountIds;                                       		// 0x0008 (0x0010) [0x0000000000400082] (CPF_Const | CPF_Parm | CPF_NeedCtorLink)
 	struct FScriptDelegate                             Callback;                                         		// 0x0018 (0x0018) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0030 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0030 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.NotifyEventClipErrorOccurred
@@ -1115,21 +1115,21 @@ struct UOnlineGameClipsInterfaceEOS_execEventAvailabilityChanged_Params
 // [0x00020401] 
 struct UOnlineGameClipsInterfaceEOS_execIsUploading_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.IsRecording
 // [0x00020401] 
 struct UOnlineGameClipsInterfaceEOS_execIsRecording_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.IsAvailable
 // [0x00020401] 
 struct UOnlineGameClipsInterfaceEOS_execIsAvailable_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.GetTimeUntilUnthrottled
@@ -1145,7 +1145,7 @@ struct UOnlineGameClipsInterfaceEOS_execGetTimeUntilUnthrottled_Params
 struct UOnlineGameClipsInterfaceEOS_execIsClipUploadingLimitReached_Params
 {
 	class FString                                      InEpicAccountId;                                  		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.SetUserMaxClipUploadsPerMinute
@@ -1160,7 +1160,7 @@ struct UOnlineGameClipsInterfaceEOS_execSetUserMaxClipUploadsPerMinute_Params
 struct UOnlineGameClipsInterfaceEOS_execIsAccountLinked_Params
 {
 	class FString                                      InEpicAccountId;                                  		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.CreateClip
@@ -1206,7 +1206,7 @@ struct UOnlineGameInterfaceEOS_execAcceptGameInvite_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FName                                       SessionName;                                      		// 0x0004 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineGameInterfaceEOS.FreeSearchResults
@@ -1214,7 +1214,7 @@ struct UOnlineGameInterfaceEOS_execAcceptGameInvite_Params
 struct UOnlineGameInterfaceEOS_execFreeSearchResults_Params
 {
 	class UOnlineGameSearch*                           Search;                                           		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineGameInterfaceEOS.UpdateOnlineGame
@@ -1223,8 +1223,8 @@ struct UOnlineGameInterfaceEOS_execUpdateOnlineGame_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UOnlineGameSettings*                         UpdatedGameSettings;                              		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bShouldRefreshOnlineData : 1;                     		// 0x0010 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           bShouldRefreshOnlineData : 1;                     		// 0x0010 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePersistentAuthInterfaceEOS.AuthWithNintendoAccountToken
@@ -1233,7 +1233,7 @@ struct UOnlinePersistentAuthInterfaceEOS_execAuthWithNintendoAccountToken_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	class FString                                      NintendoAccountToken;                             		// 0x0008 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePersistentAuthInterfaceEOS.GetTimeUntilAuthExpiration
@@ -1257,7 +1257,7 @@ struct UOnlinePersistentAuthInterfaceEOS_execGetAuthExpirationTimestamp_Params
 struct UOnlinePersistentAuthInterfaceEOS_execLaunchAccountPortal_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePersistentAuthInterfaceEOS.GetClientSecret
@@ -1295,7 +1295,7 @@ struct UOnlinePersistentAuthInterfaceEOS_execUseRefreshToken_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	class FString                                      RefreshToken;                                     		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePersistentAuthInterfaceEOS.GetRefreshToken
@@ -1311,7 +1311,7 @@ struct UOnlinePersistentAuthInterfaceEOS_execGetRefreshToken_Params
 struct UOnlinePersistentAuthInterfaceEOS_execRequestPinGrantCode_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ReadBlockList
@@ -1319,7 +1319,7 @@ struct UOnlinePersistentAuthInterfaceEOS_execRequestPinGrantCode_Params
 struct UOnlinePlayerInterfaceEOS_execReadBlockList_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetBlockList
@@ -1385,7 +1385,7 @@ struct UOnlinePlayerInterfaceEOS_execShowInviteUI_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	class FString                                      InviteText;                                       		// 0x0008 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowGamerCardUI
@@ -1394,7 +1394,7 @@ struct UOnlinePlayerInterfaceEOS_execShowGamerCardUI_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.SetRichPresence
@@ -1420,7 +1420,7 @@ struct UOnlinePlayerInterfaceEOS_execRecordPlayersRecentlyMet_Params
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	TArray<struct FUniqueNetId>                        Players;                                          		// 0x0008 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class FString                                      GameDescription;                                  		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.WordFilterSanitizeString
@@ -1430,7 +1430,7 @@ struct UOnlinePlayerInterfaceEOS_execWordFilterSanitizeString_Params
 	class FString                                      Comment;                                          		// 0x0000 (0x0010) [0x0000000000400082] (CPF_Const | CPF_Parm | CPF_NeedCtorLink)
 	struct FScriptDelegate                             SanitizeDelegate;                                 		// 0x0010 (0x0018) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0028 (0x0048) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0070 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0070 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnSanitizeStringComplete
@@ -1445,7 +1445,7 @@ struct UOnlinePlayerInterfaceEOS_execOnSanitizeStringComplete_Params
 struct UOnlinePlayerInterfaceEOS_execHideKeyboardUI_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearReadPlayerCountryDelegate
@@ -1532,7 +1532,7 @@ struct UOnlinePlayerInterfaceEOS_execUnlockAchievement_Params
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            AchievementId;                                    		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	float                                              PercentComplete;                                  		// 0x0008 (0x0004) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ReadAchievements
@@ -1541,9 +1541,9 @@ struct UOnlinePlayerInterfaceEOS_execReadAchievements_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            TitleId;                                          		// 0x0004 (0x0004) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
-	bool                                               bShouldReadText : 1;                              		// 0x0008 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
-	bool                                               bShouldReadImages : 1;                            		// 0x000C (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           bShouldReadText : 1;                              		// 0x0008 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bShouldReadImages : 1;                            		// 0x000C (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetAchievements
@@ -1553,7 +1553,7 @@ struct UOnlinePlayerInterfaceEOS_execGetAchievements_Params
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	TArray<struct FAchievementDetails>                 Achievements;                                     		// 0x0008 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	int32_t                                            TitleId;                                          		// 0x0018 (0x0004) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
-	uint8_t                                            ReturnValue;                                      		// 0x001C (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	EOnlineEnumerationReadState                        ReturnValue;                                      		// 0x001C (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearReadAchievementsCompleteDelegate
@@ -1599,14 +1599,14 @@ struct UOnlinePlayerInterfaceEOS_execOnReadAchievementsComplete_Params
 // [0x00120001] 
 struct UOnlinePlayerInterfaceEOS_execOnUnlockAchievementComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowControllerUI
 // [0x00020001] 
 struct UOnlinePlayerInterfaceEOS_execShowControllerUI_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetPlayerLanguage
@@ -1622,7 +1622,7 @@ struct UOnlinePlayerInterfaceEOS_execGetPlayerLanguage_Params
 struct UOnlinePlayerInterfaceEOS_execShowPlayersUI_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearProfileDataChangedDelegate
@@ -1653,7 +1653,7 @@ struct UOnlinePlayerInterfaceEOS_execUnlockGamerPicture_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            PictureId;                                        		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.IsDeviceValid
@@ -1661,7 +1661,7 @@ struct UOnlinePlayerInterfaceEOS_execUnlockGamerPicture_Params
 struct UOnlinePlayerInterfaceEOS_execIsDeviceValid_Params
 {
 	int32_t                                            DeviceID;                                         		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetDeviceSelectionResults
@@ -1693,7 +1693,7 @@ struct UOnlinePlayerInterfaceEOS_execAddDeviceSelectionDoneDelegate_Params
 // [0x00120001] 
 struct UOnlinePlayerInterfaceEOS_execOnDeviceSelectionComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowDeviceSelectionUI
@@ -1702,8 +1702,8 @@ struct UOnlinePlayerInterfaceEOS_execShowDeviceSelectionUI_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            SizeNeeded;                                       		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bForceShowUI : 1;                                 		// 0x0008 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           bForceShowUI : 1;                                 		// 0x0008 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowCustomPlayersUI
@@ -1714,21 +1714,21 @@ struct UOnlinePlayerInterfaceEOS_execShowCustomPlayersUI_Params
 	TArray<struct FUniqueNetId>                        Players;                                          		// 0x0008 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class FString                                      Title;                                            		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Description;                                      		// 0x0028 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0038 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0038 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.IsUserSwitchActive
 // [0x00020001] 
 struct UOnlinePlayerInterfaceEOS_execIsUserSwitchActive_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.SetKickPlayerDialogActive
 // [0x00020001] 
 struct UOnlinePlayerInterfaceEOS_execSetKickPlayerDialogActive_Params
 {
-	bool                                               Active : 1;                                       		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           Active : 1;                                       		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.SetKickPreviousUser
@@ -1743,7 +1743,7 @@ struct UOnlinePlayerInterfaceEOS_execSetKickPreviousUser_Params
 struct UOnlinePlayerInterfaceEOS_execShowLoginUIForOrphanedUser_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetSyncedAchievements
@@ -1759,7 +1759,7 @@ struct UOnlinePlayerInterfaceEOS_execGetSyncedAchievements_Params
 struct UOnlinePlayerInterfaceEOS_execIsGuestLogin_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.RequestRestrictedFeatureMessaging
@@ -1775,10 +1775,10 @@ struct UOnlinePlayerInterfaceEOS_execRequestRestrictedFeatureMessaging_Params
 struct UOnlinePlayerInterfaceEOS_execCanCommunicateVoice_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	uint8_t                                            PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	EFeaturePrivilegeLevel                             PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
+	uint32_t                                           bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	class FString                                      Reason;                                           		// 0x0008 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanCommunicateVideo
@@ -1786,10 +1786,10 @@ struct UOnlinePlayerInterfaceEOS_execCanCommunicateVoice_Params
 struct UOnlinePlayerInterfaceEOS_execCanCommunicateVideo_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	uint8_t                                            PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	EFeaturePrivilegeLevel                             PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
+	uint32_t                                           bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	class FString                                      Reason;                                           		// 0x0008 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanCommunicateText
@@ -1797,10 +1797,10 @@ struct UOnlinePlayerInterfaceEOS_execCanCommunicateVideo_Params
 struct UOnlinePlayerInterfaceEOS_execCanCommunicateText_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	uint8_t                                            PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	EFeaturePrivilegeLevel                             PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
+	uint32_t                                           bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	class FString                                      Reason;                                           		// 0x0008 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanShareUserCreatedContent
@@ -1808,10 +1808,10 @@ struct UOnlinePlayerInterfaceEOS_execCanCommunicateText_Params
 struct UOnlinePlayerInterfaceEOS_execCanShareUserCreatedContent_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	uint8_t                                            PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	EFeaturePrivilegeLevel                             PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
+	uint32_t                                           bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	class FString                                      Reason;                                           		// 0x0008 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanAccessPremiumVideoContent
@@ -1819,10 +1819,10 @@ struct UOnlinePlayerInterfaceEOS_execCanShareUserCreatedContent_Params
 struct UOnlinePlayerInterfaceEOS_execCanAccessPremiumVideoContent_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	uint8_t                                            PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	EFeaturePrivilegeLevel                             PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
+	uint32_t                                           bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	class FString                                      Reason;                                           		// 0x0008 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanAccessPremiumContent
@@ -1830,10 +1830,10 @@ struct UOnlinePlayerInterfaceEOS_execCanAccessPremiumVideoContent_Params
 struct UOnlinePlayerInterfaceEOS_execCanAccessPremiumContent_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	uint8_t                                            PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	EFeaturePrivilegeLevel                             PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
+	uint32_t                                           bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	class FString                                      Reason;                                           		// 0x0008 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanUseCloudStorage
@@ -1841,10 +1841,10 @@ struct UOnlinePlayerInterfaceEOS_execCanAccessPremiumContent_Params
 struct UOnlinePlayerInterfaceEOS_execCanUseCloudStorage_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	uint8_t                                            PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	EFeaturePrivilegeLevel                             PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
+	uint32_t                                           bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	class FString                                      Reason;                                           		// 0x0008 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanRecordDVRClips
@@ -1852,10 +1852,10 @@ struct UOnlinePlayerInterfaceEOS_execCanUseCloudStorage_Params
 struct UOnlinePlayerInterfaceEOS_execCanRecordDVRClips_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	uint8_t                                            PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	EFeaturePrivilegeLevel                             PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
+	uint32_t                                           bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	class FString                                      Reason;                                           		// 0x0008 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanBrowseInternet
@@ -1863,10 +1863,10 @@ struct UOnlinePlayerInterfaceEOS_execCanRecordDVRClips_Params
 struct UOnlinePlayerInterfaceEOS_execCanBrowseInternet_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	uint8_t                                            PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	EFeaturePrivilegeLevel                             PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
+	uint32_t                                           bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	class FString                                      Reason;                                           		// 0x0008 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanShareWithSocialNetwork
@@ -1874,10 +1874,10 @@ struct UOnlinePlayerInterfaceEOS_execCanBrowseInternet_Params
 struct UOnlinePlayerInterfaceEOS_execCanShareWithSocialNetwork_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	uint8_t                                            PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	EFeaturePrivilegeLevel                             PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
+	uint32_t                                           bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	class FString                                      Reason;                                           		// 0x0008 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanShareKinectContent
@@ -1885,10 +1885,10 @@ struct UOnlinePlayerInterfaceEOS_execCanShareWithSocialNetwork_Params
 struct UOnlinePlayerInterfaceEOS_execCanShareKinectContent_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	uint8_t                                            PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	EFeaturePrivilegeLevel                             PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
+	uint32_t                                           bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	class FString                                      Reason;                                           		// 0x0008 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanUploadFitnessData
@@ -1896,10 +1896,10 @@ struct UOnlinePlayerInterfaceEOS_execCanShareKinectContent_Params
 struct UOnlinePlayerInterfaceEOS_execCanUploadFitnessData_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	uint8_t                                            PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	EFeaturePrivilegeLevel                             PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
+	uint32_t                                           bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	class FString                                      Reason;                                           		// 0x0008 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.SetPrimaryPlayerGamepadToLastInput
@@ -1958,15 +1958,15 @@ struct UOnlinePlayerInterfaceEOS_execOnLoginStatusChange_Params
 struct UOnlinePlayerInterfaceEOS_execGetPlayHistoryRegistrationKey_Params
 {
 	TArray<uint8_t>                                    Key;                                              		// 0x0000 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CheckParentalControlInfo
 // [0x00020001] 
 struct UOnlinePlayerInterfaceEOS_execCheckParentalControlInfo_Params
 {
-	bool                                               bShowUi : 1;                                      		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           bShowUi : 1;                                      		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetActiveDiscDLC
@@ -1980,7 +1980,7 @@ struct UOnlinePlayerInterfaceEOS_execGetActiveDiscDLC_Params
 // [0x00020001] 
 struct UOnlinePlayerInterfaceEOS_execSetOnlineSubscriptionRequirement_Params
 {
-	bool                                               bRequiresOnlineSubscription : 1;                  		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bRequiresOnlineSubscription : 1;                  		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetControllerID
@@ -2025,7 +2025,7 @@ struct UOnlinePlayerInterfaceEOS_execRegisterController_Params
 struct UOnlinePlayerInterfaceEOS_execCanRegisterController_Params
 {
 	int32_t                                            LocalPlayerNum;                                   		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowBindings
@@ -2033,7 +2033,7 @@ struct UOnlinePlayerInterfaceEOS_execCanRegisterController_Params
 struct UOnlinePlayerInterfaceEOS_execShowBindings_Params
 {
 	int32_t                                            ControllerId;                                     		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.SetControllerLayout
@@ -2122,7 +2122,7 @@ struct UOnlinePlayerInterfaceEOS_execAddInGamePost_Params
 	class FString                                      InPostID;                                         		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	uint8_t                                            LocalUserNum;                                     		// 0x0010 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	TArray<class FString>                              StringReplaceList;                                		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.UpdateStat
@@ -2132,7 +2132,7 @@ struct UOnlinePlayerInterfaceEOS_execUpdateStat_Params
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FName                                       StatName;                                         		// 0x0004 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            Points;                                           		// 0x000C (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearSaveDataNoSpaceDialogCompleteDelegate
@@ -2153,7 +2153,7 @@ struct UOnlinePlayerInterfaceEOS_execAddSaveDataNoSpaceDialogCompleteDelegate_Pa
 // [0x00120001] 
 struct UOnlinePlayerInterfaceEOS_execOnSaveDataNoSpaceDialogComplete_Params
 {
-	bool                                               bContinueWithoutSave : 1;                         		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bContinueWithoutSave : 1;                         		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.RecordPlayersRecentlyMetKeys
@@ -2162,7 +2162,7 @@ struct UOnlinePlayerInterfaceEOS_execRecordPlayersRecentlyMetKeys_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	TArray<struct FFriendHistoryKey>                   PlayerKeys;                                       		// 0x0008 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.IsAchievementUnlocked
@@ -2170,7 +2170,7 @@ struct UOnlinePlayerInterfaceEOS_execRecordPlayersRecentlyMetKeys_Params
 struct UOnlinePlayerInterfaceEOS_execIsAchievementUnlocked_Params
 {
 	int32_t                                            AchievementId;                                    		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowContentMarketplaceUI
@@ -2178,7 +2178,7 @@ struct UOnlinePlayerInterfaceEOS_execIsAchievementUnlocked_Params
 struct UOnlinePlayerInterfaceEOS_execShowContentMarketplaceUI_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowFriendsInviteUI
@@ -2187,7 +2187,7 @@ struct UOnlinePlayerInterfaceEOS_execShowFriendsInviteUI_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowAchievementsUI
@@ -2195,7 +2195,7 @@ struct UOnlinePlayerInterfaceEOS_execShowFriendsInviteUI_Params
 struct UOnlinePlayerInterfaceEOS_execShowAchievementsUI_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowMessagesUI
@@ -2203,7 +2203,7 @@ struct UOnlinePlayerInterfaceEOS_execShowAchievementsUI_Params
 struct UOnlinePlayerInterfaceEOS_execShowMessagesUI_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowFeedbackUI
@@ -2212,7 +2212,7 @@ struct UOnlinePlayerInterfaceEOS_execShowFeedbackUI_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.RemoveCanPlayOnlineChangedDelegate
@@ -2266,7 +2266,7 @@ struct UOnlinePlayerInterfaceEOS_execShowCustomMessageUI_Params
 	class FString                                      MessageTitle;                                     		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      NonEditableMessage;                               		// 0x0028 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      EditableMessage;                                  		// 0x0038 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0048 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0048 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearCrossTitleProfileSettings
@@ -2308,7 +2308,7 @@ struct UOnlinePlayerInterfaceEOS_execOnReadCrossTitleProfileSettingsComplete_Par
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            TitleId;                                          		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ReadCrossTitleProfileSettings
@@ -2318,7 +2318,7 @@ struct UOnlinePlayerInterfaceEOS_execReadCrossTitleProfileSettings_Params
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            TitleId;                                          		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	class UOnlineProfileSettings*                      ProfileSettings;                                  		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearWritePlayerStorageCompleteDelegate
@@ -2342,7 +2342,7 @@ struct UOnlinePlayerInterfaceEOS_execAddWritePlayerStorageCompleteDelegate_Param
 struct UOnlinePlayerInterfaceEOS_execOnWritePlayerStorageComplete_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.WritePlayerStorage
@@ -2352,7 +2352,7 @@ struct UOnlinePlayerInterfaceEOS_execWritePlayerStorage_Params
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	class UOnlinePlayerStorage*                        PlayerStorage;                                    		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            DeviceID;                                         		// 0x0010 (0x0004) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearReadPlayerStorageForNetIdCompleteDelegate
@@ -2376,7 +2376,7 @@ struct UOnlinePlayerInterfaceEOS_execAddReadPlayerStorageForNetIdCompleteDelegat
 struct UOnlinePlayerInterfaceEOS_execOnReadPlayerStorageForNetIdComplete_Params
 {
 	struct FUniqueNetId                                NetId;                                            		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0048 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0048 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ReadPlayerStorageForNetId
@@ -2386,7 +2386,7 @@ struct UOnlinePlayerInterfaceEOS_execReadPlayerStorageForNetId_Params
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                NetId;                                            		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class UOnlinePlayerStorage*                        PlayerStorage;                                    		// 0x0050 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0058 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0058 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearReadPlayerStorageCompleteDelegate
@@ -2410,7 +2410,7 @@ struct UOnlinePlayerInterfaceEOS_execAddReadPlayerStorageCompleteDelegate_Params
 struct UOnlinePlayerInterfaceEOS_execOnReadPlayerStorageComplete_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ReadPlayerStorage
@@ -2420,7 +2420,7 @@ struct UOnlinePlayerInterfaceEOS_execReadPlayerStorage_Params
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	class UOnlinePlayerStorage*                        PlayerStorage;                                    		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            DeviceID;                                         		// 0x0010 (0x0004) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetPlayerStorage
@@ -2471,21 +2471,21 @@ struct UOnlinePlayerInterfaceEOS_execHasIncomingFriendInvite_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                InviteFrom;                                       		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.SupportInGameLogin
 // [0x00020003] 
 struct UOnlinePlayerInterfaceEOS_execSupportInGameLogin_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.HasFriendsFunctionality
 // [0x00020003] 
 struct UOnlinePlayerInterfaceEOS_execHasFriendsFunctionality_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.DeleteMessage
@@ -2494,7 +2494,7 @@ struct UOnlinePlayerInterfaceEOS_execDeleteMessage_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            MessageIndex;                                     		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearFriendMessageReceivedDelegate
@@ -2550,7 +2550,7 @@ struct UOnlinePlayerInterfaceEOS_execAddJoinFriendGameCompleteDelegate_Params
 // [0x00120001] 
 struct UOnlinePlayerInterfaceEOS_execOnJoinFriendGameComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.JoinFriendGame
@@ -2559,7 +2559,7 @@ struct UOnlinePlayerInterfaceEOS_execJoinFriendGame_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                Friend;                                           		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearReceivedGameInviteDelegate
@@ -2594,7 +2594,7 @@ struct UOnlinePlayerInterfaceEOS_execSendGameInviteToFriends_Params
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	TArray<struct FUniqueNetId>                        Friends;                                          		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Text;                                             		// 0x0018 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.SendGameInviteToFriend
@@ -2604,7 +2604,7 @@ struct UOnlinePlayerInterfaceEOS_execSendGameInviteToFriend_Params
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                Friend;                                           		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Text;                                             		// 0x0050 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0060 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0060 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.SendMessageToFriend
@@ -2614,7 +2614,7 @@ struct UOnlinePlayerInterfaceEOS_execSendMessageToFriendW_Params
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                Friend;                                           		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Message;                                          		// 0x0050 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0060 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0060 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearFriendInviteCanceledDelegate
@@ -2673,7 +2673,7 @@ struct UOnlinePlayerInterfaceEOS_execRemoveFriend_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                FormerFriend;                                     		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearRemoveFriendCompleteDelegate
@@ -2696,7 +2696,7 @@ struct UOnlinePlayerInterfaceEOS_execAddRemoveFriendCompleteDelegate_Params
 // [0x00120001] 
 struct UOnlinePlayerInterfaceEOS_execOnRemoveFriendComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	struct FUniqueNetId                                RemovedID;                                        		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -2706,7 +2706,7 @@ struct UOnlinePlayerInterfaceEOS_execDenyFriendInvite_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                RequestingPlayer;                                 		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearDenyFriendInviteCompleteDelegate
@@ -2739,7 +2739,7 @@ struct UOnlinePlayerInterfaceEOS_execAcceptFriendInvite_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                RequestingPlayer;                                 		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearAcceptFriendInviteCompleteDelegate
@@ -2786,7 +2786,7 @@ struct UOnlinePlayerInterfaceEOS_execAddAddFriendByNameCompleteDelegate_Params
 // [0x00120001] 
 struct UOnlinePlayerInterfaceEOS_execOnAddFriendByNameComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddFriendByName
@@ -2796,7 +2796,7 @@ struct UOnlinePlayerInterfaceEOS_execAddFriendByName_Params
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	class FString                                      FriendName;                                       		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Message;                                          		// 0x0018 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.QueryUserByDisplayName
@@ -2805,7 +2805,7 @@ struct UOnlinePlayerInterfaceEOS_execQueryUserByDisplayName_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	class FString                                      DisplayName;                                      		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearQueryUserByDisplayNameCompleteDelegate
@@ -2828,7 +2828,7 @@ struct UOnlinePlayerInterfaceEOS_execAddQueryUserByDisplayNameCompleteDelegate_P
 // [0x00120001] 
 struct UOnlinePlayerInterfaceEOS_execOnQueryUserByDisplayName_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      QueriedDisplayName;                               		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	struct FUniqueNetId                                UserId;                                           		// 0x0018 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
@@ -2840,7 +2840,7 @@ struct UOnlinePlayerInterfaceEOS_execAddFriend_Params
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                NewFriend;                                        		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Message;                                          		// 0x0050 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0060 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0060 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearAddFriendCompleteDelegate
@@ -2893,7 +2893,7 @@ struct UOnlinePlayerInterfaceEOS_execAddKeyboardInputDoneDelegate_Params
 // [0x00120001] 
 struct UOnlinePlayerInterfaceEOS_execOnKeyboardInputComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowKeyboardUI
@@ -2903,11 +2903,11 @@ struct UOnlinePlayerInterfaceEOS_execShowKeyboardUI_Params
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	class FString                                      TitleText;                                        		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      DescriptionText;                                  		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bIsPassword : 1;                                  		// 0x0028 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
-	bool                                               bShouldValidate : 1;                              		// 0x002C (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bIsPassword : 1;                                  		// 0x0028 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bShouldValidate : 1;                              		// 0x002C (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	class FString                                      DefaultText;                                      		// 0x0030 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
 	int32_t                                            MaxResultLength;                                  		// 0x0040 (0x0004) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0044 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0044 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.SetOnlineStatus
@@ -2928,7 +2928,7 @@ struct UOnlinePlayerInterfaceEOS_execGetFriendsList_Params
 	TArray<struct FOnlineFriend>                       Friends;                                          		// 0x0008 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	int32_t                                            Count;                                            		// 0x0018 (0x0004) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
 	int32_t                                            StartingAt;                                       		// 0x001C (0x0004) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
-	uint8_t                                            ReturnValue;                                      		// 0x0020 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	EOnlineEnumerationReadState                        ReturnValue;                                      		// 0x0020 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearReadFriendsCompleteDelegate
@@ -2952,7 +2952,7 @@ struct UOnlinePlayerInterfaceEOS_execAddReadFriendsCompleteDelegate_Params
 // [0x00120001] 
 struct UOnlinePlayerInterfaceEOS_execOnReadFriendsComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ReadFriendsList
@@ -2962,7 +2962,7 @@ struct UOnlinePlayerInterfaceEOS_execReadFriendsList_Params
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            Count;                                            		// 0x0004 (0x0004) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
 	int32_t                                            StartingAt;                                       		// 0x0008 (0x0004) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearWriteProfileSettingsCompleteDelegate
@@ -2987,7 +2987,7 @@ struct UOnlinePlayerInterfaceEOS_execAddWriteProfileSettingsCompleteDelegate_Par
 struct UOnlinePlayerInterfaceEOS_execOnWriteProfileSettingsComplete_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.WriteProfileSettings
@@ -2996,7 +2996,7 @@ struct UOnlinePlayerInterfaceEOS_execWriteProfileSettings_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	class UOnlineProfileSettings*                      ProfileSettings;                                  		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetProfileSettings
@@ -3029,7 +3029,7 @@ struct UOnlinePlayerInterfaceEOS_execAddReadProfileSettingsCompleteDelegate_Para
 struct UOnlinePlayerInterfaceEOS_execOnReadProfileSettingsComplete_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ReadProfileSettings
@@ -3038,7 +3038,7 @@ struct UOnlinePlayerInterfaceEOS_execReadProfileSettings_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	class UOnlineProfileSettings*                      ProfileSettings;                                  		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearFriendsChangeDelegate
@@ -3107,7 +3107,7 @@ struct UOnlinePlayerInterfaceEOS_execAddLoginChangeDelegate_Params
 struct UOnlinePlayerInterfaceEOS_execShowFriendsUI_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.IsMuted
@@ -3116,7 +3116,7 @@ struct UOnlinePlayerInterfaceEOS_execIsMuted_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AreAnyFriends
@@ -3125,7 +3125,7 @@ struct UOnlinePlayerInterfaceEOS_execAreAnyFriends_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	TArray<struct FFriendsQuery>                       Query;                                            		// 0x0008 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.IsFriend
@@ -3134,7 +3134,7 @@ struct UOnlinePlayerInterfaceEOS_execIsFriend_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanShowPresenceInformation
@@ -3142,10 +3142,10 @@ struct UOnlinePlayerInterfaceEOS_execIsFriend_Params
 struct UOnlinePlayerInterfaceEOS_execCanShowPresenceInformation_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	uint8_t                                            PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	EFeaturePrivilegeLevel                             PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
+	uint32_t                                           bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	class FString                                      Reason;                                           		// 0x0008 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanViewPlayerProfiles
@@ -3153,10 +3153,10 @@ struct UOnlinePlayerInterfaceEOS_execCanShowPresenceInformation_Params
 struct UOnlinePlayerInterfaceEOS_execCanViewPlayerProfiles_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	uint8_t                                            PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	EFeaturePrivilegeLevel                             PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
+	uint32_t                                           bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	class FString                                      Reason;                                           		// 0x0008 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanPurchaseContent
@@ -3164,10 +3164,10 @@ struct UOnlinePlayerInterfaceEOS_execCanViewPlayerProfiles_Params
 struct UOnlinePlayerInterfaceEOS_execCanPurchaseContent_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	uint8_t                                            PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	EFeaturePrivilegeLevel                             PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
+	uint32_t                                           bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	class FString                                      Reason;                                           		// 0x0008 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanDownloadUserContent
@@ -3175,10 +3175,10 @@ struct UOnlinePlayerInterfaceEOS_execCanPurchaseContent_Params
 struct UOnlinePlayerInterfaceEOS_execCanDownloadUserContent_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	uint8_t                                            PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	EFeaturePrivilegeLevel                             PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
+	uint32_t                                           bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	class FString                                      Reason;                                           		// 0x0008 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanCommunicate
@@ -3187,8 +3187,8 @@ struct UOnlinePlayerInterfaceEOS_execCanCommunicate_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	uint8_t                                            CommMethod;                                       		// 0x0001 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
-	uint8_t                                            ReturnValue;                                      		// 0x0008 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	EFeaturePrivilegeLevel                             ReturnValue;                                      		// 0x0008 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanPlayOnline
@@ -3196,10 +3196,10 @@ struct UOnlinePlayerInterfaceEOS_execCanCommunicate_Params
 struct UOnlinePlayerInterfaceEOS_execCanPlayOnline_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	uint8_t                                            PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	EFeaturePrivilegeLevel                             PrivilegeLevelHint;                               		// 0x0001 (0x0001) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
+	uint32_t                                           bAttemptToResolve : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	class FString                                      Reason;                                           		// 0x0008 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetPlayerNickname
@@ -3216,7 +3216,7 @@ struct UOnlinePlayerInterfaceEOS_execGetUniquePlayerId_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0008 (0x0048) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetLoginStatus
@@ -3224,7 +3224,7 @@ struct UOnlinePlayerInterfaceEOS_execGetUniquePlayerId_Params
 struct UOnlinePlayerInterfaceEOS_execGetLoginStatus_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	uint8_t                                            ReturnValue;                                      		// 0x0001 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	ELoginStatus                                       ReturnValue;                                      		// 0x0001 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearLogoutCompletedDelegate
@@ -3248,7 +3248,7 @@ struct UOnlinePlayerInterfaceEOS_execAddLogoutCompletedDelegate_Params
 // [0x00120001] 
 struct UOnlinePlayerInterfaceEOS_execOnLogoutCompleted_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.Logout
@@ -3256,7 +3256,7 @@ struct UOnlinePlayerInterfaceEOS_execOnLogoutCompleted_Params
 struct UOnlinePlayerInterfaceEOS_execLogout_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearLoginFailedDelegate
@@ -3298,7 +3298,7 @@ struct UOnlinePlayerInterfaceEOS_execOnLoginFailed_Params
 // [0x00020001] 
 struct UOnlinePlayerInterfaceEOS_execAutoLogin_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.Login
@@ -3308,8 +3308,8 @@ struct UOnlinePlayerInterfaceEOS_execLogin_Params
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	class FString                                      LoginName;                                        		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Password;                                         		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWantsLocalOnly : 1;                              		// 0x0028 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x002C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           bWantsLocalOnly : 1;                              		// 0x0028 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x002C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowLoginUI
@@ -3317,8 +3317,8 @@ struct UOnlinePlayerInterfaceEOS_execLogin_Params
 struct UOnlinePlayerInterfaceEOS_execShowLoginUI_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bShowOnlineOnly : 1;                              		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           bShowOnlineOnly : 1;                              		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnFriendsChange
@@ -3377,7 +3377,7 @@ struct UOnlineStatsInterfaceEOS_execRegisterStatGuid_Params
 {
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      ClientStatGuid;                                   		// 0x0048 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0058 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0058 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.GetClientStatGuid
@@ -3405,7 +3405,7 @@ struct UOnlineStatsInterfaceEOS_execAddRegisterHostStatGuidCompleteDelegate_Para
 // [0x00120001] 
 struct UOnlineStatsInterfaceEOS_execOnRegisterHostStatGuidComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.RegisterHostStatGuid
@@ -3413,7 +3413,7 @@ struct UOnlineStatsInterfaceEOS_execOnRegisterHostStatGuidComplete_Params
 struct UOnlineStatsInterfaceEOS_execRegisterHostStatGuid_Params
 {
 	class FString                                      HostStatGuid;                                     		// 0x0000 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.GetHostStatGuid
@@ -3430,7 +3430,7 @@ struct UOnlineStatsInterfaceEOS_execWriteOnlinePlayerScores_Params
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            LeaderboardId;                                    		// 0x0008 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	TArray<struct FOnlinePlayerScore>                  PlayerScores;                                     		// 0x0010 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.ClearFlushOnlineStatsCompleteDelegate
@@ -3452,7 +3452,7 @@ struct UOnlineStatsInterfaceEOS_execAddFlushOnlineStatsCompleteDelegate_Params
 struct UOnlineStatsInterfaceEOS_execOnFlushOnlineStatsComplete_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.FlushOnlineStats
@@ -3460,7 +3460,7 @@ struct UOnlineStatsInterfaceEOS_execOnFlushOnlineStatsComplete_Params
 struct UOnlineStatsInterfaceEOS_execFlushOnlineStats_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.WriteOnlineStats
@@ -3470,7 +3470,7 @@ struct UOnlineStatsInterfaceEOS_execWriteOnlineStats_Params
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                Player;                                           		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class UOnlineStatsWrite*                           StatsWrite;                                       		// 0x0050 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0058 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0058 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.FreeStats
@@ -3499,7 +3499,7 @@ struct UOnlineStatsInterfaceEOS_execAddReadOnlineStatsCompleteDelegate_Params
 // [0x00120001] 
 struct UOnlineStatsInterfaceEOS_execOnReadOnlineStatsComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.ReadOnlineStatsByRankAroundPlayer
@@ -3509,7 +3509,7 @@ struct UOnlineStatsInterfaceEOS_execReadOnlineStatsByRankAroundPlayer_Params
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	class UOnlineStatsRead*                            StatsRead;                                        		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            NumRows;                                          		// 0x0010 (0x0004) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.ReadOnlineStatsByRank
@@ -3520,7 +3520,7 @@ struct UOnlineStatsInterfaceEOS_execReadOnlineStatsByRank_Params
 	class UOnlineStatsRead*                            StatsRead;                                        		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            StartIndex;                                       		// 0x0010 (0x0004) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
 	int32_t                                            NumToRead;                                        		// 0x0014 (0x0004) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.ReadOnlineStatsForFriends
@@ -3529,7 +3529,7 @@ struct UOnlineStatsInterfaceEOS_execReadOnlineStatsForFriends_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	class UOnlineStatsRead*                            StatsRead;                                        		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.ReadOnlineStats
@@ -3539,7 +3539,7 @@ struct UOnlineStatsInterfaceEOS_execReadOnlineStats_Params
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	TArray<struct FUniqueNetId>                        Players;                                          		// 0x0008 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class UOnlineStatsRead*                            StatsRead;                                        		// 0x0018 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.ClearAllDelegates
@@ -3568,16 +3568,16 @@ struct UOnlineUserCloudFileInterfaceEOS_execDeleteUserFile_Params
 {
 	class FString                                      UserId;                                           		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Filename;                                         		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bShouldCloudDelete : 1;                           		// 0x0020 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
-	bool                                               bShouldLocallyDelete : 1;                         		// 0x0024 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           bShouldCloudDelete : 1;                           		// 0x0020 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bShouldLocallyDelete : 1;                         		// 0x0024 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.OnDeleteUserFileComplete
 // [0x00120001] 
 struct UOnlineUserCloudFileInterfaceEOS_execOnDeleteUserFileComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      UserId;                                           		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Filename;                                         		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
@@ -3603,14 +3603,14 @@ struct UOnlineUserCloudFileInterfaceEOS_execWriteUserFile_Params
 	class FString                                      UserId;                                           		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Filename;                                         		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	TArray<uint8_t>                                    FileContents;                                     		// 0x0020 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0030 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0030 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.OnWriteUserFileComplete
 // [0x00120001] 
 struct UOnlineUserCloudFileInterfaceEOS_execOnWriteUserFileComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      UserId;                                           		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Filename;                                         		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
@@ -3635,14 +3635,14 @@ struct UOnlineUserCloudFileInterfaceEOS_execReadUserFile_Params
 {
 	class FString                                      UserId;                                           		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Filename;                                         		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.OnReadUserFileComplete
 // [0x00120001] 
 struct UOnlineUserCloudFileInterfaceEOS_execOnReadUserFileComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      UserId;                                           		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Filename;                                         		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
@@ -3680,7 +3680,7 @@ struct UOnlineUserCloudFileInterfaceEOS_execEnumerateUserFiles_Params
 // [0x00120001] 
 struct UOnlineUserCloudFileInterfaceEOS_execOnEnumerateUserFilesComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      UserId;                                           		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -3690,7 +3690,7 @@ struct UOnlineUserCloudFileInterfaceEOS_execClearFile_Params
 {
 	class FString                                      UserId;                                           		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Filename;                                         		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.ClearFiles
@@ -3698,7 +3698,7 @@ struct UOnlineUserCloudFileInterfaceEOS_execClearFile_Params
 struct UOnlineUserCloudFileInterfaceEOS_execClearFiles_Params
 {
 	class FString                                      UserId;                                           		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.GetFileContents
@@ -3708,7 +3708,7 @@ struct UOnlineUserCloudFileInterfaceEOS_execGetFileContents_Params
 	class FString                                      UserId;                                           		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Filename;                                         		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	TArray<uint8_t>                                    FileContents;                                     		// 0x0020 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0030 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0030 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.SetVoiceReceiveVolume
@@ -3716,7 +3716,7 @@ struct UOnlineUserCloudFileInterfaceEOS_execGetFileContents_Params
 struct UOnlineVoiceInterfaceEOS_execSetVoiceReceiveVolume_Params
 {
 	float                                              VoiceVolume;                                      		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.UnmuteAll
@@ -3724,7 +3724,7 @@ struct UOnlineVoiceInterfaceEOS_execSetVoiceReceiveVolume_Params
 struct UOnlineVoiceInterfaceEOS_execUnmuteAll_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.MuteAll
@@ -3732,8 +3732,8 @@ struct UOnlineVoiceInterfaceEOS_execUnmuteAll_Params
 struct UOnlineVoiceInterfaceEOS_execMuteAll_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bAllowFriends : 1;                                		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           bAllowFriends : 1;                                		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.SetSpeechRecognitionObject
@@ -3742,7 +3742,7 @@ struct UOnlineVoiceInterfaceEOS_execSetSpeechRecognitionObject_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	class USpeechRecognition*                          SpeechRecogObj;                                   		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.SelectVocabulary
@@ -3751,7 +3751,7 @@ struct UOnlineVoiceInterfaceEOS_execSelectVocabulary_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            VocabularyId;                                     		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.ClearRecognitionCompleteDelegate
@@ -3776,7 +3776,7 @@ struct UOnlineVoiceInterfaceEOS_execGetRecognitionResults_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	TArray<struct FSpeechRecognizedWord>               Words;                                            		// 0x0008 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.StopSpeechRecognition
@@ -3784,7 +3784,7 @@ struct UOnlineVoiceInterfaceEOS_execGetRecognitionResults_Params
 struct UOnlineVoiceInterfaceEOS_execStopSpeechRecognition_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.StartSpeechRecognition
@@ -3792,7 +3792,7 @@ struct UOnlineVoiceInterfaceEOS_execStopSpeechRecognition_Params
 struct UOnlineVoiceInterfaceEOS_execStartSpeechRecognition_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.StopNetworkedVoice
@@ -3829,8 +3829,8 @@ struct UOnlineVoiceInterfaceEOS_execUnmuteRemoteTalker_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bIsSystemWide : 1;                                		// 0x0050 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0054 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           bIsSystemWide : 1;                                		// 0x0050 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0054 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.MuteRemoteTalker
@@ -3839,8 +3839,8 @@ struct UOnlineVoiceInterfaceEOS_execMuteRemoteTalker_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bIsSystemWide : 1;                                		// 0x0050 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0054 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           bIsSystemWide : 1;                                		// 0x0050 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0054 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.SetRemoteTalkerPriority
@@ -3850,7 +3850,7 @@ struct UOnlineVoiceInterfaceEOS_execSetRemoteTalkerPriority_Params
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	int32_t                                            Priority;                                         		// 0x0050 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0054 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0054 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.IsHeadsetPresent
@@ -3858,7 +3858,7 @@ struct UOnlineVoiceInterfaceEOS_execSetRemoteTalkerPriority_Params
 struct UOnlineVoiceInterfaceEOS_execIsHeadsetPresent_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.IsRemotePlayerTalking
@@ -3866,7 +3866,7 @@ struct UOnlineVoiceInterfaceEOS_execIsHeadsetPresent_Params
 struct UOnlineVoiceInterfaceEOS_execIsRemotePlayerTalking_Params
 {
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0048 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0048 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.IsLocalPlayerTalking
@@ -3874,7 +3874,7 @@ struct UOnlineVoiceInterfaceEOS_execIsRemotePlayerTalking_Params
 struct UOnlineVoiceInterfaceEOS_execIsLocalPlayerTalking_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.UnregisterRemoteTalker
@@ -3882,7 +3882,7 @@ struct UOnlineVoiceInterfaceEOS_execIsLocalPlayerTalking_Params
 struct UOnlineVoiceInterfaceEOS_execUnregisterRemoteTalker_Params
 {
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0048 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0048 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.RegisterRemoteTalker
@@ -3890,7 +3890,7 @@ struct UOnlineVoiceInterfaceEOS_execUnregisterRemoteTalker_Params
 struct UOnlineVoiceInterfaceEOS_execRegisterRemoteTalker_Params
 {
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0048 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0048 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.UnregisterLocalTalker
@@ -3898,7 +3898,7 @@ struct UOnlineVoiceInterfaceEOS_execRegisterRemoteTalker_Params
 struct UOnlineVoiceInterfaceEOS_execUnregisterLocalTalker_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.RegisterLocalTalker
@@ -3906,7 +3906,7 @@ struct UOnlineVoiceInterfaceEOS_execUnregisterLocalTalker_Params
 struct UOnlineVoiceInterfaceEOS_execRegisterLocalTalker_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.OnRecognitionComplete
@@ -3920,7 +3920,7 @@ struct UOnlineVoiceInterfaceEOS_execOnRecognitionComplete_Params
 struct UOnlineVoiceInterfaceEOS_execOnPlayerTalkingStateChange_Params
 {
 	struct FUniqueNetId                                Player;                                           		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bIsTalking : 1;                                   		// 0x0048 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bIsTalking : 1;                                   		// 0x0048 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.SetPlayerBlockStatus
@@ -3930,7 +3930,7 @@ struct UOnlineVoiceInterfaceEOS_execSetPlayerBlockStatus_Params
 	class FString                                      LocalEpicAccountId;                               		// 0x0000 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class FString                                      TargetEpicAccountId;                              		// 0x0010 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class FString                                      RoomName;                                         		// 0x0020 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               bBlocked : 1;                                     		// 0x0030 (0x0004) [0x0000000000000082] [0x00000001] (CPF_Const | CPF_Parm)
+	uint32_t                                           bBlocked : 1;                                     		// 0x0030 (0x0004) [0x0000000000000082] [0x00000001] (CPF_Const | CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.SetPlayerMuteStatus
@@ -3940,7 +3940,7 @@ struct UOnlineVoiceInterfaceEOS_execSetPlayerMuteStatus_Params
 	class FString                                      LocalEpicAccountId;                               		// 0x0000 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class FString                                      TargetEpicAccountId;                              		// 0x0010 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class FString                                      RoomName;                                         		// 0x0020 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               bMuted : 1;                                       		// 0x0030 (0x0004) [0x0000000000000082] [0x00000001] (CPF_Const | CPF_Parm)
+	uint32_t                                           bMuted : 1;                                       		// 0x0030 (0x0004) [0x0000000000000082] [0x00000001] (CPF_Const | CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.GetUserState
@@ -3948,7 +3948,7 @@ struct UOnlineVoiceInterfaceEOS_execSetPlayerMuteStatus_Params
 struct UOnlineVoiceInterfaceEOS_execGetUserState_Params
 {
 	class FString                                      EpicAccountId;                                    		// 0x0000 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	uint8_t                                            ReturnValue;                                      		// 0x0010 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	EPlayerVoiceTransitionState                        ReturnValue;                                      		// 0x0010 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.GetCurrentRoomNameForUser
@@ -3965,7 +3965,7 @@ struct UOnlineVoiceInterfaceEOS_execLeaveVoiceRoom_Params
 {
 	class FString                                      EpicAccountId;                                    		// 0x0000 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class FString                                      RoomName;                                         		// 0x0010 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.JoinVoiceRoom
@@ -3976,7 +3976,7 @@ struct UOnlineVoiceInterfaceEOS_execJoinVoiceRoom_Params
 	class FString                                      RoomName;                                         		// 0x0010 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class FString                                      ClientBaseUrl;                                    		// 0x0020 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class FString                                      JoinToken;                                        		// 0x0030 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0040 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0040 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.SetAudioOutputDevice
@@ -3986,7 +3986,7 @@ struct UOnlineVoiceInterfaceEOS_execSetAudioOutputDevice_Params
 	class FString                                      EpicAccountId;                                    		// 0x0000 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class FString                                      DeviceID;                                         		// 0x0010 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	float                                              OutputVolume;                                     		// 0x0020 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0024 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0024 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.SetAudioInputDevice
@@ -3996,7 +3996,7 @@ struct UOnlineVoiceInterfaceEOS_execSetAudioInputDevice_Params
 	class FString                                      EpicAccountId;                                    		// 0x0000 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class FString                                      DeviceID;                                         		// 0x0010 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	float                                              InputVolume;                                      		// 0x0020 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0024 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0024 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.SetLocalPlayerRegisteredStatus
@@ -4004,7 +4004,7 @@ struct UOnlineVoiceInterfaceEOS_execSetAudioInputDevice_Params
 struct UOnlineVoiceInterfaceEOS_execSetLocalPlayerRegisteredStatus_Params
 {
 	class FString                                      PlatformId;                                       		// 0x0000 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               bRegister : 1;                                    		// 0x0010 (0x0004) [0x0000000000000082] [0x00000001] (CPF_Const | CPF_Parm)
+	uint32_t                                           bRegister : 1;                                    		// 0x0010 (0x0004) [0x0000000000000082] [0x00000001] (CPF_Const | CPF_Parm)
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.CacheOutputAudioDevices
@@ -4089,7 +4089,7 @@ struct U__OnlinePlayerInterfaceEOS__LinkedAccount_0x1_exec__OnlinePlayerInterfac
 // [0x00020003] 
 struct U__OnlinePlayerInterfaceEOS__RequestNativePlatformAuthTicket_0x1_exec__OnlinePlayerInterfaceEOS__RequestNativePlatformAuthTicket_0x1_Params
 {
-	bool                                               bSuccess : 1;                                     		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bSuccess : 1;                                     		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Code;                                             		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 

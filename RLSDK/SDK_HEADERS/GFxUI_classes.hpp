@@ -1,12 +1,12 @@
 /*
 #############################################################################################
-# Rocket League (1.0) SDK
-# Generated with the UE3SDKGenerator v2.2.5
+# RocketLeague (1.0.10897.0) SDK
+# Generated with the CodeRedGenerator v1.0.2
 # ========================================================================================= #
 # File: GFxUI_classes.hpp
 # ========================================================================================= #
 # Credits: TheFeckless, ItsBranK
-# Links: www.github.com/itsbrank/UE3SDKGenerator, www.twitter.com/itsbrank
+# Links: www.github.com/CodeRedModding/CodeRed-Generator, www.twitter.com/ItsBranK
 #############################################################################################
 */
 #pragma once
@@ -179,7 +179,7 @@ class UGFxInteraction : public UInteraction
 {
 public:
 	struct FPointer                                    VfTable_FCallbackEventDevice;                  // 0x00D0 (0x0008) [0x0000000000801002] (CPF_Const | CPF_Native | CPF_NoExport)
-	unsigned long                                      bFakeMobileTouches : 1;                        // 0x00D8 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bFakeMobileTouches : 1;                        // 0x00D8 (0x0004) [0x0000000000000000] [0x00000001] 
 
 public:
 	static UClass* StaticClass()
@@ -194,7 +194,7 @@ public:
 		return uClassPointer;
 	};
 
-	void DebugInputKey(int32_t ControllerId, struct FName Key, uint8_t Event, float AmountDepressed, unsigned long bGamepad);
+	void DebugInputKey(int32_t ControllerId, struct FName Key, EInputEvent Event, float AmountDepressed, bool bGamepad);
 	void CloseAllMoviePlayers();
 	void NotifySplitscreenLayoutChanged();
 	void NotifyPlayerRemoved(int32_t PlayerIndex, class ULocalPlayer* RemovedPlayer);
@@ -215,33 +215,33 @@ public:
 	uint8_t                                           UnknownData01[0x50];                           // 0x00C8 (0x0050) UNKNOWN PROPERTY: MapProperty GFxUI.GFxMoviePlayer.ASUObjects
 	int32_t                                            NextASUObject;                                 // 0x0118 (0x0004) [0x0000000000002002] (CPF_Const | CPF_Transient)
 	class USwfMovie*                                   MovieInfo;                                     // 0x0120 (0x0008) [0x0000000000000000]               
-	unsigned long                                      bMovieIsOpen : 1;                              // 0x0128 (0x0004) [0x0000000000000002] [0x00000001] (CPF_Const)
-	unsigned long                                      bDisplayWithHudOff : 1;                        // 0x0128 (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      bEnableGammaCorrection : 1;                    // 0x0128 (0x0004) [0x0000000000000000] [0x00000004] 
-	unsigned long                                      bWidgetsInitializedThisFrame : 1;              // 0x0128 (0x0004) [0x0000000000002002] [0x00000008] (CPF_Const | CPF_Transient)
-	unsigned long                                      bLogUnhandedWidgetInitializations : 1;         // 0x0128 (0x0004) [0x0000000000000000] [0x00000010] 
-	unsigned long                                      bAllowInput : 1;                               // 0x0128 (0x0004) [0x0000000000000000] [0x00000020] 
-	unsigned long                                      bAllowFocus : 1;                               // 0x0128 (0x0004) [0x0000000000000000] [0x00000040] 
-	unsigned long                                      bAutoPlay : 1;                                 // 0x0128 (0x0004) [0x0000000000000000] [0x00000080] 
-	unsigned long                                      bPauseGameWhileActive : 1;                     // 0x0128 (0x0004) [0x0000000000000000] [0x00000100] 
-	unsigned long                                      bDisableWorldRendering : 1;                    // 0x0128 (0x0004) [0x0000000000000000] [0x00000200] 
-	unsigned long                                      bCaptureWorldRendering : 1;                    // 0x0128 (0x0004) [0x0000000000000000] [0x00000400] 
-	unsigned long                                      bCloseOnLevelChange : 1;                       // 0x0128 (0x0004) [0x0000000000000000] [0x00000800] 
-	unsigned long                                      bOnlyOwnerFocusable : 1;                       // 0x0128 (0x0004) [0x0000000000000000] [0x00001000] 
-	unsigned long                                      bForceFullViewport : 1;                        // 0x0128 (0x0004) [0x0000000000000000] [0x00002000] 
-	unsigned long                                      bDiscardNonOwnerInput : 1;                     // 0x0128 (0x0004) [0x0000000000000000] [0x00004000] 
-	unsigned long                                      bCaptureInput : 1;                             // 0x0128 (0x0004) [0x0000000000000000] [0x00008000] 
-	unsigned long                                      bCaptureMouseInput : 1;                        // 0x0128 (0x0004) [0x0000000000000000] [0x00010000] 
-	unsigned long                                      bIgnoreMouseInput : 1;                         // 0x0128 (0x0004) [0x0000000000000000] [0x00020000] 
-	unsigned long                                      bIsSplitscreenLayoutModified : 1;              // 0x0128 (0x0004) [0x0000000000002000] [0x00040000] (CPF_Transient)
-	unsigned long                                      bShowHardwareMouseCursor : 1;                  // 0x0128 (0x0004) [0x0000000000000000] [0x00080000] 
-	unsigned long                                      bForceFullScreen : 1;                          // 0x0128 (0x0004) [0x0000000000000000] [0x00100000] 
-	unsigned long                                      bBlurLesserMovies : 1;                         // 0x0128 (0x0004) [0x0000000000000000] [0x00200000] 
-	unsigned long                                      bHideLesserMovies : 1;                         // 0x0128 (0x0004) [0x0000000000000000] [0x00400000] 
-	unsigned long                                      bIsPriorityBlurred : 1;                        // 0x0128 (0x0004) [0x0000000000000000] [0x00800000] 
-	unsigned long                                      bIsPriorityHidden : 1;                         // 0x0128 (0x0004) [0x0000000000000000] [0x01000000] 
-	unsigned long                                      bIgnoreVisibilityEffect : 1;                   // 0x0128 (0x0004) [0x0000000000000000] [0x02000000] 
-	unsigned long                                      bIgnoreBlurEffect : 1;                         // 0x0128 (0x0004) [0x0000000000000000] [0x04000000] 
+	uint32_t                                           bMovieIsOpen : 1;                              // 0x0128 (0x0004) [0x0000000000000002] [0x00000001] (CPF_Const)
+	uint32_t                                           bDisplayWithHudOff : 1;                        // 0x0128 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bEnableGammaCorrection : 1;                    // 0x0128 (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           bWidgetsInitializedThisFrame : 1;              // 0x0128 (0x0004) [0x0000000000002002] [0x00000008] (CPF_Const | CPF_Transient)
+	uint32_t                                           bLogUnhandedWidgetInitializations : 1;         // 0x0128 (0x0004) [0x0000000000000000] [0x00000010] 
+	uint32_t                                           bAllowInput : 1;                               // 0x0128 (0x0004) [0x0000000000000000] [0x00000020] 
+	uint32_t                                           bAllowFocus : 1;                               // 0x0128 (0x0004) [0x0000000000000000] [0x00000040] 
+	uint32_t                                           bAutoPlay : 1;                                 // 0x0128 (0x0004) [0x0000000000000000] [0x00000080] 
+	uint32_t                                           bPauseGameWhileActive : 1;                     // 0x0128 (0x0004) [0x0000000000000000] [0x00000100] 
+	uint32_t                                           bDisableWorldRendering : 1;                    // 0x0128 (0x0004) [0x0000000000000000] [0x00000200] 
+	uint32_t                                           bCaptureWorldRendering : 1;                    // 0x0128 (0x0004) [0x0000000000000000] [0x00000400] 
+	uint32_t                                           bCloseOnLevelChange : 1;                       // 0x0128 (0x0004) [0x0000000000000000] [0x00000800] 
+	uint32_t                                           bOnlyOwnerFocusable : 1;                       // 0x0128 (0x0004) [0x0000000000000000] [0x00001000] 
+	uint32_t                                           bForceFullViewport : 1;                        // 0x0128 (0x0004) [0x0000000000000000] [0x00002000] 
+	uint32_t                                           bDiscardNonOwnerInput : 1;                     // 0x0128 (0x0004) [0x0000000000000000] [0x00004000] 
+	uint32_t                                           bCaptureInput : 1;                             // 0x0128 (0x0004) [0x0000000000000000] [0x00008000] 
+	uint32_t                                           bCaptureMouseInput : 1;                        // 0x0128 (0x0004) [0x0000000000000000] [0x00010000] 
+	uint32_t                                           bIgnoreMouseInput : 1;                         // 0x0128 (0x0004) [0x0000000000000000] [0x00020000] 
+	uint32_t                                           bIsSplitscreenLayoutModified : 1;              // 0x0128 (0x0004) [0x0000000000002000] [0x00040000] (CPF_Transient)
+	uint32_t                                           bShowHardwareMouseCursor : 1;                  // 0x0128 (0x0004) [0x0000000000000000] [0x00080000] 
+	uint32_t                                           bForceFullScreen : 1;                          // 0x0128 (0x0004) [0x0000000000000000] [0x00100000] 
+	uint32_t                                           bBlurLesserMovies : 1;                         // 0x0128 (0x0004) [0x0000000000000000] [0x00200000] 
+	uint32_t                                           bHideLesserMovies : 1;                         // 0x0128 (0x0004) [0x0000000000000000] [0x00400000] 
+	uint32_t                                           bIsPriorityBlurred : 1;                        // 0x0128 (0x0004) [0x0000000000000000] [0x00800000] 
+	uint32_t                                           bIsPriorityHidden : 1;                         // 0x0128 (0x0004) [0x0000000000000000] [0x01000000] 
+	uint32_t                                           bIgnoreVisibilityEffect : 1;                   // 0x0128 (0x0004) [0x0000000000000000] [0x02000000] 
+	uint32_t                                           bIgnoreBlurEffect : 1;                         // 0x0128 (0x0004) [0x0000000000000000] [0x04000000] 
 	class UTextureRenderTarget2D*                      RenderTexture;                                 // 0x0130 (0x0008) [0x0000000000000001] (CPF_Edit)    
 	int32_t                                            LocalPlayerOwnerIndex;                         // 0x0138 (0x0004) [0x0000000000002000] (CPF_Transient)
 	class UObject*                                     ExternalInterface;                             // 0x0140 (0x0008) [0x0000000000000000]               
@@ -249,8 +249,8 @@ public:
 	TArray<struct FName>                               FocusIgnoreKeys;                               // 0x0158 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	TArray<struct FExternalTexture>                    ExternalTextures;                              // 0x0168 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	TArray<struct FSoundThemeBinding>                  SoundThemes;                                   // 0x0178 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
-	uint8_t                                            TimingMode;                                    // 0x0188 (0x0001) [0x0000000000000000]               
-	uint8_t                                            RenderTextureMode;                             // 0x0189 (0x0001) [0x0000000000000000]               
+	EGFxTimingMode                                     TimingMode;                                    // 0x0188 (0x0001) [0x0000000000000000]               
+	EGFxRenderTextureMode                              RenderTextureMode;                             // 0x0189 (0x0001) [0x0000000000000000]               
 	uint8_t                                            Priority;                                      // 0x018A (0x0001) [0x0000000000000000]               
 	TArray<struct FGFxWidgetBinding>                   WidgetBindings;                                // 0x0190 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	uint8_t                                           UnknownData02[0x50];                           // 0x01A0 (0x0050) UNKNOWN PROPERTY: MapProperty GFxUI.GFxMoviePlayer.WidgetPathBindings
@@ -271,21 +271,21 @@ public:
 		return uClassPointer;
 	};
 
-	void SetFullScreen(unsigned long bFullScreen);
+	void SetFullScreen(bool bFullScreen);
 	bool IsHidden();
-	void SetHidden(unsigned long bHidden);
+	void SetHidden(bool bHidden);
 	void RenderOnce();
 	void UpdateSplitscreenLayout();
-	void ApplyPriorityVisibilityEffect(unsigned long bRemoveEffect);
-	void ApplyPriorityBlurEffect(unsigned long bRemoveEffect);
-	void eventApplyPriorityEffect(unsigned long bRequestedBlurState, unsigned long bRequestedHiddenState);
-	void eventPlaySoundFromTheme(struct FName EventName, struct FName SoundThemeName);
+	void ApplyPriorityVisibilityEffect(bool bRemoveEffect);
+	void ApplyPriorityBlurEffect(bool bRemoveEffect);
+	void eventApplyPriorityEffect(bool bRequestedBlurState, bool bRequestedHiddenState);
+	void eventPlaySoundFromTheme(struct FName EventName, struct FName optionalSoundThemeName);
 	void eventOnFocusLost(int32_t LocalPlayerIndex);
 	void eventOnFocusGained(int32_t LocalPlayerIndex);
 	void ConsoleCommand(class FString Command);
 	class APlayerController* eventGetPC();
 	class ULocalPlayer* eventGetLP();
-	void Init(class ULocalPlayer* LocPlay);
+	void Init(class ULocalPlayer* optionalLocPlay);
 	void SetWidgetPathBinding(class UGFxObject* WidgetToBind, struct FName Path);
 	void eventPostWidgetInit();
 	bool eventWidgetUnloaded(struct FName WidgetName, struct FName WidgetPath, class UGFxObject* Widget);
@@ -299,7 +299,7 @@ public:
 	struct FASValue Invoke(class FString method, TArray<struct FASValue> args);
 	void ActionScriptSetFunction(class UGFxObject* Object, class FString Member);
 	class UGFxObject* CreateArray();
-	class UGFxObject* CreateObject(class FString ASClass, class UClass* Type, TArray<struct FASValue> args);
+	class UGFxObject* CreateObject(class FString ASClass, class UClass* optionalType, TArray<struct FASValue> optionalArgs);
 	bool SetVariableStringArray(class FString Path, int32_t Index, TArray<class FString> Arg);
 	bool SetVariableFloatArray(class FString Path, int32_t Index, TArray<float> Arg);
 	bool SetVariableIntArray(class FString Path, int32_t Index, TArray<int32_t> Arg);
@@ -312,44 +312,44 @@ public:
 	void SetVariableString(class FString Path, class FString S);
 	void SetVariableInt(class FString Path, int32_t I);
 	void SetVariableNumber(class FString Path, float F);
-	void SetVariableBool(class FString Path, unsigned long B);
+	void SetVariableBool(class FString Path, bool B);
 	void SetVariable(class FString Path, struct FASValue Arg);
-	class UGFxObject* GetVariableObject(class FString Path, class UClass* Type);
+	class UGFxObject* GetVariableObject(class FString Path, class UClass* optionalType);
 	class FString GetVariableString(class FString Path);
 	int32_t GetVariableInt(class FString Path);
 	float GetVariableNumber(class FString Path);
 	bool GetVariableBool(class FString Path);
 	struct FASValue GetVariable(class FString Path);
 	int32_t GetAVMVersion();
-	bool eventFilterButtonInput(int32_t ControllerId, struct FName ButtonName, uint8_t InputEvent);
-	void FlushPlayerInput(unsigned long capturekeysonly);
+	bool eventFilterButtonInput(int32_t ControllerId, struct FName ButtonName, EInputEvent InputEvent);
+	void FlushPlayerInput(bool capturekeysonly);
 	void ClearFocusIgnoreKeys();
 	void AddFocusIgnoreKey(struct FName Key);
 	void ClearCaptureKeys();
 	void AddCaptureKey(struct FName Key);
-	void SetMovieCanReceiveInput(unsigned long bCanReceiveInput);
-	void SetMovieCanReceiveFocus(unsigned long bCanReceiveFocus);
+	void SetMovieCanReceiveInput(bool bCanReceiveInput);
+	void SetMovieCanReceiveFocus(bool bCanReceiveFocus);
 	void SetPerspective3D(struct FMatrix& matPersp);
 	void SetView3D(struct FMatrix& matView);
 	void GetVisibleFrameRect(float& x0, float& y0, float& X1, float& Y1);
-	void SetAlignment(uint8_t A);
-	void SetViewScaleMode(uint8_t SM);
+	void SetAlignment(EGFxAlign A);
+	void SetViewScaleMode(EGFxScaleMode SM);
 	void SetViewport(int32_t X, int32_t Y, int32_t Width, int32_t Height);
 	class UGameViewportClient* GetGameViewportClient();
 	void SetPriority(uint8_t NewPriority);
 	bool SetExternalTexture(class FString Resource, class UTexture* Texture);
 	void SetExternalInterface(class UObject* H);
-	void SetTimingMode(uint8_t Mode);
+	void SetTimingMode(EGFxTimingMode Mode);
 	void SetMovieInfo(class USwfMovie* Data);
 	void eventConditionalClearPause();
 	void eventOnCleanup();
 	void eventOnClose();
-	void Close(unsigned long Unload);
-	void SetPause(unsigned long bPausePlayback);
+	void Close(bool optionalUnload);
+	void SetPause(bool optionalBPausePlayback);
 	void OnPostAdvance(float DeltaTime);
 	void PostAdvance(float DeltaTime);
 	void Advance(float Time);
-	bool eventStart(unsigned long StartPaused);
+	bool eventStart(bool optionalStartPaused);
 };
 
 // Class GFxUI.GFxObject
@@ -375,8 +375,8 @@ public:
 
 	bool eventWidgetUnloaded(struct FName WidgetName, struct FName WidgetPath, class UGFxObject* Widget);
 	bool eventWidgetInitialized(struct FName WidgetName, struct FName WidgetPath, class UGFxObject* Widget);
-	class UGFxObject* AttachMovie(class FString symbolname, class FString instancename, int32_t Depth, class UClass* Type);
-	class UGFxObject* CreateEmptyMovieClip(class FString instancename, int32_t Depth, class UClass* Type);
+	class UGFxObject* AttachMovie(class FString symbolname, class FString instancename, int32_t optionalDepth, class UClass* optionalType);
+	class UGFxObject* CreateEmptyMovieClip(class FString instancename, int32_t optionalDepth, class UClass* optionalType);
 	void GotoAndStopI(int32_t frame);
 	void GotoAndStop(class FString frame);
 	void GotoAndPlayI(int32_t frame);
@@ -393,18 +393,18 @@ public:
 	void SetElementMemberString(int32_t Index, class FString Member, class FString S);
 	void SetElementMemberInt(int32_t Index, class FString Member, int32_t I);
 	void SetElementMemberFloat(int32_t Index, class FString Member, float F);
-	void SetElementMemberBool(int32_t Index, class FString Member, unsigned long B);
+	void SetElementMemberBool(int32_t Index, class FString Member, bool B);
 	void SetElementMemberObject(int32_t Index, class FString Member, class UGFxObject* val);
 	void SetElementMember(int32_t Index, class FString Member, struct FASValue Arg);
 	class FString GetElementMemberString(int32_t Index, class FString Member);
 	int32_t GetElementMemberInt(int32_t Index, class FString Member);
 	float GetElementMemberFloat(int32_t Index, class FString Member);
 	bool GetElementMemberBool(int32_t Index, class FString Member);
-	class UGFxObject* GetElementMemberObject(int32_t Index, class FString Member, class UClass* Type);
+	class UGFxObject* GetElementMemberObject(int32_t Index, class FString Member, class UClass* optionalType);
 	struct FASValue GetElementMember(int32_t Index, class FString Member);
 	void SetElementColorTransform(int32_t Index, struct FASColorTransform cxform);
 	void SetElementPosition(int32_t Index, float X, float Y);
-	void SetElementVisible(int32_t Index, unsigned long Visible);
+	void SetElementVisible(int32_t Index, bool Visible);
 	void SetElementDisplayMatrix(int32_t Index, struct FMatrix M);
 	void SetElementDisplayInfo(int32_t Index, struct FASDisplayInfo D);
 	struct FMatrix GetElementDisplayMatrix(int32_t Index);
@@ -412,18 +412,18 @@ public:
 	void SetElementString(int32_t Index, class FString S);
 	void SetElementInt(int32_t Index, int32_t I);
 	void SetElementFloat(int32_t Index, float F);
-	void SetElementBool(int32_t Index, unsigned long B);
+	void SetElementBool(int32_t Index, bool B);
 	void SetElementObject(int32_t Index, class UGFxObject* val);
 	void SetElement(int32_t Index, struct FASValue Arg);
 	class FString GetElementString(int32_t Index);
 	int32_t GetElementInt(int32_t Index);
 	float GetElementFloat(int32_t Index);
 	bool GetElementBool(int32_t Index);
-	class UGFxObject* GetElementObject(int32_t Index, class UClass* Type);
+	class UGFxObject* GetElementObject(int32_t Index, class UClass* optionalType);
 	struct FASValue GetElement(int32_t Index);
-	void SetText(class FString Text, class UTranslationContext* InContext);
+	void SetText(class FString Text, class UTranslationContext* optionalInContext);
 	class FString GetText();
-	void SetVisible(unsigned long Visible);
+	void SetVisible(bool Visible);
 	void SetDisplayMatrix3D(struct FMatrix M);
 	void SetDisplayMatrix(struct FMatrix M);
 	void SetColorTransform(struct FASColorTransform cxform);
@@ -434,15 +434,15 @@ public:
 	struct FASColorTransform GetColorTransform();
 	bool GetPosition(float& X, float& Y);
 	struct FASDisplayInfo GetDisplayInfo();
-	static class FString TranslateString(class FString StringToTranslate, class UTranslationContext* InContext);
+	static class FString TranslateString(class FString StringToTranslate, class UTranslationContext* optionalInContext);
 	void SetFunction(class FString Member, class UObject* Context, struct FName fname);
 	void SetObject(class FString Member, class UGFxObject* val);
-	void SetString(class FString Member, class FString S, class UTranslationContext* InContext);
+	void SetString(class FString Member, class FString S, class UTranslationContext* optionalInContext);
 	void SetInt(class FString Member, int32_t I);
 	void SetFloat(class FString Member, float F);
-	void SetBool(class FString Member, unsigned long B);
+	void SetBool(class FString Member, bool B);
 	void Set(class FString Member, struct FASValue Arg);
-	class UGFxObject* GetObjectW(class FString Member, class UClass* Type);
+	class UGFxObject* GetObjectW(class FString Member, class UClass* optionalType);
 	class FString GetString(class FString Member);
 	int32_t GetInt(class FString Member);
 	float GetFloat(class FString Member);
@@ -480,17 +480,17 @@ public:
 class USwfMovie : public UGFxRawData
 {
 public:
-	unsigned long                                      bUsesFontlib : 1;                              // 0x00A0 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bSetSRGBOnImportedTextures : 1;                // 0x00A0 (0x0004) [0x0000000000020001] [0x00000002] (CPF_Edit | CPF_EditConst)
-	unsigned long                                      bPackTextures : 1;                             // 0x00A0 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
-	unsigned long                                      bForceSquarePacking : 1;                       // 0x00A0 (0x0004) [0x0000000000000001] [0x00000008] (CPF_Edit)
+	uint32_t                                           bUsesFontlib : 1;                              // 0x00A0 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bSetSRGBOnImportedTextures : 1;                // 0x00A0 (0x0004) [0x0000000000020001] [0x00000002] (CPF_Edit | CPF_EditConst)
+	uint32_t                                           bPackTextures : 1;                             // 0x00A0 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
+	uint32_t                                           bForceSquarePacking : 1;                       // 0x00A0 (0x0004) [0x0000000000000001] [0x00000008] (CPF_Edit)
 	class FString                                      SourceFile;                                    // 0x00A8 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
 	int32_t                                            PackTextureSize;                               // 0x00B8 (0x0004) [0x0000000000000001] (CPF_Edit)    
-	uint8_t                                            TextureRescale;                                // 0x00BC (0x0001) [0x0000000000000001] (CPF_Edit)    
+	EFlashTextureRescale                               TextureRescale;                                // 0x00BC (0x0001) [0x0000000000000001] (CPF_Edit)    
 	class FString                                      TextureFormat;                                 // 0x00C0 (0x0010) [0x0000000000420001] (CPF_Edit | CPF_EditConst | CPF_NeedCtorLink)
 	class FString                                      SourceFileTimestamp;                           // 0x00D0 (0x0010) [0x0000000000420001] (CPF_Edit | CPF_EditConst | CPF_NeedCtorLink)
 	int32_t                                            SourceFileCRC;                                 // 0x00E0 (0x0004) [0x0000000000020001] (CPF_Edit | CPF_EditConst)
-	TArray<uint8_t>                                    Editions;                                      // 0x00E8 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
+	TArray<EEdition>                                   Editions;                                      // 0x00E8 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
 	TArray<struct FName>                               Features;                                      // 0x00F8 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
 	int32_t                                            RTTextures;                                    // 0x0108 (0x0004) [0x0000000000000000]               
 	int32_t                                            RTVideoTextures;                               // 0x010C (0x0004) [0x0000000000000000]               
@@ -538,7 +538,7 @@ class UGFxAction_CloseMovie : public USequenceAction
 {
 public:
 	class UGFxMoviePlayer*                             Movie;                                         // 0x0160 (0x0008) [0x0000000000000000]               
-	unsigned long                                      bUnload : 1;                                   // 0x0168 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bUnload : 1;                                   // 0x0168 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 
 public:
 	static UClass* StaticClass()
@@ -613,12 +613,12 @@ public:
 	class USwfMovie*                                   Movie;                                         // 0x0160 (0x0008) [0x0000000000000001] (CPF_Edit)    
 	class UClass*                                      MoviePlayerClass;                              // 0x0168 (0x0008) [0x0000000000000001] (CPF_Edit)    
 	class UGFxMoviePlayer*                             MoviePlayer;                                   // 0x0170 (0x0008) [0x0000000000000000]               
-	unsigned long                                      bTakeFocus : 1;                                // 0x0178 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bCaptureInput : 1;                             // 0x0178 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
-	unsigned long                                      bStartPaused : 1;                              // 0x0178 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
-	unsigned long                                      bEnableGammaCorrection : 1;                    // 0x0178 (0x0004) [0x0000000000000000] [0x00000008] 
-	unsigned long                                      bDisplayWithHudOff : 1;                        // 0x0178 (0x0004) [0x0000000000000001] [0x00000010] (CPF_Edit)
-	uint8_t                                            RenderTextureMode;                             // 0x017C (0x0001) [0x0000000000000001] (CPF_Edit)    
+	uint32_t                                           bTakeFocus : 1;                                // 0x0178 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bCaptureInput : 1;                             // 0x0178 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bStartPaused : 1;                              // 0x0178 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
+	uint32_t                                           bEnableGammaCorrection : 1;                    // 0x0178 (0x0004) [0x0000000000000000] [0x00000008] 
+	uint32_t                                           bDisplayWithHudOff : 1;                        // 0x0178 (0x0004) [0x0000000000000001] [0x00000010] (CPF_Edit)
+	EGFxRenderTextureMode                              RenderTextureMode;                             // 0x017C (0x0001) [0x0000000000000001] (CPF_Edit)    
 	class UTextureRenderTarget2D*                      RenderTexture;                                 // 0x0180 (0x0008) [0x0000000000000001] (CPF_Edit)    
 	TArray<struct FName>                               CaptureKeys;                                   // 0x0188 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
 	TArray<struct FName>                               FocusIgnoreKeys;                               // 0x0198 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
@@ -753,12 +753,12 @@ public:
 	};
 
 	void ASRemoveAllEventListeners(class FString Event);
-	void AS3AddEventListener(class FString Type, class UGFxObject* O, unsigned long useCapture, int32_t listenerPriority, unsigned long useWeakReference);
+	void AS3AddEventListener(class FString Type, class UGFxObject* O, bool optionalUseCapture, int32_t optionalListenerPriority, bool optionalUseWeakReference);
 	void ASAddEventListener(class FString Type, class UGFxObject* O, class FString func);
 	void SetListener(class UGFxObject* O, class FString Member, struct FScriptDelegate Listener);
 	class FString GetEventStringFromTypename(struct FName Typename);
 	void RemoveAllEventListeners(class FString Event);
-	void AddEventListener(struct FName Type, struct FScriptDelegate Listener, unsigned long useCapture, int32_t listenerPriority, unsigned long useWeakReference);
+	void AddEventListener(struct FName Type, struct FScriptDelegate Listener, bool optionalUseCapture, int32_t optionalListenerPriority, bool optionalUseWeakReference);
 	void EventListener(struct FEventData Data);
 };
 

@@ -1,12 +1,12 @@
 /*
 #############################################################################################
-# Rocket League (1.0) SDK
-# Generated with the UE3SDKGenerator v2.2.5
+# RocketLeague (1.0.10897.0) SDK
+# Generated with the CodeRedGenerator v1.0.2
 # ========================================================================================= #
 # File: Engine_structs.hpp
 # ========================================================================================= #
 # Credits: TheFeckless, ItsBranK
-# Links: www.github.com/itsbrank/UE3SDKGenerator, www.twitter.com/itsbrank
+# Links: www.github.com/CodeRedModding/CodeRed-Generator, www.twitter.com/ItsBranK
 #############################################################################################
 */
 #pragma once
@@ -17,7 +17,7 @@
 
 /*
 # ========================================================================================= #
-# Script Structs
+# Structs
 # ========================================================================================= #
 */
 
@@ -137,17 +137,17 @@ struct FImpactInfo
 struct FSeqOpInputLink
 {
 	class FString                                      LinkDesc;                                      // 0x0000 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      bHasImpulse : 1;                               // 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bHasImpulse : 1;                               // 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
 	int32_t                                            QueuedActivations;                             // 0x0014 (0x0004) [0x0000000000000000]               
-	unsigned long                                      bDisabled : 1;                                 // 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bDisabledPIE : 1;                              // 0x0018 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bDisabled : 1;                                 // 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bDisabledPIE : 1;                              // 0x0018 (0x0004) [0x0000000000000000] [0x00000002] 
 	class USequenceOp*                                 LinkedOp;                                      // 0x0020 (0x0008) [0x0000000000000000]               
 	int32_t                                            DrawY;                                         // 0x0028 (0x0004) [0x0000000000000000]               
-	unsigned long                                      bHidden : 1;                                   // 0x002C (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bHidden : 1;                                   // 0x002C (0x0004) [0x0000000000000000] [0x00000001] 
 	float                                              ActivateDelay;                                 // 0x0030 (0x0004) [0x0000000000000000]               
-	unsigned long                                      bMoving : 1;                                   // 0x0034 (0x0004) [0x0000000800002000] [0x00000001] (CPF_Transient)
-	unsigned long                                      bClampedMax : 1;                               // 0x0034 (0x0004) [0x0000000800000000] [0x00000002] 
-	unsigned long                                      bClampedMin : 1;                               // 0x0034 (0x0004) [0x0000000800000000] [0x00000004] 
+	uint32_t                                           bMoving : 1;                                   // 0x0034 (0x0004) [0x0000000800002000] [0x00000001] (CPF_Transient)
+	uint32_t                                           bClampedMax : 1;                               // 0x0034 (0x0004) [0x0000000800000000] [0x00000002] 
+	uint32_t                                           bClampedMin : 1;                               // 0x0034 (0x0004) [0x0000000800000000] [0x00000004] 
 	int32_t                                            OverrideDelta;                                 // 0x0038 (0x0004) [0x0000000800000000]               
 };
 
@@ -163,9 +163,9 @@ struct FAnimSlotInfo
 // 0x0024
 struct FTimerData
 {
-	unsigned long                                      bLoop : 1;                                     // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bPaused : 1;                                   // 0x0000 (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      bStateTimer : 1;                               // 0x0000 (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           bLoop : 1;                                     // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bPaused : 1;                                   // 0x0000 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bStateTimer : 1;                               // 0x0000 (0x0004) [0x0000000000000000] [0x00000004] 
 	struct FName                                       FuncName;                                      // 0x0004 (0x0008) [0x0000000000000000]               
 	float                                              Rate;                                          // 0x000C (0x0004) [0x0000000000000000]               
 	float                                              Count;                                         // 0x0010 (0x0004) [0x0000000000000000]               
@@ -178,70 +178,70 @@ struct FTimerData
 // 0x0004
 struct FRBCollisionChannelContainer
 {
-	unsigned long                                      Default : 1;                                   // 0x0000 (0x0004) [0x0000000000000003] [0x00000001] (CPF_Edit | CPF_Const)
-	unsigned long                                      Nothing : 1;                                   // 0x0000 (0x0004) [0x0000000000000002] [0x00000002] (CPF_Const)
-	unsigned long                                      Pawn : 1;                                      // 0x0000 (0x0004) [0x0000000000000003] [0x00000004] (CPF_Edit | CPF_Const)
-	unsigned long                                      Vehicle : 1;                                   // 0x0000 (0x0004) [0x0000000000000003] [0x00000008] (CPF_Edit | CPF_Const)
-	unsigned long                                      Water : 1;                                     // 0x0000 (0x0004) [0x0000000000000003] [0x00000010] (CPF_Edit | CPF_Const)
-	unsigned long                                      GameplayPhysics : 1;                           // 0x0000 (0x0004) [0x0000000000000003] [0x00000020] (CPF_Edit | CPF_Const)
-	unsigned long                                      EffectPhysics : 1;                             // 0x0000 (0x0004) [0x0000000000000003] [0x00000040] (CPF_Edit | CPF_Const)
-	unsigned long                                      Ball : 1;                                      // 0x0000 (0x0004) [0x0000000000000003] [0x00000080] (CPF_Edit | CPF_Const)
-	unsigned long                                      VehicleBlocker : 1;                            // 0x0000 (0x0004) [0x0000000000000003] [0x00000100] (CPF_Edit | CPF_Const)
-	unsigned long                                      BallBlocker : 1;                               // 0x0000 (0x0004) [0x0000000000000003] [0x00000200] (CPF_Edit | CPF_Const)
-	unsigned long                                      Untitled4 : 1;                                 // 0x0000 (0x0004) [0x0000000000000003] [0x00000400] (CPF_Edit | CPF_Const)
-	unsigned long                                      Cloth : 1;                                     // 0x0000 (0x0004) [0x0000000000000003] [0x00000800] (CPF_Edit | CPF_Const)
-	unsigned long                                      FluidDrain : 1;                                // 0x0000 (0x0004) [0x0000000000000003] [0x00001000] (CPF_Edit | CPF_Const)
-	unsigned long                                      SoftBody : 1;                                  // 0x0000 (0x0004) [0x0000000000000003] [0x00002000] (CPF_Edit | CPF_Const)
-	unsigned long                                      FracturedMeshPart : 1;                         // 0x0000 (0x0004) [0x0000000000000003] [0x00004000] (CPF_Edit | CPF_Const)
-	unsigned long                                      BlockingVolume : 1;                            // 0x0000 (0x0004) [0x0000000000000003] [0x00008000] (CPF_Edit | CPF_Const)
-	unsigned long                                      DeadPawn : 1;                                  // 0x0000 (0x0004) [0x0000000000000003] [0x00010000] (CPF_Edit | CPF_Const)
-	unsigned long                                      Clothing : 1;                                  // 0x0000 (0x0004) [0x0000000000000003] [0x00020000] (CPF_Edit | CPF_Const)
-	unsigned long                                      ClothingCollision : 1;                         // 0x0000 (0x0004) [0x0000000000000003] [0x00040000] (CPF_Edit | CPF_Const)
+	uint32_t                                           Default : 1;                                   // 0x0000 (0x0004) [0x0000000000000003] [0x00000001] (CPF_Edit | CPF_Const)
+	uint32_t                                           Nothing : 1;                                   // 0x0000 (0x0004) [0x0000000000000002] [0x00000002] (CPF_Const)
+	uint32_t                                           Pawn : 1;                                      // 0x0000 (0x0004) [0x0000000000000003] [0x00000004] (CPF_Edit | CPF_Const)
+	uint32_t                                           Vehicle : 1;                                   // 0x0000 (0x0004) [0x0000000000000003] [0x00000008] (CPF_Edit | CPF_Const)
+	uint32_t                                           Water : 1;                                     // 0x0000 (0x0004) [0x0000000000000003] [0x00000010] (CPF_Edit | CPF_Const)
+	uint32_t                                           GameplayPhysics : 1;                           // 0x0000 (0x0004) [0x0000000000000003] [0x00000020] (CPF_Edit | CPF_Const)
+	uint32_t                                           EffectPhysics : 1;                             // 0x0000 (0x0004) [0x0000000000000003] [0x00000040] (CPF_Edit | CPF_Const)
+	uint32_t                                           Ball : 1;                                      // 0x0000 (0x0004) [0x0000000000000003] [0x00000080] (CPF_Edit | CPF_Const)
+	uint32_t                                           VehicleBlocker : 1;                            // 0x0000 (0x0004) [0x0000000000000003] [0x00000100] (CPF_Edit | CPF_Const)
+	uint32_t                                           BallBlocker : 1;                               // 0x0000 (0x0004) [0x0000000000000003] [0x00000200] (CPF_Edit | CPF_Const)
+	uint32_t                                           Untitled4 : 1;                                 // 0x0000 (0x0004) [0x0000000000000003] [0x00000400] (CPF_Edit | CPF_Const)
+	uint32_t                                           Cloth : 1;                                     // 0x0000 (0x0004) [0x0000000000000003] [0x00000800] (CPF_Edit | CPF_Const)
+	uint32_t                                           FluidDrain : 1;                                // 0x0000 (0x0004) [0x0000000000000003] [0x00001000] (CPF_Edit | CPF_Const)
+	uint32_t                                           SoftBody : 1;                                  // 0x0000 (0x0004) [0x0000000000000003] [0x00002000] (CPF_Edit | CPF_Const)
+	uint32_t                                           FracturedMeshPart : 1;                         // 0x0000 (0x0004) [0x0000000000000003] [0x00004000] (CPF_Edit | CPF_Const)
+	uint32_t                                           BlockingVolume : 1;                            // 0x0000 (0x0004) [0x0000000000000003] [0x00008000] (CPF_Edit | CPF_Const)
+	uint32_t                                           DeadPawn : 1;                                  // 0x0000 (0x0004) [0x0000000000000003] [0x00010000] (CPF_Edit | CPF_Const)
+	uint32_t                                           Clothing : 1;                                  // 0x0000 (0x0004) [0x0000000000000003] [0x00020000] (CPF_Edit | CPF_Const)
+	uint32_t                                           ClothingCollision : 1;                         // 0x0000 (0x0004) [0x0000000000000003] [0x00040000] (CPF_Edit | CPF_Const)
 };
 
 // ScriptStruct Engine.LightComponent.LightingChannelContainer
 // 0x0004
 struct FLightingChannelContainer
 {
-	unsigned long                                      bInitialized : 1;                              // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      BSP : 1;                                       // 0x0000 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
-	unsigned long                                      Static : 1;                                    // 0x0000 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
-	unsigned long                                      Dynamic : 1;                                   // 0x0000 (0x0004) [0x0000000000000001] [0x00000008] (CPF_Edit)
-	unsigned long                                      CompositeDynamic : 1;                          // 0x0000 (0x0004) [0x0000000000000001] [0x00000010] (CPF_Edit)
-	unsigned long                                      Skybox : 1;                                    // 0x0000 (0x0004) [0x0000000000000001] [0x00000020] (CPF_Edit)
-	unsigned long                                      Unnamed : 1;                                   // 0x0000 (0x0004) [0x0000000000000001] [0x00000040] (CPF_Edit)
-	unsigned long                                      Unnamed01 : 1;                                 // 0x0000 (0x0004) [0x0000000000000001] [0x00000080] (CPF_Edit)
-	unsigned long                                      Unnamed02 : 1;                                 // 0x0000 (0x0004) [0x0000000000000001] [0x00000100] (CPF_Edit)
-	unsigned long                                      Unnamed03 : 1;                                 // 0x0000 (0x0004) [0x0000000000000001] [0x00000200] (CPF_Edit)
-	unsigned long                                      Unnamed04 : 1;                                 // 0x0000 (0x0004) [0x0000000000000001] [0x00000400] (CPF_Edit)
-	unsigned long                                      Unnamed05 : 1;                                 // 0x0000 (0x0004) [0x0000000000000001] [0x00000800] (CPF_Edit)
-	unsigned long                                      Cinematic : 1;                                 // 0x0000 (0x0004) [0x0000000000000001] [0x00001000] (CPF_Edit)
-	unsigned long                                      Cinematic01 : 1;                               // 0x0000 (0x0004) [0x0000000000000001] [0x00002000] (CPF_Edit)
-	unsigned long                                      Cinematic02 : 1;                               // 0x0000 (0x0004) [0x0000000000000001] [0x00004000] (CPF_Edit)
-	unsigned long                                      Cinematic03 : 1;                               // 0x0000 (0x0004) [0x0000000000000001] [0x00008000] (CPF_Edit)
-	unsigned long                                      Cinematic04 : 1;                               // 0x0000 (0x0004) [0x0000000000000001] [0x00010000] (CPF_Edit)
-	unsigned long                                      Cinematic05 : 1;                               // 0x0000 (0x0004) [0x0000000000000001] [0x00020000] (CPF_Edit)
-	unsigned long                                      Cinematic06 : 1;                               // 0x0000 (0x0004) [0x0000000000000001] [0x00040000] (CPF_Edit)
-	unsigned long                                      Cinematic07 : 1;                               // 0x0000 (0x0004) [0x0000000000000001] [0x00080000] (CPF_Edit)
-	unsigned long                                      Cinematic08 : 1;                               // 0x0000 (0x0004) [0x0000000000000001] [0x00100000] (CPF_Edit)
-	unsigned long                                      Cinematic09 : 1;                               // 0x0000 (0x0004) [0x0000000000000001] [0x00200000] (CPF_Edit)
-	unsigned long                                      Gameplay : 1;                                  // 0x0000 (0x0004) [0x0000000000000001] [0x00400000] (CPF_Edit)
-	unsigned long                                      Gameplay01 : 1;                                // 0x0000 (0x0004) [0x0000000000000001] [0x00800000] (CPF_Edit)
-	unsigned long                                      Gameplay02 : 1;                                // 0x0000 (0x0004) [0x0000000000000001] [0x01000000] (CPF_Edit)
-	unsigned long                                      Gameplay03 : 1;                                // 0x0000 (0x0004) [0x0000000000000001] [0x02000000] (CPF_Edit)
-	unsigned long                                      Crowd : 1;                                     // 0x0000 (0x0004) [0x0000000000000001] [0x04000000] (CPF_Edit)
+	uint32_t                                           bInitialized : 1;                              // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           BSP : 1;                                       // 0x0000 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           Static : 1;                                    // 0x0000 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
+	uint32_t                                           Dynamic : 1;                                   // 0x0000 (0x0004) [0x0000000000000001] [0x00000008] (CPF_Edit)
+	uint32_t                                           CompositeDynamic : 1;                          // 0x0000 (0x0004) [0x0000000000000001] [0x00000010] (CPF_Edit)
+	uint32_t                                           Skybox : 1;                                    // 0x0000 (0x0004) [0x0000000000000001] [0x00000020] (CPF_Edit)
+	uint32_t                                           Unnamed : 1;                                   // 0x0000 (0x0004) [0x0000000000000001] [0x00000040] (CPF_Edit)
+	uint32_t                                           Unnamed01 : 1;                                 // 0x0000 (0x0004) [0x0000000000000001] [0x00000080] (CPF_Edit)
+	uint32_t                                           Unnamed02 : 1;                                 // 0x0000 (0x0004) [0x0000000000000001] [0x00000100] (CPF_Edit)
+	uint32_t                                           Unnamed03 : 1;                                 // 0x0000 (0x0004) [0x0000000000000001] [0x00000200] (CPF_Edit)
+	uint32_t                                           Unnamed04 : 1;                                 // 0x0000 (0x0004) [0x0000000000000001] [0x00000400] (CPF_Edit)
+	uint32_t                                           Unnamed05 : 1;                                 // 0x0000 (0x0004) [0x0000000000000001] [0x00000800] (CPF_Edit)
+	uint32_t                                           Cinematic : 1;                                 // 0x0000 (0x0004) [0x0000000000000001] [0x00001000] (CPF_Edit)
+	uint32_t                                           Cinematic01 : 1;                               // 0x0000 (0x0004) [0x0000000000000001] [0x00002000] (CPF_Edit)
+	uint32_t                                           Cinematic02 : 1;                               // 0x0000 (0x0004) [0x0000000000000001] [0x00004000] (CPF_Edit)
+	uint32_t                                           Cinematic03 : 1;                               // 0x0000 (0x0004) [0x0000000000000001] [0x00008000] (CPF_Edit)
+	uint32_t                                           Cinematic04 : 1;                               // 0x0000 (0x0004) [0x0000000000000001] [0x00010000] (CPF_Edit)
+	uint32_t                                           Cinematic05 : 1;                               // 0x0000 (0x0004) [0x0000000000000001] [0x00020000] (CPF_Edit)
+	uint32_t                                           Cinematic06 : 1;                               // 0x0000 (0x0004) [0x0000000000000001] [0x00040000] (CPF_Edit)
+	uint32_t                                           Cinematic07 : 1;                               // 0x0000 (0x0004) [0x0000000000000001] [0x00080000] (CPF_Edit)
+	uint32_t                                           Cinematic08 : 1;                               // 0x0000 (0x0004) [0x0000000000000001] [0x00100000] (CPF_Edit)
+	uint32_t                                           Cinematic09 : 1;                               // 0x0000 (0x0004) [0x0000000000000001] [0x00200000] (CPF_Edit)
+	uint32_t                                           Gameplay : 1;                                  // 0x0000 (0x0004) [0x0000000000000001] [0x00400000] (CPF_Edit)
+	uint32_t                                           Gameplay01 : 1;                                // 0x0000 (0x0004) [0x0000000000000001] [0x00800000] (CPF_Edit)
+	uint32_t                                           Gameplay02 : 1;                                // 0x0000 (0x0004) [0x0000000000000001] [0x01000000] (CPF_Edit)
+	uint32_t                                           Gameplay03 : 1;                                // 0x0000 (0x0004) [0x0000000000000001] [0x02000000] (CPF_Edit)
+	uint32_t                                           Crowd : 1;                                     // 0x0000 (0x0004) [0x0000000000000001] [0x04000000] (CPF_Edit)
 };
 
 // ScriptStruct Engine.PrimitiveComponent.MaterialViewRelevance
 // 0x0004
 struct FMaterialViewRelevance
 {
-	unsigned long                                      bOpaque : 1;                                   // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bTranslucent : 1;                              // 0x0000 (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      bDistortion : 1;                               // 0x0000 (0x0004) [0x0000000000000000] [0x00000004] 
-	unsigned long                                      bOneLayerDistortionRelevance : 1;              // 0x0000 (0x0004) [0x0000000000000000] [0x00000008] 
-	unsigned long                                      bLit : 1;                                      // 0x0000 (0x0004) [0x0000000000000000] [0x00000010] 
-	unsigned long                                      bUsesSceneColor : 1;                           // 0x0000 (0x0004) [0x0000000000000000] [0x00000020] 
+	uint32_t                                           bOpaque : 1;                                   // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bTranslucent : 1;                              // 0x0000 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bDistortion : 1;                               // 0x0000 (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           bOneLayerDistortionRelevance : 1;              // 0x0000 (0x0004) [0x0000000000000000] [0x00000008] 
+	uint32_t                                           bLit : 1;                                      // 0x0000 (0x0004) [0x0000000000000000] [0x00000010] 
+	uint32_t                                           bUsesSceneColor : 1;                           // 0x0000 (0x0004) [0x0000000000000000] [0x00000020] 
 };
 
 // ScriptStruct Engine.GroupComponent_ORS.ComponentTemplate
@@ -283,8 +283,8 @@ struct FNavigationOctreeObject
 // 0x0004
 struct ANavigationPoint_FCheckpointRecord
 {
-	unsigned long                                      bDisabled : 1;                                 // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bBlocked : 1;                                  // 0x0000 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bDisabled : 1;                                 // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bBlocked : 1;                                  // 0x0000 (0x0004) [0x0000000000000000] [0x00000002] 
 };
 
 // ScriptStruct Engine.KMeshProps.KSphereElem
@@ -293,8 +293,8 @@ struct FKSphereElem
 {
 	struct FMatrix                                     TM;                                            // 0x0000 (0x0040) [0x0000000000020001] (CPF_Edit | CPF_EditConst)
 	float                                              Radius;                                        // 0x0040 (0x0004) [0x0000000000020001] (CPF_Edit | CPF_EditConst)
-	unsigned long                                      bNoRBCollision : 1;                            // 0x0044 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bPerPolyShape : 1;                             // 0x0044 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bNoRBCollision : 1;                            // 0x0044 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bPerPolyShape : 1;                             // 0x0044 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
 };
 
 // ScriptStruct Engine.KMeshProps.KBoxElem
@@ -305,8 +305,8 @@ struct FKBoxElem
 	float                                              X;                                             // 0x0040 (0x0004) [0x0000000000020001] (CPF_Edit | CPF_EditConst)
 	float                                              Y;                                             // 0x0044 (0x0004) [0x0000000000020001] (CPF_Edit | CPF_EditConst)
 	float                                              Z;                                             // 0x0048 (0x0004) [0x0000000000020001] (CPF_Edit | CPF_EditConst)
-	unsigned long                                      bNoRBCollision : 1;                            // 0x004C (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bPerPolyShape : 1;                             // 0x004C (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bNoRBCollision : 1;                            // 0x004C (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bPerPolyShape : 1;                             // 0x004C (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
 };
 
 // ScriptStruct Engine.KMeshProps.KSphylElem
@@ -316,8 +316,8 @@ struct FKSphylElem
 	struct FMatrix                                     TM;                                            // 0x0000 (0x0040) [0x0000000000020001] (CPF_Edit | CPF_EditConst)
 	float                                              Radius;                                        // 0x0040 (0x0004) [0x0000000000020001] (CPF_Edit | CPF_EditConst)
 	float                                              Length;                                        // 0x0044 (0x0004) [0x0000000000020001] (CPF_Edit | CPF_EditConst)
-	unsigned long                                      bNoRBCollision : 1;                            // 0x0048 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bPerPolyShape : 1;                             // 0x0048 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bNoRBCollision : 1;                            // 0x0048 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bPerPolyShape : 1;                             // 0x0048 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
 };
 
 // ScriptStruct Engine.KMeshProps.KConvexElem
@@ -342,8 +342,8 @@ struct FKAggregateGeom
 	TArray<struct FKSphylElem>                         SphylElems;                                    // 0x0020 (0x0010) [0x0000000000400041] (CPF_Edit | CPF_EditConstArray | CPF_NeedCtorLink)
 	TArray<struct FKConvexElem>                        ConvexElems;                                   // 0x0030 (0x0010) [0x0000000000400041] (CPF_Edit | CPF_EditConstArray | CPF_NeedCtorLink)
 	struct FPointer                                    RenderInfo;                                    // 0x0040 (0x0008) [0x0000000401001000] (CPF_Native)  
-	unsigned long                                      bSkipCloseAndParallelChecks : 1;               // 0x0048 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bSimpleCollisionPlane : 1;                     // 0x0048 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bSkipCloseAndParallelChecks : 1;               // 0x0048 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bSimpleCollisionPlane : 1;                     // 0x0048 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
 };
 
 // ScriptStruct Engine.Pylon.PolyReference
@@ -395,7 +395,7 @@ struct FGeomSelection
 // 0x0024
 struct FInteriorSettings
 {
-	unsigned long                                      bIsWorldInfo : 1;                              // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bIsWorldInfo : 1;                              // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 	float                                              ExteriorVolume;                                // 0x0004 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              ExteriorTime;                                  // 0x0008 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              ExteriorLPF;                                   // 0x000C (0x0004) [0x0000000000000001] (CPF_Edit)    
@@ -410,7 +410,7 @@ struct FInteriorSettings
 // 0x0010
 struct FReverbSettings
 {
-	unsigned long                                      bApplyReverb : 1;                              // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bApplyReverb : 1;                              // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 	uint8_t                                            ReverbType;                                    // 0x0004 (0x0001) [0x0000000000000001] (CPF_Edit)    
 	float                                              Volume;                                        // 0x0008 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              FadeTime;                                      // 0x000C (0x0004) [0x0000000000000001] (CPF_Edit)    
@@ -477,7 +477,7 @@ struct FAmbientSoundSlot
 // 0x0004
 struct AAmbientSoundSimpleToggleable_FCheckpointRecord
 {
-	unsigned long                                      bCurrentlyPlaying : 1;                         // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bCurrentlyPlaying : 1;                         // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Engine.SplineAudioComponent.InterpPointOnSpline
@@ -520,7 +520,7 @@ struct FMultiCueSplineSoundSlot
 	float                                              SourceInteriorLPF;                             // 0x0024 (0x0004) [0x0000000000001002] (CPF_Const | CPF_Native)
 	float                                              CurrentInteriorVolume;                         // 0x0028 (0x0004) [0x0000000000001002] (CPF_Const | CPF_Native)
 	float                                              CurrentInteriorLPF;                            // 0x002C (0x0004) [0x0000000000001002] (CPF_Const | CPF_Native)
-	unsigned long                                      bPlaying : 1;                                  // 0x0030 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bPlaying : 1;                                  // 0x0030 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Engine.PlatformInterfaceBase.DelegateArray
@@ -547,7 +547,7 @@ struct FPlatformInterfaceData
 // 0x0048
 struct FPlatformInterfaceDelegateResult
 {
-	unsigned long                                      bSuccessful : 1;                               // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bSuccessful : 1;                               // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 	struct FPlatformInterfaceData                      Data;                                          // 0x0008 (0x0040) [0x0000000000400000] (CPF_NeedCtorLink)
 };
 
@@ -643,8 +643,8 @@ struct FAnimBlendChild
 	class UAnimNode*                                   Anim;                                          // 0x0008 (0x0008) [0x0000000004400008] (CPF_ExportObject | CPF_NeedCtorLink | CPF_EditInline)
 	float                                              Weight;                                        // 0x0010 (0x0004) [0x0000000000000000]               
 	float                                              BlendWeight;                                   // 0x0014 (0x0004) [0x0000000000002002] (CPF_Const | CPF_Transient)
-	unsigned long                                      bMirrorSkeleton : 1;                           // 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bIsAdditive : 1;                               // 0x0018 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bMirrorSkeleton : 1;                           // 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bIsAdditive : 1;                               // 0x0018 (0x0004) [0x0000000000000000] [0x00000002] 
 	int32_t                                            DrawY;                                         // 0x001C (0x0004) [0x0000000800000000]               
 };
 
@@ -683,9 +683,9 @@ struct FPerBoneMaskInfo
 	float                                              DesiredWeight;                                 // 0x0010 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              BlendTimeToGo;                                 // 0x0014 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	TArray<struct FWeightRule>                         WeightRuleList;                                // 0x0018 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
-	unsigned long                                      bWeightBasedOnNodeRules : 1;                   // 0x0028 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bDisableForNonLocalHumanPlayers : 1;           // 0x0028 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
-	unsigned long                                      bPendingBlend : 1;                             // 0x0028 (0x0004) [0x0000000000002000] [0x00000004] (CPF_Transient)
+	uint32_t                                           bWeightBasedOnNodeRules : 1;                   // 0x0028 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bDisableForNonLocalHumanPlayers : 1;           // 0x0028 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bPendingBlend : 1;                             // 0x0028 (0x0004) [0x0000000000002000] [0x00000004] (CPF_Transient)
 	TArray<float>                                      PerBoneWeights;                                // 0x0030 (0x0010) [0x0000000000402000] (CPF_Transient | CPF_NeedCtorLink)
 	TArray<uint8_t>                                    TransformReqBone;                              // 0x0040 (0x0010) [0x0000000000402000] (CPF_Transient | CPF_NeedCtorLink)
 	int32_t                                            TransformReqBoneIndex;                         // 0x0050 (0x0004) [0x0000000000002000] (CPF_Transient)
@@ -756,7 +756,7 @@ struct FRandomAnimInfo
 	uint8_t                                            LoopCountMax;                                  // 0x0005 (0x0001) [0x0000000000000001] (CPF_Edit)    
 	float                                              BlendInTime;                                   // 0x0008 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	struct FVector2D                                   PlayRateRange;                                 // 0x000C (0x0008) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bStillFrame : 1;                               // 0x0014 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bStillFrame : 1;                               // 0x0014 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 	uint8_t                                            LoopCount;                                     // 0x0018 (0x0001) [0x0000000000002000] (CPF_Transient)
 	float                                              LastPosition;                                  // 0x001C (0x0004) [0x0000000000002000] (CPF_Transient)
 };
@@ -786,7 +786,7 @@ struct FSynchGroup
 	TArray<class UAnimNodeSequence*>                   SeqNodes;                                      // 0x0000 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	class UAnimNodeSequence*                           MasterNode;                                    // 0x0010 (0x0008) [0x0000000000002000] (CPF_Transient)
 	struct FName                                       GroupName;                                     // 0x0018 (0x0008) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bFireSlaveNotifies : 1;                        // 0x0020 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bFireSlaveNotifies : 1;                        // 0x0020 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 	float                                              RateScale;                                     // 0x0024 (0x0004) [0x0000000000000001] (CPF_Edit)    
 };
 
@@ -801,9 +801,9 @@ struct FBonePair
 // 0x001C
 struct FSkelMeshComponentLODInfo
 {
-	TArray<unsigned long>                              HiddenMaterials;                               // 0x0000 (0x0010) [0x0000000000400002] (CPF_Const | CPF_NeedCtorLink)
-	unsigned long                                      bNeedsInstanceWeightUpdate : 1;                // 0x0010 (0x0004) [0x0000000000000002] [0x00000001] (CPF_Const)
-	unsigned long                                      bAlwaysUseInstanceWeights : 1;                 // 0x0010 (0x0004) [0x0000000000000002] [0x00000002] (CPF_Const)
+	TArray<uint32_t>                                   HiddenMaterials;                               // 0x0000 (0x0010) [0x0000000000400002] (CPF_Const | CPF_NeedCtorLink)
+	uint32_t                                           bNeedsInstanceWeightUpdate : 1;                // 0x0010 (0x0004) [0x0000000000000002] [0x00000001] (CPF_Const)
+	uint32_t                                           bAlwaysUseInstanceWeights : 1;                 // 0x0010 (0x0004) [0x0000000000000002] [0x00000002] (CPF_Const)
 	uint8_t                                            InstanceWeightUsage;                           // 0x0014 (0x0001) [0x0000000000002002] (CPF_Const | CPF_Transient)
 	int32_t                                            InstanceWeightIdx;                             // 0x0018 (0x0004) [0x0000000000002002] (CPF_Const | CPF_Transient)
 };
@@ -833,9 +833,9 @@ struct FLocalizedSubtitle
 {
 	class FString                                      LanguageExt;                                   // 0x0000 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	TArray<struct FSubtitleCue>                        Subtitles;                                     // 0x0010 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      bMature : 1;                                   // 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bManualWordWrap : 1;                           // 0x0020 (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      bSingleLine : 1;                               // 0x0020 (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           bMature : 1;                                   // 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bManualWordWrap : 1;                           // 0x0020 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bSingleLine : 1;                               // 0x0020 (0x0004) [0x0000000000000000] [0x00000004] 
 };
 
 // ScriptStruct Engine.EngineTypes.LightMapRef
@@ -893,9 +893,9 @@ struct FLightmassDirectionalLightSettings : FLightmassLightSettings
 // 0x001C
 struct FLightmassPrimitiveSettings
 {
-	unsigned long                                      bUseTwoSidedLighting : 1;                      // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bShadowIndirectOnly : 1;                       // 0x0000 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
-	unsigned long                                      bUseEmissiveForStaticLighting : 1;             // 0x0000 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
+	uint32_t                                           bUseTwoSidedLighting : 1;                      // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bShadowIndirectOnly : 1;                       // 0x0000 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bUseEmissiveForStaticLighting : 1;             // 0x0000 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
 	float                                              EmissiveLightFalloffExponent;                  // 0x0004 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              EmissiveLightExplicitInfluenceRadius;          // 0x0008 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              EmissiveBoost;                                 // 0x000C (0x0004) [0x0000000000000001] (CPF_Edit)    
@@ -908,33 +908,33 @@ struct FLightmassPrimitiveSettings
 // 0x0014
 struct FLightmassDebugOptions
 {
-	unsigned long                                      bDebugMode : 1;                                // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bStatsEnabled : 1;                             // 0x0000 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
-	unsigned long                                      bGatherBSPSurfacesAcrossComponents : 1;        // 0x0000 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
+	uint32_t                                           bDebugMode : 1;                                // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bStatsEnabled : 1;                             // 0x0000 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bGatherBSPSurfacesAcrossComponents : 1;        // 0x0000 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
 	float                                              CoplanarTolerance;                             // 0x0004 (0x0004) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bUseDeterministicLighting : 1;                 // 0x0008 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bUseImmediateImport : 1;                       // 0x0008 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
-	unsigned long                                      bImmediateProcessMappings : 1;                 // 0x0008 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
-	unsigned long                                      bSortMappings : 1;                             // 0x0008 (0x0004) [0x0000000000000001] [0x00000008] (CPF_Edit)
-	unsigned long                                      bDumpBinaryFiles : 1;                          // 0x0008 (0x0004) [0x0000000000000001] [0x00000010] (CPF_Edit)
-	unsigned long                                      bDebugMaterials : 1;                           // 0x0008 (0x0004) [0x0000000000000001] [0x00000020] (CPF_Edit)
-	unsigned long                                      bPadMappings : 1;                              // 0x0008 (0x0004) [0x0000000000000001] [0x00000040] (CPF_Edit)
-	unsigned long                                      bDebugPaddings : 1;                            // 0x0008 (0x0004) [0x0000000000000001] [0x00000080] (CPF_Edit)
-	unsigned long                                      bOnlyCalcDebugTexelMappings : 1;               // 0x0008 (0x0004) [0x0000000000000001] [0x00000100] (CPF_Edit)
-	unsigned long                                      bUseRandomColors : 1;                          // 0x0008 (0x0004) [0x0000000000000001] [0x00000200] (CPF_Edit)
-	unsigned long                                      bColorBordersGreen : 1;                        // 0x0008 (0x0004) [0x0000000000000001] [0x00000400] (CPF_Edit)
-	unsigned long                                      bColorByExecutionTime : 1;                     // 0x0008 (0x0004) [0x0000000000000001] [0x00000800] (CPF_Edit)
+	uint32_t                                           bUseDeterministicLighting : 1;                 // 0x0008 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bUseImmediateImport : 1;                       // 0x0008 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bImmediateProcessMappings : 1;                 // 0x0008 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
+	uint32_t                                           bSortMappings : 1;                             // 0x0008 (0x0004) [0x0000000000000001] [0x00000008] (CPF_Edit)
+	uint32_t                                           bDumpBinaryFiles : 1;                          // 0x0008 (0x0004) [0x0000000000000001] [0x00000010] (CPF_Edit)
+	uint32_t                                           bDebugMaterials : 1;                           // 0x0008 (0x0004) [0x0000000000000001] [0x00000020] (CPF_Edit)
+	uint32_t                                           bPadMappings : 1;                              // 0x0008 (0x0004) [0x0000000000000001] [0x00000040] (CPF_Edit)
+	uint32_t                                           bDebugPaddings : 1;                            // 0x0008 (0x0004) [0x0000000000000001] [0x00000080] (CPF_Edit)
+	uint32_t                                           bOnlyCalcDebugTexelMappings : 1;               // 0x0008 (0x0004) [0x0000000000000001] [0x00000100] (CPF_Edit)
+	uint32_t                                           bUseRandomColors : 1;                          // 0x0008 (0x0004) [0x0000000000000001] [0x00000200] (CPF_Edit)
+	uint32_t                                           bColorBordersGreen : 1;                        // 0x0008 (0x0004) [0x0000000000000001] [0x00000400] (CPF_Edit)
+	uint32_t                                           bColorByExecutionTime : 1;                     // 0x0008 (0x0004) [0x0000000000000001] [0x00000800] (CPF_Edit)
 	float                                              ExecutionTimeDivisor;                          // 0x000C (0x0004) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bInitialized : 1;                              // 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bInitialized : 1;                              // 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Engine.EngineTypes.SwarmDebugOptions
 // 0x0004
 struct FSwarmDebugOptions
 {
-	unsigned long                                      bDistributionEnabled : 1;                      // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bForceContentExport : 1;                       // 0x0000 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
-	unsigned long                                      bInitialized : 1;                              // 0x0000 (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           bDistributionEnabled : 1;                      // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bForceContentExport : 1;                       // 0x0000 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bInitialized : 1;                              // 0x0000 (0x0004) [0x0000000000000000] [0x00000004] 
 };
 
 // ScriptStruct Engine.EngineTypes.RootMotionCurve
@@ -1074,29 +1074,29 @@ struct FNxDestructibleAdvancedParameters
 // 0x0004
 struct FNxDestructibleParametersFlag
 {
-	unsigned long                                      ACCUMULATE_DAMAGE : 1;                         // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      ASSET_DEFINED_SUPPORT : 1;                     // 0x0000 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
-	unsigned long                                      WORLD_SUPPORT : 1;                             // 0x0000 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
-	unsigned long                                      DEBRIS_TIMEOUT : 1;                            // 0x0000 (0x0004) [0x0000000000000001] [0x00000008] (CPF_Edit)
-	unsigned long                                      DEBRIS_MAX_SEPARATION : 1;                     // 0x0000 (0x0004) [0x0000000000000001] [0x00000010] (CPF_Edit)
-	unsigned long                                      CRUMBLE_SMALLEST_CHUNKS : 1;                   // 0x0000 (0x0004) [0x0000000000000001] [0x00000020] (CPF_Edit)
-	unsigned long                                      ACCURATE_RAYCASTS : 1;                         // 0x0000 (0x0004) [0x0000000000000001] [0x00000040] (CPF_Edit)
-	unsigned long                                      USE_VALID_BOUNDS : 1;                          // 0x0000 (0x0004) [0x0000000000000001] [0x00000080] (CPF_Edit)
-	unsigned long                                      FORM_EXTENDED_STRUCTURES : 1;                  // 0x0000 (0x0004) [0x0000000000000001] [0x00000100] (CPF_Edit)
+	uint32_t                                           ACCUMULATE_DAMAGE : 1;                         // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           ASSET_DEFINED_SUPPORT : 1;                     // 0x0000 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           WORLD_SUPPORT : 1;                             // 0x0000 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
+	uint32_t                                           DEBRIS_TIMEOUT : 1;                            // 0x0000 (0x0004) [0x0000000000000001] [0x00000008] (CPF_Edit)
+	uint32_t                                           DEBRIS_MAX_SEPARATION : 1;                     // 0x0000 (0x0004) [0x0000000000000001] [0x00000010] (CPF_Edit)
+	uint32_t                                           CRUMBLE_SMALLEST_CHUNKS : 1;                   // 0x0000 (0x0004) [0x0000000000000001] [0x00000020] (CPF_Edit)
+	uint32_t                                           ACCURATE_RAYCASTS : 1;                         // 0x0000 (0x0004) [0x0000000000000001] [0x00000040] (CPF_Edit)
+	uint32_t                                           USE_VALID_BOUNDS : 1;                          // 0x0000 (0x0004) [0x0000000000000001] [0x00000080] (CPF_Edit)
+	uint32_t                                           FORM_EXTENDED_STRUCTURES : 1;                  // 0x0000 (0x0004) [0x0000000000000001] [0x00000100] (CPF_Edit)
 };
 
 // ScriptStruct Engine.ApexDestructibleAsset.NxDestructibleDepthParameters
 // 0x0005
 struct FNxDestructibleDepthParameters
 {
-	unsigned long                                      TAKE_IMPACT_DAMAGE : 1;                        // 0x0000 (0x0004) [0x0000000020000000] [0x00000001]  CPF_Deprecated)
-	unsigned long                                      IGNORE_POSE_UPDATES : 1;                       // 0x0000 (0x0004) [0x0000000020000000] [0x00000002]  CPF_Deprecated)
-	unsigned long                                      IGNORE_RAYCAST_CALLBACKS : 1;                  // 0x0000 (0x0004) [0x0000000020000000] [0x00000004]  CPF_Deprecated)
-	unsigned long                                      IGNORE_CONTACT_CALLBACKS : 1;                  // 0x0000 (0x0004) [0x0000000020000000] [0x00000008]  CPF_Deprecated)
-	unsigned long                                      USER_FLAG : 1;                                 // 0x0000 (0x0004) [0x0000000020000000] [0x00000010]  CPF_Deprecated)
-	unsigned long                                      USER_FLAG01 : 1;                               // 0x0000 (0x0004) [0x0000000020000000] [0x00000020]  CPF_Deprecated)
-	unsigned long                                      USER_FLAG02 : 1;                               // 0x0000 (0x0004) [0x0000000020000000] [0x00000040]  CPF_Deprecated)
-	unsigned long                                      USER_FLAG03 : 1;                               // 0x0000 (0x0004) [0x0000000020000000] [0x00000080]  CPF_Deprecated)
+	uint32_t                                           TAKE_IMPACT_DAMAGE : 1;                        // 0x0000 (0x0004) [0x0000000020000000] [0x00000001]  CPF_Deprecated)
+	uint32_t                                           IGNORE_POSE_UPDATES : 1;                       // 0x0000 (0x0004) [0x0000000020000000] [0x00000002]  CPF_Deprecated)
+	uint32_t                                           IGNORE_RAYCAST_CALLBACKS : 1;                  // 0x0000 (0x0004) [0x0000000020000000] [0x00000004]  CPF_Deprecated)
+	uint32_t                                           IGNORE_CONTACT_CALLBACKS : 1;                  // 0x0000 (0x0004) [0x0000000020000000] [0x00000008]  CPF_Deprecated)
+	uint32_t                                           USER_FLAG : 1;                                 // 0x0000 (0x0004) [0x0000000020000000] [0x00000010]  CPF_Deprecated)
+	uint32_t                                           USER_FLAG01 : 1;                               // 0x0000 (0x0004) [0x0000000020000000] [0x00000020]  CPF_Deprecated)
+	uint32_t                                           USER_FLAG02 : 1;                               // 0x0000 (0x0004) [0x0000000020000000] [0x00000040]  CPF_Deprecated)
+	uint32_t                                           USER_FLAG03 : 1;                               // 0x0000 (0x0004) [0x0000000020000000] [0x00000080]  CPF_Deprecated)
 	uint8_t                                            ImpactDamageOverride;                          // 0x0004 (0x0001) [0x0000000000000001] (CPF_Edit)    
 };
 
@@ -1115,7 +1115,7 @@ struct FNxDestructibleParameters
 	float                                              MaterialStrength;                              // 0x006C (0x0004) [0x0000000020000000]  CPF_Deprecated)
 	float                                              DamageToPercentDeformation;                    // 0x0070 (0x0004) [0x0000000020000000]  CPF_Deprecated)
 	float                                              DeformationPercentLimit;                       // 0x0074 (0x0004) [0x0000000020000000]  CPF_Deprecated)
-	unsigned long                                      bFormExtendedStructures : 1;                   // 0x0078 (0x0004) [0x0000000020000000] [0x00000001]  CPF_Deprecated)
+	uint32_t                                           bFormExtendedStructures : 1;                   // 0x0078 (0x0004) [0x0000000020000000] [0x00000001]  CPF_Deprecated)
 	int32_t                                            SupportDepth;                                  // 0x007C (0x0004) [0x0000000000000001] (CPF_Edit)    
 	int32_t                                            MinimumFractureDepth;                          // 0x0080 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	int32_t                                            DebrisDepth;                                   // 0x0084 (0x0004) [0x0000000000000001] (CPF_Edit)    
@@ -1133,7 +1133,7 @@ struct FNxDestructibleParameters
 	float                                              FractureImpulseScale;                          // 0x00CC (0x0004) [0x0000000020000000]  CPF_Deprecated)
 	TArray<struct FNxDestructibleDepthParameters>      DepthParameters;                               // 0x00D0 (0x0010) [0x0000000000400041] (CPF_Edit | CPF_EditConstArray | CPF_NeedCtorLink)
 	int32_t                                            DynamicChunksDominanceGroup;                   // 0x00E0 (0x0004) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      UseDynamicChunksGroupsMask : 1;                // 0x00E4 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           UseDynamicChunksGroupsMask : 1;                // 0x00E4 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 	uint8_t                                            DynamicChunksChannel;                          // 0x00E8 (0x0001) [0x0000000000000003] (CPF_Edit | CPF_Const)
 	struct FRBCollisionChannelContainer                DynamicChunksCollideWithChannels;              // 0x00EC (0x0004) [0x0000000000000003] (CPF_Edit | CPF_Const)
 };
@@ -1168,7 +1168,7 @@ struct FNotificationMessageInfo
 // 0x0030
 struct FNotificationInfo
 {
-	unsigned long                                      bIsLocal : 1;                                  // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bIsLocal : 1;                                  // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 	class FString                                      MessageBody;                                   // 0x0008 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	int32_t                                            BadgeNumber;                                   // 0x0018 (0x0004) [0x0000000000000000]               
 	TArray<struct FNotificationMessageInfo>            MessageInfo;                                   // 0x0020 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -1178,7 +1178,7 @@ struct FNotificationInfo
 // 0x0038
 struct FLaunchNotificationInfo
 {
-	unsigned long                                      bWasLaunchedViaNotification : 1;               // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bWasLaunchedViaNotification : 1;               // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 	struct FNotificationInfo                           Notification;                                  // 0x0008 (0x0030) [0x0000000000400000] (CPF_NeedCtorLink)
 };
 
@@ -1236,7 +1236,7 @@ struct FViewTargetTransitionParams
 	float                                              BlendTime;                                     // 0x0000 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	uint8_t                                            BlendFunction;                                 // 0x0004 (0x0001) [0x0000000000000001] (CPF_Edit)    
 	float                                              BlendExp;                                      // 0x0008 (0x0004) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bLockOutgoing : 1;                             // 0x000C (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bLockOutgoing : 1;                             // 0x000C (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 };
 
 // ScriptStruct Engine.Camera.TCameraCache
@@ -1264,7 +1264,7 @@ struct FLUTBlender
 {
 	TArray<class UTexture*>                            LUTTextures;                                   // 0x0000 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	TArray<float>                                      LUTWeights;                                    // 0x0010 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      bHasChanged : 1;                               // 0x0020 (0x0004) [0x0000000000003002] [0x00000001] (CPF_Const | CPF_Native | CPF_Transient)
+	uint32_t                                           bHasChanged : 1;                               // 0x0020 (0x0004) [0x0000000000003002] [0x00000001] (CPF_Const | CPF_Native | CPF_Transient)
 };
 
 // ScriptStruct Engine.PostProcessVolume.MobileColorGradingParams
@@ -1283,15 +1283,15 @@ struct FMobileColorGradingParams
 // 0x0034
 struct FMobilePostProcessSettings
 {
-	unsigned long                                      bOverride_Mobile_BlurAmount : 1;               // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bOverride_Mobile_TransitionTime : 1;           // 0x0000 (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      bOverride_Mobile_Bloom_Scale : 1;              // 0x0000 (0x0004) [0x0000000000000000] [0x00000004] 
-	unsigned long                                      bOverride_Mobile_Bloom_Threshold : 1;          // 0x0000 (0x0004) [0x0000000000000000] [0x00000008] 
-	unsigned long                                      bOverride_Mobile_Bloom_Tint : 1;               // 0x0000 (0x0004) [0x0000000000000000] [0x00000010] 
-	unsigned long                                      bOverride_Mobile_DOF_Distance : 1;             // 0x0000 (0x0004) [0x0000000000000000] [0x00000020] 
-	unsigned long                                      bOverride_Mobile_DOF_MinRange : 1;             // 0x0000 (0x0004) [0x0000000000000000] [0x00000040] 
-	unsigned long                                      bOverride_Mobile_DOF_MaxRange : 1;             // 0x0000 (0x0004) [0x0000000000000000] [0x00000080] 
-	unsigned long                                      bOverride_Mobile_DOF_FarBlurFactor : 1;        // 0x0000 (0x0004) [0x0000000000000000] [0x00000100] 
+	uint32_t                                           bOverride_Mobile_BlurAmount : 1;               // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bOverride_Mobile_TransitionTime : 1;           // 0x0000 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bOverride_Mobile_Bloom_Scale : 1;              // 0x0000 (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           bOverride_Mobile_Bloom_Threshold : 1;          // 0x0000 (0x0004) [0x0000000000000000] [0x00000008] 
+	uint32_t                                           bOverride_Mobile_Bloom_Tint : 1;               // 0x0000 (0x0004) [0x0000000000000000] [0x00000010] 
+	uint32_t                                           bOverride_Mobile_DOF_Distance : 1;             // 0x0000 (0x0004) [0x0000000000000000] [0x00000020] 
+	uint32_t                                           bOverride_Mobile_DOF_MinRange : 1;             // 0x0000 (0x0004) [0x0000000000000000] [0x00000040] 
+	uint32_t                                           bOverride_Mobile_DOF_MaxRange : 1;             // 0x0000 (0x0004) [0x0000000000000000] [0x00000080] 
+	uint32_t                                           bOverride_Mobile_DOF_FarBlurFactor : 1;        // 0x0000 (0x0004) [0x0000000000000000] [0x00000100] 
 	float                                              Mobile_BlurAmount;                             // 0x0004 (0x0004) [0x0000000200000001] (CPF_Edit)    
 	float                                              Mobile_TransitionTime;                         // 0x0008 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              Mobile_Bloom_Scale;                            // 0x000C (0x0004) [0x0000000200000001] (CPF_Edit)    
@@ -1307,53 +1307,53 @@ struct FMobilePostProcessSettings
 // 0x0168
 struct FPostProcessSettings
 {
-	unsigned long                                      bOverride_EnableBloom : 1;                     // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bOverride_EnableDOF : 1;                       // 0x0000 (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      bOverride_EnableMotionBlur : 1;                // 0x0000 (0x0004) [0x0000000000000000] [0x00000004] 
-	unsigned long                                      bOverride_EnableSceneEffect : 1;               // 0x0000 (0x0004) [0x0000000000000000] [0x00000008] 
-	unsigned long                                      bOverride_AllowAmbientOcclusion : 1;           // 0x0000 (0x0004) [0x0000000000000000] [0x00000010] 
-	unsigned long                                      bOverride_OverrideRimShaderColor : 1;          // 0x0000 (0x0004) [0x0000000000000000] [0x00000020] 
-	unsigned long                                      bOverride_Bloom_Scale : 1;                     // 0x0000 (0x0004) [0x0000000000000000] [0x00000040] 
-	unsigned long                                      bOverride_Bloom_Threshold : 1;                 // 0x0000 (0x0004) [0x0000000000000000] [0x00000080] 
-	unsigned long                                      bOverride_Bloom_Tint : 1;                      // 0x0000 (0x0004) [0x0000000000000000] [0x00000100] 
-	unsigned long                                      bOverride_Bloom_ScreenBlendThreshold : 1;      // 0x0000 (0x0004) [0x0000000000000000] [0x00000200] 
-	unsigned long                                      bOverride_Bloom_InterpolationDuration : 1;     // 0x0000 (0x0004) [0x0000000000000000] [0x00000400] 
-	unsigned long                                      bOverride_DOF_FalloffExponent : 1;             // 0x0000 (0x0004) [0x0000000000000000] [0x00000800] 
-	unsigned long                                      bOverride_DOF_BlurKernelSize : 1;              // 0x0000 (0x0004) [0x0000000000000000] [0x00001000] 
-	unsigned long                                      bOverride_DOF_BlurBloomKernelSize : 1;         // 0x0000 (0x0004) [0x0000000000000000] [0x00002000] 
-	unsigned long                                      bOverride_DOF_MaxNearBlurAmount : 1;           // 0x0000 (0x0004) [0x0000000000000000] [0x00004000] 
-	unsigned long                                      bOverride_DOF_MinBlurAmount : 1;               // 0x0000 (0x0004) [0x0000000000000000] [0x00008000] 
-	unsigned long                                      bOverride_DOF_MaxFarBlurAmount : 1;            // 0x0000 (0x0004) [0x0000000000000000] [0x00010000] 
-	unsigned long                                      bOverride_DOF_FocusType : 1;                   // 0x0000 (0x0004) [0x0000000000000000] [0x00020000] 
-	unsigned long                                      bOverride_DOF_FocusInnerRadius : 1;            // 0x0000 (0x0004) [0x0000000000000000] [0x00040000] 
-	unsigned long                                      bOverride_DOF_FocusDistance : 1;               // 0x0000 (0x0004) [0x0000000000000000] [0x00080000] 
-	unsigned long                                      bOverride_DOF_FocusPosition : 1;               // 0x0000 (0x0004) [0x0000000000000000] [0x00100000] 
-	unsigned long                                      bOverride_DOF_InterpolationDuration : 1;       // 0x0000 (0x0004) [0x0000000000000000] [0x00200000] 
-	unsigned long                                      bOverride_DOF_BokehTexture : 1;                // 0x0000 (0x0004) [0x0000000000000000] [0x00400000] 
-	unsigned long                                      bOverride_MotionBlur_MaxVelocity : 1;          // 0x0000 (0x0004) [0x0000000000000000] [0x00800000] 
-	unsigned long                                      bOverride_MotionBlur_Amount : 1;               // 0x0000 (0x0004) [0x0000000000000000] [0x01000000] 
-	unsigned long                                      bOverride_MotionBlur_FullMotionBlur : 1;       // 0x0000 (0x0004) [0x0000000000000000] [0x02000000] 
-	unsigned long                                      bOverride_MotionBlur_CameraRotationThreshold : 1;// 0x0000 (0x0004) [0x0000000000000000] [0x04000000] 
-	unsigned long                                      bOverride_MotionBlur_CameraTranslationThreshold : 1;// 0x0000 (0x0004) [0x0000000000000000] [0x08000000] 
-	unsigned long                                      bOverride_MotionBlur_InterpolationDuration : 1;// 0x0000 (0x0004) [0x0000000000000000] [0x10000000] 
-	unsigned long                                      bOverride_Scene_Desaturation : 1;              // 0x0000 (0x0004) [0x0000000000000000] [0x20000000] 
-	unsigned long                                      bOverride_Scene_Colorize : 1;                  // 0x0000 (0x0004) [0x0000000000000000] [0x40000000] 
-	unsigned long                                      bOverride_Scene_TonemapperScale : 1;           // 0x0000 (0x0004) [0x0000000000000000] [0x80000000] 
-	unsigned long                                      bOverride_Scene_ImageGrainScale : 1;           // 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bOverride_Scene_HighLights : 1;                // 0x0004 (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      bOverride_Scene_MidTones : 1;                  // 0x0004 (0x0004) [0x0000000000000000] [0x00000004] 
-	unsigned long                                      bOverride_Scene_Shadows : 1;                   // 0x0004 (0x0004) [0x0000000000000000] [0x00000008] 
-	unsigned long                                      bOverride_Scene_InterpolationDuration : 1;     // 0x0004 (0x0004) [0x0000000000000000] [0x00000010] 
-	unsigned long                                      bOverride_Scene_ColorGradingLUT : 1;           // 0x0004 (0x0004) [0x0000000000000000] [0x00000020] 
-	unsigned long                                      bOverride_RimShader_Color : 1;                 // 0x0004 (0x0004) [0x0000000000000000] [0x00000040] 
-	unsigned long                                      bOverride_RimShader_InterpolationDuration : 1; // 0x0004 (0x0004) [0x0000000000000000] [0x00000080] 
-	unsigned long                                      bOverride_MobileColorGrading : 1;              // 0x0004 (0x0004) [0x0000000000000000] [0x00000100] 
-	unsigned long                                      bEnableBloom : 1;                              // 0x0004 (0x0004) [0x0000000000000001] [0x00000200] (CPF_Edit)
-	unsigned long                                      bEnableDOF : 1;                                // 0x0004 (0x0004) [0x0000000000000001] [0x00000400] (CPF_Edit)
-	unsigned long                                      bEnableMotionBlur : 1;                         // 0x0004 (0x0004) [0x0000000000000001] [0x00000800] (CPF_Edit)
-	unsigned long                                      bEnableSceneEffect : 1;                        // 0x0004 (0x0004) [0x0000000000000001] [0x00001000] (CPF_Edit)
-	unsigned long                                      bAllowAmbientOcclusion : 1;                    // 0x0004 (0x0004) [0x0000000000000001] [0x00002000] (CPF_Edit)
-	unsigned long                                      bOverrideRimShaderColor : 1;                   // 0x0004 (0x0004) [0x0000000000000001] [0x00004000] (CPF_Edit)
+	uint32_t                                           bOverride_EnableBloom : 1;                     // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bOverride_EnableDOF : 1;                       // 0x0000 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bOverride_EnableMotionBlur : 1;                // 0x0000 (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           bOverride_EnableSceneEffect : 1;               // 0x0000 (0x0004) [0x0000000000000000] [0x00000008] 
+	uint32_t                                           bOverride_AllowAmbientOcclusion : 1;           // 0x0000 (0x0004) [0x0000000000000000] [0x00000010] 
+	uint32_t                                           bOverride_OverrideRimShaderColor : 1;          // 0x0000 (0x0004) [0x0000000000000000] [0x00000020] 
+	uint32_t                                           bOverride_Bloom_Scale : 1;                     // 0x0000 (0x0004) [0x0000000000000000] [0x00000040] 
+	uint32_t                                           bOverride_Bloom_Threshold : 1;                 // 0x0000 (0x0004) [0x0000000000000000] [0x00000080] 
+	uint32_t                                           bOverride_Bloom_Tint : 1;                      // 0x0000 (0x0004) [0x0000000000000000] [0x00000100] 
+	uint32_t                                           bOverride_Bloom_ScreenBlendThreshold : 1;      // 0x0000 (0x0004) [0x0000000000000000] [0x00000200] 
+	uint32_t                                           bOverride_Bloom_InterpolationDuration : 1;     // 0x0000 (0x0004) [0x0000000000000000] [0x00000400] 
+	uint32_t                                           bOverride_DOF_FalloffExponent : 1;             // 0x0000 (0x0004) [0x0000000000000000] [0x00000800] 
+	uint32_t                                           bOverride_DOF_BlurKernelSize : 1;              // 0x0000 (0x0004) [0x0000000000000000] [0x00001000] 
+	uint32_t                                           bOverride_DOF_BlurBloomKernelSize : 1;         // 0x0000 (0x0004) [0x0000000000000000] [0x00002000] 
+	uint32_t                                           bOverride_DOF_MaxNearBlurAmount : 1;           // 0x0000 (0x0004) [0x0000000000000000] [0x00004000] 
+	uint32_t                                           bOverride_DOF_MinBlurAmount : 1;               // 0x0000 (0x0004) [0x0000000000000000] [0x00008000] 
+	uint32_t                                           bOverride_DOF_MaxFarBlurAmount : 1;            // 0x0000 (0x0004) [0x0000000000000000] [0x00010000] 
+	uint32_t                                           bOverride_DOF_FocusType : 1;                   // 0x0000 (0x0004) [0x0000000000000000] [0x00020000] 
+	uint32_t                                           bOverride_DOF_FocusInnerRadius : 1;            // 0x0000 (0x0004) [0x0000000000000000] [0x00040000] 
+	uint32_t                                           bOverride_DOF_FocusDistance : 1;               // 0x0000 (0x0004) [0x0000000000000000] [0x00080000] 
+	uint32_t                                           bOverride_DOF_FocusPosition : 1;               // 0x0000 (0x0004) [0x0000000000000000] [0x00100000] 
+	uint32_t                                           bOverride_DOF_InterpolationDuration : 1;       // 0x0000 (0x0004) [0x0000000000000000] [0x00200000] 
+	uint32_t                                           bOverride_DOF_BokehTexture : 1;                // 0x0000 (0x0004) [0x0000000000000000] [0x00400000] 
+	uint32_t                                           bOverride_MotionBlur_MaxVelocity : 1;          // 0x0000 (0x0004) [0x0000000000000000] [0x00800000] 
+	uint32_t                                           bOverride_MotionBlur_Amount : 1;               // 0x0000 (0x0004) [0x0000000000000000] [0x01000000] 
+	uint32_t                                           bOverride_MotionBlur_FullMotionBlur : 1;       // 0x0000 (0x0004) [0x0000000000000000] [0x02000000] 
+	uint32_t                                           bOverride_MotionBlur_CameraRotationThreshold : 1;// 0x0000 (0x0004) [0x0000000000000000] [0x04000000] 
+	uint32_t                                           bOverride_MotionBlur_CameraTranslationThreshold : 1;// 0x0000 (0x0004) [0x0000000000000000] [0x08000000] 
+	uint32_t                                           bOverride_MotionBlur_InterpolationDuration : 1;// 0x0000 (0x0004) [0x0000000000000000] [0x10000000] 
+	uint32_t                                           bOverride_Scene_Desaturation : 1;              // 0x0000 (0x0004) [0x0000000000000000] [0x20000000] 
+	uint32_t                                           bOverride_Scene_Colorize : 1;                  // 0x0000 (0x0004) [0x0000000000000000] [0x40000000] 
+	uint32_t                                           bOverride_Scene_TonemapperScale : 1;           // 0x0000 (0x0004) [0x0000000000000000] [0x80000000] 
+	uint32_t                                           bOverride_Scene_ImageGrainScale : 1;           // 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bOverride_Scene_HighLights : 1;                // 0x0004 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bOverride_Scene_MidTones : 1;                  // 0x0004 (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           bOverride_Scene_Shadows : 1;                   // 0x0004 (0x0004) [0x0000000000000000] [0x00000008] 
+	uint32_t                                           bOverride_Scene_InterpolationDuration : 1;     // 0x0004 (0x0004) [0x0000000000000000] [0x00000010] 
+	uint32_t                                           bOverride_Scene_ColorGradingLUT : 1;           // 0x0004 (0x0004) [0x0000000000000000] [0x00000020] 
+	uint32_t                                           bOverride_RimShader_Color : 1;                 // 0x0004 (0x0004) [0x0000000000000000] [0x00000040] 
+	uint32_t                                           bOverride_RimShader_InterpolationDuration : 1; // 0x0004 (0x0004) [0x0000000000000000] [0x00000080] 
+	uint32_t                                           bOverride_MobileColorGrading : 1;              // 0x0004 (0x0004) [0x0000000000000000] [0x00000100] 
+	uint32_t                                           bEnableBloom : 1;                              // 0x0004 (0x0004) [0x0000000000000001] [0x00000200] (CPF_Edit)
+	uint32_t                                           bEnableDOF : 1;                                // 0x0004 (0x0004) [0x0000000000000001] [0x00000400] (CPF_Edit)
+	uint32_t                                           bEnableMotionBlur : 1;                         // 0x0004 (0x0004) [0x0000000000000001] [0x00000800] (CPF_Edit)
+	uint32_t                                           bEnableSceneEffect : 1;                        // 0x0004 (0x0004) [0x0000000000000001] [0x00001000] (CPF_Edit)
+	uint32_t                                           bAllowAmbientOcclusion : 1;                    // 0x0004 (0x0004) [0x0000000000000001] [0x00002000] (CPF_Edit)
+	uint32_t                                           bOverrideRimShaderColor : 1;                   // 0x0004 (0x0004) [0x0000000000000001] [0x00004000] (CPF_Edit)
 	float                                              Bloom_Scale;                                   // 0x0008 (0x0004) [0x0000000200000001] (CPF_Edit)    
 	float                                              Bloom_Threshold;                               // 0x000C (0x0004) [0x0000000200000001] (CPF_Edit)    
 	struct FColor                                      Bloom_Tint;                                    // 0x0010 (0x0004) [0x0000000200000001] (CPF_Edit)    
@@ -1373,7 +1373,7 @@ struct FPostProcessSettings
 	class UTexture2D*                                  DOF_BokehTexture;                              // 0x0050 (0x0008) [0x0000000000000001] (CPF_Edit)    
 	float                                              MotionBlur_MaxVelocity;                        // 0x0058 (0x0004) [0x0000000200000001] (CPF_Edit)    
 	float                                              MotionBlur_Amount;                             // 0x005C (0x0004) [0x0000000200000001] (CPF_Edit)    
-	unsigned long                                      MotionBlur_FullMotionBlur : 1;                 // 0x0060 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           MotionBlur_FullMotionBlur : 1;                 // 0x0060 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 	float                                              MotionBlur_CameraRotationThreshold;            // 0x0064 (0x0004) [0x0000000200000001] (CPF_Edit)    
 	float                                              MotionBlur_CameraTranslationThreshold;         // 0x0068 (0x0004) [0x0000000200000001] (CPF_Edit)    
 	float                                              MotionBlur_InterpolationDuration;              // 0x006C (0x0004) [0x0000000000000001] (CPF_Edit)    
@@ -1397,11 +1397,11 @@ struct FPostProcessSettings
 // 0x0004
 struct FRenderingPerformanceOverrides
 {
-	unsigned long                                      bAllowAmbientOcclusion : 1;                    // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bAllowDominantWholeSceneDynamicShadows : 1;    // 0x0000 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
-	unsigned long                                      bAllowMotionBlurSkinning : 1;                  // 0x0000 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
-	unsigned long                                      bAllowTemporalAA : 1;                          // 0x0000 (0x0004) [0x0000000000000001] [0x00000008] (CPF_Edit)
-	unsigned long                                      bAllowLightShafts : 1;                         // 0x0000 (0x0004) [0x0000000000000001] [0x00000010] (CPF_Edit)
+	uint32_t                                           bAllowAmbientOcclusion : 1;                    // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bAllowDominantWholeSceneDynamicShadows : 1;    // 0x0000 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bAllowMotionBlurSkinning : 1;                  // 0x0000 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
+	uint32_t                                           bAllowTemporalAA : 1;                          // 0x0000 (0x0004) [0x0000000000000001] [0x00000008] (CPF_Edit)
+	uint32_t                                           bAllowLightShafts : 1;                         // 0x0000 (0x0004) [0x0000000000000001] [0x00000010] (CPF_Edit)
 };
 
 // ScriptStruct Engine.CameraShake.FOscillator
@@ -1438,9 +1438,9 @@ struct FCameraShakeInstance
 	class UCameraShake*                                SourceShake;                                   // 0x0000 (0x0008) [0x0000000000000000]               
 	struct FName                                       SourceShakeName;                               // 0x0008 (0x0008) [0x0000000000000000]               
 	float                                              OscillatorTimeRemaining;                       // 0x0010 (0x0004) [0x0000000000000000]               
-	unsigned long                                      bBlendingIn : 1;                               // 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bBlendingIn : 1;                               // 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
 	float                                              CurrentBlendInTime;                            // 0x0018 (0x0004) [0x0000000000000000]               
-	unsigned long                                      bBlendingOut : 1;                              // 0x001C (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bBlendingOut : 1;                              // 0x001C (0x0004) [0x0000000000000000] [0x00000001] 
 	float                                              CurrentBlendOutTime;                           // 0x0020 (0x0004) [0x0000000000000000]               
 	struct FVector                                     LocSinOffset;                                  // 0x0024 (0x000C) [0x0000000000000000]               
 	struct FVector                                     RotSinOffset;                                  // 0x0030 (0x000C) [0x0000000000000000]               
@@ -1467,34 +1467,34 @@ struct FCanvasIcon
 // 0x0004
 struct FTextureGroupContainer
 {
-	unsigned long                                      TEXTUREGROUP_World : 1;                        // 0x0000 (0x0004) [0x0000000000000003] [0x00000001] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_WorldNormalMap : 1;               // 0x0000 (0x0004) [0x0000000000000003] [0x00000002] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_WorldSpecular : 1;                // 0x0000 (0x0004) [0x0000000000000003] [0x00000004] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_Character : 1;                    // 0x0000 (0x0004) [0x0000000000000003] [0x00000008] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_CharacterNormalMap : 1;           // 0x0000 (0x0004) [0x0000000000000003] [0x00000010] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_CharacterSpecular : 1;            // 0x0000 (0x0004) [0x0000000000000003] [0x00000020] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_Weapon : 1;                       // 0x0000 (0x0004) [0x0000000000000003] [0x00000040] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_WeaponNormalMap : 1;              // 0x0000 (0x0004) [0x0000000000000003] [0x00000080] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_WeaponSpecular : 1;               // 0x0000 (0x0004) [0x0000000000000003] [0x00000100] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_Vehicle : 1;                      // 0x0000 (0x0004) [0x0000000000000003] [0x00000200] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_VehicleNormalMap : 1;             // 0x0000 (0x0004) [0x0000000000000003] [0x00000400] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_VehicleSpecular : 1;              // 0x0000 (0x0004) [0x0000000000000003] [0x00000800] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_Cinematic : 1;                    // 0x0000 (0x0004) [0x0000000000000003] [0x00001000] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_Effects : 1;                      // 0x0000 (0x0004) [0x0000000000000003] [0x00002000] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_EffectsNotFiltered : 1;           // 0x0000 (0x0004) [0x0000000000000003] [0x00004000] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_Skybox : 1;                       // 0x0000 (0x0004) [0x0000000000000003] [0x00008000] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_UI : 1;                           // 0x0000 (0x0004) [0x0000000000000003] [0x00010000] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_Lightmap : 1;                     // 0x0000 (0x0004) [0x0000000000000003] [0x00020000] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_RenderTarget : 1;                 // 0x0000 (0x0004) [0x0000000000000003] [0x00040000] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_MobileFlattened : 1;              // 0x0000 (0x0004) [0x0000000000000003] [0x00080000] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_ProcBuilding_Face : 1;            // 0x0000 (0x0004) [0x0000000000000003] [0x00100000] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_ProcBuilding_LightMap : 1;        // 0x0000 (0x0004) [0x0000000000000003] [0x00200000] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_Shadowmap : 1;                    // 0x0000 (0x0004) [0x0000000000000003] [0x00400000] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_ColorLookupTable : 1;             // 0x0000 (0x0004) [0x0000000000000003] [0x00800000] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_Terrain_Heightmap : 1;            // 0x0000 (0x0004) [0x0000000000000003] [0x01000000] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_Terrain_Weightmap : 1;            // 0x0000 (0x0004) [0x0000000000000003] [0x02000000] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_ImageBasedReflection : 1;         // 0x0000 (0x0004) [0x0000000000000003] [0x04000000] (CPF_Edit | CPF_Const)
-	unsigned long                                      TEXTUREGROUP_Bokeh : 1;                        // 0x0000 (0x0004) [0x0000000000000003] [0x08000000] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_World : 1;                        // 0x0000 (0x0004) [0x0000000000000003] [0x00000001] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_WorldNormalMap : 1;               // 0x0000 (0x0004) [0x0000000000000003] [0x00000002] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_WorldSpecular : 1;                // 0x0000 (0x0004) [0x0000000000000003] [0x00000004] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_Character : 1;                    // 0x0000 (0x0004) [0x0000000000000003] [0x00000008] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_CharacterNormalMap : 1;           // 0x0000 (0x0004) [0x0000000000000003] [0x00000010] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_CharacterSpecular : 1;            // 0x0000 (0x0004) [0x0000000000000003] [0x00000020] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_Weapon : 1;                       // 0x0000 (0x0004) [0x0000000000000003] [0x00000040] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_WeaponNormalMap : 1;              // 0x0000 (0x0004) [0x0000000000000003] [0x00000080] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_WeaponSpecular : 1;               // 0x0000 (0x0004) [0x0000000000000003] [0x00000100] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_Vehicle : 1;                      // 0x0000 (0x0004) [0x0000000000000003] [0x00000200] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_VehicleNormalMap : 1;             // 0x0000 (0x0004) [0x0000000000000003] [0x00000400] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_VehicleSpecular : 1;              // 0x0000 (0x0004) [0x0000000000000003] [0x00000800] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_Cinematic : 1;                    // 0x0000 (0x0004) [0x0000000000000003] [0x00001000] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_Effects : 1;                      // 0x0000 (0x0004) [0x0000000000000003] [0x00002000] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_EffectsNotFiltered : 1;           // 0x0000 (0x0004) [0x0000000000000003] [0x00004000] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_Skybox : 1;                       // 0x0000 (0x0004) [0x0000000000000003] [0x00008000] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_UI : 1;                           // 0x0000 (0x0004) [0x0000000000000003] [0x00010000] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_Lightmap : 1;                     // 0x0000 (0x0004) [0x0000000000000003] [0x00020000] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_RenderTarget : 1;                 // 0x0000 (0x0004) [0x0000000000000003] [0x00040000] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_MobileFlattened : 1;              // 0x0000 (0x0004) [0x0000000000000003] [0x00080000] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_ProcBuilding_Face : 1;            // 0x0000 (0x0004) [0x0000000000000003] [0x00100000] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_ProcBuilding_LightMap : 1;        // 0x0000 (0x0004) [0x0000000000000003] [0x00200000] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_Shadowmap : 1;                    // 0x0000 (0x0004) [0x0000000000000003] [0x00400000] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_ColorLookupTable : 1;             // 0x0000 (0x0004) [0x0000000000000003] [0x00800000] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_Terrain_Heightmap : 1;            // 0x0000 (0x0004) [0x0000000000000003] [0x01000000] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_Terrain_Weightmap : 1;            // 0x0000 (0x0004) [0x0000000000000003] [0x02000000] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_ImageBasedReflection : 1;         // 0x0000 (0x0004) [0x0000000000000003] [0x04000000] (CPF_Edit | CPF_Const)
+	uint32_t                                           TEXTUREGROUP_Bokeh : 1;                        // 0x0000 (0x0004) [0x0000000000000003] [0x08000000] (CPF_Edit | CPF_Const)
 };
 
 // ScriptStruct Engine.Texture2D.Texture2DMipMap
@@ -1519,7 +1519,7 @@ struct FTextureLinkedListMirror
 // 0x0024
 struct FDepthFieldGlowInfo
 {
-	unsigned long                                      bEnableGlow : 1;                               // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bEnableGlow : 1;                               // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 	struct FLinearColor                                GlowColor;                                     // 0x0004 (0x0010) [0x0000000000000000]               
 	struct FVector2D                                   GlowOuterRadius;                               // 0x0014 (0x0008) [0x0000000000000000]               
 	struct FVector2D                                   GlowInnerRadius;                               // 0x001C (0x0008) [0x0000000000000000]               
@@ -1532,7 +1532,7 @@ struct FMobileDistanceFieldParams
 	float                                              Gamma;                                         // 0x0000 (0x0004) [0x0000000000000000]               
 	float                                              AlphaRefVal;                                   // 0x0004 (0x0004) [0x0000000000000000]               
 	float                                              SmoothWidth;                                   // 0x0008 (0x0004) [0x0000000000000000]               
-	unsigned long                                      EnableShadow : 1;                              // 0x000C (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           EnableShadow : 1;                              // 0x000C (0x0004) [0x0000000000000000] [0x00000001] 
 	struct FVector2D                                   ShadowDirection;                               // 0x0010 (0x0008) [0x0000000000000000]               
 	struct FLinearColor                                ShadowColor;                                   // 0x0018 (0x0010) [0x0000000000000000]               
 	float                                              ShadowSmoothWidth;                             // 0x0028 (0x0004) [0x0000000000000000]               
@@ -1544,8 +1544,8 @@ struct FMobileDistanceFieldParams
 // 0x0028
 struct FFontRenderInfo
 {
-	unsigned long                                      bClipText : 1;                                 // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bEnableShadow : 1;                             // 0x0000 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bClipText : 1;                                 // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bEnableShadow : 1;                             // 0x0000 (0x0004) [0x0000000000000000] [0x00000002] 
 	struct FDepthFieldGlowInfo                         GlowInfo;                                      // 0x0004 (0x0024) [0x0000000000000000]               
 };
 
@@ -1615,7 +1615,7 @@ struct FUIRangeData
 	float                                              MinValue;                                      // 0x0004 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              MaxValue;                                      // 0x0008 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              NudgeValue;                                    // 0x000C (0x0004) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bIntRange : 1;                                 // 0x0010 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bIntRange : 1;                                 // 0x0010 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 };
 
 // ScriptStruct Engine.UIRoot.TextureCoordinates
@@ -1642,19 +1642,19 @@ struct FSeqOpOutputLink
 {
 	TArray<struct FSeqOpOutputInputLink>               Links;                                         // 0x0000 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	class FString                                      LinkDesc;                                      // 0x0010 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      bHasImpulse : 1;                               // 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bDisabled : 1;                                 // 0x0020 (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      bDisabledPIE : 1;                              // 0x0020 (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           bHasImpulse : 1;                               // 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bDisabled : 1;                                 // 0x0020 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bDisabledPIE : 1;                              // 0x0020 (0x0004) [0x0000000000000000] [0x00000004] 
 	class USequenceOp*                                 LinkedOp;                                      // 0x0028 (0x0008) [0x0000000000000000]               
 	float                                              ActivateDelay;                                 // 0x0030 (0x0004) [0x0000000000000000]               
 	int32_t                                            DrawY;                                         // 0x0034 (0x0004) [0x0000000000000000]               
-	unsigned long                                      bHidden : 1;                                   // 0x0038 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bMoving : 1;                                   // 0x0038 (0x0004) [0x0000000800002000] [0x00000002] (CPF_Transient)
-	unsigned long                                      bClampedMax : 1;                               // 0x0038 (0x0004) [0x0000000800000000] [0x00000004] 
-	unsigned long                                      bClampedMin : 1;                               // 0x0038 (0x0004) [0x0000000800000000] [0x00000008] 
+	uint32_t                                           bHidden : 1;                                   // 0x0038 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bMoving : 1;                                   // 0x0038 (0x0004) [0x0000000800002000] [0x00000002] (CPF_Transient)
+	uint32_t                                           bClampedMax : 1;                               // 0x0038 (0x0004) [0x0000000800000000] [0x00000004] 
+	uint32_t                                           bClampedMin : 1;                               // 0x0038 (0x0004) [0x0000000800000000] [0x00000008] 
 	int32_t                                            OverrideDelta;                                 // 0x003C (0x0004) [0x0000000800000000]               
 	float                                              PIEActivationTime;                             // 0x0040 (0x0004) [0x0000000800002000] (CPF_Transient)
-	unsigned long                                      bIsActivated : 1;                              // 0x0044 (0x0004) [0x0000000C01002000] [0x00000001] (CPF_Transient)
+	uint32_t                                           bIsActivated : 1;                              // 0x0044 (0x0004) [0x0000000C01002000] [0x00000001] (CPF_Transient)
 };
 
 // ScriptStruct Engine.SequenceOp.SeqVarLink
@@ -1666,18 +1666,18 @@ struct FSeqVarLink
 	class FString                                      LinkDesc;                                      // 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	struct FName                                       LinkVar;                                       // 0x0028 (0x0008) [0x0000000000000000]               
 	struct FName                                       PropertyName;                                  // 0x0030 (0x0008) [0x0000000000000000]               
-	unsigned long                                      bWriteable : 1;                                // 0x0038 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bSequenceNeverReadsOnlyWritesToThisVar : 1;    // 0x0038 (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      bModifiesLinkedObject : 1;                     // 0x0038 (0x0004) [0x0000000000000000] [0x00000004] 
-	unsigned long                                      bHidden : 1;                                   // 0x0038 (0x0004) [0x0000000000000000] [0x00000008] 
+	uint32_t                                           bWriteable : 1;                                // 0x0038 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bSequenceNeverReadsOnlyWritesToThisVar : 1;    // 0x0038 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bModifiesLinkedObject : 1;                     // 0x0038 (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           bHidden : 1;                                   // 0x0038 (0x0004) [0x0000000000000000] [0x00000008] 
 	int32_t                                            MinVars;                                       // 0x003C (0x0004) [0x0000000000000000]               
 	int32_t                                            MaxVars;                                       // 0x0040 (0x0004) [0x0000000000000000]               
 	int32_t                                            DrawX;                                         // 0x0044 (0x0004) [0x0000000000000000]               
 	class UProperty*                                   CachedProperty;                                // 0x0048 (0x0008) [0x0000000000002002] (CPF_Const | CPF_Transient)
-	unsigned long                                      bAllowAnyType : 1;                             // 0x0050 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bMoving : 1;                                   // 0x0050 (0x0004) [0x0000000800002000] [0x00000002] (CPF_Transient)
-	unsigned long                                      bClampedMax : 1;                               // 0x0050 (0x0004) [0x0000000800000000] [0x00000004] 
-	unsigned long                                      bClampedMin : 1;                               // 0x0050 (0x0004) [0x0000000800000000] [0x00000008] 
+	uint32_t                                           bAllowAnyType : 1;                             // 0x0050 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bMoving : 1;                                   // 0x0050 (0x0004) [0x0000000800002000] [0x00000002] (CPF_Transient)
+	uint32_t                                           bClampedMax : 1;                               // 0x0050 (0x0004) [0x0000000800000000] [0x00000004] 
+	uint32_t                                           bClampedMin : 1;                               // 0x0050 (0x0004) [0x0000000800000000] [0x00000008] 
 	int32_t                                            OverrideDelta;                                 // 0x0054 (0x0004) [0x0000000800000000]               
 };
 
@@ -1689,10 +1689,10 @@ struct FSeqEventLink
 	TArray<class USequenceEvent*>                      LinkedEvents;                                  // 0x0008 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	class FString                                      LinkDesc;                                      // 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	int32_t                                            DrawX;                                         // 0x0028 (0x0004) [0x0000000000000000]               
-	unsigned long                                      bHidden : 1;                                   // 0x002C (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bMoving : 1;                                   // 0x002C (0x0004) [0x0000000800002000] [0x00000002] (CPF_Transient)
-	unsigned long                                      bClampedMax : 1;                               // 0x002C (0x0004) [0x0000000800000000] [0x00000004] 
-	unsigned long                                      bClampedMin : 1;                               // 0x002C (0x0004) [0x0000000800000000] [0x00000008] 
+	uint32_t                                           bHidden : 1;                                   // 0x002C (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bMoving : 1;                                   // 0x002C (0x0004) [0x0000000800002000] [0x00000002] (CPF_Transient)
+	uint32_t                                           bClampedMax : 1;                               // 0x002C (0x0004) [0x0000000800000000] [0x00000004] 
+	uint32_t                                           bClampedMin : 1;                               // 0x002C (0x0004) [0x0000000800000000] [0x00000008] 
 	int32_t                                            OverrideDelta;                                 // 0x0030 (0x0004) [0x0000000800000000]               
 };
 
@@ -1716,9 +1716,9 @@ struct FInputEventParameters
 	uint8_t                                            EventType;                                     // 0x0010 (0x0001) [0x0000000000102002] (CPF_Const | CPF_Transient)
 	float                                              InputDelta;                                    // 0x0014 (0x0004) [0x0000000000102002] (CPF_Const | CPF_Transient)
 	float                                              DeltaTime;                                     // 0x0018 (0x0004) [0x0000000000102002] (CPF_Const | CPF_Transient)
-	unsigned long                                      bAltPressed : 1;                               // 0x001C (0x0004) [0x0000000000102002] [0x00000001] (CPF_Const | CPF_Transient)
-	unsigned long                                      bCtrlPressed : 1;                              // 0x001C (0x0004) [0x0000000000102002] [0x00000002] (CPF_Const | CPF_Transient)
-	unsigned long                                      bShiftPressed : 1;                             // 0x001C (0x0004) [0x0000000000102002] [0x00000004] (CPF_Const | CPF_Transient)
+	uint32_t                                           bAltPressed : 1;                               // 0x001C (0x0004) [0x0000000000102002] [0x00000001] (CPF_Const | CPF_Transient)
+	uint32_t                                           bCtrlPressed : 1;                              // 0x001C (0x0004) [0x0000000000102002] [0x00000002] (CPF_Const | CPF_Transient)
+	uint32_t                                           bShiftPressed : 1;                             // 0x001C (0x0004) [0x0000000000102002] [0x00000004] (CPF_Const | CPF_Transient)
 };
 
 // ScriptStruct Engine.UIRoot.SubscribedInputEventParameters
@@ -1734,7 +1734,7 @@ struct FUIAxisEmulationDefinition
 {
 	struct FName                                       AxisInputKey;                                  // 0x0000 (0x0008) [0x0000000000000000]               
 	struct FName                                       AdjacentAxisInputKey;                          // 0x0008 (0x0008) [0x0000000000000000]               
-	unsigned long                                      bEmulateButtonPress : 1;                       // 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bEmulateButtonPress : 1;                       // 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
 	struct FName                                       InputKeyToEmulate[0x2];                        // 0x0014 (0x0010) [0x0000000000000000]               
 };
 
@@ -1800,8 +1800,8 @@ struct FFireLink
 {
 	TArray<uint8_t>                                    Interactions;                                  // 0x0000 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	int32_t                                            PackedProperties_CoverPairRefAndDynamicInfo;   // 0x0010 (0x0004) [0x0000000000000002] (CPF_Const)   
-	unsigned long                                      bFallbackLink : 1;                             // 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bDynamicIndexInited : 1;                       // 0x0014 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bFallbackLink : 1;                             // 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bDynamicIndexInited : 1;                       // 0x0014 (0x0004) [0x0000000000000000] [0x00000002] 
 };
 
 // ScriptStruct Engine.CoverLink.DynamicLinkInfo
@@ -1862,30 +1862,30 @@ struct FCoverSlot
 	int32_t                                            TurnTargetPackedProperties;                    // 0x0068 (0x0004) [0x0000000000000000]               
 	TArray<struct FSlotMoveRef>                        SlipRefs;                                      // 0x0070 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	TArray<struct FCoverInfo>                          OverlapClaimsList;                             // 0x0080 (0x0010) [0x0000000000420001] (CPF_Edit | CPF_EditConst | CPF_NeedCtorLink)
-	unsigned long                                      bLeanLeft : 1;                                 // 0x0090 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bLeanRight : 1;                                // 0x0090 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
-	unsigned long                                      bForceCanPopUp : 1;                            // 0x0090 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
-	unsigned long                                      bCanPopUp : 1;                                 // 0x0090 (0x0004) [0x0000000000020001] [0x00000008] (CPF_Edit | CPF_EditConst)
-	unsigned long                                      bCanMantle : 1;                                // 0x0090 (0x0004) [0x0000000000020001] [0x00000010] (CPF_Edit | CPF_EditConst)
-	unsigned long                                      bCanClimbUp : 1;                               // 0x0090 (0x0004) [0x0000000000020001] [0x00000020] (CPF_Edit | CPF_EditConst)
-	unsigned long                                      bForceCanCoverSlip_Left : 1;                   // 0x0090 (0x0004) [0x0000000000000001] [0x00000040] (CPF_Edit)
-	unsigned long                                      bForceCanCoverSlip_Right : 1;                  // 0x0090 (0x0004) [0x0000000000000001] [0x00000080] (CPF_Edit)
-	unsigned long                                      bCanCoverSlip_Left : 1;                        // 0x0090 (0x0004) [0x0000000000020001] [0x00000100] (CPF_Edit | CPF_EditConst)
-	unsigned long                                      bCanCoverSlip_Right : 1;                       // 0x0090 (0x0004) [0x0000000000020001] [0x00000200] (CPF_Edit | CPF_EditConst)
-	unsigned long                                      bCanSwatTurn_Left : 1;                         // 0x0090 (0x0004) [0x0000000000020001] [0x00000400] (CPF_Edit | CPF_EditConst)
-	unsigned long                                      bCanSwatTurn_Right : 1;                        // 0x0090 (0x0004) [0x0000000000020001] [0x00000800] (CPF_Edit | CPF_EditConst)
-	unsigned long                                      bEnabled : 1;                                  // 0x0090 (0x0004) [0x0000000000000001] [0x00001000] (CPF_Edit)
-	unsigned long                                      bAllowPopup : 1;                               // 0x0090 (0x0004) [0x0000000000000001] [0x00002000] (CPF_Edit)
-	unsigned long                                      bAllowMantle : 1;                              // 0x0090 (0x0004) [0x0000000000000001] [0x00004000] (CPF_Edit)
-	unsigned long                                      bAllowCoverSlip : 1;                           // 0x0090 (0x0004) [0x0000000000000001] [0x00008000] (CPF_Edit)
-	unsigned long                                      bAllowClimbUp : 1;                             // 0x0090 (0x0004) [0x0000000000000001] [0x00010000] (CPF_Edit)
-	unsigned long                                      bAllowSwatTurn : 1;                            // 0x0090 (0x0004) [0x0000000000000001] [0x00020000] (CPF_Edit)
-	unsigned long                                      bForceNoGroundAdjust : 1;                      // 0x0090 (0x0004) [0x0000000000000001] [0x00040000] (CPF_Edit)
-	unsigned long                                      bPlayerOnly : 1;                               // 0x0090 (0x0004) [0x0000000000000001] [0x00080000] (CPF_Edit)
-	unsigned long                                      bPreferLeanOverPopup : 1;                      // 0x0090 (0x0004) [0x0000000000000001] [0x00100000] (CPF_Edit)
-	unsigned long                                      bDestructible : 1;                             // 0x0090 (0x0004) [0x0000000000002000] [0x00200000] (CPF_Transient)
-	unsigned long                                      bSelected : 1;                                 // 0x0090 (0x0004) [0x0000000000002000] [0x00400000] (CPF_Transient)
-	unsigned long                                      bFailedToFindSurface : 1;                      // 0x0090 (0x0004) [0x0000000000022001] [0x00800000] (CPF_Edit | CPF_Transient | CPF_EditConst)
+	uint32_t                                           bLeanLeft : 1;                                 // 0x0090 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bLeanRight : 1;                                // 0x0090 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bForceCanPopUp : 1;                            // 0x0090 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
+	uint32_t                                           bCanPopUp : 1;                                 // 0x0090 (0x0004) [0x0000000000020001] [0x00000008] (CPF_Edit | CPF_EditConst)
+	uint32_t                                           bCanMantle : 1;                                // 0x0090 (0x0004) [0x0000000000020001] [0x00000010] (CPF_Edit | CPF_EditConst)
+	uint32_t                                           bCanClimbUp : 1;                               // 0x0090 (0x0004) [0x0000000000020001] [0x00000020] (CPF_Edit | CPF_EditConst)
+	uint32_t                                           bForceCanCoverSlip_Left : 1;                   // 0x0090 (0x0004) [0x0000000000000001] [0x00000040] (CPF_Edit)
+	uint32_t                                           bForceCanCoverSlip_Right : 1;                  // 0x0090 (0x0004) [0x0000000000000001] [0x00000080] (CPF_Edit)
+	uint32_t                                           bCanCoverSlip_Left : 1;                        // 0x0090 (0x0004) [0x0000000000020001] [0x00000100] (CPF_Edit | CPF_EditConst)
+	uint32_t                                           bCanCoverSlip_Right : 1;                       // 0x0090 (0x0004) [0x0000000000020001] [0x00000200] (CPF_Edit | CPF_EditConst)
+	uint32_t                                           bCanSwatTurn_Left : 1;                         // 0x0090 (0x0004) [0x0000000000020001] [0x00000400] (CPF_Edit | CPF_EditConst)
+	uint32_t                                           bCanSwatTurn_Right : 1;                        // 0x0090 (0x0004) [0x0000000000020001] [0x00000800] (CPF_Edit | CPF_EditConst)
+	uint32_t                                           bEnabled : 1;                                  // 0x0090 (0x0004) [0x0000000000000001] [0x00001000] (CPF_Edit)
+	uint32_t                                           bAllowPopup : 1;                               // 0x0090 (0x0004) [0x0000000000000001] [0x00002000] (CPF_Edit)
+	uint32_t                                           bAllowMantle : 1;                              // 0x0090 (0x0004) [0x0000000000000001] [0x00004000] (CPF_Edit)
+	uint32_t                                           bAllowCoverSlip : 1;                           // 0x0090 (0x0004) [0x0000000000000001] [0x00008000] (CPF_Edit)
+	uint32_t                                           bAllowClimbUp : 1;                             // 0x0090 (0x0004) [0x0000000000000001] [0x00010000] (CPF_Edit)
+	uint32_t                                           bAllowSwatTurn : 1;                            // 0x0090 (0x0004) [0x0000000000000001] [0x00020000] (CPF_Edit)
+	uint32_t                                           bForceNoGroundAdjust : 1;                      // 0x0090 (0x0004) [0x0000000000000001] [0x00040000] (CPF_Edit)
+	uint32_t                                           bPlayerOnly : 1;                               // 0x0090 (0x0004) [0x0000000000000001] [0x00080000] (CPF_Edit)
+	uint32_t                                           bPreferLeanOverPopup : 1;                      // 0x0090 (0x0004) [0x0000000000000001] [0x00100000] (CPF_Edit)
+	uint32_t                                           bDestructible : 1;                             // 0x0090 (0x0004) [0x0000000000002000] [0x00200000] (CPF_Transient)
+	uint32_t                                           bSelected : 1;                                 // 0x0090 (0x0004) [0x0000000000002000] [0x00400000] (CPF_Transient)
+	uint32_t                                           bFailedToFindSurface : 1;                      // 0x0090 (0x0004) [0x0000000000022001] [0x00800000] (CPF_Edit | CPF_Transient | CPF_EditConst)
 };
 
 // ScriptStruct Engine.StaticMeshComponent.PaintedVertex
@@ -1960,7 +1960,7 @@ struct FPresetGeneratedPoint
 {
 	float                                              KeyIn;                                         // 0x0000 (0x0004) [0x0000000000000000]               
 	float                                              KeyOut;                                        // 0x0004 (0x0004) [0x0000000000000000]               
-	unsigned long                                      TangentsValid : 1;                             // 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           TangentsValid : 1;                             // 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
 	float                                              TangentIn;                                     // 0x000C (0x0004) [0x0000000000000000]               
 	float                                              TangentOut;                                    // 0x0010 (0x0004) [0x0000000000000000]               
 	uint8_t                                            IntepMode;                                     // 0x0014 (0x0001) [0x0000000000000000]               
@@ -2008,18 +2008,18 @@ struct FActiveDecalInfo
 // 0x001C
 struct FLightmassMaterialInterfaceSettings
 {
-	unsigned long                                      bCastShadowAsMasked : 1;                       // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bCastShadowAsMasked : 1;                       // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 	float                                              EmissiveBoost;                                 // 0x0004 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              DiffuseBoost;                                  // 0x0008 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              SpecularBoost;                                 // 0x000C (0x0004) [0x0000000000000000]               
 	float                                              ExportResolutionScale;                         // 0x0010 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              DistanceFieldPenumbraScale;                    // 0x0014 (0x0004) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bOverrideCastShadowAsMasked : 1;               // 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bOverrideEmissiveBoost : 1;                    // 0x0018 (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      bOverrideDiffuseBoost : 1;                     // 0x0018 (0x0004) [0x0000000000000000] [0x00000004] 
-	unsigned long                                      bOverrideSpecularBoost : 1;                    // 0x0018 (0x0004) [0x0000000000000000] [0x00000008] 
-	unsigned long                                      bOverrideExportResolutionScale : 1;            // 0x0018 (0x0004) [0x0000000000000000] [0x00000010] 
-	unsigned long                                      bOverrideDistanceFieldPenumbraScale : 1;       // 0x0018 (0x0004) [0x0000000000000000] [0x00000020] 
+	uint32_t                                           bOverrideCastShadowAsMasked : 1;               // 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bOverrideEmissiveBoost : 1;                    // 0x0018 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bOverrideDiffuseBoost : 1;                     // 0x0018 (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           bOverrideSpecularBoost : 1;                    // 0x0018 (0x0004) [0x0000000000000000] [0x00000008] 
+	uint32_t                                           bOverrideExportResolutionScale : 1;            // 0x0018 (0x0004) [0x0000000000000000] [0x00000010] 
+	uint32_t                                           bOverrideDistanceFieldPenumbraScale : 1;       // 0x0018 (0x0004) [0x0000000000000000] [0x00000020] 
 };
 
 // ScriptStruct Engine.Material.MaterialInput
@@ -2049,7 +2049,7 @@ struct FMaterialFunctionInfo
 // 0x0008 (0x0038 - 0x0040)
 struct FColorMaterialInput : FMaterialInput
 {
-	unsigned long                                      UseConstant : 1;                               // 0x0038 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           UseConstant : 1;                               // 0x0038 (0x0004) [0x0000000000000000] [0x00000001] 
 	struct FColor                                      Constant;                                      // 0x003C (0x0004) [0x0000000000000000]               
 };
 
@@ -2057,7 +2057,7 @@ struct FColorMaterialInput : FMaterialInput
 // 0x0008 (0x0038 - 0x0040)
 struct FScalarMaterialInput : FMaterialInput
 {
-	unsigned long                                      UseConstant : 1;                               // 0x0038 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           UseConstant : 1;                               // 0x0038 (0x0004) [0x0000000000000000] [0x00000001] 
 	float                                              Constant;                                      // 0x003C (0x0004) [0x0000000000000000]               
 };
 
@@ -2065,7 +2065,7 @@ struct FScalarMaterialInput : FMaterialInput
 // 0x0010 (0x0038 - 0x0048)
 struct FVectorMaterialInput : FMaterialInput
 {
-	unsigned long                                      UseConstant : 1;                               // 0x0038 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           UseConstant : 1;                               // 0x0038 (0x0004) [0x0000000000000000] [0x00000001] 
 	struct FVector                                     Constant;                                      // 0x003C (0x000C) [0x0000000000000000]               
 };
 
@@ -2073,7 +2073,7 @@ struct FVectorMaterialInput : FMaterialInput
 // 0x000C (0x0038 - 0x0044)
 struct FVector2MaterialInput : FMaterialInput
 {
-	unsigned long                                      UseConstant : 1;                               // 0x0038 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           UseConstant : 1;                               // 0x0038 (0x0004) [0x0000000000000000] [0x00000001] 
 	float                                              ConstantX;                                     // 0x003C (0x0004) [0x0000000000000000]               
 	float                                              ConstantY;                                     // 0x0040 (0x0004) [0x0000000000000000]               
 };
@@ -2082,7 +2082,7 @@ struct FVector2MaterialInput : FMaterialInput
 // 0x0004
 struct APhysicsVolume_FCheckpointRecord
 {
-	unsigned long                                      bActive : 1;                                   // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bActive : 1;                                   // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Engine.DistributionVectorConstantCurveParticleParameter.CurveParameterPoint
@@ -2166,10 +2166,10 @@ struct FNamedInterface
 // 0x0004
 struct FSocialPostImageFlags
 {
-	unsigned long                                      bIsUserGeneratedImage : 1;                     // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bIsGameGeneratedImage : 1;                     // 0x0000 (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      bIsAchievementImage : 1;                       // 0x0000 (0x0004) [0x0000000000000000] [0x00000004] 
-	unsigned long                                      bIsMediaImage : 1;                             // 0x0000 (0x0004) [0x0000000000000000] [0x00000008] 
+	uint32_t                                           bIsUserGeneratedImage : 1;                     // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bIsGameGeneratedImage : 1;                     // 0x0000 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bIsAchievementImage : 1;                       // 0x0000 (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           bIsMediaImage : 1;                             // 0x0000 (0x0004) [0x0000000000000000] [0x00000008] 
 };
 
 // ScriptStruct Engine.OnlineSubsystem.SocialPostImageInfo
@@ -2212,8 +2212,8 @@ struct FDownloadedWorkshopData
 // 0x0004
 struct FSocialPostPrivileges
 {
-	unsigned long                                      bCanPostImage : 1;                             // 0x0000 (0x0004) [0x0000000000000002] [0x00000001] (CPF_Const)
-	unsigned long                                      bCanPostLink : 1;                              // 0x0000 (0x0004) [0x0000000000000002] [0x00000002] (CPF_Const)
+	uint32_t                                           bCanPostImage : 1;                             // 0x0000 (0x0004) [0x0000000000000002] [0x00000001] (CPF_Const)
+	uint32_t                                           bCanPostLink : 1;                              // 0x0000 (0x0004) [0x0000000000000002] [0x00000002] (CPF_Const)
 };
 
 // ScriptStruct Engine.OnlineSubsystem.OnlinePartyMember
@@ -2225,11 +2225,11 @@ struct FOnlinePartyMember
 	uint8_t                                            LocalUserNum;                                  // 0x0058 (0x0001) [0x0000000000000002] (CPF_Const)   
 	uint8_t                                            NatType;                                       // 0x0059 (0x0001) [0x0000000000000002] (CPF_Const)   
 	int32_t                                            TitleId;                                       // 0x005C (0x0004) [0x0000000000000002] (CPF_Const)   
-	unsigned long                                      bIsLocal : 1;                                  // 0x0060 (0x0004) [0x0000000000000002] [0x00000001] (CPF_Const)
-	unsigned long                                      bIsInPartyVoice : 1;                           // 0x0060 (0x0004) [0x0000000000000002] [0x00000002] (CPF_Const)
-	unsigned long                                      bIsTalking : 1;                                // 0x0060 (0x0004) [0x0000000000000002] [0x00000004] (CPF_Const)
-	unsigned long                                      bIsInGameSession : 1;                          // 0x0060 (0x0004) [0x0000000000000002] [0x00000008] (CPF_Const)
-	unsigned long                                      bIsPlayingThisGame : 1;                        // 0x0060 (0x0004) [0x0000000000000002] [0x00000010] (CPF_Const)
+	uint32_t                                           bIsLocal : 1;                                  // 0x0060 (0x0004) [0x0000000000000002] [0x00000001] (CPF_Const)
+	uint32_t                                           bIsInPartyVoice : 1;                           // 0x0060 (0x0004) [0x0000000000000002] [0x00000002] (CPF_Const)
+	uint32_t                                           bIsTalking : 1;                                // 0x0060 (0x0004) [0x0000000000000002] [0x00000004] (CPF_Const)
+	uint32_t                                           bIsInGameSession : 1;                          // 0x0060 (0x0004) [0x0000000000000002] [0x00000008] (CPF_Const)
+	uint32_t                                           bIsPlayingThisGame : 1;                        // 0x0060 (0x0004) [0x0000000000000002] [0x00000010] (CPF_Const)
 	uint64_t                                           SessionId;                                     // 0x0068 (0x0008) [0x0000000000000002] (CPF_Const)   
 	int32_t                                            Data1;                                         // 0x0070 (0x0004) [0x0000000000000002] (CPF_Const)   
 	int32_t                                            Data2;                                         // 0x0074 (0x0004) [0x0000000000000002] (CPF_Const)   
@@ -2285,7 +2285,7 @@ struct FMarketplaceProductAvailability
 	class FString                                      DisplayListPrice;                              // 0x0040 (0x0010) [0x0000000000400002] (CPF_Const | CPF_NeedCtorLink)
 	class FString                                      DisplayPrice;                                  // 0x0050 (0x0010) [0x0000000000400002] (CPF_Const | CPF_NeedCtorLink)
 	class FString                                      DistributionType;                              // 0x0060 (0x0010) [0x0000000000400002] (CPF_Const | CPF_NeedCtorLink)
-	unsigned long                                      bIsPurchasable : 1;                            // 0x0070 (0x0004) [0x0000000000000002] [0x00000001] (CPF_Const)
+	uint32_t                                           bIsPurchasable : 1;                            // 0x0070 (0x0004) [0x0000000000000002] [0x00000001] (CPF_Const)
 	float                                              ListPrice;                                     // 0x0074 (0x0004) [0x0000000000000002] (CPF_Const)   
 	float                                              Price;                                         // 0x0078 (0x0004) [0x0000000000000002] (CPF_Const)   
 	class FString                                      PromotionalText;                               // 0x0080 (0x0010) [0x0000000000400002] (CPF_Const | CPF_NeedCtorLink)
@@ -2351,15 +2351,15 @@ struct FAchievementDetails
 	uint8_t                                            YearEarned;                                    // 0x0052 (0x0001) [0x0000000000000002] (CPF_Const)   
 	uint8_t                                            DayOfWeekEarned;                               // 0x0053 (0x0001) [0x0000000000000002] (CPF_Const)   
 	int32_t                                            GamerPoints;                                   // 0x0054 (0x0004) [0x0000000000000002] (CPF_Const)   
-	unsigned long                                      bIsSecret : 1;                                 // 0x0058 (0x0004) [0x0000000000000002] [0x00000001] (CPF_Const)
-	unsigned long                                      bWasAchievedOnline : 1;                        // 0x0058 (0x0004) [0x0000000000000002] [0x00000002] (CPF_Const)
-	unsigned long                                      bWasAchievedOffline : 1;                       // 0x0058 (0x0004) [0x0000000000000002] [0x00000004] (CPF_Const)
+	uint32_t                                           bIsSecret : 1;                                 // 0x0058 (0x0004) [0x0000000000000002] [0x00000001] (CPF_Const)
+	uint32_t                                           bWasAchievedOnline : 1;                        // 0x0058 (0x0004) [0x0000000000000002] [0x00000002] (CPF_Const)
+	uint32_t                                           bWasAchievedOffline : 1;                       // 0x0058 (0x0004) [0x0000000000000002] [0x00000004] (CPF_Const)
 	uint8_t                                            UnlockType;                                    // 0x005C (0x0001) [0x0000000000000002] (CPF_Const)   
 	uint64_t                                           ChallengeWindowBegin;                          // 0x0060 (0x0008) [0x0000000000000002] (CPF_Const)   
 	uint64_t                                           ChallengeWindowEnd;                            // 0x0068 (0x0008) [0x0000000000000002] (CPF_Const)   
 	class FString                                      DeepLink;                                      // 0x0070 (0x0010) [0x0000000000400002] (CPF_Const | CPF_NeedCtorLink)
 	uint64_t                                           EstimatedUnlockTime;                           // 0x0080 (0x0008) [0x0000000000000002] (CPF_Const)   
-	unsigned long                                      bIsRevoked : 1;                                // 0x0088 (0x0004) [0x0000000000000002] [0x00000001] (CPF_Const)
+	uint32_t                                           bIsRevoked : 1;                                // 0x0088 (0x0004) [0x0000000000000002] [0x00000001] (CPF_Const)
 	uint8_t                                            ParticipationType;                             // 0x008C (0x0001) [0x0000000000000002] (CPF_Const)   
 	TArray<class FString>                              PlatformsAvailableOn;                          // 0x0090 (0x0010) [0x0000000000400002] (CPF_Const | CPF_NeedCtorLink)
 	uint8_t                                            ProgressState;                                 // 0x00A0 (0x0001) [0x0000000000000002] (CPF_Const)   
@@ -2457,10 +2457,10 @@ struct FOnlineFriendMessage
 {
 	struct FUniqueNetId                                SendingPlayerId;                               // 0x0000 (0x0048) [0x0000000000400000] (CPF_NeedCtorLink)
 	class FString                                      SendingPlayerNick;                             // 0x0048 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      bIsFriendInvite : 1;                           // 0x0058 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bIsGameInvite : 1;                             // 0x0058 (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      bWasAccepted : 1;                              // 0x0058 (0x0004) [0x0000000000000000] [0x00000004] 
-	unsigned long                                      bWasDenied : 1;                                // 0x0058 (0x0004) [0x0000000000000000] [0x00000008] 
+	uint32_t                                           bIsFriendInvite : 1;                           // 0x0058 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bIsGameInvite : 1;                             // 0x0058 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bWasAccepted : 1;                              // 0x0058 (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           bWasDenied : 1;                                // 0x0058 (0x0004) [0x0000000000000000] [0x00000008] 
 	class FString                                      Message;                                       // 0x0060 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 };
 
@@ -2470,9 +2470,9 @@ struct FRemoteTalker
 {
 	struct FUniqueNetId                                TalkerId;                                      // 0x0000 (0x0048) [0x0000000000400000] (CPF_NeedCtorLink)
 	float                                              LastNotificationTime;                          // 0x0048 (0x0004) [0x0000000000000000]               
-	unsigned long                                      bWasTalking : 1;                               // 0x004C (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bIsTalking : 1;                                // 0x004C (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      bIsRegistered : 1;                             // 0x004C (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           bWasTalking : 1;                               // 0x004C (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bIsTalking : 1;                                // 0x004C (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bIsRegistered : 1;                             // 0x004C (0x0004) [0x0000000000000000] [0x00000004] 
 };
 
 // ScriptStruct Engine.OnlineSubsystem.LocalTalker
@@ -2480,12 +2480,12 @@ struct FRemoteTalker
 struct FLocalTalker
 {
 	struct FUniqueNetId                                TalkerId;                                      // 0x0000 (0x0048) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      bHasVoice : 1;                                 // 0x0048 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bHasNetworkedVoice : 1;                        // 0x0048 (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      bIsRecognizingSpeech : 1;                      // 0x0048 (0x0004) [0x0000000000000000] [0x00000004] 
-	unsigned long                                      bWasTalking : 1;                               // 0x0048 (0x0004) [0x0000000000000000] [0x00000008] 
-	unsigned long                                      bIsTalking : 1;                                // 0x0048 (0x0004) [0x0000000000000000] [0x00000010] 
-	unsigned long                                      bIsRegistered : 1;                             // 0x0048 (0x0004) [0x0000000000000000] [0x00000020] 
+	uint32_t                                           bHasVoice : 1;                                 // 0x0048 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bHasNetworkedVoice : 1;                        // 0x0048 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bIsRecognizingSpeech : 1;                      // 0x0048 (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           bWasTalking : 1;                               // 0x0048 (0x0004) [0x0000000000000000] [0x00000008] 
+	uint32_t                                           bIsTalking : 1;                                // 0x0048 (0x0004) [0x0000000000000000] [0x00000010] 
+	uint32_t                                           bIsRegistered : 1;                             // 0x0048 (0x0004) [0x0000000000000000] [0x00000020] 
 };
 
 // ScriptStruct Engine.OnlineSubsystem.OnlinePlayerScore
@@ -2512,7 +2512,7 @@ struct FOnlineContent
 {
 	uint8_t                                            ContentType;                                   // 0x0000 (0x0001) [0x0000000000000000]               
 	uint8_t                                            UserIndex;                                     // 0x0001 (0x0001) [0x0000000000000000]               
-	unsigned long                                      bIsCorrupt : 1;                                // 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bIsCorrupt : 1;                                // 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
 	int32_t                                            DeviceID;                                      // 0x0008 (0x0004) [0x0000000000000000]               
 	int32_t                                            LicenseMask;                                   // 0x000C (0x0004) [0x0000000000000000]               
 	class FString                                      FriendlyName;                                  // 0x0010 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -2551,13 +2551,13 @@ struct FOnlineFriend : FOnlineUser
 	uint8_t                                            SecondaryPlatform;                             // 0x00F0 (0x0001) [0x0000000000000000]               
 	class FString                                      PresenceInfo;                                  // 0x00F8 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	uint8_t                                            FriendState;                                   // 0x0108 (0x0001) [0x0000000000000000]               
-	unsigned long                                      bIsOnline : 1;                                 // 0x010C (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bIsPlaying : 1;                                // 0x010C (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      bIsPlayingThisGame : 1;                        // 0x010C (0x0004) [0x0000000000000000] [0x00000004] 
-	unsigned long                                      bIsJoinable : 1;                               // 0x010C (0x0004) [0x0000000000000000] [0x00000008] 
-	unsigned long                                      bHasVoiceSupport : 1;                          // 0x010C (0x0004) [0x0000000000000000] [0x00000010] 
-	unsigned long                                      bHaveInvited : 1;                              // 0x010C (0x0004) [0x0000000000000000] [0x00000020] 
-	unsigned long                                      bHasInvitedYou : 1;                            // 0x010C (0x0004) [0x0000000000000000] [0x00000040] 
+	uint32_t                                           bIsOnline : 1;                                 // 0x010C (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bIsPlaying : 1;                                // 0x010C (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bIsPlayingThisGame : 1;                        // 0x010C (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           bIsJoinable : 1;                               // 0x010C (0x0004) [0x0000000000000000] [0x00000008] 
+	uint32_t                                           bHasVoiceSupport : 1;                          // 0x010C (0x0004) [0x0000000000000000] [0x00000010] 
+	uint32_t                                           bHaveInvited : 1;                              // 0x010C (0x0004) [0x0000000000000000] [0x00000020] 
+	uint32_t                                           bHasInvitedYou : 1;                            // 0x010C (0x0004) [0x0000000000000000] [0x00000040] 
 	int32_t                                            GroupId;                                       // 0x0110 (0x0004) [0x0000000000000002] (CPF_Const)   
 };
 
@@ -2566,7 +2566,7 @@ struct FOnlineFriend : FOnlineUser
 struct FFriendsQuery
 {
 	struct FUniqueNetId                                UniqueId;                                      // 0x0000 (0x0048) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      bIsFriend : 1;                                 // 0x0048 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bIsFriend : 1;                                 // 0x0048 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Engine.OnlineSubsystem.WordFilterResult
@@ -2601,7 +2601,7 @@ struct FXboxOneDLCInfo
 {
 	class FString                                      Key;                                           // 0x0000 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	struct FName                                       Value;                                         // 0x0010 (0x0008) [0x0000000000000000]               
-	unsigned long                                      bDiscUnlock : 1;                               // 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bDiscUnlock : 1;                               // 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Engine.OnlineSubsystem.PS4DLCInfo
@@ -2626,9 +2626,9 @@ struct ADynamicBlockingVolume_FCheckpointRecord
 {
 	struct FVector                                     Location;                                      // 0x0000 (0x000C) [0x0000000000000000]               
 	struct FRotator                                    Rotation;                                      // 0x000C (0x000C) [0x0000000000000000]               
-	unsigned long                                      bCollideActors : 1;                            // 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bBlockActors : 1;                              // 0x0018 (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      bNeedsReplication : 1;                         // 0x0018 (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           bCollideActors : 1;                            // 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bBlockActors : 1;                              // 0x0018 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bNeedsReplication : 1;                         // 0x0018 (0x0004) [0x0000000000000000] [0x00000004] 
 };
 
 // ScriptStruct Engine.ParticleSystemComponent.ViewParticleEmitterInstanceMotionBlurInfo
@@ -2700,7 +2700,7 @@ struct FParticleEventAttractorCollideData : FParticleEventCollideData
 // 0x0010 (0x0034 - 0x0044)
 struct FParticleEventKismetData : FParticleEventData
 {
-	unsigned long                                      UsePSysCompLocation : 1;                       // 0x0034 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           UsePSysCompLocation : 1;                       // 0x0034 (0x0004) [0x0000000000000000] [0x00000001] 
 	struct FVector                                     Normal;                                        // 0x0038 (0x000C) [0x0000000000000000]               
 };
 
@@ -2721,7 +2721,7 @@ struct FParticleEmitterInstance
 // 0x0004
 struct AEmitter_FCheckpointRecord
 {
-	unsigned long                                      bIsActive : 1;                                 // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bIsActive : 1;                                 // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Engine.EmitterPool.EmitterBaseInfo
@@ -2732,7 +2732,7 @@ struct FEmitterBaseInfo
 	class AActor*                                      Base;                                          // 0x0008 (0x0008) [0x0000000000000000]               
 	struct FVector                                     RelativeLocation;                              // 0x0010 (0x000C) [0x0000000000000000]               
 	struct FRotator                                    RelativeRotation;                              // 0x001C (0x000C) [0x0000000000000000]               
-	unsigned long                                      bInheritBaseScale : 1;                         // 0x0028 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bInheritBaseScale : 1;                         // 0x0028 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Engine.Engine.StatColorMapEntry
@@ -2749,7 +2749,7 @@ struct FStatColorMapping
 {
 	class FString                                      StatName;                                      // 0x0000 (0x0010) [0x0000000000444000] (CPF_Config | CPF_GlobalConfig | CPF_NeedCtorLink)
 	TArray<struct FStatColorMapEntry>                  ColorMap;                                      // 0x0010 (0x0010) [0x0000000000444000] (CPF_Config | CPF_GlobalConfig | CPF_NeedCtorLink)
-	unsigned long                                      DisableBlend : 1;                              // 0x0020 (0x0004) [0x0000000000044000] [0x00000001] (CPF_Config | CPF_GlobalConfig)
+	uint32_t                                           DisableBlend : 1;                              // 0x0020 (0x0004) [0x0000000000044000] [0x00000001] (CPF_Config | CPF_GlobalConfig)
 };
 
 // ScriptStruct Engine.Engine.DropNoteInfo
@@ -2807,7 +2807,7 @@ struct FFacebookFriend
 // 0x0004
 struct AFogVolumeDensityInfo_FCheckpointRecord
 {
-	unsigned long                                      bEnabled : 1;                                  // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bEnabled : 1;                                  // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Engine.FontImportOptions.FontImportOptionsData
@@ -2816,20 +2816,20 @@ struct FFontImportOptionsData
 {
 	class FString                                      FontName;                                      // 0x0000 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
 	float                                              Height;                                        // 0x0010 (0x0004) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bEnableAntialiasing : 1;                       // 0x0014 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bEnableBold : 1;                               // 0x0014 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
-	unsigned long                                      bEnableItalic : 1;                             // 0x0014 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
-	unsigned long                                      bEnableUnderline : 1;                          // 0x0014 (0x0004) [0x0000000000000001] [0x00000008] (CPF_Edit)
-	unsigned long                                      bAlphaOnly : 1;                                // 0x0014 (0x0004) [0x0000000000000001] [0x00000010] (CPF_Edit)
+	uint32_t                                           bEnableAntialiasing : 1;                       // 0x0014 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bEnableBold : 1;                               // 0x0014 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bEnableItalic : 1;                             // 0x0014 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
+	uint32_t                                           bEnableUnderline : 1;                          // 0x0014 (0x0004) [0x0000000000000001] [0x00000008] (CPF_Edit)
+	uint32_t                                           bAlphaOnly : 1;                                // 0x0014 (0x0004) [0x0000000000000001] [0x00000010] (CPF_Edit)
 	uint8_t                                            CharacterSet;                                  // 0x0018 (0x0001) [0x0000000000000001] (CPF_Edit)    
 	class FString                                      Chars;                                         // 0x0020 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
 	class FString                                      UnicodeRange;                                  // 0x0030 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
 	class FString                                      CharsFilePath;                                 // 0x0040 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
 	class FString                                      CharsFileWildcard;                             // 0x0050 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
-	unsigned long                                      bCreatePrintableOnly : 1;                      // 0x0060 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bIncludeASCIIRange : 1;                        // 0x0060 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bCreatePrintableOnly : 1;                      // 0x0060 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bIncludeASCIIRange : 1;                        // 0x0060 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
 	struct FLinearColor                                ForegroundColor;                               // 0x0064 (0x0010) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bEnableDropShadow : 1;                         // 0x0074 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bEnableDropShadow : 1;                         // 0x0074 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 	int32_t                                            TexturePageWidth;                              // 0x0078 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	int32_t                                            TexturePageMaxHeight;                          // 0x007C (0x0004) [0x0000000000000001] (CPF_Edit)    
 	int32_t                                            XPadding;                                      // 0x0080 (0x0004) [0x0000000000000001] (CPF_Edit)    
@@ -2838,9 +2838,9 @@ struct FFontImportOptionsData
 	int32_t                                            ExtendBoxBottom;                               // 0x008C (0x0004) [0x0000000000000001] (CPF_Edit)    
 	int32_t                                            ExtendBoxRight;                                // 0x0090 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	int32_t                                            ExtendBoxLeft;                                 // 0x0094 (0x0004) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bEnableLegacyMode : 1;                         // 0x0098 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bEnableLegacyMode : 1;                         // 0x0098 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 	int32_t                                            Kerning;                                       // 0x009C (0x0004) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bUseDistanceFieldAlpha : 1;                    // 0x00A0 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bUseDistanceFieldAlpha : 1;                    // 0x00A0 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 	int32_t                                            DistanceFieldScaleFactor;                      // 0x00A4 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              DistanceFieldScanRadiusScale;                  // 0x00A8 (0x0004) [0x0000000000000001] (CPF_Edit)    
 };
@@ -2877,7 +2877,7 @@ struct FWaveformSample
 struct FFragmentGroup
 {
 	TArray<int32_t>                                    FragmentIndices;                               // 0x0000 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      bGroupIsRooted : 1;                            // 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bGroupIsRooted : 1;                            // 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Engine.FracturedStaticMeshActor.DeferredPartToSpawn
@@ -2888,14 +2888,14 @@ struct FDeferredPartToSpawn
 	struct FVector                                     InitialVel;                                    // 0x0004 (0x000C) [0x0000000000000000]               
 	struct FVector                                     InitialAngVel;                                 // 0x0010 (0x000C) [0x0000000000000000]               
 	float                                              RelativeScale;                                 // 0x001C (0x0004) [0x0000000000000000]               
-	unsigned long                                      bExplosion : 1;                                // 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bExplosion : 1;                                // 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Engine.FracturedStaticMeshActor.CheckpointRecord
 // 0x0018
 struct AFracturedStaticMeshActor_FCheckpointRecord
 {
-	unsigned long                                      bIsShutdown : 1;                               // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bIsShutdown : 1;                               // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 	TArray<uint8_t>                                    FragmentVis;                                   // 0x0008 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 };
 
@@ -2904,8 +2904,8 @@ struct AFracturedStaticMeshActor_FCheckpointRecord
 struct FLevelStreamingStatus
 {
 	struct FName                                       PackageName;                                   // 0x0000 (0x0008) [0x0000000000000000]               
-	unsigned long                                      bShouldBeLoaded : 1;                           // 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bShouldBeVisible : 1;                          // 0x0008 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bShouldBeLoaded : 1;                           // 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bShouldBeVisible : 1;                          // 0x0008 (0x0004) [0x0000000000000000] [0x00000002] 
 };
 
 // ScriptStruct Engine.GameEngine.FullyLoadedPackagesInfo
@@ -2960,7 +2960,7 @@ struct FGameClassShortName
 struct FGameTypePrefix
 {
 	class FString                                      Prefix;                                        // 0x0000 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      bUsesCommonPackage : 1;                        // 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bUsesCommonPackage : 1;                        // 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
 	class FString                                      GameType;                                      // 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	TArray<class FString>                              AdditionalGameTypes;                           // 0x0028 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	TArray<class FString>                              ForcedObjects;                                 // 0x0038 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -2973,7 +2973,7 @@ struct FPlayerInformation
 	struct FName                                       ControllerName;                                // 0x0000 (0x0008) [0x0000000000000000]               
 	class FString                                      PlayerName;                                    // 0x0008 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	struct FUniqueNetId                                UniqueId;                                      // 0x0018 (0x0048) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      bIsBot : 1;                                    // 0x0060 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bIsBot : 1;                                    // 0x0060 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Engine.GameplayEvents.TeamInformation
@@ -3057,7 +3057,7 @@ struct FGameSessionInformation
 	class FString                                      GameplaySessionTimestamp;                      // 0x0018 (0x0010) [0x0000000000400002] (CPF_Const | CPF_NeedCtorLink)
 	float                                              GameplaySessionStartTime;                      // 0x0028 (0x0004) [0x0000000000000002] (CPF_Const)   
 	float                                              GameplaySessionEndTime;                        // 0x002C (0x0004) [0x0000000000000002] (CPF_Const)   
-	unsigned long                                      bGameplaySessionInProgress : 1;                // 0x0030 (0x0004) [0x0000000000000002] [0x00000001] (CPF_Const)
+	uint32_t                                           bGameplaySessionInProgress : 1;                // 0x0030 (0x0004) [0x0000000000000002] [0x00000001] (CPF_Const)
 	class FString                                      GameplaySessionID;                             // 0x0038 (0x0010) [0x0000000000400002] (CPF_Const | CPF_NeedCtorLink)
 	class FString                                      GameClassName;                                 // 0x0048 (0x0010) [0x0000000000400002] (CPF_Const | CPF_NeedCtorLink)
 	class FString                                      MapName;                                       // 0x0058 (0x0010) [0x0000000000400002] (CPF_Const | CPF_NeedCtorLink)
@@ -3080,11 +3080,11 @@ struct FNavMeshPathGoalEvaluatorCacheDatum
 // 0x0018
 struct FPhysXEmitterVerticalProperties
 {
-	unsigned long                                      bDisableLod : 1;                               // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bDisableLod : 1;                               // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 	int32_t                                            ParticlesLodMin;                               // 0x0004 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	int32_t                                            ParticlesLodMax;                               // 0x0008 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	int32_t                                            PacketsPerPhysXParticleSystemMax;              // 0x000C (0x0004) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bApplyCylindricalPacketCulling : 1;            // 0x0010 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bApplyCylindricalPacketCulling : 1;            // 0x0010 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 	float                                              SpawnLodVsFifoBias;                            // 0x0014 (0x0004) [0x0000000000000001] (CPF_Edit)    
 };
 
@@ -3103,7 +3103,7 @@ struct FHostMigrationState
 	float                                              HostMigrationElapsedTime;                      // 0x0004 (0x0004) [0x0000000000000000]               
 	float                                              HostMigrationTravelCountdown;                  // 0x0008 (0x0004) [0x0000000000000000]               
 	class FString                                      HostMigrationTravelURL;                        // 0x0010 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      bHostMigrationEnabled : 1;                     // 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bHostMigrationEnabled : 1;                     // 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Engine.MusicTrackDataStructures.MusicTrackStruct
@@ -3111,8 +3111,8 @@ struct FHostMigrationState
 struct FMusicTrackStruct
 {
 	class USoundCue*                                   TheSoundCue;                                   // 0x0000 (0x0008) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bAutoPlay : 1;                                 // 0x0008 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bPersistentAcrossLevels : 1;                   // 0x0008 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bAutoPlay : 1;                                 // 0x0008 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bPersistentAcrossLevels : 1;                   // 0x0008 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
 	float                                              FadeInTime;                                    // 0x000C (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              FadeInVolumeLevel;                             // 0x0010 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              FadeOutTime;                                   // 0x0014 (0x0004) [0x0000000000000001] (CPF_Edit)    
@@ -3125,10 +3125,10 @@ struct FMusicTrackStruct
 struct FWorldFractureSettings
 {
 	float                                              ChanceOfPhysicsChunkOverride;                  // 0x0000 (0x0004) [0x0000000000000000]               
-	unsigned long                                      bEnableChanceOfPhysicsChunkOverride : 1;       // 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bLimitExplosionChunkSize : 1;                  // 0x0004 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bEnableChanceOfPhysicsChunkOverride : 1;       // 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bLimitExplosionChunkSize : 1;                  // 0x0004 (0x0004) [0x0000000000000000] [0x00000002] 
 	float                                              MaxExplosionChunkSize;                         // 0x0008 (0x0004) [0x0000000000000000]               
-	unsigned long                                      bLimitDamageChunkSize : 1;                     // 0x000C (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bLimitDamageChunkSize : 1;                     // 0x000C (0x0004) [0x0000000000000000] [0x00000001] 
 	float                                              MaxDamageChunkSize;                            // 0x0010 (0x0004) [0x0000000000000000]               
 	int32_t                                            MaxNumFacturedChunksToSpawnInAFrame;           // 0x0014 (0x0004) [0x0000000000000000]               
 	float                                              FractureExplosionVelScale;                     // 0x0018 (0x0004) [0x0000000000000000]               
@@ -3150,7 +3150,7 @@ struct FLightmassWorldInfoSettings
 	int32_t                                            NumIndirectLightingBounces;                    // 0x0004 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	struct FColor                                      EnvironmentColor;                              // 0x0008 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              EnvironmentIntensity;                          // 0x000C (0x0004) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bEnableAdvancedEnvironmentColor : 1;           // 0x0010 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bEnableAdvancedEnvironmentColor : 1;           // 0x0010 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 	struct FColor                                      EnvironmentSunColor;                           // 0x0014 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              EnvironmentSunIntensity;                       // 0x0018 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              EnvironmentLightTerminatorAngle;               // 0x001C (0x0004) [0x0000000000000001] (CPF_Edit)    
@@ -3159,16 +3159,16 @@ struct FLightmassWorldInfoSettings
 	float                                              DiffuseBoost;                                  // 0x0030 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              SpecularBoost;                                 // 0x0034 (0x0004) [0x0000000000000000]               
 	float                                              IndirectNormalInfluenceBoost;                  // 0x0038 (0x0004) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bUseAmbientOcclusion : 1;                      // 0x003C (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bEnableImageReflectionShadowing : 1;           // 0x003C (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bUseAmbientOcclusion : 1;                      // 0x003C (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bEnableImageReflectionShadowing : 1;           // 0x003C (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
 	float                                              DirectIlluminationOcclusionFraction;           // 0x0040 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              IndirectIlluminationOcclusionFraction;         // 0x0044 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              OcclusionExponent;                             // 0x0048 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              FullyOccludedSamplesFraction;                  // 0x004C (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              MaxOcclusionDistance;                          // 0x0050 (0x0004) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bVisualizeMaterialDiffuse : 1;                 // 0x0054 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bVisualizeAmbientOcclusion : 1;                // 0x0054 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
-	unsigned long                                      bCompressShadowmap : 1;                        // 0x0054 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
+	uint32_t                                           bVisualizeMaterialDiffuse : 1;                 // 0x0054 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bVisualizeAmbientOcclusion : 1;                // 0x0054 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bCompressShadowmap : 1;                        // 0x0054 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
 };
 
 // ScriptStruct Engine.WorldInfo.ScreenMessageString
@@ -3190,15 +3190,15 @@ struct FApexModuleDestructibleSettings
 	int32_t                                            MaxShapeCount;                                 // 0x0004 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	int32_t                                            MaxRrbActorCount;                              // 0x0008 (0x0004) [0x0000000000000000]               
 	float                                              MaxChunkSeparationLOD;                         // 0x000C (0x0004) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bOverrideMaxChunkSeparationLOD : 1;            // 0x0010 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bOverrideMaxChunkSeparationLOD : 1;            // 0x0010 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 };
 
 // ScriptStruct Engine.WorldInfo.PhysXSimulationProperties
 // 0x000C
 struct FPhysXSimulationProperties
 {
-	unsigned long                                      bUseHardware : 1;                              // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bFixedTimeStep : 1;                            // 0x0000 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bUseHardware : 1;                              // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bFixedTimeStep : 1;                            // 0x0000 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
 	float                                              TimeStep;                                      // 0x0004 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	int32_t                                            MaxSubSteps;                                   // 0x0008 (0x0004) [0x0000000000000001] (CPF_Edit)    
 };
@@ -3218,10 +3218,10 @@ struct FPhysXSceneProperties
 // 0x0004
 struct FCompartmentRunList
 {
-	unsigned long                                      RigidBody : 1;                                 // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      Fluid : 1;                                     // 0x0000 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
-	unsigned long                                      Cloth : 1;                                     // 0x0000 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
-	unsigned long                                      SoftBody : 1;                                  // 0x0000 (0x0004) [0x0000000000000001] [0x00000008] (CPF_Edit)
+	uint32_t                                           RigidBody : 1;                                 // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           Fluid : 1;                                     // 0x0000 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           Cloth : 1;                                     // 0x0000 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
+	uint32_t                                           SoftBody : 1;                                  // 0x0000 (0x0004) [0x0000000000000001] [0x00000008] (CPF_Edit)
 };
 
 // ScriptStruct Engine.WorldInfo.NetViewer
@@ -3248,7 +3248,7 @@ struct FStringIdToStringMapping
 {
 	int32_t                                            Id;                                            // 0x0000 (0x0004) [0x0000000000000002] (CPF_Const)   
 	struct FName                                       Name;                                          // 0x0004 (0x0008) [0x0000000000008002] (CPF_Const | CPF_Localized)
-	unsigned long                                      bIsWildcard : 1;                               // 0x000C (0x0004) [0x0000000000000002] [0x00000001] (CPF_Const)
+	uint32_t                                           bIsWildcard : 1;                               // 0x000C (0x0004) [0x0000000000000002] [0x00000001] (CPF_Const)
 };
 
 // ScriptStruct Engine.Settings.LocalizedStringSettingMetaData
@@ -3343,7 +3343,7 @@ struct FConnectedPeerInfo
 {
 	struct FUniqueNetId                                PlayerID;                                      // 0x0000 (0x0048) [0x0000000000400000] (CPF_NeedCtorLink)
 	uint8_t                                            NatType;                                       // 0x0048 (0x0001) [0x0000000000000000]               
-	unsigned long                                      bLostConnectionToHost : 1;                     // 0x004C (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bLostConnectionToHost : 1;                     // 0x004C (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Engine.PlayerController.ClientAdjustment
@@ -3398,8 +3398,8 @@ struct FDebugTextInfo
 	float                                              TimeRemaining;                                 // 0x0030 (0x0004) [0x0000000000002000] (CPF_Transient)
 	float                                              Duration;                                      // 0x0034 (0x0004) [0x0000000000000000]               
 	struct FColor                                      TextColor;                                     // 0x0038 (0x0004) [0x0000000000000000]               
-	unsigned long                                      bAbsoluteLocation : 1;                         // 0x003C (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bKeepAttachedToActor : 1;                      // 0x003C (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bAbsoluteLocation : 1;                         // 0x003C (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bKeepAttachedToActor : 1;                      // 0x003C (0x0004) [0x0000000000000000] [0x00000002] 
 	struct FVector                                     OrigActorLocation;                             // 0x0040 (0x000C) [0x0000000000000000]               
 	class UFont*                                       Font;                                          // 0x0050 (0x0008) [0x0000000000000000]               
 	struct FVector2D                                   TextScale;                                     // 0x0058 (0x0008) [0x0000000000000000]               
@@ -3457,7 +3457,7 @@ struct FInputMatchRequest
 struct FGamepadInfo
 {
 	uint8_t                                            InputAPI;                                      // 0x0000 (0x0001) [0x0000000000000000]               
-	unsigned long                                      bConnected : 1;                                // 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bConnected : 1;                                // 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Engine.GameViewportClient.PerPlayerSplitscreenData
@@ -3483,7 +3483,7 @@ struct FDebugDisplayProperty
 {
 	class UObject*                                     Obj;                                           // 0x0000 (0x0008) [0x0000000000000000]               
 	struct FName                                       PropertyName;                                  // 0x0008 (0x0008) [0x0000000000000000]               
-	unsigned long                                      bSpecialProperty : 1;                          // 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bSpecialProperty : 1;                          // 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Engine.GameViewportClient.TitleSafeZoneArea
@@ -3519,7 +3519,7 @@ struct FActorToLookAt
 	float                                              EnteredTime;                                   // 0x000C (0x0004) [0x0000000000000000]               
 	float                                              LastKnownDistance;                             // 0x0010 (0x0004) [0x0000000000000000]               
 	float                                              StartTimeBeingLookedAt;                        // 0x0014 (0x0004) [0x0000000000000000]               
-	unsigned long                                      CurrentlyBeingLookedAt : 1;                    // 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           CurrentlyBeingLookedAt : 1;                    // 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Engine.IniLocPatcher.IniLocFileEntry
@@ -3529,7 +3529,7 @@ struct FIniLocFileEntry
 	class FString                                      Filename;                                      // 0x0000 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	class FString                                      DLName;                                        // 0x0010 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	class FString                                      HashCode;                                      // 0x0020 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      bIsUnicode : 1;                                // 0x0030 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bIsUnicode : 1;                                // 0x0030 (0x0004) [0x0000000000000000] [0x00000001] 
 	uint8_t                                            ReadState;                                     // 0x0034 (0x0001) [0x0000000000000000]               
 };
 
@@ -3539,12 +3539,12 @@ struct FKeyBind
 {
 	struct FName                                       Name;                                          // 0x0000 (0x0008) [0x0000000000000000]               
 	class FString                                      Command;                                       // 0x0008 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      Control : 1;                                   // 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      Shift : 1;                                     // 0x0018 (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      Alt : 1;                                       // 0x0018 (0x0004) [0x0000000000000000] [0x00000004] 
-	unsigned long                                      bIgnoreCtrl : 1;                               // 0x0018 (0x0004) [0x0000000000000000] [0x00000008] 
-	unsigned long                                      bIgnoreShift : 1;                              // 0x0018 (0x0004) [0x0000000000000000] [0x00000010] 
-	unsigned long                                      bIgnoreAlt : 1;                                // 0x0018 (0x0004) [0x0000000000000000] [0x00000020] 
+	uint32_t                                           Control : 1;                                   // 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           Shift : 1;                                     // 0x0018 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           Alt : 1;                                       // 0x0018 (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           bIgnoreCtrl : 1;                               // 0x0018 (0x0004) [0x0000000000000000] [0x00000008] 
+	uint32_t                                           bIgnoreShift : 1;                              // 0x0018 (0x0004) [0x0000000000000000] [0x00000010] 
+	uint32_t                                           bIgnoreAlt : 1;                                // 0x0018 (0x0004) [0x0000000000000000] [0x00000020] 
 };
 
 // ScriptStruct Engine.Input.TouchTracker
@@ -3555,7 +3555,7 @@ struct FTouchTracker
 	int32_t                                            TouchpadIndex;                                 // 0x0004 (0x0004) [0x0000000000000000]               
 	struct FVector2D                                   Location;                                      // 0x0008 (0x0008) [0x0000000000000000]               
 	uint8_t                                            EventType;                                     // 0x0010 (0x0001) [0x0000000000000000]               
-	unsigned long                                      bTrapInput : 1;                                // 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bTrapInput : 1;                                // 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Engine.InstancedStaticMeshComponent.InstancedStaticMeshInstanceData
@@ -3597,9 +3597,9 @@ struct AInterpActor_FCheckpointRecord
 	struct FVector                                     Location;                                      // 0x0000 (0x000C) [0x0000000000000000]               
 	struct FRotator                                    Rotation;                                      // 0x000C (0x000C) [0x0000000000000000]               
 	uint8_t                                            CollisionType;                                 // 0x0018 (0x0001) [0x0000000000000000]               
-	unsigned long                                      bHidden : 1;                                   // 0x001C (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bIsShutdown : 1;                               // 0x001C (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      bNeedsPositionReplication : 1;                 // 0x001C (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           bHidden : 1;                                   // 0x001C (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bIsShutdown : 1;                               // 0x001C (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bNeedsPositionReplication : 1;                 // 0x001C (0x0004) [0x0000000000000000] [0x00000004] 
 };
 
 // ScriptStruct Engine.InterpCurveEdSetup.CurveEdEntry
@@ -3634,9 +3634,9 @@ struct FCurveEdTab
 struct FAnimSetBakeAndPruneStatus
 {
 	class FString                                      AnimSetName;                                   // 0x0000 (0x0010) [0x0000000000420001] (CPF_Edit | CPF_EditConst | CPF_NeedCtorLink)
-	unsigned long                                      bReferencedButUnused : 1;                      // 0x0010 (0x0004) [0x0000000000020001] [0x00000001] (CPF_Edit | CPF_EditConst)
-	unsigned long                                      bSkipBakeAndPrune : 1;                         // 0x0010 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
-	unsigned long                                      bSkipCooking : 1;                              // 0x0010 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
+	uint32_t                                           bReferencedButUnused : 1;                      // 0x0010 (0x0004) [0x0000000000020001] [0x00000001] (CPF_Edit | CPF_EditConst)
+	uint32_t                                           bSkipBakeAndPrune : 1;                         // 0x0010 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bSkipCooking : 1;                              // 0x0010 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
 };
 
 // ScriptStruct Engine.InterpGroup.InterpEdSelKey
@@ -3667,8 +3667,8 @@ struct FSubTrackGroup
 {
 	class FString                                      GroupName;                                     // 0x0000 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	TArray<int32_t>                                    TrackIndices;                                  // 0x0010 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      bIsCollapsed : 1;                              // 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bIsSelected : 1;                               // 0x0020 (0x0004) [0x0000000000002000] [0x00000002] (CPF_Transient)
+	uint32_t                                           bIsCollapsed : 1;                              // 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bIsSelected : 1;                               // 0x0020 (0x0004) [0x0000000000002000] [0x00000002] (CPF_Transient)
 };
 
 // ScriptStruct Engine.InterpTrack.SupportedSubTrackInfo
@@ -3689,8 +3689,8 @@ struct FAnimControlTrackKey
 	float                                              AnimStartOffset;                               // 0x000C (0x0004) [0x0000000000000000]               
 	float                                              AnimEndOffset;                                 // 0x0010 (0x0004) [0x0000000000000000]               
 	float                                              AnimPlayRate;                                  // 0x0014 (0x0004) [0x0000000000000000]               
-	unsigned long                                      bLooping : 1;                                  // 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bReverse : 1;                                  // 0x0018 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bLooping : 1;                                  // 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bReverse : 1;                                  // 0x0018 (0x0004) [0x0000000000000000] [0x00000002] 
 };
 
 // ScriptStruct Engine.InterpTrackBoolProp.BoolTrackKey
@@ -3698,7 +3698,7 @@ struct FAnimControlTrackKey
 struct FBoolTrackKey
 {
 	float                                              Time;                                          // 0x0000 (0x0004) [0x0000000000000000]               
-	unsigned long                                      Value : 1;                                     // 0x0004 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           Value : 1;                                     // 0x0004 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 };
 
 // ScriptStruct Engine.InterpTrackDirector.DirectorTrackCut
@@ -3827,7 +3827,7 @@ struct FLandscapeLayerStruct
 	class UMaterialInstanceConstant*                   ThumbnailMIC;                                  // 0x0008 (0x0008) [0x0000000800000000]               
 	class ALandscapeProxy*                             Owner;                                         // 0x0010 (0x0008) [0x0000000800000000]               
 	int32_t                                            DebugColorChannel;                             // 0x0018 (0x0004) [0x0000000800002000] (CPF_Transient)
-	unsigned long                                      bSelected : 1;                                 // 0x001C (0x0004) [0x0000000800002000] [0x00000001] (CPF_Transient)
+	uint32_t                                           bSelected : 1;                                 // 0x001C (0x0004) [0x0000000800002000] [0x00000001] (CPF_Transient)
 	class FString                                      SourceFilePath;                                // 0x0020 (0x0010) [0x0000000800400000] (CPF_NeedCtorLink)
 };
 
@@ -3844,10 +3844,10 @@ struct FLandscapeLayerInfo
 {
 	struct FName                                       LayerName;                                     // 0x0000 (0x0008) [0x0000000000000001] (CPF_Edit)    
 	float                                              Hardness;                                      // 0x0008 (0x0004) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bNoWeightBlend : 1;                            // 0x000C (0x0004) [0x0000000800000000] [0x00000001] 
+	uint32_t                                           bNoWeightBlend : 1;                            // 0x000C (0x0004) [0x0000000800000000] [0x00000001] 
 	class UPhysicalMaterial*                           PhysMaterial;                                  // 0x0010 (0x0008) [0x0000000000000001] (CPF_Edit)    
 	class UMaterialInstanceConstant*                   ThumbnailMIC;                                  // 0x0018 (0x0008) [0x0000000800000000]               
-	unsigned long                                      bSelected : 1;                                 // 0x0020 (0x0004) [0x0000000800002000] [0x00000001] (CPF_Transient)
+	uint32_t                                           bSelected : 1;                                 // 0x0020 (0x0004) [0x0000000800002000] [0x00000001] (CPF_Transient)
 	int32_t                                            DebugColorChannel;                             // 0x0024 (0x0004) [0x0000000800002000] (CPF_Transient)
 	class FString                                      LayerSourceFile;                               // 0x0028 (0x0010) [0x0000000800402000] (CPF_Transient | CPF_NeedCtorLink)
 };
@@ -3920,17 +3920,17 @@ struct FLensFlareElement
 {
 	struct FName                                       ElementName;                                   // 0x0000 (0x0008) [0x0000000000000001] (CPF_Edit)    
 	float                                              RayDistance;                                   // 0x0008 (0x0004) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bIsEnabled : 1;                                // 0x000C (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bUseSourceDistance : 1;                        // 0x000C (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
-	unsigned long                                      bNormalizeRadialDistance : 1;                  // 0x000C (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
-	unsigned long                                      bModulateColorBySource : 1;                    // 0x000C (0x0004) [0x0000000000000001] [0x00000008] (CPF_Edit)
+	uint32_t                                           bIsEnabled : 1;                                // 0x000C (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bUseSourceDistance : 1;                        // 0x000C (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bNormalizeRadialDistance : 1;                  // 0x000C (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
+	uint32_t                                           bModulateColorBySource : 1;                    // 0x000C (0x0004) [0x0000000000000001] [0x00000008] (CPF_Edit)
 	struct FVector                                     Size;                                          // 0x0010 (0x000C) [0x0000000000000001] (CPF_Edit)    
 	TArray<class UMaterialInterface*>                  LFMaterials;                                   // 0x0020 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
 	struct FRawDistributionFloat                       LFMaterialIndex;                               // 0x0030 (0x0028) [0x0000000000480001] (CPF_Edit | CPF_Component | CPF_NeedCtorLink)
 	struct FRawDistributionFloat                       Scaling;                                       // 0x0058 (0x0028) [0x0000000000480001] (CPF_Edit | CPF_Component | CPF_NeedCtorLink)
 	struct FRawDistributionVector                      AxisScaling;                                   // 0x0080 (0x0028) [0x0000000000480001] (CPF_Edit | CPF_Component | CPF_NeedCtorLink)
 	struct FRawDistributionFloat                       Rotation;                                      // 0x00A8 (0x0028) [0x0000000000480001] (CPF_Edit | CPF_Component | CPF_NeedCtorLink)
-	unsigned long                                      bOrientTowardsSource : 1;                      // 0x00D0 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bOrientTowardsSource : 1;                      // 0x00D0 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 	struct FRawDistributionVector                      Color;                                         // 0x00D8 (0x0028) [0x0000000000480001] (CPF_Edit | CPF_Component | CPF_NeedCtorLink)
 	struct FRawDistributionFloat                       Alpha;                                         // 0x0100 (0x0028) [0x0000000000480001] (CPF_Edit | CPF_Component | CPF_NeedCtorLink)
 	struct FRawDistributionVector                      Offset;                                        // 0x0128 (0x0028) [0x0000000000480001] (CPF_Edit | CPF_Component | CPF_NeedCtorLink)
@@ -3973,14 +3973,14 @@ struct FLevelGridCellCoordinate
 // 0x0004
 struct ALevelStreamingVolume_FCheckpointRecord
 {
-	unsigned long                                      bDisabled : 1;                                 // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bDisabled : 1;                                 // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Engine.LinkedAccountDetails.LinkedAccountData
 // 0x00A8
 struct FLinkedAccountData
 {
-	unsigned long                                      bSuccess : 1;                                  // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bSuccess : 1;                                  // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 	struct FUniqueNetId                                OriginalId;                                    // 0x0008 (0x0048) [0x0000000000400000] (CPF_NeedCtorLink)
 	struct FUniqueNetId                                LinkedId;                                      // 0x0050 (0x0048) [0x0000000000400000] (CPF_NeedCtorLink)
 	class FString                                      LinkedDisplayName;                             // 0x0098 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -4000,8 +4000,8 @@ struct FBaseAuthSession
 struct FPostProcessSettingsOverride
 {
 	struct FPostProcessSettings                        Settings;                                      // 0x0000 (0x0168) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      bBlendingIn : 1;                               // 0x0168 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bBlendingOut : 1;                              // 0x0168 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bBlendingIn : 1;                               // 0x0168 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bBlendingOut : 1;                              // 0x0168 (0x0004) [0x0000000000000000] [0x00000002] 
 	float                                              CurrentBlendInTime;                            // 0x016C (0x0004) [0x0000000000000000]               
 	float                                              CurrentBlendOutTime;                           // 0x0170 (0x0004) [0x0000000000000000]               
 	float                                              BlendInDuration;                               // 0x0174 (0x0004) [0x0000000000000000]               
@@ -4115,12 +4115,12 @@ struct FParameterValueOverTime
 	struct FGuid                                       ExpressionGUID;                                // 0x0000 (0x0010) [0x0000000000000000]               
 	float                                              StartTime;                                     // 0x0010 (0x0004) [0x0000000000000000]               
 	struct FName                                       ParameterName;                                 // 0x0014 (0x0008) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bLoop : 1;                                     // 0x001C (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bAutoActivate : 1;                             // 0x001C (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bLoop : 1;                                     // 0x001C (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bAutoActivate : 1;                             // 0x001C (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
 	float                                              CycleTime;                                     // 0x0020 (0x0004) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bNormalizeTime : 1;                            // 0x0024 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bNormalizeTime : 1;                            // 0x0024 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 	float                                              OffsetTime;                                    // 0x0028 (0x0004) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bOffsetFromEnd : 1;                            // 0x002C (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bOffsetFromEnd : 1;                            // 0x002C (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 };
 
 // ScriptStruct Engine.MaterialInstanceTimeVarying.FontParameterValueOverTime
@@ -4204,9 +4204,9 @@ struct FPolySegmentSpan
 struct FNavMeshPathParams
 {
 	struct FPointer                                    Interface;                                     // 0x0000 (0x0008) [0x0000000000001000] (CPF_Native)  
-	unsigned long                                      bCanMantle : 1;                                // 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bNeedsMantleValidityTest : 1;                  // 0x0008 (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      bAbleToSearch : 1;                             // 0x0008 (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           bCanMantle : 1;                                // 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bNeedsMantleValidityTest : 1;                  // 0x0008 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bAbleToSearch : 1;                             // 0x0008 (0x0004) [0x0000000000000000] [0x00000004] 
 	struct FVector                                     SearchExtent;                                  // 0x000C (0x000C) [0x0000000000000000]               
 	float                                              SearchLaneMultiplier;                          // 0x0018 (0x0004) [0x0000000000000000]               
 	struct FVector                                     SearchStart;                                   // 0x001C (0x000C) [0x0000000000000000]               
@@ -4241,7 +4241,7 @@ struct FBiasedGoalActor
 // 0x0004
 struct ANavMeshObstacle_FCheckpointRecord
 {
-	unsigned long                                      bEnabled : 1;                                  // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bEnabled : 1;                                  // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Engine.OnlineLobbySettings.LobbyMetaData
@@ -4283,7 +4283,7 @@ struct FLobbyFilter
 	class FString                                      Key;                                           // 0x0000 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	class FString                                      Value;                                         // 0x0010 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	uint8_t                                            Operator;                                      // 0x0020 (0x0001) [0x0000000000000000]               
-	unsigned long                                      bNumeric : 1;                                  // 0x0024 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bNumeric : 1;                                  // 0x0024 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Engine.OnlineLobbySettings.LobbySortFilter
@@ -4298,7 +4298,7 @@ struct FLobbySortFilter
 // 0x0010
 struct FMMStats_Timer
 {
-	unsigned long                                      bInProgress : 1;                               // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bInProgress : 1;                               // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 	struct FDouble                                     MSecs;                                         // 0x0008 (0x0008) [0x0000000000000000]               
 };
 
@@ -4359,7 +4359,7 @@ struct FColumnMetaData
 // 0x0004
 struct FTimerOptions
 {
-	unsigned long                                      bLooping : 1;                                  // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bLooping : 1;                                  // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Engine.ParticleEmitter.ParticleBurst
@@ -4384,9 +4384,9 @@ struct FParticleCurvePair
 struct FParticleRandomSeedInfo
 {
 	struct FName                                       ParameterName;                                 // 0x0000 (0x0008) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bGetSeedFromInstance : 1;                      // 0x0008 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bInstanceSeedIsIndex : 1;                      // 0x0008 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
-	unsigned long                                      bResetSeedOnEmitterLooping : 1;                // 0x0008 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
+	uint32_t                                           bGetSeedFromInstance : 1;                      // 0x0008 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bInstanceSeedIsIndex : 1;                      // 0x0008 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bResetSeedOnEmitterLooping : 1;                // 0x0008 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
 	TArray<int32_t>                                    RandomSeeds;                                   // 0x0010 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
 };
 
@@ -4402,9 +4402,9 @@ struct FAttractLocationBoneSocketInfo
 // 0x0004
 struct FBeamModifierOptions
 {
-	unsigned long                                      bModify : 1;                                   // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bScale : 1;                                    // 0x0000 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
-	unsigned long                                      bLock : 1;                                     // 0x0000 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
+	uint32_t                                           bModify : 1;                                   // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bScale : 1;                                    // 0x0000 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bLock : 1;                                     // 0x0000 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
 };
 
 // ScriptStruct Engine.ParticleModuleCollision.ParticleAttractorCollisionAction
@@ -4423,9 +4423,9 @@ struct FParticleEvent_GenerateInfo
 	int32_t                                            Frequency;                                     // 0x0004 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	int32_t                                            LowFreq;                                       // 0x0008 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	int32_t                                            ParticleFrequency;                             // 0x000C (0x0004) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      FirstTimeOnly : 1;                             // 0x0010 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      LastTimeOnly : 1;                              // 0x0010 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
-	unsigned long                                      UseReflectedImpactVector : 1;                  // 0x0010 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
+	uint32_t                                           FirstTimeOnly : 1;                             // 0x0010 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           LastTimeOnly : 1;                              // 0x0010 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           UseReflectedImpactVector : 1;                  // 0x0010 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
 	struct FName                                       CustomName;                                    // 0x0014 (0x0008) [0x0000000000000001] (CPF_Edit)    
 	TArray<class UParticleModuleEventSendToGame*>      ParticleModuleEventsToSendToGame;              // 0x0020 (0x0010) [0x0000000004400001] (CPF_Edit | CPF_NeedCtorLink | CPF_EditInline)
 };
@@ -4442,9 +4442,9 @@ struct FLocationBoneSocketInfo
 // 0x0004
 struct FOrbitOptions
 {
-	unsigned long                                      bProcessDuringSpawn : 1;                       // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bProcessDuringUpdate : 1;                      // 0x0000 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
-	unsigned long                                      bUseEmitterTime : 1;                           // 0x0000 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
+	uint32_t                                           bProcessDuringSpawn : 1;                       // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bProcessDuringUpdate : 1;                      // 0x0000 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bUseEmitterTime : 1;                           // 0x0000 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
 };
 
 // ScriptStruct Engine.ParticleModuleParameterDynamic.EmitterDynamicParameter
@@ -4452,10 +4452,10 @@ struct FOrbitOptions
 struct FEmitterDynamicParameter
 {
 	struct FName                                       ParamName;                                     // 0x0000 (0x0008) [0x0000000000020001] (CPF_Edit | CPF_EditConst)
-	unsigned long                                      bUseEmitterTime : 1;                           // 0x0008 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bSpawnTimeOnly : 1;                            // 0x0008 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bUseEmitterTime : 1;                           // 0x0008 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bSpawnTimeOnly : 1;                            // 0x0008 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
 	uint8_t                                            ValueMethod;                                   // 0x000C (0x0001) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bScaleVelocityByParamValue : 1;                // 0x0010 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bScaleVelocityByParamValue : 1;                // 0x0010 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 	struct FRawDistributionFloat                       ParamValue;                                    // 0x0018 (0x0028) [0x0000000000480001] (CPF_Edit | CPF_Component | CPF_NeedCtorLink)
 };
 
@@ -4481,7 +4481,7 @@ struct FPhysXEmitterVerticalLodProperties
 // 0x0004
 struct FParticleSystemLOD
 {
-	unsigned long                                      bLit : 1;                                      // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bLit : 1;                                      // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 };
 
 // ScriptStruct Engine.ParticleSystem.LODSoloTrack
@@ -4537,7 +4537,7 @@ struct FPBParamSwatch
 struct FPBVariationInfo
 {
 	struct FName                                       VariationName;                                 // 0x0000 (0x0008) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bMeshOnTopOfFacePoly : 1;                      // 0x0008 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bMeshOnTopOfFacePoly : 1;                      // 0x0008 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 };
 
 // ScriptStruct Engine.ProcBuilding.PBFracMeshCompInfo
@@ -4586,8 +4586,8 @@ struct FPBScopeProcessInfo
 	class AProcBuilding*                               OwningBuilding;                                // 0x0000 (0x0008) [0x0000000000000000]               
 	class UProcBuildingRuleset*                        Ruleset;                                       // 0x0008 (0x0008) [0x0000000000000000]               
 	struct FName                                       RulesetVariation;                              // 0x0010 (0x0008) [0x0000000000000000]               
-	unsigned long                                      bGenerateLODPoly : 1;                          // 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bPartOfNonRect : 1;                            // 0x0018 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bGenerateLODPoly : 1;                          // 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bPartOfNonRect : 1;                            // 0x0018 (0x0004) [0x0000000000000000] [0x00000002] 
 };
 
 // ScriptStruct Engine.ProcBuilding.PBScope2D
@@ -4644,8 +4644,8 @@ struct FBuildingMeshInfo
 	float                                              Chance;                                        // 0x0010 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	class UDistributionVector*                         Translation;                                   // 0x0018 (0x0008) [0x0000000004080009] (CPF_Edit | CPF_ExportObject | CPF_Component | CPF_EditInline)
 	class UDistributionVector*                         Rotation;                                      // 0x0020 (0x0008) [0x0000000004080009] (CPF_Edit | CPF_ExportObject | CPF_Component | CPF_EditInline)
-	unsigned long                                      bMeshScaleTranslation : 1;                     // 0x0028 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bOverrideMeshLightMapRes : 1;                  // 0x0028 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bMeshScaleTranslation : 1;                     // 0x0028 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bOverrideMeshLightMapRes : 1;                  // 0x0028 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
 	int32_t                                            OverriddenMeshLightMapRes;                     // 0x002C (0x0004) [0x0000000000000001] (CPF_Edit)    
 	TArray<class UMaterialInterface*>                  MaterialOverrides;                             // 0x0030 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	TArray<struct FBuildingMatOverrides>               SectionOverrides;                              // 0x0040 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
@@ -4655,7 +4655,7 @@ struct FBuildingMeshInfo
 // 0x0014
 struct FRBSplitInfo
 {
-	unsigned long                                      bFixSize : 1;                                  // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bFixSize : 1;                                  // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 	float                                              FixedSize;                                     // 0x0004 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              ExpandRatio;                                   // 0x0008 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	struct FName                                       SplitName;                                     // 0x000C (0x0008) [0x0000000000000001] (CPF_Edit)    
@@ -4665,10 +4665,10 @@ struct FRBSplitInfo
 // 0x0020
 struct FPitchTekTextureDecalSettings
 {
-	unsigned long                                      bDrawColorDecal : 1;                           // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bDrawColorDecal : 1;                           // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 	float                                              ColorTextureScale;                             // 0x0004 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	class UTexture2D*                                  ColorTexture;                                  // 0x0008 (0x0008) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bDrawDataDecal : 1;                            // 0x0010 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bDrawDataDecal : 1;                            // 0x0010 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 	float                                              DataTextureScale;                              // 0x0014 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	class UTexture2D*                                  DataTexture;                                   // 0x0018 (0x0008) [0x0000000000000001] (CPF_Edit)    
 };
@@ -4677,9 +4677,9 @@ struct FPitchTekTextureDecalSettings
 // 0x0010
 struct FPitchTekClearSettings
 {
-	unsigned long                                      bClearColorTargetEveryFrame : 1;               // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bClearColorTargetEveryFrame : 1;               // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 	struct FColor                                      ColorTargetClearColor;                         // 0x0004 (0x0004) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bClearDataTargetEveryFrame : 1;                // 0x0008 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bClearDataTargetEveryFrame : 1;                // 0x0008 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 	struct FColor                                      DataTargetClearColor;                          // 0x000C (0x0004) [0x0000000000000001] (CPF_Edit)    
 };
 
@@ -4707,7 +4707,7 @@ struct FNetPacketStats
 // 0x0004
 struct APointLightToggleable_FCheckpointRecord
 {
-	unsigned long                                      bEnabled : 1;                                  // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bEnabled : 1;                                  // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Engine.Sequence.ActivateOp
@@ -4728,7 +4728,7 @@ struct FQueuedActivationInfo
 	class AActor*                                      InOriginator;                                  // 0x0008 (0x0008) [0x0000000000000000]               
 	class AActor*                                      InInstigator;                                  // 0x0010 (0x0008) [0x0000000000000000]               
 	TArray<int32_t>                                    ActivateIndices;                               // 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      bPushTop : 1;                                  // 0x0028 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bPushTop : 1;                                  // 0x0028 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Engine.RB_BodyInstance.BulletBodyData
@@ -4797,7 +4797,7 @@ struct FSwitchRange
 // 0x0020
 struct FWorldAttractorData
 {
-	unsigned long                                      bEnabled : 1;                                  // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bEnabled : 1;                                  // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 	struct FVector                                     Location;                                      // 0x0004 (0x000C) [0x0000000000000000]               
 	uint8_t                                            FalloffType;                                   // 0x0010 (0x0001) [0x0000000000000000]               
 	float                                              FalloffExponent;                               // 0x0014 (0x0004) [0x0000000000000000]               
@@ -4818,8 +4818,8 @@ struct FSwitchClassInfo
 struct FSwitchObjectCase
 {
 	class UObject*                                     ObjectValue;                                   // 0x0000 (0x0008) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bFallThru : 1;                                 // 0x0008 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bDefaultValue : 1;                             // 0x0008 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bFallThru : 1;                                 // 0x0008 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bDefaultValue : 1;                             // 0x0008 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
 };
 
 // ScriptStruct Engine.SkeletalMesh.SoftBodyTetraLink
@@ -4863,7 +4863,7 @@ struct FSkeletalMeshOptimizationSettings
 	uint8_t                                            ReductionMethod;                               // 0x0014 (0x0001) [0x0000000000000000]               
 	float                                              NumOfTrianglesPercentage;                      // 0x0018 (0x0004) [0x0000000000000000]               
 	float                                              WeldingThreshold;                              // 0x001C (0x0004) [0x0000000000000000]               
-	unsigned long                                      bRecalcNormals : 1;                            // 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bRecalcNormals : 1;                            // 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
 	float                                              NormalsThreshold;                              // 0x0024 (0x0004) [0x0000000000000000]               
 };
 
@@ -4891,11 +4891,11 @@ struct FSkeletalMeshLODInfo
 	float                                              DisplayFactor;                                 // 0x0000 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              LODHysteresis;                                 // 0x0004 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	TArray<int32_t>                                    LODMaterialMap;                                // 0x0008 (0x0010) [0x0000000000400041] (CPF_Edit | CPF_EditConstArray | CPF_NeedCtorLink)
-	TArray<unsigned long>                              bEnableShadowCasting;                          // 0x0018 (0x0010) [0x0000000000400041] (CPF_Edit | CPF_EditConstArray | CPF_NeedCtorLink)
+	TArray<uint32_t>                                   bEnableShadowCasting;                          // 0x0018 (0x0010) [0x0000000000400041] (CPF_Edit | CPF_EditConstArray | CPF_NeedCtorLink)
 	TArray<uint8_t>                                    TriangleSorting;                               // 0x0028 (0x0010) [0x0000000020400000] (CPF_NeedCtorLink | CPF_Deprecated)
 	TArray<struct FTriangleSortSettings>               TriangleSortSettings;                          // 0x0038 (0x0010) [0x0000000000400041] (CPF_Edit | CPF_EditConstArray | CPF_NeedCtorLink)
-	unsigned long                                      bDisableCompressions : 1;                      // 0x0048 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bHasBeenSimplified : 1;                        // 0x0048 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bDisableCompressions : 1;                      // 0x0048 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bHasBeenSimplified : 1;                        // 0x0048 (0x0004) [0x0000000000000000] [0x00000002] 
 };
 
 // ScriptStruct Engine.SkeletalMesh.BoneMirrorExport
@@ -4942,9 +4942,9 @@ struct FSkelMeshActorControlTarget
 // 0x001C
 struct ASkeletalMeshActor_FCheckpointRecord
 {
-	unsigned long                                      bReplicated : 1;                               // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bHidden : 1;                                   // 0x0000 (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      bSavedPosition : 1;                            // 0x0000 (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           bReplicated : 1;                               // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bHidden : 1;                                   // 0x0000 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bSavedPosition : 1;                            // 0x0000 (0x0004) [0x0000000000000000] [0x00000004] 
 	struct FVector                                     Location;                                      // 0x0004 (0x000C) [0x0000000000000000]               
 	struct FRotator                                    Rotation;                                      // 0x0010 (0x000C) [0x0000000000000000]               
 };
@@ -4976,13 +4976,13 @@ struct FSoundClassProperties
 	float                                              VoiceCenterChannelVolume;                      // 0x0010 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              RadioFilterVolume;                             // 0x0014 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              RadioFilterVolumeThreshold;                    // 0x0018 (0x0004) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bApplyEffects : 1;                             // 0x001C (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bAlwaysPlay : 1;                               // 0x001C (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
-	unsigned long                                      bIsUISound : 1;                                // 0x001C (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
-	unsigned long                                      bIsMusic : 1;                                  // 0x001C (0x0004) [0x0000000000000001] [0x00000008] (CPF_Edit)
-	unsigned long                                      bReverb : 1;                                   // 0x001C (0x0004) [0x0000000000000001] [0x00000010] (CPF_Edit)
-	unsigned long                                      bCenterChannelOnly : 1;                        // 0x001C (0x0004) [0x0000000000000001] [0x00000020] (CPF_Edit)
-	unsigned long                                      bApplyAmbientVolumes : 1;                      // 0x001C (0x0004) [0x0000000000000001] [0x00000040] (CPF_Edit)
+	uint32_t                                           bApplyEffects : 1;                             // 0x001C (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bAlwaysPlay : 1;                               // 0x001C (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bIsUISound : 1;                                // 0x001C (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
+	uint32_t                                           bIsMusic : 1;                                  // 0x001C (0x0004) [0x0000000000000001] [0x00000008] (CPF_Edit)
+	uint32_t                                           bReverb : 1;                                   // 0x001C (0x0004) [0x0000000000000001] [0x00000010] (CPF_Edit)
+	uint32_t                                           bCenterChannelOnly : 1;                        // 0x001C (0x0004) [0x0000000000000001] [0x00000020] (CPF_Edit)
+	uint32_t                                           bApplyAmbientVolumes : 1;                      // 0x001C (0x0004) [0x0000000000000001] [0x00000040] (CPF_Edit)
 };
 
 // ScriptStruct Engine.SoundMode.SoundClassAdjuster
@@ -4993,7 +4993,7 @@ struct FSoundClassAdjuster
 	struct FName                                       SoundClass;                                    // 0x0004 (0x0008) [0x0000000000020001] (CPF_Edit | CPF_EditConst)
 	float                                              VolumeAdjuster;                                // 0x000C (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              PitchAdjuster;                                 // 0x0010 (0x0004) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bApplyToChildren : 1;                          // 0x0014 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bApplyToChildren : 1;                          // 0x0014 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 	float                                              VoiceCenterChannelVolumeAdjuster;              // 0x0018 (0x0004) [0x0000000000000001] (CPF_Edit)    
 };
 
@@ -5093,7 +5093,7 @@ struct FSplineMeshParams
 // 0x0004
 struct ASpotLightToggleable_FCheckpointRecord
 {
-	unsigned long                                      bEnabled : 1;                                  // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bEnabled : 1;                                  // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Engine.StaticMeshActorBasedOnExtremeContent.SMMaterialSetterDatum
@@ -5123,9 +5123,9 @@ struct FTerrainLayer
 	class FString                                      Name;                                          // 0x0000 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
 	class UTerrainLayerSetup*                          Setup;                                         // 0x0010 (0x0008) [0x0000000000000001] (CPF_Edit)    
 	int32_t                                            AlphaMapIndex;                                 // 0x0018 (0x0004) [0x0000000000000000]               
-	unsigned long                                      Highlighted : 1;                               // 0x001C (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      WireframeHighlighted : 1;                      // 0x001C (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
-	unsigned long                                      Hidden : 1;                                    // 0x001C (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
+	uint32_t                                           Highlighted : 1;                               // 0x001C (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           WireframeHighlighted : 1;                      // 0x001C (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           Hidden : 1;                                    // 0x001C (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
 	struct FColor                                      HighlightColor;                                // 0x0020 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	struct FColor                                      WireframeColor;                                // 0x0024 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	int32_t                                            MinX;                                          // 0x0028 (0x0004) [0x0000000000000000]               
@@ -5229,7 +5229,7 @@ struct FTerrainBVTree
 // 0x0010
 struct FFilterLimit
 {
-	unsigned long                                      Enabled : 1;                                   // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           Enabled : 1;                                   // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 	float                                              Base;                                          // 0x0004 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              NoiseScale;                                    // 0x0008 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              NoiseAmount;                                   // 0x000C (0x0004) [0x0000000000000001] (CPF_Edit)    
@@ -5239,7 +5239,7 @@ struct FFilterLimit
 // 0x0058
 struct FTerrainFilteredMaterial
 {
-	unsigned long                                      UseNoise : 1;                                  // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           UseNoise : 1;                                  // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 	float                                              NoiseScale;                                    // 0x0004 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              NoisePercent;                                  // 0x0008 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	struct FFilterLimit                                MinHeight;                                     // 0x000C (0x0010) [0x0000000000000001] (CPF_Edit)    
@@ -5282,16 +5282,16 @@ struct FImageLayout
 // 0x0004
 struct ATrigger_FCheckpointRecord
 {
-	unsigned long                                      bCollideActors : 1;                            // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bCollideActors : 1;                            // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct Engine.TriggerStreamingLevel.LevelStreamingData
 // 0x0010
 struct FLevelStreamingData
 {
-	unsigned long                                      bShouldBeLoaded : 1;                           // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bShouldBeVisible : 1;                          // 0x0000 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
-	unsigned long                                      bShouldBlockOnLoad : 1;                        // 0x0000 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
+	uint32_t                                           bShouldBeLoaded : 1;                           // 0x0000 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bShouldBeVisible : 1;                          // 0x0000 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bShouldBlockOnLoad : 1;                        // 0x0000 (0x0004) [0x0000000000000001] [0x00000004] (CPF_Edit)
 	class ULevelStreaming*                             Level;                                         // 0x0008 (0x0008) [0x0000000000000001] (CPF_Edit)    
 };
 
@@ -5318,7 +5318,7 @@ struct FGameResourceDataProvider
 {
 	struct FName                                       ProviderTag;                                   // 0x0000 (0x0008) [0x0000000000004000] (CPF_Config)  
 	class FString                                      ProviderClassName;                             // 0x0008 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
-	unsigned long                                      bExpandProviders : 1;                          // 0x0018 (0x0004) [0x0000000000004000] [0x00000001] (CPF_Config)
+	uint32_t                                           bExpandProviders : 1;                          // 0x0018 (0x0004) [0x0000000000004000] [0x00000001] (CPF_Config)
 	class UClass*                                      ProviderClass;                                 // 0x0020 (0x0008) [0x0000000000002000] (CPF_Transient)
 };
 
@@ -5405,7 +5405,7 @@ struct FUIKeyRepeatData
 // 0x0004 (0x0010 - 0x0014)
 struct FUIAxisEmulationData : FUIKeyRepeatData
 {
-	unsigned long                                      bEnabled : 1;                                  // 0x0010 (0x0004) [0x0000000000100000] [0x00000001] 
+	uint32_t                                           bEnabled : 1;                                  // 0x0010 (0x0004) [0x0000000000100000] [0x00000001] 
 };
 
 // ScriptStruct Engine.UISoundTheme.SoundEventMapping
@@ -5421,8 +5421,8 @@ struct FSoundEventMapping
 struct FStaticMeshLODElement
 {
 	class UMaterialInterface*                          Material;                                      // 0x0000 (0x0008) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bEnableShadowCasting : 1;                      // 0x0008 (0x0004) [0x0000000000001001] [0x00000001] (CPF_Edit | CPF_Native)
-	unsigned long                                      bEnableCollision : 1;                          // 0x0010 (0x0004) [0x0000000000001001] [0x00000001] (CPF_Edit | CPF_Native)
+	uint32_t                                           bEnableShadowCasting : 1;                      // 0x0008 (0x0004) [0x0000000000001001] [0x00000001] (CPF_Edit | CPF_Native)
+	uint32_t                                           bEnableCollision : 1;                          // 0x0010 (0x0004) [0x0000000000001001] [0x00000001] (CPF_Edit | CPF_Native)
 };
 
 // ScriptStruct Engine.StaticMesh.StaticMeshLODInfo

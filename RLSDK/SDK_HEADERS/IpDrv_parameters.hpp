@@ -1,12 +1,12 @@
 /*
 #############################################################################################
-# Rocket League (1.0) SDK
-# Generated with the UE3SDKGenerator v2.2.5
+# RocketLeague (1.0.10897.0) SDK
+# Generated with the CodeRedGenerator v1.0.2
 # ========================================================================================= #
 # File: IpDrv_parameters.hpp
 # ========================================================================================= #
 # Credits: TheFeckless, ItsBranK
-# Links: www.github.com/itsbrank/UE3SDKGenerator, www.twitter.com/itsbrank
+# Links: www.github.com/CodeRedModding/CodeRed-Generator, www.twitter.com/ItsBranK
 #############################################################################################
 */
 #pragma once
@@ -17,7 +17,7 @@
 
 /*
 # ========================================================================================= #
-# Function Parameters
+# Parameters
 # ========================================================================================= #
 */
 
@@ -93,7 +93,7 @@ struct UOnlineSubsystemCommonImpl_execIsPlayerInSession_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineSubsystemCommonImpl.GetPlayerNicknameFromIndex
@@ -196,7 +196,7 @@ struct UAvatarDownloadComponent_execTryAddAvatarTextureCallback_Params
 	struct FUniqueNetId                                PlayerNetId;                                      		// 0x0000 (0x0048) [0x0000000000400082] (CPF_Const | CPF_Parm | CPF_NeedCtorLink)
 	uint8_t                                            Size;                                             		// 0x0048 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FScriptDelegate                             ReadOnlineAvatarCompleteDelegate;                 		// 0x0050 (0x0018) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0068 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0068 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.AvatarDownloadMap.ContainsImage
@@ -204,7 +204,7 @@ struct UAvatarDownloadComponent_execTryAddAvatarTextureCallback_Params
 struct UAvatarDownloadMap_execContainsImage_Params
 {
 	class FString                                      Key;                                              		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.AvatarDownloadMap.ContainsAvatar
@@ -212,7 +212,7 @@ struct UAvatarDownloadMap_execContainsImage_Params
 struct UAvatarDownloadMap_execContainsAvatar_Params
 {
 	struct FAvatarKey                                  Key;                                              		// 0x0000 (0x0050) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.AvatarDownloadMap.OnAvatarReceivedImage
@@ -273,7 +273,7 @@ struct UAvatarDownloadMap_execTryGetImage_Params
 {
 	class FString                                      Key;                                              		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class UTexture*                                    OutValue;                                         		// 0x0010 (0x0008) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.AvatarDownloadMap.TryGetAvatar
@@ -282,7 +282,7 @@ struct UAvatarDownloadMap_execTryGetAvatar_Params
 {
 	struct FAvatarKey                                  Key;                                              		// 0x0000 (0x0050) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class UAvatarDownload*                             OutValue;                                         		// 0x0050 (0x0008) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               ReturnValue : 1;                                  		// 0x0058 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0058 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.AvatarDownloadMap.GetAvatarsPendingImage
@@ -351,7 +351,7 @@ struct UAvatarDownloadMap_execAllValues_Params
 // [0x400020400] 
 struct UHttpRequestCurl_execProcessRequest_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.HttpRequestCurl.SetHeader
@@ -562,7 +562,7 @@ struct AInternetLink_execStringToIpAddr_Params
 {
 	class FString                                      Str;                                              		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	struct FIpAddr                                     Addr;                                             		// 0x0010 (0x0014) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               ReturnValue : 1;                                  		// 0x0024 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0024 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.InternetLink.IpAddrToString
@@ -596,14 +596,14 @@ struct AInternetLink_execParseURL_Params
 	int32_t                                            PortNum;                                          		// 0x0020 (0x0004) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
 	class FString                                      LevelName;                                        		// 0x0028 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class FString                                      EntryName;                                        		// 0x0038 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0048 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0048 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.InternetLink.IsDataPending
 // [0x00020401] 
 struct AInternetLink_execIsDataPending_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.TcpLink.ReceivedBinary
@@ -684,14 +684,14 @@ struct ATcpLink_execSendText_Params
 // [0x00020401] 
 struct ATcpLink_execIsConnected_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.TcpLink.Close
 // [0x00020401] 
 struct ATcpLink_execClose_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.TcpLink.Open
@@ -699,14 +699,14 @@ struct ATcpLink_execClose_Params
 struct ATcpLink_execOpen_Params
 {
 	struct FIpAddr                                     Addr;                                             		// 0x0000 (0x0014) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.TcpLink.Listen
 // [0x00020401] 
 struct ATcpLink_execListen_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.TcpLink.BindPort
@@ -714,7 +714,7 @@ struct ATcpLink_execListen_Params
 struct ATcpLink_execBindPort_Params
 {
 	int32_t                                            PortNum;                                          		// 0x0000 (0x0004) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
-	bool                                               bUseNextAvailable : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bUseNextAvailable : 1;                            		// 0x0004 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	int32_t                                            ReturnValue;                                      		// 0x0008 (0x0004) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
@@ -754,7 +754,7 @@ struct UOnlineEventsInterfaceMcp_execUploadMatchmakingStats_Params
 {
 	struct FUniqueNetId                                UniqueId;                                         		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class UOnlineMatchmakingStats*                     MMStats;                                          		// 0x0048 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineEventsInterfaceMcp.UpdatePlaylistPopulation
@@ -763,7 +763,7 @@ struct UOnlineEventsInterfaceMcp_execUpdatePlaylistPopulation_Params
 {
 	int32_t                                            PlaylistId;                                       		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            NumPlayers;                                       		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineEventsInterfaceMcp.UploadGameplayEventsData
@@ -772,7 +772,7 @@ struct UOnlineEventsInterfaceMcp_execUploadGameplayEventsData_Params
 {
 	struct FUniqueNetId                                UniqueId;                                         		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	TArray<uint8_t>                                    Payload;                                          		// 0x0048 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0058 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0058 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineEventsInterfaceMcp.UploadPlayerData
@@ -783,7 +783,7 @@ struct UOnlineEventsInterfaceMcp_execUploadPlayerData_Params
 	class FString                                      PlayerNick;                                       		// 0x0048 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class UOnlineProfileSettings*                      ProfileSettings;                                  		// 0x0058 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UOnlinePlayerStorage*                        PlayerStorage;                                    		// 0x0060 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0068 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0068 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineNewsInterfaceMcp.GetNews
@@ -815,7 +815,7 @@ struct UOnlineNewsInterfaceMcp_execAddReadNewsCompletedDelegate_Params
 // [0x00120001] 
 struct UOnlineNewsInterfaceMcp_execOnReadNewsCompleted_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	uint8_t                                            NewsType;                                         		// 0x0004 (0x0001) [0x0000000000000080] (CPF_Parm)    
 };
 
@@ -825,7 +825,7 @@ struct UOnlineNewsInterfaceMcp_execReadNews_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	uint8_t                                            NewsType;                                         		// 0x0001 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineTitleFileDownloadBase.GetUrlForFile
@@ -855,7 +855,7 @@ struct UOnlineTitleFileDownloadBase_execAddRequestTitleFileListCompleteDelegate_
 // [0x00120001] 
 struct UOnlineTitleFileDownloadBase_execOnRequestTitleFileListComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	TArray<class FString>                              ResultStr;                                        		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -863,7 +863,7 @@ struct UOnlineTitleFileDownloadBase_execOnRequestTitleFileListComplete_Params
 // [0x00020000] 
 struct UOnlineTitleFileDownloadBase_execRequestTitleFileList_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineTitleFileDownloadBase.ClearDownloadedFile
@@ -871,14 +871,14 @@ struct UOnlineTitleFileDownloadBase_execRequestTitleFileList_Params
 struct UOnlineTitleFileDownloadBase_execClearDownloadedFile_Params
 {
 	class FString                                      Filename;                                         		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineTitleFileDownloadBase.ClearDownloadedFiles
 // [0x00020000] 
 struct UOnlineTitleFileDownloadBase_execClearDownloadedFiles_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineTitleFileDownloadBase.GetTitleFileState
@@ -886,7 +886,7 @@ struct UOnlineTitleFileDownloadBase_execClearDownloadedFiles_Params
 struct UOnlineTitleFileDownloadBase_execGetTitleFileState_Params
 {
 	class FString                                      Filename;                                         		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	uint8_t                                            ReturnValue;                                      		// 0x0010 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	EOnlineEnumerationReadState                        ReturnValue;                                      		// 0x0010 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineTitleFileDownloadBase.GetTitleFileContents
@@ -895,7 +895,7 @@ struct UOnlineTitleFileDownloadBase_execGetTitleFileContents_Params
 {
 	class FString                                      Filename;                                         		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	TArray<uint8_t>                                    FileContents;                                     		// 0x0010 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineTitleFileDownloadBase.ClearReadTitleFileCompleteDelegate
@@ -919,14 +919,14 @@ struct UOnlineTitleFileDownloadBase_execReadTitleFile_Params
 {
 	class FString                                      FileToRead;                                       		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	uint8_t                                            FileType;                                         		// 0x0010 (0x0001) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineTitleFileDownloadBase.OnReadTitleFileComplete
 // [0x00120001] 
 struct UOnlineTitleFileDownloadBase_execOnReadTitleFileComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Filename;                                         		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -935,14 +935,14 @@ struct UOnlineTitleFileDownloadBase_execOnReadTitleFileComplete_Params
 struct UOnlineTitleFileDownloadMcp_execClearDownloadedFile_Params
 {
 	class FString                                      Filename;                                         		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineTitleFileDownloadMcp.ClearDownloadedFiles
 // [0x400020400] 
 struct UOnlineTitleFileDownloadMcp_execClearDownloadedFiles_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineTitleFileDownloadMcp.GetTitleFileState
@@ -950,7 +950,7 @@ struct UOnlineTitleFileDownloadMcp_execClearDownloadedFiles_Params
 struct UOnlineTitleFileDownloadMcp_execGetTitleFileState_Params
 {
 	class FString                                      Filename;                                         		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	uint8_t                                            ReturnValue;                                      		// 0x0010 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	EOnlineEnumerationReadState                        ReturnValue;                                      		// 0x0010 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 	// int32_t                                            FileIndex;                                        		// 0x0014 (0x0004) [0x0000000000000000]               
 };
 
@@ -960,7 +960,7 @@ struct UOnlineTitleFileDownloadMcp_execGetTitleFileContents_Params
 {
 	class FString                                      Filename;                                         		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	TArray<uint8_t>                                    FileContents;                                     		// 0x0010 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineTitleFileDownloadMcp.ReadTitleFile
@@ -969,7 +969,7 @@ struct UOnlineTitleFileDownloadMcp_execReadTitleFile_Params
 {
 	class FString                                      FileToRead;                                       		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	uint8_t                                            FileType;                                         		// 0x0010 (0x0001) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.GetUrlForFile
@@ -987,21 +987,21 @@ struct UOnlineTitleFileDownloadWeb_execOnFileListReceived_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bDidSucceed : 1;                                  		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bDidSucceed : 1;                                  		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            Index;                                            		// 0x0014 (0x0004) [0x0000000000000000]               
 	// struct FScriptDelegate                             RequestTitleFileListDelegate;                     		// 0x0018 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
 	// TArray<class FString>                              ResponseArr;                                      		// 0x0030 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	// bool                                               bSuccess : 1;                                     		// 0x0040 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bSuccess : 1;                                     		// 0x0040 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.RequestTitleFileList
 // [0x400020002] 
 struct UOnlineTitleFileDownloadWeb_execRequestTitleFileList_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 	// class UHttpRequestInterface*                       HTTPRequest;                                      		// 0x0008 (0x0008) [0x0000000000000000]               
 	// class FString                                      URL;                                              		// 0x0010 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	// bool                                               Success : 1;                                      		// 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           Success : 1;                                      		// 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.ClearDownloadedFile
@@ -1009,14 +1009,14 @@ struct UOnlineTitleFileDownloadWeb_execRequestTitleFileList_Params
 struct UOnlineTitleFileDownloadWeb_execClearDownloadedFile_Params
 {
 	class FString                                      Filename;                                         		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.ClearDownloadedFiles
 // [0x400020400] 
 struct UOnlineTitleFileDownloadWeb_execClearDownloadedFiles_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.GetTitleFileState
@@ -1024,7 +1024,7 @@ struct UOnlineTitleFileDownloadWeb_execClearDownloadedFiles_Params
 struct UOnlineTitleFileDownloadWeb_execGetTitleFileState_Params
 {
 	class FString                                      Filename;                                         		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	uint8_t                                            ReturnValue;                                      		// 0x0010 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	EOnlineEnumerationReadState                        ReturnValue;                                      		// 0x0010 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 	// int32_t                                            FileIndex;                                        		// 0x0014 (0x0004) [0x0000000000000000]               
 };
 
@@ -1034,14 +1034,14 @@ struct UOnlineTitleFileDownloadWeb_execGetTitleFileContents_Params
 {
 	class FString                                      Filename;                                         		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	TArray<uint8_t>                                    FileContents;                                     		// 0x0010 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.TriggerDelegates
 // [0x00040401] 
 struct UOnlineTitleFileDownloadWeb_execTriggerDelegates_Params
 {
-	bool                                               bSuccess : 1;                                     		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bSuccess : 1;                                     		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      FileRead;                                         		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -1051,8 +1051,8 @@ struct UOnlineTitleFileDownloadWeb_execOnFileDownloadComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bDidSucceed : 1;                                  		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
-	// bool                                               bSuccess : 1;                                     		// 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bDidSucceed : 1;                                  		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	// uint32_t                                           bSuccess : 1;                                     		// 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
 	// int32_t                                            FileIndex;                                        		// 0x0018 (0x0004) [0x0000000000000000]               
 	// int32_t                                            Idx;                                              		// 0x001C (0x0004) [0x0000000000000000]               
 	// class FString                                      Filename;                                         		// 0x0020 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -1066,7 +1066,7 @@ struct UOnlineTitleFileDownloadWeb_execReadTitleFile_Params
 {
 	class FString                                      FileToRead;                                       		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	uint8_t                                            FileType;                                         		// 0x0010 (0x0001) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 	// int32_t                                            FileIndex;                                        		// 0x0018 (0x0004) [0x0000000000000000]               
 	// int32_t                                            Idx;                                              		// 0x001C (0x0004) [0x0000000000000000]               
 	// class FString                                      URL;                                              		// 0x0020 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -1079,7 +1079,7 @@ struct UOnlineTitleFileDownloadWeb_execUncompressTitleFileContents_Params
 	uint8_t                                            FileCompressionType;                              		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	TArray<uint8_t>                                    CompressedFileContents;                           		// 0x0008 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	TArray<uint8_t>                                    UncompressedFileContents;                         		// 0x0018 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.TitleFileDownloadCache.DeleteTitleFile
@@ -1087,7 +1087,7 @@ struct UOnlineTitleFileDownloadWeb_execUncompressTitleFileContents_Params
 struct UTitleFileDownloadCache_execDeleteTitleFile_Params
 {
 	class FString                                      Filename;                                         		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.TitleFileDownloadCache.DeleteTitleFiles
@@ -1095,7 +1095,7 @@ struct UTitleFileDownloadCache_execDeleteTitleFile_Params
 struct UTitleFileDownloadCache_execDeleteTitleFiles_Params
 {
 	float                                              MaxAgeSeconds;                                    		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.TitleFileDownloadCache.ClearCachedFile
@@ -1103,14 +1103,14 @@ struct UTitleFileDownloadCache_execDeleteTitleFiles_Params
 struct UTitleFileDownloadCache_execClearCachedFile_Params
 {
 	class FString                                      Filename;                                         		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.TitleFileDownloadCache.ClearCachedFiles
 // [0x00020401] 
 struct UTitleFileDownloadCache_execClearCachedFiles_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.TitleFileDownloadCache.GetTitleFileLogicalName
@@ -1134,7 +1134,7 @@ struct UTitleFileDownloadCache_execGetTitleFileHash_Params
 struct UTitleFileDownloadCache_execGetTitleFileState_Params
 {
 	class FString                                      Filename;                                         		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	uint8_t                                            ReturnValue;                                      		// 0x0010 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	EOnlineEnumerationReadState                        ReturnValue;                                      		// 0x0010 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.TitleFileDownloadCache.GetTitleFileContents
@@ -1143,7 +1143,7 @@ struct UTitleFileDownloadCache_execGetTitleFileContents_Params
 {
 	class FString                                      Filename;                                         		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	TArray<uint8_t>                                    FileContents;                                     		// 0x0010 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.TitleFileDownloadCache.ClearSaveTitleFileCompleteDelegate
@@ -1165,7 +1165,7 @@ struct UTitleFileDownloadCache_execAddSaveTitleFileCompleteDelegate_Params
 // [0x00120001] 
 struct UTitleFileDownloadCache_execOnSaveTitleFileComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Filename;                                         		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -1176,7 +1176,7 @@ struct UTitleFileDownloadCache_execSaveTitleFile_Params
 	class FString                                      Filename;                                         		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      LogicalName;                                      		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	TArray<uint8_t>                                    FileContents;                                     		// 0x0020 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0030 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0030 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.TitleFileDownloadCache.ClearLoadTitleFileCompleteDelegate
@@ -1198,7 +1198,7 @@ struct UTitleFileDownloadCache_execAddLoadTitleFileCompleteDelegate_Params
 // [0x00120001] 
 struct UTitleFileDownloadCache_execOnLoadTitleFileComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Filename;                                         		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -1207,7 +1207,7 @@ struct UTitleFileDownloadCache_execOnLoadTitleFileComplete_Params
 struct UTitleFileDownloadCache_execLoadTitleFile_Params
 {
 	class FString                                      Filename;                                         		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.McpMessageBase.CacheMessageContents
@@ -1216,7 +1216,7 @@ struct UMcpMessageBase_execCacheMessageContents_Params
 {
 	TArray<uint8_t>                                    MessageContents;                                  		// 0x0000 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class FString                                      MessageId;                                        		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.McpMessageBase.CacheMessage
@@ -1232,7 +1232,7 @@ struct UMcpMessageBase_execGetMessageContents_Params
 {
 	class FString                                      MessageId;                                        		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	TArray<uint8_t>                                    MessageContents;                                  		// 0x0010 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.McpMessageBase.OnQueryMessageContentsComplete
@@ -1240,7 +1240,7 @@ struct UMcpMessageBase_execGetMessageContents_Params
 struct UMcpMessageBase_execOnQueryMessageContentsComplete_Params
 {
 	class FString                                      MessageId;                                        		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -1264,7 +1264,7 @@ struct UMcpMessageBase_execGetMessageList_Params
 struct UMcpMessageBase_execOnQueryMessagesComplete_Params
 {
 	class FString                                      UserId;                                           		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -1280,7 +1280,7 @@ struct UMcpMessageBase_execQueryMessages_Params
 struct UMcpMessageBase_execOnDeleteMessageComplete_Params
 {
 	class FString                                      MessageId;                                        		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -1296,7 +1296,7 @@ struct UMcpMessageBase_execDeleteMessage_Params
 struct UMcpMessageBase_execOnCreateMessageComplete_Params
 {
 	struct FMcpMessage                                 Message;                                          		// 0x0000 (0x0068) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0068 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0068 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0070 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -1328,9 +1328,9 @@ struct UMcpMessageManager_execCacheMessageContents_Params
 {
 	TArray<uint8_t>                                    MessageContents;                                  		// 0x0000 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class FString                                      MessageId;                                        		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 	// int32_t                                            MessageContentsIndex;                             		// 0x0024 (0x0004) [0x0000000000000000]               
-	// bool                                               bWasSuccessful : 1;                               		// 0x0028 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bWasSuccessful : 1;                               		// 0x0028 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function IpDrv.McpMessageManager.GetMessageById
@@ -1339,7 +1339,7 @@ struct UMcpMessageManager_execGetMessageById_Params
 {
 	class FString                                      MessageId;                                        		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	struct FMcpMessage                                 Message;                                          		// 0x0010 (0x0068) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0078 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0078 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 	// int32_t                                            MessageListsSize;                                 		// 0x007C (0x0004) [0x0000000000000000]               
 	// int32_t                                            MessageListsItr;                                  		// 0x0080 (0x0004) [0x0000000000000000]               
 	// int32_t                                            MessageItr;                                       		// 0x0084 (0x0004) [0x0000000000000000]               
@@ -1354,7 +1354,7 @@ struct UMcpMessageManager_execCacheMessage_Params
 	// int32_t                                            MessageIndex;                                     		// 0x006C (0x0004) [0x0000000000000000]               
 	// int32_t                                            MessageListIndex;                                 		// 0x0070 (0x0004) [0x0000000000000000]               
 	// struct FMcpMessageList                             UserMessageList;                                  		// 0x0078 (0x0020) [0x0000000000400000] (CPF_NeedCtorLink)
-	// bool                                               bWasFound : 1;                                    		// 0x0098 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bWasFound : 1;                                    		// 0x0098 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function IpDrv.McpMessageManager.GetMessageContents
@@ -1363,8 +1363,8 @@ struct UMcpMessageManager_execGetMessageContents_Params
 {
 	class FString                                      MessageId;                                        		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	TArray<uint8_t>                                    MessageContents;                                  		// 0x0010 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-	// bool                                               bWasSuccessful : 1;                               		// 0x0024 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	// uint32_t                                           bWasSuccessful : 1;                               		// 0x0024 (0x0004) [0x0000000000000000] [0x00000001] 
 	// int32_t                                            MessageContentsIndex;                             		// 0x0028 (0x0004) [0x0000000000000000]               
 };
 
@@ -1374,7 +1374,7 @@ struct UMcpMessageManager_execOnQueryMessageContentsRequestComplete_Params
 {
 	class UHttpRequestInterface*                       OriginalRequest;                                  		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      HttpResponse;                                     		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            ResponseCode;                                     		// 0x0014 (0x0004) [0x0000000000000000]               
 	// TArray<uint8_t>                                    MessageContents;                                  		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      MessageId;                                        		// 0x0028 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -1405,7 +1405,7 @@ struct UMcpMessageManager_execOnQueryMessagesRequestComplete_Params
 {
 	class UHttpRequestInterface*                       OriginalRequest;                                  		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      HttpResponse;                                     		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            ResponseCode;                                     		// 0x0014 (0x0004) [0x0000000000000000]               
 	// class FString                                      Error;                                            		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      JsonString;                                       		// 0x0028 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -1430,7 +1430,7 @@ struct UMcpMessageManager_execOnDeleteMessageRequestComplete_Params
 {
 	class UHttpRequestInterface*                       OriginalRequest;                                  		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      HttpResponse;                                     		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            ResponseCode;                                     		// 0x0014 (0x0004) [0x0000000000000000]               
 	// class FString                                      Content;                                          		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      MessageId;                                        		// 0x0028 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -1451,7 +1451,7 @@ struct UMcpMessageManager_execOnCreateMessageRequestComplete_Params
 {
 	class UHttpRequestInterface*                       CreateMessageRequest;                             		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      HttpResponse;                                     		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            ResponseCode;                                     		// 0x0014 (0x0004) [0x0000000000000000]               
 	// class FString                                      Content;                                          		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// struct FMcpMessage                                 CreatedMessage;                                   		// 0x0028 (0x0068) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -1479,7 +1479,7 @@ struct UMcpMessageManager_execCreateMessage_Params
 // [0x00420803] 
 struct UMcpMessageManager_eventFinishedAsyncUncompression_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	TArray<uint8_t>                                    UncompressedMessageContents;                      		// 0x0008 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class FString                                      MessageId;                                        		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
@@ -1491,7 +1491,7 @@ struct UMcpMessageManager_execStartAsyncUncompression_Params
 	class FString                                      MessageId;                                        		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	uint8_t                                            MessageCompressionType;                           		// 0x0010 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	TArray<uint8_t>                                    MessageContent;                                   		// 0x0018 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.McpMessageManager.StartAsyncCompression
@@ -1501,7 +1501,7 @@ struct UMcpMessageManager_execStartAsyncCompression_Params
 	uint8_t                                            MessageCompressionType;                           		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	TArray<uint8_t>                                    MessageContent;                                   		// 0x0008 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class UHttpRequestInterface*                       Request;                                          		// 0x0018 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.McpUserCloudFileDownload.ClearAllDelegates
@@ -1529,7 +1529,7 @@ struct UMcpUserCloudFileDownload_execAddDeleteUserFileCompleteDelegate_Params
 // [0x00040003] 
 struct UMcpUserCloudFileDownload_execCallDeleteUserFileCompleteDelegates_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      UserId;                                           		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Filename;                                         		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	// int32_t                                            Index;                                            		// 0x0028 (0x0004) [0x0000000000000000]               
@@ -1540,7 +1540,7 @@ struct UMcpUserCloudFileDownload_execCallDeleteUserFileCompleteDelegates_Params
 // [0x00120001] 
 struct UMcpUserCloudFileDownload_execOnDeleteUserFileComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      UserId;                                           		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Filename;                                         		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
@@ -1551,12 +1551,12 @@ struct UMcpUserCloudFileDownload_execOnHTTPRequestDeleteUserFileComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            EntryIdx;                                         		// 0x0014 (0x0004) [0x0000000000000000]               
 	// int32_t                                            FileIdx;                                          		// 0x0018 (0x0004) [0x0000000000000000]               
 	// class FString                                      Filename;                                         		// 0x0020 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      UserId;                                           		// 0x0030 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	// bool                                               bResult : 1;                                      		// 0x0040 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bResult : 1;                                      		// 0x0040 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function IpDrv.McpUserCloudFileDownload.DeleteUserFile
@@ -1565,13 +1565,13 @@ struct UMcpUserCloudFileDownload_execDeleteUserFile_Params
 {
 	class FString                                      UserId;                                           		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Filename;                                         		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bShouldCloudDelete : 1;                           		// 0x0020 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
-	bool                                               bShouldLocallyDelete : 1;                         		// 0x0024 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           bShouldCloudDelete : 1;                           		// 0x0020 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bShouldLocallyDelete : 1;                         		// 0x0024 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 	// int32_t                                            EntryIdx;                                         		// 0x002C (0x0004) [0x0000000000000000]               
 	// int32_t                                            FileIdx;                                          		// 0x0030 (0x0004) [0x0000000000000000]               
 	// class FString                                      URL;                                              		// 0x0038 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	// bool                                               bPending : 1;                                     		// 0x0048 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bPending : 1;                                     		// 0x0048 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function IpDrv.McpUserCloudFileDownload.ClearWriteUserFileCompleteDelegate
@@ -1593,7 +1593,7 @@ struct UMcpUserCloudFileDownload_execAddWriteUserFileCompleteDelegate_Params
 // [0x00040003] 
 struct UMcpUserCloudFileDownload_execCallWriteUserFileCompleteDelegates_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      UserId;                                           		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Filename;                                         		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	// int32_t                                            Index;                                            		// 0x0028 (0x0004) [0x0000000000000000]               
@@ -1604,7 +1604,7 @@ struct UMcpUserCloudFileDownload_execCallWriteUserFileCompleteDelegates_Params
 // [0x00120001] 
 struct UMcpUserCloudFileDownload_execOnWriteUserFileComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      UserId;                                           		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Filename;                                         		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
@@ -1615,12 +1615,12 @@ struct UMcpUserCloudFileDownload_execOnHTTPRequestWriteUserFileComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            EntryIdx;                                         		// 0x0014 (0x0004) [0x0000000000000000]               
 	// int32_t                                            FileIdx;                                          		// 0x0018 (0x0004) [0x0000000000000000]               
 	// class FString                                      Filename;                                         		// 0x0020 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      UserId;                                           		// 0x0030 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	// bool                                               bResult : 1;                                      		// 0x0040 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bResult : 1;                                      		// 0x0040 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function IpDrv.McpUserCloudFileDownload.GetUserFileIndexForRequest
@@ -1639,11 +1639,11 @@ struct UMcpUserCloudFileDownload_execWriteUserFile_Params
 	class FString                                      UserId;                                           		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Filename;                                         		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	TArray<uint8_t>                                    FileContents;                                     		// 0x0020 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0030 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0030 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 	// int32_t                                            EntryIdx;                                         		// 0x0034 (0x0004) [0x0000000000000000]               
 	// int32_t                                            FileIdx;                                          		// 0x0038 (0x0004) [0x0000000000000000]               
 	// class FString                                      URL;                                              		// 0x0040 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	// bool                                               bPending : 1;                                     		// 0x0050 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bPending : 1;                                     		// 0x0050 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function IpDrv.McpUserCloudFileDownload.ClearReadUserFileCompleteDelegate
@@ -1665,7 +1665,7 @@ struct UMcpUserCloudFileDownload_execAddReadUserFileCompleteDelegate_Params
 // [0x00040003] 
 struct UMcpUserCloudFileDownload_execCallReadUserFileCompleteDelegates_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      UserId;                                           		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Filename;                                         		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	// int32_t                                            Index;                                            		// 0x0028 (0x0004) [0x0000000000000000]               
@@ -1676,7 +1676,7 @@ struct UMcpUserCloudFileDownload_execCallReadUserFileCompleteDelegates_Params
 // [0x00120001] 
 struct UMcpUserCloudFileDownload_execOnReadUserFileComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      UserId;                                           		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Filename;                                         		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
@@ -1687,12 +1687,12 @@ struct UMcpUserCloudFileDownload_execOnHTTPRequestReadUserFileComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            EntryIdx;                                         		// 0x0014 (0x0004) [0x0000000000000000]               
 	// int32_t                                            FileIdx;                                          		// 0x0018 (0x0004) [0x0000000000000000]               
 	// class FString                                      Filename;                                         		// 0x0020 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      UserId;                                           		// 0x0030 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	// bool                                               bResult : 1;                                      		// 0x0040 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bResult : 1;                                      		// 0x0040 (0x0004) [0x0000000000000000] [0x00000001] 
 	// TArray<uint8_t>                                    FileContents;                                     		// 0x0048 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 };
 
@@ -1702,11 +1702,11 @@ struct UMcpUserCloudFileDownload_execReadUserFile_Params
 {
 	class FString                                      UserId;                                           		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Filename;                                         		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 	// int32_t                                            EntryIdx;                                         		// 0x0024 (0x0004) [0x0000000000000000]               
 	// int32_t                                            FileIdx;                                          		// 0x0028 (0x0004) [0x0000000000000000]               
 	// class FString                                      URL;                                              		// 0x0030 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	// bool                                               bPending : 1;                                     		// 0x0040 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bPending : 1;                                     		// 0x0040 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function IpDrv.McpUserCloudFileDownload.GetUserFileList
@@ -1738,7 +1738,7 @@ struct UMcpUserCloudFileDownload_execAddEnumerateUserFileCompleteDelegate_Params
 // [0x00040003] 
 struct UMcpUserCloudFileDownload_execCallEnumerateUserFileCompleteDelegates_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      UserId;                                           		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	// int32_t                                            Index;                                            		// 0x0018 (0x0004) [0x0000000000000000]               
 	// struct FScriptDelegate                             CallDelegate;                                     		// 0x0020 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -1748,7 +1748,7 @@ struct UMcpUserCloudFileDownload_execCallEnumerateUserFileCompleteDelegates_Para
 // [0x00120001] 
 struct UMcpUserCloudFileDownload_execOnEnumerateUserFilesComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      UserId;                                           		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -1758,13 +1758,13 @@ struct UMcpUserCloudFileDownload_execOnHTTPRequestEnumerateUserFilesComplete_Par
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            EntryIdx;                                         		// 0x0014 (0x0004) [0x0000000000000000]               
 	// int32_t                                            JsonIdx;                                          		// 0x0018 (0x0004) [0x0000000000000000]               
 	// class FString                                      JsonString;                                       		// 0x0020 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      UserId;                                           		// 0x0030 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class UJsonObject*                                 ParsedJson;                                       		// 0x0040 (0x0008) [0x0000000000000000]               
-	// bool                                               bResult : 1;                                      		// 0x0048 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bResult : 1;                                      		// 0x0048 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function IpDrv.McpUserCloudFileDownload.EnumerateUserFiles
@@ -1774,7 +1774,7 @@ struct UMcpUserCloudFileDownload_execEnumerateUserFiles_Params
 	class FString                                      UserId;                                           		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	// int32_t                                            EntryIdx;                                         		// 0x0010 (0x0004) [0x0000000000000000]               
 	// class FString                                      URL;                                              		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	// bool                                               bPending : 1;                                     		// 0x0028 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bPending : 1;                                     		// 0x0028 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function IpDrv.McpUserCloudFileDownload.ClearFile
@@ -1783,8 +1783,8 @@ struct UMcpUserCloudFileDownload_execClearFile_Params
 {
 	class FString                                      UserId;                                           		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Filename;                                         		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-	// bool                                               bResult : 1;                                      		// 0x0024 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	// uint32_t                                           bResult : 1;                                      		// 0x0024 (0x0004) [0x0000000000000000] [0x00000001] 
 	// int32_t                                            EntryIdx;                                         		// 0x0028 (0x0004) [0x0000000000000000]               
 	// int32_t                                            FileIdx;                                          		// 0x002C (0x0004) [0x0000000000000000]               
 };
@@ -1794,8 +1794,8 @@ struct UMcpUserCloudFileDownload_execClearFile_Params
 struct UMcpUserCloudFileDownload_execClearFiles_Params
 {
 	class FString                                      UserId;                                           		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-	// bool                                               bResult : 1;                                      		// 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	// uint32_t                                           bResult : 1;                                      		// 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
 	// int32_t                                            EntryIdx;                                         		// 0x0018 (0x0004) [0x0000000000000000]               
 	// int32_t                                            FileIdx;                                          		// 0x001C (0x0004) [0x0000000000000000]               
 };
@@ -1807,8 +1807,8 @@ struct UMcpUserCloudFileDownload_execGetFileContents_Params
 	class FString                                      UserId;                                           		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Filename;                                         		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	TArray<uint8_t>                                    FileContents;                                     		// 0x0020 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0030 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-	// bool                                               bResult : 1;                                      		// 0x0034 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0030 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	// uint32_t                                           bResult : 1;                                      		// 0x0034 (0x0004) [0x0000000000000000] [0x00000001] 
 	// int32_t                                            EntryIdx;                                         		// 0x0038 (0x0004) [0x0000000000000000]               
 	// int32_t                                            FileIdx;                                          		// 0x003C (0x0004) [0x0000000000000000]               
 };
@@ -1823,11 +1823,11 @@ struct UMeshBeacon_eventDestroyBeacon_Params
 // [0x00420401] 
 struct UMeshBeaconClient_execSendHostNewGameSessionResponse_Params
 {
-	bool                                               bSuccess : 1;                                     		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bSuccess : 1;                                     		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	struct FName                                       SessionName;                                      		// 0x0004 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UClass*                                      SearchClass;                                      		// 0x0010 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	uint8_t                                            PlatformSpecificInfo[0x50];                       		// 0x0018 (0x0050) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
-	bool                                               ReturnValue : 1;                                  		// 0x0068 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0068 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.MeshBeaconClient.OnCreateNewSessionRequestReceived
@@ -1877,7 +1877,7 @@ struct UMeshBeaconClient_execBeginBandwidthTest_Params
 {
 	uint8_t                                            TestType;                                         		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            TestBufferSize;                                   		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.MeshBeaconClient.RequestConnection
@@ -1886,8 +1886,8 @@ struct UMeshBeaconClient_execRequestConnection_Params
 {
 	struct FOnlineGameSearchResult                     DesiredHost;                                      		// 0x0000 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
 	struct FClientConnectionRequest                    ClientRequest;                                    		// 0x0010 (0x0070) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               bRegisterSecureAddress : 1;                       		// 0x0080 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0084 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           bRegisterSecureAddress : 1;                       		// 0x0080 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0084 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.MeshBeaconClient.DestroyBeacon
@@ -1900,7 +1900,7 @@ struct UMeshBeaconClient_eventDestroyBeacon_Params
 // [0x00520001] 
 struct UMeshBeaconHost_execOnReceivedClientCreateNewSessionResult_Params
 {
-	bool                                               bSucceeded : 1;                                   		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bSucceeded : 1;                                   		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	struct FName                                       SessionName;                                      		// 0x0004 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UClass*                                      SearchClass;                                      		// 0x0010 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	uint8_t                                            PlatformSpecificInfo[0x50];                       		// 0x0018 (0x0050) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
@@ -1914,7 +1914,7 @@ struct UMeshBeaconHost_execRequestClientCreateNewSession_Params
 	struct FName                                       SessionName;                                      		// 0x0048 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UClass*                                      SearchClass;                                      		// 0x0050 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	TArray<struct FPlayerMember>                       Players;                                          		// 0x0058 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0068 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0068 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.MeshBeaconHost.TellClientsToTravel
@@ -1937,7 +1937,7 @@ struct UMeshBeaconHost_execOnAllPendingPlayersConnected_Params
 struct UMeshBeaconHost_execAllPlayersConnected_Params
 {
 	TArray<struct FUniqueNetId>                        Players;                                          		// 0x0000 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.MeshBeaconHost.GetConnectionIndexForPlayer
@@ -1984,7 +1984,7 @@ struct UMeshBeaconHost_execOnReceivedClientConnectionRequest_Params
 // [0x00020003] 
 struct UMeshBeaconHost_execAllowBandwidthTesting_Params
 {
-	bool                                               bEnabled : 1;                                     		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bEnabled : 1;                                     		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function IpDrv.MeshBeaconHost.CancelPendingBandwidthTests
@@ -1997,7 +1997,7 @@ struct UMeshBeaconHost_execCancelPendingBandwidthTests_Params
 // [0x00020401] 
 struct UMeshBeaconHost_execHasPendingBandwidthTest_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.MeshBeaconHost.CancelInProgressBandwidthTests
@@ -2010,7 +2010,7 @@ struct UMeshBeaconHost_execCancelInProgressBandwidthTests_Params
 // [0x00020401] 
 struct UMeshBeaconHost_execHasInProgressBandwidthTest_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.MeshBeaconHost.RequestClientBandwidthTest
@@ -2020,7 +2020,7 @@ struct UMeshBeaconHost_execRequestClientBandwidthTest_Params
 	struct FUniqueNetId                                PlayerNetId;                                      		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	uint8_t                                            TestType;                                         		// 0x0048 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            TestBufferSize;                                   		// 0x004C (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.MeshBeaconHost.DestroyBeacon
@@ -2034,7 +2034,7 @@ struct UMeshBeaconHost_eventDestroyBeacon_Params
 struct UMeshBeaconHost_execInitHostBeacon_Params
 {
 	struct FUniqueNetId                                InOwningPlayerId;                                 		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0048 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0048 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.RequestAccountAuthorization
@@ -2057,7 +2057,7 @@ struct UOnlineAuthInterfaceImpl_execOnAccountAuthorization_Params
 // [0x00020000] 
 struct UOnlineAuthInterfaceImpl_execOnLoginChanged_Params
 {
-	bool                                               bLoggedIn : 1;                                    		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bLoggedIn : 1;                                    		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.RequestMtxCode
@@ -2066,7 +2066,7 @@ struct UOnlineAuthInterfaceImpl_execRequestMtxCode_Params
 {
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	struct FScriptDelegate                             Callback;                                         		// 0x0048 (0x0018) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0060 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0060 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.RequestAuthTicket
@@ -2075,21 +2075,21 @@ struct UOnlineAuthInterfaceImpl_execRequestAuthTicket_Params
 {
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	struct FScriptDelegate                             Callback;                                         		// 0x0048 (0x0018) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0060 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0060 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.RequiresAuthTicket
 // [0x00020000] 
 struct UOnlineAuthInterfaceImpl_execRequiresAuthTicket_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.OnReceivedAuthCode
 // [0x00120001] 
 struct UOnlineAuthInterfaceImpl_execOnReceivedAuthCode_Params
 {
-	bool                                               bSuccess : 1;                                     		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bSuccess : 1;                                     		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Code;                                             		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -2099,7 +2099,7 @@ struct UOnlineAuthInterfaceImpl_execGetServerAddr_Params
 {
 	struct FIpAddr                                     OutServerIP;                                      		// 0x0000 (0x0014) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
 	int32_t                                            OutServerPort;                                    		// 0x0014 (0x0004) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.GetServerUniqueId
@@ -2107,7 +2107,7 @@ struct UOnlineAuthInterfaceImpl_execGetServerAddr_Params
 struct UOnlineAuthInterfaceImpl_execGetServerUniqueId_Params
 {
 	struct FUniqueNetId                                OutServerUID;                                     		// 0x0000 (0x0048) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0048 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0048 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.FindLocalServerAuthSession
@@ -2116,7 +2116,7 @@ struct UOnlineAuthInterfaceImpl_execFindLocalServerAuthSession_Params
 {
 	class UPlayer*                                     ClientConnection;                                 		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	struct FLocalAuthSession                           OutSessionInfo;                                   		// 0x0008 (0x0068) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0070 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0070 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.FindServerAuthSession
@@ -2125,7 +2125,7 @@ struct UOnlineAuthInterfaceImpl_execFindServerAuthSession_Params
 {
 	class UPlayer*                                     ServerConnection;                                 		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	struct FAuthSession                                OutSessionInfo;                                   		// 0x0008 (0x0068) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0070 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0070 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.FindLocalClientAuthSession
@@ -2134,7 +2134,7 @@ struct UOnlineAuthInterfaceImpl_execFindLocalClientAuthSession_Params
 {
 	class UPlayer*                                     ServerConnection;                                 		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	struct FLocalAuthSession                           OutSessionInfo;                                   		// 0x0008 (0x0068) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0070 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0070 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.FindClientAuthSession
@@ -2143,7 +2143,7 @@ struct UOnlineAuthInterfaceImpl_execFindClientAuthSession_Params
 {
 	class UPlayer*                                     ClientConnection;                                 		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	struct FAuthSession                                OutSessionInfo;                                   		// 0x0008 (0x0068) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0070 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0070 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.AllLocalServerAuthSessions
@@ -2209,7 +2209,7 @@ struct UOnlineAuthInterfaceImpl_execVerifyServerAuthSession_Params
 	struct FUniqueNetId                                ServerUID;                                        		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	struct FIpAddr                                     ServerIP;                                         		// 0x0048 (0x0014) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            AuthTicketUID;                                    		// 0x005C (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0060 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0060 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.CreateServerAuthSession
@@ -2220,7 +2220,7 @@ struct UOnlineAuthInterfaceImpl_execCreateServerAuthSession_Params
 	struct FIpAddr                                     ClientIP;                                         		// 0x0048 (0x0014) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            ClientPort;                                       		// 0x005C (0x0004) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            OutAuthTicketUID;                                 		// 0x0060 (0x0004) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               ReturnValue : 1;                                  		// 0x0064 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0064 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.EndAllRemoteClientAuthSessions
@@ -2260,7 +2260,7 @@ struct UOnlineAuthInterfaceImpl_execVerifyClientAuthSession_Params
 	struct FIpAddr                                     ClientIP;                                         		// 0x0048 (0x0014) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            ClientPort;                                       		// 0x005C (0x0004) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            AuthTicketUID;                                    		// 0x0060 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0064 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0064 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.CreateClientAuthSession
@@ -2270,16 +2270,16 @@ struct UOnlineAuthInterfaceImpl_execCreateClientAuthSession_Params
 	struct FUniqueNetId                                ServerUID;                                        		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	struct FIpAddr                                     ServerIP;                                         		// 0x0048 (0x0014) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            ServerPort;                                       		// 0x005C (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bSecure : 1;                                      		// 0x0060 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bSecure : 1;                                      		// 0x0060 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	int32_t                                            OutAuthTicketUID;                                 		// 0x0064 (0x0004) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               ReturnValue : 1;                                  		// 0x0068 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0068 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.SendServerAuthRetryRequest
 // [0x00020401] 
 struct UOnlineAuthInterfaceImpl_execSendServerAuthRetryRequest_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.SendClientAuthEndSessionRequest
@@ -2287,7 +2287,7 @@ struct UOnlineAuthInterfaceImpl_execSendServerAuthRetryRequest_Params
 struct UOnlineAuthInterfaceImpl_execSendClientAuthEndSessionRequest_Params
 {
 	class UPlayer*                                     ClientConnection;                                 		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.SendServerAuthResponse
@@ -2296,7 +2296,7 @@ struct UOnlineAuthInterfaceImpl_execSendServerAuthResponse_Params
 {
 	class UPlayer*                                     ClientConnection;                                 		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            AuthTicketUID;                                    		// 0x0008 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.SendClientAuthResponse
@@ -2304,7 +2304,7 @@ struct UOnlineAuthInterfaceImpl_execSendServerAuthResponse_Params
 struct UOnlineAuthInterfaceImpl_execSendClientAuthResponse_Params
 {
 	int32_t                                            AuthTicketUID;                                    		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.SendServerAuthRequest
@@ -2312,7 +2312,7 @@ struct UOnlineAuthInterfaceImpl_execSendClientAuthResponse_Params
 struct UOnlineAuthInterfaceImpl_execSendServerAuthRequest_Params
 {
 	struct FUniqueNetId                                ServerUID;                                        		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0048 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0048 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.SendClientAuthRequest
@@ -2321,7 +2321,7 @@ struct UOnlineAuthInterfaceImpl_execSendClientAuthRequest_Params
 {
 	class UPlayer*                                     ClientConnection;                                 		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                ClientUID;                                        		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.ClearServerConnectionCloseDelegate
@@ -2431,7 +2431,7 @@ struct UOnlineAuthInterfaceImpl_execAddServerAuthCompleteDelegate_Params
 // [0x00120001] 
 struct UOnlineAuthInterfaceImpl_execOnServerAuthComplete_Params
 {
-	bool                                               bSuccess : 1;                                     		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bSuccess : 1;                                     		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	struct FUniqueNetId                                ServerUID;                                        		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class UPlayer*                                     ServerConnection;                                 		// 0x0050 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class FString                                      ExtraInfo;                                        		// 0x0058 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
@@ -2456,7 +2456,7 @@ struct UOnlineAuthInterfaceImpl_execAddClientAuthCompleteDelegate_Params
 // [0x00120001] 
 struct UOnlineAuthInterfaceImpl_execOnClientAuthComplete_Params
 {
-	bool                                               bSuccess : 1;                                     		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bSuccess : 1;                                     		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	struct FUniqueNetId                                ClientUID;                                        		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class UPlayer*                                     ClientConnection;                                 		// 0x0050 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class FString                                      ExtraInfo;                                        		// 0x0058 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
@@ -2557,7 +2557,7 @@ struct UOnlineAuthInterfaceImpl_execOnClientAuthRequest_Params
 	struct FUniqueNetId                                ServerUID;                                        		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	struct FIpAddr                                     ServerIP;                                         		// 0x0048 (0x0014) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            ServerPort;                                       		// 0x005C (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bSecure : 1;                                      		// 0x0060 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bSecure : 1;                                      		// 0x0060 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.ClearAuthReadyDelegate
@@ -2585,7 +2585,7 @@ struct UOnlineAuthInterfaceImpl_execOnAuthReady_Params
 // [0x00020003] 
 struct UOnlineAuthInterfaceImpl_execIsReady_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineFriendsInterfaceImpl.GetActivePlatformId
@@ -2595,7 +2595,7 @@ struct UOnlineFriendsInterfaceImpl_execGetActivePlatformId_Params
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                AccountId;                                        		// 0x0008 (0x0048) [0x0000000000400082] (CPF_Const | CPF_Parm | CPF_NeedCtorLink)
 	struct FUniqueNetId                                PlatformId;                                       		// 0x0050 (0x0048) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0098 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0098 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineFriendsInterfaceImpl.RequestLinkedAccounts
@@ -2605,14 +2605,14 @@ struct UOnlineFriendsInterfaceImpl_execRequestLinkedAccounts_Params
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	TArray<struct FUniqueNetId>                        AccountIds;                                       		// 0x0008 (0x0010) [0x0000000000400082] (CPF_Const | CPF_Parm | CPF_NeedCtorLink)
 	struct FScriptDelegate                             Callback;                                         		// 0x0018 (0x0018) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0030 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0030 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineFriendsInterfaceImpl.OnReceivedLinkedAccount
 // [0x00120001] 
 struct UOnlineFriendsInterfaceImpl_execOnReceivedLinkedAccount_Params
 {
-	bool                                               bSuccess : 1;                                     		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bSuccess : 1;                                     		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	TArray<struct FLinkedAccountData>                  LinkedAccountData;                                		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -2697,7 +2697,7 @@ struct UOnlineGameInterfaceImpl_execBindPlatformSpecificSessionToSearch_Params
 	uint8_t                                            SearchingPlayerNum;                               		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	class UOnlineGameSearch*                           SearchSettings;                                   		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	uint8_t                                            PlatformSpecificInfo[0x50];                       		// 0x0010 (0x0050) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0060 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0060 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ReadPlatformSpecificSessionInfoBySessionName
@@ -2706,7 +2706,7 @@ struct UOnlineGameInterfaceImpl_execReadPlatformSpecificSessionInfoBySessionName
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	uint8_t                                            PlatformSpecificInfo[0x50];                       		// 0x0008 (0x0050) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               ReturnValue : 1;                                  		// 0x0058 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0058 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ReadPlatformSpecificSessionInfo
@@ -2715,7 +2715,7 @@ struct UOnlineGameInterfaceImpl_execReadPlatformSpecificSessionInfo_Params
 {
 	struct FOnlineGameSearchResult                     DesiredGame;                                      		// 0x0000 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
 	uint8_t                                            PlatformSpecificInfo[0x50];                       		// 0x0010 (0x0050) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               ReturnValue : 1;                                  		// 0x0060 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0060 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.QueryNonAdvertisedData
@@ -2724,7 +2724,7 @@ struct UOnlineGameInterfaceImpl_execQueryNonAdvertisedData_Params
 {
 	int32_t                                            StartAt;                                          		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            NumberToQuery;                                    		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearJoinMigratedOnlineGameCompleteDelegate
@@ -2747,7 +2747,7 @@ struct UOnlineGameInterfaceImpl_execAddJoinMigratedOnlineGameCompleteDelegate_Pa
 struct UOnlineGameInterfaceImpl_execOnJoinMigratedOnlineGameComplete_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.JoinMigratedOnlineGame
@@ -2757,7 +2757,7 @@ struct UOnlineGameInterfaceImpl_execJoinMigratedOnlineGame_Params
 	uint8_t                                            PlayerNum;                                        		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FName                                       SessionName;                                      		// 0x0004 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	struct FOnlineGameSearchResult                     DesiredGame;                                      		// 0x0010 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearMigrateOnlineGameCompleteDelegate
@@ -2779,7 +2779,7 @@ struct UOnlineGameInterfaceImpl_execAddMigrateOnlineGameCompleteDelegate_Params
 struct UOnlineGameInterfaceImpl_execOnMigrateOnlineGameComplete_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.MigrateOnlineGame
@@ -2788,7 +2788,7 @@ struct UOnlineGameInterfaceImpl_execMigrateOnlineGame_Params
 {
 	uint8_t                                            HostingPlayerNum;                                 		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FName                                       SessionName;                                      		// 0x0004 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearRecalculateSkillRatingCompleteDelegate
@@ -2810,7 +2810,7 @@ struct UOnlineGameInterfaceImpl_execAddRecalculateSkillRatingCompleteDelegate_Pa
 struct UOnlineGameInterfaceImpl_execOnRecalculateSkillRatingComplete_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.RecalculateSkillRating
@@ -2819,7 +2819,7 @@ struct UOnlineGameInterfaceImpl_execRecalculateSkillRating_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	TArray<struct FUniqueNetId>                        Players;                                          		// 0x0008 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.AcceptGameInvite
@@ -2828,7 +2828,7 @@ struct UOnlineGameInterfaceImpl_execAcceptGameInvite_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FName                                       SessionName;                                      		// 0x0004 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearGameInviteAcceptedDelegate
@@ -2883,7 +2883,7 @@ struct UOnlineGameInterfaceImpl_execAddArbitrationRegistrationCompleteDelegate_P
 struct UOnlineGameInterfaceImpl_execOnArbitrationRegistrationComplete_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.RegisterForArbitration
@@ -2891,7 +2891,7 @@ struct UOnlineGameInterfaceImpl_execOnArbitrationRegistrationComplete_Params
 struct UOnlineGameInterfaceImpl_execRegisterForArbitration_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearEndOnlineGameCompleteDelegate
@@ -2914,7 +2914,7 @@ struct UOnlineGameInterfaceImpl_execAddEndOnlineGameCompleteDelegate_Params
 struct UOnlineGameInterfaceImpl_execOnEndOnlineGameComplete_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.EndOnlineGame
@@ -2922,7 +2922,7 @@ struct UOnlineGameInterfaceImpl_execOnEndOnlineGameComplete_Params
 struct UOnlineGameInterfaceImpl_execEndOnlineGame_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearStartOnlineGameCompleteDelegate
@@ -2945,7 +2945,7 @@ struct UOnlineGameInterfaceImpl_execAddStartOnlineGameCompleteDelegate_Params
 struct UOnlineGameInterfaceImpl_execOnStartOnlineGameComplete_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.StartOnlineGame
@@ -2953,7 +2953,7 @@ struct UOnlineGameInterfaceImpl_execOnStartOnlineGameComplete_Params
 struct UOnlineGameInterfaceImpl_execStartOnlineGame_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearUnregisterPlayerCompleteDelegate
@@ -2976,7 +2976,7 @@ struct UOnlineGameInterfaceImpl_execOnUnregisterPlayerComplete_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0050 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0050 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.UnregisterPlayers
@@ -2985,7 +2985,7 @@ struct UOnlineGameInterfaceImpl_execUnregisterPlayers_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	TArray<struct FUniqueNetId>                        Players;                                          		// 0x0008 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.UnregisterPlayer
@@ -2994,7 +2994,7 @@ struct UOnlineGameInterfaceImpl_execUnregisterPlayer_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0050 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearRegisterPlayerCompleteDelegate
@@ -3017,7 +3017,7 @@ struct UOnlineGameInterfaceImpl_execOnRegisterPlayerComplete_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0050 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0050 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.RegisterPlayers
@@ -3026,7 +3026,7 @@ struct UOnlineGameInterfaceImpl_execRegisterPlayers_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	TArray<struct FUniqueNetId>                        Players;                                          		// 0x0008 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.RegisterPlayer
@@ -3035,8 +3035,8 @@ struct UOnlineGameInterfaceImpl_execRegisterPlayer_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0008 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasInvited : 1;                                  		// 0x0050 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0054 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           bWasInvited : 1;                                  		// 0x0050 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0054 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.GetResolvedConnectString
@@ -3045,7 +3045,7 @@ struct UOnlineGameInterfaceImpl_execGetResolvedConnectString_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class FString                                      ConnectInfo;                                      		// 0x0008 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearJoinOnlineGameCompleteDelegate
@@ -3068,7 +3068,7 @@ struct UOnlineGameInterfaceImpl_execAddJoinOnlineGameCompleteDelegate_Params
 struct UOnlineGameInterfaceImpl_execOnJoinOnlineGameComplete_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.JoinOnlineGame
@@ -3078,7 +3078,7 @@ struct UOnlineGameInterfaceImpl_execJoinOnlineGame_Params
 	uint8_t                                            PlayerNum;                                        		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FName                                       SessionName;                                      		// 0x0004 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	struct FOnlineGameSearchResult                     DesiredGame;                                      		// 0x0010 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.FreeSearchResults
@@ -3086,7 +3086,7 @@ struct UOnlineGameInterfaceImpl_execJoinOnlineGame_Params
 struct UOnlineGameInterfaceImpl_execFreeSearchResults_Params
 {
 	class UOnlineGameSearch*                           Search;                                           		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearCancelFindOnlineGamesCompleteDelegate
@@ -3108,14 +3108,14 @@ struct UOnlineGameInterfaceImpl_execAddCancelFindOnlineGamesCompleteDelegate_Par
 // [0x00120001] 
 struct UOnlineGameInterfaceImpl_execOnCancelFindOnlineGamesComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.CancelFindOnlineGames
 // [0x00020401] 
 struct UOnlineGameInterfaceImpl_execCancelFindOnlineGames_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearFindOnlineGamesCompleteDelegate
@@ -3139,7 +3139,7 @@ struct UOnlineGameInterfaceImpl_execFindOnlineGames_Params
 {
 	uint8_t                                            SearchingPlayerNum;                               		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	class UOnlineGameSearch*                           SearchSettings;                                   		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearDestroyOnlineGameCompleteDelegate
@@ -3162,7 +3162,7 @@ struct UOnlineGameInterfaceImpl_execAddDestroyOnlineGameCompleteDelegate_Params
 struct UOnlineGameInterfaceImpl_execOnDestroyOnlineGameComplete_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.DestroyOnlineGame
@@ -3170,7 +3170,7 @@ struct UOnlineGameInterfaceImpl_execOnDestroyOnlineGameComplete_Params
 struct UOnlineGameInterfaceImpl_execDestroyOnlineGame_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearUpdateOnlineGameCompleteDelegate
@@ -3193,7 +3193,7 @@ struct UOnlineGameInterfaceImpl_execAddUpdateOnlineGameCompleteDelegate_Params
 struct UOnlineGameInterfaceImpl_execOnUpdateOnlineGameComplete_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.UpdateOnlineGame
@@ -3202,8 +3202,8 @@ struct UOnlineGameInterfaceImpl_execUpdateOnlineGame_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UOnlineGameSettings*                         UpdatedGameSettings;                              		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bShouldRefreshOnlineData : 1;                     		// 0x0010 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           bShouldRefreshOnlineData : 1;                     		// 0x0010 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearCreateOnlineGameCompleteDelegate
@@ -3226,7 +3226,7 @@ struct UOnlineGameInterfaceImpl_execAddCreateOnlineGameCompleteDelegate_Params
 struct UOnlineGameInterfaceImpl_execOnCreateOnlineGameComplete_Params
 {
 	struct FName                                       SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0008 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.CreateOnlineGame
@@ -3236,7 +3236,7 @@ struct UOnlineGameInterfaceImpl_execCreateOnlineGame_Params
 	uint8_t                                            HostingPlayerNum;                                 		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	struct FName                                       SessionName;                                      		// 0x0004 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UOnlineGameSettings*                         NewGameSettings;                                  		// 0x0010 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.GetGameSearch
@@ -3258,7 +3258,7 @@ struct UOnlineGameInterfaceImpl_execGetGameSettings_Params
 // [0x00120001] 
 struct UOnlineGameInterfaceImpl_execOnFindOnlineGamesComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function IpDrv.OnlineImageDownloaderWeb.GetImageType
@@ -3266,7 +3266,7 @@ struct UOnlineGameInterfaceImpl_execOnFindOnlineGamesComplete_Params
 struct UOnlineImageDownloaderWeb_execGetImageType_Params
 {
 	class FString                                      ContentType;                                      		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	uint8_t                                            ReturnValue;                                      		// 0x0010 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	EImageType                                         ReturnValue;                                      		// 0x0010 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineImageDownloaderWeb.QueueURLForDownload
@@ -3276,7 +3276,7 @@ struct UOnlineImageDownloaderWeb_execQueueURLForDownload_Params
 	class FString                                      NewURL;                                           		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	struct FScriptDelegate                             InternalCallbackOnComplete;                       		// 0x0010 (0x0018) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	struct FScriptDelegate                             ExternalCallback;                                 		// 0x0028 (0x0018) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bSupportSRGB : 1;                                 		// 0x0040 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bSupportSRGB : 1;                                 		// 0x0040 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// class UHttpRequestInterface*                       Request;                                          		// 0x0048 (0x0008) [0x0000000000000000]               
 	// class UTexture2DDynamic*                           TextureHolder;                                    		// 0x0050 (0x0008) [0x0000000000000000]               
 };
@@ -3297,7 +3297,7 @@ struct UOnlineImageDownloaderWeb_execOnDownloadComplete_Params
 {
 	class UHttpRequestInterface*                       OriginalRequest;                                  		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bDidSucceed : 1;                                  		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bDidSucceed : 1;                                  		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function IpDrv.OnlineImageDownloaderWeb.DownloadNextImage
@@ -3312,7 +3312,7 @@ struct UOnlineImageDownloaderWeb_execRequestOnlineImages_Params
 {
 	TArray<class FString>                              URLs;                                             		// 0x0000 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	struct FScriptDelegate                             FinishedCallback;                                 		// 0x0010 (0x0018) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bSupportSRGB : 1;                                 		// 0x0028 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bSupportSRGB : 1;                                 		// 0x0028 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	// class FString                                      URL;                                              		// 0x0030 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 };
 
@@ -3432,7 +3432,7 @@ struct UOnlineImageDownloaderWeb_execGetDownload_Params
 struct UOnlineImageDownloaderWeb_execIsURLQueued_Params
 {
 	class FString                                      URL;                                              		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineImageDownloaderWeb.IsURLActive
@@ -3440,7 +3440,7 @@ struct UOnlineImageDownloaderWeb_execIsURLQueued_Params
 struct UOnlineImageDownloaderWeb_execIsURLActive_Params
 {
 	class FString                                      URL;                                              		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineImageDownloaderWeb.DidURLFail
@@ -3448,7 +3448,7 @@ struct UOnlineImageDownloaderWeb_execIsURLActive_Params
 struct UOnlineImageDownloaderWeb_execDidURLFail_Params
 {
 	class FString                                      URL;                                              		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineImageDownloaderWeb.DidURLSucceed
@@ -3456,7 +3456,7 @@ struct UOnlineImageDownloaderWeb_execDidURLFail_Params
 struct UOnlineImageDownloaderWeb_execDidURLSucceed_Params
 {
 	class FString                                      URL;                                              		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineImageDownloaderWeb.IsURLTracked
@@ -3464,7 +3464,7 @@ struct UOnlineImageDownloaderWeb_execDidURLSucceed_Params
 struct UOnlineImageDownloaderWeb_execIsURLTracked_Params
 {
 	class FString                                      URL;                                              		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineImageDownloaderWeb.AllValues
@@ -3559,7 +3559,7 @@ struct UOnlineLobbyInterfaceImpl_eventGetLobbyMembers_Params
 {
 	struct FUniqueLobbyId                              LobbyId;                                          		// 0x0000 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
 	TArray<struct FLobbyMember>                        Members;                                          		// 0x0010 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 	// int32_t                                            I;                                                		// 0x0024 (0x0004) [0x0000000000000000]               
 };
 
@@ -3628,7 +3628,7 @@ struct UOnlineLobbyInterfaceImpl_execKickPlayer_Params
 	struct FUniqueLobbyId                              LobbyId;                                          		// 0x0000 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0010 (0x0048) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	uint8_t                                            Reason;                                           		// 0x0058 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x005C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x005C (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineLobbyInterfaceImpl.ShowInviteUI
@@ -3637,7 +3637,7 @@ struct UOnlineLobbyInterfaceImpl_execShowInviteUI_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000082] (CPF_Const | CPF_Parm)
 	struct FUniqueLobbyId                              LobbyId;                                          		// 0x0008 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineLobbyInterfaceImpl.TriggerLobbyDestroyedDelegates
@@ -3694,7 +3694,7 @@ struct UOnlineLobbyInterfaceImpl_execOnLobbyInvite_Params
 {
 	struct FUniqueLobbyId                              LobbyId;                                          		// 0x0000 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
 	struct FUniqueNetId                                FriendId;                                         		// 0x0010 (0x0048) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               bAccepted : 1;                                    		// 0x0058 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bAccepted : 1;                                    		// 0x0058 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function IpDrv.OnlineLobbyInterfaceImpl.InviteToLobby
@@ -3703,7 +3703,7 @@ struct UOnlineLobbyInterfaceImpl_execInviteToLobby_Params
 {
 	struct FUniqueLobbyId                              LobbyId;                                          		// 0x0000 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0010 (0x0048) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0058 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0058 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineLobbyInterfaceImpl.CanInviteToLobby
@@ -3712,7 +3712,7 @@ struct UOnlineLobbyInterfaceImpl_execCanInviteToLobby_Params
 {
 	struct FUniqueLobbyId                              LobbyId;                                          		// 0x0000 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0010 (0x0048) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0058 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0058 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineLobbyInterfaceImpl.SetLobbyOwner
@@ -3721,7 +3721,7 @@ struct UOnlineLobbyInterfaceImpl_execSetLobbyOwner_Params
 {
 	struct FUniqueLobbyId                              LobbyId;                                          		// 0x0000 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
 	struct FUniqueNetId                                NewOwner;                                         		// 0x0010 (0x0048) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0058 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0058 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineLobbyInterfaceImpl.SetLobbyLock
@@ -3729,8 +3729,8 @@ struct UOnlineLobbyInterfaceImpl_execSetLobbyOwner_Params
 struct UOnlineLobbyInterfaceImpl_execSetLobbyLock_Params
 {
 	struct FUniqueLobbyId                              LobbyId;                                          		// 0x0000 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
-	bool                                               bLocked : 1;                                      		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           bLocked : 1;                                      		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineLobbyInterfaceImpl.SetLobbyServer
@@ -3740,7 +3740,7 @@ struct UOnlineLobbyInterfaceImpl_execSetLobbyServer_Params
 	struct FUniqueLobbyId                              LobbyId;                                          		// 0x0000 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
 	struct FUniqueNetId                                ServerUID;                                        		// 0x0010 (0x0048) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	class FString                                      ServerIP;                                         		// 0x0058 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0068 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0068 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineLobbyInterfaceImpl.RemoveLobbySetting
@@ -3749,7 +3749,7 @@ struct UOnlineLobbyInterfaceImpl_execRemoveLobbySetting_Params
 {
 	struct FUniqueLobbyId                              LobbyId;                                          		// 0x0000 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
 	class FString                                      Key;                                              		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineLobbyInterfaceImpl.SetLobbySetting
@@ -3759,7 +3759,7 @@ struct UOnlineLobbyInterfaceImpl_execSetLobbySetting_Params
 	struct FUniqueLobbyId                              LobbyId;                                          		// 0x0000 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
 	class FString                                      Key;                                              		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Value;                                            		// 0x0020 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0030 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0030 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineLobbyInterfaceImpl.GetLobbyAdmin
@@ -3768,7 +3768,7 @@ struct UOnlineLobbyInterfaceImpl_execGetLobbyAdmin_Params
 {
 	struct FUniqueLobbyId                              LobbyId;                                          		// 0x0000 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
 	struct FUniqueNetId                                AdminId;                                          		// 0x0010 (0x0048) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0058 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0058 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineLobbyInterfaceImpl.ClearLobbyJoinGameDelegate
@@ -3846,7 +3846,7 @@ struct UOnlineLobbyInterfaceImpl_execSendLobbyBinaryData_Params
 {
 	struct FUniqueLobbyId                              LobbyId;                                          		// 0x0000 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
 	TArray<uint8_t>                                    Data;                                             		// 0x0010 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineLobbyInterfaceImpl.ClearLobbyReceiveMessageDelegate
@@ -3892,7 +3892,7 @@ struct UOnlineLobbyInterfaceImpl_execSendLobbyMessage_Params
 {
 	struct FUniqueLobbyId                              LobbyId;                                          		// 0x0000 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
 	class FString                                      Message;                                          		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineLobbyInterfaceImpl.ClearLobbyMemberStatusUpdateDelegate
@@ -4003,7 +4003,7 @@ struct UOnlineLobbyInterfaceImpl_execSetLobbyUserSetting_Params
 	struct FUniqueLobbyId                              LobbyId;                                          		// 0x0000 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
 	class FString                                      Key;                                              		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Value;                                            		// 0x0020 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0030 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0030 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineLobbyInterfaceImpl.LeaveLobby
@@ -4011,7 +4011,7 @@ struct UOnlineLobbyInterfaceImpl_execSetLobbyUserSetting_Params
 struct UOnlineLobbyInterfaceImpl_execLeaveLobby_Params
 {
 	struct FUniqueLobbyId                              LobbyId;                                          		// 0x0000 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineLobbyInterfaceImpl.ClearJoinLobbyCompleteDelegate
@@ -4033,7 +4033,7 @@ struct UOnlineLobbyInterfaceImpl_execAddJoinLobbyCompleteDelegate_Params
 // [0x00420803] 
 struct UOnlineLobbyInterfaceImpl_eventTriggerJoinLobbyCompleteDelegates_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	struct FActiveLobbyInfo                            LobbyInfo;                                        		// 0x0008 (0x0030) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	struct FUniqueLobbyId                              LobbyUID;                                         		// 0x0038 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
 	class FString                                      Error;                                            		// 0x0048 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
@@ -4045,7 +4045,7 @@ struct UOnlineLobbyInterfaceImpl_eventTriggerJoinLobbyCompleteDelegates_Params
 // [0x00520001] 
 struct UOnlineLobbyInterfaceImpl_execOnJoinLobbyComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	struct FActiveLobbyInfo                            LobbyInfo;                                        		// 0x0008 (0x0030) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	struct FUniqueLobbyId                              LobbyUID;                                         		// 0x0038 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
 	class FString                                      Error;                                            		// 0x0048 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
@@ -4057,7 +4057,7 @@ struct UOnlineLobbyInterfaceImpl_execJoinLobby_Params
 {
 	int32_t                                            LocalPlayerNum;                                   		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	struct FUniqueLobbyId                              LobbyId;                                          		// 0x0008 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineLobbyInterfaceImpl.ClearFindLobbiesCompleteDelegate
@@ -4079,7 +4079,7 @@ struct UOnlineLobbyInterfaceImpl_execAddFindLobbiesCompleteDelegate_Params
 // [0x00020803] 
 struct UOnlineLobbyInterfaceImpl_eventTriggerFindLobbiesCompleteDelegates_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// TArray<struct FScriptDelegate>                     DelList;                                          		// 0x0008 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// struct FScriptDelegate                             CurDel;                                           		// 0x0018 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
 };
@@ -4088,7 +4088,7 @@ struct UOnlineLobbyInterfaceImpl_eventTriggerFindLobbiesCompleteDelegates_Params
 // [0x00520001] 
 struct UOnlineLobbyInterfaceImpl_execOnFindLobbiesComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	TArray<struct FBasicLobbyInfo>                     LobbyList;                                        		// 0x0008 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 };
 
@@ -4097,7 +4097,7 @@ struct UOnlineLobbyInterfaceImpl_execOnFindLobbiesComplete_Params
 struct UOnlineLobbyInterfaceImpl_execUpdateFoundLobbies_Params
 {
 	struct FUniqueLobbyId                              LobbyId;                                          		// 0x0000 (0x0010) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineLobbyInterfaceImpl.FindLobbies
@@ -4109,7 +4109,7 @@ struct UOnlineLobbyInterfaceImpl_execFindLobbies_Params
 	TArray<struct FLobbySortFilter>                    SortFilters;                                      		// 0x0018 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
 	int32_t                                            MinSlots;                                         		// 0x0028 (0x0004) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
 	uint8_t                                            Distance;                                         		// 0x002C (0x0001) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0030 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0030 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineLobbyInterfaceImpl.ClearCreateLobbyCompleteDelegate
@@ -4131,7 +4131,7 @@ struct UOnlineLobbyInterfaceImpl_execAddCreateLobbyCompleteDelegate_Params
 // [0x00520001] 
 struct UOnlineLobbyInterfaceImpl_execOnCreateLobbyComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	struct FUniqueLobbyId                              LobbyId;                                          		// 0x0008 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
 	class FString                                      Error;                                            		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
@@ -4144,7 +4144,7 @@ struct UOnlineLobbyInterfaceImpl_execCreateLobby_Params
 	int32_t                                            MaxPlayers;                                       		// 0x0004 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	uint8_t                                            Type;                                             		// 0x0008 (0x0001) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
 	TArray<struct FLobbyMetaData>                      InitialSettings;                                  		// 0x0010 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlinePersistentAuthInterfaceImpl.AuthWithNintendoAccountToken
@@ -4153,7 +4153,7 @@ struct UOnlinePersistentAuthInterfaceImpl_execAuthWithNintendoAccountToken_Param
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	class FString                                      NintendoAccountToken;                             		// 0x0008 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlinePersistentAuthInterfaceImpl.GetTimeUntilAuthExpiration
@@ -4177,7 +4177,7 @@ struct UOnlinePersistentAuthInterfaceImpl_execGetAuthExpirationTimestamp_Params
 struct UOnlinePersistentAuthInterfaceImpl_execLaunchAccountPortal_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlinePersistentAuthInterfaceImpl.GetClientSecret
@@ -4215,7 +4215,7 @@ struct UOnlinePersistentAuthInterfaceImpl_execUseRefreshToken_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
 	class FString                                      RefreshToken;                                     		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlinePersistentAuthInterfaceImpl.GetRefreshToken
@@ -4231,7 +4231,7 @@ struct UOnlinePersistentAuthInterfaceImpl_execGetRefreshToken_Params
 struct UOnlinePersistentAuthInterfaceImpl_execRequestPinGrantCode_Params
 {
 	uint8_t                                            LocalUserNum;                                     		// 0x0000 (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlinePersistentAuthInterfaceImpl.ClearUnderageUserDetectedDelegate
@@ -4294,7 +4294,7 @@ struct UOnlinePlaylistManager_execParseDataCenterId_Params
 // [0x00020003] 
 struct UOnlinePlaylistManager_execOnReadDataCenterIdComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Filename;                                         		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	// TArray<uint8_t>                                    FileData;                                         		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 };
@@ -4342,7 +4342,7 @@ struct UOnlinePlaylistManager_execOnPlaylistPopulationDataUpdated_Params
 // [0x00020003] 
 struct UOnlinePlaylistManager_execOnReadPlaylistPopulationComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Filename;                                         		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	// TArray<uint8_t>                                    FileData;                                         		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 };
@@ -4402,7 +4402,7 @@ struct UOnlinePlaylistManager_execGetMatchType_Params
 struct UOnlinePlaylistManager_execIsPlaylistArbitrated_Params
 {
 	int32_t                                            PlaylistId;                                       		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 	// int32_t                                            PlaylistIndex;                                    		// 0x0008 (0x0004) [0x0000000000000000]               
 };
 
@@ -4431,7 +4431,7 @@ struct UOnlinePlaylistManager_execGetTeamInfoFromPlaylist_Params
 struct UOnlinePlaylistManager_execPlaylistSupportsDedicatedServers_Params
 {
 	int32_t                                            PlaylistId;                                       		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 	// int32_t                                            PlaylistIndex;                                    		// 0x0008 (0x0004) [0x0000000000000000]               
 };
 
@@ -4440,7 +4440,7 @@ struct UOnlinePlaylistManager_execPlaylistSupportsDedicatedServers_Params
 struct UOnlinePlaylistManager_execHasAnyGameSettings_Params
 {
 	int32_t                                            PlaylistId;                                       		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 	// int32_t                                            PlaylistIndex;                                    		// 0x0008 (0x0004) [0x0000000000000000]               
 	// int32_t                                            GameIndex;                                        		// 0x000C (0x0004) [0x0000000000000000]               
 };
@@ -4466,7 +4466,7 @@ struct UOnlinePlaylistManager_execFinalizePlaylistObjects_Params
 // [0x00020003] 
 struct UOnlinePlaylistManager_execOnReadTitleFileComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Filename;                                         		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	// class UOnlineSubsystem*                            OnlineSub;                                        		// 0x0018 (0x0008) [0x0000000000000000]               
 	// int32_t                                            FileIndex;                                        		// 0x0020 (0x0004) [0x0000000000000000]               
@@ -4476,7 +4476,7 @@ struct UOnlinePlaylistManager_execOnReadTitleFileComplete_Params
 // [0x00020401] 
 struct UOnlinePlaylistManager_execShouldRefreshPlaylists_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlinePlaylistManager.DetermineFilesToDownload
@@ -4497,7 +4497,7 @@ struct UOnlinePlaylistManager_execDownloadPlaylist_Params
 // [0x00120001] 
 struct UOnlinePlaylistManager_execOnReadPlaylistComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function IpDrv.OnlinePurchaseInterfaceImpl.ClearMicroTxnResponseDelegate
@@ -4518,7 +4518,7 @@ struct UOnlinePurchaseInterfaceImpl_execAddMicroTxnResponseDelegate_Params
 // [0x00120001] 
 struct UOnlinePurchaseInterfaceImpl_execOnMicroTxnResponse_Params
 {
-	bool                                               bAuthorized : 1;                                  		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bAuthorized : 1;                                  		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	uint64_t                                           OrderId;                                          		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
 };
 
@@ -4538,7 +4538,7 @@ struct UOnlinePurchaseInterfaceImpl_execGetAppPriceInfo_Params
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0000 (0x0048) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	TArray<struct FName>                               AppNames;                                         		// 0x0048 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	struct FScriptDelegate                             Callback;                                         		// 0x0058 (0x0018) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0070 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0070 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlinePurchaseInterfaceImpl.EventGetAppPriceInfoComplete
@@ -4574,7 +4574,7 @@ struct UPartyBeaconClient_eventDestroyBeacon_Params
 struct UPartyBeaconClient_execCancelReservation_Params
 {
 	struct FUniqueNetId                                CancellingPartyLeader;                            		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0048 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0048 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.PartyBeaconClient.RequestReservationUpdate
@@ -4584,7 +4584,7 @@ struct UPartyBeaconClient_execRequestReservationUpdate_Params
 	struct FOnlineGameSearchResult                     DesiredHost;                                      		// 0x0000 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
 	struct FUniqueNetId                                RequestingPartyLeader;                            		// 0x0010 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	TArray<struct FPlayerReservation>                  PlayersToAdd;                                     		// 0x0058 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0068 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0068 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.PartyBeaconClient.RequestReservation
@@ -4594,7 +4594,7 @@ struct UPartyBeaconClient_execRequestReservation_Params
 	struct FOnlineGameSearchResult                     DesiredHost;                                      		// 0x0000 (0x0010) [0x0000000000000182] (CPF_Const | CPF_Parm | CPF_OutParm)
 	struct FUniqueNetId                                RequestingPartyLeader;                            		// 0x0010 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	TArray<struct FPlayerReservation>                  Players;                                          		// 0x0058 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0068 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0068 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.PartyBeaconClient.OnHostHasCancelled
@@ -4701,7 +4701,7 @@ struct UPartyBeaconHost_eventRegisterPartyMembers_Params
 // [0x00020003] 
 struct UPartyBeaconHost_execAreReservationsFull_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.PartyBeaconHost.TellClientsHostHasCancelled
@@ -4755,7 +4755,7 @@ struct UPartyBeaconHost_execOnReservationChange_Params
 struct UPartyBeaconHost_execHandlePlayerLogout_Params
 {
 	struct FUniqueNetId                                PlayerID;                                         		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bMaintainParty : 1;                               		// 0x0048 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bMaintainParty : 1;                               		// 0x0048 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function IpDrv.PartyBeaconHost.GetExistingReservation
@@ -4772,7 +4772,7 @@ struct UPartyBeaconHost_execUpdatePartyReservationEntry_Params
 {
 	struct FUniqueNetId                                PartyLeader;                                      		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	TArray<struct FPlayerReservation>                  PlayerMembers;                                    		// 0x0048 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	uint8_t                                            ReturnValue;                                      		// 0x0058 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	EPartyReservationResult                            ReturnValue;                                      		// 0x0058 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.PartyBeaconHost.AddPartyReservationEntry
@@ -4782,8 +4782,8 @@ struct UPartyBeaconHost_execAddPartyReservationEntry_Params
 	struct FUniqueNetId                                PartyLeader;                                      		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	TArray<struct FPlayerReservation>                  PlayerMembers;                                    		// 0x0048 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 	int32_t                                            TeamNum;                                          		// 0x0058 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bIsHost : 1;                                      		// 0x005C (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
-	uint8_t                                            ReturnValue;                                      		// 0x0060 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           bIsHost : 1;                                      		// 0x005C (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	EPartyReservationResult                            ReturnValue;                                      		// 0x0060 (0x0001) [0x0000000000000580] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.PartyBeaconHost.InitHostBeacon
@@ -4795,14 +4795,14 @@ struct UPartyBeaconHost_execInitHostBeacon_Params
 	int32_t                                            InNumReservations;                                		// 0x0008 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	struct FName                                       InSessionName;                                    		// 0x000C (0x0008) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            InForceTeamNum;                                   		// 0x0014 (0x0004) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.PartyBeaconHost.PauseReservationRequests
 // [0x00020401] 
 struct UPartyBeaconHost_execPauseReservationRequests_Params
 {
-	bool                                               bPause : 1;                                       		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bPause : 1;                                       		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function IpDrv.WebRequest.GetHexDigit
@@ -4927,14 +4927,14 @@ struct UWebRequest_execDecodeBase64_Params
 // [0x00020003] 
 struct UWebResponse_execSentResponse_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.WebResponse.SentText
 // [0x00020003] 
 struct UWebResponse_execSentText_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.WebResponse.Redirect
@@ -4949,7 +4949,7 @@ struct UWebResponse_execRedirect_Params
 struct UWebResponse_execSendStandardHeaders_Params
 {
 	class FString                                      ContentType;                                      		// 0x0000 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bCache : 1;                                       		// 0x0010 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bCache : 1;                                       		// 0x0010 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 };
 
 // Function IpDrv.WebResponse.HTTPError
@@ -4972,7 +4972,7 @@ struct UWebResponse_execSendHeaders_Params
 struct UWebResponse_execAddHeader_Params
 {
 	class FString                                      Header;                                           		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bReplace : 1;                                     		// 0x0010 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bReplace : 1;                                     		// 0x0010 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	// int32_t                                            I;                                                		// 0x0014 (0x0004) [0x0000000000000000]               
 	// int32_t                                            Idx;                                              		// 0x0018 (0x0004) [0x0000000000000000]               
 	// class FString                                      Part;                                             		// 0x0020 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -5006,7 +5006,7 @@ struct UWebResponse_execSendCachedFile_Params
 {
 	class FString                                      Filename;                                         		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      ContentType;                                      		// 0x0010 (0x0010) [0x0000000000400090] (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.WebResponse.SendBinary
@@ -5022,7 +5022,7 @@ struct UWebResponse_eventSendBinary_Params
 struct UWebResponse_eventSendText_Params
 {
 	class FString                                      Text;                                             		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bNoCRLF : 1;                                      		// 0x0010 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bNoCRLF : 1;                                      		// 0x0010 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 };
 
 // Function IpDrv.WebResponse.Dump
@@ -5052,7 +5052,7 @@ struct UWebResponse_execLoadParsedUHTM_Params
 struct UWebResponse_execIncludeBinaryFile_Params
 {
 	class FString                                      Filename;                                         		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.WebResponse.IncludeUHTM
@@ -5060,7 +5060,7 @@ struct UWebResponse_execIncludeBinaryFile_Params
 struct UWebResponse_execIncludeUHTM_Params
 {
 	class FString                                      Filename;                                         		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.WebResponse.ClearSubst
@@ -5075,7 +5075,7 @@ struct UWebResponse_execSubst_Params
 {
 	class FString                                      Variable;                                         		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Value;                                            		// 0x0010 (0x0010) [0x0000000000400880] (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
-	bool                                               bClear : 1;                                       		// 0x0020 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bClear : 1;                                       		// 0x0020 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 };
 
 // Function IpDrv.WebResponse.FileExists
@@ -5083,7 +5083,7 @@ struct UWebResponse_execSubst_Params
 struct UWebResponse_execFileExists_Params
 {
 	class FString                                      Filename;                                         		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.UIDataStore_OnlinePlaylists.GetMatchTypeForPlaylistId
@@ -5114,7 +5114,7 @@ struct UUIDataStore_OnlinePlaylists_execGetPlaylistProvider_Params
 	struct FName                                       ProviderTag;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            ProviderIndex;                                    		// 0x0008 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	class UUIResourceDataProvider*                     out_Provider;                                     		// 0x0010 (0x0008) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.UIDataStore_OnlinePlaylists.GetResourceProviders
@@ -5123,7 +5123,7 @@ struct UUIDataStore_OnlinePlaylists_execGetResourceProviders_Params
 {
 	struct FName                                       ProviderTag;                                      		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	TArray<class UUIResourceDataProvider*>             out_Providers;                                    		// 0x0008 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.UIDataStore_OnlinePlaylists.Init
@@ -5155,7 +5155,7 @@ struct UWebApplication_execPreQuery_Params
 {
 	class UWebRequest*                                 Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UWebResponse*                                Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.WebApplication.CleanupApp
@@ -5263,7 +5263,7 @@ struct UMcpClashMobBase_execUpdateChallengeUserReward_Params
 // [0x00120001] 
 struct UMcpClashMobBase_execOnUpdateChallengeUserRewardComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      UniqueChallengeId;                                		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      UniqueUserId;                                     		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Error;                                            		// 0x0028 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
@@ -5275,7 +5275,7 @@ struct UMcpClashMobBase_execUpdateChallengeUserProgress_Params
 {
 	class FString                                      UniqueChallengeId;                                		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      UniqueUserId;                                     		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bDidComplete : 1;                                 		// 0x0020 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bDidComplete : 1;                                 		// 0x0020 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	int32_t                                            GoalProgress;                                     		// 0x0024 (0x0004) [0x0000000000000080] (CPF_Parm)    
 };
 
@@ -5283,7 +5283,7 @@ struct UMcpClashMobBase_execUpdateChallengeUserProgress_Params
 // [0x00120001] 
 struct UMcpClashMobBase_execOnUpdateChallengeUserProgressComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      UniqueChallengeId;                                		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      UniqueUserId;                                     		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Error;                                            		// 0x0028 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
@@ -5319,7 +5319,7 @@ struct UMcpClashMobBase_execQueryChallengeUserStatus_Params
 // [0x00120001] 
 struct UMcpClashMobBase_execOnQueryChallengeUserStatusComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      UniqueChallengeId;                                		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      UniqueUserId;                                     		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Error;                                            		// 0x0028 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
@@ -5337,7 +5337,7 @@ struct UMcpClashMobBase_execAcceptChallenge_Params
 // [0x00120001] 
 struct UMcpClashMobBase_execOnAcceptChallengeComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      UniqueChallengeId;                                		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      UniqueUserId;                                     		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Error;                                            		// 0x0028 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
@@ -5388,7 +5388,7 @@ struct UMcpClashMobBase_execGetChallengeFileList_Params
 // [0x00120001] 
 struct UMcpClashMobBase_execOnDownloadChallengeFileComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      UniqueChallengeId;                                		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      DLName;                                           		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Filename;                                         		// 0x0028 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
@@ -5412,7 +5412,7 @@ struct UMcpClashMobBase_execQueryChallengeList_Params
 // [0x00120001] 
 struct UMcpClashMobBase_execOnQueryChallengeListComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -5440,11 +5440,11 @@ struct UMcpClashMobManager_execOnUpdateChallengeUserRewardHTTPRequestComplete_Pa
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// class FString                                      UniqueChallengeId;                                		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      UniqueUserId;                                     		// 0x0028 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      ErrorStr;                                         		// 0x0038 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	// bool                                               bResult : 1;                                      		// 0x0048 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bResult : 1;                                      		// 0x0048 (0x0004) [0x0000000000000000] [0x00000001] 
 	// int32_t                                            UserQueryIdx;                                     		// 0x004C (0x0004) [0x0000000000000000]               
 	// int32_t                                            ChallengeQueryIdx;                                		// 0x0050 (0x0004) [0x0000000000000000]               
 };
@@ -5460,7 +5460,7 @@ struct UMcpClashMobManager_execUpdateChallengeUserReward_Params
 	// class FString                                      ErrorStr;                                         		// 0x0038 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// int32_t                                            ChallengeQueryIdx;                                		// 0x0048 (0x0004) [0x0000000000000000]               
 	// int32_t                                            UserQueryIdx;                                     		// 0x004C (0x0004) [0x0000000000000000]               
-	// bool                                               bPending : 1;                                     		// 0x0050 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bPending : 1;                                     		// 0x0050 (0x0004) [0x0000000000000000] [0x00000001] 
 	// class UHttpRequestInterface*                       Request;                                          		// 0x0058 (0x0008) [0x0000000000000000]               
 };
 
@@ -5470,11 +5470,11 @@ struct UMcpClashMobManager_execOnUpdateChallengeUserProgressHTTPRequestComplete_
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// class FString                                      UniqueChallengeId;                                		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      UniqueUserId;                                     		// 0x0028 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      ErrorStr;                                         		// 0x0038 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	// bool                                               bResult : 1;                                      		// 0x0048 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bResult : 1;                                      		// 0x0048 (0x0004) [0x0000000000000000] [0x00000001] 
 	// int32_t                                            UserQueryIdx;                                     		// 0x004C (0x0004) [0x0000000000000000]               
 	// int32_t                                            ChallengeQueryIdx;                                		// 0x0050 (0x0004) [0x0000000000000000]               
 };
@@ -5485,13 +5485,13 @@ struct UMcpClashMobManager_execUpdateChallengeUserProgress_Params
 {
 	class FString                                      UniqueChallengeId;                                		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      UniqueUserId;                                     		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bDidComplete : 1;                                 		// 0x0020 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bDidComplete : 1;                                 		// 0x0020 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	int32_t                                            GoalProgress;                                     		// 0x0024 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	// class FString                                      URL;                                              		// 0x0028 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      ErrorStr;                                         		// 0x0038 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// int32_t                                            ChallengeQueryIdx;                                		// 0x0048 (0x0004) [0x0000000000000000]               
 	// int32_t                                            UserQueryIdx;                                     		// 0x004C (0x0004) [0x0000000000000000]               
-	// bool                                               bPending : 1;                                     		// 0x0050 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bPending : 1;                                     		// 0x0050 (0x0004) [0x0000000000000000] [0x00000001] 
 	// class UHttpRequestInterface*                       Request;                                          		// 0x0058 (0x0008) [0x0000000000000000]               
 };
 
@@ -5512,12 +5512,12 @@ struct UMcpClashMobManager_execOnQueryChallengeMultiStatusHTTPRequestComplete_Pa
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// class FString                                      JSONStr;                                          		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      UniqueChallengeId;                                		// 0x0028 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      UniqueUserId;                                     		// 0x0038 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      ErrorStr;                                         		// 0x0048 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	// bool                                               bResult : 1;                                      		// 0x0058 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bResult : 1;                                      		// 0x0058 (0x0004) [0x0000000000000000] [0x00000001] 
 	// int32_t                                            UserQueryIdx;                                     		// 0x005C (0x0004) [0x0000000000000000]               
 	// int32_t                                            ChallengeQueryIdx;                                		// 0x0060 (0x0004) [0x0000000000000000]               
 	// int32_t                                            UserStatusIdx;                                    		// 0x0064 (0x0004) [0x0000000000000000]               
@@ -5537,7 +5537,7 @@ struct UMcpClashMobManager_execQueryChallengeMultiUserStatus_Params
 	// int32_t                                            ChallengeQueryIdx;                                		// 0x0060 (0x0004) [0x0000000000000000]               
 	// int32_t                                            UserQueryIdx;                                     		// 0x0064 (0x0004) [0x0000000000000000]               
 	// int32_t                                            UserIdIdx;                                        		// 0x0068 (0x0004) [0x0000000000000000]               
-	// bool                                               bPending : 1;                                     		// 0x006C (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bPending : 1;                                     		// 0x006C (0x0004) [0x0000000000000000] [0x00000001] 
 	// class UHttpRequestInterface*                       Request;                                          		// 0x0070 (0x0008) [0x0000000000000000]               
 };
 
@@ -5547,12 +5547,12 @@ struct UMcpClashMobManager_execOnQueryChallengeStatusHTTPRequestComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// class FString                                      JSONStr;                                          		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      UniqueChallengeId;                                		// 0x0028 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      UniqueUserId;                                     		// 0x0038 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      ErrorStr;                                         		// 0x0048 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	// bool                                               bResult : 1;                                      		// 0x0058 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bResult : 1;                                      		// 0x0058 (0x0004) [0x0000000000000000] [0x00000001] 
 	// int32_t                                            UserQueryIdx;                                     		// 0x005C (0x0004) [0x0000000000000000]               
 	// int32_t                                            ChallengeQueryIdx;                                		// 0x0060 (0x0004) [0x0000000000000000]               
 	// int32_t                                            UserStatusIdx;                                    		// 0x0064 (0x0004) [0x0000000000000000]               
@@ -5568,7 +5568,7 @@ struct UMcpClashMobManager_execQueryChallengeUserStatus_Params
 	// class FString                                      ErrorStr;                                         		// 0x0030 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// int32_t                                            ChallengeQueryIdx;                                		// 0x0040 (0x0004) [0x0000000000000000]               
 	// int32_t                                            UserQueryIdx;                                     		// 0x0044 (0x0004) [0x0000000000000000]               
-	// bool                                               bPending : 1;                                     		// 0x0048 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bPending : 1;                                     		// 0x0048 (0x0004) [0x0000000000000000] [0x00000001] 
 	// class UHttpRequestInterface*                       Request;                                          		// 0x0050 (0x0008) [0x0000000000000000]               
 };
 
@@ -5578,11 +5578,11 @@ struct UMcpClashMobManager_execOnAcceptChallengeHTTPRequestComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// class FString                                      UniqueChallengeId;                                		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      UniqueUserId;                                     		// 0x0028 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      ErrorStr;                                         		// 0x0038 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	// bool                                               bResult : 1;                                      		// 0x0048 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bResult : 1;                                      		// 0x0048 (0x0004) [0x0000000000000000] [0x00000001] 
 	// int32_t                                            UserQueryIdx;                                     		// 0x004C (0x0004) [0x0000000000000000]               
 	// int32_t                                            ChallengeQueryIdx;                                		// 0x0050 (0x0004) [0x0000000000000000]               
 };
@@ -5597,7 +5597,7 @@ struct UMcpClashMobManager_execAcceptChallenge_Params
 	// class FString                                      ErrorStr;                                         		// 0x0030 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// int32_t                                            ChallengeQueryIdx;                                		// 0x0040 (0x0004) [0x0000000000000000]               
 	// int32_t                                            UserQueryIdx;                                     		// 0x0044 (0x0004) [0x0000000000000000]               
-	// bool                                               bPending : 1;                                     		// 0x0048 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bPending : 1;                                     		// 0x0048 (0x0004) [0x0000000000000000] [0x00000001] 
 	// class UHttpRequestInterface*                       Request;                                          		// 0x0050 (0x0008) [0x0000000000000000]               
 };
 
@@ -5636,7 +5636,7 @@ struct UMcpClashMobManager_execGetChallengeFileContents_Params
 // [0x00020003] 
 struct UMcpClashMobManager_execOnDownloadMcpFileComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      DLName;                                           		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	// TArray<uint8_t>                                    FileContents;                                     		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// int32_t                                            ChallengeIdx;                                     		// 0x0028 (0x0004) [0x0000000000000000]               
@@ -5648,9 +5648,9 @@ struct UMcpClashMobManager_execOnDownloadMcpFileComplete_Params
 // [0x00040003] 
 struct UMcpClashMobManager_execOnLoadCachedFileComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      DLName;                                           		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	// bool                                               bRequiresDownload : 1;                            		// 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bRequiresDownload : 1;                            		// 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
 	// class FString                                      FileHashCache;                                    		// 0x0020 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      FileHashChallenge;                                		// 0x0030 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      Filename;                                         		// 0x0040 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -5668,7 +5668,7 @@ struct UMcpClashMobManager_execDownloadChallengeFile_Params
 	// class FString                                      ErrorStr;                                         		// 0x0020 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// int32_t                                            ChallengeIdx;                                     		// 0x0030 (0x0004) [0x0000000000000000]               
 	// int32_t                                            FileIdx;                                          		// 0x0034 (0x0004) [0x0000000000000000]               
-	// bool                                               bPending : 1;                                     		// 0x0038 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bPending : 1;                                     		// 0x0038 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function IpDrv.McpClashMobManager.GetChallengeFileList
@@ -5693,10 +5693,10 @@ struct UMcpClashMobManager_execOnQueryChallengeListHTTPRequestComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// class FString                                      JSONStr;                                          		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      ErrorStr;                                         		// 0x0028 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	// bool                                               bResult : 1;                                      		// 0x0038 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bResult : 1;                                      		// 0x0038 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function IpDrv.McpClashMobManager.QueryChallengeList
@@ -5705,7 +5705,7 @@ struct UMcpClashMobManager_execQueryChallengeList_Params
 {
 	// class FString                                      URL;                                              		// 0x0000 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      ErrorStr;                                         		// 0x0010 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	// bool                                               bPending : 1;                                     		// 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bPending : 1;                                     		// 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function IpDrv.McpClashMobManager.Init
@@ -5719,7 +5719,7 @@ struct UMcpClashMobManager_execInit_Params
 struct UMcpGroupsBase_execOnAcceptGroupInviteComplete_Params
 {
 	class FString                                      GroupId;                                          		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -5729,7 +5729,7 @@ struct UMcpGroupsBase_execAcceptGroupInvite_Params
 {
 	class FString                                      UniqueUserId;                                     		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      GroupId;                                          		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bShouldAccept : 1;                                		// 0x0020 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bShouldAccept : 1;                                		// 0x0020 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function IpDrv.McpGroupsBase.GetGroupInviteList
@@ -5744,7 +5744,7 @@ struct UMcpGroupsBase_execGetGroupInviteList_Params
 // [0x00120001] 
 struct UMcpGroupsBase_execOnQueryGroupInvitesComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -5760,7 +5760,7 @@ struct UMcpGroupsBase_execQueryGroupInvites_Params
 struct UMcpGroupsBase_execOnDeleteAllGroupsComplete_Params
 {
 	class FString                                      RequesterId;                                      		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -5776,7 +5776,7 @@ struct UMcpGroupsBase_execDeleteAllGroups_Params
 struct UMcpGroupsBase_execOnRemoveGroupMembersComplete_Params
 {
 	class FString                                      GroupId;                                          		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -5794,7 +5794,7 @@ struct UMcpGroupsBase_execRemoveGroupMembers_Params
 struct UMcpGroupsBase_execOnAddGroupMembersComplete_Params
 {
 	class FString                                      GroupId;                                          		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -5805,7 +5805,7 @@ struct UMcpGroupsBase_execAddGroupMembers_Params
 	class FString                                      OwnerId;                                          		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      GroupId;                                          		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	TArray<class FString>                              MemberIds;                                        		// 0x0020 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               bRequiresAcceptance : 1;                          		// 0x0030 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bRequiresAcceptance : 1;                          		// 0x0030 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function IpDrv.McpGroupsBase.GetGroupMembers
@@ -5821,7 +5821,7 @@ struct UMcpGroupsBase_execGetGroupMembers_Params
 struct UMcpGroupsBase_execOnQueryGroupMembersComplete_Params
 {
 	class FString                                      GroupId;                                          		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -5846,7 +5846,7 @@ struct UMcpGroupsBase_execGetGroupList_Params
 struct UMcpGroupsBase_execOnQueryGroupsComplete_Params
 {
 	class FString                                      UserId;                                           		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -5862,7 +5862,7 @@ struct UMcpGroupsBase_execQueryGroups_Params
 struct UMcpGroupsBase_execOnDeleteGroupComplete_Params
 {
 	class FString                                      GroupId;                                          		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -5879,7 +5879,7 @@ struct UMcpGroupsBase_execDeleteGroup_Params
 struct UMcpGroupsBase_execOnCreateGroupComplete_Params
 {
 	struct FMcpGroup                                   Group;                                            		// 0x0000 (0x0048) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0048 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0048 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0050 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -5925,7 +5925,7 @@ struct UMcpGroupsManager_execCacheGroup_Params
 	// int32_t                                            GroupIndex;                                       		// 0x005C (0x0004) [0x0000000000000000]               
 	// int32_t                                            GroupListIndex;                                   		// 0x0060 (0x0004) [0x0000000000000000]               
 	// struct FMcpGroupList                               UserGroupList;                                    		// 0x0068 (0x0020) [0x0000000000400000] (CPF_NeedCtorLink)
-	// bool                                               bWasFound : 1;                                    		// 0x0088 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bWasFound : 1;                                    		// 0x0088 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function IpDrv.McpGroupsManager.OnAcceptGroupInviteRequestComplete
@@ -5934,7 +5934,7 @@ struct UMcpGroupsManager_execOnAcceptGroupInviteRequestComplete_Params
 {
 	class UHttpRequestInterface*                       OriginalRequest;                                  		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      HttpResponse;                                     		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            ResponseCode;                                     		// 0x0014 (0x0004) [0x0000000000000000]               
 	// class FString                                      Content;                                          		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      GroupId;                                          		// 0x0028 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -5946,7 +5946,7 @@ struct UMcpGroupsManager_execAcceptGroupInvite_Params
 {
 	class FString                                      UniqueUserId;                                     		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      GroupId;                                          		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bShouldAccept : 1;                                		// 0x0020 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bShouldAccept : 1;                                		// 0x0020 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// class FString                                      URL;                                              		// 0x0028 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class UHttpRequestInterface*                       AcceptGroupInviteRequest;                         		// 0x0038 (0x0008) [0x0000000000000000]               
 };
@@ -5957,7 +5957,7 @@ struct UMcpGroupsManager_execOnDeleteAllGroupsRequestComplete_Params
 {
 	class UHttpRequestInterface*                       OriginalRequest;                                  		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      HttpResponse;                                     		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            ResponseCode;                                     		// 0x0014 (0x0004) [0x0000000000000000]               
 	// class FString                                      Content;                                          		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      RequesterId;                                      		// 0x0028 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -5978,7 +5978,7 @@ struct UMcpGroupsManager_execOnRemoveGroupMembersRequestComplete_Params
 {
 	class UHttpRequestInterface*                       OriginalRequest;                                  		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      HttpResponse;                                     		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            ResponseCode;                                     		// 0x0014 (0x0004) [0x0000000000000000]               
 	// class FString                                      Content;                                          		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      GroupId;                                          		// 0x0028 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -6003,7 +6003,7 @@ struct UMcpGroupsManager_execOnAddGroupMembersRequestComplete_Params
 {
 	class UHttpRequestInterface*                       OriginalRequest;                                  		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      HttpResponse;                                     		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            ResponseCode;                                     		// 0x0014 (0x0004) [0x0000000000000000]               
 	// class FString                                      Content;                                          		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      GroupId;                                          		// 0x0028 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -6016,7 +6016,7 @@ struct UMcpGroupsManager_execAddGroupMembers_Params
 	class FString                                      UniqueUserId;                                     		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      GroupId;                                          		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	TArray<class FString>                              MemberIds;                                        		// 0x0020 (0x0010) [0x0000000000400182] (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               bRequiresAcceptance : 1;                          		// 0x0030 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bRequiresAcceptance : 1;                          		// 0x0030 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// class FString                                      URL;                                              		// 0x0038 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class UHttpRequestInterface*                       AddGroupMembersRequest;                           		// 0x0048 (0x0008) [0x0000000000000000]               
 	// class FString                                      JsonPayload;                                      		// 0x0050 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -6040,7 +6040,7 @@ struct UMcpGroupsManager_execOnQueryGroupMembersRequestComplete_Params
 {
 	class UHttpRequestInterface*                       OriginalRequest;                                  		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      HttpResponse;                                     		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            ResponseCode;                                     		// 0x0014 (0x0004) [0x0000000000000000]               
 	// class FString                                      Error;                                            		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      JsonString;                                       		// 0x0028 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -6076,7 +6076,7 @@ struct UMcpGroupsManager_execOnQueryGroupsRequestComplete_Params
 {
 	class UHttpRequestInterface*                       OriginalRequest;                                  		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      HttpResponse;                                     		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            ResponseCode;                                     		// 0x0014 (0x0004) [0x0000000000000000]               
 	// class FString                                      Error;                                            		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// struct FMcpGroup                                   Group;                                            		// 0x0028 (0x0048) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -6101,7 +6101,7 @@ struct UMcpGroupsManager_execOnDeleteGroupRequestComplete_Params
 {
 	class UHttpRequestInterface*                       OriginalRequest;                                  		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      HttpResponse;                                     		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            ResponseCode;                                     		// 0x0014 (0x0004) [0x0000000000000000]               
 	// class FString                                      Content;                                          		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      GroupId;                                          		// 0x0028 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -6123,7 +6123,7 @@ struct UMcpGroupsManager_execOnCreateGroupRequestComplete_Params
 {
 	class UHttpRequestInterface*                       CreateGroupRequest;                               		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      HttpResponse;                                     		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            ResponseCode;                                     		// 0x0014 (0x0004) [0x0000000000000000]               
 	// class FString                                      Content;                                          		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// struct FMcpGroup                                   CreatedGroup;                                     		// 0x0028 (0x0048) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -6155,7 +6155,7 @@ struct UMcpIdMappingBase_execGetIdMappings_Params
 struct UMcpIdMappingBase_execOnQueryMappingsComplete_Params
 {
 	class FString                                      ExternalType;                                     		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -6174,7 +6174,7 @@ struct UMcpIdMappingBase_execOnAddMappingComplete_Params
 	class FString                                      McpId;                                            		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      ExternalId;                                       		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      ExternalType;                                     		// 0x0020 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0030 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0030 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0038 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -6212,7 +6212,7 @@ struct UMcpIdMappingManager_execOnQueryMappingsRequestComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            Index;                                            		// 0x0014 (0x0004) [0x0000000000000000]               
 	// int32_t                                            AddAt;                                            		// 0x0018 (0x0004) [0x0000000000000000]               
 	// int32_t                                            ResponseCode;                                     		// 0x001C (0x0004) [0x0000000000000000]               
@@ -6220,7 +6220,7 @@ struct UMcpIdMappingManager_execOnQueryMappingsRequestComplete_Params
 	// class UJsonObject*                                 ParsedJson;                                       		// 0x0030 (0x0008) [0x0000000000000000]               
 	// int32_t                                            JsonIndex;                                        		// 0x0038 (0x0004) [0x0000000000000000]               
 	// int32_t                                            AccountIndex;                                     		// 0x003C (0x0004) [0x0000000000000000]               
-	// bool                                               bWasFound : 1;                                    		// 0x0040 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bWasFound : 1;                                    		// 0x0040 (0x0004) [0x0000000000000000] [0x00000001] 
 	// class FString                                      McpId;                                            		// 0x0048 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      ExternalId;                                       		// 0x0058 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      ExternalType;                                     		// 0x0068 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -6237,7 +6237,7 @@ struct UMcpIdMappingManager_execQueryMappings_Params
 	// int32_t                                            AddAt;                                            		// 0x0038 (0x0004) [0x0000000000000000]               
 	// class FString                                      JsonPayload;                                      		// 0x0040 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// int32_t                                            Index;                                            		// 0x0050 (0x0004) [0x0000000000000000]               
-	// bool                                               bFirst : 1;                                       		// 0x0054 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bFirst : 1;                                       		// 0x0054 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function IpDrv.McpIdMappingManager.OnAddMappingRequestComplete
@@ -6246,7 +6246,7 @@ struct UMcpIdMappingManager_execOnAddMappingRequestComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            Index;                                            		// 0x0014 (0x0004) [0x0000000000000000]               
 	// int32_t                                            AddAt;                                            		// 0x0018 (0x0004) [0x0000000000000000]               
 	// int32_t                                            ResponseCode;                                     		// 0x001C (0x0004) [0x0000000000000000]               
@@ -6271,7 +6271,7 @@ struct UMcpManagedValueManagerBase_execOnDeleteValueComplete_Params
 	class FString                                      McpId;                                            		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      SaveSlot;                                         		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	struct FName                                       ValueId;                                          		// 0x0020 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0028 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0028 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0030 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -6292,7 +6292,7 @@ struct UMcpManagedValueManagerBase_execOnUpdateValueComplete_Params
 	class FString                                      SaveSlot;                                         		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	struct FName                                       ValueId;                                          		// 0x0020 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	int32_t                                            Value;                                            		// 0x0028 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x002C (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x002C (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0030 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -6331,7 +6331,7 @@ struct UMcpManagedValueManagerBase_execOnReadSaveSlotComplete_Params
 {
 	class FString                                      McpId;                                            		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      SaveSlot;                                         		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0020 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0020 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0028 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -6349,7 +6349,7 @@ struct UMcpManagedValueManagerBase_execOnCreateSaveSlotComplete_Params
 {
 	class FString                                      McpId;                                            		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      SaveSlot;                                         		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0020 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0020 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0028 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -6376,7 +6376,7 @@ struct UMcpManagedValueManager_execOnDeleteValueRequestComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            Index;                                            		// 0x0014 (0x0004) [0x0000000000000000]               
 	// int32_t                                            ResponseCode;                                     		// 0x0018 (0x0004) [0x0000000000000000]               
 	// int32_t                                            SaveSlotIndex;                                    		// 0x001C (0x0004) [0x0000000000000000]               
@@ -6401,7 +6401,7 @@ struct UMcpManagedValueManager_execOnUpdateValueRequestComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            Index;                                            		// 0x0014 (0x0004) [0x0000000000000000]               
 	// int32_t                                            ResponseCode;                                     		// 0x0018 (0x0004) [0x0000000000000000]               
 	// class FString                                      ResponseString;                                   		// 0x0020 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -6451,7 +6451,7 @@ struct UMcpManagedValueManager_execOnReadSaveSlotRequestComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            Index;                                            		// 0x0014 (0x0004) [0x0000000000000000]               
 	// int32_t                                            ResponseCode;                                     		// 0x0018 (0x0004) [0x0000000000000000]               
 	// class FString                                      ResponseString;                                   		// 0x0020 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -6499,7 +6499,7 @@ struct UMcpManagedValueManager_execOnCreateSaveSlotRequestComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            Index;                                            		// 0x0014 (0x0004) [0x0000000000000000]               
 	// int32_t                                            ResponseCode;                                     		// 0x0018 (0x0004) [0x0000000000000000]               
 	// class FString                                      ResponseString;                                   		// 0x0020 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -6527,7 +6527,7 @@ struct UMcpServerTimeBase_execGetLastServerTime_Params
 // [0x00120001] 
 struct UMcpServerTimeBase_execOnQueryServerTimeComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      DateTimeStr;                                      		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Error;                                            		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
@@ -6560,12 +6560,12 @@ struct UMcpServerTimeManager_execOnQueryServerTimeHTTPRequestComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// class FString                                      TimeStr;                                          		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      ResponseStr;                                      		// 0x0028 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      ErrorStr;                                         		// 0x0038 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// int32_t                                            Idx;                                              		// 0x0048 (0x0004) [0x0000000000000000]               
-	// bool                                               bResult : 1;                                      		// 0x004C (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bResult : 1;                                      		// 0x004C (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function IpDrv.McpServerTimeManager.QueryServerTime
@@ -6574,7 +6574,7 @@ struct UMcpServerTimeManager_execQueryServerTime_Params
 {
 	// class FString                                      URL;                                              		// 0x0000 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class FString                                      ErrorStr;                                         		// 0x0010 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	// bool                                               bPending : 1;                                     		// 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
+	// uint32_t                                           bPending : 1;                                     		// 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function IpDrv.McpUserInventoryBase.OnRecordIapComplete
@@ -6584,7 +6584,7 @@ struct UMcpUserInventoryBase_execOnRecordIapComplete_Params
 	class FString                                      McpId;                                            		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      SaveSlotId;                                       		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	TArray<class FString>                              UpdatedItemIds;                                   		// 0x0020 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0030 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0030 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0038 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -6604,7 +6604,7 @@ struct UMcpUserInventoryBase_execOnDeleteItemComplete_Params
 	class FString                                      McpId;                                            		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      SaveSlotId;                                       		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      InstanceItemId;                                   		// 0x0020 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0030 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0030 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0038 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -6626,7 +6626,7 @@ struct UMcpUserInventoryBase_execOnConsumeItemComplete_Params
 	class FString                                      SaveSlotId;                                       		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      InstanceItemId;                                   		// 0x0020 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	TArray<class FString>                              UpdatedItemIds;                                   		// 0x0030 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0040 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0040 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0048 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -6649,7 +6649,7 @@ struct UMcpUserInventoryBase_execOnEarnItemComplete_Params
 	class FString                                      SaveSlotId;                                       		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      GlobalItemId;                                     		// 0x0020 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	TArray<class FString>                              UpdatedItemIds;                                   		// 0x0030 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0040 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0040 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0048 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -6672,7 +6672,7 @@ struct UMcpUserInventoryBase_execOnSellItemComplete_Params
 	class FString                                      SaveSlotId;                                       		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      InstanceItemId;                                   		// 0x0020 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	TArray<class FString>                              UpdatedItemIds;                                   		// 0x0030 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0040 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0040 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0048 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -6696,7 +6696,7 @@ struct UMcpUserInventoryBase_execOnPurchaseItemComplete_Params
 	class FString                                      SaveSlotId;                                       		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      GlobalItemId;                                     		// 0x0020 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	TArray<class FString>                              UpdatedItemIds;                                   		// 0x0030 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0040 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0040 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0048 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -6721,7 +6721,7 @@ struct UMcpUserInventoryBase_execGetInventoryItem_Params
 	class FString                                      SaveSlotId;                                       		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      InstanceItemId;                                   		// 0x0020 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	struct FMcpInventoryItem                           OutInventoryItem;                                 		// 0x0030 (0x0050) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0080 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0080 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.McpUserInventoryBase.GetInventoryItems
@@ -6739,7 +6739,7 @@ struct UMcpUserInventoryBase_execOnQueryInventoryItemsComplete_Params
 {
 	class FString                                      McpId;                                            		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      SaveSlotId;                                       		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0020 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0020 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0028 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -6756,7 +6756,7 @@ struct UMcpUserInventoryBase_execQueryInventoryItems_Params
 struct UMcpUserInventoryBase_execOnQuerySaveSlotListComplete_Params
 {
 	class FString                                      McpId;                                            		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -6781,7 +6781,7 @@ struct UMcpUserInventoryBase_execOnDeleteSaveSlotComplete_Params
 {
 	class FString                                      McpId;                                            		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      SaveSlotId;                                       		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0020 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0020 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0028 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -6799,7 +6799,7 @@ struct UMcpUserInventoryBase_execOnCreateSaveSlotComplete_Params
 {
 	class FString                                      McpId;                                            		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      SaveSlotId;                                       		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0020 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0020 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0028 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -6827,7 +6827,7 @@ struct UMcpUserInventoryManager_execOnRecordIapRequestComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            Index;                                            		// 0x0014 (0x0004) [0x0000000000000000]               
 	// int32_t                                            ResponseCode;                                     		// 0x0018 (0x0004) [0x0000000000000000]               
 	// class FString                                      ResponseString;                                   		// 0x0020 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -6853,7 +6853,7 @@ struct UMcpUserInventoryManager_execOnDeleteItemRequestComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            Index;                                            		// 0x0014 (0x0004) [0x0000000000000000]               
 	// int32_t                                            SaveSlotIndex;                                    		// 0x0018 (0x0004) [0x0000000000000000]               
 	// int32_t                                            ItemIndex;                                        		// 0x001C (0x0004) [0x0000000000000000]               
@@ -6880,7 +6880,7 @@ struct UMcpUserInventoryManager_execOnConsumeItemRequestComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            Index;                                            		// 0x0014 (0x0004) [0x0000000000000000]               
 	// int32_t                                            ResponseCode;                                     		// 0x0018 (0x0004) [0x0000000000000000]               
 	// class FString                                      ResponseString;                                   		// 0x0020 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -6908,7 +6908,7 @@ struct UMcpUserInventoryManager_execOnEarnItemRequestComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            Index;                                            		// 0x0014 (0x0004) [0x0000000000000000]               
 	// int32_t                                            ResponseCode;                                     		// 0x0018 (0x0004) [0x0000000000000000]               
 	// class FString                                      ResponseString;                                   		// 0x0020 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -6936,7 +6936,7 @@ struct UMcpUserInventoryManager_execOnSellItemRequestComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            Index;                                            		// 0x0014 (0x0004) [0x0000000000000000]               
 	// int32_t                                            SaveSlotIndex;                                    		// 0x0018 (0x0004) [0x0000000000000000]               
 	// int32_t                                            UpdatedItemIdIndex;                               		// 0x001C (0x0004) [0x0000000000000000]               
@@ -6970,7 +6970,7 @@ struct UMcpUserInventoryManager_execOnPurchaseItemRequestComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            Index;                                            		// 0x0014 (0x0004) [0x0000000000000000]               
 	// int32_t                                            SaveSlotIndex;                                    		// 0x0018 (0x0004) [0x0000000000000000]               
 	// int32_t                                            UpdatedItemIdIndex;                               		// 0x001C (0x0004) [0x0000000000000000]               
@@ -7072,7 +7072,7 @@ struct UMcpUserInventoryManager_execGetInventoryItem_Params
 	class FString                                      SaveSlotId;                                       		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      InstanceItemId;                                   		// 0x0020 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	struct FMcpInventoryItem                           OutInventoryItem;                                 		// 0x0030 (0x0050) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0080 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0080 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 	// int32_t                                            SaveSlotIndex;                                    		// 0x0084 (0x0004) [0x0000000000000000]               
 	// int32_t                                            ItemIndex;                                        		// 0x0088 (0x0004) [0x0000000000000000]               
 };
@@ -7093,7 +7093,7 @@ struct UMcpUserInventoryManager_execOnQueryInventoryItemsRequestComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            Index;                                            		// 0x0014 (0x0004) [0x0000000000000000]               
 	// int32_t                                            SaveSlotIndex;                                    		// 0x0018 (0x0004) [0x0000000000000000]               
 	// int32_t                                            ResponseCode;                                     		// 0x001C (0x0004) [0x0000000000000000]               
@@ -7128,7 +7128,7 @@ struct UMcpUserInventoryManager_execOnQuerySaveSlotListRequestComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            Index;                                            		// 0x0014 (0x0004) [0x0000000000000000]               
 	// int32_t                                            ResponseCode;                                     		// 0x0018 (0x0004) [0x0000000000000000]               
 	// class FString                                      ResponseString;                                   		// 0x0020 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -7151,7 +7151,7 @@ struct UMcpUserInventoryManager_execOnDeleteSaveSlotRequestComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            Index;                                            		// 0x0014 (0x0004) [0x0000000000000000]               
 	// int32_t                                            SaveSlotIndex;                                    		// 0x0018 (0x0004) [0x0000000000000000]               
 	// int32_t                                            ResponseCode;                                     		// 0x001C (0x0004) [0x0000000000000000]               
@@ -7175,7 +7175,7 @@ struct UMcpUserInventoryManager_execOnCreateSaveSlotRequestComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            Index;                                            		// 0x0014 (0x0004) [0x0000000000000000]               
 	// int32_t                                            SaveSlotIndex;                                    		// 0x0018 (0x0004) [0x0000000000000000]               
 	// int32_t                                            ResponseCode;                                     		// 0x001C (0x0004) [0x0000000000000000]               
@@ -7199,7 +7199,7 @@ struct UMcpUserInventoryManager_execCreateSaveSlot_Params
 // [0x00120001] 
 struct UMcpUserManagerBase_execOnDeleteUserComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -7216,7 +7216,7 @@ struct UMcpUserManagerBase_execGetUser_Params
 {
 	class FString                                      McpId;                                            		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	struct FMcpUserStatus                              User;                                             		// 0x0010 (0x0068) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0078 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0078 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.McpUserManagerBase.GetUsers
@@ -7230,7 +7230,7 @@ struct UMcpUserManagerBase_execGetUsers_Params
 // [0x00120001] 
 struct UMcpUserManagerBase_execOnQueryUsersComplete_Params
 {
-	bool                                               bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -7246,7 +7246,7 @@ struct UMcpUserManagerBase_execQueryUsers_Params
 struct UMcpUserManagerBase_execQueryUser_Params
 {
 	class FString                                      McpId;                                            		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bShouldUpdateLastActive : 1;                      		// 0x0010 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bShouldUpdateLastActive : 1;                      		// 0x0010 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 };
 
 // Function IpDrv.McpUserManagerBase.OnAuthenticateUserComplete
@@ -7255,7 +7255,7 @@ struct UMcpUserManagerBase_execOnAuthenticateUserComplete_Params
 {
 	class FString                                      McpId;                                            		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Token;                                            		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0020 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0020 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0028 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -7282,7 +7282,7 @@ struct UMcpUserManagerBase_execAuthenticateUserFacebook_Params
 struct UMcpUserManagerBase_execOnRegisterUserComplete_Params
 {
 	class FString                                      McpId;                                            		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	class FString                                      Error;                                            		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 };
 
@@ -7315,7 +7315,7 @@ struct UMcpUserManager_execOnDeleteUserRequestComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            Index;                                            		// 0x0014 (0x0004) [0x0000000000000000]               
 	// int32_t                                            UserIndex;                                        		// 0x0018 (0x0004) [0x0000000000000000]               
 	// int32_t                                            ResponseCode;                                     		// 0x001C (0x0004) [0x0000000000000000]               
@@ -7337,7 +7337,7 @@ struct UMcpUserManager_execGetUser_Params
 {
 	class FString                                      McpId;                                            		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	struct FMcpUserStatus                              User;                                             		// 0x0010 (0x0068) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0078 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0078 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 	// int32_t                                            UserIndex;                                        		// 0x007C (0x0004) [0x0000000000000000]               
 };
 
@@ -7354,7 +7354,7 @@ struct UMcpUserManager_execOnQueryUsersRequestComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            Index;                                            		// 0x0014 (0x0004) [0x0000000000000000]               
 	// int32_t                                            ResponseCode;                                     		// 0x0018 (0x0004) [0x0000000000000000]               
 	// class FString                                      ResponseString;                                   		// 0x0020 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -7389,7 +7389,7 @@ struct UMcpUserManager_execOnQueryUserRequestComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            Index;                                            		// 0x0014 (0x0004) [0x0000000000000000]               
 	// int32_t                                            ResponseCode;                                     		// 0x0018 (0x0004) [0x0000000000000000]               
 	// int32_t                                            UserIndex;                                        		// 0x001C (0x0004) [0x0000000000000000]               
@@ -7401,7 +7401,7 @@ struct UMcpUserManager_execOnQueryUserRequestComplete_Params
 struct UMcpUserManager_execQueryUser_Params
 {
 	class FString                                      McpId;                                            		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               bShouldUpdateLastActive : 1;                      		// 0x0010 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bShouldUpdateLastActive : 1;                      		// 0x0010 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	// class FString                                      URL;                                              		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class UHttpRequestInterface*                       Request;                                          		// 0x0028 (0x0008) [0x0000000000000000]               
 	// int32_t                                            AddAt;                                            		// 0x0030 (0x0004) [0x0000000000000000]               
@@ -7413,7 +7413,7 @@ struct UMcpUserManager_execOnAuthenticateUserRequestComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            Index;                                            		// 0x0014 (0x0004) [0x0000000000000000]               
 	// int32_t                                            ResponseCode;                                     		// 0x0018 (0x0004) [0x0000000000000000]               
 	// int32_t                                            UserIndex;                                        		// 0x001C (0x0004) [0x0000000000000000]               
@@ -7452,7 +7452,7 @@ struct UMcpUserManager_execOnRegisterUserRequestComplete_Params
 {
 	class UHttpRequestInterface*                       Request;                                          		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bWasSuccessful : 1;                               		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// int32_t                                            Index;                                            		// 0x0014 (0x0004) [0x0000000000000000]               
 	// int32_t                                            ResponseCode;                                     		// 0x0018 (0x0004) [0x0000000000000000]               
 	// int32_t                                            UserIndex;                                        		// 0x001C (0x0004) [0x0000000000000000]               
@@ -7495,7 +7495,7 @@ struct UMcpUserManager_execRegisterUserGenerated_Params
 // [0x00020003] 
 struct AWebConnection_execIsHanging_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function IpDrv.WebConnection.Cleanup

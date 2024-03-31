@@ -1,12 +1,12 @@
 /*
 #############################################################################################
-# Rocket League (1.0) SDK
-# Generated with the UE3SDKGenerator v2.2.5
+# RocketLeague (1.0.10897.0) SDK
+# Generated with the CodeRedGenerator v1.0.2
 # ========================================================================================= #
 # File: Core_classes.hpp
 # ========================================================================================= #
 # Credits: TheFeckless, ItsBranK
-# Links: www.github.com/itsbrank/UE3SDKGenerator, www.twitter.com/itsbrank
+# Links: www.github.com/CodeRedModding/CodeRed-Generator, www.twitter.com/ItsBranK
 #############################################################################################
 */
 #pragma once
@@ -494,7 +494,7 @@ enum class EContentKeyIndex_PrimeUpdate35C : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate36
-enum class E_Types_Generated_EContentKeyIndex_PrimeUpdate36 : uint8_t
+enum class EContentKeyIndex_PrimeUpdate36_0 : uint8_t
 {
 	PrimeUpdate36_BD02DFB4BA13F3A1C777309414664BD5     = 0,
 	PrimeUpdate36_96D8832E6CBAC01E4D931B3548C8B6CD     = 1,
@@ -534,7 +534,7 @@ enum class E_Types_Generated_EContentKeyIndex_PrimeUpdate36 : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate36
-enum class E_Types_Generated_EContentKeyIndex_PrimeUpdate36B : uint8_t
+enum class EContentKeyIndex_PrimeUpdate36_1 : uint8_t
 {
 	PrimeUpdate36_1_467BBC80C4360BDAEF091CA61DF71FD9   = 0,
 	PrimeUpdate36_1_AC04D31B9DAD00095CE5910C5F6CE072   = 1,
@@ -548,7 +548,7 @@ enum class E_Types_Generated_EContentKeyIndex_PrimeUpdate36B : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate36
-enum class E_Types_Generated_EContentKeyIndex_PrimeUpdate36C : uint8_t
+enum class EContentKeyIndex_PrimeUpdate36_2 : uint8_t
 {
 	PrimeUpdate36_2_BCF72246CE09BB12CDD66EF72732FFC7   = 0,
 	PrimeUpdate36_2_06432D3A1558F6E8EA6605EAB69D66A1   = 1,
@@ -556,7 +556,7 @@ enum class E_Types_Generated_EContentKeyIndex_PrimeUpdate36C : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate37
-enum class E_Types_Generated_EContentKeyIndex_PrimeUpdate37 : uint8_t
+enum class EContentKeyIndex_PrimeUpdate37_0 : uint8_t
 {
 	PrimeUpdate37_C60B25EC20D29B0FE699ACB6DFEBE550     = 0,
 	PrimeUpdate37_64DC68F90CF2281F000D1F112842BEF5     = 1,
@@ -573,7 +573,7 @@ enum class E_Types_Generated_EContentKeyIndex_PrimeUpdate37 : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate37
-enum class E_Types_Generated_EContentKeyIndex_PrimeUpdate37B : uint8_t
+enum class EContentKeyIndex_PrimeUpdate37_1 : uint8_t
 {
 	PrimeUpdate37_1_A35B6EED2A82E8A6C16B36C1942DEE94   = 0,
 	PrimeUpdate37_1_E08A2E1906A83AF70BDB14C01B413788   = 1,
@@ -585,7 +585,7 @@ enum class E_Types_Generated_EContentKeyIndex_PrimeUpdate37B : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate37
-enum class E_Types_Generated_EContentKeyIndex_PrimeUpdate37C : uint8_t
+enum class EContentKeyIndex_PrimeUpdate37_2 : uint8_t
 {
 	PrimeUpdate37_2_34241E8C41EF7AA005DD4CBB9512D6CC   = 0,
 	PrimeUpdate37_2_930CF89BB70BBACD1A197C424E596A70   = 1,
@@ -614,7 +614,7 @@ enum class E_Types_Generated_EContentKeyIndex_PrimeUpdate37C : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate38
-enum class E_Types_Generated_EContentKeyIndex_PrimeUpdate38 : uint8_t
+enum class EContentKeyIndex_PrimeUpdate38_0 : uint8_t
 {
 	PrimeUpdate38_8D82153A816BE5FDFB750D3863064110     = 0,
 	PrimeUpdate38_3D01F0EC1174B5420EF917F8ED2FE74B     = 1,
@@ -636,7 +636,7 @@ enum class E_Types_Generated_EContentKeyIndex_PrimeUpdate38 : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate38
-enum class E_Types_Generated_EContentKeyIndex_PrimeUpdate38B : uint8_t
+enum class EContentKeyIndex_PrimeUpdate38_1 : uint8_t
 {
 	PrimeUpdate38_1_34B3E2366B1725E584146D0FAD1700F9   = 0,
 	PrimeUpdate38_1_70812A493AB87B93ABECC7B119B0F6CC   = 1,
@@ -657,7 +657,7 @@ enum class E_Types_Generated_EContentKeyIndex_PrimeUpdate38B : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate39
-enum class E_Types_Generated_EContentKeyIndex_PrimeUpdate39 : uint8_t
+enum class EContentKeyIndex_PrimeUpdate39_0 : uint8_t
 {
 	PrimeUpdate39_56421AAC43705872D01BED0B45A1B0E6     = 0,
 	PrimeUpdate39_357448C26C4CB1BB2455CE4D23B15B6F     = 1,
@@ -682,7 +682,7 @@ enum class E_Types_Generated_EContentKeyIndex_PrimeUpdate39 : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate39
-enum class E_Types_Generated_EContentKeyIndex_PrimeUpdate39B : uint8_t
+enum class EContentKeyIndex_PrimeUpdate39_1 : uint8_t
 {
 	PrimeUpdate39_1_5E8D9027C3059552E1664170E791A1B3   = 0,
 	PrimeUpdate39_1_3BEAE926AE33C0BF8F95782CB4B36A4A   = 1,
@@ -708,7 +708,7 @@ enum class E_Types_Generated_EContentKeyIndex_PrimeUpdate39B : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate40
-enum class E_Types_Generated_EContentKeyIndex_PrimeUpdate40 : uint8_t
+enum class EContentKeyIndex_PrimeUpdate40_0 : uint8_t
 {
 	PrimeUpdate40_8C2237625A781A11D2F3F89FEB5049E6     = 0,
 	PrimeUpdate40_346FFB9D30A3C98CF6E26049C75F8A6F     = 1,
@@ -747,7 +747,7 @@ enum class E_Types_Generated_EContentKeyIndex_PrimeUpdate40 : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate40
-enum class E_Types_Generated_EContentKeyIndex_PrimeUpdate40B : uint8_t
+enum class EContentKeyIndex_PrimeUpdate40_1 : uint8_t
 {
 	PrimeUpdate40_1_250828A4E25377F0718BF942E3FB9017   = 0,
 	PrimeUpdate40_1_C4077BE4699B9B2D99DDC6DE7722DA09   = 1,
@@ -895,6 +895,116 @@ enum class EContentKeyIndex_PrimeUpdate45 : uint8_t
 	PrimeUpdate45_END                                  = 22
 };
 
+// Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate46
+enum class EContentKeyIndex_PrimeUpdate46 : uint8_t
+{
+	PrimeUpdate46_1158992028E7AFBF9A18D7162C53E469     = 0,
+	PrimeUpdate46_0631F1BFE7C5CBE5D74702C3C4CA672C     = 1,
+	PrimeUpdate46_D70E6236296B8E83C597337C8787074A     = 2,
+	PrimeUpdate46_8545088C2EF44257E47BECD6686E9410     = 3,
+	PrimeUpdate46_A4EC79CD8BD95B88EFFDE529B4473BDD     = 4,
+	PrimeUpdate46_259BD958CAD1EBD253F65EF94D0C2BCE     = 5,
+	PrimeUpdate46_8C083608FA180E6F8A002A727506299B     = 6,
+	PrimeUpdate46_7176F1EE1BA95EB10EBFA17712C10403     = 7,
+	PrimeUpdate46_E055615D21B2ACEDDFFACDECF75C5035     = 8,
+	PrimeUpdate46_737F86BD663C08C4FD04BD68AAE5E9E7     = 9,
+	PrimeUpdate46_070A8FB59E49C3B7DD68CB402D2D99C2     = 10,
+	PrimeUpdate46_92E18474A103766860D7153FE87F132B     = 11,
+	PrimeUpdate46_1A00ECA8948D81F67D12D3256C0FF183     = 12,
+	PrimeUpdate46_9B2F1C064EB5CFFFE5B514A472D71AFF     = 13,
+	PrimeUpdate46_9F90C18737616F81EBD41574E133B5C3     = 14,
+	PrimeUpdate46_5BEB2823CFEBE00C153E21E1EC858A11     = 15,
+	PrimeUpdate46_0703F1A7CEF5CEFA191F954B89E70878     = 16,
+	PrimeUpdate46_124BB2A7BE71920A1E89D96EF3221D21     = 17,
+	PrimeUpdate46_2A40072A42F9D94354A3F088AA63252F     = 18,
+	PrimeUpdate46_END                                  = 19
+};
+
+// Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate47
+enum class EContentKeyIndex_PrimeUpdate47 : uint8_t
+{
+	PrimeUpdate47_309E904795840EC71FAD9655E737C15D     = 0,
+	PrimeUpdate47_74D1CE2ECE537AD9A71E6A2F4E397036     = 1,
+	PrimeUpdate47_32E55C0B969118CDE148192DBCBF1D8A     = 2,
+	PrimeUpdate47_4B2D0A5AC7D8646E341087D0881200FC     = 3,
+	PrimeUpdate47_7373B3C7AE89E56050B3D8D5DE47F638     = 4,
+	PrimeUpdate47_0F195D246CAD9C9D611FFF1FB81E17FE     = 5,
+	PrimeUpdate47_6E71DF78D722B23043466181BB7BADDA     = 6,
+	PrimeUpdate47_CABC11491CD7DF325FD88C2D3D9AB1B3     = 7,
+	PrimeUpdate47_7D2414904BA213CF408EAD5271829219     = 8,
+	PrimeUpdate47_5259FCAB0F1C6D56775B9BCC5574DAF7     = 9,
+	PrimeUpdate47_A0AD83BC5268E59CEBCE7C70F69C8122     = 10,
+	PrimeUpdate47_08AA50461A453460D0F3308048B36A60     = 11,
+	PrimeUpdate47_49122314B316B2A05C4E3F5E46949DE8     = 12,
+	PrimeUpdate47_15234CD758D8A3B2A50BCD492F527691     = 13,
+	PrimeUpdate47_88DB5A9D96BB8E542F09C5FD047B8785     = 14,
+	PrimeUpdate47_1CDAEE409E6AE356FFFCB907ED937002     = 15,
+	PrimeUpdate47_5EFEA7DE273FE3F02537F8EE2B380AB0     = 16,
+	PrimeUpdate47_52E8F11E3E38AB5C075F5A83F1F0E824     = 17,
+	PrimeUpdate47_CEE53EAF2C7012DC1F5276A352DB3999     = 18,
+	PrimeUpdate47_BAB337A3CE44F9E0F125003B065E7FA6     = 19,
+	PrimeUpdate47_06B2A87C87DEB3324E3D0BC4FAF6795C     = 20,
+	PrimeUpdate47_END                                  = 21
+};
+
+// Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate48
+enum class EContentKeyIndex_PrimeUpdate48 : uint8_t
+{
+	PrimeUpdate48_3EF8CE740B23D9322957CD48847B36DD     = 0,
+	PrimeUpdate48_29128550512066E7172477F6A80C69B2     = 1,
+	PrimeUpdate48_C55289FC8C940342E9D20A84445F8DFB     = 2,
+	PrimeUpdate48_30C3084A1A4181BEAF61949398739D55     = 3,
+	PrimeUpdate48_A838F1BE39577AC83B7D07C75E671E95     = 4,
+	PrimeUpdate48_30287A8B3092A967E33949D90EE406B5     = 5,
+	PrimeUpdate48_D0E4DE25BB880DB72CE076DECFC8349D     = 6,
+	PrimeUpdate48_F8682AEA04D02168AE986FE0E3CA4C1F     = 7,
+	PrimeUpdate48_3B5AE0A28D5DA9403AFC72705A2B06D9     = 8,
+	PrimeUpdate48_F7B1CCDC7AEB4243E695195EDA59A427     = 9,
+	PrimeUpdate48_369188F7D83F2361C61D0A6E2A7C158F     = 10,
+	PrimeUpdate48_87D41C6EAC66133C48C5647211AC9D8A     = 11,
+	PrimeUpdate48_2AD4BFCA44C46FACF460BFD2804FD452     = 12,
+	PrimeUpdate48_90E17EDF3C2CAAC083AF72F72C683CE7     = 13,
+	PrimeUpdate48_END                                  = 14
+};
+
+// Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate49
+enum class EContentKeyIndex_PrimeUpdate49 : uint8_t
+{
+	PrimeUpdate49_E3CFC8EF5DA3E92CAAB56A9DAA6A67FC     = 0,
+	PrimeUpdate49_55EF0C693E6D73F41302C6314262AD09     = 1,
+	PrimeUpdate49_0E2831103AFF5ECAB66919B26D1C0E00     = 2,
+	PrimeUpdate49_89E6E5BC20EC9EFFBFE366E485FD0CB0     = 3,
+	PrimeUpdate49_6D7EDCB2226CC7415CE20AED0CBF55E8     = 4,
+	PrimeUpdate49_79F27DF8758E75A94E8047D17ACBD4AE     = 5,
+	PrimeUpdate49_A0E60758FF958270A430688A23A58F98     = 6,
+	PrimeUpdate49_BCCDC81A6422981D95A41987D19AC6B7     = 7,
+	PrimeUpdate49_0D94716C9A62DD2084F359935AE350D3     = 8,
+	PrimeUpdate49_C8D577410C1759E650CB2A226B272C2A     = 9,
+	PrimeUpdate49_DFC1A8BD6A9946A72C0B74815F600313     = 10,
+	PrimeUpdate49_D893E26A3ED335C708322793CB96E7C2     = 11,
+	PrimeUpdate49_F0C7BF0925F7987548EFD91439B7E923     = 12,
+	PrimeUpdate49_C8350BFC1CFEC95F55CA7F249B99C188     = 13,
+	PrimeUpdate49_74017C86D6044A055E0FB9470ADE30A5     = 14,
+	PrimeUpdate49_F9332D1CB2B08C2EB7AEB9C2F07024A0     = 15,
+	PrimeUpdate49_A63922D1764CB8C56788C193F98CF300     = 16,
+	PrimeUpdate49_1968ABBBDE1EAC29E557C42B5D131F1B     = 17,
+	PrimeUpdate49_B32A36A8914E34FBA23A7DE847EF33B0     = 18,
+	PrimeUpdate49_DADEB2A00E44A6F700AD29DB615F8A7F     = 19,
+	PrimeUpdate49_851D0409174FD6B5DF61A0BE757D5260     = 20,
+	PrimeUpdate49_11A5BACDF704ECB3E75F3D5D7922354D     = 21,
+	PrimeUpdate49_D2177317A57AED45BFE1C984F4038426     = 22,
+	PrimeUpdate49_C18C9419579438D9660096F83F61226B     = 23,
+	PrimeUpdate49_773BB92CAB0A792C57533A123136A3EA     = 24,
+	PrimeUpdate49_9BA89F72D9113A471F6566D1CBA79C03     = 25,
+	PrimeUpdate49_B5A7598C5E70D75D2BF7CF17F3D79F98     = 26,
+	PrimeUpdate49_503F5A33B4F8817BA01CBCFE0B90DAFA     = 27,
+	PrimeUpdate49_ACAC4EE3812E074FDC2E985AAA3F8E5F     = 28,
+	PrimeUpdate49_18245F939BC49D9F3DCAD14F69BD9EDA     = 29,
+	PrimeUpdate49_3759A7DB5333E76179555B7D0418E5A9     = 30,
+	PrimeUpdate49_6536D1AD86639C8E47BB05AF3F98842D     = 31,
+	PrimeUpdate49_END                                  = 32
+};
+
 // Enum Core._Types_Generated.EContentKeyIndex_ContinuousIntegration
 enum class EContentKeyIndex_ContinuousIntegration : uint8_t
 {
@@ -974,11 +1084,11 @@ public:
 	{
 		for (UObject* uObject : *UObject::GObjObjects())
 		{
-			if (uObject && uObject->IsA(T::StaticClass()))
+			if (uObject && uObject->IsA<T>())
 			{
 				if (uObject->GetFullName() == objectFullName)
 				{
-					return reinterpret_cast<T*>(uObject);
+					return static_cast<T*>(uObject);
 				}
 			}
 		}
@@ -995,7 +1105,7 @@ public:
 
 			for (UObject* uObject : *UObject::GObjObjects())
 			{
-				if (uObject && uObject->IsA(T::StaticClass()))
+				if (uObject && uObject->IsA<T>())
 				{
 					if (uObject->GetName() == objectName)
 					{
@@ -1008,6 +1118,13 @@ public:
 		return countCache[objectName];
 	}
 	static class UClass* FindClass(const std::string& classFullName);
+	template<typename T> bool IsA()
+	{
+		if (std::is_base_of<UObject, T>::value)
+		{
+			return IsA(T::StaticClass());
+		}
+	}
 	bool IsA(class UClass* uClass);
 	bool IsA(int32_t objInternalInteger);
 
@@ -1037,11 +1154,11 @@ public:
 	static class UObjectProvider* GetObjectProviderW();
 	static bool IsAutomationTest();
 	class FString ToJson();
-	void SetRooted(unsigned long bRooted);
+	void SetRooted(bool bRooted);
 	static void ProfNodeEvent(class FString EventName);
 	static void ProfNodeSetDepthThreshold(int32_t Depth);
 	static void ProfNodeSetTimeThresholdSeconds(float Threshold);
-	static void ProfNodeStop(int32_t AssumedTimerIndex);
+	static void ProfNodeStop(int32_t optionalAssumedTimerIndex);
 	static int32_t ProfNodeStart(class FString TimerName);
 	static class FString CreateGuidString();
 	static class FString GetStringFromGuid(struct FGuid& InGuid);
@@ -1051,7 +1168,7 @@ public:
 	static void InvalidateGuid(struct FGuid& InGuid);
 	class UObject* FindStructProperty(class UClass* PropertyClass, struct FName PropertyName, struct FName StructName);
 	class UObject* FindProperty(class UClass* PropertyClass, struct FName PropertyName);
-	class UObject* DuplicateObject(class UObject* Template, class UObject* ObjOuter, class UClass* DestClass);
+	class UObject* DuplicateObject(class UObject* Template, class UObject* optionalObjOuter, class UClass* optionalDestClass);
 	float RunningAverage(float OldAverage, float NewValue, int32_t NewCount);
 	static float GetCurrentTimeW();
 	struct FLinearColor GetMaxLinearColorBrightness(struct FLinearColor C);
@@ -1075,7 +1192,7 @@ public:
 	static class UObject* GetTextArchetype(class UClass* ArchetypeClass, class FString Path);
 	bool IsArchetype();
 	void UnsubscribeFromAllEvents();
-	class UObject* NewInstance(class UObject* ObjOuter, struct FName ObjName);
+	class UObject* NewInstance(class UObject* optionalObjOuter, struct FName optionalObjName);
 	void PrintDebugInfo(class UDebugDrawer* Drawer);
 	static struct FRotator RotatorFromInt(int32_t RotationPitchAndYaw);
 	static int32_t RotatorToInt(struct FRotator Rotation);
@@ -1086,7 +1203,7 @@ public:
 	float GetAppSeconds();
 	void GetSystemTime(int32_t& Year, int32_t& Month, int32_t& DayOfWeek, int32_t& Day, int32_t& Hour, int32_t& Min, int32_t& Sec, int32_t& MSec);
 	class FString TimeStamp();
-	struct FVector TransformVectorByRotation(struct FRotator SourceRotation, struct FVector SourceVector, unsigned long bInverse);
+	struct FVector TransformVectorByRotation(struct FRotator SourceRotation, struct FVector SourceVector, bool optionalBInverse);
 	struct FName GetPackageName();
 	bool IsPendingKill();
 	float RangeByteToFloatUnsigned(uint8_t inputByte);
@@ -1100,19 +1217,19 @@ public:
 	static void GetAngularFromDotDist(struct FVector2D DotDist, struct FVector2D& OutAngDist);
 	static bool GetAngularDistance(struct FVector Direction, struct FVector AxisX, struct FVector AxisY, struct FVector AxisZ, struct FVector2D& OutAngularDist);
 	static bool GetDotDistance(struct FVector Direction, struct FVector AxisX, struct FVector AxisY, struct FVector AxisZ, struct FVector2D& OutDotDist);
-	bool LinePlaneIntersection(struct FVector LineStart, struct FVector LineEnd, struct FVector PlaneOrigin, struct FVector PlaneNormal, unsigned long bCheckLineSegment, struct FVector& Out_Intersection, float& Out_T);
+	bool LinePlaneIntersection(struct FVector LineStart, struct FVector LineEnd, struct FVector PlaneOrigin, struct FVector PlaneNormal, bool optionalBCheckLineSegment, struct FVector& Out_Intersection, float& Out_T);
 	static struct FVector PointProjectToPlane(struct FVector Point, struct FVector A, struct FVector B, struct FVector C);
 	float PointDistToPlane(struct FVector Point, struct FRotator Orientation, struct FVector Origin, struct FVector& out_ClosestPoint);
 	float PointDistToSegment(struct FVector Point, struct FVector StartPoint, struct FVector EndPoint, struct FVector& OutClosestPoint);
 	static float PointDistToLine(struct FVector Point, struct FVector Line, struct FVector Origin, struct FVector& OutClosestPoint);
-	static void GetPerObjectConfigObjects(class UClass* SearchClass, class UObject* ObjectOuter, int32_t MaxResults, class UObject*& OutObject);
-	static bool GetPerObjectConfigSections(class UClass* SearchClass, class UObject* ObjectOuter, int32_t MaxResults, TArray<class FString>& out_SectionNames);
+	static void GetPerObjectConfigObjects(class UClass* SearchClass, class UObject* optionalObjectOuter, int32_t optionalMaxResults, class UObject*& OutObject);
+	static bool GetPerObjectConfigSections(class UClass* SearchClass, class UObject* optionalObjectOuter, int32_t optionalMaxResults, TArray<class FString>& out_SectionNames);
 	static void ImportJSON(class FString PropertyName, class FString& JSON);
 	static void StaticSaveConfig();
 	void SaveConfig();
 	static class UObject* LoadSeekFreeObject(class UClass* ObjClass, class FString Path);
 	static class UObject* FindObject(class FString ObjectName, class UClass* ObjectClass);
-	static class UObject* DynamicLoadObject(class FString ObjectName, class UClass* ObjectClass, unsigned long MayFail);
+	static class UObject* DynamicLoadObject(class FString ObjectName, class UClass* ObjectClass, bool optionalMayFail);
 	static int32_t EnumFromString(class UObject* E, struct FName ValueName);
 	static struct FName GetEnum(class UObject* E, int32_t I);
 	void Disable(struct FName ProbeFunc);
@@ -1124,31 +1241,31 @@ public:
 	void eventEndState(struct FName NextStateName);
 	void eventBeginState(struct FName PreviousStateName);
 	void DumpStateStack();
-	void PopState(unsigned long bPopAll);
-	void PushState(struct FName NewState, struct FName NewLabel);
+	void PopState(bool optionalBPopAll);
+	void PushState(struct FName NewState, struct FName optionalNewLabel);
 	struct FName GetStateName();
 	bool IsChildState(struct FName TestState, struct FName TestParentState);
-	bool IsInState(struct FName TestState, unsigned long bTestStateStack);
-	void GotoState(struct FName NewState, struct FName Label, unsigned long bForceEvents, unsigned long bKeepStack);
+	bool IsInState(struct FName TestState, bool optionalBTestStateStack);
+	void GotoState(struct FName optionalNewState, struct FName optionalLabel, bool optionalBForceEvents, bool optionalBKeepStack);
 	static bool IsUTracing();
-	static void SetUTracing(unsigned long bShouldUTrace);
+	static void SetUTracing(bool bShouldUTrace);
 	static struct FName GetFuncName();
-	static void DebugBreak(int32_t UserFlags, uint8_t DebuggerType);
+	static void DebugBreak(int32_t optionalUserFlags, EDebugBreakType optionalDebuggerType);
 	static class FString GetScriptTrace();
 	static void ScriptTrace();
 	static class FString ParseLocalizedPropertyPath(class FString PathName);
-	static class FString Localize(class FString SectionName, class FString KeyName, class FString PackageName, unsigned long bOptional);
+	static class FString Localize(class FString SectionName, class FString KeyName, class FString optionalPackageName, bool optionalBOptional);
 	static void WarnInternal(class FString S);
-	static void LogInternal(class FString S, struct FName Tag, unsigned long bFileOnly);
+	static void LogInternal(class FString S, struct FName optionalTag, bool optionalBFileOnly);
 	static struct FLinearColor LinearColorLerp(struct FLinearColor ColorA, struct FLinearColor ColorB, float Alpha);
 	static struct FLinearColor Subtract_LinearColorLinearColor(struct FLinearColor A, struct FLinearColor B);
 	static struct FLinearColor Multiply_LinearColorFloat(struct FLinearColor LC, float Mult);
 	static struct FLinearColor ConvertFromSRGB(struct FLinearColor OldColor);
 	static struct FColor LinearColorToColor(struct FLinearColor OldColor);
 	static struct FLinearColor ColorToLinearColor(struct FColor OldColor);
-	static struct FLinearColor MakeLinearColor(float R, float G, float B, float A);
+	static struct FLinearColor MakeLinearColor(float R, float G, float B, float optionalA);
 	static struct FColor LerpColor(struct FColor A, struct FColor B, float Alpha);
-	static struct FColor MakeColor(uint8_t R, uint8_t G, uint8_t B, uint8_t A);
+	static struct FColor MakeColor(uint8_t R, uint8_t G, uint8_t B, uint8_t optionalA);
 	static struct FColor Add_ColorColor(struct FColor A, struct FColor B);
 	static struct FColor Multiply_ColorFloat(struct FColor A, float B);
 	static struct FColor Multiply_FloatColor(float A, struct FColor B);
@@ -1176,7 +1293,7 @@ public:
 	static struct FVector2D Add_Vector2DVector2D(struct FVector2D A, struct FVector2D B);
 	static struct FQuat Subtract_QuatQuat(struct FQuat A, struct FQuat B);
 	static struct FQuat Add_QuatQuat(struct FQuat A, struct FQuat B);
-	static struct FQuat QuatSlerp(struct FQuat A, struct FQuat B, float Alpha, unsigned long bShortestPath);
+	static struct FQuat QuatSlerp(struct FQuat A, struct FQuat B, float Alpha, bool optionalBShortestPath);
 	static struct FRotator QuatToRotator(struct FQuat A);
 	static struct FQuat QuatFromRotator(struct FRotator A);
 	static struct FQuat QuatFromAxisAndAngle(struct FVector Axis, float Angle);
@@ -1185,7 +1302,7 @@ public:
 	static struct FQuat QuatInvert(struct FQuat A);
 	static float QuatDot(struct FQuat A, struct FQuat B);
 	static struct FQuat QuatProduct(struct FQuat A, struct FQuat B);
-	static struct FVector MatrixGetAxis(struct FMatrix TM, uint8_t Axis);
+	static struct FVector MatrixGetAxis(struct FMatrix TM, EAxis Axis);
 	static struct FVector MatrixGetOrigin(struct FMatrix TM);
 	static struct FRotator MatrixGetRotator(struct FMatrix TM);
 	static struct FMatrix MakeRotationMatrix(struct FRotator Rotation);
@@ -1205,28 +1322,28 @@ public:
 	static bool EqualEqual_ObjectObject(class UObject* A, class UObject* B);
 	class FString GetPathName();
 	static class FString PathName(class UObject* CheckObject);
-	static TArray<class FString> SplitString(class FString Source, class FString Delimiter, unsigned long bCullEmpty);
-	static void ParseStringIntoArray(class FString BaseString, class FString delim, unsigned long bCullEmpty, TArray<class FString>& Pieces);
+	static TArray<class FString> SplitString(class FString Source, class FString optionalDelimiter, bool optionalBCullEmpty);
+	static void ParseStringIntoArray(class FString BaseString, class FString delim, bool bCullEmpty, TArray<class FString>& Pieces);
 	static bool ContainsWhitespace(class FString Text);
 	static class FString RepeatString(class FString InValue, int32_t Count);
-	static class FString JoinArrayQWord(class FString delim, unsigned long bIgnoreBlanks, TArray<uint64_t>& QWordArray);
-	static class FString JoinArrayInt(class FString delim, unsigned long bIgnoreBlanks, TArray<int32_t>& IntArray);
-	static class FString JoinArrayName(class FString delim, unsigned long bIgnoreBlanks, TArray<struct FName>& NameArray);
-	static class FString JoinArrayStr(class FString delim, unsigned long bIgnoreBlanks, TArray<class FString>& StringArray);
-	static void JoinArray(class FString delim, unsigned long bIgnoreBlanks, TArray<class FString>& StringArray, class FString& out_Result);
+	static class FString JoinArrayQWord(class FString optionalDelim, bool optionalBIgnoreBlanks, TArray<uint64_t>& QWordArray);
+	static class FString JoinArrayInt(class FString optionalDelim, bool optionalBIgnoreBlanks, TArray<int32_t>& IntArray);
+	static class FString JoinArrayName(class FString optionalDelim, bool optionalBIgnoreBlanks, TArray<struct FName>& NameArray);
+	static class FString JoinArrayStr(class FString optionalDelim, bool optionalBIgnoreBlanks, TArray<class FString>& StringArray);
+	static void JoinArray(class FString optionalDelim, bool optionalBIgnoreBlanks, TArray<class FString>& StringArray, class FString& out_Result);
 	static class FString GetRightMost(class FString Text);
-	static class FString Split(class FString Text, class FString SplitStr, unsigned long bOmitSplitStr);
+	static class FString Split(class FString Text, class FString SplitStr, bool optionalBOmitSplitStr);
 	static bool StartsWith(class FString Src, class FString Prefix);
 	static class FString Trim(class FString Src);
-	static class FString Repl(class FString Src, class FString Match, class FString With, unsigned long bCaseSensitive);
+	static class FString Repl(class FString Src, class FString Match, class FString With, bool optionalBCaseSensitive);
 	static int32_t Asc(class FString S);
 	static class FString Chr(int32_t I);
 	static class FString Locs(class FString S);
 	static class FString Caps(class FString S);
 	static class FString Right(class FString S, int32_t I);
 	static class FString Left(class FString S, int32_t I);
-	static class FString Mid(class FString S, int32_t I, int32_t J);
-	static int32_t InStr(class FString S, class FString T, unsigned long bSearchFromRight, unsigned long bIgnoreCase, int32_t StartPos);
+	static class FString Mid(class FString S, int32_t I, int32_t optionalJ);
+	static int32_t InStr(class FString S, class FString T, bool optionalBSearchFromRight, bool optionalBIgnoreCase, int32_t optionalStartPos);
 	static int32_t Len(class FString S);
 	static class FString SubtractEqual_StrStr(class FString B, class FString& A);
 	static class FString AtEqual_StrStr(class FString B, class FString& A);
@@ -1247,16 +1364,16 @@ public:
 	static int32_t ClampRotAxisFromRange(int32_t Current, int32_t Min, int32_t Max);
 	static int32_t ClampRotAxisFromBase(int32_t Current, int32_t Center, int32_t MaxDelta);
 	static void ClampRotAxis(int32_t ViewAxis, int32_t MaxLimit, int32_t MinLimit, int32_t& out_DeltaViewAxis);
-	static struct FRotator FlattenRotatorOnAxis(struct FVector AxisToRemove, struct FRotator RotToFlatten, struct FRotator RotToFlattenTo);
+	static struct FRotator FlattenRotatorOnAxis(struct FVector AxisToRemove, struct FRotator RotToFlatten, struct FRotator optionalRotToFlattenTo);
 	static float RSize(struct FRotator R);
 	static float RDiff(struct FRotator A, struct FRotator B);
 	static int32_t NormalizeRotAxis(int32_t Angle);
-	static struct FRotator RInterpTo(struct FRotator Current, struct FRotator Target, float DeltaTime, float InterpSpeed, unsigned long bConstantInterpSpeed);
+	static struct FRotator RInterpTo(struct FRotator Current, struct FRotator Target, float DeltaTime, float InterpSpeed, bool optionalBConstantInterpSpeed);
 	static struct FRotator RTransform(struct FRotator R, struct FRotator RBasis);
-	static struct FRotator RLerp(struct FRotator A, struct FRotator B, float Alpha, unsigned long bShortestPath);
+	static struct FRotator RLerp(struct FRotator A, struct FRotator B, float Alpha, bool optionalBShortestPath);
 	static struct FRotator Normalize(struct FRotator Rot);
 	static struct FRotator OrthoRotation(struct FVector X, struct FVector Y, struct FVector Z);
-	static struct FRotator RotRand(unsigned long bRoll);
+	static struct FRotator RotRand(bool optionalBRoll);
 	static struct FVector GetRotatorAxis(struct FRotator A, int32_t Axis);
 	static void GetUnAxes(struct FRotator A, struct FVector& X, struct FVector& Y, struct FVector& Z);
 	static void GetAxes(struct FRotator A, struct FVector& X, struct FVector& Y, struct FVector& Z);
@@ -1275,13 +1392,13 @@ public:
 	static float GetRadiansBetweenVectors(struct FVector V0, struct FVector v1);
 	static struct FVector VClamp(struct FVector A, struct FVector Min, struct FVector Max);
 	static struct FVector vect3d(float X, float Y, float Z);
-	bool InCylinder(struct FVector Origin, struct FRotator Dir, float Width, struct FVector A, unsigned long bIgnoreZ);
+	bool InCylinder(struct FVector Origin, struct FRotator Dir, float Width, struct FVector A, bool optionalBIgnoreZ);
 	static float NoZDot(struct FVector A, struct FVector B);
 	static struct FVector ClampLength(struct FVector V, float MaxLength);
 	static struct FVector VInterpConstantTo(struct FVector Current, struct FVector Target, float DeltaTime, float InterpSpeed);
 	static struct FVector VInterpTo(struct FVector Current, struct FVector Target, float DeltaTime, float InterpSpeed);
 	void eventConstruct();
-	static struct FVector ProjectOnToPlane(struct FVector InVector, struct FVector InNormal, float OverBounce);
+	static struct FVector ProjectOnToPlane(struct FVector InVector, struct FVector InNormal, float optionalOverBounce);
 	static bool IsZero(struct FVector A);
 	static struct FVector ProjectOnTo(struct FVector X, struct FVector Y);
 	static struct FVector MirrorVectorByNormal(struct FVector InVect, struct FVector InNormal);
@@ -1316,8 +1433,8 @@ public:
 	static float FInterpConstantTo(float Current, float Target, float DeltaTime, float InterpSpeed);
 	static float FInterpTo(float Current, float Target, float DeltaTime, float InterpSpeed);
 	static float FPctByRange(float Value, float InMin, float InMax);
-	static float RandSign(float Value);
-	static struct FVector CalculateGravityPosition(struct FVector Location, struct FVector Velocity, float Gravity, float Time, struct FVector GravityDirection);
+	static float RandSign(float optionalValue);
+	static struct FVector CalculateGravityPosition(struct FVector Location, struct FVector Velocity, float Gravity, float Time, struct FVector optionalGravityDirection);
 	static float RandRange(float InMin, float InMax);
 	static float FInterpEaseInOut(float A, float B, float Alpha, float Exp);
 	static float FInterpEaseOut(float A, float B, float Alpha, float Exp);
@@ -1418,13 +1535,13 @@ public:
 	static uint8_t DivideEqual_ByteByte(uint8_t B, uint8_t& A);
 	static uint8_t MultiplyEqual_ByteFloat(float B, uint8_t& A);
 	static uint8_t MultiplyEqual_ByteByte(uint8_t B, uint8_t& A);
-	static bool OrOr_BoolBool(unsigned long A, unsigned long B);
-	static bool XorXor_BoolBool(unsigned long A, unsigned long B);
-	static bool AndAnd_BoolBool(unsigned long A, unsigned long B);
-	static bool NotEqual_BoolBool(unsigned long A, unsigned long B);
-	static bool EqualEqual_BoolBool(unsigned long A, unsigned long B);
-	static bool Not_PreBool(unsigned long A);
-	void ProcessEvent(class UFunction* uFunction, void* uParams, void* uResult);
+	static bool OrOr_BoolBool(bool A, bool B);
+	static bool XorXor_BoolBool(bool A, bool B);
+	static bool AndAnd_BoolBool(bool A, bool B);
+	static bool NotEqual_BoolBool(bool A, bool B);
+	static bool EqualEqual_BoolBool(bool A, bool B);
+	static bool Not_PreBool(bool A);
+	void ProcessEvent(class UFunction* uFunction, void* uParams, void* uResult = nullptr);
 };
 
 // Class Core.Config_ORS
@@ -1517,25 +1634,25 @@ public:
 
 // Class Core.Group_ORS
 // 0x00D0 (0x0068 - 0x0138)
-//class UGroup_ORS : public UScriptGroup_ORS
-//{
-//public:
-//	uint8_t                                           UnknownData00[0xD0];                           // 0x0068 (0x00D0) MISSED OFFSET
-//
-//public:
-//	static UClass* StaticClass()
-//	{
-//		static UClass* uClassPointer = nullptr;
-//
-//		if (!uClassPointer)
-//		{
-//			uClassPointer = UObject::FindClass("Class Core.Group_ORS");
-//		}
-//
-//		return uClassPointer;
-//	};
-//
-//};
+class UGroup_ORS : public UObject
+{
+public:
+	uint8_t                                           UnknownData00[0xD0];                           // 0x0068 (0x00D0) MISSED OFFSET
+
+public:
+	static UClass* StaticClass()
+	{
+		static UClass* uClassPointer = nullptr;
+
+		if (!uClassPointer)
+		{
+			uClassPointer = UObject::FindClass("Class Core.Group_ORS");
+		}
+
+		return uClassPointer;
+	};
+
+};
 
 // Class Core.Instance_ORS
 // 0x00B0 (0x0060 - 0x0110)
@@ -1788,7 +1905,7 @@ public:
 	static bool IdenticalDeep(class UObject* Left, class UObject* Right);
 	static bool Identical(class UObject* Left, class UObject* Right);
 	static void InitProperties(class UObject* InObject);
-	static void AllCDOs(class UClass* BaseClass, unsigned long bIncludeAbstract, class UObject*& OutCDO);
+	static void AllCDOs(class UClass* BaseClass, bool optionalBIncludeAbstract, class UObject*& OutCDO);
 	static class UObject* GetCDO(class UClass* InClass);
 };
 
@@ -1972,7 +2089,7 @@ public:
 	static bool AppendStringToFile(class FString Path, class FString Text);
 	static bool SaveStringToFile(class FString Path, class FString Text);
 	static bool SaveBytesToFile(class FString Path, TArray<uint8_t>& Bytes);
-	static bool LoadFileToBytes(class FString Path, int32_t StartOffset, int32_t Length, TArray<uint8_t>& OutBytes);
+	static bool LoadFileToBytes(class FString Path, int32_t optionalStartOffset, int32_t optionalLength, TArray<uint8_t>& OutBytes);
 	static bool LoadFileToString(class FString Path, class FString& OutText);
 	static int32_t GetFileSize(class FString Path);
 	static class FString GetFileExtensionWithoutDot(class FString Path);
@@ -2014,7 +2131,7 @@ public:
 	uint8_t UnknownData00[0x10]; // 0x0070 (0x0010) DYNAMIC FIELD PADDING
 	class UField* SuperField; // 0x0080 (0x0008)
 	class UField* Children; // 0x0088 (0x0008)
-	unsigned long PropertySize; // 0x0090 (0x0004)
+	uint32_t PropertySize; // 0x0090 (0x0004)
 	uint8_t UnknownData01[0x9C]; // 0x0094 (0x009C) DYNAMIC FIELD PADDING
 
 public:
@@ -2067,7 +2184,7 @@ public:
 	uint8_t NumParams;
 	uint16_t ParamsSize;
 	uint32_t ReturnValueOffset;
-	uint8_t UnknownData00[0x26];
+	uint8_t UnknownData00[0xC];
 	FPointer Func;
 
 public:
@@ -2091,11 +2208,11 @@ public:
 class UProperty : public UField
 {
 public:
-	unsigned long ArrayDim; // 0x0070 (0x0004)
-	unsigned long ElementSize; // 0x0074 (0x0004)
-	uint64_t PropertyFlags; // 0x0078 (0x0004)
-	uint8_t UnknownData00[0x1C]; // 0x007C (0x001C) DYNAMIC FIELD PADDING
-	unsigned long Offset; // 0x0098 (0x0004)
+	uint32_t ArrayDim; // 0x0070 (0x0004)
+	uint32_t ElementSize; // 0x0074 (0x0004)
+	uint64_t PropertyFlags; // 0x0078 (0x0008)
+	uint8_t UnknownData00[0x18]; // 0x0080 (0x0018) DYNAMIC FIELD PADDING
+	uint32_t Offset; // 0x0098 (0x0004)
 	uint8_t UnknownData01[0x2C]; // 0x009C (0x002C) DYNAMIC FIELD PADDING
 
 public:
@@ -2182,9 +2299,8 @@ public:
 class UObjectProperty : public UProperty
 {
 public:
-	uint8_t UnknownData00[0x68]; // 0x0060 (0x0068) DYNAMIC FIELD PADDING
 	class UClass* PropertyClass; // 0x00C8 (0x0008)
-	uint8_t UnknownData01[0x8]; // 0x00D0 (0x0008) DYNAMIC FIELD PADDING
+	uint8_t UnknownData00[0x8]; // 0x00D0 (0x0008) DYNAMIC FIELD PADDING
 
 public:
 	static UClass* StaticClass()
@@ -2358,8 +2474,8 @@ public:
 class UDelegateProperty : public UProperty
 {
 public:
-	uint8_t UNKNOWN_CLASS_FIELD[0x1]; // 0x0000 (0x0001)
-	uint8_t UnknownData00[0xD7]; // 0x0001 (0x00D7) DYNAMIC FIELD PADDING
+	class UFuncton* DelegateFunction; // 0x00C8 (0x0008)
+	struct FName DelegateName; // 0x00D0 (0x0008)
 
 public:
 	static UClass* StaticClass()
@@ -2492,107 +2608,108 @@ class UFeatureSystem : public UObject
 {
 public:
 	uint8_t                                           UnknownData00[0x8];                            // 0x0060 (0x0008) MISSED OFFSET
-	unsigned long                                      Prime : 1;                                     // 0x0068 (0x0004) [0x0000000040000000] [0x00000002] (CPF_EditInlineNotify)
-	unsigned long                                      Matchmaking : 1;                               // 0x0068 (0x0004) [0x0000000040000000] [0x00000008] (CPF_EditInlineNotify)
-	unsigned long                                      PrivateMatch : 1;                              // 0x0068 (0x0004) [0x0000000040000000] [0x00000010] (CPF_EditInlineNotify)
-	unsigned long                                      SplitscreenMatch : 1;                          // 0x0068 (0x0004) [0x0000000040000000] [0x00000020] (CPF_EditInlineNotify)
-	unsigned long                                      SplitscreenJoin : 1;                           // 0x0068 (0x0004) [0x0000000040000000] [0x00000040] (CPF_EditInlineNotify)
-	unsigned long                                      SeasonMode : 1;                                // 0x0068 (0x0004) [0x0000000040000000] [0x00000080] (CPF_EditInlineNotify)
-	unsigned long                                      Tutorial : 1;                                  // 0x0068 (0x0004) [0x0000000040000000] [0x00000100] (CPF_EditInlineNotify)
-	unsigned long                                      Garage : 1;                                    // 0x0068 (0x0004) [0x0000000040000000] [0x00000200] (CPF_EditInlineNotify)
-	unsigned long                                      Options : 1;                                   // 0x0068 (0x0004) [0x0000000040000000] [0x00000400] (CPF_EditInlineNotify)
-	unsigned long                                      ReplaySaves : 1;                               // 0x0068 (0x0004) [0x0000000040000000] [0x00000800] (CPF_EditInlineNotify)
-	unsigned long                                      MainMenu : 1;                                  // 0x0068 (0x0004) [0x0000000040000000] [0x00001000] (CPF_EditInlineNotify)
-	unsigned long                                      MidgameMenu : 1;                               // 0x0068 (0x0004) [0x0000000040000000] [0x00002000] (CPF_EditInlineNotify)
-	unsigned long                                      Party : 1;                                     // 0x0068 (0x0004) [0x0000000040000000] [0x00004000] (CPF_EditInlineNotify)
-	unsigned long                                      PsyNetParty : 1;                               // 0x0068 (0x0004) [0x0000000040000000] [0x00008000] (CPF_EditInlineNotify)
-	unsigned long                                      Achievements : 1;                              // 0x0068 (0x0004) [0x0000000040000000] [0x00010000] (CPF_EditInlineNotify)
-	unsigned long                                      Stats : 1;                                     // 0x0068 (0x0004) [0x0000000040000000] [0x00020000] (CPF_EditInlineNotify)
-	unsigned long                                      Leaderboards : 1;                              // 0x0068 (0x0004) [0x0000000040000000] [0x00040000] (CPF_EditInlineNotify)
-	unsigned long                                      XP : 1;                                        // 0x0068 (0x0004) [0x0000000040000000] [0x00080000] (CPF_EditInlineNotify)
-	unsigned long                                      Chat : 1;                                      // 0x0068 (0x0004) [0x0000000040000000] [0x00100000] (CPF_EditInlineNotify)
-	unsigned long                                      TrainingDifficulties : 1;                      // 0x0068 (0x0004) [0x0000000040000000] [0x00200000] (CPF_EditInlineNotify)
-	unsigned long                                      Spectator : 1;                                 // 0x0068 (0x0004) [0x0000000040000000] [0x00400000] (CPF_EditInlineNotify)
-	unsigned long                                      CrossPlatformPrivateMatch : 1;                 // 0x0068 (0x0004) [0x0000000040000000] [0x00800000] (CPF_EditInlineNotify)
-	unsigned long                                      Lan : 1;                                       // 0x0068 (0x0004) [0x0000000040000000] [0x01000000] (CPF_EditInlineNotify)
-	unsigned long                                      PlayerReporting : 1;                           // 0x0068 (0x0004) [0x0000000040000000] [0x02000000] (CPF_EditInlineNotify)
-	unsigned long                                      PlayerTrading : 1;                             // 0x0068 (0x0004) [0x0000000040000000] [0x08000000] (CPF_EditInlineNotify)
-	unsigned long                                      OnlineServices : 1;                            // 0x0068 (0x0004) [0x0000000040000000] [0x40000000] (CPF_EditInlineNotify)
-	unsigned long                                      RemoveCrossPlatformProducts : 1;               // 0x0068 (0x0004) [0x0000000040000000] [0x80000000] (CPF_EditInlineNotify)
-	unsigned long                                      ProductValidation : 1;                         // 0x006C (0x0004) [0x0000000040000000] [0x00000001] (CPF_EditInlineNotify)
-	unsigned long                                      MapPrefs : 1;                                  // 0x006C (0x0004) [0x0000000040000000] [0x00000002] (CPF_EditInlineNotify)
-	unsigned long                                      Tournaments : 1;                               // 0x006C (0x0004) [0x0000000040000000] [0x00000008] (CPF_EditInlineNotify)
-	unsigned long                                      PreMatchLobby : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x00000010] (CPF_EditInlineNotify)
-	unsigned long                                      Challenges : 1;                                // 0x006C (0x0004) [0x0000000040000000] [0x00000020] (CPF_EditInlineNotify)
-	unsigned long                                      AntiAddiction : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x00000040] (CPF_EditInlineNotify)
-	unsigned long                                      TrainingEditor : 1;                            // 0x006C (0x0004) [0x0000000040000000] [0x00000080] (CPF_EditInlineNotify)
-	unsigned long                                      VoiceChat : 1;                                 // 0x006C (0x0004) [0x0000000040000000] [0x00000100] (CPF_EditInlineNotify)
-	unsigned long                                      SplitScreen : 1;                               // 0x006C (0x0004) [0x0000000040000000] [0x00000200] (CPF_EditInlineNotify)
-	unsigned long                                      Clubs : 1;                                     // 0x006C (0x0004) [0x0000000040000000] [0x00000400] (CPF_EditInlineNotify)
-	unsigned long                                      FilterContent : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x00000800] (CPF_EditInlineNotify)
-	unsigned long                                      EncryptContent : 1;                            // 0x006C (0x0004) [0x0000000040000000] [0x00001000] (CPF_EditInlineNotify)
-	unsigned long                                      EsportsCamera : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x00008000] (CPF_EditInlineNotify)
-	unsigned long                                      OnlineXP : 1;                                  // 0x006C (0x0004) [0x0000000040000000] [0x00010000] (CPF_EditInlineNotify)
-	unsigned long                                      ClanforgeReservation : 1;                      // 0x006C (0x0004) [0x0000000040000000] [0x00040000] (CPF_EditInlineNotify)
-	unsigned long                                      UserSettingObserver : 1;                       // 0x006C (0x0004) [0x0000000040000000] [0x00080000] (CPF_EditInlineNotify)
-	unsigned long                                      Metrics : 1;                                   // 0x006C (0x0004) [0x0000000040000000] [0x00100000] (CPF_EditInlineNotify)
-	unsigned long                                      EOSMetrics : 1;                                // 0x006C (0x0004) [0x0000000040000000] [0x00200000] (CPF_EditInlineNotify)
-	unsigned long                                      MusicPlaylistSelection : 1;                    // 0x006C (0x0004) [0x0000000040000000] [0x00400000] (CPF_EditInlineNotify)
-	unsigned long                                      SpecialEvents : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x00800000] (CPF_EditInlineNotify)
-	unsigned long                                      OnlineShop : 1;                                // 0x006C (0x0004) [0x0000000040000000] [0x01000000] (CPF_EditInlineNotify)
-	unsigned long                                      PlayerBannerCustomization : 1;                 // 0x006C (0x0004) [0x0000000040000000] [0x02000000] (CPF_EditInlineNotify)
-	unsigned long                                      SecureUDP : 1;                                 // 0x006C (0x0004) [0x0000000040000000] [0x04000000] (CPF_EditInlineNotify)
-	unsigned long                                      PsyNet : 1;                                    // 0x006C (0x0004) [0x0000000040000000] [0x08000000] (CPF_EditInlineNotify)
-	unsigned long                                      OnlinePlayerStorage : 1;                       // 0x006C (0x0004) [0x0000000040000000] [0x10000000] (CPF_EditInlineNotify)
-	unsigned long                                      LocalSaveData : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x20000000] (CPF_EditInlineNotify)
-	unsigned long                                      CrowdV2 : 1;                                   // 0x006C (0x0004) [0x0000000040000000] [0x40000000] (CPF_EditInlineNotify)
-	unsigned long                                      ChatBan : 1;                                   // 0x006C (0x0004) [0x0000000040000000] [0x80000000] (CPF_EditInlineNotify)
-	unsigned long                                      BacktraceCrashDumps : 1;                       // 0x0070 (0x0004) [0x0000000040000000] [0x00000001] (CPF_EditInlineNotify)
-	unsigned long                                      SpotifyButton : 1;                             // 0x0070 (0x0004) [0x0000000040000000] [0x00000002] (CPF_EditInlineNotify)
-	unsigned long                                      RocketPass : 1;                                // 0x0070 (0x0004) [0x0000000040000000] [0x00000004] (CPF_EditInlineNotify)
-	unsigned long                                      SeasonRewards : 1;                             // 0x0070 (0x0004) [0x0000000040000000] [0x00000010] (CPF_EditInlineNotify)
-	unsigned long                                      FaceIt : 1;                                    // 0x0070 (0x0004) [0x0000000040000000] [0x00000020] (CPF_EditInlineNotify)
-	unsigned long                                      KnockOut : 1;                                  // 0x0070 (0x0004) [0x0000000040000000] [0x00000040] (CPF_EditInlineNotify)
-	unsigned long                                      OnlinePlayerTitles : 1;                        // 0x0070 (0x0004) [0x0000000040000000] [0x00000080] (CPF_EditInlineNotify)
-	unsigned long                                      RestrictByRegion : 1;                          // 0x0070 (0x0004) [0x0000000040000000] [0x00000100] (CPF_EditInlineNotify)
-	unsigned long                                      FirstTimeExperience : 1;                       // 0x0070 (0x0004) [0x0000000040000000] [0x00000400] (CPF_EditInlineNotify)
-	unsigned long                                      RLBot : 1;                                     // 0x0070 (0x0004) [0x0000000040000000] [0x00000800] (CPF_EditInlineNotify)
-	unsigned long                                      UserBugReport : 1;                             // 0x0070 (0x0004) [0x0000000040000000] [0x00001000] (CPF_EditInlineNotify)
-	unsigned long                                      SteamInput : 1;                                // 0x0070 (0x0004) [0x0000000040000000] [0x00002000] (CPF_EditInlineNotify)
-	unsigned long                                      ReplayFXControls : 1;                          // 0x0070 (0x0004) [0x0000000040000000] [0x00040000] (CPF_EditInlineNotify)
-	unsigned long                                      ESportsShop : 1;                               // 0x0070 (0x0004) [0x0000000040000000] [0x00080000] (CPF_EditInlineNotify)
-	unsigned long                                      DynamicRangeAudioSettings : 1;                 // 0x0070 (0x0004) [0x0000000040000000] [0x00800000] (CPF_EditInlineNotify)
-	unsigned long                                      AutoTour : 1;                                  // 0x0070 (0x0004) [0x0000000040000000] [0x01000000] (CPF_EditInlineNotify)
-	unsigned long                                      QuickPlay : 1;                                 // 0x0070 (0x0004) [0x0000000040000000] [0x02000000] (CPF_EditInlineNotify)
-	unsigned long                                      NewsPanelV2 : 1;                               // 0x0070 (0x0004) [0x0000000040000000] [0x04000000] (CPF_EditInlineNotify)
-	unsigned long                                      Blueprints : 1;                                // 0x0070 (0x0004) [0x0000000040000000] [0x08000000] (CPF_EditInlineNotify)
-	unsigned long                                      GodBall : 1;                                   // 0x0070 (0x0004) [0x0000000040000000] [0x10000000] (CPF_EditInlineNotify)
-	unsigned long                                      RocketBucks : 1;                               // 0x0070 (0x0004) [0x0000000040000000] [0x40000000] (CPF_EditInlineNotify)
-	unsigned long                                      DiscordRichPresence : 1;                       // 0x0074 (0x0004) [0x0000000040000000] [0x00000004] (CPF_EditInlineNotify)
-	unsigned long                                      SupportACreator : 1;                           // 0x0074 (0x0004) [0x0000000040000000] [0x00000008] (CPF_EditInlineNotify)
-	unsigned long                                      CinematicIntro : 1;                            // 0x0074 (0x0004) [0x0000000040000000] [0x00000010] (CPF_EditInlineNotify)
-	unsigned long                                      TinyCrowd : 1;                                 // 0x0074 (0x0004) [0x0000000040000000] [0x00000020] (CPF_EditInlineNotify)
-	unsigned long                                      CrumbTrail : 1;                                // 0x0074 (0x0004) [0x0000000040000000] [0x00000040] (CPF_EditInlineNotify)
-	unsigned long                                      EpicGameStoreBuild : 1;                        // 0x0074 (0x0004) [0x0000000040000000] [0x00000080] (CPF_EditInlineNotify)
-	unsigned long                                      XPGatedPlaylists : 1;                          // 0x0074 (0x0004) [0x0000000040000000] [0x00000100] (CPF_EditInlineNotify)
-	unsigned long                                      TradeInV2 : 1;                                 // 0x0074 (0x0004) [0x0000000040000000] [0x00000400] (CPF_EditInlineNotify)
-	unsigned long                                      Football : 1;                                  // 0x0074 (0x0004) [0x0000000040000000] [0x00000800] (CPF_EditInlineNotify)
-	unsigned long                                      RumbleSelection : 1;                           // 0x0074 (0x0004) [0x0000000040000000] [0x00001000] (CPF_EditInlineNotify)
-	unsigned long                                      UndersizedParty : 1;                           // 0x0074 (0x0004) [0x0000000040000000] [0x00002000] (CPF_EditInlineNotify)
-	unsigned long                                      StreamerSafeAudio : 1;                         // 0x0074 (0x0004) [0x0000000040000000] [0x00004000] (CPF_EditInlineNotify)
-	unsigned long                                      FreeplayCommands : 1;                          // 0x0074 (0x0004) [0x0000000040000000] [0x00008000] (CPF_EditInlineNotify)
-	unsigned long                                      Rumble_BM : 1;                                 // 0x0074 (0x0004) [0x0000000040000000] [0x00010000] (CPF_EditInlineNotify)
-	unsigned long                                      PlayerReportingV2 : 1;                         // 0x0074 (0x0004) [0x0000000040000000] [0x00020000] (CPF_EditInlineNotify)
-	unsigned long                                      BlogScheduling : 1;                            // 0x0074 (0x0004) [0x0000000040000000] [0x00040000] (CPF_EditInlineNotify)
-	unsigned long                                      EOSVoice : 1;                                  // 0x0074 (0x0004) [0x0000000040000000] [0x00080000] (CPF_EditInlineNotify)
-	unsigned long                                      QuickPostMatchRequeue : 1;                     // 0x0074 (0x0004) [0x0000000040000000] [0x00100000] (CPF_EditInlineNotify)
-	unsigned long                                      TrainingNavigation : 1;                        // 0x0074 (0x0004) [0x0000000040000000] [0x00800000] (CPF_EditInlineNotify)
-	unsigned long                                      TrainingManipulation : 1;                      // 0x0074 (0x0004) [0x0000000040000000] [0x01000000] (CPF_EditInlineNotify)
-	unsigned long                                      FilterByColor : 1;                             // 0x0074 (0x0004) [0x0000000040000000] [0x04000000] (CPF_EditInlineNotify)
-	unsigned long                                      Scoreboard : 1;                                // 0x0074 (0x0004) [0x0000000040000000] [0x08000000] (CPF_EditInlineNotify)
-	unsigned long                                      DynamicMapEvents : 1;                          // 0x0074 (0x0004) [0x0000000040000000] [0x10000000] (CPF_EditInlineNotify)
-	unsigned long                                      EOSGameClips : 1;                              // 0x0074 (0x0004) [0x0000000040000000] [0x80000000] (CPF_EditInlineNotify)
-	unsigned long                                      DynamicLogos : 1;                              // 0x0078 (0x0004) [0x0000000040000000] [0x00000001] (CPF_EditInlineNotify)
+	uint32_t                                           Prime : 1;                                     // 0x0068 (0x0004) [0x0000000040000000] [0x00000002] (CPF_EditInlineNotify)
+	uint32_t                                           Matchmaking : 1;                               // 0x0068 (0x0004) [0x0000000040000000] [0x00000008] (CPF_EditInlineNotify)
+	uint32_t                                           PrivateMatch : 1;                              // 0x0068 (0x0004) [0x0000000040000000] [0x00000010] (CPF_EditInlineNotify)
+	uint32_t                                           SplitscreenMatch : 1;                          // 0x0068 (0x0004) [0x0000000040000000] [0x00000020] (CPF_EditInlineNotify)
+	uint32_t                                           SplitscreenJoin : 1;                           // 0x0068 (0x0004) [0x0000000040000000] [0x00000040] (CPF_EditInlineNotify)
+	uint32_t                                           SeasonMode : 1;                                // 0x0068 (0x0004) [0x0000000040000000] [0x00000080] (CPF_EditInlineNotify)
+	uint32_t                                           Tutorial : 1;                                  // 0x0068 (0x0004) [0x0000000040000000] [0x00000100] (CPF_EditInlineNotify)
+	uint32_t                                           Garage : 1;                                    // 0x0068 (0x0004) [0x0000000040000000] [0x00000200] (CPF_EditInlineNotify)
+	uint32_t                                           Options : 1;                                   // 0x0068 (0x0004) [0x0000000040000000] [0x00000400] (CPF_EditInlineNotify)
+	uint32_t                                           ReplaySaves : 1;                               // 0x0068 (0x0004) [0x0000000040000000] [0x00000800] (CPF_EditInlineNotify)
+	uint32_t                                           MainMenu : 1;                                  // 0x0068 (0x0004) [0x0000000040000000] [0x00001000] (CPF_EditInlineNotify)
+	uint32_t                                           MidgameMenu : 1;                               // 0x0068 (0x0004) [0x0000000040000000] [0x00002000] (CPF_EditInlineNotify)
+	uint32_t                                           Party : 1;                                     // 0x0068 (0x0004) [0x0000000040000000] [0x00004000] (CPF_EditInlineNotify)
+	uint32_t                                           PsyNetParty : 1;                               // 0x0068 (0x0004) [0x0000000040000000] [0x00008000] (CPF_EditInlineNotify)
+	uint32_t                                           Achievements : 1;                              // 0x0068 (0x0004) [0x0000000040000000] [0x00010000] (CPF_EditInlineNotify)
+	uint32_t                                           Stats : 1;                                     // 0x0068 (0x0004) [0x0000000040000000] [0x00020000] (CPF_EditInlineNotify)
+	uint32_t                                           Leaderboards : 1;                              // 0x0068 (0x0004) [0x0000000040000000] [0x00040000] (CPF_EditInlineNotify)
+	uint32_t                                           XP : 1;                                        // 0x0068 (0x0004) [0x0000000040000000] [0x00080000] (CPF_EditInlineNotify)
+	uint32_t                                           Chat : 1;                                      // 0x0068 (0x0004) [0x0000000040000000] [0x00100000] (CPF_EditInlineNotify)
+	uint32_t                                           TrainingDifficulties : 1;                      // 0x0068 (0x0004) [0x0000000040000000] [0x00200000] (CPF_EditInlineNotify)
+	uint32_t                                           Spectator : 1;                                 // 0x0068 (0x0004) [0x0000000040000000] [0x00400000] (CPF_EditInlineNotify)
+	uint32_t                                           CrossPlatformPrivateMatch : 1;                 // 0x0068 (0x0004) [0x0000000040000000] [0x00800000] (CPF_EditInlineNotify)
+	uint32_t                                           Lan : 1;                                       // 0x0068 (0x0004) [0x0000000040000000] [0x01000000] (CPF_EditInlineNotify)
+	uint32_t                                           PlayerReporting : 1;                           // 0x0068 (0x0004) [0x0000000040000000] [0x02000000] (CPF_EditInlineNotify)
+	uint32_t                                           OnlineServices : 1;                            // 0x0068 (0x0004) [0x0000000040000000] [0x40000000] (CPF_EditInlineNotify)
+	uint32_t                                           RemoveCrossPlatformProducts : 1;               // 0x0068 (0x0004) [0x0000000040000000] [0x80000000] (CPF_EditInlineNotify)
+	uint32_t                                           ProductValidation : 1;                         // 0x006C (0x0004) [0x0000000040000000] [0x00000001] (CPF_EditInlineNotify)
+	uint32_t                                           MapPrefs : 1;                                  // 0x006C (0x0004) [0x0000000040000000] [0x00000002] (CPF_EditInlineNotify)
+	uint32_t                                           Tournaments : 1;                               // 0x006C (0x0004) [0x0000000040000000] [0x00000008] (CPF_EditInlineNotify)
+	uint32_t                                           PreMatchLobby : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x00000010] (CPF_EditInlineNotify)
+	uint32_t                                           Challenges : 1;                                // 0x006C (0x0004) [0x0000000040000000] [0x00000020] (CPF_EditInlineNotify)
+	uint32_t                                           AntiAddiction : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x00000040] (CPF_EditInlineNotify)
+	uint32_t                                           TrainingEditor : 1;                            // 0x006C (0x0004) [0x0000000040000000] [0x00000080] (CPF_EditInlineNotify)
+	uint32_t                                           VoiceChat : 1;                                 // 0x006C (0x0004) [0x0000000040000000] [0x00000100] (CPF_EditInlineNotify)
+	uint32_t                                           SplitScreen : 1;                               // 0x006C (0x0004) [0x0000000040000000] [0x00000200] (CPF_EditInlineNotify)
+	uint32_t                                           Clubs : 1;                                     // 0x006C (0x0004) [0x0000000040000000] [0x00000400] (CPF_EditInlineNotify)
+	uint32_t                                           FilterContent : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x00000800] (CPF_EditInlineNotify)
+	uint32_t                                           EncryptContent : 1;                            // 0x006C (0x0004) [0x0000000040000000] [0x00001000] (CPF_EditInlineNotify)
+	uint32_t                                           EsportsCamera : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x00008000] (CPF_EditInlineNotify)
+	uint32_t                                           OnlineXP : 1;                                  // 0x006C (0x0004) [0x0000000040000000] [0x00010000] (CPF_EditInlineNotify)
+	uint32_t                                           ClanforgeReservation : 1;                      // 0x006C (0x0004) [0x0000000040000000] [0x00040000] (CPF_EditInlineNotify)
+	uint32_t                                           UserSettingObserver : 1;                       // 0x006C (0x0004) [0x0000000040000000] [0x00080000] (CPF_EditInlineNotify)
+	uint32_t                                           Metrics : 1;                                   // 0x006C (0x0004) [0x0000000040000000] [0x00100000] (CPF_EditInlineNotify)
+	uint32_t                                           EOSMetrics : 1;                                // 0x006C (0x0004) [0x0000000040000000] [0x00200000] (CPF_EditInlineNotify)
+	uint32_t                                           MusicPlaylistSelection : 1;                    // 0x006C (0x0004) [0x0000000040000000] [0x00400000] (CPF_EditInlineNotify)
+	uint32_t                                           SpecialEvents : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x00800000] (CPF_EditInlineNotify)
+	uint32_t                                           OnlineShop : 1;                                // 0x006C (0x0004) [0x0000000040000000] [0x01000000] (CPF_EditInlineNotify)
+	uint32_t                                           PlayerBannerCustomization : 1;                 // 0x006C (0x0004) [0x0000000040000000] [0x02000000] (CPF_EditInlineNotify)
+	uint32_t                                           SecureUDP : 1;                                 // 0x006C (0x0004) [0x0000000040000000] [0x04000000] (CPF_EditInlineNotify)
+	uint32_t                                           PsyNet : 1;                                    // 0x006C (0x0004) [0x0000000040000000] [0x08000000] (CPF_EditInlineNotify)
+	uint32_t                                           OnlinePlayerStorage : 1;                       // 0x006C (0x0004) [0x0000000040000000] [0x10000000] (CPF_EditInlineNotify)
+	uint32_t                                           LocalSaveData : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x20000000] (CPF_EditInlineNotify)
+	uint32_t                                           CrowdV2 : 1;                                   // 0x006C (0x0004) [0x0000000040000000] [0x40000000] (CPF_EditInlineNotify)
+	uint32_t                                           ChatBan : 1;                                   // 0x006C (0x0004) [0x0000000040000000] [0x80000000] (CPF_EditInlineNotify)
+	uint32_t                                           BacktraceCrashDumps : 1;                       // 0x0070 (0x0004) [0x0000000040000000] [0x00000001] (CPF_EditInlineNotify)
+	uint32_t                                           SpotifyButton : 1;                             // 0x0070 (0x0004) [0x0000000040000000] [0x00000002] (CPF_EditInlineNotify)
+	uint32_t                                           RocketPass : 1;                                // 0x0070 (0x0004) [0x0000000040000000] [0x00000004] (CPF_EditInlineNotify)
+	uint32_t                                           SeasonRewards : 1;                             // 0x0070 (0x0004) [0x0000000040000000] [0x00000010] (CPF_EditInlineNotify)
+	uint32_t                                           FaceIt : 1;                                    // 0x0070 (0x0004) [0x0000000040000000] [0x00000020] (CPF_EditInlineNotify)
+	uint32_t                                           KnockOut : 1;                                  // 0x0070 (0x0004) [0x0000000040000000] [0x00000040] (CPF_EditInlineNotify)
+	uint32_t                                           OnlinePlayerTitles : 1;                        // 0x0070 (0x0004) [0x0000000040000000] [0x00000080] (CPF_EditInlineNotify)
+	uint32_t                                           RestrictByRegion : 1;                          // 0x0070 (0x0004) [0x0000000040000000] [0x00000100] (CPF_EditInlineNotify)
+	uint32_t                                           FirstTimeExperience : 1;                       // 0x0070 (0x0004) [0x0000000040000000] [0x00000400] (CPF_EditInlineNotify)
+	uint32_t                                           RLBot : 1;                                     // 0x0070 (0x0004) [0x0000000040000000] [0x00000800] (CPF_EditInlineNotify)
+	uint32_t                                           UserBugReport : 1;                             // 0x0070 (0x0004) [0x0000000040000000] [0x00001000] (CPF_EditInlineNotify)
+	uint32_t                                           SteamInput : 1;                                // 0x0070 (0x0004) [0x0000000040000000] [0x00002000] (CPF_EditInlineNotify)
+	uint32_t                                           ReplayFXControls : 1;                          // 0x0070 (0x0004) [0x0000000040000000] [0x00040000] (CPF_EditInlineNotify)
+	uint32_t                                           ESportsShop : 1;                               // 0x0070 (0x0004) [0x0000000040000000] [0x00080000] (CPF_EditInlineNotify)
+	uint32_t                                           DynamicRangeAudioSettings : 1;                 // 0x0070 (0x0004) [0x0000000040000000] [0x00800000] (CPF_EditInlineNotify)
+	uint32_t                                           AutoTour : 1;                                  // 0x0070 (0x0004) [0x0000000040000000] [0x01000000] (CPF_EditInlineNotify)
+	uint32_t                                           QuickPlay : 1;                                 // 0x0070 (0x0004) [0x0000000040000000] [0x02000000] (CPF_EditInlineNotify)
+	uint32_t                                           NewsPanelV2 : 1;                               // 0x0070 (0x0004) [0x0000000040000000] [0x04000000] (CPF_EditInlineNotify)
+	uint32_t                                           Blueprints : 1;                                // 0x0070 (0x0004) [0x0000000040000000] [0x08000000] (CPF_EditInlineNotify)
+	uint32_t                                           GodBall : 1;                                   // 0x0070 (0x0004) [0x0000000040000000] [0x10000000] (CPF_EditInlineNotify)
+	uint32_t                                           RocketBucks : 1;                               // 0x0070 (0x0004) [0x0000000040000000] [0x40000000] (CPF_EditInlineNotify)
+	uint32_t                                           DiscordRichPresence : 1;                       // 0x0074 (0x0004) [0x0000000040000000] [0x00000004] (CPF_EditInlineNotify)
+	uint32_t                                           SupportACreator : 1;                           // 0x0074 (0x0004) [0x0000000040000000] [0x00000008] (CPF_EditInlineNotify)
+	uint32_t                                           CinematicIntro : 1;                            // 0x0074 (0x0004) [0x0000000040000000] [0x00000010] (CPF_EditInlineNotify)
+	uint32_t                                           TinyCrowd : 1;                                 // 0x0074 (0x0004) [0x0000000040000000] [0x00000020] (CPF_EditInlineNotify)
+	uint32_t                                           CrumbTrail : 1;                                // 0x0074 (0x0004) [0x0000000040000000] [0x00000040] (CPF_EditInlineNotify)
+	uint32_t                                           EpicGameStoreBuild : 1;                        // 0x0074 (0x0004) [0x0000000040000000] [0x00000080] (CPF_EditInlineNotify)
+	uint32_t                                           XPGatedPlaylists : 1;                          // 0x0074 (0x0004) [0x0000000040000000] [0x00000100] (CPF_EditInlineNotify)
+	uint32_t                                           TradeInV2 : 1;                                 // 0x0074 (0x0004) [0x0000000040000000] [0x00000400] (CPF_EditInlineNotify)
+	uint32_t                                           Football : 1;                                  // 0x0074 (0x0004) [0x0000000040000000] [0x00000800] (CPF_EditInlineNotify)
+	uint32_t                                           RumbleSelection : 1;                           // 0x0074 (0x0004) [0x0000000040000000] [0x00001000] (CPF_EditInlineNotify)
+	uint32_t                                           UndersizedParty : 1;                           // 0x0074 (0x0004) [0x0000000040000000] [0x00002000] (CPF_EditInlineNotify)
+	uint32_t                                           StreamerSafeAudio : 1;                         // 0x0074 (0x0004) [0x0000000040000000] [0x00004000] (CPF_EditInlineNotify)
+	uint32_t                                           FreeplayCommands : 1;                          // 0x0074 (0x0004) [0x0000000040000000] [0x00008000] (CPF_EditInlineNotify)
+	uint32_t                                           Rumble_BM : 1;                                 // 0x0074 (0x0004) [0x0000000040000000] [0x00010000] (CPF_EditInlineNotify)
+	uint32_t                                           PlayerReportingV2 : 1;                         // 0x0074 (0x0004) [0x0000000040000000] [0x00020000] (CPF_EditInlineNotify)
+	uint32_t                                           BlogScheduling : 1;                            // 0x0074 (0x0004) [0x0000000040000000] [0x00040000] (CPF_EditInlineNotify)
+	uint32_t                                           EOSVoice : 1;                                  // 0x0074 (0x0004) [0x0000000040000000] [0x00080000] (CPF_EditInlineNotify)
+	uint32_t                                           QuickPostMatchRequeue : 1;                     // 0x0074 (0x0004) [0x0000000040000000] [0x00100000] (CPF_EditInlineNotify)
+	uint32_t                                           TrainingNavigation : 1;                        // 0x0074 (0x0004) [0x0000000040000000] [0x00800000] (CPF_EditInlineNotify)
+	uint32_t                                           TrainingManipulation : 1;                      // 0x0074 (0x0004) [0x0000000040000000] [0x01000000] (CPF_EditInlineNotify)
+	uint32_t                                           FilterByColor : 1;                             // 0x0074 (0x0004) [0x0000000040000000] [0x04000000] (CPF_EditInlineNotify)
+	uint32_t                                           Scoreboard : 1;                                // 0x0074 (0x0004) [0x0000000040000000] [0x08000000] (CPF_EditInlineNotify)
+	uint32_t                                           DynamicMapEvents : 1;                          // 0x0074 (0x0004) [0x0000000040000000] [0x10000000] (CPF_EditInlineNotify)
+	uint32_t                                           EOSGameClips : 1;                              // 0x0074 (0x0004) [0x0000000040000000] [0x80000000] (CPF_EditInlineNotify)
+	uint32_t                                           DynamicLogos : 1;                              // 0x0078 (0x0004) [0x0000000040000000] [0x00000001] (CPF_EditInlineNotify)
+	uint32_t                                           XETagging : 1;                                 // 0x0078 (0x0004) [0x0000000040000000] [0x00000002] (CPF_EditInlineNotify)
+	uint32_t                                           PlayMenuV4 : 1;                                // 0x0078 (0x0004) [0x0000000040000000] [0x00000004] (CPF_EditInlineNotify)
 
 public:
 	static UClass* StaticClass()
@@ -2619,11 +2736,11 @@ public:
 	class UClass*                                      ContextClass;                                  // 0x0078 (0x0008) [0x0000000000000000]               
 	class FString                                      Description;                                   // 0x0080 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	TArray<class FString>                              Formats;                                       // 0x0090 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      bCreateNew : 1;                                // 0x00A0 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bEditAfterNew : 1;                             // 0x00A0 (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      bEditorImport : 1;                             // 0x00A0 (0x0004) [0x0000000000000000] [0x00000004] 
-	unsigned long                                      bText : 1;                                     // 0x00A0 (0x0004) [0x0000000000000000] [0x00000008] 
-	unsigned long                                      bAssetNameMatchesPackageName : 1;              // 0x00A0 (0x0004) [0x0000000000000000] [0x00000010] 
+	uint32_t                                           bCreateNew : 1;                                // 0x00A0 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bEditAfterNew : 1;                             // 0x00A0 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bEditorImport : 1;                             // 0x00A0 (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           bText : 1;                                     // 0x00A0 (0x0004) [0x0000000000000000] [0x00000008] 
+	uint32_t                                           bAssetNameMatchesPackageName : 1;              // 0x00A0 (0x0004) [0x0000000000000000] [0x00000010] 
 	int32_t                                            AutoPriority;                                  // 0x00A4 (0x0004) [0x0000000000000000]               
 	TArray<class FString>                              ValidGameNames;                                // 0x00A8 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 
@@ -2708,7 +2825,7 @@ public:
 		return uClassPointer;
 	};
 
-	class UError* CreateError(class FString InErrorMessage, int32_t InErrorCode);
+	class UError* CreateError(class FString optionalInErrorMessage, int32_t optionalInErrorCode);
 	class FString GetLocalizedMessage();
 };
 
@@ -2818,8 +2935,8 @@ class UDebugDrawer : public UObject
 {
 public:
 	struct FColor                                      DefaultTextColor;                              // 0x0060 (0x0004) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bSilent : 1;                                   // 0x0064 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bPrintActorsInline : 1;                        // 0x0064 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bSilent : 1;                                   // 0x0064 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bPrintActorsInline : 1;                        // 0x0064 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
 	int32_t                                            Indentation;                                   // 0x0068 (0x0004) [0x0000008000002000] (CPF_Transient)
 	class FString                                      IndentationString;                             // 0x0070 (0x0010) [0x0000008000402000] (CPF_Transient | CPF_NeedCtorLink)
 	TArray<class UObject*>                             PrintedObjects;                                // 0x0080 (0x0010) [0x0000000000402000] (CPF_Transient | CPF_NeedCtorLink)
@@ -2841,7 +2958,7 @@ public:
 	};
 
 	void Reset();
-	void PrintText(class FString Text, struct FColor InColor);
+	void PrintText(class FString Text, struct FColor optionalInColor);
 	void eventPrintArrayProperty(class FString PropertyName, int32_t Index, class FString Value);
 	void eventPrintProperty(class FString PropertyName, class FString Value);
 	void eventEndSection();
@@ -3014,15 +3131,15 @@ public:
 	class UObject* GetExact(class UClass* ObjClass);
 	class UObject* GetUnsafe(class UClass* ObjClass);
 	class UObject* Get(class UClass* ObjClass);
-	void AllObjects(class UClass* BaseClass, class UClass* InterfaceClass, class UObject*& Obj);
+	void AllObjects(class UClass* BaseClass, class UClass* optionalInterfaceClass, class UObject*& Obj);
 	bool IsRegisteredForInjection(class UObject* Subscriber);
 	void InjectDelayed(class UObject* Subscriber);
 	void Inject(class UObject* Subscriber);
 	void UnsubscribeAll(class UObject* Subscriber);
-	void Unsubscribe(struct FScriptDelegate Callback, struct FScriptDelegate Callback2);
+	void Unsubscribe(struct FScriptDelegate Callback, struct FScriptDelegate optionalCallback2);
 	void SubscribeList(class UClass* BaseClass, struct FScriptDelegate Callback);
-	void SubscribeOnce(class UClass* BaseClass, struct FScriptDelegate OnAdd, struct FScriptDelegate OnRemove);
-	void Subscribe(class UClass* BaseClass, struct FScriptDelegate OnAdd, struct FScriptDelegate OnRemove);
+	void SubscribeOnce(class UClass* BaseClass, struct FScriptDelegate optionalOnAdd, struct FScriptDelegate optionalOnRemove);
+	void Subscribe(class UClass* BaseClass, struct FScriptDelegate optionalOnAdd, struct FScriptDelegate optionalOnRemove);
 	void ObjectChangeCallback();
 	void ObjectListSubscriptionCallback(class UObjectProvider* Provider);
 	void ObjectSubscriptionCallback(class UObject* Obj);
@@ -3034,8 +3151,8 @@ class UDistributionVector : public UComponent
 {
 public:
 	struct FPointer                                    VfTable_FCurveEdInterface;                     // 0x0070 (0x0008) [0x0000000000801002] (CPF_Const | CPF_Native | CPF_NoExport)
-	unsigned long                                      bCanBeBaked : 1;                               // 0x0078 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bIsDirty : 1;                                  // 0x0078 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bCanBeBaked : 1;                               // 0x0078 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bIsDirty : 1;                                  // 0x0078 (0x0004) [0x0000000000000000] [0x00000002] 
 
 public:
 	static UClass* StaticClass()
@@ -3050,7 +3167,7 @@ public:
 		return uClassPointer;
 	};
 
-	struct FVector GetVectorValue(float F, int32_t LastExtreme);
+	struct FVector GetVectorValue(float optionalF, int32_t optionalLastExtreme);
 };
 
 // Class Core.DistributionFloat
@@ -3059,8 +3176,8 @@ class UDistributionFloat : public UComponent
 {
 public:
 	struct FPointer                                    VfTable_FCurveEdInterface;                     // 0x0070 (0x0008) [0x0000000000801002] (CPF_Const | CPF_Native | CPF_NoExport)
-	unsigned long                                      bCanBeBaked : 1;                               // 0x0078 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
-	unsigned long                                      bIsDirty : 1;                                  // 0x0078 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bCanBeBaked : 1;                               // 0x0078 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
+	uint32_t                                           bIsDirty : 1;                                  // 0x0078 (0x0004) [0x0000000000000000] [0x00000002] 
 
 public:
 	static UClass* StaticClass()
@@ -3075,7 +3192,7 @@ public:
 		return uClassPointer;
 	};
 
-	float GetFloatValue(float F);
+	float GetFloatValue(float optionalF);
 };
 
 // Class Core.Commandlet
@@ -3088,11 +3205,11 @@ public:
 	class FString                                      HelpWebLink;                                   // 0x0080 (0x0010) [0x0000000000408002] (CPF_Const | CPF_Localized | CPF_NeedCtorLink)
 	TArray<class FString>                              HelpParamNames;                                // 0x0090 (0x0010) [0x0000000000408002] (CPF_Const | CPF_Localized | CPF_NeedCtorLink)
 	TArray<class FString>                              HelpParamDescriptions;                         // 0x00A0 (0x0010) [0x0000000000408002] (CPF_Const | CPF_Localized | CPF_NeedCtorLink)
-	unsigned long                                      IsServer : 1;                                  // 0x00B0 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      IsClient : 1;                                  // 0x00B0 (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      IsEditor : 1;                                  // 0x00B0 (0x0004) [0x0000000000000000] [0x00000004] 
-	unsigned long                                      LogToConsole : 1;                              // 0x00B0 (0x0004) [0x0000000000000000] [0x00000008] 
-	unsigned long                                      ShowErrorCount : 1;                            // 0x00B0 (0x0004) [0x0000000000000000] [0x00000010] 
+	uint32_t                                           IsServer : 1;                                  // 0x00B0 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           IsClient : 1;                                  // 0x00B0 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           IsEditor : 1;                                  // 0x00B0 (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           LogToConsole : 1;                              // 0x00B0 (0x0004) [0x0000000000000000] [0x00000008] 
+	uint32_t                                           ShowErrorCount : 1;                            // 0x00B0 (0x0004) [0x0000000000000000] [0x00000010] 
 
 public:
 	static UClass* StaticClass()
@@ -3215,8 +3332,8 @@ public:
 class UAsyncTask : public UObject
 {
 public:
-	unsigned long                                      bComplete : 1;                                 // 0x0060 (0x0004) [0x0000004000000000] [0x00000001] 
-	unsigned long                                      bDisposed : 1;                                 // 0x0060 (0x0004) [0x0000004000000000] [0x00000002] 
+	uint32_t                                           bComplete : 1;                                 // 0x0060 (0x0004) [0x0000004000000000] [0x00000001] 
+	uint32_t                                           bDisposed : 1;                                 // 0x0060 (0x0004) [0x0000004000000000] [0x00000002] 
 	class UError*                                      Error;                                         // 0x0068 (0x0008) [0x0000004000000000]               
 	struct FScriptDelegate                             __EventAsyncTaskSuccess__Delegate;             // 0x0070 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
 	struct FScriptDelegate                             __EventAsyncTaskFail__Delegate;                // 0x0088 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -3246,7 +3363,7 @@ public:
 	class UAsyncTask* eventNotifyOnDispose(struct FScriptDelegate Callback);
 	void eventClearCallbacks();
 	void eventDispose();
-	void SetComplete(class UError* InError);
+	void SetComplete(class UError* optionalInError);
 	void eventSetError(class UError* InError);
 	class UAsyncTask* eventNotifyOnComplete(struct FScriptDelegate Callback);
 	class UAsyncTask* eventNotifyOnFail(struct FScriptDelegate Callback);

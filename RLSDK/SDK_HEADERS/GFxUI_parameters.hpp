@@ -1,12 +1,12 @@
 /*
 #############################################################################################
-# Rocket League (1.0) SDK
-# Generated with the UE3SDKGenerator v2.2.5
+# RocketLeague (1.0.10897.0) SDK
+# Generated with the CodeRedGenerator v1.0.2
 # ========================================================================================= #
 # File: GFxUI_parameters.hpp
 # ========================================================================================= #
 # Credits: TheFeckless, ItsBranK
-# Links: www.github.com/itsbrank/UE3SDKGenerator, www.twitter.com/itsbrank
+# Links: www.github.com/CodeRedModding/CodeRed-Generator, www.twitter.com/ItsBranK
 #############################################################################################
 */
 #pragma once
@@ -17,7 +17,7 @@
 
 /*
 # ========================================================================================= #
-# Function Parameters
+# Parameters
 # ========================================================================================= #
 */
 
@@ -43,7 +43,7 @@ struct UGFxFSCmdHandler_eventFSCommand_Params
 	class UGFxEvent_FSCommand*                         Event;                                            		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class FString                                      Cmd;                                              		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Arg;                                              		// 0x0020 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0030 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0030 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxInteraction.DebugInputKey
@@ -54,7 +54,7 @@ struct UGFxInteraction_execDebugInputKey_Params
 	struct FName                                       Key;                                              		// 0x0004 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	uint8_t                                            Event;                                            		// 0x000C (0x0001) [0x0000000000000080] (CPF_Parm)    
 	float                                              AmountDepressed;                                  		// 0x0010 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bGamepad : 1;                                     		// 0x0014 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bGamepad : 1;                                     		// 0x0014 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function GFxUI.GFxInteraction.CloseAllMoviePlayers
@@ -103,21 +103,21 @@ struct UGFxInteraction_execGetFocusMovie_Params
 // [0x00020401] 
 struct UGFxMoviePlayer_execSetFullScreen_Params
 {
-	bool                                               bFullScreen : 1;                                  		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bFullScreen : 1;                                  		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function GFxUI.GFxMoviePlayer.IsHidden
 // [0x00020401] 
 struct UGFxMoviePlayer_execIsHidden_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxMoviePlayer.SetHidden
 // [0x00020401] 
 struct UGFxMoviePlayer_execSetHidden_Params
 {
-	bool                                               bHidden : 1;                                      		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bHidden : 1;                                      		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function GFxUI.GFxMoviePlayer.RenderOnce
@@ -136,22 +136,22 @@ struct UGFxMoviePlayer_execUpdateSplitscreenLayout_Params
 // [0x00020001] 
 struct UGFxMoviePlayer_execApplyPriorityVisibilityEffect_Params
 {
-	bool                                               bRemoveEffect : 1;                                		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bRemoveEffect : 1;                                		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function GFxUI.GFxMoviePlayer.ApplyPriorityBlurEffect
 // [0x00020001] 
 struct UGFxMoviePlayer_execApplyPriorityBlurEffect_Params
 {
-	bool                                               bRemoveEffect : 1;                                		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bRemoveEffect : 1;                                		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function GFxUI.GFxMoviePlayer.ApplyPriorityEffect
 // [0x00020803] 
 struct UGFxMoviePlayer_eventApplyPriorityEffect_Params
 {
-	bool                                               bRequestedBlurState : 1;                          		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
-	bool                                               bRequestedHiddenState : 1;                        		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bRequestedBlurState : 1;                          		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bRequestedHiddenState : 1;                        		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function GFxUI.GFxMoviePlayer.PlaySoundFromTheme
@@ -230,7 +230,7 @@ struct UGFxMoviePlayer_eventWidgetUnloaded_Params
 	struct FName                                       WidgetName;                                       		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	struct FName                                       WidgetPath;                                       		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UGFxObject*                                  Widget;                                           		// 0x0010 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxMoviePlayer.WidgetInitialized
@@ -240,7 +240,7 @@ struct UGFxMoviePlayer_eventWidgetInitialized_Params
 	struct FName                                       WidgetName;                                       		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	struct FName                                       WidgetPath;                                       		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UGFxObject*                                  Widget;                                           		// 0x0010 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxMoviePlayer.ActionScriptConstructor
@@ -331,7 +331,7 @@ struct UGFxMoviePlayer_execSetVariableStringArray_Params
 	class FString                                      Path;                                             		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	int32_t                                            Index;                                            		// 0x0010 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	TArray<class FString>                              Arg;                                              		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxMoviePlayer.SetVariableFloatArray
@@ -341,7 +341,7 @@ struct UGFxMoviePlayer_execSetVariableFloatArray_Params
 	class FString                                      Path;                                             		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	int32_t                                            Index;                                            		// 0x0010 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	TArray<float>                                      Arg;                                              		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxMoviePlayer.SetVariableIntArray
@@ -351,7 +351,7 @@ struct UGFxMoviePlayer_execSetVariableIntArray_Params
 	class FString                                      Path;                                             		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	int32_t                                            Index;                                            		// 0x0010 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	TArray<int32_t>                                    Arg;                                              		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxMoviePlayer.SetVariableArray
@@ -361,7 +361,7 @@ struct UGFxMoviePlayer_execSetVariableArray_Params
 	class FString                                      Path;                                             		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	int32_t                                            Index;                                            		// 0x0010 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	TArray<struct FASValue>                            Arg;                                              		// 0x0018 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxMoviePlayer.GetVariableStringArray
@@ -371,7 +371,7 @@ struct UGFxMoviePlayer_execGetVariableStringArray_Params
 	class FString                                      Path;                                             		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	int32_t                                            Index;                                            		// 0x0010 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	TArray<class FString>                              Arg;                                              		// 0x0018 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxMoviePlayer.GetVariableFloatArray
@@ -381,7 +381,7 @@ struct UGFxMoviePlayer_execGetVariableFloatArray_Params
 	class FString                                      Path;                                             		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	int32_t                                            Index;                                            		// 0x0010 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	TArray<float>                                      Arg;                                              		// 0x0018 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxMoviePlayer.GetVariableIntArray
@@ -391,7 +391,7 @@ struct UGFxMoviePlayer_execGetVariableIntArray_Params
 	class FString                                      Path;                                             		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	int32_t                                            Index;                                            		// 0x0010 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	TArray<int32_t>                                    Arg;                                              		// 0x0018 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxMoviePlayer.GetVariableArray
@@ -401,7 +401,7 @@ struct UGFxMoviePlayer_execGetVariableArray_Params
 	class FString                                      Path;                                             		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	int32_t                                            Index;                                            		// 0x0010 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	TArray<struct FASValue>                            Arg;                                              		// 0x0018 (0x0010) [0x0000000000400180] (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0028 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxMoviePlayer.SetVariableObject
@@ -441,7 +441,7 @@ struct UGFxMoviePlayer_execSetVariableNumber_Params
 struct UGFxMoviePlayer_execSetVariableBool_Params
 {
 	class FString                                      Path;                                             		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               B : 1;                                            		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           B : 1;                                            		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function GFxUI.GFxMoviePlayer.SetVariable
@@ -490,7 +490,7 @@ struct UGFxMoviePlayer_execGetVariableNumber_Params
 struct UGFxMoviePlayer_execGetVariableBool_Params
 {
 	class FString                                      Path;                                             		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxMoviePlayer.GetVariable
@@ -515,14 +515,14 @@ struct UGFxMoviePlayer_eventFilterButtonInput_Params
 	int32_t                                            ControllerId;                                     		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	struct FName                                       ButtonName;                                       		// 0x0004 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	uint8_t                                            InputEvent;                                       		// 0x000C (0x0001) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxMoviePlayer.FlushPlayerInput
 // [0x00020401] 
 struct UGFxMoviePlayer_execFlushPlayerInput_Params
 {
-	bool                                               capturekeysonly : 1;                              		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           capturekeysonly : 1;                              		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function GFxUI.GFxMoviePlayer.ClearFocusIgnoreKeys
@@ -555,14 +555,14 @@ struct UGFxMoviePlayer_execAddCaptureKey_Params
 // [0x00020401] 
 struct UGFxMoviePlayer_execSetMovieCanReceiveInput_Params
 {
-	bool                                               bCanReceiveInput : 1;                             		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bCanReceiveInput : 1;                             		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function GFxUI.GFxMoviePlayer.SetMovieCanReceiveFocus
 // [0x00020401] 
 struct UGFxMoviePlayer_execSetMovieCanReceiveFocus_Params
 {
-	bool                                               bCanReceiveFocus : 1;                             		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bCanReceiveFocus : 1;                             		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function GFxUI.GFxMoviePlayer.SetPerspective3D
@@ -633,7 +633,7 @@ struct UGFxMoviePlayer_execSetExternalTexture_Params
 {
 	class FString                                      Resource;                                         		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class UTexture*                                    Texture;                                          		// 0x0010 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxMoviePlayer.SetExternalInterface
@@ -680,14 +680,14 @@ struct UGFxMoviePlayer_eventOnClose_Params
 // [0x00024401] 
 struct UGFxMoviePlayer_execClose_Params
 {
-	bool                                               Unload : 1;                                       		// 0x0000 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           Unload : 1;                                       		// 0x0000 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 };
 
 // Function GFxUI.GFxMoviePlayer.SetPause
 // [0x00024401] 
 struct UGFxMoviePlayer_execSetPause_Params
 {
-	bool                                               bPausePlayback : 1;                               		// 0x0000 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           bPausePlayback : 1;                               		// 0x0000 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 };
 
 // Function GFxUI.GFxMoviePlayer.OnPostAdvance
@@ -715,8 +715,8 @@ struct UGFxMoviePlayer_execAdvance_Params
 // [0x00024C00] 
 struct UGFxMoviePlayer_eventStart_Params
 {
-	bool                                               StartPaused : 1;                                  		// 0x0000 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           StartPaused : 1;                                  		// 0x0000 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxObject.WidgetUnloaded
@@ -726,7 +726,7 @@ struct UGFxObject_eventWidgetUnloaded_Params
 	struct FName                                       WidgetName;                                       		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	struct FName                                       WidgetPath;                                       		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UGFxObject*                                  Widget;                                           		// 0x0010 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxObject.WidgetInitialized
@@ -736,7 +736,7 @@ struct UGFxObject_eventWidgetInitialized_Params
 	struct FName                                       WidgetName;                                       		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	struct FName                                       WidgetPath;                                       		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UGFxObject*                                  Widget;                                           		// 0x0010 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxObject.AttachMovie
@@ -892,7 +892,7 @@ struct UGFxObject_execSetElementMemberBool_Params
 {
 	int32_t                                            Index;                                            		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	class FString                                      Member;                                           		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               B : 1;                                            		// 0x0018 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           B : 1;                                            		// 0x0018 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function GFxUI.GFxObject.SetElementMemberObject
@@ -946,7 +946,7 @@ struct UGFxObject_execGetElementMemberBool_Params
 {
 	int32_t                                            Index;                                            		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
 	class FString                                      Member;                                           		// 0x0008 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxObject.GetElementMemberObject
@@ -990,7 +990,7 @@ struct UGFxObject_execSetElementPosition_Params
 struct UGFxObject_execSetElementVisible_Params
 {
 	int32_t                                            Index;                                            		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               Visible : 1;                                      		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           Visible : 1;                                      		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function GFxUI.GFxObject.SetElementDisplayMatrix
@@ -1054,7 +1054,7 @@ struct UGFxObject_execSetElementFloat_Params
 struct UGFxObject_execSetElementBool_Params
 {
 	int32_t                                            Index;                                            		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               B : 1;                                            		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           B : 1;                                            		// 0x0004 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function GFxUI.GFxObject.SetElementObject
@@ -1102,7 +1102,7 @@ struct UGFxObject_execGetElementFloat_Params
 struct UGFxObject_execGetElementBool_Params
 {
 	int32_t                                            Index;                                            		// 0x0000 (0x0004) [0x0000000000000080] (CPF_Parm)    
-	bool                                               ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxObject.GetElementObject
@@ -1141,7 +1141,7 @@ struct UGFxObject_execGetText_Params
 // [0x00020401] 
 struct UGFxObject_execSetVisible_Params
 {
-	bool                                               Visible : 1;                                      		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           Visible : 1;                                      		// 0x0000 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function GFxUI.GFxObject.SetDisplayMatrix3D
@@ -1207,7 +1207,7 @@ struct UGFxObject_execGetPosition_Params
 {
 	float                                              X;                                                		// 0x0000 (0x0004) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
 	float                                              Y;                                                		// 0x0004 (0x0004) [0x0000000000000180] (CPF_Parm | CPF_OutParm)
-	bool                                               ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxObject.GetDisplayInfo
@@ -1273,7 +1273,7 @@ struct UGFxObject_execSetFloat_Params
 struct UGFxObject_execSetBool_Params
 {
 	class FString                                      Member;                                           		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               B : 1;                                            		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           B : 1;                                            		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 };
 
 // Function GFxUI.GFxObject.Set
@@ -1322,7 +1322,7 @@ struct UGFxObject_execGetFloat_Params
 struct UGFxObject_execGetBool_Params
 {
 	class FString                                      Member;                                           		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxObject.Get
@@ -1337,35 +1337,35 @@ struct UGFxObject_execGet_Params
 // [0x400020802] 
 struct UGFxAction_CloseMovie_eventIsValidLevelSequenceObject_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxAction_GetVariable.IsValidLevelSequenceObject
 // [0x400020802] 
 struct UGFxAction_GetVariable_eventIsValidLevelSequenceObject_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxAction_Invoke.IsValidLevelSequenceObject
 // [0x400020802] 
 struct UGFxAction_Invoke_eventIsValidLevelSequenceObject_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxAction_OpenMovie.IsValidLevelSequenceObject
 // [0x400020802] 
 struct UGFxAction_OpenMovie_eventIsValidLevelSequenceObject_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxAction_SetVariable.IsValidLevelSequenceObject
 // [0x400020802] 
 struct UGFxAction_SetVariable_eventIsValidLevelSequenceObject_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxFSCmdHandler_Kismet.FSCommand
@@ -1376,7 +1376,7 @@ struct UGFxFSCmdHandler_Kismet_eventFSCommand_Params
 	class UGFxEvent_FSCommand*                         Event;                                            		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class FString                                      Cmd;                                              		// 0x0010 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class FString                                      Arg;                                              		// 0x0020 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               ReturnValue : 1;                                  		// 0x0030 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0030 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function GFxUI.GFxClikWidget.ASRemoveAllEventListeners
@@ -1392,9 +1392,9 @@ struct UGFxClikWidget_execAS3AddEventListener_Params
 {
 	class FString                                      Type;                                             		// 0x0000 (0x0010) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
 	class UGFxObject*                                  O;                                                		// 0x0010 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               useCapture : 1;                                   		// 0x0018 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           useCapture : 1;                                   		// 0x0018 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	int32_t                                            listenerPriority;                                 		// 0x001C (0x0004) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
-	bool                                               useWeakReference : 1;                             		// 0x0020 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           useWeakReference : 1;                             		// 0x0020 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 };
 
 // Function GFxUI.GFxClikWidget.ASAddEventListener
@@ -1437,9 +1437,9 @@ struct UGFxClikWidget_execAddEventListener_Params
 {
 	struct FName                                       Type;                                             		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	struct FScriptDelegate                             Listener;                                         		// 0x0008 (0x0018) [0x0000000000400080] (CPF_Parm | CPF_NeedCtorLink)
-	bool                                               useCapture : 1;                                   		// 0x0020 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           useCapture : 1;                                   		// 0x0020 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	int32_t                                            listenerPriority;                                 		// 0x0024 (0x0004) [0x0000000000000090] (CPF_OptionalParm | CPF_Parm)
-	bool                                               useWeakReference : 1;                             		// 0x0028 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
+	uint32_t                                           useWeakReference : 1;                             		// 0x0028 (0x0004) [0x0000000000000090] [0x00000001] (CPF_OptionalParm | CPF_Parm)
 	// class UGFxObject*                                  O;                                                		// 0x0030 (0x0008) [0x0000000000000000]               
 	// class UGFxObject*                                  funcobj;                                          		// 0x0038 (0x0008) [0x0000000000000000]               
 	// class FString                                      Typestring;                                       		// 0x0040 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)

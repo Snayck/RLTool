@@ -1,12 +1,12 @@
 /*
 #############################################################################################
-# Rocket League (1.0) SDK
-# Generated with the UE3SDKGenerator v2.2.5
+# RocketLeague (1.0.10897.0) SDK
+# Generated with the CodeRedGenerator v1.0.2
 # ========================================================================================= #
 # File: OnlineSubsystemEOS_classes.cpp
 # ========================================================================================= #
 # Credits: TheFeckless, ItsBranK
-# Links: www.github.com/itsbrank/UE3SDKGenerator, www.twitter.com/itsbrank
+# Links: www.github.com/CodeRedModding/CodeRed-Generator, www.twitter.com/ItsBranK
 #############################################################################################
 */
 #include "../SdkHeaders.hpp"
@@ -23,7 +23,7 @@
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.TickEOSPlatform
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // float                          DeltaTime                      (CPF_Parm)
 
 void UOnlineSubsystemEOS::TickEOSPlatform(float DeltaTime)
@@ -36,18 +36,15 @@ void UOnlineSubsystemEOS::TickEOSPlatform(float DeltaTime)
 	}
 
 	UOnlineSubsystemEOS_execTickEOSPlatform_Params TickEOSPlatform_Params;
-	memcpy_s(&TickEOSPlatform_Params.DeltaTime, 0x4, &DeltaTime, 0x4);
-
-	uFnTickEOSPlatform->FunctionFlags |= ~0x400;
+	memset(&TickEOSPlatform_Params, 0, sizeof(TickEOSPlatform_Params));
+	memcpy_s(&TickEOSPlatform_Params.DeltaTime, sizeof(TickEOSPlatform_Params.DeltaTime), &DeltaTime, sizeof(DeltaTime));
 
 	this->ProcessEvent(uFnTickEOSPlatform, &TickEOSPlatform_Params, nullptr);
-
-	uFnTickEOSPlatform->FunctionFlags |= 0x400;
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ManuallyTickEOSPlatform
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
 bool UOnlineSubsystemEOS::ManuallyTickEOSPlatform()
@@ -60,19 +57,16 @@ bool UOnlineSubsystemEOS::ManuallyTickEOSPlatform()
 	}
 
 	UOnlineSubsystemEOS_execManuallyTickEOSPlatform_Params ManuallyTickEOSPlatform_Params;
-
-	uFnManuallyTickEOSPlatform->FunctionFlags |= ~0x400;
+	memset(&ManuallyTickEOSPlatform_Params, 0, sizeof(ManuallyTickEOSPlatform_Params));
 
 	this->ProcessEvent(uFnManuallyTickEOSPlatform, &ManuallyTickEOSPlatform_Params, nullptr);
-
-	uFnManuallyTickEOSPlatform->FunctionFlags |= 0x400;
 
 	return ManuallyTickEOSPlatform_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.FormatCurrency
-// [0x00020803] (FUNC_Final | FUNC_RequiredAPI | FUNC_Event | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020803] (FUNC_Final | FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Currency                       (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        Price                          (CPF_Parm)
@@ -87,8 +81,9 @@ class FString UOnlineSubsystemEOS::eventFormatCurrency(class FString Currency, i
 	}
 
 	UOnlineSubsystemEOS_eventFormatCurrency_Params FormatCurrency_Params;
-	memcpy_s(&FormatCurrency_Params.Currency, 0x10, &Currency, 0x10);
-	memcpy_s(&FormatCurrency_Params.Price, 0x4, &Price, 0x4);
+	memset(&FormatCurrency_Params, 0, sizeof(FormatCurrency_Params));
+	memcpy_s(&FormatCurrency_Params.Currency, sizeof(FormatCurrency_Params.Currency), &Currency, sizeof(Currency));
+	memcpy_s(&FormatCurrency_Params.Price, sizeof(FormatCurrency_Params.Price), &Price, sizeof(Price));
 
 	this->ProcessEvent(uFnFormatCurrency, &FormatCurrency_Params, nullptr);
 
@@ -97,7 +92,7 @@ class FString UOnlineSubsystemEOS::eventFormatCurrency(class FString Currency, i
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearMicroTxnResponseDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         ResponseMicroTxnDelegate       (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::ClearMicroTxnResponseDelegate(struct FScriptDelegate ResponseMicroTxnDelegate)
@@ -110,14 +105,15 @@ void UOnlineSubsystemEOS::ClearMicroTxnResponseDelegate(struct FScriptDelegate R
 	}
 
 	UOnlineSubsystemEOS_execClearMicroTxnResponseDelegate_Params ClearMicroTxnResponseDelegate_Params;
-	memcpy_s(&ClearMicroTxnResponseDelegate_Params.ResponseMicroTxnDelegate, 0x18, &ResponseMicroTxnDelegate, 0x18);
+	memset(&ClearMicroTxnResponseDelegate_Params, 0, sizeof(ClearMicroTxnResponseDelegate_Params));
+	memcpy_s(&ClearMicroTxnResponseDelegate_Params.ResponseMicroTxnDelegate, sizeof(ClearMicroTxnResponseDelegate_Params.ResponseMicroTxnDelegate), &ResponseMicroTxnDelegate, sizeof(ResponseMicroTxnDelegate));
 
 	this->ProcessEvent(uFnClearMicroTxnResponseDelegate, &ClearMicroTxnResponseDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.AddMicroTxnResponseDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         ResponseMicroTxnDelegate       (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::AddMicroTxnResponseDelegate(struct FScriptDelegate ResponseMicroTxnDelegate)
@@ -130,14 +126,15 @@ void UOnlineSubsystemEOS::AddMicroTxnResponseDelegate(struct FScriptDelegate Res
 	}
 
 	UOnlineSubsystemEOS_execAddMicroTxnResponseDelegate_Params AddMicroTxnResponseDelegate_Params;
-	memcpy_s(&AddMicroTxnResponseDelegate_Params.ResponseMicroTxnDelegate, 0x18, &ResponseMicroTxnDelegate, 0x18);
+	memset(&AddMicroTxnResponseDelegate_Params, 0, sizeof(AddMicroTxnResponseDelegate_Params));
+	memcpy_s(&AddMicroTxnResponseDelegate_Params.ResponseMicroTxnDelegate, sizeof(AddMicroTxnResponseDelegate_Params.ResponseMicroTxnDelegate), &ResponseMicroTxnDelegate, sizeof(ResponseMicroTxnDelegate));
 
 	this->ProcessEvent(uFnAddMicroTxnResponseDelegate, &AddMicroTxnResponseDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.GetAppPriceInfo
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FScriptDelegate         Callback                       (CPF_Parm | CPF_NeedCtorLink)
 // struct FUniqueNetId            PlayerID                       (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
@@ -153,25 +150,22 @@ bool UOnlineSubsystemEOS::GetAppPriceInfo(struct FScriptDelegate Callback, struc
 	}
 
 	UOnlineSubsystemEOS_execGetAppPriceInfo_Params GetAppPriceInfo_Params;
-	memcpy_s(&GetAppPriceInfo_Params.Callback, 0x18, &Callback, 0x18);
-	memcpy_s(&GetAppPriceInfo_Params.PlayerID, 0x48, &PlayerID, 0x48);
-	memcpy_s(&GetAppPriceInfo_Params.AppNames, 0x10, &AppNames, 0x10);
-
-	uFnGetAppPriceInfo->FunctionFlags |= ~0x400;
+	memset(&GetAppPriceInfo_Params, 0, sizeof(GetAppPriceInfo_Params));
+	memcpy_s(&GetAppPriceInfo_Params.Callback, sizeof(GetAppPriceInfo_Params.Callback), &Callback, sizeof(Callback));
+	memcpy_s(&GetAppPriceInfo_Params.PlayerID, sizeof(GetAppPriceInfo_Params.PlayerID), &PlayerID, sizeof(PlayerID));
+	memcpy_s(&GetAppPriceInfo_Params.AppNames, sizeof(GetAppPriceInfo_Params.AppNames), &AppNames, sizeof(AppNames));
 
 	this->ProcessEvent(uFnGetAppPriceInfo, &GetAppPriceInfo_Params, nullptr);
 
-	uFnGetAppPriceInfo->FunctionFlags |= 0x400;
-
-	memcpy_s(&PlayerID, 0x48, &GetAppPriceInfo_Params.PlayerID, 0x48);
-	memcpy_s(&AppNames, 0x10, &GetAppPriceInfo_Params.AppNames, 0x10);
+	memcpy_s(&PlayerID, sizeof(PlayerID), &GetAppPriceInfo_Params.PlayerID, sizeof(GetAppPriceInfo_Params.PlayerID));
+	memcpy_s(&AppNames, sizeof(AppNames), &GetAppPriceInfo_Params.AppNames, sizeof(GetAppPriceInfo_Params.AppNames));
 
 	return GetAppPriceInfo_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.HandleBootMessage
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
 bool UOnlineSubsystemEOS::HandleBootMessage()
@@ -184,19 +178,16 @@ bool UOnlineSubsystemEOS::HandleBootMessage()
 	}
 
 	UOnlineSubsystemEOS_execHandleBootMessage_Params HandleBootMessage_Params;
-
-	uFnHandleBootMessage->FunctionFlags |= ~0x400;
+	memset(&HandleBootMessage_Params, 0, sizeof(HandleBootMessage_Params));
 
 	this->ProcessEvent(uFnHandleBootMessage, &HandleBootMessage_Params, nullptr);
-
-	uFnHandleBootMessage->FunctionFlags |= 0x400;
 
 	return HandleBootMessage_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.GetOverlayEnabled
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
 bool UOnlineSubsystemEOS::GetOverlayEnabled()
@@ -209,6 +200,7 @@ bool UOnlineSubsystemEOS::GetOverlayEnabled()
 	}
 
 	UOnlineSubsystemEOS_execGetOverlayEnabled_Params GetOverlayEnabled_Params;
+	memset(&GetOverlayEnabled_Params, 0, sizeof(GetOverlayEnabled_Params));
 
 	this->ProcessEvent(uFnGetOverlayEnabled, &GetOverlayEnabled_Params, nullptr);
 
@@ -217,7 +209,7 @@ bool UOnlineSubsystemEOS::GetOverlayEnabled()
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.RefreshNetworkErrorToggle
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
 bool UOnlineSubsystemEOS::RefreshNetworkErrorToggle()
@@ -230,6 +222,7 @@ bool UOnlineSubsystemEOS::RefreshNetworkErrorToggle()
 	}
 
 	UOnlineSubsystemEOS_execRefreshNetworkErrorToggle_Params RefreshNetworkErrorToggle_Params;
+	memset(&RefreshNetworkErrorToggle_Params, 0, sizeof(RefreshNetworkErrorToggle_Params));
 
 	this->ProcessEvent(uFnRefreshNetworkErrorToggle, &RefreshNetworkErrorToggle_Params, nullptr);
 
@@ -238,7 +231,7 @@ bool UOnlineSubsystemEOS::RefreshNetworkErrorToggle()
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearUserRestoredDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         UserRestoredDelegate           (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::ClearUserRestoredDelegate(struct FScriptDelegate UserRestoredDelegate)
@@ -251,14 +244,15 @@ void UOnlineSubsystemEOS::ClearUserRestoredDelegate(struct FScriptDelegate UserR
 	}
 
 	UOnlineSubsystemEOS_execClearUserRestoredDelegate_Params ClearUserRestoredDelegate_Params;
-	memcpy_s(&ClearUserRestoredDelegate_Params.UserRestoredDelegate, 0x18, &UserRestoredDelegate, 0x18);
+	memset(&ClearUserRestoredDelegate_Params, 0, sizeof(ClearUserRestoredDelegate_Params));
+	memcpy_s(&ClearUserRestoredDelegate_Params.UserRestoredDelegate, sizeof(ClearUserRestoredDelegate_Params.UserRestoredDelegate), &UserRestoredDelegate, sizeof(UserRestoredDelegate));
 
 	this->ProcessEvent(uFnClearUserRestoredDelegate, &ClearUserRestoredDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.AddUserRestoredDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         UserRestoredDelegate           (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::AddUserRestoredDelegate(struct FScriptDelegate UserRestoredDelegate)
@@ -271,14 +265,15 @@ void UOnlineSubsystemEOS::AddUserRestoredDelegate(struct FScriptDelegate UserRes
 	}
 
 	UOnlineSubsystemEOS_execAddUserRestoredDelegate_Params AddUserRestoredDelegate_Params;
-	memcpy_s(&AddUserRestoredDelegate_Params.UserRestoredDelegate, 0x18, &UserRestoredDelegate, 0x18);
+	memset(&AddUserRestoredDelegate_Params, 0, sizeof(AddUserRestoredDelegate_Params));
+	memcpy_s(&AddUserRestoredDelegate_Params.UserRestoredDelegate, sizeof(AddUserRestoredDelegate_Params.UserRestoredDelegate), &UserRestoredDelegate, sizeof(UserRestoredDelegate));
 
 	this->ProcessEvent(uFnAddUserRestoredDelegate, &AddUserRestoredDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.OnUserRestored
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        ControllerId                   (CPF_Parm)
 
 void UOnlineSubsystemEOS::OnUserRestored(uint8_t ControllerId)
@@ -291,14 +286,15 @@ void UOnlineSubsystemEOS::OnUserRestored(uint8_t ControllerId)
 	}
 
 	UOnlineSubsystemEOS_execOnUserRestored_Params OnUserRestored_Params;
-	memcpy_s(&OnUserRestored_Params.ControllerId, 0x1, &ControllerId, 0x1);
+	memset(&OnUserRestored_Params, 0, sizeof(OnUserRestored_Params));
+	memcpy_s(&OnUserRestored_Params.ControllerId, sizeof(OnUserRestored_Params.ControllerId), &ControllerId, sizeof(ControllerId));
 
 	this->ProcessEvent(uFnOnUserRestored, &OnUserRestored_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearUserOrphanedDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         UserOrphanedDelegate           (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::ClearUserOrphanedDelegate(struct FScriptDelegate UserOrphanedDelegate)
@@ -311,14 +307,15 @@ void UOnlineSubsystemEOS::ClearUserOrphanedDelegate(struct FScriptDelegate UserO
 	}
 
 	UOnlineSubsystemEOS_execClearUserOrphanedDelegate_Params ClearUserOrphanedDelegate_Params;
-	memcpy_s(&ClearUserOrphanedDelegate_Params.UserOrphanedDelegate, 0x18, &UserOrphanedDelegate, 0x18);
+	memset(&ClearUserOrphanedDelegate_Params, 0, sizeof(ClearUserOrphanedDelegate_Params));
+	memcpy_s(&ClearUserOrphanedDelegate_Params.UserOrphanedDelegate, sizeof(ClearUserOrphanedDelegate_Params.UserOrphanedDelegate), &UserOrphanedDelegate, sizeof(UserOrphanedDelegate));
 
 	this->ProcessEvent(uFnClearUserOrphanedDelegate, &ClearUserOrphanedDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.AddUserOrphanedDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         UserOrphanedDelegate           (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::AddUserOrphanedDelegate(struct FScriptDelegate UserOrphanedDelegate)
@@ -331,14 +328,15 @@ void UOnlineSubsystemEOS::AddUserOrphanedDelegate(struct FScriptDelegate UserOrp
 	}
 
 	UOnlineSubsystemEOS_execAddUserOrphanedDelegate_Params AddUserOrphanedDelegate_Params;
-	memcpy_s(&AddUserOrphanedDelegate_Params.UserOrphanedDelegate, 0x18, &UserOrphanedDelegate, 0x18);
+	memset(&AddUserOrphanedDelegate_Params, 0, sizeof(AddUserOrphanedDelegate_Params));
+	memcpy_s(&AddUserOrphanedDelegate_Params.UserOrphanedDelegate, sizeof(AddUserOrphanedDelegate_Params.UserOrphanedDelegate), &UserOrphanedDelegate, sizeof(UserOrphanedDelegate));
 
 	this->ProcessEvent(uFnAddUserOrphanedDelegate, &AddUserOrphanedDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.OnUserOrphaned
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        ControllerId                   (CPF_Parm)
 
 void UOnlineSubsystemEOS::OnUserOrphaned(uint8_t ControllerId)
@@ -351,14 +349,15 @@ void UOnlineSubsystemEOS::OnUserOrphaned(uint8_t ControllerId)
 	}
 
 	UOnlineSubsystemEOS_execOnUserOrphaned_Params OnUserOrphaned_Params;
-	memcpy_s(&OnUserOrphaned_Params.ControllerId, 0x1, &ControllerId, 0x1);
+	memset(&OnUserOrphaned_Params, 0, sizeof(OnUserOrphaned_Params));
+	memcpy_s(&OnUserOrphaned_Params.ControllerId, sizeof(OnUserOrphaned_Params.ControllerId), &ControllerId, sizeof(ControllerId));
 
 	this->ProcessEvent(uFnOnUserOrphaned, &OnUserOrphaned_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.OpenStoreForItemsAsync
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // TArray<class FString>          Targets                        (CPF_Parm | CPF_NeedCtorLink)
 // struct FScriptDelegate         OnStorePurchaseCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
@@ -373,16 +372,17 @@ void UOnlineSubsystemEOS::OpenStoreForItemsAsync(uint8_t LocalUserNum, TArray<cl
 	}
 
 	UOnlineSubsystemEOS_execOpenStoreForItemsAsync_Params OpenStoreForItemsAsync_Params;
-	memcpy_s(&OpenStoreForItemsAsync_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&OpenStoreForItemsAsync_Params.Targets, 0x10, &Targets, 0x10);
-	memcpy_s(&OpenStoreForItemsAsync_Params.OnStorePurchaseCompleteDelegate, 0x18, &OnStorePurchaseCompleteDelegate, 0x18);
+	memset(&OpenStoreForItemsAsync_Params, 0, sizeof(OpenStoreForItemsAsync_Params));
+	memcpy_s(&OpenStoreForItemsAsync_Params.LocalUserNum, sizeof(OpenStoreForItemsAsync_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&OpenStoreForItemsAsync_Params.Targets, sizeof(OpenStoreForItemsAsync_Params.Targets), &Targets, sizeof(Targets));
+	memcpy_s(&OpenStoreForItemsAsync_Params.OnStorePurchaseCompleteDelegate, sizeof(OpenStoreForItemsAsync_Params.OnStorePurchaseCompleteDelegate), &OnStorePurchaseCompleteDelegate, sizeof(OnStorePurchaseCompleteDelegate));
 
 	this->ProcessEvent(uFnOpenStoreForItemsAsync, &OpenStoreForItemsAsync_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.OnStorePurchaseCompleteDelegate
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 
 void UOnlineSubsystemEOS::OnStorePurchaseCompleteDelegate()
 {
@@ -394,13 +394,14 @@ void UOnlineSubsystemEOS::OnStorePurchaseCompleteDelegate()
 	}
 
 	UOnlineSubsystemEOS_execOnStorePurchaseCompleteDelegate_Params OnStorePurchaseCompleteDelegate_Params;
+	memset(&OnStorePurchaseCompleteDelegate_Params, 0, sizeof(OnStorePurchaseCompleteDelegate_Params));
 
 	this->ProcessEvent(uFnOnStorePurchaseCompleteDelegate, &OnStorePurchaseCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.OpenStoreForItems
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // TArray<class FString>          Targets                        (CPF_Parm | CPF_NeedCtorLink)
 
@@ -414,19 +415,16 @@ void UOnlineSubsystemEOS::OpenStoreForItems(uint8_t LocalUserNum, TArray<class F
 	}
 
 	UOnlineSubsystemEOS_execOpenStoreForItems_Params OpenStoreForItems_Params;
-	memcpy_s(&OpenStoreForItems_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&OpenStoreForItems_Params.Targets, 0x10, &Targets, 0x10);
-
-	uFnOpenStoreForItems->FunctionFlags |= ~0x400;
+	memset(&OpenStoreForItems_Params, 0, sizeof(OpenStoreForItems_Params));
+	memcpy_s(&OpenStoreForItems_Params.LocalUserNum, sizeof(OpenStoreForItems_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&OpenStoreForItems_Params.Targets, sizeof(OpenStoreForItems_Params.Targets), &Targets, sizeof(Targets));
 
 	this->ProcessEvent(uFnOpenStoreForItems, &OpenStoreForItems_Params, nullptr);
-
-	uFnOpenStoreForItems->FunctionFlags |= 0x400;
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.OpenStoreForDLC
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FName                   DLC                            (CPF_Parm)
 
@@ -440,19 +438,20 @@ void UOnlineSubsystemEOS::OpenStoreForDLC(uint8_t LocalUserNum, struct FName DLC
 	}
 
 	UOnlineSubsystemEOS_execOpenStoreForDLC_Params OpenStoreForDLC_Params;
-	memcpy_s(&OpenStoreForDLC_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&OpenStoreForDLC_Params.DLC, 0x8, &DLC, 0x8);
+	memset(&OpenStoreForDLC_Params, 0, sizeof(OpenStoreForDLC_Params));
+	memcpy_s(&OpenStoreForDLC_Params.LocalUserNum, sizeof(OpenStoreForDLC_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&OpenStoreForDLC_Params.DLC, sizeof(OpenStoreForDLC_Params.DLC), &DLC, sizeof(DLC));
 
 	this->ProcessEvent(uFnOpenStoreForDLC, &OpenStoreForDLC_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.OpenErrorDialog
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// uint8_t                        ErrorCode                      (CPF_Parm)
+// EPS4ErrorDialog                ErrorCode                      (CPF_Parm)
 
-void UOnlineSubsystemEOS::OpenErrorDialog(uint8_t LocalUserNum, uint8_t ErrorCode)
+void UOnlineSubsystemEOS::OpenErrorDialog(uint8_t LocalUserNum, EPS4ErrorDialog ErrorCode)
 {
 	static UFunction* uFnOpenErrorDialog = nullptr;
 
@@ -462,21 +461,22 @@ void UOnlineSubsystemEOS::OpenErrorDialog(uint8_t LocalUserNum, uint8_t ErrorCod
 	}
 
 	UOnlineSubsystemEOS_execOpenErrorDialog_Params OpenErrorDialog_Params;
-	memcpy_s(&OpenErrorDialog_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&OpenErrorDialog_Params.ErrorCode, 0x1, &ErrorCode, 0x1);
+	memset(&OpenErrorDialog_Params, 0, sizeof(OpenErrorDialog_Params));
+	memcpy_s(&OpenErrorDialog_Params.LocalUserNum, sizeof(OpenErrorDialog_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&OpenErrorDialog_Params.ErrorCode, sizeof(OpenErrorDialog_Params.ErrorCode), &ErrorCode, sizeof(ErrorCode));
 
 	this->ProcessEvent(uFnOpenErrorDialog, &OpenErrorDialog_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.OpenPS4DisplayMode
-// [0x00024001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// uint8_t                        DisplayMode                    (CPF_Parm)
+// EPS4DisplayMode                DisplayMode                    (CPF_Parm)
 // TArray<class FString>          Targets                        (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        ServiceLabel                   (CPF_OptionalParm | CPF_Parm)
 
-void UOnlineSubsystemEOS::OpenPS4DisplayMode(uint8_t LocalUserNum, uint8_t DisplayMode, TArray<class FString> Targets, int32_t ServiceLabel)
+void UOnlineSubsystemEOS::OpenPS4DisplayMode(uint8_t LocalUserNum, EPS4DisplayMode DisplayMode, TArray<class FString> Targets, int32_t ServiceLabel)
 {
 	static UFunction* uFnOpenPS4DisplayMode = nullptr;
 
@@ -486,17 +486,18 @@ void UOnlineSubsystemEOS::OpenPS4DisplayMode(uint8_t LocalUserNum, uint8_t Displ
 	}
 
 	UOnlineSubsystemEOS_execOpenPS4DisplayMode_Params OpenPS4DisplayMode_Params;
-	memcpy_s(&OpenPS4DisplayMode_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&OpenPS4DisplayMode_Params.DisplayMode, 0x1, &DisplayMode, 0x1);
-	memcpy_s(&OpenPS4DisplayMode_Params.Targets, 0x10, &Targets, 0x10);
-	memcpy_s(&OpenPS4DisplayMode_Params.ServiceLabel, 0x4, &ServiceLabel, 0x4);
+	memset(&OpenPS4DisplayMode_Params, 0, sizeof(OpenPS4DisplayMode_Params));
+	memcpy_s(&OpenPS4DisplayMode_Params.LocalUserNum, sizeof(OpenPS4DisplayMode_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&OpenPS4DisplayMode_Params.DisplayMode, sizeof(OpenPS4DisplayMode_Params.DisplayMode), &DisplayMode, sizeof(DisplayMode));
+	memcpy_s(&OpenPS4DisplayMode_Params.Targets, sizeof(OpenPS4DisplayMode_Params.Targets), &Targets, sizeof(Targets));
+	memcpy_s(&OpenPS4DisplayMode_Params.ServiceLabel, sizeof(OpenPS4DisplayMode_Params.ServiceLabel), &ServiceLabel, sizeof(ServiceLabel));
 
 	this->ProcessEvent(uFnOpenPS4DisplayMode, &OpenPS4DisplayMode_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ResetControllerColor
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // int32_t                        ControllerId                   (CPF_Parm)
 
 void UOnlineSubsystemEOS::ResetControllerColor(int32_t ControllerId)
@@ -509,14 +510,15 @@ void UOnlineSubsystemEOS::ResetControllerColor(int32_t ControllerId)
 	}
 
 	UOnlineSubsystemEOS_execResetControllerColor_Params ResetControllerColor_Params;
-	memcpy_s(&ResetControllerColor_Params.ControllerId, 0x4, &ControllerId, 0x4);
+	memset(&ResetControllerColor_Params, 0, sizeof(ResetControllerColor_Params));
+	memcpy_s(&ResetControllerColor_Params.ControllerId, sizeof(ResetControllerColor_Params.ControllerId), &ControllerId, sizeof(ControllerId));
 
 	this->ProcessEvent(uFnResetControllerColor, &ResetControllerColor_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.SetControllerColor
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // int32_t                        ControllerId                   (CPF_Parm)
 // struct FColor                  NewColor                       (CPF_Parm)
 
@@ -530,15 +532,16 @@ void UOnlineSubsystemEOS::SetControllerColor(int32_t ControllerId, struct FColor
 	}
 
 	UOnlineSubsystemEOS_execSetControllerColor_Params SetControllerColor_Params;
-	memcpy_s(&SetControllerColor_Params.ControllerId, 0x4, &ControllerId, 0x4);
-	memcpy_s(&SetControllerColor_Params.NewColor, 0x4, &NewColor, 0x4);
+	memset(&SetControllerColor_Params, 0, sizeof(SetControllerColor_Params));
+	memcpy_s(&SetControllerColor_Params.ControllerId, sizeof(SetControllerColor_Params.ControllerId), &ControllerId, sizeof(ControllerId));
+	memcpy_s(&SetControllerColor_Params.NewColor, sizeof(SetControllerColor_Params.NewColor), &NewColor, sizeof(NewColor));
 
 	this->ProcessEvent(uFnSetControllerColor, &SetControllerColor_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.InitializeTrophyAPI
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 
 void UOnlineSubsystemEOS::InitializeTrophyAPI()
 {
@@ -550,13 +553,14 @@ void UOnlineSubsystemEOS::InitializeTrophyAPI()
 	}
 
 	UOnlineSubsystemEOS_execInitializeTrophyAPI_Params InitializeTrophyAPI_Params;
+	memset(&InitializeTrophyAPI_Params, 0, sizeof(InitializeTrophyAPI_Params));
 
 	this->ProcessEvent(uFnInitializeTrophyAPI, &InitializeTrophyAPI_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.AnyPlayerChatRestricted
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
 bool UOnlineSubsystemEOS::AnyPlayerChatRestricted()
@@ -569,6 +573,7 @@ bool UOnlineSubsystemEOS::AnyPlayerChatRestricted()
 	}
 
 	UOnlineSubsystemEOS_execAnyPlayerChatRestricted_Params AnyPlayerChatRestricted_Params;
+	memset(&AnyPlayerChatRestricted_Params, 0, sizeof(AnyPlayerChatRestricted_Params));
 
 	this->ProcessEvent(uFnAnyPlayerChatRestricted, &AnyPlayerChatRestricted_Params, nullptr);
 
@@ -576,8 +581,8 @@ bool UOnlineSubsystemEOS::AnyPlayerChatRestricted()
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearUnlockedDLCChangeDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::ClearUnlockedDLCChangeDelegate(struct FScriptDelegate InDelegate)
@@ -590,14 +595,15 @@ void UOnlineSubsystemEOS::ClearUnlockedDLCChangeDelegate(struct FScriptDelegate 
 	}
 
 	UOnlineSubsystemEOS_execClearUnlockedDLCChangeDelegate_Params ClearUnlockedDLCChangeDelegate_Params;
-	memcpy_s(&ClearUnlockedDLCChangeDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&ClearUnlockedDLCChangeDelegate_Params, 0, sizeof(ClearUnlockedDLCChangeDelegate_Params));
+	memcpy_s(&ClearUnlockedDLCChangeDelegate_Params.InDelegate, sizeof(ClearUnlockedDLCChangeDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnClearUnlockedDLCChangeDelegate, &ClearUnlockedDLCChangeDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.AddUnlockedDLCChangeDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::AddUnlockedDLCChangeDelegate(struct FScriptDelegate InDelegate)
@@ -610,14 +616,15 @@ void UOnlineSubsystemEOS::AddUnlockedDLCChangeDelegate(struct FScriptDelegate In
 	}
 
 	UOnlineSubsystemEOS_execAddUnlockedDLCChangeDelegate_Params AddUnlockedDLCChangeDelegate_Params;
-	memcpy_s(&AddUnlockedDLCChangeDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&AddUnlockedDLCChangeDelegate_Params, 0, sizeof(AddUnlockedDLCChangeDelegate_Params));
+	memcpy_s(&AddUnlockedDLCChangeDelegate_Params.InDelegate, sizeof(AddUnlockedDLCChangeDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnAddUnlockedDLCChangeDelegate, &AddUnlockedDLCChangeDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.GetUnlockedDLC
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // TArray<struct FName>           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 
 TArray<struct FName> UOnlineSubsystemEOS::GetUnlockedDLC()
@@ -630,6 +637,7 @@ TArray<struct FName> UOnlineSubsystemEOS::GetUnlockedDLC()
 	}
 
 	UOnlineSubsystemEOS_execGetUnlockedDLC_Params GetUnlockedDLC_Params;
+	memset(&GetUnlockedDLC_Params, 0, sizeof(GetUnlockedDLC_Params));
 
 	this->ProcessEvent(uFnGetUnlockedDLC, &GetUnlockedDLC_Params, nullptr);
 
@@ -638,7 +646,7 @@ TArray<struct FName> UOnlineSubsystemEOS::GetUnlockedDLC()
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.OnUnlockedDLCChange
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 
 void UOnlineSubsystemEOS::OnUnlockedDLCChange()
 {
@@ -650,13 +658,14 @@ void UOnlineSubsystemEOS::OnUnlockedDLCChange()
 	}
 
 	UOnlineSubsystemEOS_execOnUnlockedDLCChange_Params OnUnlockedDLCChange_Params;
+	memset(&OnUnlockedDLCChange_Params, 0, sizeof(OnUnlockedDLCChange_Params));
 
 	this->ProcessEvent(uFnOnUnlockedDLCChange, &OnUnlockedDLCChange_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.UpdateSessionStatusFromPlayers
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // int32_t                        CurrentPlayerCount             (CPF_Parm)
 // int32_t                        numBotPlayers                  (CPF_Parm)
 
@@ -670,15 +679,16 @@ void UOnlineSubsystemEOS::UpdateSessionStatusFromPlayers(int32_t CurrentPlayerCo
 	}
 
 	UOnlineSubsystemEOS_execUpdateSessionStatusFromPlayers_Params UpdateSessionStatusFromPlayers_Params;
-	memcpy_s(&UpdateSessionStatusFromPlayers_Params.CurrentPlayerCount, 0x4, &CurrentPlayerCount, 0x4);
-	memcpy_s(&UpdateSessionStatusFromPlayers_Params.numBotPlayers, 0x4, &numBotPlayers, 0x4);
+	memset(&UpdateSessionStatusFromPlayers_Params, 0, sizeof(UpdateSessionStatusFromPlayers_Params));
+	memcpy_s(&UpdateSessionStatusFromPlayers_Params.CurrentPlayerCount, sizeof(UpdateSessionStatusFromPlayers_Params.CurrentPlayerCount), &CurrentPlayerCount, sizeof(CurrentPlayerCount));
+	memcpy_s(&UpdateSessionStatusFromPlayers_Params.numBotPlayers, sizeof(UpdateSessionStatusFromPlayers_Params.numBotPlayers), &numBotPlayers, sizeof(numBotPlayers));
 
 	this->ProcessEvent(uFnUpdateSessionStatusFromPlayers, &UpdateSessionStatusFromPlayers_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearErrorDialogClosedDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::ClearErrorDialogClosedDelegate(struct FScriptDelegate InDelegate)
@@ -691,14 +701,15 @@ void UOnlineSubsystemEOS::ClearErrorDialogClosedDelegate(struct FScriptDelegate 
 	}
 
 	UOnlineSubsystemEOS_execClearErrorDialogClosedDelegate_Params ClearErrorDialogClosedDelegate_Params;
-	memcpy_s(&ClearErrorDialogClosedDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&ClearErrorDialogClosedDelegate_Params, 0, sizeof(ClearErrorDialogClosedDelegate_Params));
+	memcpy_s(&ClearErrorDialogClosedDelegate_Params.InDelegate, sizeof(ClearErrorDialogClosedDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnClearErrorDialogClosedDelegate, &ClearErrorDialogClosedDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.AddErrorDialogClosedDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::AddErrorDialogClosedDelegate(struct FScriptDelegate InDelegate)
@@ -711,14 +722,15 @@ void UOnlineSubsystemEOS::AddErrorDialogClosedDelegate(struct FScriptDelegate In
 	}
 
 	UOnlineSubsystemEOS_execAddErrorDialogClosedDelegate_Params AddErrorDialogClosedDelegate_Params;
-	memcpy_s(&AddErrorDialogClosedDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&AddErrorDialogClosedDelegate_Params, 0, sizeof(AddErrorDialogClosedDelegate_Params));
+	memcpy_s(&AddErrorDialogClosedDelegate_Params.InDelegate, sizeof(AddErrorDialogClosedDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnAddErrorDialogClosedDelegate, &AddErrorDialogClosedDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.OnErrorDialogClosed
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // int32_t                        LocalUserNum                   (CPF_Parm)
 
 void UOnlineSubsystemEOS::OnErrorDialogClosed(int32_t LocalUserNum)
@@ -731,14 +743,15 @@ void UOnlineSubsystemEOS::OnErrorDialogClosed(int32_t LocalUserNum)
 	}
 
 	UOnlineSubsystemEOS_execOnErrorDialogClosed_Params OnErrorDialogClosed_Params;
-	memcpy_s(&OnErrorDialogClosed_Params.LocalUserNum, 0x4, &LocalUserNum, 0x4);
+	memset(&OnErrorDialogClosed_Params, 0, sizeof(OnErrorDialogClosed_Params));
+	memcpy_s(&OnErrorDialogClosed_Params.LocalUserNum, sizeof(OnErrorDialogClosed_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnOnErrorDialogClosed, &OnErrorDialogClosed_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearCommerceDialogClosedDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::ClearCommerceDialogClosedDelegate(struct FScriptDelegate InDelegate)
@@ -751,14 +764,15 @@ void UOnlineSubsystemEOS::ClearCommerceDialogClosedDelegate(struct FScriptDelega
 	}
 
 	UOnlineSubsystemEOS_execClearCommerceDialogClosedDelegate_Params ClearCommerceDialogClosedDelegate_Params;
-	memcpy_s(&ClearCommerceDialogClosedDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&ClearCommerceDialogClosedDelegate_Params, 0, sizeof(ClearCommerceDialogClosedDelegate_Params));
+	memcpy_s(&ClearCommerceDialogClosedDelegate_Params.InDelegate, sizeof(ClearCommerceDialogClosedDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnClearCommerceDialogClosedDelegate, &ClearCommerceDialogClosedDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.AddCommerceDialogClosedDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::AddCommerceDialogClosedDelegate(struct FScriptDelegate InDelegate)
@@ -771,14 +785,15 @@ void UOnlineSubsystemEOS::AddCommerceDialogClosedDelegate(struct FScriptDelegate
 	}
 
 	UOnlineSubsystemEOS_execAddCommerceDialogClosedDelegate_Params AddCommerceDialogClosedDelegate_Params;
-	memcpy_s(&AddCommerceDialogClosedDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&AddCommerceDialogClosedDelegate_Params, 0, sizeof(AddCommerceDialogClosedDelegate_Params));
+	memcpy_s(&AddCommerceDialogClosedDelegate_Params.InDelegate, sizeof(AddCommerceDialogClosedDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnAddCommerceDialogClosedDelegate, &AddCommerceDialogClosedDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.OnCommerceDialogClosed
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 
 void UOnlineSubsystemEOS::OnCommerceDialogClosed()
 {
@@ -790,16 +805,17 @@ void UOnlineSubsystemEOS::OnCommerceDialogClosed()
 	}
 
 	UOnlineSubsystemEOS_execOnCommerceDialogClosed_Params OnCommerceDialogClosed_Params;
+	memset(&OnCommerceDialogClosed_Params, 0, sizeof(OnCommerceDialogClosed_Params));
 
 	this->ProcessEvent(uFnOnCommerceDialogClosed, &OnCommerceDialogClosed_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.GetCurrentConnectionStatus
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
-// uint8_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
+// EOnlineServerConnectionStatus  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
-uint8_t UOnlineSubsystemEOS::GetCurrentConnectionStatus()
+EOnlineServerConnectionStatus UOnlineSubsystemEOS::GetCurrentConnectionStatus()
 {
 	static UFunction* uFnGetCurrentConnectionStatus = nullptr;
 
@@ -809,6 +825,7 @@ uint8_t UOnlineSubsystemEOS::GetCurrentConnectionStatus()
 	}
 
 	UOnlineSubsystemEOS_execGetCurrentConnectionStatus_Params GetCurrentConnectionStatus_Params;
+	memset(&GetCurrentConnectionStatus_Params, 0, sizeof(GetCurrentConnectionStatus_Params));
 
 	this->ProcessEvent(uFnGetCurrentConnectionStatus, &GetCurrentConnectionStatus_Params, nullptr);
 
@@ -817,7 +834,7 @@ uint8_t UOnlineSubsystemEOS::GetCurrentConnectionStatus()
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearCloseKickPlayerDialogDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::ClearCloseKickPlayerDialogDelegate(struct FScriptDelegate InDelegate)
@@ -830,14 +847,15 @@ void UOnlineSubsystemEOS::ClearCloseKickPlayerDialogDelegate(struct FScriptDeleg
 	}
 
 	UOnlineSubsystemEOS_execClearCloseKickPlayerDialogDelegate_Params ClearCloseKickPlayerDialogDelegate_Params;
-	memcpy_s(&ClearCloseKickPlayerDialogDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&ClearCloseKickPlayerDialogDelegate_Params, 0, sizeof(ClearCloseKickPlayerDialogDelegate_Params));
+	memcpy_s(&ClearCloseKickPlayerDialogDelegate_Params.InDelegate, sizeof(ClearCloseKickPlayerDialogDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnClearCloseKickPlayerDialogDelegate, &ClearCloseKickPlayerDialogDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.AddCloseKickPlayerDialogDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::AddCloseKickPlayerDialogDelegate(struct FScriptDelegate InDelegate)
@@ -850,14 +868,15 @@ void UOnlineSubsystemEOS::AddCloseKickPlayerDialogDelegate(struct FScriptDelegat
 	}
 
 	UOnlineSubsystemEOS_execAddCloseKickPlayerDialogDelegate_Params AddCloseKickPlayerDialogDelegate_Params;
-	memcpy_s(&AddCloseKickPlayerDialogDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&AddCloseKickPlayerDialogDelegate_Params, 0, sizeof(AddCloseKickPlayerDialogDelegate_Params));
+	memcpy_s(&AddCloseKickPlayerDialogDelegate_Params.InDelegate, sizeof(AddCloseKickPlayerDialogDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnAddCloseKickPlayerDialogDelegate, &AddCloseKickPlayerDialogDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.OnCloseKickPlayerDialog
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 
 void UOnlineSubsystemEOS::OnCloseKickPlayerDialog()
 {
@@ -869,17 +888,18 @@ void UOnlineSubsystemEOS::OnCloseKickPlayerDialog()
 	}
 
 	UOnlineSubsystemEOS_execOnCloseKickPlayerDialog_Params OnCloseKickPlayerDialog_Params;
+	memset(&OnCloseKickPlayerDialog_Params, 0, sizeof(OnCloseKickPlayerDialog_Params));
 
 	this->ProcessEvent(uFnOnCloseKickPlayerDialog, &OnCloseKickPlayerDialog_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.OnPlayerTalkingStateChange
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FUniqueNetId            Player                         (CPF_Parm | CPF_NeedCtorLink)
-// unsigned long                  bIsTalking                     (CPF_Parm)
+// bool                           bIsTalking                     (CPF_Parm)
 
-void UOnlineSubsystemEOS::OnPlayerTalkingStateChange(struct FUniqueNetId Player, unsigned long bIsTalking)
+void UOnlineSubsystemEOS::OnPlayerTalkingStateChange(struct FUniqueNetId Player, bool bIsTalking)
 {
 	static UFunction* uFnOnPlayerTalkingStateChange = nullptr;
 
@@ -889,7 +909,8 @@ void UOnlineSubsystemEOS::OnPlayerTalkingStateChange(struct FUniqueNetId Player,
 	}
 
 	UOnlineSubsystemEOS_execOnPlayerTalkingStateChange_Params OnPlayerTalkingStateChange_Params;
-	memcpy_s(&OnPlayerTalkingStateChange_Params.Player, 0x48, &Player, 0x48);
+	memset(&OnPlayerTalkingStateChange_Params, 0, sizeof(OnPlayerTalkingStateChange_Params));
+	memcpy_s(&OnPlayerTalkingStateChange_Params.Player, sizeof(OnPlayerTalkingStateChange_Params.Player), &Player, sizeof(Player));
 	OnPlayerTalkingStateChange_Params.bIsTalking = bIsTalking;
 
 	this->ProcessEvent(uFnOnPlayerTalkingStateChange, &OnPlayerTalkingStateChange_Params, nullptr);
@@ -897,7 +918,7 @@ void UOnlineSubsystemEOS::OnPlayerTalkingStateChange(struct FUniqueNetId Player,
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.SetVoiceReceiveVolume
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // float                          VoiceVolume                    (CPF_Parm)
 
@@ -911,7 +932,8 @@ bool UOnlineSubsystemEOS::SetVoiceReceiveVolume(float VoiceVolume)
 	}
 
 	UOnlineSubsystemEOS_execSetVoiceReceiveVolume_Params SetVoiceReceiveVolume_Params;
-	memcpy_s(&SetVoiceReceiveVolume_Params.VoiceVolume, 0x4, &VoiceVolume, 0x4);
+	memset(&SetVoiceReceiveVolume_Params, 0, sizeof(SetVoiceReceiveVolume_Params));
+	memcpy_s(&SetVoiceReceiveVolume_Params.VoiceVolume, sizeof(SetVoiceReceiveVolume_Params.VoiceVolume), &VoiceVolume, sizeof(VoiceVolume));
 
 	this->ProcessEvent(uFnSetVoiceReceiveVolume, &SetVoiceReceiveVolume_Params, nullptr);
 
@@ -919,8 +941,8 @@ bool UOnlineSubsystemEOS::SetVoiceReceiveVolume(float VoiceVolume)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.GetDLCPurchaseTime
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FName                   AppName                        (CPF_Parm)
 
@@ -934,7 +956,8 @@ int32_t UOnlineSubsystemEOS::GetDLCPurchaseTime(struct FName AppName)
 	}
 
 	UOnlineSubsystemEOS_execGetDLCPurchaseTime_Params GetDLCPurchaseTime_Params;
-	memcpy_s(&GetDLCPurchaseTime_Params.AppName, 0x8, &AppName, 0x8);
+	memset(&GetDLCPurchaseTime_Params, 0, sizeof(GetDLCPurchaseTime_Params));
+	memcpy_s(&GetDLCPurchaseTime_Params.AppName, sizeof(GetDLCPurchaseTime_Params.AppName), &AppName, sizeof(AppName));
 
 	this->ProcessEvent(uFnGetDLCPurchaseTime, &GetDLCPurchaseTime_Params, nullptr);
 
@@ -943,7 +966,7 @@ int32_t UOnlineSubsystemEOS::GetDLCPurchaseTime(struct FName AppName)
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.SaveKey
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  ProductKey                     (CPF_Parm | CPF_NeedCtorLink)
 
@@ -957,7 +980,8 @@ bool UOnlineSubsystemEOS::SaveKey(class FString ProductKey)
 	}
 
 	UOnlineSubsystemEOS_execSaveKey_Params SaveKey_Params;
-	memcpy_s(&SaveKey_Params.ProductKey, 0x10, &ProductKey, 0x10);
+	memset(&SaveKey_Params, 0, sizeof(SaveKey_Params));
+	memcpy_s(&SaveKey_Params.ProductKey, sizeof(SaveKey_Params.ProductKey), &ProductKey, sizeof(ProductKey));
 
 	this->ProcessEvent(uFnSaveKey, &SaveKey_Params, nullptr);
 
@@ -966,7 +990,7 @@ bool UOnlineSubsystemEOS::SaveKey(class FString ProductKey)
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.GetLocalAccountNames
 // [0x00420001] (FUNC_Final | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // TArray<class FString>          Accounts                       (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
@@ -980,18 +1004,19 @@ bool UOnlineSubsystemEOS::GetLocalAccountNames(TArray<class FString>& Accounts)
 	}
 
 	UOnlineSubsystemEOS_execGetLocalAccountNames_Params GetLocalAccountNames_Params;
-	memcpy_s(&GetLocalAccountNames_Params.Accounts, 0x10, &Accounts, 0x10);
+	memset(&GetLocalAccountNames_Params, 0, sizeof(GetLocalAccountNames_Params));
+	memcpy_s(&GetLocalAccountNames_Params.Accounts, sizeof(GetLocalAccountNames_Params.Accounts), &Accounts, sizeof(Accounts));
 
 	this->ProcessEvent(uFnGetLocalAccountNames, &GetLocalAccountNames_Params, nullptr);
 
-	memcpy_s(&Accounts, 0x10, &GetLocalAccountNames_Params.Accounts, 0x10);
+	memcpy_s(&Accounts, sizeof(Accounts), &GetLocalAccountNames_Params.Accounts, sizeof(GetLocalAccountNames_Params.Accounts));
 
 	return GetLocalAccountNames_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.DeleteLocalAccount
-// [0x00024001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Username                       (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Password                       (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
@@ -1006,8 +1031,9 @@ bool UOnlineSubsystemEOS::DeleteLocalAccount(class FString Username, class FStri
 	}
 
 	UOnlineSubsystemEOS_execDeleteLocalAccount_Params DeleteLocalAccount_Params;
-	memcpy_s(&DeleteLocalAccount_Params.Username, 0x10, &Username, 0x10);
-	memcpy_s(&DeleteLocalAccount_Params.Password, 0x10, &Password, 0x10);
+	memset(&DeleteLocalAccount_Params, 0, sizeof(DeleteLocalAccount_Params));
+	memcpy_s(&DeleteLocalAccount_Params.Username, sizeof(DeleteLocalAccount_Params.Username), &Username, sizeof(Username));
+	memcpy_s(&DeleteLocalAccount_Params.Password, sizeof(DeleteLocalAccount_Params.Password), &Password, sizeof(Password));
 
 	this->ProcessEvent(uFnDeleteLocalAccount, &DeleteLocalAccount_Params, nullptr);
 
@@ -1015,8 +1041,8 @@ bool UOnlineSubsystemEOS::DeleteLocalAccount(class FString Username, class FStri
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.RenameLocalAccount
-// [0x00024001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  NewUserName                    (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  OldUserName                    (CPF_Parm | CPF_NeedCtorLink)
@@ -1032,9 +1058,10 @@ bool UOnlineSubsystemEOS::RenameLocalAccount(class FString NewUserName, class FS
 	}
 
 	UOnlineSubsystemEOS_execRenameLocalAccount_Params RenameLocalAccount_Params;
-	memcpy_s(&RenameLocalAccount_Params.NewUserName, 0x10, &NewUserName, 0x10);
-	memcpy_s(&RenameLocalAccount_Params.OldUserName, 0x10, &OldUserName, 0x10);
-	memcpy_s(&RenameLocalAccount_Params.Password, 0x10, &Password, 0x10);
+	memset(&RenameLocalAccount_Params, 0, sizeof(RenameLocalAccount_Params));
+	memcpy_s(&RenameLocalAccount_Params.NewUserName, sizeof(RenameLocalAccount_Params.NewUserName), &NewUserName, sizeof(NewUserName));
+	memcpy_s(&RenameLocalAccount_Params.OldUserName, sizeof(RenameLocalAccount_Params.OldUserName), &OldUserName, sizeof(OldUserName));
+	memcpy_s(&RenameLocalAccount_Params.Password, sizeof(RenameLocalAccount_Params.Password), &Password, sizeof(Password));
 
 	this->ProcessEvent(uFnRenameLocalAccount, &RenameLocalAccount_Params, nullptr);
 
@@ -1042,8 +1069,8 @@ bool UOnlineSubsystemEOS::RenameLocalAccount(class FString NewUserName, class FS
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.CreateLocalAccount
-// [0x00024001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Username                       (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Password                       (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
@@ -1058,8 +1085,9 @@ bool UOnlineSubsystemEOS::CreateLocalAccount(class FString Username, class FStri
 	}
 
 	UOnlineSubsystemEOS_execCreateLocalAccount_Params CreateLocalAccount_Params;
-	memcpy_s(&CreateLocalAccount_Params.Username, 0x10, &Username, 0x10);
-	memcpy_s(&CreateLocalAccount_Params.Password, 0x10, &Password, 0x10);
+	memset(&CreateLocalAccount_Params, 0, sizeof(CreateLocalAccount_Params));
+	memcpy_s(&CreateLocalAccount_Params.Username, sizeof(CreateLocalAccount_Params.Username), &Username, sizeof(Username));
+	memcpy_s(&CreateLocalAccount_Params.Password, sizeof(CreateLocalAccount_Params.Password), &Password, sizeof(Password));
 
 	this->ProcessEvent(uFnCreateLocalAccount, &CreateLocalAccount_Params, nullptr);
 
@@ -1068,7 +1096,7 @@ bool UOnlineSubsystemEOS::CreateLocalAccount(class FString Username, class FStri
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearCreateOnlineAccountCompletedDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         AccountCreateDelegate          (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::ClearCreateOnlineAccountCompletedDelegate(struct FScriptDelegate AccountCreateDelegate)
@@ -1081,14 +1109,15 @@ void UOnlineSubsystemEOS::ClearCreateOnlineAccountCompletedDelegate(struct FScri
 	}
 
 	UOnlineSubsystemEOS_execClearCreateOnlineAccountCompletedDelegate_Params ClearCreateOnlineAccountCompletedDelegate_Params;
-	memcpy_s(&ClearCreateOnlineAccountCompletedDelegate_Params.AccountCreateDelegate, 0x18, &AccountCreateDelegate, 0x18);
+	memset(&ClearCreateOnlineAccountCompletedDelegate_Params, 0, sizeof(ClearCreateOnlineAccountCompletedDelegate_Params));
+	memcpy_s(&ClearCreateOnlineAccountCompletedDelegate_Params.AccountCreateDelegate, sizeof(ClearCreateOnlineAccountCompletedDelegate_Params.AccountCreateDelegate), &AccountCreateDelegate, sizeof(AccountCreateDelegate));
 
 	this->ProcessEvent(uFnClearCreateOnlineAccountCompletedDelegate, &ClearCreateOnlineAccountCompletedDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.AddCreateOnlineAccountCompletedDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         AccountCreateDelegate          (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::AddCreateOnlineAccountCompletedDelegate(struct FScriptDelegate AccountCreateDelegate)
@@ -1101,17 +1130,18 @@ void UOnlineSubsystemEOS::AddCreateOnlineAccountCompletedDelegate(struct FScript
 	}
 
 	UOnlineSubsystemEOS_execAddCreateOnlineAccountCompletedDelegate_Params AddCreateOnlineAccountCompletedDelegate_Params;
-	memcpy_s(&AddCreateOnlineAccountCompletedDelegate_Params.AccountCreateDelegate, 0x18, &AccountCreateDelegate, 0x18);
+	memset(&AddCreateOnlineAccountCompletedDelegate_Params, 0, sizeof(AddCreateOnlineAccountCompletedDelegate_Params));
+	memcpy_s(&AddCreateOnlineAccountCompletedDelegate_Params.AccountCreateDelegate, sizeof(AddCreateOnlineAccountCompletedDelegate_Params.AccountCreateDelegate), &AccountCreateDelegate, sizeof(AccountCreateDelegate));
 
 	this->ProcessEvent(uFnAddCreateOnlineAccountCompletedDelegate, &AddCreateOnlineAccountCompletedDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.OnCreateOnlineAccountCompleted
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// uint8_t                        ErrorStatus                    (CPF_Parm)
+// Parameter Info:
+// EOnlineAccountCreateStatus     ErrorStatus                    (CPF_Parm)
 
-void UOnlineSubsystemEOS::OnCreateOnlineAccountCompleted(uint8_t ErrorStatus)
+void UOnlineSubsystemEOS::OnCreateOnlineAccountCompleted(EOnlineAccountCreateStatus ErrorStatus)
 {
 	static UFunction* uFnOnCreateOnlineAccountCompleted = nullptr;
 
@@ -1121,14 +1151,15 @@ void UOnlineSubsystemEOS::OnCreateOnlineAccountCompleted(uint8_t ErrorStatus)
 	}
 
 	UOnlineSubsystemEOS_execOnCreateOnlineAccountCompleted_Params OnCreateOnlineAccountCompleted_Params;
-	memcpy_s(&OnCreateOnlineAccountCompleted_Params.ErrorStatus, 0x1, &ErrorStatus, 0x1);
+	memset(&OnCreateOnlineAccountCompleted_Params, 0, sizeof(OnCreateOnlineAccountCompleted_Params));
+	memcpy_s(&OnCreateOnlineAccountCompleted_Params.ErrorStatus, sizeof(OnCreateOnlineAccountCompleted_Params.ErrorStatus), &ErrorStatus, sizeof(ErrorStatus));
 
 	this->ProcessEvent(uFnOnCreateOnlineAccountCompleted, &OnCreateOnlineAccountCompleted_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.CreateOnlineAccount
-// [0x00024001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Username                       (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Password                       (CPF_Parm | CPF_NeedCtorLink)
@@ -1145,10 +1176,11 @@ bool UOnlineSubsystemEOS::CreateOnlineAccount(class FString Username, class FStr
 	}
 
 	UOnlineSubsystemEOS_execCreateOnlineAccount_Params CreateOnlineAccount_Params;
-	memcpy_s(&CreateOnlineAccount_Params.Username, 0x10, &Username, 0x10);
-	memcpy_s(&CreateOnlineAccount_Params.Password, 0x10, &Password, 0x10);
-	memcpy_s(&CreateOnlineAccount_Params.EmailAddress, 0x10, &EmailAddress, 0x10);
-	memcpy_s(&CreateOnlineAccount_Params.ProductKey, 0x10, &ProductKey, 0x10);
+	memset(&CreateOnlineAccount_Params, 0, sizeof(CreateOnlineAccount_Params));
+	memcpy_s(&CreateOnlineAccount_Params.Username, sizeof(CreateOnlineAccount_Params.Username), &Username, sizeof(Username));
+	memcpy_s(&CreateOnlineAccount_Params.Password, sizeof(CreateOnlineAccount_Params.Password), &Password, sizeof(Password));
+	memcpy_s(&CreateOnlineAccount_Params.EmailAddress, sizeof(CreateOnlineAccount_Params.EmailAddress), &EmailAddress, sizeof(EmailAddress));
+	memcpy_s(&CreateOnlineAccount_Params.ProductKey, sizeof(CreateOnlineAccount_Params.ProductKey), &ProductKey, sizeof(ProductKey));
 
 	this->ProcessEvent(uFnCreateOnlineAccount, &CreateOnlineAccount_Params, nullptr);
 
@@ -1156,8 +1188,8 @@ bool UOnlineSubsystemEOS::CreateOnlineAccount(class FString Username, class FStr
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.IsKeyValid
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
 bool UOnlineSubsystemEOS::IsKeyValid()
@@ -1170,6 +1202,7 @@ bool UOnlineSubsystemEOS::IsKeyValid()
 	}
 
 	UOnlineSubsystemEOS_execIsKeyValid_Params IsKeyValid_Params;
+	memset(&IsKeyValid_Params, 0, sizeof(IsKeyValid_Params));
 
 	this->ProcessEvent(uFnIsKeyValid, &IsKeyValid_Params, nullptr);
 
@@ -1178,7 +1211,7 @@ bool UOnlineSubsystemEOS::IsKeyValid()
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearStorageDeviceChangeDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         StorageDeviceChangeDelegate    (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::ClearStorageDeviceChangeDelegate(struct FScriptDelegate StorageDeviceChangeDelegate)
@@ -1191,14 +1224,15 @@ void UOnlineSubsystemEOS::ClearStorageDeviceChangeDelegate(struct FScriptDelegat
 	}
 
 	UOnlineSubsystemEOS_execClearStorageDeviceChangeDelegate_Params ClearStorageDeviceChangeDelegate_Params;
-	memcpy_s(&ClearStorageDeviceChangeDelegate_Params.StorageDeviceChangeDelegate, 0x18, &StorageDeviceChangeDelegate, 0x18);
+	memset(&ClearStorageDeviceChangeDelegate_Params, 0, sizeof(ClearStorageDeviceChangeDelegate_Params));
+	memcpy_s(&ClearStorageDeviceChangeDelegate_Params.StorageDeviceChangeDelegate, sizeof(ClearStorageDeviceChangeDelegate_Params.StorageDeviceChangeDelegate), &StorageDeviceChangeDelegate, sizeof(StorageDeviceChangeDelegate));
 
 	this->ProcessEvent(uFnClearStorageDeviceChangeDelegate, &ClearStorageDeviceChangeDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.AddStorageDeviceChangeDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         StorageDeviceChangeDelegate    (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::AddStorageDeviceChangeDelegate(struct FScriptDelegate StorageDeviceChangeDelegate)
@@ -1211,14 +1245,15 @@ void UOnlineSubsystemEOS::AddStorageDeviceChangeDelegate(struct FScriptDelegate 
 	}
 
 	UOnlineSubsystemEOS_execAddStorageDeviceChangeDelegate_Params AddStorageDeviceChangeDelegate_Params;
-	memcpy_s(&AddStorageDeviceChangeDelegate_Params.StorageDeviceChangeDelegate, 0x18, &StorageDeviceChangeDelegate, 0x18);
+	memset(&AddStorageDeviceChangeDelegate_Params, 0, sizeof(AddStorageDeviceChangeDelegate_Params));
+	memcpy_s(&AddStorageDeviceChangeDelegate_Params.StorageDeviceChangeDelegate, sizeof(AddStorageDeviceChangeDelegate_Params.StorageDeviceChangeDelegate), &StorageDeviceChangeDelegate, sizeof(StorageDeviceChangeDelegate));
 
 	this->ProcessEvent(uFnAddStorageDeviceChangeDelegate, &AddStorageDeviceChangeDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.OnStorageDeviceChange
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 
 void UOnlineSubsystemEOS::OnStorageDeviceChange()
 {
@@ -1230,16 +1265,17 @@ void UOnlineSubsystemEOS::OnStorageDeviceChange()
 	}
 
 	UOnlineSubsystemEOS_execOnStorageDeviceChange_Params OnStorageDeviceChange_Params;
+	memset(&OnStorageDeviceChange_Params, 0, sizeof(OnStorageDeviceChange_Params));
 
 	this->ProcessEvent(uFnOnStorageDeviceChange, &OnStorageDeviceChange_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.GetNATType
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
-// uint8_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
+// ENATType                       ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
-uint8_t UOnlineSubsystemEOS::GetNATType()
+ENATType UOnlineSubsystemEOS::GetNATType()
 {
 	static UFunction* uFnGetNATType = nullptr;
 
@@ -1249,6 +1285,7 @@ uint8_t UOnlineSubsystemEOS::GetNATType()
 	}
 
 	UOnlineSubsystemEOS_execGetNATType_Params GetNATType_Params;
+	memset(&GetNATType_Params, 0, sizeof(GetNATType_Params));
 
 	this->ProcessEvent(uFnGetNATType, &GetNATType_Params, nullptr);
 
@@ -1257,7 +1294,7 @@ uint8_t UOnlineSubsystemEOS::GetNATType()
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearConnectionStatusChangeDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         ConnectionStatusDelegate       (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::ClearConnectionStatusChangeDelegate(struct FScriptDelegate ConnectionStatusDelegate)
@@ -1270,14 +1307,15 @@ void UOnlineSubsystemEOS::ClearConnectionStatusChangeDelegate(struct FScriptDele
 	}
 
 	UOnlineSubsystemEOS_execClearConnectionStatusChangeDelegate_Params ClearConnectionStatusChangeDelegate_Params;
-	memcpy_s(&ClearConnectionStatusChangeDelegate_Params.ConnectionStatusDelegate, 0x18, &ConnectionStatusDelegate, 0x18);
+	memset(&ClearConnectionStatusChangeDelegate_Params, 0, sizeof(ClearConnectionStatusChangeDelegate_Params));
+	memcpy_s(&ClearConnectionStatusChangeDelegate_Params.ConnectionStatusDelegate, sizeof(ClearConnectionStatusChangeDelegate_Params.ConnectionStatusDelegate), &ConnectionStatusDelegate, sizeof(ConnectionStatusDelegate));
 
 	this->ProcessEvent(uFnClearConnectionStatusChangeDelegate, &ClearConnectionStatusChangeDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.AddConnectionStatusChangeDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         ConnectionStatusDelegate       (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::AddConnectionStatusChangeDelegate(struct FScriptDelegate ConnectionStatusDelegate)
@@ -1290,17 +1328,18 @@ void UOnlineSubsystemEOS::AddConnectionStatusChangeDelegate(struct FScriptDelega
 	}
 
 	UOnlineSubsystemEOS_execAddConnectionStatusChangeDelegate_Params AddConnectionStatusChangeDelegate_Params;
-	memcpy_s(&AddConnectionStatusChangeDelegate_Params.ConnectionStatusDelegate, 0x18, &ConnectionStatusDelegate, 0x18);
+	memset(&AddConnectionStatusChangeDelegate_Params, 0, sizeof(AddConnectionStatusChangeDelegate_Params));
+	memcpy_s(&AddConnectionStatusChangeDelegate_Params.ConnectionStatusDelegate, sizeof(AddConnectionStatusChangeDelegate_Params.ConnectionStatusDelegate), &ConnectionStatusDelegate, sizeof(ConnectionStatusDelegate));
 
 	this->ProcessEvent(uFnAddConnectionStatusChangeDelegate, &AddConnectionStatusChangeDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.OnConnectionStatusChange
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// uint8_t                        ConnectionStatus               (CPF_Parm)
+// Parameter Info:
+// EOnlineServerConnectionStatus  ConnectionStatus               (CPF_Parm)
 
-void UOnlineSubsystemEOS::OnConnectionStatusChange(uint8_t ConnectionStatus)
+void UOnlineSubsystemEOS::OnConnectionStatusChange(EOnlineServerConnectionStatus ConnectionStatus)
 {
 	static UFunction* uFnOnConnectionStatusChange = nullptr;
 
@@ -1310,14 +1349,15 @@ void UOnlineSubsystemEOS::OnConnectionStatusChange(uint8_t ConnectionStatus)
 	}
 
 	UOnlineSubsystemEOS_execOnConnectionStatusChange_Params OnConnectionStatusChange_Params;
-	memcpy_s(&OnConnectionStatusChange_Params.ConnectionStatus, 0x1, &ConnectionStatus, 0x1);
+	memset(&OnConnectionStatusChange_Params, 0, sizeof(OnConnectionStatusChange_Params));
+	memcpy_s(&OnConnectionStatusChange_Params.ConnectionStatus, sizeof(OnConnectionStatusChange_Params.ConnectionStatus), &ConnectionStatus, sizeof(ConnectionStatus));
 
 	this->ProcessEvent(uFnOnConnectionStatusChange, &OnConnectionStatusChange_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.IsControllerConnected
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // int32_t                        ControllerId                   (CPF_Parm)
 
@@ -1331,7 +1371,8 @@ bool UOnlineSubsystemEOS::IsControllerConnected(int32_t ControllerId)
 	}
 
 	UOnlineSubsystemEOS_execIsControllerConnected_Params IsControllerConnected_Params;
-	memcpy_s(&IsControllerConnected_Params.ControllerId, 0x4, &ControllerId, 0x4);
+	memset(&IsControllerConnected_Params, 0, sizeof(IsControllerConnected_Params));
+	memcpy_s(&IsControllerConnected_Params.ControllerId, sizeof(IsControllerConnected_Params.ControllerId), &ControllerId, sizeof(ControllerId));
 
 	this->ProcessEvent(uFnIsControllerConnected, &IsControllerConnected_Params, nullptr);
 
@@ -1340,7 +1381,7 @@ bool UOnlineSubsystemEOS::IsControllerConnected(int32_t ControllerId)
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearControllerChangeDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         ControllerChangeDelegate       (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::ClearControllerChangeDelegate(struct FScriptDelegate ControllerChangeDelegate)
@@ -1353,14 +1394,15 @@ void UOnlineSubsystemEOS::ClearControllerChangeDelegate(struct FScriptDelegate C
 	}
 
 	UOnlineSubsystemEOS_execClearControllerChangeDelegate_Params ClearControllerChangeDelegate_Params;
-	memcpy_s(&ClearControllerChangeDelegate_Params.ControllerChangeDelegate, 0x18, &ControllerChangeDelegate, 0x18);
+	memset(&ClearControllerChangeDelegate_Params, 0, sizeof(ClearControllerChangeDelegate_Params));
+	memcpy_s(&ClearControllerChangeDelegate_Params.ControllerChangeDelegate, sizeof(ClearControllerChangeDelegate_Params.ControllerChangeDelegate), &ControllerChangeDelegate, sizeof(ControllerChangeDelegate));
 
 	this->ProcessEvent(uFnClearControllerChangeDelegate, &ClearControllerChangeDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.AddControllerChangeDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         ControllerChangeDelegate       (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::AddControllerChangeDelegate(struct FScriptDelegate ControllerChangeDelegate)
@@ -1373,18 +1415,19 @@ void UOnlineSubsystemEOS::AddControllerChangeDelegate(struct FScriptDelegate Con
 	}
 
 	UOnlineSubsystemEOS_execAddControllerChangeDelegate_Params AddControllerChangeDelegate_Params;
-	memcpy_s(&AddControllerChangeDelegate_Params.ControllerChangeDelegate, 0x18, &ControllerChangeDelegate, 0x18);
+	memset(&AddControllerChangeDelegate_Params, 0, sizeof(AddControllerChangeDelegate_Params));
+	memcpy_s(&AddControllerChangeDelegate_Params.ControllerChangeDelegate, sizeof(AddControllerChangeDelegate_Params.ControllerChangeDelegate), &ControllerChangeDelegate, sizeof(ControllerChangeDelegate));
 
 	this->ProcessEvent(uFnAddControllerChangeDelegate, &AddControllerChangeDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.OnControllerChange
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // int32_t                        ControllerId                   (CPF_Parm)
-// unsigned long                  bIsConnected                   (CPF_Parm)
+// bool                           bIsConnected                   (CPF_Parm)
 
-void UOnlineSubsystemEOS::OnControllerChange(int32_t ControllerId, unsigned long bIsConnected)
+void UOnlineSubsystemEOS::OnControllerChange(int32_t ControllerId, bool bIsConnected)
 {
 	static UFunction* uFnOnControllerChange = nullptr;
 
@@ -1394,7 +1437,8 @@ void UOnlineSubsystemEOS::OnControllerChange(int32_t ControllerId, unsigned long
 	}
 
 	UOnlineSubsystemEOS_execOnControllerChange_Params OnControllerChange_Params;
-	memcpy_s(&OnControllerChange_Params.ControllerId, 0x4, &ControllerId, 0x4);
+	memset(&OnControllerChange_Params, 0, sizeof(OnControllerChange_Params));
+	memcpy_s(&OnControllerChange_Params.ControllerId, sizeof(OnControllerChange_Params.ControllerId), &ControllerId, sizeof(ControllerId));
 	OnControllerChange_Params.bIsConnected = bIsConnected;
 
 	this->ProcessEvent(uFnOnControllerChange, &OnControllerChange_Params, nullptr);
@@ -1402,10 +1446,10 @@ void UOnlineSubsystemEOS::OnControllerChange(int32_t ControllerId, unsigned long
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.SetNetworkNotificationPosition
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
-// uint8_t                        NewPos                         (CPF_Parm)
+// Parameter Info:
+// ENetworkNotificationPosition   NewPos                         (CPF_Parm)
 
-void UOnlineSubsystemEOS::SetNetworkNotificationPosition(uint8_t NewPos)
+void UOnlineSubsystemEOS::SetNetworkNotificationPosition(ENetworkNotificationPosition NewPos)
 {
 	static UFunction* uFnSetNetworkNotificationPosition = nullptr;
 
@@ -1415,17 +1459,18 @@ void UOnlineSubsystemEOS::SetNetworkNotificationPosition(uint8_t NewPos)
 	}
 
 	UOnlineSubsystemEOS_execSetNetworkNotificationPosition_Params SetNetworkNotificationPosition_Params;
-	memcpy_s(&SetNetworkNotificationPosition_Params.NewPos, 0x1, &NewPos, 0x1);
+	memset(&SetNetworkNotificationPosition_Params, 0, sizeof(SetNetworkNotificationPosition_Params));
+	memcpy_s(&SetNetworkNotificationPosition_Params.NewPos, sizeof(SetNetworkNotificationPosition_Params.NewPos), &NewPos, sizeof(NewPos));
 
 	this->ProcessEvent(uFnSetNetworkNotificationPosition, &SetNetworkNotificationPosition_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.GetNetworkNotificationPosition
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
-// uint8_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+// Parameter Info:
+// ENetworkNotificationPosition   ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
-uint8_t UOnlineSubsystemEOS::GetNetworkNotificationPosition()
+ENetworkNotificationPosition UOnlineSubsystemEOS::GetNetworkNotificationPosition()
 {
 	static UFunction* uFnGetNetworkNotificationPosition = nullptr;
 
@@ -1435,6 +1480,7 @@ uint8_t UOnlineSubsystemEOS::GetNetworkNotificationPosition()
 	}
 
 	UOnlineSubsystemEOS_execGetNetworkNotificationPosition_Params GetNetworkNotificationPosition_Params;
+	memset(&GetNetworkNotificationPosition_Params, 0, sizeof(GetNetworkNotificationPosition_Params));
 
 	this->ProcessEvent(uFnGetNetworkNotificationPosition, &GetNetworkNotificationPosition_Params, nullptr);
 
@@ -1443,10 +1489,10 @@ uint8_t UOnlineSubsystemEOS::GetNetworkNotificationPosition()
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.NotifyExternalUIChanged
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bIsOpening                     (CPF_Parm)
+// Parameter Info:
+// bool                           bIsOpening                     (CPF_Parm)
 
-void UOnlineSubsystemEOS::NotifyExternalUIChanged(unsigned long bIsOpening)
+void UOnlineSubsystemEOS::NotifyExternalUIChanged(bool bIsOpening)
 {
 	static UFunction* uFnNotifyExternalUIChanged = nullptr;
 
@@ -1456,18 +1502,15 @@ void UOnlineSubsystemEOS::NotifyExternalUIChanged(unsigned long bIsOpening)
 	}
 
 	UOnlineSubsystemEOS_execNotifyExternalUIChanged_Params NotifyExternalUIChanged_Params;
+	memset(&NotifyExternalUIChanged_Params, 0, sizeof(NotifyExternalUIChanged_Params));
 	NotifyExternalUIChanged_Params.bIsOpening = bIsOpening;
 
-	uFnNotifyExternalUIChanged->FunctionFlags |= ~0x400;
-
 	this->ProcessEvent(uFnNotifyExternalUIChanged, &NotifyExternalUIChanged_Params, nullptr);
-
-	uFnNotifyExternalUIChanged->FunctionFlags |= 0x400;
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearExternalUIChangeDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::ClearExternalUIChangeDelegate(struct FScriptDelegate InDelegate)
@@ -1480,14 +1523,15 @@ void UOnlineSubsystemEOS::ClearExternalUIChangeDelegate(struct FScriptDelegate I
 	}
 
 	UOnlineSubsystemEOS_execClearExternalUIChangeDelegate_Params ClearExternalUIChangeDelegate_Params;
-	memcpy_s(&ClearExternalUIChangeDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&ClearExternalUIChangeDelegate_Params, 0, sizeof(ClearExternalUIChangeDelegate_Params));
+	memcpy_s(&ClearExternalUIChangeDelegate_Params.InDelegate, sizeof(ClearExternalUIChangeDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnClearExternalUIChangeDelegate, &ClearExternalUIChangeDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.AddExternalUIChangeDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::AddExternalUIChangeDelegate(struct FScriptDelegate InDelegate)
@@ -1500,17 +1544,18 @@ void UOnlineSubsystemEOS::AddExternalUIChangeDelegate(struct FScriptDelegate InD
 	}
 
 	UOnlineSubsystemEOS_execAddExternalUIChangeDelegate_Params AddExternalUIChangeDelegate_Params;
-	memcpy_s(&AddExternalUIChangeDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&AddExternalUIChangeDelegate_Params, 0, sizeof(AddExternalUIChangeDelegate_Params));
+	memcpy_s(&AddExternalUIChangeDelegate_Params.InDelegate, sizeof(AddExternalUIChangeDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnAddExternalUIChangeDelegate, &AddExternalUIChangeDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.OnExternalUIChange
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bIsOpening                     (CPF_Parm)
+// Parameter Info:
+// bool                           bIsOpening                     (CPF_Parm)
 
-void UOnlineSubsystemEOS::OnExternalUIChange(unsigned long bIsOpening)
+void UOnlineSubsystemEOS::OnExternalUIChange(bool bIsOpening)
 {
 	static UFunction* uFnOnExternalUIChange = nullptr;
 
@@ -1520,6 +1565,7 @@ void UOnlineSubsystemEOS::OnExternalUIChange(unsigned long bIsOpening)
 	}
 
 	UOnlineSubsystemEOS_execOnExternalUIChange_Params OnExternalUIChange_Params;
+	memset(&OnExternalUIChange_Params, 0, sizeof(OnExternalUIChange_Params));
 	OnExternalUIChange_Params.bIsOpening = bIsOpening;
 
 	this->ProcessEvent(uFnOnExternalUIChange, &OnExternalUIChange_Params, nullptr);
@@ -1527,7 +1573,7 @@ void UOnlineSubsystemEOS::OnExternalUIChange(unsigned long bIsOpening)
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearLinkStatusChangeDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         LinkStatusDelegate             (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::ClearLinkStatusChangeDelegate(struct FScriptDelegate LinkStatusDelegate)
@@ -1540,14 +1586,15 @@ void UOnlineSubsystemEOS::ClearLinkStatusChangeDelegate(struct FScriptDelegate L
 	}
 
 	UOnlineSubsystemEOS_execClearLinkStatusChangeDelegate_Params ClearLinkStatusChangeDelegate_Params;
-	memcpy_s(&ClearLinkStatusChangeDelegate_Params.LinkStatusDelegate, 0x18, &LinkStatusDelegate, 0x18);
+	memset(&ClearLinkStatusChangeDelegate_Params, 0, sizeof(ClearLinkStatusChangeDelegate_Params));
+	memcpy_s(&ClearLinkStatusChangeDelegate_Params.LinkStatusDelegate, sizeof(ClearLinkStatusChangeDelegate_Params.LinkStatusDelegate), &LinkStatusDelegate, sizeof(LinkStatusDelegate));
 
 	this->ProcessEvent(uFnClearLinkStatusChangeDelegate, &ClearLinkStatusChangeDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.AddLinkStatusChangeDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         LinkStatusDelegate             (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::AddLinkStatusChangeDelegate(struct FScriptDelegate LinkStatusDelegate)
@@ -1560,17 +1607,18 @@ void UOnlineSubsystemEOS::AddLinkStatusChangeDelegate(struct FScriptDelegate Lin
 	}
 
 	UOnlineSubsystemEOS_execAddLinkStatusChangeDelegate_Params AddLinkStatusChangeDelegate_Params;
-	memcpy_s(&AddLinkStatusChangeDelegate_Params.LinkStatusDelegate, 0x18, &LinkStatusDelegate, 0x18);
+	memset(&AddLinkStatusChangeDelegate_Params, 0, sizeof(AddLinkStatusChangeDelegate_Params));
+	memcpy_s(&AddLinkStatusChangeDelegate_Params.LinkStatusDelegate, sizeof(AddLinkStatusChangeDelegate_Params.LinkStatusDelegate), &LinkStatusDelegate, sizeof(LinkStatusDelegate));
 
 	this->ProcessEvent(uFnAddLinkStatusChangeDelegate, &AddLinkStatusChangeDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.OnLinkStatusChange
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bIsConnected                   (CPF_Parm)
+// Parameter Info:
+// bool                           bIsConnected                   (CPF_Parm)
 
-void UOnlineSubsystemEOS::OnLinkStatusChange(unsigned long bIsConnected)
+void UOnlineSubsystemEOS::OnLinkStatusChange(bool bIsConnected)
 {
 	static UFunction* uFnOnLinkStatusChange = nullptr;
 
@@ -1580,14 +1628,15 @@ void UOnlineSubsystemEOS::OnLinkStatusChange(unsigned long bIsConnected)
 	}
 
 	UOnlineSubsystemEOS_execOnLinkStatusChange_Params OnLinkStatusChange_Params;
+	memset(&OnLinkStatusChange_Params, 0, sizeof(OnLinkStatusChange_Params));
 	OnLinkStatusChange_Params.bIsConnected = bIsConnected;
 
 	this->ProcessEvent(uFnOnLinkStatusChange, &OnLinkStatusChange_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.HasLinkConnection
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
 bool UOnlineSubsystemEOS::HasLinkConnection()
@@ -1600,6 +1649,7 @@ bool UOnlineSubsystemEOS::HasLinkConnection()
 	}
 
 	UOnlineSubsystemEOS_execHasLinkConnection_Params HasLinkConnection_Params;
+	memset(&HasLinkConnection_Params, 0, sizeof(HasLinkConnection_Params));
 
 	this->ProcessEvent(uFnHasLinkConnection, &HasLinkConnection_Params, nullptr);
 
@@ -1608,7 +1658,7 @@ bool UOnlineSubsystemEOS::HasLinkConnection()
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.RegisterStatGuid
 // [0x00420001] (FUNC_Final | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  ClientStatGuid                 (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
@@ -1623,19 +1673,20 @@ bool UOnlineSubsystemEOS::RegisterStatGuid(struct FUniqueNetId PlayerID, class F
 	}
 
 	UOnlineSubsystemEOS_execRegisterStatGuid_Params RegisterStatGuid_Params;
-	memcpy_s(&RegisterStatGuid_Params.PlayerID, 0x48, &PlayerID, 0x48);
-	memcpy_s(&RegisterStatGuid_Params.ClientStatGuid, 0x10, &ClientStatGuid, 0x10);
+	memset(&RegisterStatGuid_Params, 0, sizeof(RegisterStatGuid_Params));
+	memcpy_s(&RegisterStatGuid_Params.PlayerID, sizeof(RegisterStatGuid_Params.PlayerID), &PlayerID, sizeof(PlayerID));
+	memcpy_s(&RegisterStatGuid_Params.ClientStatGuid, sizeof(RegisterStatGuid_Params.ClientStatGuid), &ClientStatGuid, sizeof(ClientStatGuid));
 
 	this->ProcessEvent(uFnRegisterStatGuid, &RegisterStatGuid_Params, nullptr);
 
-	memcpy_s(&ClientStatGuid, 0x10, &RegisterStatGuid_Params.ClientStatGuid, 0x10);
+	memcpy_s(&ClientStatGuid, sizeof(ClientStatGuid), &RegisterStatGuid_Params.ClientStatGuid, sizeof(RegisterStatGuid_Params.ClientStatGuid));
 
 	return RegisterStatGuid_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.GetClientStatGuid
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 
 class FString UOnlineSubsystemEOS::GetClientStatGuid()
@@ -1648,6 +1699,7 @@ class FString UOnlineSubsystemEOS::GetClientStatGuid()
 	}
 
 	UOnlineSubsystemEOS_execGetClientStatGuid_Params GetClientStatGuid_Params;
+	memset(&GetClientStatGuid_Params, 0, sizeof(GetClientStatGuid_Params));
 
 	this->ProcessEvent(uFnGetClientStatGuid, &GetClientStatGuid_Params, nullptr);
 
@@ -1656,7 +1708,7 @@ class FString UOnlineSubsystemEOS::GetClientStatGuid()
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearRegisterHostStatGuidCompleteDelegateDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         RegisterHostStatGuidCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::ClearRegisterHostStatGuidCompleteDelegateDelegate(struct FScriptDelegate RegisterHostStatGuidCompleteDelegate)
@@ -1669,14 +1721,15 @@ void UOnlineSubsystemEOS::ClearRegisterHostStatGuidCompleteDelegateDelegate(stru
 	}
 
 	UOnlineSubsystemEOS_execClearRegisterHostStatGuidCompleteDelegateDelegate_Params ClearRegisterHostStatGuidCompleteDelegateDelegate_Params;
-	memcpy_s(&ClearRegisterHostStatGuidCompleteDelegateDelegate_Params.RegisterHostStatGuidCompleteDelegate, 0x18, &RegisterHostStatGuidCompleteDelegate, 0x18);
+	memset(&ClearRegisterHostStatGuidCompleteDelegateDelegate_Params, 0, sizeof(ClearRegisterHostStatGuidCompleteDelegateDelegate_Params));
+	memcpy_s(&ClearRegisterHostStatGuidCompleteDelegateDelegate_Params.RegisterHostStatGuidCompleteDelegate, sizeof(ClearRegisterHostStatGuidCompleteDelegateDelegate_Params.RegisterHostStatGuidCompleteDelegate), &RegisterHostStatGuidCompleteDelegate, sizeof(RegisterHostStatGuidCompleteDelegate));
 
 	this->ProcessEvent(uFnClearRegisterHostStatGuidCompleteDelegateDelegate, &ClearRegisterHostStatGuidCompleteDelegateDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.AddRegisterHostStatGuidCompleteDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         RegisterHostStatGuidCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::AddRegisterHostStatGuidCompleteDelegate(struct FScriptDelegate RegisterHostStatGuidCompleteDelegate)
@@ -1689,18 +1742,19 @@ void UOnlineSubsystemEOS::AddRegisterHostStatGuidCompleteDelegate(struct FScript
 	}
 
 	UOnlineSubsystemEOS_execAddRegisterHostStatGuidCompleteDelegate_Params AddRegisterHostStatGuidCompleteDelegate_Params;
-	memcpy_s(&AddRegisterHostStatGuidCompleteDelegate_Params.RegisterHostStatGuidCompleteDelegate, 0x18, &RegisterHostStatGuidCompleteDelegate, 0x18);
+	memset(&AddRegisterHostStatGuidCompleteDelegate_Params, 0, sizeof(AddRegisterHostStatGuidCompleteDelegate_Params));
+	memcpy_s(&AddRegisterHostStatGuidCompleteDelegate_Params.RegisterHostStatGuidCompleteDelegate, sizeof(AddRegisterHostStatGuidCompleteDelegate_Params.RegisterHostStatGuidCompleteDelegate), &RegisterHostStatGuidCompleteDelegate, sizeof(RegisterHostStatGuidCompleteDelegate));
 
 	this->ProcessEvent(uFnAddRegisterHostStatGuidCompleteDelegate, &AddRegisterHostStatGuidCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.OnFlushOnlineStatsComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FName                   SessionName                    (CPF_Parm)
-// unsigned long                  bWasSuccessful                 (CPF_Parm)
+// bool                           bWasSuccessful                 (CPF_Parm)
 
-void UOnlineSubsystemEOS::OnFlushOnlineStatsComplete(struct FName SessionName, unsigned long bWasSuccessful)
+void UOnlineSubsystemEOS::OnFlushOnlineStatsComplete(struct FName SessionName, bool bWasSuccessful)
 {
 	static UFunction* uFnOnFlushOnlineStatsComplete = nullptr;
 
@@ -1710,7 +1764,8 @@ void UOnlineSubsystemEOS::OnFlushOnlineStatsComplete(struct FName SessionName, u
 	}
 
 	UOnlineSubsystemEOS_execOnFlushOnlineStatsComplete_Params OnFlushOnlineStatsComplete_Params;
-	memcpy_s(&OnFlushOnlineStatsComplete_Params.SessionName, 0x8, &SessionName, 0x8);
+	memset(&OnFlushOnlineStatsComplete_Params, 0, sizeof(OnFlushOnlineStatsComplete_Params));
+	memcpy_s(&OnFlushOnlineStatsComplete_Params.SessionName, sizeof(OnFlushOnlineStatsComplete_Params.SessionName), &SessionName, sizeof(SessionName));
 	OnFlushOnlineStatsComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnFlushOnlineStatsComplete, &OnFlushOnlineStatsComplete_Params, nullptr);
@@ -1718,10 +1773,10 @@ void UOnlineSubsystemEOS::OnFlushOnlineStatsComplete(struct FName SessionName, u
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.OnRegisterHostStatGuidComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bWasSuccessful                 (CPF_Parm)
+// Parameter Info:
+// bool                           bWasSuccessful                 (CPF_Parm)
 
-void UOnlineSubsystemEOS::OnRegisterHostStatGuidComplete(unsigned long bWasSuccessful)
+void UOnlineSubsystemEOS::OnRegisterHostStatGuidComplete(bool bWasSuccessful)
 {
 	static UFunction* uFnOnRegisterHostStatGuidComplete = nullptr;
 
@@ -1731,6 +1786,7 @@ void UOnlineSubsystemEOS::OnRegisterHostStatGuidComplete(unsigned long bWasSucce
 	}
 
 	UOnlineSubsystemEOS_execOnRegisterHostStatGuidComplete_Params OnRegisterHostStatGuidComplete_Params;
+	memset(&OnRegisterHostStatGuidComplete_Params, 0, sizeof(OnRegisterHostStatGuidComplete_Params));
 	OnRegisterHostStatGuidComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnRegisterHostStatGuidComplete, &OnRegisterHostStatGuidComplete_Params, nullptr);
@@ -1738,7 +1794,7 @@ void UOnlineSubsystemEOS::OnRegisterHostStatGuidComplete(unsigned long bWasSucce
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.RegisterHostStatGuid
 // [0x00420001] (FUNC_Final | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  HostStatGuid                   (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
@@ -1752,18 +1808,19 @@ bool UOnlineSubsystemEOS::RegisterHostStatGuid(class FString& HostStatGuid)
 	}
 
 	UOnlineSubsystemEOS_execRegisterHostStatGuid_Params RegisterHostStatGuid_Params;
-	memcpy_s(&RegisterHostStatGuid_Params.HostStatGuid, 0x10, &HostStatGuid, 0x10);
+	memset(&RegisterHostStatGuid_Params, 0, sizeof(RegisterHostStatGuid_Params));
+	memcpy_s(&RegisterHostStatGuid_Params.HostStatGuid, sizeof(RegisterHostStatGuid_Params.HostStatGuid), &HostStatGuid, sizeof(HostStatGuid));
 
 	this->ProcessEvent(uFnRegisterHostStatGuid, &RegisterHostStatGuid_Params, nullptr);
 
-	memcpy_s(&HostStatGuid, 0x10, &RegisterHostStatGuid_Params.HostStatGuid, 0x10);
+	memcpy_s(&HostStatGuid, sizeof(HostStatGuid), &RegisterHostStatGuid_Params.HostStatGuid, sizeof(RegisterHostStatGuid_Params.HostStatGuid));
 
 	return RegisterHostStatGuid_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.GetHostStatGuid
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 
 class FString UOnlineSubsystemEOS::GetHostStatGuid()
@@ -1776,6 +1833,7 @@ class FString UOnlineSubsystemEOS::GetHostStatGuid()
 	}
 
 	UOnlineSubsystemEOS_execGetHostStatGuid_Params GetHostStatGuid_Params;
+	memset(&GetHostStatGuid_Params, 0, sizeof(GetHostStatGuid_Params));
 
 	this->ProcessEvent(uFnGetHostStatGuid, &GetHostStatGuid_Params, nullptr);
 
@@ -1784,7 +1842,7 @@ class FString UOnlineSubsystemEOS::GetHostStatGuid()
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.WriteOnlinePlayerScores
 // [0x00420001] (FUNC_Final | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // TArray<struct FOnlinePlayerScore> PlayerScores                   (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
@@ -1798,18 +1856,19 @@ bool UOnlineSubsystemEOS::WriteOnlinePlayerScores(TArray<struct FOnlinePlayerSco
 	}
 
 	UOnlineSubsystemEOS_execWriteOnlinePlayerScores_Params WriteOnlinePlayerScores_Params;
-	memcpy_s(&WriteOnlinePlayerScores_Params.PlayerScores, 0x10, &PlayerScores, 0x10);
+	memset(&WriteOnlinePlayerScores_Params, 0, sizeof(WriteOnlinePlayerScores_Params));
+	memcpy_s(&WriteOnlinePlayerScores_Params.PlayerScores, sizeof(WriteOnlinePlayerScores_Params.PlayerScores), &PlayerScores, sizeof(PlayerScores));
 
 	this->ProcessEvent(uFnWriteOnlinePlayerScores, &WriteOnlinePlayerScores_Params, nullptr);
 
-	memcpy_s(&PlayerScores, 0x10, &WriteOnlinePlayerScores_Params.PlayerScores, 0x10);
+	memcpy_s(&PlayerScores, sizeof(PlayerScores), &WriteOnlinePlayerScores_Params.PlayerScores, sizeof(WriteOnlinePlayerScores_Params.PlayerScores));
 
 	return WriteOnlinePlayerScores_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.FreeStats
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class UOnlineStatsRead*        StatsRead                      (CPF_Parm)
 
 void UOnlineSubsystemEOS::FreeStats(class UOnlineStatsRead* StatsRead)
@@ -1822,14 +1881,15 @@ void UOnlineSubsystemEOS::FreeStats(class UOnlineStatsRead* StatsRead)
 	}
 
 	UOnlineSubsystemEOS_execFreeStats_Params FreeStats_Params;
-	memcpy_s(&FreeStats_Params.StatsRead, 0x8, &StatsRead, 0x8);
+	memset(&FreeStats_Params, 0, sizeof(FreeStats_Params));
+	memcpy_s(&FreeStats_Params.StatsRead, sizeof(FreeStats_Params.StatsRead), &StatsRead, sizeof(StatsRead));
 
 	this->ProcessEvent(uFnFreeStats, &FreeStats_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearReadOnlineStatsCompleteDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         ReadOnlineStatsCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::ClearReadOnlineStatsCompleteDelegate(struct FScriptDelegate ReadOnlineStatsCompleteDelegate)
@@ -1842,14 +1902,15 @@ void UOnlineSubsystemEOS::ClearReadOnlineStatsCompleteDelegate(struct FScriptDel
 	}
 
 	UOnlineSubsystemEOS_execClearReadOnlineStatsCompleteDelegate_Params ClearReadOnlineStatsCompleteDelegate_Params;
-	memcpy_s(&ClearReadOnlineStatsCompleteDelegate_Params.ReadOnlineStatsCompleteDelegate, 0x18, &ReadOnlineStatsCompleteDelegate, 0x18);
+	memset(&ClearReadOnlineStatsCompleteDelegate_Params, 0, sizeof(ClearReadOnlineStatsCompleteDelegate_Params));
+	memcpy_s(&ClearReadOnlineStatsCompleteDelegate_Params.ReadOnlineStatsCompleteDelegate, sizeof(ClearReadOnlineStatsCompleteDelegate_Params.ReadOnlineStatsCompleteDelegate), &ReadOnlineStatsCompleteDelegate, sizeof(ReadOnlineStatsCompleteDelegate));
 
 	this->ProcessEvent(uFnClearReadOnlineStatsCompleteDelegate, &ClearReadOnlineStatsCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.AddReadOnlineStatsCompleteDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         ReadOnlineStatsCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::AddReadOnlineStatsCompleteDelegate(struct FScriptDelegate ReadOnlineStatsCompleteDelegate)
@@ -1862,17 +1923,18 @@ void UOnlineSubsystemEOS::AddReadOnlineStatsCompleteDelegate(struct FScriptDeleg
 	}
 
 	UOnlineSubsystemEOS_execAddReadOnlineStatsCompleteDelegate_Params AddReadOnlineStatsCompleteDelegate_Params;
-	memcpy_s(&AddReadOnlineStatsCompleteDelegate_Params.ReadOnlineStatsCompleteDelegate, 0x18, &ReadOnlineStatsCompleteDelegate, 0x18);
+	memset(&AddReadOnlineStatsCompleteDelegate_Params, 0, sizeof(AddReadOnlineStatsCompleteDelegate_Params));
+	memcpy_s(&AddReadOnlineStatsCompleteDelegate_Params.ReadOnlineStatsCompleteDelegate, sizeof(AddReadOnlineStatsCompleteDelegate_Params.ReadOnlineStatsCompleteDelegate), &ReadOnlineStatsCompleteDelegate, sizeof(ReadOnlineStatsCompleteDelegate));
 
 	this->ProcessEvent(uFnAddReadOnlineStatsCompleteDelegate, &AddReadOnlineStatsCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.OnReadOnlineStatsComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bWasSuccessful                 (CPF_Parm)
+// Parameter Info:
+// bool                           bWasSuccessful                 (CPF_Parm)
 
-void UOnlineSubsystemEOS::OnReadOnlineStatsComplete(unsigned long bWasSuccessful)
+void UOnlineSubsystemEOS::OnReadOnlineStatsComplete(bool bWasSuccessful)
 {
 	static UFunction* uFnOnReadOnlineStatsComplete = nullptr;
 
@@ -1882,14 +1944,15 @@ void UOnlineSubsystemEOS::OnReadOnlineStatsComplete(unsigned long bWasSuccessful
 	}
 
 	UOnlineSubsystemEOS_execOnReadOnlineStatsComplete_Params OnReadOnlineStatsComplete_Params;
+	memset(&OnReadOnlineStatsComplete_Params, 0, sizeof(OnReadOnlineStatsComplete_Params));
 	OnReadOnlineStatsComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnReadOnlineStatsComplete, &OnReadOnlineStatsComplete_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ReadOnlineStatsByRankAroundPlayer
-// [0x00024001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class UOnlineStatsRead*        StatsRead                      (CPF_Parm)
@@ -1905,9 +1968,10 @@ bool UOnlineSubsystemEOS::ReadOnlineStatsByRankAroundPlayer(uint8_t LocalUserNum
 	}
 
 	UOnlineSubsystemEOS_execReadOnlineStatsByRankAroundPlayer_Params ReadOnlineStatsByRankAroundPlayer_Params;
-	memcpy_s(&ReadOnlineStatsByRankAroundPlayer_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ReadOnlineStatsByRankAroundPlayer_Params.StatsRead, 0x8, &StatsRead, 0x8);
-	memcpy_s(&ReadOnlineStatsByRankAroundPlayer_Params.NumRows, 0x4, &NumRows, 0x4);
+	memset(&ReadOnlineStatsByRankAroundPlayer_Params, 0, sizeof(ReadOnlineStatsByRankAroundPlayer_Params));
+	memcpy_s(&ReadOnlineStatsByRankAroundPlayer_Params.LocalUserNum, sizeof(ReadOnlineStatsByRankAroundPlayer_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ReadOnlineStatsByRankAroundPlayer_Params.StatsRead, sizeof(ReadOnlineStatsByRankAroundPlayer_Params.StatsRead), &StatsRead, sizeof(StatsRead));
+	memcpy_s(&ReadOnlineStatsByRankAroundPlayer_Params.NumRows, sizeof(ReadOnlineStatsByRankAroundPlayer_Params.NumRows), &NumRows, sizeof(NumRows));
 
 	this->ProcessEvent(uFnReadOnlineStatsByRankAroundPlayer, &ReadOnlineStatsByRankAroundPlayer_Params, nullptr);
 
@@ -1915,8 +1979,8 @@ bool UOnlineSubsystemEOS::ReadOnlineStatsByRankAroundPlayer(uint8_t LocalUserNum
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ReadOnlineStatsByRank
-// [0x00024001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class UOnlineStatsRead*        StatsRead                      (CPF_Parm)
 // int32_t                        StartIndex                     (CPF_OptionalParm | CPF_Parm)
@@ -1932,9 +1996,10 @@ bool UOnlineSubsystemEOS::ReadOnlineStatsByRank(class UOnlineStatsRead* StatsRea
 	}
 
 	UOnlineSubsystemEOS_execReadOnlineStatsByRank_Params ReadOnlineStatsByRank_Params;
-	memcpy_s(&ReadOnlineStatsByRank_Params.StatsRead, 0x8, &StatsRead, 0x8);
-	memcpy_s(&ReadOnlineStatsByRank_Params.StartIndex, 0x4, &StartIndex, 0x4);
-	memcpy_s(&ReadOnlineStatsByRank_Params.NumToRead, 0x4, &NumToRead, 0x4);
+	memset(&ReadOnlineStatsByRank_Params, 0, sizeof(ReadOnlineStatsByRank_Params));
+	memcpy_s(&ReadOnlineStatsByRank_Params.StatsRead, sizeof(ReadOnlineStatsByRank_Params.StatsRead), &StatsRead, sizeof(StatsRead));
+	memcpy_s(&ReadOnlineStatsByRank_Params.StartIndex, sizeof(ReadOnlineStatsByRank_Params.StartIndex), &StartIndex, sizeof(StartIndex));
+	memcpy_s(&ReadOnlineStatsByRank_Params.NumToRead, sizeof(ReadOnlineStatsByRank_Params.NumToRead), &NumToRead, sizeof(NumToRead));
 
 	this->ProcessEvent(uFnReadOnlineStatsByRank, &ReadOnlineStatsByRank_Params, nullptr);
 
@@ -1943,7 +2008,7 @@ bool UOnlineSubsystemEOS::ReadOnlineStatsByRank(class UOnlineStatsRead* StatsRea
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ReadOnlineStatsForFriends
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class UOnlineStatsRead*        StatsRead                      (CPF_Parm)
@@ -1958,8 +2023,9 @@ bool UOnlineSubsystemEOS::ReadOnlineStatsForFriends(uint8_t LocalUserNum, class 
 	}
 
 	UOnlineSubsystemEOS_execReadOnlineStatsForFriends_Params ReadOnlineStatsForFriends_Params;
-	memcpy_s(&ReadOnlineStatsForFriends_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ReadOnlineStatsForFriends_Params.StatsRead, 0x8, &StatsRead, 0x8);
+	memset(&ReadOnlineStatsForFriends_Params, 0, sizeof(ReadOnlineStatsForFriends_Params));
+	memcpy_s(&ReadOnlineStatsForFriends_Params.LocalUserNum, sizeof(ReadOnlineStatsForFriends_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ReadOnlineStatsForFriends_Params.StatsRead, sizeof(ReadOnlineStatsForFriends_Params.StatsRead), &StatsRead, sizeof(StatsRead));
 
 	this->ProcessEvent(uFnReadOnlineStatsForFriends, &ReadOnlineStatsForFriends_Params, nullptr);
 
@@ -1968,7 +2034,7 @@ bool UOnlineSubsystemEOS::ReadOnlineStatsForFriends(uint8_t LocalUserNum, class 
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ReadOnlineStats
 // [0x00420001] (FUNC_Final | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class UOnlineStatsRead*        StatsRead                      (CPF_Parm)
 // TArray<struct FUniqueNetId>    Players                        (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
@@ -1983,19 +2049,20 @@ bool UOnlineSubsystemEOS::ReadOnlineStats(class UOnlineStatsRead* StatsRead, TAr
 	}
 
 	UOnlineSubsystemEOS_execReadOnlineStats_Params ReadOnlineStats_Params;
-	memcpy_s(&ReadOnlineStats_Params.StatsRead, 0x8, &StatsRead, 0x8);
-	memcpy_s(&ReadOnlineStats_Params.Players, 0x10, &Players, 0x10);
+	memset(&ReadOnlineStats_Params, 0, sizeof(ReadOnlineStats_Params));
+	memcpy_s(&ReadOnlineStats_Params.StatsRead, sizeof(ReadOnlineStats_Params.StatsRead), &StatsRead, sizeof(StatsRead));
+	memcpy_s(&ReadOnlineStats_Params.Players, sizeof(ReadOnlineStats_Params.Players), &Players, sizeof(Players));
 
 	this->ProcessEvent(uFnReadOnlineStats, &ReadOnlineStats_Params, nullptr);
 
-	memcpy_s(&Players, 0x10, &ReadOnlineStats_Params.Players, 0x10);
+	memcpy_s(&Players, sizeof(Players), &ReadOnlineStats_Params.Players, sizeof(ReadOnlineStats_Params.Players));
 
 	return ReadOnlineStats_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.UnmuteAll
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -2009,7 +2076,8 @@ bool UOnlineSubsystemEOS::UnmuteAll(uint8_t LocalUserNum)
 	}
 
 	UOnlineSubsystemEOS_execUnmuteAll_Params UnmuteAll_Params;
-	memcpy_s(&UnmuteAll_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&UnmuteAll_Params, 0, sizeof(UnmuteAll_Params));
+	memcpy_s(&UnmuteAll_Params.LocalUserNum, sizeof(UnmuteAll_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnUnmuteAll, &UnmuteAll_Params, nullptr);
 
@@ -2018,12 +2086,12 @@ bool UOnlineSubsystemEOS::UnmuteAll(uint8_t LocalUserNum)
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.MuteAll
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// unsigned long                  bAllowFriends                  (CPF_Parm)
+// bool                           bAllowFriends                  (CPF_Parm)
 
-bool UOnlineSubsystemEOS::MuteAll(uint8_t LocalUserNum, unsigned long bAllowFriends)
+bool UOnlineSubsystemEOS::MuteAll(uint8_t LocalUserNum, bool bAllowFriends)
 {
 	static UFunction* uFnMuteAll = nullptr;
 
@@ -2033,7 +2101,8 @@ bool UOnlineSubsystemEOS::MuteAll(uint8_t LocalUserNum, unsigned long bAllowFrie
 	}
 
 	UOnlineSubsystemEOS_execMuteAll_Params MuteAll_Params;
-	memcpy_s(&MuteAll_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&MuteAll_Params, 0, sizeof(MuteAll_Params));
+	memcpy_s(&MuteAll_Params.LocalUserNum, sizeof(MuteAll_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 	MuteAll_Params.bAllowFriends = bAllowFriends;
 
 	this->ProcessEvent(uFnMuteAll, &MuteAll_Params, nullptr);
@@ -2043,7 +2112,7 @@ bool UOnlineSubsystemEOS::MuteAll(uint8_t LocalUserNum, unsigned long bAllowFrie
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.SetSpeechRecognitionObject
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class USpeechRecognition*      SpeechRecogObj                 (CPF_Parm)
@@ -2058,8 +2127,9 @@ bool UOnlineSubsystemEOS::SetSpeechRecognitionObject(uint8_t LocalUserNum, class
 	}
 
 	UOnlineSubsystemEOS_execSetSpeechRecognitionObject_Params SetSpeechRecognitionObject_Params;
-	memcpy_s(&SetSpeechRecognitionObject_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&SetSpeechRecognitionObject_Params.SpeechRecogObj, 0x8, &SpeechRecogObj, 0x8);
+	memset(&SetSpeechRecognitionObject_Params, 0, sizeof(SetSpeechRecognitionObject_Params));
+	memcpy_s(&SetSpeechRecognitionObject_Params.LocalUserNum, sizeof(SetSpeechRecognitionObject_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&SetSpeechRecognitionObject_Params.SpeechRecogObj, sizeof(SetSpeechRecognitionObject_Params.SpeechRecogObj), &SpeechRecogObj, sizeof(SpeechRecogObj));
 
 	this->ProcessEvent(uFnSetSpeechRecognitionObject, &SetSpeechRecognitionObject_Params, nullptr);
 
@@ -2068,7 +2138,7 @@ bool UOnlineSubsystemEOS::SetSpeechRecognitionObject(uint8_t LocalUserNum, class
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.SelectVocabulary
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // int32_t                        VocabularyId                   (CPF_Parm)
@@ -2083,8 +2153,9 @@ bool UOnlineSubsystemEOS::SelectVocabulary(uint8_t LocalUserNum, int32_t Vocabul
 	}
 
 	UOnlineSubsystemEOS_execSelectVocabulary_Params SelectVocabulary_Params;
-	memcpy_s(&SelectVocabulary_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&SelectVocabulary_Params.VocabularyId, 0x4, &VocabularyId, 0x4);
+	memset(&SelectVocabulary_Params, 0, sizeof(SelectVocabulary_Params));
+	memcpy_s(&SelectVocabulary_Params.LocalUserNum, sizeof(SelectVocabulary_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&SelectVocabulary_Params.VocabularyId, sizeof(SelectVocabulary_Params.VocabularyId), &VocabularyId, sizeof(VocabularyId));
 
 	this->ProcessEvent(uFnSelectVocabulary, &SelectVocabulary_Params, nullptr);
 
@@ -2092,8 +2163,8 @@ bool UOnlineSubsystemEOS::SelectVocabulary(uint8_t LocalUserNum, int32_t Vocabul
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearRecognitionCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         RecognitionDelegate            (CPF_Parm | CPF_NeedCtorLink)
 
@@ -2107,15 +2178,16 @@ void UOnlineSubsystemEOS::ClearRecognitionCompleteDelegate(uint8_t LocalUserNum,
 	}
 
 	UOnlineSubsystemEOS_execClearRecognitionCompleteDelegate_Params ClearRecognitionCompleteDelegate_Params;
-	memcpy_s(&ClearRecognitionCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearRecognitionCompleteDelegate_Params.RecognitionDelegate, 0x18, &RecognitionDelegate, 0x18);
+	memset(&ClearRecognitionCompleteDelegate_Params, 0, sizeof(ClearRecognitionCompleteDelegate_Params));
+	memcpy_s(&ClearRecognitionCompleteDelegate_Params.LocalUserNum, sizeof(ClearRecognitionCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearRecognitionCompleteDelegate_Params.RecognitionDelegate, sizeof(ClearRecognitionCompleteDelegate_Params.RecognitionDelegate), &RecognitionDelegate, sizeof(RecognitionDelegate));
 
 	this->ProcessEvent(uFnClearRecognitionCompleteDelegate, &ClearRecognitionCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.AddRecognitionCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         RecognitionDelegate            (CPF_Parm | CPF_NeedCtorLink)
 
@@ -2129,15 +2201,16 @@ void UOnlineSubsystemEOS::AddRecognitionCompleteDelegate(uint8_t LocalUserNum, s
 	}
 
 	UOnlineSubsystemEOS_execAddRecognitionCompleteDelegate_Params AddRecognitionCompleteDelegate_Params;
-	memcpy_s(&AddRecognitionCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddRecognitionCompleteDelegate_Params.RecognitionDelegate, 0x18, &RecognitionDelegate, 0x18);
+	memset(&AddRecognitionCompleteDelegate_Params, 0, sizeof(AddRecognitionCompleteDelegate_Params));
+	memcpy_s(&AddRecognitionCompleteDelegate_Params.LocalUserNum, sizeof(AddRecognitionCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddRecognitionCompleteDelegate_Params.RecognitionDelegate, sizeof(AddRecognitionCompleteDelegate_Params.RecognitionDelegate), &RecognitionDelegate, sizeof(RecognitionDelegate));
 
 	this->ProcessEvent(uFnAddRecognitionCompleteDelegate, &AddRecognitionCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.OnRecognitionComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 
 void UOnlineSubsystemEOS::OnRecognitionComplete()
 {
@@ -2149,13 +2222,14 @@ void UOnlineSubsystemEOS::OnRecognitionComplete()
 	}
 
 	UOnlineSubsystemEOS_execOnRecognitionComplete_Params OnRecognitionComplete_Params;
+	memset(&OnRecognitionComplete_Params, 0, sizeof(OnRecognitionComplete_Params));
 
 	this->ProcessEvent(uFnOnRecognitionComplete, &OnRecognitionComplete_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.GetRecognitionResults
 // [0x00420001] (FUNC_Final | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // TArray<struct FSpeechRecognizedWord> Words                          (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
@@ -2170,19 +2244,20 @@ bool UOnlineSubsystemEOS::GetRecognitionResults(uint8_t LocalUserNum, TArray<str
 	}
 
 	UOnlineSubsystemEOS_execGetRecognitionResults_Params GetRecognitionResults_Params;
-	memcpy_s(&GetRecognitionResults_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&GetRecognitionResults_Params.Words, 0x10, &Words, 0x10);
+	memset(&GetRecognitionResults_Params, 0, sizeof(GetRecognitionResults_Params));
+	memcpy_s(&GetRecognitionResults_Params.LocalUserNum, sizeof(GetRecognitionResults_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&GetRecognitionResults_Params.Words, sizeof(GetRecognitionResults_Params.Words), &Words, sizeof(Words));
 
 	this->ProcessEvent(uFnGetRecognitionResults, &GetRecognitionResults_Params, nullptr);
 
-	memcpy_s(&Words, 0x10, &GetRecognitionResults_Params.Words, 0x10);
+	memcpy_s(&Words, sizeof(Words), &GetRecognitionResults_Params.Words, sizeof(GetRecognitionResults_Params.Words));
 
 	return GetRecognitionResults_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.StopSpeechRecognition
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -2196,7 +2271,8 @@ bool UOnlineSubsystemEOS::StopSpeechRecognition(uint8_t LocalUserNum)
 	}
 
 	UOnlineSubsystemEOS_execStopSpeechRecognition_Params StopSpeechRecognition_Params;
-	memcpy_s(&StopSpeechRecognition_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&StopSpeechRecognition_Params, 0, sizeof(StopSpeechRecognition_Params));
+	memcpy_s(&StopSpeechRecognition_Params.LocalUserNum, sizeof(StopSpeechRecognition_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnStopSpeechRecognition, &StopSpeechRecognition_Params, nullptr);
 
@@ -2205,7 +2281,7 @@ bool UOnlineSubsystemEOS::StopSpeechRecognition(uint8_t LocalUserNum)
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.StartSpeechRecognition
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -2219,7 +2295,8 @@ bool UOnlineSubsystemEOS::StartSpeechRecognition(uint8_t LocalUserNum)
 	}
 
 	UOnlineSubsystemEOS_execStartSpeechRecognition_Params StartSpeechRecognition_Params;
-	memcpy_s(&StartSpeechRecognition_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&StartSpeechRecognition_Params, 0, sizeof(StartSpeechRecognition_Params));
+	memcpy_s(&StartSpeechRecognition_Params.LocalUserNum, sizeof(StartSpeechRecognition_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnStartSpeechRecognition, &StartSpeechRecognition_Params, nullptr);
 
@@ -2228,7 +2305,7 @@ bool UOnlineSubsystemEOS::StartSpeechRecognition(uint8_t LocalUserNum)
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.StopNetworkedVoice
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
 void UOnlineSubsystemEOS::StopNetworkedVoice(uint8_t LocalUserNum)
@@ -2241,14 +2318,15 @@ void UOnlineSubsystemEOS::StopNetworkedVoice(uint8_t LocalUserNum)
 	}
 
 	UOnlineSubsystemEOS_execStopNetworkedVoice_Params StopNetworkedVoice_Params;
-	memcpy_s(&StopNetworkedVoice_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&StopNetworkedVoice_Params, 0, sizeof(StopNetworkedVoice_Params));
+	memcpy_s(&StopNetworkedVoice_Params.LocalUserNum, sizeof(StopNetworkedVoice_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnStopNetworkedVoice, &StopNetworkedVoice_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.StartNetworkedVoice
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
 void UOnlineSubsystemEOS::StartNetworkedVoice(uint8_t LocalUserNum)
@@ -2261,14 +2339,15 @@ void UOnlineSubsystemEOS::StartNetworkedVoice(uint8_t LocalUserNum)
 	}
 
 	UOnlineSubsystemEOS_execStartNetworkedVoice_Params StartNetworkedVoice_Params;
-	memcpy_s(&StartNetworkedVoice_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&StartNetworkedVoice_Params, 0, sizeof(StartNetworkedVoice_Params));
+	memcpy_s(&StartNetworkedVoice_Params.LocalUserNum, sizeof(StartNetworkedVoice_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnStartNetworkedVoice, &StartNetworkedVoice_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.ClearPlayerTalkingDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         TalkerDelegate                 (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::ClearPlayerTalkingDelegate(struct FScriptDelegate TalkerDelegate)
@@ -2281,14 +2360,15 @@ void UOnlineSubsystemEOS::ClearPlayerTalkingDelegate(struct FScriptDelegate Talk
 	}
 
 	UOnlineSubsystemEOS_execClearPlayerTalkingDelegate_Params ClearPlayerTalkingDelegate_Params;
-	memcpy_s(&ClearPlayerTalkingDelegate_Params.TalkerDelegate, 0x18, &TalkerDelegate, 0x18);
+	memset(&ClearPlayerTalkingDelegate_Params, 0, sizeof(ClearPlayerTalkingDelegate_Params));
+	memcpy_s(&ClearPlayerTalkingDelegate_Params.TalkerDelegate, sizeof(ClearPlayerTalkingDelegate_Params.TalkerDelegate), &TalkerDelegate, sizeof(TalkerDelegate));
 
 	this->ProcessEvent(uFnClearPlayerTalkingDelegate, &ClearPlayerTalkingDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.AddPlayerTalkingDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         TalkerDelegate                 (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::AddPlayerTalkingDelegate(struct FScriptDelegate TalkerDelegate)
@@ -2301,14 +2381,15 @@ void UOnlineSubsystemEOS::AddPlayerTalkingDelegate(struct FScriptDelegate Talker
 	}
 
 	UOnlineSubsystemEOS_execAddPlayerTalkingDelegate_Params AddPlayerTalkingDelegate_Params;
-	memcpy_s(&AddPlayerTalkingDelegate_Params.TalkerDelegate, 0x18, &TalkerDelegate, 0x18);
+	memset(&AddPlayerTalkingDelegate_Params, 0, sizeof(AddPlayerTalkingDelegate_Params));
+	memcpy_s(&AddPlayerTalkingDelegate_Params.TalkerDelegate, sizeof(AddPlayerTalkingDelegate_Params.TalkerDelegate), &TalkerDelegate, sizeof(TalkerDelegate));
 
 	this->ProcessEvent(uFnAddPlayerTalkingDelegate, &AddPlayerTalkingDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.OnPlayerTalking
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FUniqueNetId            Player                         (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineSubsystemEOS::OnPlayerTalking(struct FUniqueNetId Player)
@@ -2321,14 +2402,15 @@ void UOnlineSubsystemEOS::OnPlayerTalking(struct FUniqueNetId Player)
 	}
 
 	UOnlineSubsystemEOS_execOnPlayerTalking_Params OnPlayerTalking_Params;
-	memcpy_s(&OnPlayerTalking_Params.Player, 0x48, &Player, 0x48);
+	memset(&OnPlayerTalking_Params, 0, sizeof(OnPlayerTalking_Params));
+	memcpy_s(&OnPlayerTalking_Params.Player, sizeof(OnPlayerTalking_Params.Player), &Player, sizeof(Player));
 
 	this->ProcessEvent(uFnOnPlayerTalking, &OnPlayerTalking_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.UnmuteRemoteTalker
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
@@ -2343,8 +2425,9 @@ bool UOnlineSubsystemEOS::UnmuteRemoteTalker(uint8_t LocalUserNum, struct FUniqu
 	}
 
 	UOnlineSubsystemEOS_execUnmuteRemoteTalker_Params UnmuteRemoteTalker_Params;
-	memcpy_s(&UnmuteRemoteTalker_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&UnmuteRemoteTalker_Params.PlayerID, 0x48, &PlayerID, 0x48);
+	memset(&UnmuteRemoteTalker_Params, 0, sizeof(UnmuteRemoteTalker_Params));
+	memcpy_s(&UnmuteRemoteTalker_Params.LocalUserNum, sizeof(UnmuteRemoteTalker_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&UnmuteRemoteTalker_Params.PlayerID, sizeof(UnmuteRemoteTalker_Params.PlayerID), &PlayerID, sizeof(PlayerID));
 
 	this->ProcessEvent(uFnUnmuteRemoteTalker, &UnmuteRemoteTalker_Params, nullptr);
 
@@ -2353,7 +2436,7 @@ bool UOnlineSubsystemEOS::UnmuteRemoteTalker(uint8_t LocalUserNum, struct FUniqu
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.MuteRemoteTalker
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
@@ -2368,8 +2451,9 @@ bool UOnlineSubsystemEOS::MuteRemoteTalker(uint8_t LocalUserNum, struct FUniqueN
 	}
 
 	UOnlineSubsystemEOS_execMuteRemoteTalker_Params MuteRemoteTalker_Params;
-	memcpy_s(&MuteRemoteTalker_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&MuteRemoteTalker_Params.PlayerID, 0x48, &PlayerID, 0x48);
+	memset(&MuteRemoteTalker_Params, 0, sizeof(MuteRemoteTalker_Params));
+	memcpy_s(&MuteRemoteTalker_Params.LocalUserNum, sizeof(MuteRemoteTalker_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&MuteRemoteTalker_Params.PlayerID, sizeof(MuteRemoteTalker_Params.PlayerID), &PlayerID, sizeof(PlayerID));
 
 	this->ProcessEvent(uFnMuteRemoteTalker, &MuteRemoteTalker_Params, nullptr);
 
@@ -2378,7 +2462,7 @@ bool UOnlineSubsystemEOS::MuteRemoteTalker(uint8_t LocalUserNum, struct FUniqueN
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.SetRemoteTalkerPriority
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
@@ -2394,9 +2478,10 @@ bool UOnlineSubsystemEOS::SetRemoteTalkerPriority(uint8_t LocalUserNum, struct F
 	}
 
 	UOnlineSubsystemEOS_execSetRemoteTalkerPriority_Params SetRemoteTalkerPriority_Params;
-	memcpy_s(&SetRemoteTalkerPriority_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&SetRemoteTalkerPriority_Params.PlayerID, 0x48, &PlayerID, 0x48);
-	memcpy_s(&SetRemoteTalkerPriority_Params.Priority, 0x4, &Priority, 0x4);
+	memset(&SetRemoteTalkerPriority_Params, 0, sizeof(SetRemoteTalkerPriority_Params));
+	memcpy_s(&SetRemoteTalkerPriority_Params.LocalUserNum, sizeof(SetRemoteTalkerPriority_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&SetRemoteTalkerPriority_Params.PlayerID, sizeof(SetRemoteTalkerPriority_Params.PlayerID), &PlayerID, sizeof(PlayerID));
+	memcpy_s(&SetRemoteTalkerPriority_Params.Priority, sizeof(SetRemoteTalkerPriority_Params.Priority), &Priority, sizeof(Priority));
 
 	this->ProcessEvent(uFnSetRemoteTalkerPriority, &SetRemoteTalkerPriority_Params, nullptr);
 
@@ -2405,7 +2490,7 @@ bool UOnlineSubsystemEOS::SetRemoteTalkerPriority(uint8_t LocalUserNum, struct F
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.IsHeadsetPresent
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -2419,7 +2504,8 @@ bool UOnlineSubsystemEOS::IsHeadsetPresent(uint8_t LocalUserNum)
 	}
 
 	UOnlineSubsystemEOS_execIsHeadsetPresent_Params IsHeadsetPresent_Params;
-	memcpy_s(&IsHeadsetPresent_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&IsHeadsetPresent_Params, 0, sizeof(IsHeadsetPresent_Params));
+	memcpy_s(&IsHeadsetPresent_Params.LocalUserNum, sizeof(IsHeadsetPresent_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnIsHeadsetPresent, &IsHeadsetPresent_Params, nullptr);
 
@@ -2428,7 +2514,7 @@ bool UOnlineSubsystemEOS::IsHeadsetPresent(uint8_t LocalUserNum)
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.IsRemotePlayerTalking
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
 
@@ -2442,7 +2528,8 @@ bool UOnlineSubsystemEOS::IsRemotePlayerTalking(struct FUniqueNetId PlayerID)
 	}
 
 	UOnlineSubsystemEOS_execIsRemotePlayerTalking_Params IsRemotePlayerTalking_Params;
-	memcpy_s(&IsRemotePlayerTalking_Params.PlayerID, 0x48, &PlayerID, 0x48);
+	memset(&IsRemotePlayerTalking_Params, 0, sizeof(IsRemotePlayerTalking_Params));
+	memcpy_s(&IsRemotePlayerTalking_Params.PlayerID, sizeof(IsRemotePlayerTalking_Params.PlayerID), &PlayerID, sizeof(PlayerID));
 
 	this->ProcessEvent(uFnIsRemotePlayerTalking, &IsRemotePlayerTalking_Params, nullptr);
 
@@ -2451,7 +2538,7 @@ bool UOnlineSubsystemEOS::IsRemotePlayerTalking(struct FUniqueNetId PlayerID)
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.IsLocalPlayerTalking
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -2465,7 +2552,8 @@ bool UOnlineSubsystemEOS::IsLocalPlayerTalking(uint8_t LocalUserNum)
 	}
 
 	UOnlineSubsystemEOS_execIsLocalPlayerTalking_Params IsLocalPlayerTalking_Params;
-	memcpy_s(&IsLocalPlayerTalking_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&IsLocalPlayerTalking_Params, 0, sizeof(IsLocalPlayerTalking_Params));
+	memcpy_s(&IsLocalPlayerTalking_Params.LocalUserNum, sizeof(IsLocalPlayerTalking_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnIsLocalPlayerTalking, &IsLocalPlayerTalking_Params, nullptr);
 
@@ -2474,7 +2562,7 @@ bool UOnlineSubsystemEOS::IsLocalPlayerTalking(uint8_t LocalUserNum)
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.UnregisterRemoteTalker
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
 
@@ -2488,7 +2576,8 @@ bool UOnlineSubsystemEOS::UnregisterRemoteTalker(struct FUniqueNetId PlayerID)
 	}
 
 	UOnlineSubsystemEOS_execUnregisterRemoteTalker_Params UnregisterRemoteTalker_Params;
-	memcpy_s(&UnregisterRemoteTalker_Params.PlayerID, 0x48, &PlayerID, 0x48);
+	memset(&UnregisterRemoteTalker_Params, 0, sizeof(UnregisterRemoteTalker_Params));
+	memcpy_s(&UnregisterRemoteTalker_Params.PlayerID, sizeof(UnregisterRemoteTalker_Params.PlayerID), &PlayerID, sizeof(PlayerID));
 
 	this->ProcessEvent(uFnUnregisterRemoteTalker, &UnregisterRemoteTalker_Params, nullptr);
 
@@ -2497,7 +2586,7 @@ bool UOnlineSubsystemEOS::UnregisterRemoteTalker(struct FUniqueNetId PlayerID)
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.RegisterRemoteTalker
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
 
@@ -2511,7 +2600,8 @@ bool UOnlineSubsystemEOS::RegisterRemoteTalker(struct FUniqueNetId PlayerID)
 	}
 
 	UOnlineSubsystemEOS_execRegisterRemoteTalker_Params RegisterRemoteTalker_Params;
-	memcpy_s(&RegisterRemoteTalker_Params.PlayerID, 0x48, &PlayerID, 0x48);
+	memset(&RegisterRemoteTalker_Params, 0, sizeof(RegisterRemoteTalker_Params));
+	memcpy_s(&RegisterRemoteTalker_Params.PlayerID, sizeof(RegisterRemoteTalker_Params.PlayerID), &PlayerID, sizeof(PlayerID));
 
 	this->ProcessEvent(uFnRegisterRemoteTalker, &RegisterRemoteTalker_Params, nullptr);
 
@@ -2520,7 +2610,7 @@ bool UOnlineSubsystemEOS::RegisterRemoteTalker(struct FUniqueNetId PlayerID)
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.UnregisterLocalTalker
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -2534,7 +2624,8 @@ bool UOnlineSubsystemEOS::UnregisterLocalTalker(uint8_t LocalUserNum)
 	}
 
 	UOnlineSubsystemEOS_execUnregisterLocalTalker_Params UnregisterLocalTalker_Params;
-	memcpy_s(&UnregisterLocalTalker_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&UnregisterLocalTalker_Params, 0, sizeof(UnregisterLocalTalker_Params));
+	memcpy_s(&UnregisterLocalTalker_Params.LocalUserNum, sizeof(UnregisterLocalTalker_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnUnregisterLocalTalker, &UnregisterLocalTalker_Params, nullptr);
 
@@ -2543,7 +2634,7 @@ bool UOnlineSubsystemEOS::UnregisterLocalTalker(uint8_t LocalUserNum)
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.RegisterLocalTalker
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -2557,7 +2648,8 @@ bool UOnlineSubsystemEOS::RegisterLocalTalker(uint8_t LocalUserNum)
 	}
 
 	UOnlineSubsystemEOS_execRegisterLocalTalker_Params RegisterLocalTalker_Params;
-	memcpy_s(&RegisterLocalTalker_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&RegisterLocalTalker_Params, 0, sizeof(RegisterLocalTalker_Params));
+	memcpy_s(&RegisterLocalTalker_Params.LocalUserNum, sizeof(RegisterLocalTalker_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnRegisterLocalTalker, &RegisterLocalTalker_Params, nullptr);
 
@@ -2565,8 +2657,8 @@ bool UOnlineSubsystemEOS::RegisterLocalTalker(uint8_t LocalUserNum)
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.GetPlayerUniqueNetIdFromIndex
-// [0x400820802] (FUNC_RequiredAPI | FUNC_Event | FUNC_Public | FUNC_HasDefaults | FUNC_NetValidate | FUNC_AllFlags)
-// Parameter info:
+// [0x400820802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_HasDefaults | FUNC_NetValidate | FUNC_AllFlags)
+// Parameter Info:
 // struct FUniqueNetId            ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // int32_t                        UserIndex                      (CPF_Parm)
 
@@ -2580,7 +2672,8 @@ struct FUniqueNetId UOnlineSubsystemEOS::eventGetPlayerUniqueNetIdFromIndex(int3
 	}
 
 	UOnlineSubsystemEOS_eventGetPlayerUniqueNetIdFromIndex_Params GetPlayerUniqueNetIdFromIndex_Params;
-	memcpy_s(&GetPlayerUniqueNetIdFromIndex_Params.UserIndex, 0x4, &UserIndex, 0x4);
+	memset(&GetPlayerUniqueNetIdFromIndex_Params, 0, sizeof(GetPlayerUniqueNetIdFromIndex_Params));
+	memcpy_s(&GetPlayerUniqueNetIdFromIndex_Params.UserIndex, sizeof(GetPlayerUniqueNetIdFromIndex_Params.UserIndex), &UserIndex, sizeof(UserIndex));
 
 	this->ProcessEvent(uFnGetPlayerUniqueNetIdFromIndex, &GetPlayerUniqueNetIdFromIndex_Params, nullptr);
 
@@ -2588,8 +2681,8 @@ struct FUniqueNetId UOnlineSubsystemEOS::eventGetPlayerUniqueNetIdFromIndex(int3
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.GetPlayerNicknameFromIndex
-// [0x400020802] (FUNC_RequiredAPI | FUNC_Event | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
-// Parameter info:
+// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // int32_t                        UserIndex                      (CPF_Parm)
 
@@ -2603,7 +2696,8 @@ class FString UOnlineSubsystemEOS::eventGetPlayerNicknameFromIndex(int32_t UserI
 	}
 
 	UOnlineSubsystemEOS_eventGetPlayerNicknameFromIndex_Params GetPlayerNicknameFromIndex_Params;
-	memcpy_s(&GetPlayerNicknameFromIndex_Params.UserIndex, 0x4, &UserIndex, 0x4);
+	memset(&GetPlayerNicknameFromIndex_Params, 0, sizeof(GetPlayerNicknameFromIndex_Params));
+	memcpy_s(&GetPlayerNicknameFromIndex_Params.UserIndex, sizeof(GetPlayerNicknameFromIndex_Params.UserIndex), &UserIndex, sizeof(UserIndex));
 
 	this->ProcessEvent(uFnGetPlayerNicknameFromIndex, &GetPlayerNicknameFromIndex_Params, nullptr);
 
@@ -2612,7 +2706,7 @@ class FString UOnlineSubsystemEOS::eventGetPlayerNicknameFromIndex(int32_t UserI
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.Init
 // [0x400020C00] (FUNC_Native | FUNC_Event | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
 bool UOnlineSubsystemEOS::eventInit()
@@ -2625,19 +2719,16 @@ bool UOnlineSubsystemEOS::eventInit()
 	}
 
 	UOnlineSubsystemEOS_eventInit_Params Init_Params;
-
-	uFnInit->FunctionFlags |= ~0x400;
+	memset(&Init_Params, 0, sizeof(Init_Params));
 
 	this->ProcessEvent(uFnInit, &Init_Params, nullptr);
-
-	uFnInit->FunctionFlags |= 0x400;
 
 	return Init_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.InitEOS
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  SandboxId                      (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 // class FString                  DeploymentId                   (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
@@ -2652,24 +2743,21 @@ bool UOnlineSubsystemEOS::InitEOS(class FString& SandboxId, class FString& Deplo
 	}
 
 	UOnlineSubsystemEOS_execInitEOS_Params InitEOS_Params;
-	memcpy_s(&InitEOS_Params.SandboxId, 0x10, &SandboxId, 0x10);
-	memcpy_s(&InitEOS_Params.DeploymentId, 0x10, &DeploymentId, 0x10);
-
-	uFnInitEOS->FunctionFlags |= ~0x400;
+	memset(&InitEOS_Params, 0, sizeof(InitEOS_Params));
+	memcpy_s(&InitEOS_Params.SandboxId, sizeof(InitEOS_Params.SandboxId), &SandboxId, sizeof(SandboxId));
+	memcpy_s(&InitEOS_Params.DeploymentId, sizeof(InitEOS_Params.DeploymentId), &DeploymentId, sizeof(DeploymentId));
 
 	this->ProcessEvent(uFnInitEOS, &InitEOS_Params, nullptr);
 
-	uFnInitEOS->FunctionFlags |= 0x400;
-
-	memcpy_s(&SandboxId, 0x10, &InitEOS_Params.SandboxId, 0x10);
-	memcpy_s(&DeploymentId, 0x10, &InitEOS_Params.DeploymentId, 0x10);
+	memcpy_s(&SandboxId, sizeof(SandboxId), &InitEOS_Params.SandboxId, sizeof(InitEOS_Params.SandboxId));
+	memcpy_s(&DeploymentId, sizeof(DeploymentId), &InitEOS_Params.DeploymentId, sizeof(InitEOS_Params.DeploymentId));
 
 	return InitEOS_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.EventGetAppPriceInfoComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FName                   AppName                        (CPF_Parm)
 // class FString                  Price                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  DiscountPrice                  (CPF_Parm | CPF_NeedCtorLink)
@@ -2685,21 +2773,22 @@ void UOnlineSubsystemEOS::EventGetAppPriceInfoComplete(struct FName AppName, cla
 	}
 
 	UOnlineSubsystemEOS_execEventGetAppPriceInfoComplete_Params EventGetAppPriceInfoComplete_Params;
-	memcpy_s(&EventGetAppPriceInfoComplete_Params.AppName, 0x8, &AppName, 0x8);
-	memcpy_s(&EventGetAppPriceInfoComplete_Params.Price, 0x10, &Price, 0x10);
-	memcpy_s(&EventGetAppPriceInfoComplete_Params.DiscountPrice, 0x10, &DiscountPrice, 0x10);
-	memcpy_s(&EventGetAppPriceInfoComplete_Params.DiscountPercentage, 0x4, &DiscountPercentage, 0x4);
+	memset(&EventGetAppPriceInfoComplete_Params, 0, sizeof(EventGetAppPriceInfoComplete_Params));
+	memcpy_s(&EventGetAppPriceInfoComplete_Params.AppName, sizeof(EventGetAppPriceInfoComplete_Params.AppName), &AppName, sizeof(AppName));
+	memcpy_s(&EventGetAppPriceInfoComplete_Params.Price, sizeof(EventGetAppPriceInfoComplete_Params.Price), &Price, sizeof(Price));
+	memcpy_s(&EventGetAppPriceInfoComplete_Params.DiscountPrice, sizeof(EventGetAppPriceInfoComplete_Params.DiscountPrice), &DiscountPrice, sizeof(DiscountPrice));
+	memcpy_s(&EventGetAppPriceInfoComplete_Params.DiscountPercentage, sizeof(EventGetAppPriceInfoComplete_Params.DiscountPercentage), &DiscountPercentage, sizeof(DiscountPercentage));
 
 	this->ProcessEvent(uFnEventGetAppPriceInfoComplete, &EventGetAppPriceInfoComplete_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineSubsystemEOS.OnMicroTxnResponse
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bAuthorized                    (CPF_Parm)
+// Parameter Info:
+// bool                           bAuthorized                    (CPF_Parm)
 // uint64_t                       OrderId                        (CPF_Parm)
 
-void UOnlineSubsystemEOS::OnMicroTxnResponse(unsigned long bAuthorized, uint64_t OrderId)
+void UOnlineSubsystemEOS::OnMicroTxnResponse(bool bAuthorized, uint64_t OrderId)
 {
 	static UFunction* uFnOnMicroTxnResponse = nullptr;
 
@@ -2709,6 +2798,7 @@ void UOnlineSubsystemEOS::OnMicroTxnResponse(unsigned long bAuthorized, uint64_t
 	}
 
 	UOnlineSubsystemEOS_execOnMicroTxnResponse_Params OnMicroTxnResponse_Params;
+	memset(&OnMicroTxnResponse_Params, 0, sizeof(OnMicroTxnResponse_Params));
 	OnMicroTxnResponse_Params.bAuthorized = bAuthorized;
 	OnMicroTxnResponse_Params.OrderId = OrderId;
 
@@ -2716,8 +2806,8 @@ void UOnlineSubsystemEOS::OnMicroTxnResponse(unsigned long bAuthorized, uint64_t
 };
 
 // Function OnlineSubsystemEOS.OnlineAuthInterfaceEOS.RequiresAuthTicket
-// [0x400020002] (FUNC_RequiredAPI | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
-// Parameter info:
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
 bool UOnlineAuthInterfaceEOS::RequiresAuthTicket()
@@ -2730,6 +2820,7 @@ bool UOnlineAuthInterfaceEOS::RequiresAuthTicket()
 	}
 
 	UOnlineAuthInterfaceEOS_execRequiresAuthTicket_Params RequiresAuthTicket_Params;
+	memset(&RequiresAuthTicket_Params, 0, sizeof(RequiresAuthTicket_Params));
 
 	this->ProcessEvent(uFnRequiresAuthTicket, &RequiresAuthTicket_Params, nullptr);
 
@@ -2738,7 +2829,7 @@ bool UOnlineAuthInterfaceEOS::RequiresAuthTicket()
 
 // Function OnlineSubsystemEOS.OnlineAuthInterfaceEOS.RequestAuthTicket
 // [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
 // struct FScriptDelegate         Callback                       (CPF_Parm | CPF_NeedCtorLink)
@@ -2753,21 +2844,18 @@ bool UOnlineAuthInterfaceEOS::RequestAuthTicket(struct FUniqueNetId PlayerID, st
 	}
 
 	UOnlineAuthInterfaceEOS_execRequestAuthTicket_Params RequestAuthTicket_Params;
-	memcpy_s(&RequestAuthTicket_Params.PlayerID, 0x48, &PlayerID, 0x48);
-	memcpy_s(&RequestAuthTicket_Params.Callback, 0x18, &Callback, 0x18);
-
-	uFnRequestAuthTicket->FunctionFlags |= ~0x400;
+	memset(&RequestAuthTicket_Params, 0, sizeof(RequestAuthTicket_Params));
+	memcpy_s(&RequestAuthTicket_Params.PlayerID, sizeof(RequestAuthTicket_Params.PlayerID), &PlayerID, sizeof(PlayerID));
+	memcpy_s(&RequestAuthTicket_Params.Callback, sizeof(RequestAuthTicket_Params.Callback), &Callback, sizeof(Callback));
 
 	this->ProcessEvent(uFnRequestAuthTicket, &RequestAuthTicket_Params, nullptr);
-
-	uFnRequestAuthTicket->FunctionFlags |= 0x400;
 
 	return RequestAuthTicket_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineAuthInterfaceEOS.RequestMtxCode
 // [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
 // struct FScriptDelegate         Callback                       (CPF_Parm | CPF_NeedCtorLink)
@@ -2782,21 +2870,18 @@ bool UOnlineAuthInterfaceEOS::RequestMtxCode(struct FUniqueNetId PlayerID, struc
 	}
 
 	UOnlineAuthInterfaceEOS_execRequestMtxCode_Params RequestMtxCode_Params;
-	memcpy_s(&RequestMtxCode_Params.PlayerID, 0x48, &PlayerID, 0x48);
-	memcpy_s(&RequestMtxCode_Params.Callback, 0x18, &Callback, 0x18);
-
-	uFnRequestMtxCode->FunctionFlags |= ~0x400;
+	memset(&RequestMtxCode_Params, 0, sizeof(RequestMtxCode_Params));
+	memcpy_s(&RequestMtxCode_Params.PlayerID, sizeof(RequestMtxCode_Params.PlayerID), &PlayerID, sizeof(PlayerID));
+	memcpy_s(&RequestMtxCode_Params.Callback, sizeof(RequestMtxCode_Params.Callback), &Callback, sizeof(Callback));
 
 	this->ProcessEvent(uFnRequestMtxCode, &RequestMtxCode_Params, nullptr);
-
-	uFnRequestMtxCode->FunctionFlags |= 0x400;
 
 	return RequestMtxCode_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineFriendsInterfaceEOS.GetActivePlatformId
 // [0x400420400] (FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_NetValidate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            AccountId                      (CPF_Const | CPF_Parm | CPF_NeedCtorLink)
@@ -2812,24 +2897,21 @@ bool UOnlineFriendsInterfaceEOS::GetActivePlatformId(uint8_t LocalUserNum, struc
 	}
 
 	UOnlineFriendsInterfaceEOS_execGetActivePlatformId_Params GetActivePlatformId_Params;
-	memcpy_s(&GetActivePlatformId_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&GetActivePlatformId_Params.AccountId, 0x48, &AccountId, 0x48);
-	memcpy_s(&GetActivePlatformId_Params.PlatformId, 0x48, &PlatformId, 0x48);
-
-	uFnGetActivePlatformId->FunctionFlags |= ~0x400;
+	memset(&GetActivePlatformId_Params, 0, sizeof(GetActivePlatformId_Params));
+	memcpy_s(&GetActivePlatformId_Params.LocalUserNum, sizeof(GetActivePlatformId_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&GetActivePlatformId_Params.AccountId, sizeof(GetActivePlatformId_Params.AccountId), &AccountId, sizeof(AccountId));
+	memcpy_s(&GetActivePlatformId_Params.PlatformId, sizeof(GetActivePlatformId_Params.PlatformId), &PlatformId, sizeof(PlatformId));
 
 	this->ProcessEvent(uFnGetActivePlatformId, &GetActivePlatformId_Params, nullptr);
 
-	uFnGetActivePlatformId->FunctionFlags |= 0x400;
-
-	memcpy_s(&PlatformId, 0x48, &GetActivePlatformId_Params.PlatformId, 0x48);
+	memcpy_s(&PlatformId, sizeof(PlatformId), &GetActivePlatformId_Params.PlatformId, sizeof(GetActivePlatformId_Params.PlatformId));
 
 	return GetActivePlatformId_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineFriendsInterfaceEOS.RequestLinkedAccounts
 // [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // TArray<struct FUniqueNetId>    AccountIds                     (CPF_Const | CPF_Parm | CPF_NeedCtorLink)
@@ -2845,22 +2927,19 @@ bool UOnlineFriendsInterfaceEOS::RequestLinkedAccounts(uint8_t LocalUserNum, TAr
 	}
 
 	UOnlineFriendsInterfaceEOS_execRequestLinkedAccounts_Params RequestLinkedAccounts_Params;
-	memcpy_s(&RequestLinkedAccounts_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&RequestLinkedAccounts_Params.AccountIds, 0x10, &AccountIds, 0x10);
-	memcpy_s(&RequestLinkedAccounts_Params.Callback, 0x18, &Callback, 0x18);
-
-	uFnRequestLinkedAccounts->FunctionFlags |= ~0x400;
+	memset(&RequestLinkedAccounts_Params, 0, sizeof(RequestLinkedAccounts_Params));
+	memcpy_s(&RequestLinkedAccounts_Params.LocalUserNum, sizeof(RequestLinkedAccounts_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&RequestLinkedAccounts_Params.AccountIds, sizeof(RequestLinkedAccounts_Params.AccountIds), &AccountIds, sizeof(AccountIds));
+	memcpy_s(&RequestLinkedAccounts_Params.Callback, sizeof(RequestLinkedAccounts_Params.Callback), &Callback, sizeof(Callback));
 
 	this->ProcessEvent(uFnRequestLinkedAccounts, &RequestLinkedAccounts_Params, nullptr);
-
-	uFnRequestLinkedAccounts->FunctionFlags |= 0x400;
 
 	return RequestLinkedAccounts_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.NotifyEventClipErrorOccurred
-// [0x00020002] (FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         InCallback                     (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineGameClipsInterfaceEOS::NotifyEventClipErrorOccurred(struct FScriptDelegate InCallback)
@@ -2873,14 +2952,15 @@ void UOnlineGameClipsInterfaceEOS::NotifyEventClipErrorOccurred(struct FScriptDe
 	}
 
 	UOnlineGameClipsInterfaceEOS_execNotifyEventClipErrorOccurred_Params NotifyEventClipErrorOccurred_Params;
-	memcpy_s(&NotifyEventClipErrorOccurred_Params.InCallback, 0x18, &InCallback, 0x18);
+	memset(&NotifyEventClipErrorOccurred_Params, 0, sizeof(NotifyEventClipErrorOccurred_Params));
+	memcpy_s(&NotifyEventClipErrorOccurred_Params.InCallback, sizeof(NotifyEventClipErrorOccurred_Params.InCallback), &InCallback, sizeof(InCallback));
 
 	this->ProcessEvent(uFnNotifyEventClipErrorOccurred, &NotifyEventClipErrorOccurred_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.EventClipErrorOccurred
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class FString                  InEpicAccountId                (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        ClipId                         (CPF_Parm)
 // class UErrorType*              InErrorType                    (CPF_Parm)
@@ -2895,16 +2975,17 @@ void UOnlineGameClipsInterfaceEOS::EventClipErrorOccurred(class FString InEpicAc
 	}
 
 	UOnlineGameClipsInterfaceEOS_execEventClipErrorOccurred_Params EventClipErrorOccurred_Params;
-	memcpy_s(&EventClipErrorOccurred_Params.InEpicAccountId, 0x10, &InEpicAccountId, 0x10);
-	memcpy_s(&EventClipErrorOccurred_Params.ClipId, 0x4, &ClipId, 0x4);
-	memcpy_s(&EventClipErrorOccurred_Params.InErrorType, 0x8, &InErrorType, 0x8);
+	memset(&EventClipErrorOccurred_Params, 0, sizeof(EventClipErrorOccurred_Params));
+	memcpy_s(&EventClipErrorOccurred_Params.InEpicAccountId, sizeof(EventClipErrorOccurred_Params.InEpicAccountId), &InEpicAccountId, sizeof(InEpicAccountId));
+	memcpy_s(&EventClipErrorOccurred_Params.ClipId, sizeof(EventClipErrorOccurred_Params.ClipId), &ClipId, sizeof(ClipId));
+	memcpy_s(&EventClipErrorOccurred_Params.InErrorType, sizeof(EventClipErrorOccurred_Params.InErrorType), &InErrorType, sizeof(InErrorType));
 
 	this->ProcessEvent(uFnEventClipErrorOccurred, &EventClipErrorOccurred_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.NotifyEventGeneralErrorOccurred
-// [0x00020002] (FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         InCallback                     (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineGameClipsInterfaceEOS::NotifyEventGeneralErrorOccurred(struct FScriptDelegate InCallback)
@@ -2917,14 +2998,15 @@ void UOnlineGameClipsInterfaceEOS::NotifyEventGeneralErrorOccurred(struct FScrip
 	}
 
 	UOnlineGameClipsInterfaceEOS_execNotifyEventGeneralErrorOccurred_Params NotifyEventGeneralErrorOccurred_Params;
-	memcpy_s(&NotifyEventGeneralErrorOccurred_Params.InCallback, 0x18, &InCallback, 0x18);
+	memset(&NotifyEventGeneralErrorOccurred_Params, 0, sizeof(NotifyEventGeneralErrorOccurred_Params));
+	memcpy_s(&NotifyEventGeneralErrorOccurred_Params.InCallback, sizeof(NotifyEventGeneralErrorOccurred_Params.InCallback), &InCallback, sizeof(InCallback));
 
 	this->ProcessEvent(uFnNotifyEventGeneralErrorOccurred, &NotifyEventGeneralErrorOccurred_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.EventGeneralErrorOccurred
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class UErrorType*              InErrorType                    (CPF_Parm)
 
 void UOnlineGameClipsInterfaceEOS::EventGeneralErrorOccurred(class UErrorType* InErrorType)
@@ -2937,14 +3019,15 @@ void UOnlineGameClipsInterfaceEOS::EventGeneralErrorOccurred(class UErrorType* I
 	}
 
 	UOnlineGameClipsInterfaceEOS_execEventGeneralErrorOccurred_Params EventGeneralErrorOccurred_Params;
-	memcpy_s(&EventGeneralErrorOccurred_Params.InErrorType, 0x8, &InErrorType, 0x8);
+	memset(&EventGeneralErrorOccurred_Params, 0, sizeof(EventGeneralErrorOccurred_Params));
+	memcpy_s(&EventGeneralErrorOccurred_Params.InErrorType, sizeof(EventGeneralErrorOccurred_Params.InErrorType), &InErrorType, sizeof(InErrorType));
 
 	this->ProcessEvent(uFnEventGeneralErrorOccurred, &EventGeneralErrorOccurred_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.NotifyEventMaskStatusChanged
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         InCallback                     (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineGameClipsInterfaceEOS::NotifyEventMaskStatusChanged(struct FScriptDelegate InCallback)
@@ -2957,19 +3040,20 @@ void UOnlineGameClipsInterfaceEOS::NotifyEventMaskStatusChanged(struct FScriptDe
 	}
 
 	UOnlineGameClipsInterfaceEOS_execNotifyEventMaskStatusChanged_Params NotifyEventMaskStatusChanged_Params;
-	memcpy_s(&NotifyEventMaskStatusChanged_Params.InCallback, 0x18, &InCallback, 0x18);
+	memset(&NotifyEventMaskStatusChanged_Params, 0, sizeof(NotifyEventMaskStatusChanged_Params));
+	memcpy_s(&NotifyEventMaskStatusChanged_Params.InCallback, sizeof(NotifyEventMaskStatusChanged_Params.InCallback), &InCallback, sizeof(InCallback));
 
 	this->ProcessEvent(uFnNotifyEventMaskStatusChanged, &NotifyEventMaskStatusChanged_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.EventMaskStatusChanged
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint64_t                       InMaskAreaHandle               (CPF_Parm)
 // struct FGameClipsMaskArea      InMaskArea                     (CPF_Const | CPF_Parm)
-// uint8_t                        InNewMaskStatus                (CPF_Parm)
+// EGameClipsMaskStatus           InNewMaskStatus                (CPF_Parm)
 
-void UOnlineGameClipsInterfaceEOS::EventMaskStatusChanged(uint64_t InMaskAreaHandle, struct FGameClipsMaskArea InMaskArea, uint8_t InNewMaskStatus)
+void UOnlineGameClipsInterfaceEOS::EventMaskStatusChanged(uint64_t InMaskAreaHandle, struct FGameClipsMaskArea InMaskArea, EGameClipsMaskStatus InNewMaskStatus)
 {
 	static UFunction* uFnEventMaskStatusChanged = nullptr;
 
@@ -2979,16 +3063,17 @@ void UOnlineGameClipsInterfaceEOS::EventMaskStatusChanged(uint64_t InMaskAreaHan
 	}
 
 	UOnlineGameClipsInterfaceEOS_execEventMaskStatusChanged_Params EventMaskStatusChanged_Params;
+	memset(&EventMaskStatusChanged_Params, 0, sizeof(EventMaskStatusChanged_Params));
 	EventMaskStatusChanged_Params.InMaskAreaHandle = InMaskAreaHandle;
-	memcpy_s(&EventMaskStatusChanged_Params.InMaskArea, 0x18, &InMaskArea, 0x18);
-	memcpy_s(&EventMaskStatusChanged_Params.InNewMaskStatus, 0x1, &InNewMaskStatus, 0x1);
+	memcpy_s(&EventMaskStatusChanged_Params.InMaskArea, sizeof(EventMaskStatusChanged_Params.InMaskArea), &InMaskArea, sizeof(InMaskArea));
+	memcpy_s(&EventMaskStatusChanged_Params.InNewMaskStatus, sizeof(EventMaskStatusChanged_Params.InNewMaskStatus), &InNewMaskStatus, sizeof(InNewMaskStatus));
 
 	this->ProcessEvent(uFnEventMaskStatusChanged, &EventMaskStatusChanged_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.NotifyEventClipStatusChanged
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         InCallback                     (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineGameClipsInterfaceEOS::NotifyEventClipStatusChanged(struct FScriptDelegate InCallback)
@@ -3001,19 +3086,20 @@ void UOnlineGameClipsInterfaceEOS::NotifyEventClipStatusChanged(struct FScriptDe
 	}
 
 	UOnlineGameClipsInterfaceEOS_execNotifyEventClipStatusChanged_Params NotifyEventClipStatusChanged_Params;
-	memcpy_s(&NotifyEventClipStatusChanged_Params.InCallback, 0x18, &InCallback, 0x18);
+	memset(&NotifyEventClipStatusChanged_Params, 0, sizeof(NotifyEventClipStatusChanged_Params));
+	memcpy_s(&NotifyEventClipStatusChanged_Params.InCallback, sizeof(NotifyEventClipStatusChanged_Params.InCallback), &InCallback, sizeof(InCallback));
 
 	this->ProcessEvent(uFnNotifyEventClipStatusChanged, &NotifyEventClipStatusChanged_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.EventClipStatusChanged
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class FString                  InEpicAccountId                (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        InClipId                       (CPF_Parm)
-// uint8_t                        InNewClipStatus                (CPF_Parm)
+// EGameClipsClipStatus           InNewClipStatus                (CPF_Parm)
 
-void UOnlineGameClipsInterfaceEOS::EventClipStatusChanged(class FString InEpicAccountId, int32_t InClipId, uint8_t InNewClipStatus)
+void UOnlineGameClipsInterfaceEOS::EventClipStatusChanged(class FString InEpicAccountId, int32_t InClipId, EGameClipsClipStatus InNewClipStatus)
 {
 	static UFunction* uFnEventClipStatusChanged = nullptr;
 
@@ -3023,16 +3109,17 @@ void UOnlineGameClipsInterfaceEOS::EventClipStatusChanged(class FString InEpicAc
 	}
 
 	UOnlineGameClipsInterfaceEOS_execEventClipStatusChanged_Params EventClipStatusChanged_Params;
-	memcpy_s(&EventClipStatusChanged_Params.InEpicAccountId, 0x10, &InEpicAccountId, 0x10);
-	memcpy_s(&EventClipStatusChanged_Params.InClipId, 0x4, &InClipId, 0x4);
-	memcpy_s(&EventClipStatusChanged_Params.InNewClipStatus, 0x1, &InNewClipStatus, 0x1);
+	memset(&EventClipStatusChanged_Params, 0, sizeof(EventClipStatusChanged_Params));
+	memcpy_s(&EventClipStatusChanged_Params.InEpicAccountId, sizeof(EventClipStatusChanged_Params.InEpicAccountId), &InEpicAccountId, sizeof(InEpicAccountId));
+	memcpy_s(&EventClipStatusChanged_Params.InClipId, sizeof(EventClipStatusChanged_Params.InClipId), &InClipId, sizeof(InClipId));
+	memcpy_s(&EventClipStatusChanged_Params.InNewClipStatus, sizeof(EventClipStatusChanged_Params.InNewClipStatus), &InNewClipStatus, sizeof(InNewClipStatus));
 
 	this->ProcessEvent(uFnEventClipStatusChanged, &EventClipStatusChanged_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.NotifyEventConnectionStatusChanged
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         InCallback                     (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineGameClipsInterfaceEOS::NotifyEventConnectionStatusChanged(struct FScriptDelegate InCallback)
@@ -3045,19 +3132,20 @@ void UOnlineGameClipsInterfaceEOS::NotifyEventConnectionStatusChanged(struct FSc
 	}
 
 	UOnlineGameClipsInterfaceEOS_execNotifyEventConnectionStatusChanged_Params NotifyEventConnectionStatusChanged_Params;
-	memcpy_s(&NotifyEventConnectionStatusChanged_Params.InCallback, 0x18, &InCallback, 0x18);
+	memset(&NotifyEventConnectionStatusChanged_Params, 0, sizeof(NotifyEventConnectionStatusChanged_Params));
+	memcpy_s(&NotifyEventConnectionStatusChanged_Params.InCallback, sizeof(NotifyEventConnectionStatusChanged_Params.InCallback), &InCallback, sizeof(InCallback));
 
 	this->ProcessEvent(uFnNotifyEventConnectionStatusChanged, &NotifyEventConnectionStatusChanged_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.EventConnectionStatusChanged
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class FString                  InEpicAccountId                (CPF_Parm | CPF_NeedCtorLink)
-// uint8_t                        InConnection                   (CPF_Parm)
-// uint8_t                        InNewConnectionStatus          (CPF_Parm)
+// EGameClipsConnection           InConnection                   (CPF_Parm)
+// EGameClipsConnectionStatus     InNewConnectionStatus          (CPF_Parm)
 
-void UOnlineGameClipsInterfaceEOS::EventConnectionStatusChanged(class FString InEpicAccountId, uint8_t InConnection, uint8_t InNewConnectionStatus)
+void UOnlineGameClipsInterfaceEOS::EventConnectionStatusChanged(class FString InEpicAccountId, EGameClipsConnection InConnection, EGameClipsConnectionStatus InNewConnectionStatus)
 {
 	static UFunction* uFnEventConnectionStatusChanged = nullptr;
 
@@ -3067,16 +3155,17 @@ void UOnlineGameClipsInterfaceEOS::EventConnectionStatusChanged(class FString In
 	}
 
 	UOnlineGameClipsInterfaceEOS_execEventConnectionStatusChanged_Params EventConnectionStatusChanged_Params;
-	memcpy_s(&EventConnectionStatusChanged_Params.InEpicAccountId, 0x10, &InEpicAccountId, 0x10);
-	memcpy_s(&EventConnectionStatusChanged_Params.InConnection, 0x1, &InConnection, 0x1);
-	memcpy_s(&EventConnectionStatusChanged_Params.InNewConnectionStatus, 0x1, &InNewConnectionStatus, 0x1);
+	memset(&EventConnectionStatusChanged_Params, 0, sizeof(EventConnectionStatusChanged_Params));
+	memcpy_s(&EventConnectionStatusChanged_Params.InEpicAccountId, sizeof(EventConnectionStatusChanged_Params.InEpicAccountId), &InEpicAccountId, sizeof(InEpicAccountId));
+	memcpy_s(&EventConnectionStatusChanged_Params.InConnection, sizeof(EventConnectionStatusChanged_Params.InConnection), &InConnection, sizeof(InConnection));
+	memcpy_s(&EventConnectionStatusChanged_Params.InNewConnectionStatus, sizeof(EventConnectionStatusChanged_Params.InNewConnectionStatus), &InNewConnectionStatus, sizeof(InNewConnectionStatus));
 
 	this->ProcessEvent(uFnEventConnectionStatusChanged, &EventConnectionStatusChanged_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.NotifyEventRecordingChanged
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         InCallback                     (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineGameClipsInterfaceEOS::NotifyEventRecordingChanged(struct FScriptDelegate InCallback)
@@ -3089,17 +3178,18 @@ void UOnlineGameClipsInterfaceEOS::NotifyEventRecordingChanged(struct FScriptDel
 	}
 
 	UOnlineGameClipsInterfaceEOS_execNotifyEventRecordingChanged_Params NotifyEventRecordingChanged_Params;
-	memcpy_s(&NotifyEventRecordingChanged_Params.InCallback, 0x18, &InCallback, 0x18);
+	memset(&NotifyEventRecordingChanged_Params, 0, sizeof(NotifyEventRecordingChanged_Params));
+	memcpy_s(&NotifyEventRecordingChanged_Params.InCallback, sizeof(NotifyEventRecordingChanged_Params.InCallback), &InCallback, sizeof(InCallback));
 
 	this->ProcessEvent(uFnNotifyEventRecordingChanged, &NotifyEventRecordingChanged_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.EventRecordingChanged
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// uint8_t                        InNewRecording                 (CPF_Parm)
+// Parameter Info:
+// EGameClipsRecording            InNewRecording                 (CPF_Parm)
 
-void UOnlineGameClipsInterfaceEOS::EventRecordingChanged(uint8_t InNewRecording)
+void UOnlineGameClipsInterfaceEOS::EventRecordingChanged(EGameClipsRecording InNewRecording)
 {
 	static UFunction* uFnEventRecordingChanged = nullptr;
 
@@ -3109,14 +3199,15 @@ void UOnlineGameClipsInterfaceEOS::EventRecordingChanged(uint8_t InNewRecording)
 	}
 
 	UOnlineGameClipsInterfaceEOS_execEventRecordingChanged_Params EventRecordingChanged_Params;
-	memcpy_s(&EventRecordingChanged_Params.InNewRecording, 0x1, &InNewRecording, 0x1);
+	memset(&EventRecordingChanged_Params, 0, sizeof(EventRecordingChanged_Params));
+	memcpy_s(&EventRecordingChanged_Params.InNewRecording, sizeof(EventRecordingChanged_Params.InNewRecording), &InNewRecording, sizeof(InNewRecording));
 
 	this->ProcessEvent(uFnEventRecordingChanged, &EventRecordingChanged_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.NotifyEventAvailabilityChanged
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         InCallback                     (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineGameClipsInterfaceEOS::NotifyEventAvailabilityChanged(struct FScriptDelegate InCallback)
@@ -3129,17 +3220,18 @@ void UOnlineGameClipsInterfaceEOS::NotifyEventAvailabilityChanged(struct FScript
 	}
 
 	UOnlineGameClipsInterfaceEOS_execNotifyEventAvailabilityChanged_Params NotifyEventAvailabilityChanged_Params;
-	memcpy_s(&NotifyEventAvailabilityChanged_Params.InCallback, 0x18, &InCallback, 0x18);
+	memset(&NotifyEventAvailabilityChanged_Params, 0, sizeof(NotifyEventAvailabilityChanged_Params));
+	memcpy_s(&NotifyEventAvailabilityChanged_Params.InCallback, sizeof(NotifyEventAvailabilityChanged_Params.InCallback), &InCallback, sizeof(InCallback));
 
 	this->ProcessEvent(uFnNotifyEventAvailabilityChanged, &NotifyEventAvailabilityChanged_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.EventAvailabilityChanged
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// uint8_t                        InNewAvailability              (CPF_Parm)
+// Parameter Info:
+// EGameClipsAvailability         InNewAvailability              (CPF_Parm)
 
-void UOnlineGameClipsInterfaceEOS::EventAvailabilityChanged(uint8_t InNewAvailability)
+void UOnlineGameClipsInterfaceEOS::EventAvailabilityChanged(EGameClipsAvailability InNewAvailability)
 {
 	static UFunction* uFnEventAvailabilityChanged = nullptr;
 
@@ -3149,14 +3241,15 @@ void UOnlineGameClipsInterfaceEOS::EventAvailabilityChanged(uint8_t InNewAvailab
 	}
 
 	UOnlineGameClipsInterfaceEOS_execEventAvailabilityChanged_Params EventAvailabilityChanged_Params;
-	memcpy_s(&EventAvailabilityChanged_Params.InNewAvailability, 0x1, &InNewAvailability, 0x1);
+	memset(&EventAvailabilityChanged_Params, 0, sizeof(EventAvailabilityChanged_Params));
+	memcpy_s(&EventAvailabilityChanged_Params.InNewAvailability, sizeof(EventAvailabilityChanged_Params.InNewAvailability), &InNewAvailability, sizeof(InNewAvailability));
 
 	this->ProcessEvent(uFnEventAvailabilityChanged, &EventAvailabilityChanged_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.IsUploading
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
 bool UOnlineGameClipsInterfaceEOS::IsUploading()
@@ -3169,19 +3262,16 @@ bool UOnlineGameClipsInterfaceEOS::IsUploading()
 	}
 
 	UOnlineGameClipsInterfaceEOS_execIsUploading_Params IsUploading_Params;
-
-	uFnIsUploading->FunctionFlags |= ~0x400;
+	memset(&IsUploading_Params, 0, sizeof(IsUploading_Params));
 
 	this->ProcessEvent(uFnIsUploading, &IsUploading_Params, nullptr);
-
-	uFnIsUploading->FunctionFlags |= 0x400;
 
 	return IsUploading_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.IsRecording
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
 bool UOnlineGameClipsInterfaceEOS::IsRecording()
@@ -3194,19 +3284,16 @@ bool UOnlineGameClipsInterfaceEOS::IsRecording()
 	}
 
 	UOnlineGameClipsInterfaceEOS_execIsRecording_Params IsRecording_Params;
-
-	uFnIsRecording->FunctionFlags |= ~0x400;
+	memset(&IsRecording_Params, 0, sizeof(IsRecording_Params));
 
 	this->ProcessEvent(uFnIsRecording, &IsRecording_Params, nullptr);
-
-	uFnIsRecording->FunctionFlags |= 0x400;
 
 	return IsRecording_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.IsAvailable
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
 bool UOnlineGameClipsInterfaceEOS::IsAvailable()
@@ -3219,19 +3306,16 @@ bool UOnlineGameClipsInterfaceEOS::IsAvailable()
 	}
 
 	UOnlineGameClipsInterfaceEOS_execIsAvailable_Params IsAvailable_Params;
-
-	uFnIsAvailable->FunctionFlags |= ~0x400;
+	memset(&IsAvailable_Params, 0, sizeof(IsAvailable_Params));
 
 	this->ProcessEvent(uFnIsAvailable, &IsAvailable_Params, nullptr);
-
-	uFnIsAvailable->FunctionFlags |= 0x400;
 
 	return IsAvailable_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.GetTimeUntilUnthrottled
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // float                          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  InEpicAccountId                (CPF_Parm | CPF_NeedCtorLink)
 
@@ -3245,20 +3329,17 @@ float UOnlineGameClipsInterfaceEOS::GetTimeUntilUnthrottled(class FString InEpic
 	}
 
 	UOnlineGameClipsInterfaceEOS_execGetTimeUntilUnthrottled_Params GetTimeUntilUnthrottled_Params;
-	memcpy_s(&GetTimeUntilUnthrottled_Params.InEpicAccountId, 0x10, &InEpicAccountId, 0x10);
-
-	uFnGetTimeUntilUnthrottled->FunctionFlags |= ~0x400;
+	memset(&GetTimeUntilUnthrottled_Params, 0, sizeof(GetTimeUntilUnthrottled_Params));
+	memcpy_s(&GetTimeUntilUnthrottled_Params.InEpicAccountId, sizeof(GetTimeUntilUnthrottled_Params.InEpicAccountId), &InEpicAccountId, sizeof(InEpicAccountId));
 
 	this->ProcessEvent(uFnGetTimeUntilUnthrottled, &GetTimeUntilUnthrottled_Params, nullptr);
-
-	uFnGetTimeUntilUnthrottled->FunctionFlags |= 0x400;
 
 	return GetTimeUntilUnthrottled_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.IsClipUploadingLimitReached
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  InEpicAccountId                (CPF_Parm | CPF_NeedCtorLink)
 
@@ -3272,20 +3353,17 @@ bool UOnlineGameClipsInterfaceEOS::IsClipUploadingLimitReached(class FString InE
 	}
 
 	UOnlineGameClipsInterfaceEOS_execIsClipUploadingLimitReached_Params IsClipUploadingLimitReached_Params;
-	memcpy_s(&IsClipUploadingLimitReached_Params.InEpicAccountId, 0x10, &InEpicAccountId, 0x10);
-
-	uFnIsClipUploadingLimitReached->FunctionFlags |= ~0x400;
+	memset(&IsClipUploadingLimitReached_Params, 0, sizeof(IsClipUploadingLimitReached_Params));
+	memcpy_s(&IsClipUploadingLimitReached_Params.InEpicAccountId, sizeof(IsClipUploadingLimitReached_Params.InEpicAccountId), &InEpicAccountId, sizeof(InEpicAccountId));
 
 	this->ProcessEvent(uFnIsClipUploadingLimitReached, &IsClipUploadingLimitReached_Params, nullptr);
-
-	uFnIsClipUploadingLimitReached->FunctionFlags |= 0x400;
 
 	return IsClipUploadingLimitReached_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.SetUserMaxClipUploadsPerMinute
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // int32_t                        InMaxClipUploadsPerMinute      (CPF_Parm)
 
 void UOnlineGameClipsInterfaceEOS::SetUserMaxClipUploadsPerMinute(int32_t InMaxClipUploadsPerMinute)
@@ -3298,18 +3376,15 @@ void UOnlineGameClipsInterfaceEOS::SetUserMaxClipUploadsPerMinute(int32_t InMaxC
 	}
 
 	UOnlineGameClipsInterfaceEOS_execSetUserMaxClipUploadsPerMinute_Params SetUserMaxClipUploadsPerMinute_Params;
-	memcpy_s(&SetUserMaxClipUploadsPerMinute_Params.InMaxClipUploadsPerMinute, 0x4, &InMaxClipUploadsPerMinute, 0x4);
-
-	uFnSetUserMaxClipUploadsPerMinute->FunctionFlags |= ~0x400;
+	memset(&SetUserMaxClipUploadsPerMinute_Params, 0, sizeof(SetUserMaxClipUploadsPerMinute_Params));
+	memcpy_s(&SetUserMaxClipUploadsPerMinute_Params.InMaxClipUploadsPerMinute, sizeof(SetUserMaxClipUploadsPerMinute_Params.InMaxClipUploadsPerMinute), &InMaxClipUploadsPerMinute, sizeof(InMaxClipUploadsPerMinute));
 
 	this->ProcessEvent(uFnSetUserMaxClipUploadsPerMinute, &SetUserMaxClipUploadsPerMinute_Params, nullptr);
-
-	uFnSetUserMaxClipUploadsPerMinute->FunctionFlags |= 0x400;
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.IsAccountLinked
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  InEpicAccountId                (CPF_Parm | CPF_NeedCtorLink)
 
@@ -3323,20 +3398,17 @@ bool UOnlineGameClipsInterfaceEOS::IsAccountLinked(class FString InEpicAccountId
 	}
 
 	UOnlineGameClipsInterfaceEOS_execIsAccountLinked_Params IsAccountLinked_Params;
-	memcpy_s(&IsAccountLinked_Params.InEpicAccountId, 0x10, &InEpicAccountId, 0x10);
-
-	uFnIsAccountLinked->FunctionFlags |= ~0x400;
+	memset(&IsAccountLinked_Params, 0, sizeof(IsAccountLinked_Params));
+	memcpy_s(&IsAccountLinked_Params.InEpicAccountId, sizeof(IsAccountLinked_Params.InEpicAccountId), &InEpicAccountId, sizeof(InEpicAccountId));
 
 	this->ProcessEvent(uFnIsAccountLinked, &IsAccountLinked_Params, nullptr);
-
-	uFnIsAccountLinked->FunctionFlags |= 0x400;
 
 	return IsAccountLinked_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.CreateClip
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  InEpicAccountId                (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  InClipType                     (CPF_Parm | CPF_NeedCtorLink)
@@ -3351,21 +3423,18 @@ int32_t UOnlineGameClipsInterfaceEOS::CreateClip(class FString InEpicAccountId, 
 	}
 
 	UOnlineGameClipsInterfaceEOS_execCreateClip_Params CreateClip_Params;
-	memcpy_s(&CreateClip_Params.InEpicAccountId, 0x10, &InEpicAccountId, 0x10);
-	memcpy_s(&CreateClip_Params.InClipType, 0x10, &InClipType, 0x10);
-
-	uFnCreateClip->FunctionFlags |= ~0x400;
+	memset(&CreateClip_Params, 0, sizeof(CreateClip_Params));
+	memcpy_s(&CreateClip_Params.InEpicAccountId, sizeof(CreateClip_Params.InEpicAccountId), &InEpicAccountId, sizeof(InEpicAccountId));
+	memcpy_s(&CreateClip_Params.InClipType, sizeof(CreateClip_Params.InClipType), &InClipType, sizeof(InClipType));
 
 	this->ProcessEvent(uFnCreateClip, &CreateClip_Params, nullptr);
-
-	uFnCreateClip->FunctionFlags |= 0x400;
 
 	return CreateClip_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.DisableMaskArea
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint64_t                       InMaskAreaHandle               (CPF_Parm)
 
 void UOnlineGameClipsInterfaceEOS::DisableMaskArea(uint64_t InMaskAreaHandle)
@@ -3378,18 +3447,15 @@ void UOnlineGameClipsInterfaceEOS::DisableMaskArea(uint64_t InMaskAreaHandle)
 	}
 
 	UOnlineGameClipsInterfaceEOS_execDisableMaskArea_Params DisableMaskArea_Params;
+	memset(&DisableMaskArea_Params, 0, sizeof(DisableMaskArea_Params));
 	DisableMaskArea_Params.InMaskAreaHandle = InMaskAreaHandle;
 
-	uFnDisableMaskArea->FunctionFlags |= ~0x400;
-
 	this->ProcessEvent(uFnDisableMaskArea, &DisableMaskArea_Params, nullptr);
-
-	uFnDisableMaskArea->FunctionFlags |= 0x400;
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.EnableMaskArea
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint64_t                       ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FGameClipsMaskArea      InMaskArea                     (CPF_Parm | CPF_OutParm)
 
@@ -3403,22 +3469,19 @@ uint64_t UOnlineGameClipsInterfaceEOS::EnableMaskArea(struct FGameClipsMaskArea&
 	}
 
 	UOnlineGameClipsInterfaceEOS_execEnableMaskArea_Params EnableMaskArea_Params;
-	memcpy_s(&EnableMaskArea_Params.InMaskArea, 0x18, &InMaskArea, 0x18);
-
-	uFnEnableMaskArea->FunctionFlags |= ~0x400;
+	memset(&EnableMaskArea_Params, 0, sizeof(EnableMaskArea_Params));
+	memcpy_s(&EnableMaskArea_Params.InMaskArea, sizeof(EnableMaskArea_Params.InMaskArea), &InMaskArea, sizeof(InMaskArea));
 
 	this->ProcessEvent(uFnEnableMaskArea, &EnableMaskArea_Params, nullptr);
 
-	uFnEnableMaskArea->FunctionFlags |= 0x400;
-
-	memcpy_s(&InMaskArea, 0x18, &EnableMaskArea_Params.InMaskArea, 0x18);
+	memcpy_s(&InMaskArea, sizeof(InMaskArea), &EnableMaskArea_Params.InMaskArea, sizeof(EnableMaskArea_Params.InMaskArea));
 
 	return EnableMaskArea_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.StopRecording
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 
 void UOnlineGameClipsInterfaceEOS::StopRecording()
 {
@@ -3430,17 +3493,14 @@ void UOnlineGameClipsInterfaceEOS::StopRecording()
 	}
 
 	UOnlineGameClipsInterfaceEOS_execStopRecording_Params StopRecording_Params;
-
-	uFnStopRecording->FunctionFlags |= ~0x400;
+	memset(&StopRecording_Params, 0, sizeof(StopRecording_Params));
 
 	this->ProcessEvent(uFnStopRecording, &StopRecording_Params, nullptr);
-
-	uFnStopRecording->FunctionFlags |= 0x400;
 };
 
 // Function OnlineSubsystemEOS.OnlineGameClipsInterfaceEOS.StartRecording
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint64_t                       InClipDuration                 (CPF_Parm)
 
 void UOnlineGameClipsInterfaceEOS::StartRecording(uint64_t InClipDuration)
@@ -3453,18 +3513,15 @@ void UOnlineGameClipsInterfaceEOS::StartRecording(uint64_t InClipDuration)
 	}
 
 	UOnlineGameClipsInterfaceEOS_execStartRecording_Params StartRecording_Params;
+	memset(&StartRecording_Params, 0, sizeof(StartRecording_Params));
 	StartRecording_Params.InClipDuration = InClipDuration;
 
-	uFnStartRecording->FunctionFlags |= ~0x400;
-
 	this->ProcessEvent(uFnStartRecording, &StartRecording_Params, nullptr);
-
-	uFnStartRecording->FunctionFlags |= 0x400;
 };
 
 // Function OnlineSubsystemEOS.OnlineGameInterfaceEOS.AcceptGameInvite
 // [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FName                   SessionName                    (CPF_Parm)
@@ -3479,21 +3536,18 @@ bool UOnlineGameInterfaceEOS::AcceptGameInvite(uint8_t LocalUserNum, struct FNam
 	}
 
 	UOnlineGameInterfaceEOS_execAcceptGameInvite_Params AcceptGameInvite_Params;
-	memcpy_s(&AcceptGameInvite_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AcceptGameInvite_Params.SessionName, 0x8, &SessionName, 0x8);
-
-	uFnAcceptGameInvite->FunctionFlags |= ~0x400;
+	memset(&AcceptGameInvite_Params, 0, sizeof(AcceptGameInvite_Params));
+	memcpy_s(&AcceptGameInvite_Params.LocalUserNum, sizeof(AcceptGameInvite_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AcceptGameInvite_Params.SessionName, sizeof(AcceptGameInvite_Params.SessionName), &SessionName, sizeof(SessionName));
 
 	this->ProcessEvent(uFnAcceptGameInvite, &AcceptGameInvite_Params, nullptr);
-
-	uFnAcceptGameInvite->FunctionFlags |= 0x400;
 
 	return AcceptGameInvite_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineGameInterfaceEOS.FreeSearchResults
 // [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class UOnlineGameSearch*       Search                         (CPF_Parm)
 
@@ -3507,26 +3561,23 @@ bool UOnlineGameInterfaceEOS::FreeSearchResults(class UOnlineGameSearch* Search)
 	}
 
 	UOnlineGameInterfaceEOS_execFreeSearchResults_Params FreeSearchResults_Params;
-	memcpy_s(&FreeSearchResults_Params.Search, 0x8, &Search, 0x8);
-
-	uFnFreeSearchResults->FunctionFlags |= ~0x400;
+	memset(&FreeSearchResults_Params, 0, sizeof(FreeSearchResults_Params));
+	memcpy_s(&FreeSearchResults_Params.Search, sizeof(FreeSearchResults_Params.Search), &Search, sizeof(Search));
 
 	this->ProcessEvent(uFnFreeSearchResults, &FreeSearchResults_Params, nullptr);
-
-	uFnFreeSearchResults->FunctionFlags |= 0x400;
 
 	return FreeSearchResults_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineGameInterfaceEOS.UpdateOnlineGame
-// [0x400024400] (FUNC_Native | FUNC_NetMulticast | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
-// Parameter info:
+// [0x400024400] (FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FName                   SessionName                    (CPF_Parm)
 // class UOnlineGameSettings*     UpdatedGameSettings            (CPF_Parm)
-// unsigned long                  bShouldRefreshOnlineData       (CPF_OptionalParm | CPF_Parm)
+// bool                           bShouldRefreshOnlineData       (CPF_OptionalParm | CPF_Parm)
 
-bool UOnlineGameInterfaceEOS::UpdateOnlineGame(struct FName SessionName, class UOnlineGameSettings* UpdatedGameSettings, unsigned long bShouldRefreshOnlineData)
+bool UOnlineGameInterfaceEOS::UpdateOnlineGame(struct FName SessionName, class UOnlineGameSettings* UpdatedGameSettings, bool bShouldRefreshOnlineData)
 {
 	static UFunction* uFnUpdateOnlineGame = nullptr;
 
@@ -3536,22 +3587,19 @@ bool UOnlineGameInterfaceEOS::UpdateOnlineGame(struct FName SessionName, class U
 	}
 
 	UOnlineGameInterfaceEOS_execUpdateOnlineGame_Params UpdateOnlineGame_Params;
-	memcpy_s(&UpdateOnlineGame_Params.SessionName, 0x8, &SessionName, 0x8);
-	memcpy_s(&UpdateOnlineGame_Params.UpdatedGameSettings, 0x8, &UpdatedGameSettings, 0x8);
+	memset(&UpdateOnlineGame_Params, 0, sizeof(UpdateOnlineGame_Params));
+	memcpy_s(&UpdateOnlineGame_Params.SessionName, sizeof(UpdateOnlineGame_Params.SessionName), &SessionName, sizeof(SessionName));
+	memcpy_s(&UpdateOnlineGame_Params.UpdatedGameSettings, sizeof(UpdateOnlineGame_Params.UpdatedGameSettings), &UpdatedGameSettings, sizeof(UpdatedGameSettings));
 	UpdateOnlineGame_Params.bShouldRefreshOnlineData = bShouldRefreshOnlineData;
 
-	uFnUpdateOnlineGame->FunctionFlags |= ~0x400;
-
 	this->ProcessEvent(uFnUpdateOnlineGame, &UpdateOnlineGame_Params, nullptr);
-
-	uFnUpdateOnlineGame->FunctionFlags |= 0x400;
 
 	return UpdateOnlineGame_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePersistentAuthInterfaceEOS.AuthWithNintendoAccountToken
 // [0x400420400] (FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_NetValidate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class FString                  NintendoAccountToken           (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
@@ -3566,23 +3614,20 @@ bool UOnlinePersistentAuthInterfaceEOS::AuthWithNintendoAccountToken(uint8_t Loc
 	}
 
 	UOnlinePersistentAuthInterfaceEOS_execAuthWithNintendoAccountToken_Params AuthWithNintendoAccountToken_Params;
-	memcpy_s(&AuthWithNintendoAccountToken_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AuthWithNintendoAccountToken_Params.NintendoAccountToken, 0x10, &NintendoAccountToken, 0x10);
-
-	uFnAuthWithNintendoAccountToken->FunctionFlags |= ~0x400;
+	memset(&AuthWithNintendoAccountToken_Params, 0, sizeof(AuthWithNintendoAccountToken_Params));
+	memcpy_s(&AuthWithNintendoAccountToken_Params.LocalUserNum, sizeof(AuthWithNintendoAccountToken_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AuthWithNintendoAccountToken_Params.NintendoAccountToken, sizeof(AuthWithNintendoAccountToken_Params.NintendoAccountToken), &NintendoAccountToken, sizeof(NintendoAccountToken));
 
 	this->ProcessEvent(uFnAuthWithNintendoAccountToken, &AuthWithNintendoAccountToken_Params, nullptr);
 
-	uFnAuthWithNintendoAccountToken->FunctionFlags |= 0x400;
-
-	memcpy_s(&NintendoAccountToken, 0x10, &AuthWithNintendoAccountToken_Params.NintendoAccountToken, 0x10);
+	memcpy_s(&NintendoAccountToken, sizeof(NintendoAccountToken), &AuthWithNintendoAccountToken_Params.NintendoAccountToken, sizeof(AuthWithNintendoAccountToken_Params.NintendoAccountToken));
 
 	return AuthWithNintendoAccountToken_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePersistentAuthInterfaceEOS.GetTimeUntilAuthExpiration
 // [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint64_t                       ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -3596,20 +3641,17 @@ uint64_t UOnlinePersistentAuthInterfaceEOS::GetTimeUntilAuthExpiration(uint8_t L
 	}
 
 	UOnlinePersistentAuthInterfaceEOS_execGetTimeUntilAuthExpiration_Params GetTimeUntilAuthExpiration_Params;
-	memcpy_s(&GetTimeUntilAuthExpiration_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-
-	uFnGetTimeUntilAuthExpiration->FunctionFlags |= ~0x400;
+	memset(&GetTimeUntilAuthExpiration_Params, 0, sizeof(GetTimeUntilAuthExpiration_Params));
+	memcpy_s(&GetTimeUntilAuthExpiration_Params.LocalUserNum, sizeof(GetTimeUntilAuthExpiration_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnGetTimeUntilAuthExpiration, &GetTimeUntilAuthExpiration_Params, nullptr);
-
-	uFnGetTimeUntilAuthExpiration->FunctionFlags |= 0x400;
 
 	return GetTimeUntilAuthExpiration_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePersistentAuthInterfaceEOS.GetAuthExpirationTimestamp
 // [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class UDateTime*               ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -3623,20 +3665,17 @@ class UDateTime* UOnlinePersistentAuthInterfaceEOS::GetAuthExpirationTimestamp(u
 	}
 
 	UOnlinePersistentAuthInterfaceEOS_execGetAuthExpirationTimestamp_Params GetAuthExpirationTimestamp_Params;
-	memcpy_s(&GetAuthExpirationTimestamp_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-
-	uFnGetAuthExpirationTimestamp->FunctionFlags |= ~0x400;
+	memset(&GetAuthExpirationTimestamp_Params, 0, sizeof(GetAuthExpirationTimestamp_Params));
+	memcpy_s(&GetAuthExpirationTimestamp_Params.LocalUserNum, sizeof(GetAuthExpirationTimestamp_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnGetAuthExpirationTimestamp, &GetAuthExpirationTimestamp_Params, nullptr);
-
-	uFnGetAuthExpirationTimestamp->FunctionFlags |= 0x400;
 
 	return GetAuthExpirationTimestamp_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePersistentAuthInterfaceEOS.LaunchAccountPortal
 // [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -3650,20 +3689,17 @@ bool UOnlinePersistentAuthInterfaceEOS::LaunchAccountPortal(uint8_t LocalUserNum
 	}
 
 	UOnlinePersistentAuthInterfaceEOS_execLaunchAccountPortal_Params LaunchAccountPortal_Params;
-	memcpy_s(&LaunchAccountPortal_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-
-	uFnLaunchAccountPortal->FunctionFlags |= ~0x400;
+	memset(&LaunchAccountPortal_Params, 0, sizeof(LaunchAccountPortal_Params));
+	memcpy_s(&LaunchAccountPortal_Params.LocalUserNum, sizeof(LaunchAccountPortal_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnLaunchAccountPortal, &LaunchAccountPortal_Params, nullptr);
-
-	uFnLaunchAccountPortal->FunctionFlags |= 0x400;
 
 	return LaunchAccountPortal_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePersistentAuthInterfaceEOS.GetClientSecret
 // [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 
 class FString UOnlinePersistentAuthInterfaceEOS::GetClientSecret()
@@ -3676,19 +3712,16 @@ class FString UOnlinePersistentAuthInterfaceEOS::GetClientSecret()
 	}
 
 	UOnlinePersistentAuthInterfaceEOS_execGetClientSecret_Params GetClientSecret_Params;
-
-	uFnGetClientSecret->FunctionFlags |= ~0x400;
+	memset(&GetClientSecret_Params, 0, sizeof(GetClientSecret_Params));
 
 	this->ProcessEvent(uFnGetClientSecret, &GetClientSecret_Params, nullptr);
-
-	uFnGetClientSecret->FunctionFlags |= 0x400;
 
 	return GetClientSecret_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePersistentAuthInterfaceEOS.GetClientID
 // [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 
 class FString UOnlinePersistentAuthInterfaceEOS::GetClientID()
@@ -3701,19 +3734,16 @@ class FString UOnlinePersistentAuthInterfaceEOS::GetClientID()
 	}
 
 	UOnlinePersistentAuthInterfaceEOS_execGetClientID_Params GetClientID_Params;
-
-	uFnGetClientID->FunctionFlags |= ~0x400;
+	memset(&GetClientID_Params, 0, sizeof(GetClientID_Params));
 
 	this->ProcessEvent(uFnGetClientID, &GetClientID_Params, nullptr);
-
-	uFnGetClientID->FunctionFlags |= 0x400;
 
 	return GetClientID_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePersistentAuthInterfaceEOS.GetClientCredentials
 // [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 
 class FString UOnlinePersistentAuthInterfaceEOS::GetClientCredentials()
@@ -3726,19 +3756,16 @@ class FString UOnlinePersistentAuthInterfaceEOS::GetClientCredentials()
 	}
 
 	UOnlinePersistentAuthInterfaceEOS_execGetClientCredentials_Params GetClientCredentials_Params;
-
-	uFnGetClientCredentials->FunctionFlags |= ~0x400;
+	memset(&GetClientCredentials_Params, 0, sizeof(GetClientCredentials_Params));
 
 	this->ProcessEvent(uFnGetClientCredentials, &GetClientCredentials_Params, nullptr);
-
-	uFnGetClientCredentials->FunctionFlags |= 0x400;
 
 	return GetClientCredentials_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePersistentAuthInterfaceEOS.GetContinuanceToken
 // [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -3752,20 +3779,17 @@ class FString UOnlinePersistentAuthInterfaceEOS::GetContinuanceToken(uint8_t Loc
 	}
 
 	UOnlinePersistentAuthInterfaceEOS_execGetContinuanceToken_Params GetContinuanceToken_Params;
-	memcpy_s(&GetContinuanceToken_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-
-	uFnGetContinuanceToken->FunctionFlags |= ~0x400;
+	memset(&GetContinuanceToken_Params, 0, sizeof(GetContinuanceToken_Params));
+	memcpy_s(&GetContinuanceToken_Params.LocalUserNum, sizeof(GetContinuanceToken_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnGetContinuanceToken, &GetContinuanceToken_Params, nullptr);
-
-	uFnGetContinuanceToken->FunctionFlags |= 0x400;
 
 	return GetContinuanceToken_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePersistentAuthInterfaceEOS.UseRefreshToken
 // [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class FString                  RefreshToken                   (CPF_Parm | CPF_NeedCtorLink)
@@ -3780,21 +3804,18 @@ bool UOnlinePersistentAuthInterfaceEOS::UseRefreshToken(uint8_t LocalUserNum, cl
 	}
 
 	UOnlinePersistentAuthInterfaceEOS_execUseRefreshToken_Params UseRefreshToken_Params;
-	memcpy_s(&UseRefreshToken_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&UseRefreshToken_Params.RefreshToken, 0x10, &RefreshToken, 0x10);
-
-	uFnUseRefreshToken->FunctionFlags |= ~0x400;
+	memset(&UseRefreshToken_Params, 0, sizeof(UseRefreshToken_Params));
+	memcpy_s(&UseRefreshToken_Params.LocalUserNum, sizeof(UseRefreshToken_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&UseRefreshToken_Params.RefreshToken, sizeof(UseRefreshToken_Params.RefreshToken), &RefreshToken, sizeof(RefreshToken));
 
 	this->ProcessEvent(uFnUseRefreshToken, &UseRefreshToken_Params, nullptr);
-
-	uFnUseRefreshToken->FunctionFlags |= 0x400;
 
 	return UseRefreshToken_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePersistentAuthInterfaceEOS.GetRefreshToken
 // [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -3808,20 +3829,17 @@ class FString UOnlinePersistentAuthInterfaceEOS::GetRefreshToken(uint8_t LocalUs
 	}
 
 	UOnlinePersistentAuthInterfaceEOS_execGetRefreshToken_Params GetRefreshToken_Params;
-	memcpy_s(&GetRefreshToken_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-
-	uFnGetRefreshToken->FunctionFlags |= ~0x400;
+	memset(&GetRefreshToken_Params, 0, sizeof(GetRefreshToken_Params));
+	memcpy_s(&GetRefreshToken_Params.LocalUserNum, sizeof(GetRefreshToken_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnGetRefreshToken, &GetRefreshToken_Params, nullptr);
-
-	uFnGetRefreshToken->FunctionFlags |= 0x400;
 
 	return GetRefreshToken_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePersistentAuthInterfaceEOS.RequestPinGrantCode
 // [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -3835,20 +3853,17 @@ bool UOnlinePersistentAuthInterfaceEOS::RequestPinGrantCode(uint8_t LocalUserNum
 	}
 
 	UOnlinePersistentAuthInterfaceEOS_execRequestPinGrantCode_Params RequestPinGrantCode_Params;
-	memcpy_s(&RequestPinGrantCode_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-
-	uFnRequestPinGrantCode->FunctionFlags |= ~0x400;
+	memset(&RequestPinGrantCode_Params, 0, sizeof(RequestPinGrantCode_Params));
+	memcpy_s(&RequestPinGrantCode_Params.LocalUserNum, sizeof(RequestPinGrantCode_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnRequestPinGrantCode, &RequestPinGrantCode_Params, nullptr);
-
-	uFnRequestPinGrantCode->FunctionFlags |= 0x400;
 
 	return RequestPinGrantCode_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ReadBlockList
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -3862,7 +3877,8 @@ bool UOnlinePlayerInterfaceEOS::ReadBlockList(uint8_t LocalUserNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_execReadBlockList_Params ReadBlockList_Params;
-	memcpy_s(&ReadBlockList_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&ReadBlockList_Params, 0, sizeof(ReadBlockList_Params));
+	memcpy_s(&ReadBlockList_Params.LocalUserNum, sizeof(ReadBlockList_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnReadBlockList, &ReadBlockList_Params, nullptr);
 
@@ -3871,7 +3887,7 @@ bool UOnlinePlayerInterfaceEOS::ReadBlockList(uint8_t LocalUserNum)
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetBlockList
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // TArray<struct FOnlineFriend>   OutBlockList                   (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
@@ -3885,21 +3901,18 @@ void UOnlinePlayerInterfaceEOS::GetBlockList(uint8_t LocalUserNum, TArray<struct
 	}
 
 	UOnlinePlayerInterfaceEOS_execGetBlockList_Params GetBlockList_Params;
-	memcpy_s(&GetBlockList_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&GetBlockList_Params.OutBlockList, 0x10, &OutBlockList, 0x10);
-
-	uFnGetBlockList->FunctionFlags |= ~0x400;
+	memset(&GetBlockList_Params, 0, sizeof(GetBlockList_Params));
+	memcpy_s(&GetBlockList_Params.LocalUserNum, sizeof(GetBlockList_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&GetBlockList_Params.OutBlockList, sizeof(GetBlockList_Params.OutBlockList), &OutBlockList, sizeof(OutBlockList));
 
 	this->ProcessEvent(uFnGetBlockList, &GetBlockList_Params, nullptr);
 
-	uFnGetBlockList->FunctionFlags |= 0x400;
-
-	memcpy_s(&OutBlockList, 0x10, &GetBlockList_Params.OutBlockList, 0x10);
+	memcpy_s(&OutBlockList, sizeof(OutBlockList), &GetBlockList_Params.OutBlockList, sizeof(GetBlockList_Params.OutBlockList));
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddPlayerUnblockedDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
@@ -3913,15 +3926,16 @@ void UOnlinePlayerInterfaceEOS::AddPlayerUnblockedDelegate(uint8_t LocalUserNum,
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddPlayerUnblockedDelegate_Params AddPlayerUnblockedDelegate_Params;
-	memcpy_s(&AddPlayerUnblockedDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddPlayerUnblockedDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&AddPlayerUnblockedDelegate_Params, 0, sizeof(AddPlayerUnblockedDelegate_Params));
+	memcpy_s(&AddPlayerUnblockedDelegate_Params.LocalUserNum, sizeof(AddPlayerUnblockedDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddPlayerUnblockedDelegate_Params.InDelegate, sizeof(AddPlayerUnblockedDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnAddPlayerUnblockedDelegate, &AddPlayerUnblockedDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddPlayerBlockedDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
@@ -3935,15 +3949,16 @@ void UOnlinePlayerInterfaceEOS::AddPlayerBlockedDelegate(uint8_t LocalUserNum, s
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddPlayerBlockedDelegate_Params AddPlayerBlockedDelegate_Params;
-	memcpy_s(&AddPlayerBlockedDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddPlayerBlockedDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&AddPlayerBlockedDelegate_Params, 0, sizeof(AddPlayerBlockedDelegate_Params));
+	memcpy_s(&AddPlayerBlockedDelegate_Params.LocalUserNum, sizeof(AddPlayerBlockedDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddPlayerBlockedDelegate_Params.InDelegate, sizeof(AddPlayerBlockedDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnAddPlayerBlockedDelegate, &AddPlayerBlockedDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddBlockListUpdatedDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
@@ -3957,20 +3972,21 @@ void UOnlinePlayerInterfaceEOS::AddBlockListUpdatedDelegate(uint8_t LocalUserNum
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddBlockListUpdatedDelegate_Params AddBlockListUpdatedDelegate_Params;
-	memcpy_s(&AddBlockListUpdatedDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddBlockListUpdatedDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&AddBlockListUpdatedDelegate_Params, 0, sizeof(AddBlockListUpdatedDelegate_Params));
+	memcpy_s(&AddBlockListUpdatedDelegate_Params.LocalUserNum, sizeof(AddBlockListUpdatedDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddBlockListUpdatedDelegate_Params.InDelegate, sizeof(AddBlockListUpdatedDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnAddBlockListUpdatedDelegate, &AddBlockListUpdatedDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.EpicIDToPlatformID
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FUniqueNetId            EpicAccountId                  (CPF_Parm | CPF_NeedCtorLink)
-// uint8_t                        TargetPlatform                 (CPF_Parm)
+// EOnlinePlatform                TargetPlatform                 (CPF_Parm)
 // struct FScriptDelegate         Callback                       (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlinePlayerInterfaceEOS::EpicIDToPlatformID(struct FUniqueNetId EpicAccountId, uint8_t TargetPlatform, struct FScriptDelegate Callback)
+void UOnlinePlayerInterfaceEOS::EpicIDToPlatformID(struct FUniqueNetId EpicAccountId, EOnlinePlatform TargetPlatform, struct FScriptDelegate Callback)
 {
 	static UFunction* uFnEpicIDToPlatformID = nullptr;
 
@@ -3980,20 +3996,17 @@ void UOnlinePlayerInterfaceEOS::EpicIDToPlatformID(struct FUniqueNetId EpicAccou
 	}
 
 	UOnlinePlayerInterfaceEOS_execEpicIDToPlatformID_Params EpicIDToPlatformID_Params;
-	memcpy_s(&EpicIDToPlatformID_Params.EpicAccountId, 0x48, &EpicAccountId, 0x48);
-	memcpy_s(&EpicIDToPlatformID_Params.TargetPlatform, 0x1, &TargetPlatform, 0x1);
-	memcpy_s(&EpicIDToPlatformID_Params.Callback, 0x18, &Callback, 0x18);
-
-	uFnEpicIDToPlatformID->FunctionFlags |= ~0x400;
+	memset(&EpicIDToPlatformID_Params, 0, sizeof(EpicIDToPlatformID_Params));
+	memcpy_s(&EpicIDToPlatformID_Params.EpicAccountId, sizeof(EpicIDToPlatformID_Params.EpicAccountId), &EpicAccountId, sizeof(EpicAccountId));
+	memcpy_s(&EpicIDToPlatformID_Params.TargetPlatform, sizeof(EpicIDToPlatformID_Params.TargetPlatform), &TargetPlatform, sizeof(TargetPlatform));
+	memcpy_s(&EpicIDToPlatformID_Params.Callback, sizeof(EpicIDToPlatformID_Params.Callback), &Callback, sizeof(Callback));
 
 	this->ProcessEvent(uFnEpicIDToPlatformID, &EpicIDToPlatformID_Params, nullptr);
-
-	uFnEpicIDToPlatformID->FunctionFlags |= 0x400;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.EpicIDToPlatformIDCallback
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FUniqueNetId            PlatformAccountId              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
@@ -4007,15 +4020,16 @@ void UOnlinePlayerInterfaceEOS::EpicIDToPlatformIDCallback(struct FUniqueNetId P
 	}
 
 	UOnlinePlayerInterfaceEOS_execEpicIDToPlatformIDCallback_Params EpicIDToPlatformIDCallback_Params;
-	memcpy_s(&EpicIDToPlatformIDCallback_Params.PlatformAccountId, 0x48, &PlatformAccountId, 0x48);
-	memcpy_s(&EpicIDToPlatformIDCallback_Params.Error, 0x10, &Error, 0x10);
+	memset(&EpicIDToPlatformIDCallback_Params, 0, sizeof(EpicIDToPlatformIDCallback_Params));
+	memcpy_s(&EpicIDToPlatformIDCallback_Params.PlatformAccountId, sizeof(EpicIDToPlatformIDCallback_Params.PlatformAccountId), &PlatformAccountId, sizeof(PlatformAccountId));
+	memcpy_s(&EpicIDToPlatformIDCallback_Params.Error, sizeof(EpicIDToPlatformIDCallback_Params.Error), &Error, sizeof(Error));
 
 	this->ProcessEvent(uFnEpicIDToPlatformIDCallback, &EpicIDToPlatformIDCallback_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetEpicAccountId
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FUniqueNetId            ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // struct FUniqueNetId            PlatformId                     (CPF_Parm | CPF_NeedCtorLink)
 
@@ -4029,20 +4043,17 @@ struct FUniqueNetId UOnlinePlayerInterfaceEOS::GetEpicAccountId(struct FUniqueNe
 	}
 
 	UOnlinePlayerInterfaceEOS_execGetEpicAccountId_Params GetEpicAccountId_Params;
-	memcpy_s(&GetEpicAccountId_Params.PlatformId, 0x48, &PlatformId, 0x48);
-
-	uFnGetEpicAccountId->FunctionFlags |= ~0x400;
+	memset(&GetEpicAccountId_Params, 0, sizeof(GetEpicAccountId_Params));
+	memcpy_s(&GetEpicAccountId_Params.PlatformId, sizeof(GetEpicAccountId_Params.PlatformId), &PlatformId, sizeof(PlatformId));
 
 	this->ProcessEvent(uFnGetEpicAccountId, &GetEpicAccountId_Params, nullptr);
-
-	uFnGetEpicAccountId->FunctionFlags |= 0x400;
 
 	return GetEpicAccountId_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowInviteUI
-// [0x00024001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class FString                  InviteText                     (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
@@ -4057,8 +4068,9 @@ bool UOnlinePlayerInterfaceEOS::ShowInviteUI(uint8_t LocalUserNum, class FString
 	}
 
 	UOnlinePlayerInterfaceEOS_execShowInviteUI_Params ShowInviteUI_Params;
-	memcpy_s(&ShowInviteUI_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ShowInviteUI_Params.InviteText, 0x10, &InviteText, 0x10);
+	memset(&ShowInviteUI_Params, 0, sizeof(ShowInviteUI_Params));
+	memcpy_s(&ShowInviteUI_Params.LocalUserNum, sizeof(ShowInviteUI_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ShowInviteUI_Params.InviteText, sizeof(ShowInviteUI_Params.InviteText), &InviteText, sizeof(InviteText));
 
 	this->ProcessEvent(uFnShowInviteUI, &ShowInviteUI_Params, nullptr);
 
@@ -4067,7 +4079,7 @@ bool UOnlinePlayerInterfaceEOS::ShowInviteUI(uint8_t LocalUserNum, class FString
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowGamerCardUI
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
@@ -4082,8 +4094,9 @@ bool UOnlinePlayerInterfaceEOS::ShowGamerCardUI(uint8_t LocalUserNum, struct FUn
 	}
 
 	UOnlinePlayerInterfaceEOS_execShowGamerCardUI_Params ShowGamerCardUI_Params;
-	memcpy_s(&ShowGamerCardUI_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ShowGamerCardUI_Params.PlayerID, 0x48, &PlayerID, 0x48);
+	memset(&ShowGamerCardUI_Params, 0, sizeof(ShowGamerCardUI_Params));
+	memcpy_s(&ShowGamerCardUI_Params.LocalUserNum, sizeof(ShowGamerCardUI_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ShowGamerCardUI_Params.PlayerID, sizeof(ShowGamerCardUI_Params.PlayerID), &PlayerID, sizeof(PlayerID));
 
 	this->ProcessEvent(uFnShowGamerCardUI, &ShowGamerCardUI_Params, nullptr);
 
@@ -4092,7 +4105,7 @@ bool UOnlinePlayerInterfaceEOS::ShowGamerCardUI(uint8_t LocalUserNum, struct FUn
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.SetRichPresence
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class FString                  PresenceString                 (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  GameDataString                 (CPF_Parm | CPF_NeedCtorLink)
@@ -4107,20 +4120,17 @@ void UOnlinePlayerInterfaceEOS::SetRichPresence(uint8_t LocalUserNum, class FStr
 	}
 
 	UOnlinePlayerInterfaceEOS_execSetRichPresence_Params SetRichPresence_Params;
-	memcpy_s(&SetRichPresence_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&SetRichPresence_Params.PresenceString, 0x10, &PresenceString, 0x10);
-	memcpy_s(&SetRichPresence_Params.GameDataString, 0x10, &GameDataString, 0x10);
-
-	uFnSetRichPresence->FunctionFlags |= ~0x400;
+	memset(&SetRichPresence_Params, 0, sizeof(SetRichPresence_Params));
+	memcpy_s(&SetRichPresence_Params.LocalUserNum, sizeof(SetRichPresence_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&SetRichPresence_Params.PresenceString, sizeof(SetRichPresence_Params.PresenceString), &PresenceString, sizeof(PresenceString));
+	memcpy_s(&SetRichPresence_Params.GameDataString, sizeof(SetRichPresence_Params.GameDataString), &GameDataString, sizeof(GameDataString));
 
 	this->ProcessEvent(uFnSetRichPresence, &SetRichPresence_Params, nullptr);
-
-	uFnSetRichPresence->FunctionFlags |= 0x400;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetFriendPresence
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FOnlineFriend           FriendData                     (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::GetFriendPresence(struct FOnlineFriend& FriendData)
@@ -4133,20 +4143,17 @@ void UOnlinePlayerInterfaceEOS::GetFriendPresence(struct FOnlineFriend& FriendDa
 	}
 
 	UOnlinePlayerInterfaceEOS_execGetFriendPresence_Params GetFriendPresence_Params;
-	memcpy_s(&GetFriendPresence_Params.FriendData, 0x118, &FriendData, 0x118);
-
-	uFnGetFriendPresence->FunctionFlags |= ~0x400;
+	memset(&GetFriendPresence_Params, 0, sizeof(GetFriendPresence_Params));
+	memcpy_s(&GetFriendPresence_Params.FriendData, sizeof(GetFriendPresence_Params.FriendData), &FriendData, sizeof(FriendData));
 
 	this->ProcessEvent(uFnGetFriendPresence, &GetFriendPresence_Params, nullptr);
 
-	uFnGetFriendPresence->FunctionFlags |= 0x400;
-
-	memcpy_s(&FriendData, 0x118, &GetFriendPresence_Params.FriendData, 0x118);
+	memcpy_s(&FriendData, sizeof(FriendData), &GetFriendPresence_Params.FriendData, sizeof(GetFriendPresence_Params.FriendData));
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.RecordPlayersRecentlyMet
 // [0x00420001] (FUNC_Final | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class FString                  GameDescription                (CPF_Parm | CPF_NeedCtorLink)
@@ -4162,20 +4169,21 @@ bool UOnlinePlayerInterfaceEOS::RecordPlayersRecentlyMet(uint8_t LocalUserNum, c
 	}
 
 	UOnlinePlayerInterfaceEOS_execRecordPlayersRecentlyMet_Params RecordPlayersRecentlyMet_Params;
-	memcpy_s(&RecordPlayersRecentlyMet_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&RecordPlayersRecentlyMet_Params.GameDescription, 0x10, &GameDescription, 0x10);
-	memcpy_s(&RecordPlayersRecentlyMet_Params.Players, 0x10, &Players, 0x10);
+	memset(&RecordPlayersRecentlyMet_Params, 0, sizeof(RecordPlayersRecentlyMet_Params));
+	memcpy_s(&RecordPlayersRecentlyMet_Params.LocalUserNum, sizeof(RecordPlayersRecentlyMet_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&RecordPlayersRecentlyMet_Params.GameDescription, sizeof(RecordPlayersRecentlyMet_Params.GameDescription), &GameDescription, sizeof(GameDescription));
+	memcpy_s(&RecordPlayersRecentlyMet_Params.Players, sizeof(RecordPlayersRecentlyMet_Params.Players), &Players, sizeof(Players));
 
 	this->ProcessEvent(uFnRecordPlayersRecentlyMet, &RecordPlayersRecentlyMet_Params, nullptr);
 
-	memcpy_s(&Players, 0x10, &RecordPlayersRecentlyMet_Params.Players, 0x10);
+	memcpy_s(&Players, sizeof(Players), &RecordPlayersRecentlyMet_Params.Players, sizeof(RecordPlayersRecentlyMet_Params.Players));
 
 	return RecordPlayersRecentlyMet_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.WordFilterSanitizeString
-// [0x00024001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Comment                        (CPF_Const | CPF_Parm | CPF_NeedCtorLink)
 // struct FScriptDelegate         SanitizeDelegate               (CPF_Parm | CPF_NeedCtorLink)
@@ -4191,9 +4199,10 @@ bool UOnlinePlayerInterfaceEOS::WordFilterSanitizeString(class FString Comment, 
 	}
 
 	UOnlinePlayerInterfaceEOS_execWordFilterSanitizeString_Params WordFilterSanitizeString_Params;
-	memcpy_s(&WordFilterSanitizeString_Params.Comment, 0x10, &Comment, 0x10);
-	memcpy_s(&WordFilterSanitizeString_Params.SanitizeDelegate, 0x18, &SanitizeDelegate, 0x18);
-	memcpy_s(&WordFilterSanitizeString_Params.PlayerID, 0x48, &PlayerID, 0x48);
+	memset(&WordFilterSanitizeString_Params, 0, sizeof(WordFilterSanitizeString_Params));
+	memcpy_s(&WordFilterSanitizeString_Params.Comment, sizeof(WordFilterSanitizeString_Params.Comment), &Comment, sizeof(Comment));
+	memcpy_s(&WordFilterSanitizeString_Params.SanitizeDelegate, sizeof(WordFilterSanitizeString_Params.SanitizeDelegate), &SanitizeDelegate, sizeof(SanitizeDelegate));
+	memcpy_s(&WordFilterSanitizeString_Params.PlayerID, sizeof(WordFilterSanitizeString_Params.PlayerID), &PlayerID, sizeof(PlayerID));
 
 	this->ProcessEvent(uFnWordFilterSanitizeString, &WordFilterSanitizeString_Params, nullptr);
 
@@ -4202,7 +4211,7 @@ bool UOnlinePlayerInterfaceEOS::WordFilterSanitizeString(class FString Comment, 
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnSanitizeStringComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FWordFilterResult       Result                         (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::OnSanitizeStringComplete(struct FWordFilterResult Result)
@@ -4215,14 +4224,15 @@ void UOnlinePlayerInterfaceEOS::OnSanitizeStringComplete(struct FWordFilterResul
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnSanitizeStringComplete_Params OnSanitizeStringComplete_Params;
-	memcpy_s(&OnSanitizeStringComplete_Params.Result, 0x38, &Result, 0x38);
+	memset(&OnSanitizeStringComplete_Params, 0, sizeof(OnSanitizeStringComplete_Params));
+	memcpy_s(&OnSanitizeStringComplete_Params.Result, sizeof(OnSanitizeStringComplete_Params.Result), &Result, sizeof(Result));
 
 	this->ProcessEvent(uFnOnSanitizeStringComplete, &OnSanitizeStringComplete_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.HideKeyboardUI
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -4236,7 +4246,8 @@ bool UOnlinePlayerInterfaceEOS::HideKeyboardUI(uint8_t LocalUserNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_execHideKeyboardUI_Params HideKeyboardUI_Params;
-	memcpy_s(&HideKeyboardUI_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&HideKeyboardUI_Params, 0, sizeof(HideKeyboardUI_Params));
+	memcpy_s(&HideKeyboardUI_Params.LocalUserNum, sizeof(HideKeyboardUI_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnHideKeyboardUI, &HideKeyboardUI_Params, nullptr);
 
@@ -4245,7 +4256,7 @@ bool UOnlinePlayerInterfaceEOS::HideKeyboardUI(uint8_t LocalUserNum)
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearReadPlayerCountryDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         ReadPlayerCountryDelegate      (CPF_Parm | CPF_NeedCtorLink)
 
@@ -4259,15 +4270,16 @@ void UOnlinePlayerInterfaceEOS::ClearReadPlayerCountryDelegate(uint8_t LocalUser
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearReadPlayerCountryDelegate_Params ClearReadPlayerCountryDelegate_Params;
-	memcpy_s(&ClearReadPlayerCountryDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearReadPlayerCountryDelegate_Params.ReadPlayerCountryDelegate, 0x18, &ReadPlayerCountryDelegate, 0x18);
+	memset(&ClearReadPlayerCountryDelegate_Params, 0, sizeof(ClearReadPlayerCountryDelegate_Params));
+	memcpy_s(&ClearReadPlayerCountryDelegate_Params.LocalUserNum, sizeof(ClearReadPlayerCountryDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearReadPlayerCountryDelegate_Params.ReadPlayerCountryDelegate, sizeof(ClearReadPlayerCountryDelegate_Params.ReadPlayerCountryDelegate), &ReadPlayerCountryDelegate, sizeof(ReadPlayerCountryDelegate));
 
 	this->ProcessEvent(uFnClearReadPlayerCountryDelegate, &ClearReadPlayerCountryDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddReadPlayerCountryDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         ReadPlayerCountryDelegate      (CPF_Parm | CPF_NeedCtorLink)
 
@@ -4281,15 +4293,16 @@ void UOnlinePlayerInterfaceEOS::AddReadPlayerCountryDelegate(uint8_t LocalUserNu
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddReadPlayerCountryDelegate_Params AddReadPlayerCountryDelegate_Params;
-	memcpy_s(&AddReadPlayerCountryDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddReadPlayerCountryDelegate_Params.ReadPlayerCountryDelegate, 0x18, &ReadPlayerCountryDelegate, 0x18);
+	memset(&AddReadPlayerCountryDelegate_Params, 0, sizeof(AddReadPlayerCountryDelegate_Params));
+	memcpy_s(&AddReadPlayerCountryDelegate_Params.LocalUserNum, sizeof(AddReadPlayerCountryDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddReadPlayerCountryDelegate_Params.ReadPlayerCountryDelegate, sizeof(AddReadPlayerCountryDelegate_Params.ReadPlayerCountryDelegate), &ReadPlayerCountryDelegate, sizeof(ReadPlayerCountryDelegate));
 
 	this->ProcessEvent(uFnAddReadPlayerCountryDelegate, &AddReadPlayerCountryDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnPlayerCountryRetrieved
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Country                        (CPF_Parm | CPF_NeedCtorLink)
 
@@ -4303,15 +4316,16 @@ void UOnlinePlayerInterfaceEOS::OnPlayerCountryRetrieved(struct FUniqueNetId Pla
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnPlayerCountryRetrieved_Params OnPlayerCountryRetrieved_Params;
-	memcpy_s(&OnPlayerCountryRetrieved_Params.PlayerID, 0x48, &PlayerID, 0x48);
-	memcpy_s(&OnPlayerCountryRetrieved_Params.Country, 0x10, &Country, 0x10);
+	memset(&OnPlayerCountryRetrieved_Params, 0, sizeof(OnPlayerCountryRetrieved_Params));
+	memcpy_s(&OnPlayerCountryRetrieved_Params.PlayerID, sizeof(OnPlayerCountryRetrieved_Params.PlayerID), &PlayerID, sizeof(PlayerID));
+	memcpy_s(&OnPlayerCountryRetrieved_Params.Country, sizeof(OnPlayerCountryRetrieved_Params.Country), &Country, sizeof(Country));
 
 	this->ProcessEvent(uFnOnPlayerCountryRetrieved, &OnPlayerCountryRetrieved_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetPlayerCountry
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
 void UOnlinePlayerInterfaceEOS::GetPlayerCountry(uint8_t LocalUserNum)
@@ -4324,14 +4338,15 @@ void UOnlinePlayerInterfaceEOS::GetPlayerCountry(uint8_t LocalUserNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_execGetPlayerCountry_Params GetPlayerCountry_Params;
-	memcpy_s(&GetPlayerCountry_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&GetPlayerCountry_Params, 0, sizeof(GetPlayerCountry_Params));
+	memcpy_s(&GetPlayerCountry_Params.LocalUserNum, sizeof(GetPlayerCountry_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnGetPlayerCountry, &GetPlayerCountry_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearAvatarChangeDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         AvatarDelegate                 (CPF_Parm | CPF_NeedCtorLink)
 
@@ -4345,15 +4360,16 @@ void UOnlinePlayerInterfaceEOS::ClearAvatarChangeDelegate(uint8_t LocalUserNum, 
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearAvatarChangeDelegate_Params ClearAvatarChangeDelegate_Params;
-	memcpy_s(&ClearAvatarChangeDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearAvatarChangeDelegate_Params.AvatarDelegate, 0x18, &AvatarDelegate, 0x18);
+	memset(&ClearAvatarChangeDelegate_Params, 0, sizeof(ClearAvatarChangeDelegate_Params));
+	memcpy_s(&ClearAvatarChangeDelegate_Params.LocalUserNum, sizeof(ClearAvatarChangeDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearAvatarChangeDelegate_Params.AvatarDelegate, sizeof(ClearAvatarChangeDelegate_Params.AvatarDelegate), &AvatarDelegate, sizeof(AvatarDelegate));
 
 	this->ProcessEvent(uFnClearAvatarChangeDelegate, &ClearAvatarChangeDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddAvatarChangeDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         AvatarDelegate                 (CPF_Parm | CPF_NeedCtorLink)
 
@@ -4367,15 +4383,16 @@ void UOnlinePlayerInterfaceEOS::AddAvatarChangeDelegate(uint8_t LocalUserNum, st
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddAvatarChangeDelegate_Params AddAvatarChangeDelegate_Params;
-	memcpy_s(&AddAvatarChangeDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddAvatarChangeDelegate_Params.AvatarDelegate, 0x18, &AvatarDelegate, 0x18);
+	memset(&AddAvatarChangeDelegate_Params, 0, sizeof(AddAvatarChangeDelegate_Params));
+	memcpy_s(&AddAvatarChangeDelegate_Params.LocalUserNum, sizeof(AddAvatarChangeDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddAvatarChangeDelegate_Params.AvatarDelegate, sizeof(AddAvatarChangeDelegate_Params.AvatarDelegate), &AvatarDelegate, sizeof(AvatarDelegate));
 
 	this->ProcessEvent(uFnAddAvatarChangeDelegate, &AddAvatarChangeDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearFriendPresenceChangeDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         PresenceDelegate               (CPF_Parm | CPF_NeedCtorLink)
 
@@ -4389,15 +4406,16 @@ void UOnlinePlayerInterfaceEOS::ClearFriendPresenceChangeDelegate(uint8_t LocalU
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearFriendPresenceChangeDelegate_Params ClearFriendPresenceChangeDelegate_Params;
-	memcpy_s(&ClearFriendPresenceChangeDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearFriendPresenceChangeDelegate_Params.PresenceDelegate, 0x18, &PresenceDelegate, 0x18);
+	memset(&ClearFriendPresenceChangeDelegate_Params, 0, sizeof(ClearFriendPresenceChangeDelegate_Params));
+	memcpy_s(&ClearFriendPresenceChangeDelegate_Params.LocalUserNum, sizeof(ClearFriendPresenceChangeDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearFriendPresenceChangeDelegate_Params.PresenceDelegate, sizeof(ClearFriendPresenceChangeDelegate_Params.PresenceDelegate), &PresenceDelegate, sizeof(PresenceDelegate));
 
 	this->ProcessEvent(uFnClearFriendPresenceChangeDelegate, &ClearFriendPresenceChangeDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddFriendPresenceChangeDelegate
-// [0x00020803] (FUNC_Final | FUNC_RequiredAPI | FUNC_Event | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020803] (FUNC_Final | FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         PresenceDelegate               (CPF_Parm | CPF_NeedCtorLink)
 
@@ -4411,15 +4429,16 @@ void UOnlinePlayerInterfaceEOS::eventAddFriendPresenceChangeDelegate(uint8_t Loc
 	}
 
 	UOnlinePlayerInterfaceEOS_eventAddFriendPresenceChangeDelegate_Params AddFriendPresenceChangeDelegate_Params;
-	memcpy_s(&AddFriendPresenceChangeDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddFriendPresenceChangeDelegate_Params.PresenceDelegate, 0x18, &PresenceDelegate, 0x18);
+	memset(&AddFriendPresenceChangeDelegate_Params, 0, sizeof(AddFriendPresenceChangeDelegate_Params));
+	memcpy_s(&AddFriendPresenceChangeDelegate_Params.LocalUserNum, sizeof(AddFriendPresenceChangeDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddFriendPresenceChangeDelegate_Params.PresenceDelegate, sizeof(AddFriendPresenceChangeDelegate_Params.PresenceDelegate), &PresenceDelegate, sizeof(PresenceDelegate));
 
 	this->ProcessEvent(uFnAddFriendPresenceChangeDelegate, &AddFriendPresenceChangeDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.FriendPresenceChange
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::FriendPresenceChange(struct FUniqueNetId PlayerID)
@@ -4432,14 +4451,15 @@ void UOnlinePlayerInterfaceEOS::FriendPresenceChange(struct FUniqueNetId PlayerI
 	}
 
 	UOnlinePlayerInterfaceEOS_execFriendPresenceChange_Params FriendPresenceChange_Params;
-	memcpy_s(&FriendPresenceChange_Params.PlayerID, 0x48, &PlayerID, 0x48);
+	memset(&FriendPresenceChange_Params, 0, sizeof(FriendPresenceChange_Params));
+	memcpy_s(&FriendPresenceChange_Params.PlayerID, sizeof(FriendPresenceChange_Params.PlayerID), &PlayerID, sizeof(PlayerID));
 
 	this->ProcessEvent(uFnFriendPresenceChange, &FriendPresenceChange_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnAvatarChange
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::OnAvatarChange(struct FUniqueNetId PlayerID)
@@ -4452,14 +4472,15 @@ void UOnlinePlayerInterfaceEOS::OnAvatarChange(struct FUniqueNetId PlayerID)
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnAvatarChange_Params OnAvatarChange_Params;
-	memcpy_s(&OnAvatarChange_Params.PlayerID, 0x48, &PlayerID, 0x48);
+	memset(&OnAvatarChange_Params, 0, sizeof(OnAvatarChange_Params));
+	memcpy_s(&OnAvatarChange_Params.PlayerID, sizeof(OnAvatarChange_Params.PlayerID), &PlayerID, sizeof(PlayerID));
 
 	this->ProcessEvent(uFnOnAvatarChange, &OnAvatarChange_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.UnlockAchievement
-// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // int32_t                        AchievementId                  (CPF_Parm)
@@ -4475,29 +4496,26 @@ bool UOnlinePlayerInterfaceEOS::UnlockAchievement(uint8_t LocalUserNum, int32_t 
 	}
 
 	UOnlinePlayerInterfaceEOS_execUnlockAchievement_Params UnlockAchievement_Params;
-	memcpy_s(&UnlockAchievement_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&UnlockAchievement_Params.AchievementId, 0x4, &AchievementId, 0x4);
-	memcpy_s(&UnlockAchievement_Params.PercentComplete, 0x4, &PercentComplete, 0x4);
-
-	uFnUnlockAchievement->FunctionFlags |= ~0x400;
+	memset(&UnlockAchievement_Params, 0, sizeof(UnlockAchievement_Params));
+	memcpy_s(&UnlockAchievement_Params.LocalUserNum, sizeof(UnlockAchievement_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&UnlockAchievement_Params.AchievementId, sizeof(UnlockAchievement_Params.AchievementId), &AchievementId, sizeof(AchievementId));
+	memcpy_s(&UnlockAchievement_Params.PercentComplete, sizeof(UnlockAchievement_Params.PercentComplete), &PercentComplete, sizeof(PercentComplete));
 
 	this->ProcessEvent(uFnUnlockAchievement, &UnlockAchievement_Params, nullptr);
-
-	uFnUnlockAchievement->FunctionFlags |= 0x400;
 
 	return UnlockAchievement_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ReadAchievements
-// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // int32_t                        TitleId                        (CPF_OptionalParm | CPF_Parm)
-// unsigned long                  bShouldReadText                (CPF_OptionalParm | CPF_Parm)
-// unsigned long                  bShouldReadImages              (CPF_OptionalParm | CPF_Parm)
+// bool                           bShouldReadText                (CPF_OptionalParm | CPF_Parm)
+// bool                           bShouldReadImages              (CPF_OptionalParm | CPF_Parm)
 
-bool UOnlinePlayerInterfaceEOS::ReadAchievements(uint8_t LocalUserNum, int32_t TitleId, unsigned long bShouldReadText, unsigned long bShouldReadImages)
+bool UOnlinePlayerInterfaceEOS::ReadAchievements(uint8_t LocalUserNum, int32_t TitleId, bool bShouldReadText, bool bShouldReadImages)
 {
 	static UFunction* uFnReadAchievements = nullptr;
 
@@ -4507,29 +4525,26 @@ bool UOnlinePlayerInterfaceEOS::ReadAchievements(uint8_t LocalUserNum, int32_t T
 	}
 
 	UOnlinePlayerInterfaceEOS_execReadAchievements_Params ReadAchievements_Params;
-	memcpy_s(&ReadAchievements_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ReadAchievements_Params.TitleId, 0x4, &TitleId, 0x4);
+	memset(&ReadAchievements_Params, 0, sizeof(ReadAchievements_Params));
+	memcpy_s(&ReadAchievements_Params.LocalUserNum, sizeof(ReadAchievements_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ReadAchievements_Params.TitleId, sizeof(ReadAchievements_Params.TitleId), &TitleId, sizeof(TitleId));
 	ReadAchievements_Params.bShouldReadText = bShouldReadText;
 	ReadAchievements_Params.bShouldReadImages = bShouldReadImages;
 
-	uFnReadAchievements->FunctionFlags |= ~0x400;
-
 	this->ProcessEvent(uFnReadAchievements, &ReadAchievements_Params, nullptr);
-
-	uFnReadAchievements->FunctionFlags |= 0x400;
 
 	return ReadAchievements_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetAchievements
-// [0x00424401] (FUNC_Final | FUNC_Native | FUNC_NetMulticast | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
-// uint8_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+// [0x00424401] (FUNC_Final | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// Parameter Info:
+// EOnlineEnumerationReadState    ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // int32_t                        TitleId                        (CPF_OptionalParm | CPF_Parm)
 // TArray<struct FAchievementDetails> Achievements                   (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-uint8_t UOnlinePlayerInterfaceEOS::GetAchievements(uint8_t LocalUserNum, int32_t TitleId, TArray<struct FAchievementDetails>& Achievements)
+EOnlineEnumerationReadState UOnlinePlayerInterfaceEOS::GetAchievements(uint8_t LocalUserNum, int32_t TitleId, TArray<struct FAchievementDetails>& Achievements)
 {
 	static UFunction* uFnGetAchievements = nullptr;
 
@@ -4539,24 +4554,21 @@ uint8_t UOnlinePlayerInterfaceEOS::GetAchievements(uint8_t LocalUserNum, int32_t
 	}
 
 	UOnlinePlayerInterfaceEOS_execGetAchievements_Params GetAchievements_Params;
-	memcpy_s(&GetAchievements_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&GetAchievements_Params.TitleId, 0x4, &TitleId, 0x4);
-	memcpy_s(&GetAchievements_Params.Achievements, 0x10, &Achievements, 0x10);
-
-	uFnGetAchievements->FunctionFlags |= ~0x400;
+	memset(&GetAchievements_Params, 0, sizeof(GetAchievements_Params));
+	memcpy_s(&GetAchievements_Params.LocalUserNum, sizeof(GetAchievements_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&GetAchievements_Params.TitleId, sizeof(GetAchievements_Params.TitleId), &TitleId, sizeof(TitleId));
+	memcpy_s(&GetAchievements_Params.Achievements, sizeof(GetAchievements_Params.Achievements), &Achievements, sizeof(Achievements));
 
 	this->ProcessEvent(uFnGetAchievements, &GetAchievements_Params, nullptr);
 
-	uFnGetAchievements->FunctionFlags |= 0x400;
-
-	memcpy_s(&Achievements, 0x10, &GetAchievements_Params.Achievements, 0x10);
+	memcpy_s(&Achievements, sizeof(Achievements), &GetAchievements_Params.Achievements, sizeof(GetAchievements_Params.Achievements));
 
 	return GetAchievements_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearReadAchievementsCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
@@ -4570,15 +4582,16 @@ void UOnlinePlayerInterfaceEOS::ClearReadAchievementsCompleteDelegate(uint8_t Lo
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearReadAchievementsCompleteDelegate_Params ClearReadAchievementsCompleteDelegate_Params;
-	memcpy_s(&ClearReadAchievementsCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearReadAchievementsCompleteDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&ClearReadAchievementsCompleteDelegate_Params, 0, sizeof(ClearReadAchievementsCompleteDelegate_Params));
+	memcpy_s(&ClearReadAchievementsCompleteDelegate_Params.LocalUserNum, sizeof(ClearReadAchievementsCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearReadAchievementsCompleteDelegate_Params.InDelegate, sizeof(ClearReadAchievementsCompleteDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnClearReadAchievementsCompleteDelegate, &ClearReadAchievementsCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearUnlockAchievementCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
@@ -4592,15 +4605,16 @@ void UOnlinePlayerInterfaceEOS::ClearUnlockAchievementCompleteDelegate(uint8_t L
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearUnlockAchievementCompleteDelegate_Params ClearUnlockAchievementCompleteDelegate_Params;
-	memcpy_s(&ClearUnlockAchievementCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearUnlockAchievementCompleteDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&ClearUnlockAchievementCompleteDelegate_Params, 0, sizeof(ClearUnlockAchievementCompleteDelegate_Params));
+	memcpy_s(&ClearUnlockAchievementCompleteDelegate_Params.LocalUserNum, sizeof(ClearUnlockAchievementCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearUnlockAchievementCompleteDelegate_Params.InDelegate, sizeof(ClearUnlockAchievementCompleteDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnClearUnlockAchievementCompleteDelegate, &ClearUnlockAchievementCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddReadAchievementsCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
@@ -4614,15 +4628,16 @@ void UOnlinePlayerInterfaceEOS::AddReadAchievementsCompleteDelegate(uint8_t Loca
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddReadAchievementsCompleteDelegate_Params AddReadAchievementsCompleteDelegate_Params;
-	memcpy_s(&AddReadAchievementsCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddReadAchievementsCompleteDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&AddReadAchievementsCompleteDelegate_Params, 0, sizeof(AddReadAchievementsCompleteDelegate_Params));
+	memcpy_s(&AddReadAchievementsCompleteDelegate_Params.LocalUserNum, sizeof(AddReadAchievementsCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddReadAchievementsCompleteDelegate_Params.InDelegate, sizeof(AddReadAchievementsCompleteDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnAddReadAchievementsCompleteDelegate, &AddReadAchievementsCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddUnlockAchievementCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
@@ -4636,15 +4651,16 @@ void UOnlinePlayerInterfaceEOS::AddUnlockAchievementCompleteDelegate(uint8_t Loc
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddUnlockAchievementCompleteDelegate_Params AddUnlockAchievementCompleteDelegate_Params;
-	memcpy_s(&AddUnlockAchievementCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddUnlockAchievementCompleteDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&AddUnlockAchievementCompleteDelegate_Params, 0, sizeof(AddUnlockAchievementCompleteDelegate_Params));
+	memcpy_s(&AddUnlockAchievementCompleteDelegate_Params.LocalUserNum, sizeof(AddUnlockAchievementCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddUnlockAchievementCompleteDelegate_Params.InDelegate, sizeof(AddUnlockAchievementCompleteDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnAddUnlockAchievementCompleteDelegate, &AddUnlockAchievementCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnReadAchievementsComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // int32_t                        TitleId                        (CPF_Parm)
 
 void UOnlinePlayerInterfaceEOS::OnReadAchievementsComplete(int32_t TitleId)
@@ -4657,17 +4673,18 @@ void UOnlinePlayerInterfaceEOS::OnReadAchievementsComplete(int32_t TitleId)
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnReadAchievementsComplete_Params OnReadAchievementsComplete_Params;
-	memcpy_s(&OnReadAchievementsComplete_Params.TitleId, 0x4, &TitleId, 0x4);
+	memset(&OnReadAchievementsComplete_Params, 0, sizeof(OnReadAchievementsComplete_Params));
+	memcpy_s(&OnReadAchievementsComplete_Params.TitleId, sizeof(OnReadAchievementsComplete_Params.TitleId), &TitleId, sizeof(TitleId));
 
 	this->ProcessEvent(uFnOnReadAchievementsComplete, &OnReadAchievementsComplete_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnUnlockAchievementComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bWasSuccessful                 (CPF_Parm)
+// Parameter Info:
+// bool                           bWasSuccessful                 (CPF_Parm)
 
-void UOnlinePlayerInterfaceEOS::OnUnlockAchievementComplete(unsigned long bWasSuccessful)
+void UOnlinePlayerInterfaceEOS::OnUnlockAchievementComplete(bool bWasSuccessful)
 {
 	static UFunction* uFnOnUnlockAchievementComplete = nullptr;
 
@@ -4677,6 +4694,7 @@ void UOnlinePlayerInterfaceEOS::OnUnlockAchievementComplete(unsigned long bWasSu
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnUnlockAchievementComplete_Params OnUnlockAchievementComplete_Params;
+	memset(&OnUnlockAchievementComplete_Params, 0, sizeof(OnUnlockAchievementComplete_Params));
 	OnUnlockAchievementComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnUnlockAchievementComplete, &OnUnlockAchievementComplete_Params, nullptr);
@@ -4684,7 +4702,7 @@ void UOnlinePlayerInterfaceEOS::OnUnlockAchievementComplete(unsigned long bWasSu
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowControllerUI
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
 bool UOnlinePlayerInterfaceEOS::ShowControllerUI()
@@ -4697,6 +4715,7 @@ bool UOnlinePlayerInterfaceEOS::ShowControllerUI()
 	}
 
 	UOnlinePlayerInterfaceEOS_execShowControllerUI_Params ShowControllerUI_Params;
+	memset(&ShowControllerUI_Params, 0, sizeof(ShowControllerUI_Params));
 
 	this->ProcessEvent(uFnShowControllerUI, &ShowControllerUI_Params, nullptr);
 
@@ -4705,7 +4724,7 @@ bool UOnlinePlayerInterfaceEOS::ShowControllerUI()
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetPlayerLanguage
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -4719,7 +4738,8 @@ class FString UOnlinePlayerInterfaceEOS::GetPlayerLanguage(uint8_t LocalUserNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_execGetPlayerLanguage_Params GetPlayerLanguage_Params;
-	memcpy_s(&GetPlayerLanguage_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&GetPlayerLanguage_Params, 0, sizeof(GetPlayerLanguage_Params));
+	memcpy_s(&GetPlayerLanguage_Params.LocalUserNum, sizeof(GetPlayerLanguage_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnGetPlayerLanguage, &GetPlayerLanguage_Params, nullptr);
 
@@ -4728,7 +4748,7 @@ class FString UOnlinePlayerInterfaceEOS::GetPlayerLanguage(uint8_t LocalUserNum)
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowPlayersUI
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -4742,7 +4762,8 @@ bool UOnlinePlayerInterfaceEOS::ShowPlayersUI(uint8_t LocalUserNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_execShowPlayersUI_Params ShowPlayersUI_Params;
-	memcpy_s(&ShowPlayersUI_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&ShowPlayersUI_Params, 0, sizeof(ShowPlayersUI_Params));
+	memcpy_s(&ShowPlayersUI_Params.LocalUserNum, sizeof(ShowPlayersUI_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnShowPlayersUI, &ShowPlayersUI_Params, nullptr);
 
@@ -4751,7 +4772,7 @@ bool UOnlinePlayerInterfaceEOS::ShowPlayersUI(uint8_t LocalUserNum)
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearProfileDataChangedDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         ProfileDataChangedDelegate     (CPF_Parm | CPF_NeedCtorLink)
 
@@ -4765,15 +4786,16 @@ void UOnlinePlayerInterfaceEOS::ClearProfileDataChangedDelegate(uint8_t LocalUse
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearProfileDataChangedDelegate_Params ClearProfileDataChangedDelegate_Params;
-	memcpy_s(&ClearProfileDataChangedDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearProfileDataChangedDelegate_Params.ProfileDataChangedDelegate, 0x18, &ProfileDataChangedDelegate, 0x18);
+	memset(&ClearProfileDataChangedDelegate_Params, 0, sizeof(ClearProfileDataChangedDelegate_Params));
+	memcpy_s(&ClearProfileDataChangedDelegate_Params.LocalUserNum, sizeof(ClearProfileDataChangedDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearProfileDataChangedDelegate_Params.ProfileDataChangedDelegate, sizeof(ClearProfileDataChangedDelegate_Params.ProfileDataChangedDelegate), &ProfileDataChangedDelegate, sizeof(ProfileDataChangedDelegate));
 
 	this->ProcessEvent(uFnClearProfileDataChangedDelegate, &ClearProfileDataChangedDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddProfileDataChangedDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         ProfileDataChangedDelegate     (CPF_Parm | CPF_NeedCtorLink)
 
@@ -4787,15 +4809,16 @@ void UOnlinePlayerInterfaceEOS::AddProfileDataChangedDelegate(uint8_t LocalUserN
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddProfileDataChangedDelegate_Params AddProfileDataChangedDelegate_Params;
-	memcpy_s(&AddProfileDataChangedDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddProfileDataChangedDelegate_Params.ProfileDataChangedDelegate, 0x18, &ProfileDataChangedDelegate, 0x18);
+	memset(&AddProfileDataChangedDelegate_Params, 0, sizeof(AddProfileDataChangedDelegate_Params));
+	memcpy_s(&AddProfileDataChangedDelegate_Params.LocalUserNum, sizeof(AddProfileDataChangedDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddProfileDataChangedDelegate_Params.ProfileDataChangedDelegate, sizeof(AddProfileDataChangedDelegate_Params.ProfileDataChangedDelegate), &ProfileDataChangedDelegate, sizeof(ProfileDataChangedDelegate));
 
 	this->ProcessEvent(uFnAddProfileDataChangedDelegate, &AddProfileDataChangedDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnProfileDataChanged
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 
 void UOnlinePlayerInterfaceEOS::OnProfileDataChanged()
 {
@@ -4807,13 +4830,14 @@ void UOnlinePlayerInterfaceEOS::OnProfileDataChanged()
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnProfileDataChanged_Params OnProfileDataChanged_Params;
+	memset(&OnProfileDataChanged_Params, 0, sizeof(OnProfileDataChanged_Params));
 
 	this->ProcessEvent(uFnOnProfileDataChanged, &OnProfileDataChanged_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.UnlockGamerPicture
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // int32_t                        PictureId                      (CPF_Parm)
@@ -4828,8 +4852,9 @@ bool UOnlinePlayerInterfaceEOS::UnlockGamerPicture(uint8_t LocalUserNum, int32_t
 	}
 
 	UOnlinePlayerInterfaceEOS_execUnlockGamerPicture_Params UnlockGamerPicture_Params;
-	memcpy_s(&UnlockGamerPicture_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&UnlockGamerPicture_Params.PictureId, 0x4, &PictureId, 0x4);
+	memset(&UnlockGamerPicture_Params, 0, sizeof(UnlockGamerPicture_Params));
+	memcpy_s(&UnlockGamerPicture_Params.LocalUserNum, sizeof(UnlockGamerPicture_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&UnlockGamerPicture_Params.PictureId, sizeof(UnlockGamerPicture_Params.PictureId), &PictureId, sizeof(PictureId));
 
 	this->ProcessEvent(uFnUnlockGamerPicture, &UnlockGamerPicture_Params, nullptr);
 
@@ -4838,7 +4863,7 @@ bool UOnlinePlayerInterfaceEOS::UnlockGamerPicture(uint8_t LocalUserNum, int32_t
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.IsDeviceValid
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // int32_t                        DeviceID                       (CPF_Parm)
 
@@ -4852,7 +4877,8 @@ bool UOnlinePlayerInterfaceEOS::IsDeviceValid(int32_t DeviceID)
 	}
 
 	UOnlinePlayerInterfaceEOS_execIsDeviceValid_Params IsDeviceValid_Params;
-	memcpy_s(&IsDeviceValid_Params.DeviceID, 0x4, &DeviceID, 0x4);
+	memset(&IsDeviceValid_Params, 0, sizeof(IsDeviceValid_Params));
+	memcpy_s(&IsDeviceValid_Params.DeviceID, sizeof(IsDeviceValid_Params.DeviceID), &DeviceID, sizeof(DeviceID));
 
 	this->ProcessEvent(uFnIsDeviceValid, &IsDeviceValid_Params, nullptr);
 
@@ -4861,7 +4887,7 @@ bool UOnlinePlayerInterfaceEOS::IsDeviceValid(int32_t DeviceID)
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetDeviceSelectionResults
 // [0x00420001] (FUNC_Final | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class FString                  DeviceName                     (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
@@ -4876,19 +4902,20 @@ int32_t UOnlinePlayerInterfaceEOS::GetDeviceSelectionResults(uint8_t LocalUserNu
 	}
 
 	UOnlinePlayerInterfaceEOS_execGetDeviceSelectionResults_Params GetDeviceSelectionResults_Params;
-	memcpy_s(&GetDeviceSelectionResults_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&GetDeviceSelectionResults_Params.DeviceName, 0x10, &DeviceName, 0x10);
+	memset(&GetDeviceSelectionResults_Params, 0, sizeof(GetDeviceSelectionResults_Params));
+	memcpy_s(&GetDeviceSelectionResults_Params.LocalUserNum, sizeof(GetDeviceSelectionResults_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&GetDeviceSelectionResults_Params.DeviceName, sizeof(GetDeviceSelectionResults_Params.DeviceName), &DeviceName, sizeof(DeviceName));
 
 	this->ProcessEvent(uFnGetDeviceSelectionResults, &GetDeviceSelectionResults_Params, nullptr);
 
-	memcpy_s(&DeviceName, 0x10, &GetDeviceSelectionResults_Params.DeviceName, 0x10);
+	memcpy_s(&DeviceName, sizeof(DeviceName), &GetDeviceSelectionResults_Params.DeviceName, sizeof(GetDeviceSelectionResults_Params.DeviceName));
 
 	return GetDeviceSelectionResults_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearDeviceSelectionDoneDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         DeviceDelegate                 (CPF_Parm | CPF_NeedCtorLink)
 
@@ -4902,15 +4929,16 @@ void UOnlinePlayerInterfaceEOS::ClearDeviceSelectionDoneDelegate(uint8_t LocalUs
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearDeviceSelectionDoneDelegate_Params ClearDeviceSelectionDoneDelegate_Params;
-	memcpy_s(&ClearDeviceSelectionDoneDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearDeviceSelectionDoneDelegate_Params.DeviceDelegate, 0x18, &DeviceDelegate, 0x18);
+	memset(&ClearDeviceSelectionDoneDelegate_Params, 0, sizeof(ClearDeviceSelectionDoneDelegate_Params));
+	memcpy_s(&ClearDeviceSelectionDoneDelegate_Params.LocalUserNum, sizeof(ClearDeviceSelectionDoneDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearDeviceSelectionDoneDelegate_Params.DeviceDelegate, sizeof(ClearDeviceSelectionDoneDelegate_Params.DeviceDelegate), &DeviceDelegate, sizeof(DeviceDelegate));
 
 	this->ProcessEvent(uFnClearDeviceSelectionDoneDelegate, &ClearDeviceSelectionDoneDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddDeviceSelectionDoneDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         DeviceDelegate                 (CPF_Parm | CPF_NeedCtorLink)
 
@@ -4924,18 +4952,19 @@ void UOnlinePlayerInterfaceEOS::AddDeviceSelectionDoneDelegate(uint8_t LocalUser
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddDeviceSelectionDoneDelegate_Params AddDeviceSelectionDoneDelegate_Params;
-	memcpy_s(&AddDeviceSelectionDoneDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddDeviceSelectionDoneDelegate_Params.DeviceDelegate, 0x18, &DeviceDelegate, 0x18);
+	memset(&AddDeviceSelectionDoneDelegate_Params, 0, sizeof(AddDeviceSelectionDoneDelegate_Params));
+	memcpy_s(&AddDeviceSelectionDoneDelegate_Params.LocalUserNum, sizeof(AddDeviceSelectionDoneDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddDeviceSelectionDoneDelegate_Params.DeviceDelegate, sizeof(AddDeviceSelectionDoneDelegate_Params.DeviceDelegate), &DeviceDelegate, sizeof(DeviceDelegate));
 
 	this->ProcessEvent(uFnAddDeviceSelectionDoneDelegate, &AddDeviceSelectionDoneDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnDeviceSelectionComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bWasSuccessful                 (CPF_Parm)
+// Parameter Info:
+// bool                           bWasSuccessful                 (CPF_Parm)
 
-void UOnlinePlayerInterfaceEOS::OnDeviceSelectionComplete(unsigned long bWasSuccessful)
+void UOnlinePlayerInterfaceEOS::OnDeviceSelectionComplete(bool bWasSuccessful)
 {
 	static UFunction* uFnOnDeviceSelectionComplete = nullptr;
 
@@ -4945,20 +4974,21 @@ void UOnlinePlayerInterfaceEOS::OnDeviceSelectionComplete(unsigned long bWasSucc
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnDeviceSelectionComplete_Params OnDeviceSelectionComplete_Params;
+	memset(&OnDeviceSelectionComplete_Params, 0, sizeof(OnDeviceSelectionComplete_Params));
 	OnDeviceSelectionComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnDeviceSelectionComplete, &OnDeviceSelectionComplete_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowDeviceSelectionUI
-// [0x00024001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // int32_t                        SizeNeeded                     (CPF_Parm)
-// unsigned long                  bForceShowUI                   (CPF_OptionalParm | CPF_Parm)
+// bool                           bForceShowUI                   (CPF_OptionalParm | CPF_Parm)
 
-bool UOnlinePlayerInterfaceEOS::ShowDeviceSelectionUI(uint8_t LocalUserNum, int32_t SizeNeeded, unsigned long bForceShowUI)
+bool UOnlinePlayerInterfaceEOS::ShowDeviceSelectionUI(uint8_t LocalUserNum, int32_t SizeNeeded, bool bForceShowUI)
 {
 	static UFunction* uFnShowDeviceSelectionUI = nullptr;
 
@@ -4968,8 +4998,9 @@ bool UOnlinePlayerInterfaceEOS::ShowDeviceSelectionUI(uint8_t LocalUserNum, int3
 	}
 
 	UOnlinePlayerInterfaceEOS_execShowDeviceSelectionUI_Params ShowDeviceSelectionUI_Params;
-	memcpy_s(&ShowDeviceSelectionUI_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ShowDeviceSelectionUI_Params.SizeNeeded, 0x4, &SizeNeeded, 0x4);
+	memset(&ShowDeviceSelectionUI_Params, 0, sizeof(ShowDeviceSelectionUI_Params));
+	memcpy_s(&ShowDeviceSelectionUI_Params.LocalUserNum, sizeof(ShowDeviceSelectionUI_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ShowDeviceSelectionUI_Params.SizeNeeded, sizeof(ShowDeviceSelectionUI_Params.SizeNeeded), &SizeNeeded, sizeof(SizeNeeded));
 	ShowDeviceSelectionUI_Params.bForceShowUI = bForceShowUI;
 
 	this->ProcessEvent(uFnShowDeviceSelectionUI, &ShowDeviceSelectionUI_Params, nullptr);
@@ -4979,7 +5010,7 @@ bool UOnlinePlayerInterfaceEOS::ShowDeviceSelectionUI(uint8_t LocalUserNum, int3
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowCustomPlayersUI
 // [0x00420001] (FUNC_Final | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class FString                  Title                          (CPF_Parm | CPF_NeedCtorLink)
@@ -4996,21 +5027,22 @@ bool UOnlinePlayerInterfaceEOS::ShowCustomPlayersUI(uint8_t LocalUserNum, class 
 	}
 
 	UOnlinePlayerInterfaceEOS_execShowCustomPlayersUI_Params ShowCustomPlayersUI_Params;
-	memcpy_s(&ShowCustomPlayersUI_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ShowCustomPlayersUI_Params.Title, 0x10, &Title, 0x10);
-	memcpy_s(&ShowCustomPlayersUI_Params.Description, 0x10, &Description, 0x10);
-	memcpy_s(&ShowCustomPlayersUI_Params.Players, 0x10, &Players, 0x10);
+	memset(&ShowCustomPlayersUI_Params, 0, sizeof(ShowCustomPlayersUI_Params));
+	memcpy_s(&ShowCustomPlayersUI_Params.LocalUserNum, sizeof(ShowCustomPlayersUI_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ShowCustomPlayersUI_Params.Title, sizeof(ShowCustomPlayersUI_Params.Title), &Title, sizeof(Title));
+	memcpy_s(&ShowCustomPlayersUI_Params.Description, sizeof(ShowCustomPlayersUI_Params.Description), &Description, sizeof(Description));
+	memcpy_s(&ShowCustomPlayersUI_Params.Players, sizeof(ShowCustomPlayersUI_Params.Players), &Players, sizeof(Players));
 
 	this->ProcessEvent(uFnShowCustomPlayersUI, &ShowCustomPlayersUI_Params, nullptr);
 
-	memcpy_s(&Players, 0x10, &ShowCustomPlayersUI_Params.Players, 0x10);
+	memcpy_s(&Players, sizeof(Players), &ShowCustomPlayersUI_Params.Players, sizeof(ShowCustomPlayersUI_Params.Players));
 
 	return ShowCustomPlayersUI_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.IsUserSwitchActive
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
 bool UOnlinePlayerInterfaceEOS::IsUserSwitchActive()
@@ -5023,6 +5055,7 @@ bool UOnlinePlayerInterfaceEOS::IsUserSwitchActive()
 	}
 
 	UOnlinePlayerInterfaceEOS_execIsUserSwitchActive_Params IsUserSwitchActive_Params;
+	memset(&IsUserSwitchActive_Params, 0, sizeof(IsUserSwitchActive_Params));
 
 	this->ProcessEvent(uFnIsUserSwitchActive, &IsUserSwitchActive_Params, nullptr);
 
@@ -5031,10 +5064,10 @@ bool UOnlinePlayerInterfaceEOS::IsUserSwitchActive()
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.SetKickPlayerDialogActive
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  Active                         (CPF_Parm)
+// Parameter Info:
+// bool                           Active                         (CPF_Parm)
 
-void UOnlinePlayerInterfaceEOS::SetKickPlayerDialogActive(unsigned long Active)
+void UOnlinePlayerInterfaceEOS::SetKickPlayerDialogActive(bool Active)
 {
 	static UFunction* uFnSetKickPlayerDialogActive = nullptr;
 
@@ -5044,6 +5077,7 @@ void UOnlinePlayerInterfaceEOS::SetKickPlayerDialogActive(unsigned long Active)
 	}
 
 	UOnlinePlayerInterfaceEOS_execSetKickPlayerDialogActive_Params SetKickPlayerDialogActive_Params;
+	memset(&SetKickPlayerDialogActive_Params, 0, sizeof(SetKickPlayerDialogActive_Params));
 	SetKickPlayerDialogActive_Params.Active = Active;
 
 	this->ProcessEvent(uFnSetKickPlayerDialogActive, &SetKickPlayerDialogActive_Params, nullptr);
@@ -5051,7 +5085,7 @@ void UOnlinePlayerInterfaceEOS::SetKickPlayerDialogActive(unsigned long Active)
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.SetKickPreviousUser
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
 void UOnlinePlayerInterfaceEOS::SetKickPreviousUser(uint8_t LocalUserNum)
@@ -5064,14 +5098,15 @@ void UOnlinePlayerInterfaceEOS::SetKickPreviousUser(uint8_t LocalUserNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_execSetKickPreviousUser_Params SetKickPreviousUser_Params;
-	memcpy_s(&SetKickPreviousUser_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&SetKickPreviousUser_Params, 0, sizeof(SetKickPreviousUser_Params));
+	memcpy_s(&SetKickPreviousUser_Params.LocalUserNum, sizeof(SetKickPreviousUser_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnSetKickPreviousUser, &SetKickPreviousUser_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowLoginUIForOrphanedUser
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -5085,7 +5120,8 @@ bool UOnlinePlayerInterfaceEOS::ShowLoginUIForOrphanedUser(uint8_t LocalUserNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_execShowLoginUIForOrphanedUser_Params ShowLoginUIForOrphanedUser_Params;
-	memcpy_s(&ShowLoginUIForOrphanedUser_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&ShowLoginUIForOrphanedUser_Params, 0, sizeof(ShowLoginUIForOrphanedUser_Params));
+	memcpy_s(&ShowLoginUIForOrphanedUser_Params.LocalUserNum, sizeof(ShowLoginUIForOrphanedUser_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnShowLoginUIForOrphanedUser, &ShowLoginUIForOrphanedUser_Params, nullptr);
 
@@ -5094,7 +5130,7 @@ bool UOnlinePlayerInterfaceEOS::ShowLoginUIForOrphanedUser(uint8_t LocalUserNum)
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetSyncedAchievements
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // TArray<bool>                   ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -5108,7 +5144,8 @@ TArray<bool> UOnlinePlayerInterfaceEOS::GetSyncedAchievements(uint8_t LocalUserN
 	}
 
 	UOnlinePlayerInterfaceEOS_execGetSyncedAchievements_Params GetSyncedAchievements_Params;
-	memcpy_s(&GetSyncedAchievements_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&GetSyncedAchievements_Params, 0, sizeof(GetSyncedAchievements_Params));
+	memcpy_s(&GetSyncedAchievements_Params.LocalUserNum, sizeof(GetSyncedAchievements_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnGetSyncedAchievements, &GetSyncedAchievements_Params, nullptr);
 
@@ -5117,7 +5154,7 @@ TArray<bool> UOnlinePlayerInterfaceEOS::GetSyncedAchievements(uint8_t LocalUserN
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.IsGuestLogin
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -5131,7 +5168,8 @@ bool UOnlinePlayerInterfaceEOS::IsGuestLogin(uint8_t LocalUserNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_execIsGuestLogin_Params IsGuestLogin_Params;
-	memcpy_s(&IsGuestLogin_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&IsGuestLogin_Params, 0, sizeof(IsGuestLogin_Params));
+	memcpy_s(&IsGuestLogin_Params.LocalUserNum, sizeof(IsGuestLogin_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnIsGuestLogin, &IsGuestLogin_Params, nullptr);
 
@@ -5140,11 +5178,11 @@ bool UOnlinePlayerInterfaceEOS::IsGuestLogin(uint8_t LocalUserNum)
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.RequestRestrictedFeatureMessaging
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// uint8_t                        RestrictedFeature              (CPF_Parm)
+// EFeaturePrivilege              RestrictedFeature              (CPF_Parm)
 
-void UOnlinePlayerInterfaceEOS::RequestRestrictedFeatureMessaging(uint8_t LocalUserNum, uint8_t RestrictedFeature)
+void UOnlinePlayerInterfaceEOS::RequestRestrictedFeatureMessaging(uint8_t LocalUserNum, EFeaturePrivilege RestrictedFeature)
 {
 	static UFunction* uFnRequestRestrictedFeatureMessaging = nullptr;
 
@@ -5154,22 +5192,23 @@ void UOnlinePlayerInterfaceEOS::RequestRestrictedFeatureMessaging(uint8_t LocalU
 	}
 
 	UOnlinePlayerInterfaceEOS_execRequestRestrictedFeatureMessaging_Params RequestRestrictedFeatureMessaging_Params;
-	memcpy_s(&RequestRestrictedFeatureMessaging_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&RequestRestrictedFeatureMessaging_Params.RestrictedFeature, 0x1, &RestrictedFeature, 0x1);
+	memset(&RequestRestrictedFeatureMessaging_Params, 0, sizeof(RequestRestrictedFeatureMessaging_Params));
+	memcpy_s(&RequestRestrictedFeatureMessaging_Params.LocalUserNum, sizeof(RequestRestrictedFeatureMessaging_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&RequestRestrictedFeatureMessaging_Params.RestrictedFeature, sizeof(RequestRestrictedFeatureMessaging_Params.RestrictedFeature), &RestrictedFeature, sizeof(RestrictedFeature));
 
 	this->ProcessEvent(uFnRequestRestrictedFeatureMessaging, &RequestRestrictedFeatureMessaging_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanCommunicateVoice
-// [0x00424001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// [0x00424001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// unsigned long                  bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
+// bool                           bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
 // class FString                  Reason                         (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-// uint8_t                        PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
+// EFeaturePrivilegeLevel         PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
 
-bool UOnlinePlayerInterfaceEOS::CanCommunicateVoice(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint)
+bool UOnlinePlayerInterfaceEOS::CanCommunicateVoice(uint8_t LocalUserNum, bool bAttemptToResolve, class FString Reason, EFeaturePrivilegeLevel& PrivilegeLevelHint)
 {
 	static UFunction* uFnCanCommunicateVoice = nullptr;
 
@@ -5179,28 +5218,29 @@ bool UOnlinePlayerInterfaceEOS::CanCommunicateVoice(uint8_t LocalUserNum, unsign
 	}
 
 	UOnlinePlayerInterfaceEOS_execCanCommunicateVoice_Params CanCommunicateVoice_Params;
-	memcpy_s(&CanCommunicateVoice_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&CanCommunicateVoice_Params, 0, sizeof(CanCommunicateVoice_Params));
+	memcpy_s(&CanCommunicateVoice_Params.LocalUserNum, sizeof(CanCommunicateVoice_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 	CanCommunicateVoice_Params.bAttemptToResolve = bAttemptToResolve;
-	memcpy_s(&CanCommunicateVoice_Params.Reason, 0x10, &Reason, 0x10);
-	memcpy_s(&CanCommunicateVoice_Params.PrivilegeLevelHint, 0x1, &PrivilegeLevelHint, 0x1);
+	memcpy_s(&CanCommunicateVoice_Params.Reason, sizeof(CanCommunicateVoice_Params.Reason), &Reason, sizeof(Reason));
+	memcpy_s(&CanCommunicateVoice_Params.PrivilegeLevelHint, sizeof(CanCommunicateVoice_Params.PrivilegeLevelHint), &PrivilegeLevelHint, sizeof(PrivilegeLevelHint));
 
 	this->ProcessEvent(uFnCanCommunicateVoice, &CanCommunicateVoice_Params, nullptr);
 
-	memcpy_s(&PrivilegeLevelHint, 0x1, &CanCommunicateVoice_Params.PrivilegeLevelHint, 0x1);
+	memcpy_s(&PrivilegeLevelHint, sizeof(PrivilegeLevelHint), &CanCommunicateVoice_Params.PrivilegeLevelHint, sizeof(CanCommunicateVoice_Params.PrivilegeLevelHint));
 
 	return CanCommunicateVoice_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanCommunicateVideo
-// [0x00424001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// [0x00424001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// unsigned long                  bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
+// bool                           bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
 // class FString                  Reason                         (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-// uint8_t                        PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
+// EFeaturePrivilegeLevel         PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
 
-bool UOnlinePlayerInterfaceEOS::CanCommunicateVideo(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint)
+bool UOnlinePlayerInterfaceEOS::CanCommunicateVideo(uint8_t LocalUserNum, bool bAttemptToResolve, class FString Reason, EFeaturePrivilegeLevel& PrivilegeLevelHint)
 {
 	static UFunction* uFnCanCommunicateVideo = nullptr;
 
@@ -5210,28 +5250,29 @@ bool UOnlinePlayerInterfaceEOS::CanCommunicateVideo(uint8_t LocalUserNum, unsign
 	}
 
 	UOnlinePlayerInterfaceEOS_execCanCommunicateVideo_Params CanCommunicateVideo_Params;
-	memcpy_s(&CanCommunicateVideo_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&CanCommunicateVideo_Params, 0, sizeof(CanCommunicateVideo_Params));
+	memcpy_s(&CanCommunicateVideo_Params.LocalUserNum, sizeof(CanCommunicateVideo_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 	CanCommunicateVideo_Params.bAttemptToResolve = bAttemptToResolve;
-	memcpy_s(&CanCommunicateVideo_Params.Reason, 0x10, &Reason, 0x10);
-	memcpy_s(&CanCommunicateVideo_Params.PrivilegeLevelHint, 0x1, &PrivilegeLevelHint, 0x1);
+	memcpy_s(&CanCommunicateVideo_Params.Reason, sizeof(CanCommunicateVideo_Params.Reason), &Reason, sizeof(Reason));
+	memcpy_s(&CanCommunicateVideo_Params.PrivilegeLevelHint, sizeof(CanCommunicateVideo_Params.PrivilegeLevelHint), &PrivilegeLevelHint, sizeof(PrivilegeLevelHint));
 
 	this->ProcessEvent(uFnCanCommunicateVideo, &CanCommunicateVideo_Params, nullptr);
 
-	memcpy_s(&PrivilegeLevelHint, 0x1, &CanCommunicateVideo_Params.PrivilegeLevelHint, 0x1);
+	memcpy_s(&PrivilegeLevelHint, sizeof(PrivilegeLevelHint), &CanCommunicateVideo_Params.PrivilegeLevelHint, sizeof(CanCommunicateVideo_Params.PrivilegeLevelHint));
 
 	return CanCommunicateVideo_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanCommunicateText
-// [0x00424001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// [0x00424001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// unsigned long                  bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
+// bool                           bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
 // class FString                  Reason                         (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-// uint8_t                        PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
+// EFeaturePrivilegeLevel         PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
 
-bool UOnlinePlayerInterfaceEOS::CanCommunicateText(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint)
+bool UOnlinePlayerInterfaceEOS::CanCommunicateText(uint8_t LocalUserNum, bool bAttemptToResolve, class FString Reason, EFeaturePrivilegeLevel& PrivilegeLevelHint)
 {
 	static UFunction* uFnCanCommunicateText = nullptr;
 
@@ -5241,28 +5282,29 @@ bool UOnlinePlayerInterfaceEOS::CanCommunicateText(uint8_t LocalUserNum, unsigne
 	}
 
 	UOnlinePlayerInterfaceEOS_execCanCommunicateText_Params CanCommunicateText_Params;
-	memcpy_s(&CanCommunicateText_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&CanCommunicateText_Params, 0, sizeof(CanCommunicateText_Params));
+	memcpy_s(&CanCommunicateText_Params.LocalUserNum, sizeof(CanCommunicateText_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 	CanCommunicateText_Params.bAttemptToResolve = bAttemptToResolve;
-	memcpy_s(&CanCommunicateText_Params.Reason, 0x10, &Reason, 0x10);
-	memcpy_s(&CanCommunicateText_Params.PrivilegeLevelHint, 0x1, &PrivilegeLevelHint, 0x1);
+	memcpy_s(&CanCommunicateText_Params.Reason, sizeof(CanCommunicateText_Params.Reason), &Reason, sizeof(Reason));
+	memcpy_s(&CanCommunicateText_Params.PrivilegeLevelHint, sizeof(CanCommunicateText_Params.PrivilegeLevelHint), &PrivilegeLevelHint, sizeof(PrivilegeLevelHint));
 
 	this->ProcessEvent(uFnCanCommunicateText, &CanCommunicateText_Params, nullptr);
 
-	memcpy_s(&PrivilegeLevelHint, 0x1, &CanCommunicateText_Params.PrivilegeLevelHint, 0x1);
+	memcpy_s(&PrivilegeLevelHint, sizeof(PrivilegeLevelHint), &CanCommunicateText_Params.PrivilegeLevelHint, sizeof(CanCommunicateText_Params.PrivilegeLevelHint));
 
 	return CanCommunicateText_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanShareUserCreatedContent
-// [0x00424001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// [0x00424001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// unsigned long                  bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
+// bool                           bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
 // class FString                  Reason                         (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-// uint8_t                        PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
+// EFeaturePrivilegeLevel         PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
 
-bool UOnlinePlayerInterfaceEOS::CanShareUserCreatedContent(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint)
+bool UOnlinePlayerInterfaceEOS::CanShareUserCreatedContent(uint8_t LocalUserNum, bool bAttemptToResolve, class FString Reason, EFeaturePrivilegeLevel& PrivilegeLevelHint)
 {
 	static UFunction* uFnCanShareUserCreatedContent = nullptr;
 
@@ -5272,28 +5314,29 @@ bool UOnlinePlayerInterfaceEOS::CanShareUserCreatedContent(uint8_t LocalUserNum,
 	}
 
 	UOnlinePlayerInterfaceEOS_execCanShareUserCreatedContent_Params CanShareUserCreatedContent_Params;
-	memcpy_s(&CanShareUserCreatedContent_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&CanShareUserCreatedContent_Params, 0, sizeof(CanShareUserCreatedContent_Params));
+	memcpy_s(&CanShareUserCreatedContent_Params.LocalUserNum, sizeof(CanShareUserCreatedContent_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 	CanShareUserCreatedContent_Params.bAttemptToResolve = bAttemptToResolve;
-	memcpy_s(&CanShareUserCreatedContent_Params.Reason, 0x10, &Reason, 0x10);
-	memcpy_s(&CanShareUserCreatedContent_Params.PrivilegeLevelHint, 0x1, &PrivilegeLevelHint, 0x1);
+	memcpy_s(&CanShareUserCreatedContent_Params.Reason, sizeof(CanShareUserCreatedContent_Params.Reason), &Reason, sizeof(Reason));
+	memcpy_s(&CanShareUserCreatedContent_Params.PrivilegeLevelHint, sizeof(CanShareUserCreatedContent_Params.PrivilegeLevelHint), &PrivilegeLevelHint, sizeof(PrivilegeLevelHint));
 
 	this->ProcessEvent(uFnCanShareUserCreatedContent, &CanShareUserCreatedContent_Params, nullptr);
 
-	memcpy_s(&PrivilegeLevelHint, 0x1, &CanShareUserCreatedContent_Params.PrivilegeLevelHint, 0x1);
+	memcpy_s(&PrivilegeLevelHint, sizeof(PrivilegeLevelHint), &CanShareUserCreatedContent_Params.PrivilegeLevelHint, sizeof(CanShareUserCreatedContent_Params.PrivilegeLevelHint));
 
 	return CanShareUserCreatedContent_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanAccessPremiumVideoContent
-// [0x00424001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// [0x00424001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// unsigned long                  bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
+// bool                           bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
 // class FString                  Reason                         (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-// uint8_t                        PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
+// EFeaturePrivilegeLevel         PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
 
-bool UOnlinePlayerInterfaceEOS::CanAccessPremiumVideoContent(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint)
+bool UOnlinePlayerInterfaceEOS::CanAccessPremiumVideoContent(uint8_t LocalUserNum, bool bAttemptToResolve, class FString Reason, EFeaturePrivilegeLevel& PrivilegeLevelHint)
 {
 	static UFunction* uFnCanAccessPremiumVideoContent = nullptr;
 
@@ -5303,28 +5346,29 @@ bool UOnlinePlayerInterfaceEOS::CanAccessPremiumVideoContent(uint8_t LocalUserNu
 	}
 
 	UOnlinePlayerInterfaceEOS_execCanAccessPremiumVideoContent_Params CanAccessPremiumVideoContent_Params;
-	memcpy_s(&CanAccessPremiumVideoContent_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&CanAccessPremiumVideoContent_Params, 0, sizeof(CanAccessPremiumVideoContent_Params));
+	memcpy_s(&CanAccessPremiumVideoContent_Params.LocalUserNum, sizeof(CanAccessPremiumVideoContent_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 	CanAccessPremiumVideoContent_Params.bAttemptToResolve = bAttemptToResolve;
-	memcpy_s(&CanAccessPremiumVideoContent_Params.Reason, 0x10, &Reason, 0x10);
-	memcpy_s(&CanAccessPremiumVideoContent_Params.PrivilegeLevelHint, 0x1, &PrivilegeLevelHint, 0x1);
+	memcpy_s(&CanAccessPremiumVideoContent_Params.Reason, sizeof(CanAccessPremiumVideoContent_Params.Reason), &Reason, sizeof(Reason));
+	memcpy_s(&CanAccessPremiumVideoContent_Params.PrivilegeLevelHint, sizeof(CanAccessPremiumVideoContent_Params.PrivilegeLevelHint), &PrivilegeLevelHint, sizeof(PrivilegeLevelHint));
 
 	this->ProcessEvent(uFnCanAccessPremiumVideoContent, &CanAccessPremiumVideoContent_Params, nullptr);
 
-	memcpy_s(&PrivilegeLevelHint, 0x1, &CanAccessPremiumVideoContent_Params.PrivilegeLevelHint, 0x1);
+	memcpy_s(&PrivilegeLevelHint, sizeof(PrivilegeLevelHint), &CanAccessPremiumVideoContent_Params.PrivilegeLevelHint, sizeof(CanAccessPremiumVideoContent_Params.PrivilegeLevelHint));
 
 	return CanAccessPremiumVideoContent_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanAccessPremiumContent
-// [0x00424001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// [0x00424001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// unsigned long                  bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
+// bool                           bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
 // class FString                  Reason                         (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-// uint8_t                        PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
+// EFeaturePrivilegeLevel         PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
 
-bool UOnlinePlayerInterfaceEOS::CanAccessPremiumContent(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint)
+bool UOnlinePlayerInterfaceEOS::CanAccessPremiumContent(uint8_t LocalUserNum, bool bAttemptToResolve, class FString Reason, EFeaturePrivilegeLevel& PrivilegeLevelHint)
 {
 	static UFunction* uFnCanAccessPremiumContent = nullptr;
 
@@ -5334,28 +5378,29 @@ bool UOnlinePlayerInterfaceEOS::CanAccessPremiumContent(uint8_t LocalUserNum, un
 	}
 
 	UOnlinePlayerInterfaceEOS_execCanAccessPremiumContent_Params CanAccessPremiumContent_Params;
-	memcpy_s(&CanAccessPremiumContent_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&CanAccessPremiumContent_Params, 0, sizeof(CanAccessPremiumContent_Params));
+	memcpy_s(&CanAccessPremiumContent_Params.LocalUserNum, sizeof(CanAccessPremiumContent_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 	CanAccessPremiumContent_Params.bAttemptToResolve = bAttemptToResolve;
-	memcpy_s(&CanAccessPremiumContent_Params.Reason, 0x10, &Reason, 0x10);
-	memcpy_s(&CanAccessPremiumContent_Params.PrivilegeLevelHint, 0x1, &PrivilegeLevelHint, 0x1);
+	memcpy_s(&CanAccessPremiumContent_Params.Reason, sizeof(CanAccessPremiumContent_Params.Reason), &Reason, sizeof(Reason));
+	memcpy_s(&CanAccessPremiumContent_Params.PrivilegeLevelHint, sizeof(CanAccessPremiumContent_Params.PrivilegeLevelHint), &PrivilegeLevelHint, sizeof(PrivilegeLevelHint));
 
 	this->ProcessEvent(uFnCanAccessPremiumContent, &CanAccessPremiumContent_Params, nullptr);
 
-	memcpy_s(&PrivilegeLevelHint, 0x1, &CanAccessPremiumContent_Params.PrivilegeLevelHint, 0x1);
+	memcpy_s(&PrivilegeLevelHint, sizeof(PrivilegeLevelHint), &CanAccessPremiumContent_Params.PrivilegeLevelHint, sizeof(CanAccessPremiumContent_Params.PrivilegeLevelHint));
 
 	return CanAccessPremiumContent_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanUseCloudStorage
-// [0x00424001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// [0x00424001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// unsigned long                  bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
+// bool                           bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
 // class FString                  Reason                         (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-// uint8_t                        PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
+// EFeaturePrivilegeLevel         PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
 
-bool UOnlinePlayerInterfaceEOS::CanUseCloudStorage(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint)
+bool UOnlinePlayerInterfaceEOS::CanUseCloudStorage(uint8_t LocalUserNum, bool bAttemptToResolve, class FString Reason, EFeaturePrivilegeLevel& PrivilegeLevelHint)
 {
 	static UFunction* uFnCanUseCloudStorage = nullptr;
 
@@ -5365,28 +5410,29 @@ bool UOnlinePlayerInterfaceEOS::CanUseCloudStorage(uint8_t LocalUserNum, unsigne
 	}
 
 	UOnlinePlayerInterfaceEOS_execCanUseCloudStorage_Params CanUseCloudStorage_Params;
-	memcpy_s(&CanUseCloudStorage_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&CanUseCloudStorage_Params, 0, sizeof(CanUseCloudStorage_Params));
+	memcpy_s(&CanUseCloudStorage_Params.LocalUserNum, sizeof(CanUseCloudStorage_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 	CanUseCloudStorage_Params.bAttemptToResolve = bAttemptToResolve;
-	memcpy_s(&CanUseCloudStorage_Params.Reason, 0x10, &Reason, 0x10);
-	memcpy_s(&CanUseCloudStorage_Params.PrivilegeLevelHint, 0x1, &PrivilegeLevelHint, 0x1);
+	memcpy_s(&CanUseCloudStorage_Params.Reason, sizeof(CanUseCloudStorage_Params.Reason), &Reason, sizeof(Reason));
+	memcpy_s(&CanUseCloudStorage_Params.PrivilegeLevelHint, sizeof(CanUseCloudStorage_Params.PrivilegeLevelHint), &PrivilegeLevelHint, sizeof(PrivilegeLevelHint));
 
 	this->ProcessEvent(uFnCanUseCloudStorage, &CanUseCloudStorage_Params, nullptr);
 
-	memcpy_s(&PrivilegeLevelHint, 0x1, &CanUseCloudStorage_Params.PrivilegeLevelHint, 0x1);
+	memcpy_s(&PrivilegeLevelHint, sizeof(PrivilegeLevelHint), &CanUseCloudStorage_Params.PrivilegeLevelHint, sizeof(CanUseCloudStorage_Params.PrivilegeLevelHint));
 
 	return CanUseCloudStorage_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanRecordDVRClips
-// [0x00424001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// [0x00424001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// unsigned long                  bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
+// bool                           bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
 // class FString                  Reason                         (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-// uint8_t                        PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
+// EFeaturePrivilegeLevel         PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
 
-bool UOnlinePlayerInterfaceEOS::CanRecordDVRClips(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint)
+bool UOnlinePlayerInterfaceEOS::CanRecordDVRClips(uint8_t LocalUserNum, bool bAttemptToResolve, class FString Reason, EFeaturePrivilegeLevel& PrivilegeLevelHint)
 {
 	static UFunction* uFnCanRecordDVRClips = nullptr;
 
@@ -5396,28 +5442,29 @@ bool UOnlinePlayerInterfaceEOS::CanRecordDVRClips(uint8_t LocalUserNum, unsigned
 	}
 
 	UOnlinePlayerInterfaceEOS_execCanRecordDVRClips_Params CanRecordDVRClips_Params;
-	memcpy_s(&CanRecordDVRClips_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&CanRecordDVRClips_Params, 0, sizeof(CanRecordDVRClips_Params));
+	memcpy_s(&CanRecordDVRClips_Params.LocalUserNum, sizeof(CanRecordDVRClips_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 	CanRecordDVRClips_Params.bAttemptToResolve = bAttemptToResolve;
-	memcpy_s(&CanRecordDVRClips_Params.Reason, 0x10, &Reason, 0x10);
-	memcpy_s(&CanRecordDVRClips_Params.PrivilegeLevelHint, 0x1, &PrivilegeLevelHint, 0x1);
+	memcpy_s(&CanRecordDVRClips_Params.Reason, sizeof(CanRecordDVRClips_Params.Reason), &Reason, sizeof(Reason));
+	memcpy_s(&CanRecordDVRClips_Params.PrivilegeLevelHint, sizeof(CanRecordDVRClips_Params.PrivilegeLevelHint), &PrivilegeLevelHint, sizeof(PrivilegeLevelHint));
 
 	this->ProcessEvent(uFnCanRecordDVRClips, &CanRecordDVRClips_Params, nullptr);
 
-	memcpy_s(&PrivilegeLevelHint, 0x1, &CanRecordDVRClips_Params.PrivilegeLevelHint, 0x1);
+	memcpy_s(&PrivilegeLevelHint, sizeof(PrivilegeLevelHint), &CanRecordDVRClips_Params.PrivilegeLevelHint, sizeof(CanRecordDVRClips_Params.PrivilegeLevelHint));
 
 	return CanRecordDVRClips_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanBrowseInternet
-// [0x00424001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// [0x00424001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// unsigned long                  bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
+// bool                           bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
 // class FString                  Reason                         (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-// uint8_t                        PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
+// EFeaturePrivilegeLevel         PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
 
-bool UOnlinePlayerInterfaceEOS::CanBrowseInternet(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint)
+bool UOnlinePlayerInterfaceEOS::CanBrowseInternet(uint8_t LocalUserNum, bool bAttemptToResolve, class FString Reason, EFeaturePrivilegeLevel& PrivilegeLevelHint)
 {
 	static UFunction* uFnCanBrowseInternet = nullptr;
 
@@ -5427,28 +5474,29 @@ bool UOnlinePlayerInterfaceEOS::CanBrowseInternet(uint8_t LocalUserNum, unsigned
 	}
 
 	UOnlinePlayerInterfaceEOS_execCanBrowseInternet_Params CanBrowseInternet_Params;
-	memcpy_s(&CanBrowseInternet_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&CanBrowseInternet_Params, 0, sizeof(CanBrowseInternet_Params));
+	memcpy_s(&CanBrowseInternet_Params.LocalUserNum, sizeof(CanBrowseInternet_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 	CanBrowseInternet_Params.bAttemptToResolve = bAttemptToResolve;
-	memcpy_s(&CanBrowseInternet_Params.Reason, 0x10, &Reason, 0x10);
-	memcpy_s(&CanBrowseInternet_Params.PrivilegeLevelHint, 0x1, &PrivilegeLevelHint, 0x1);
+	memcpy_s(&CanBrowseInternet_Params.Reason, sizeof(CanBrowseInternet_Params.Reason), &Reason, sizeof(Reason));
+	memcpy_s(&CanBrowseInternet_Params.PrivilegeLevelHint, sizeof(CanBrowseInternet_Params.PrivilegeLevelHint), &PrivilegeLevelHint, sizeof(PrivilegeLevelHint));
 
 	this->ProcessEvent(uFnCanBrowseInternet, &CanBrowseInternet_Params, nullptr);
 
-	memcpy_s(&PrivilegeLevelHint, 0x1, &CanBrowseInternet_Params.PrivilegeLevelHint, 0x1);
+	memcpy_s(&PrivilegeLevelHint, sizeof(PrivilegeLevelHint), &CanBrowseInternet_Params.PrivilegeLevelHint, sizeof(CanBrowseInternet_Params.PrivilegeLevelHint));
 
 	return CanBrowseInternet_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanShareWithSocialNetwork
-// [0x00424001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// [0x00424001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// unsigned long                  bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
+// bool                           bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
 // class FString                  Reason                         (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-// uint8_t                        PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
+// EFeaturePrivilegeLevel         PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
 
-bool UOnlinePlayerInterfaceEOS::CanShareWithSocialNetwork(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint)
+bool UOnlinePlayerInterfaceEOS::CanShareWithSocialNetwork(uint8_t LocalUserNum, bool bAttemptToResolve, class FString Reason, EFeaturePrivilegeLevel& PrivilegeLevelHint)
 {
 	static UFunction* uFnCanShareWithSocialNetwork = nullptr;
 
@@ -5458,28 +5506,29 @@ bool UOnlinePlayerInterfaceEOS::CanShareWithSocialNetwork(uint8_t LocalUserNum, 
 	}
 
 	UOnlinePlayerInterfaceEOS_execCanShareWithSocialNetwork_Params CanShareWithSocialNetwork_Params;
-	memcpy_s(&CanShareWithSocialNetwork_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&CanShareWithSocialNetwork_Params, 0, sizeof(CanShareWithSocialNetwork_Params));
+	memcpy_s(&CanShareWithSocialNetwork_Params.LocalUserNum, sizeof(CanShareWithSocialNetwork_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 	CanShareWithSocialNetwork_Params.bAttemptToResolve = bAttemptToResolve;
-	memcpy_s(&CanShareWithSocialNetwork_Params.Reason, 0x10, &Reason, 0x10);
-	memcpy_s(&CanShareWithSocialNetwork_Params.PrivilegeLevelHint, 0x1, &PrivilegeLevelHint, 0x1);
+	memcpy_s(&CanShareWithSocialNetwork_Params.Reason, sizeof(CanShareWithSocialNetwork_Params.Reason), &Reason, sizeof(Reason));
+	memcpy_s(&CanShareWithSocialNetwork_Params.PrivilegeLevelHint, sizeof(CanShareWithSocialNetwork_Params.PrivilegeLevelHint), &PrivilegeLevelHint, sizeof(PrivilegeLevelHint));
 
 	this->ProcessEvent(uFnCanShareWithSocialNetwork, &CanShareWithSocialNetwork_Params, nullptr);
 
-	memcpy_s(&PrivilegeLevelHint, 0x1, &CanShareWithSocialNetwork_Params.PrivilegeLevelHint, 0x1);
+	memcpy_s(&PrivilegeLevelHint, sizeof(PrivilegeLevelHint), &CanShareWithSocialNetwork_Params.PrivilegeLevelHint, sizeof(CanShareWithSocialNetwork_Params.PrivilegeLevelHint));
 
 	return CanShareWithSocialNetwork_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanShareKinectContent
-// [0x00424001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// [0x00424001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// unsigned long                  bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
+// bool                           bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
 // class FString                  Reason                         (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-// uint8_t                        PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
+// EFeaturePrivilegeLevel         PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
 
-bool UOnlinePlayerInterfaceEOS::CanShareKinectContent(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint)
+bool UOnlinePlayerInterfaceEOS::CanShareKinectContent(uint8_t LocalUserNum, bool bAttemptToResolve, class FString Reason, EFeaturePrivilegeLevel& PrivilegeLevelHint)
 {
 	static UFunction* uFnCanShareKinectContent = nullptr;
 
@@ -5489,28 +5538,29 @@ bool UOnlinePlayerInterfaceEOS::CanShareKinectContent(uint8_t LocalUserNum, unsi
 	}
 
 	UOnlinePlayerInterfaceEOS_execCanShareKinectContent_Params CanShareKinectContent_Params;
-	memcpy_s(&CanShareKinectContent_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&CanShareKinectContent_Params, 0, sizeof(CanShareKinectContent_Params));
+	memcpy_s(&CanShareKinectContent_Params.LocalUserNum, sizeof(CanShareKinectContent_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 	CanShareKinectContent_Params.bAttemptToResolve = bAttemptToResolve;
-	memcpy_s(&CanShareKinectContent_Params.Reason, 0x10, &Reason, 0x10);
-	memcpy_s(&CanShareKinectContent_Params.PrivilegeLevelHint, 0x1, &PrivilegeLevelHint, 0x1);
+	memcpy_s(&CanShareKinectContent_Params.Reason, sizeof(CanShareKinectContent_Params.Reason), &Reason, sizeof(Reason));
+	memcpy_s(&CanShareKinectContent_Params.PrivilegeLevelHint, sizeof(CanShareKinectContent_Params.PrivilegeLevelHint), &PrivilegeLevelHint, sizeof(PrivilegeLevelHint));
 
 	this->ProcessEvent(uFnCanShareKinectContent, &CanShareKinectContent_Params, nullptr);
 
-	memcpy_s(&PrivilegeLevelHint, 0x1, &CanShareKinectContent_Params.PrivilegeLevelHint, 0x1);
+	memcpy_s(&PrivilegeLevelHint, sizeof(PrivilegeLevelHint), &CanShareKinectContent_Params.PrivilegeLevelHint, sizeof(CanShareKinectContent_Params.PrivilegeLevelHint));
 
 	return CanShareKinectContent_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanUploadFitnessData
-// [0x00424001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// [0x00424001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// unsigned long                  bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
+// bool                           bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
 // class FString                  Reason                         (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-// uint8_t                        PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
+// EFeaturePrivilegeLevel         PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
 
-bool UOnlinePlayerInterfaceEOS::CanUploadFitnessData(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint)
+bool UOnlinePlayerInterfaceEOS::CanUploadFitnessData(uint8_t LocalUserNum, bool bAttemptToResolve, class FString Reason, EFeaturePrivilegeLevel& PrivilegeLevelHint)
 {
 	static UFunction* uFnCanUploadFitnessData = nullptr;
 
@@ -5520,21 +5570,22 @@ bool UOnlinePlayerInterfaceEOS::CanUploadFitnessData(uint8_t LocalUserNum, unsig
 	}
 
 	UOnlinePlayerInterfaceEOS_execCanUploadFitnessData_Params CanUploadFitnessData_Params;
-	memcpy_s(&CanUploadFitnessData_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&CanUploadFitnessData_Params, 0, sizeof(CanUploadFitnessData_Params));
+	memcpy_s(&CanUploadFitnessData_Params.LocalUserNum, sizeof(CanUploadFitnessData_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 	CanUploadFitnessData_Params.bAttemptToResolve = bAttemptToResolve;
-	memcpy_s(&CanUploadFitnessData_Params.Reason, 0x10, &Reason, 0x10);
-	memcpy_s(&CanUploadFitnessData_Params.PrivilegeLevelHint, 0x1, &PrivilegeLevelHint, 0x1);
+	memcpy_s(&CanUploadFitnessData_Params.Reason, sizeof(CanUploadFitnessData_Params.Reason), &Reason, sizeof(Reason));
+	memcpy_s(&CanUploadFitnessData_Params.PrivilegeLevelHint, sizeof(CanUploadFitnessData_Params.PrivilegeLevelHint), &PrivilegeLevelHint, sizeof(PrivilegeLevelHint));
 
 	this->ProcessEvent(uFnCanUploadFitnessData, &CanUploadFitnessData_Params, nullptr);
 
-	memcpy_s(&PrivilegeLevelHint, 0x1, &CanUploadFitnessData_Params.PrivilegeLevelHint, 0x1);
+	memcpy_s(&PrivilegeLevelHint, sizeof(PrivilegeLevelHint), &CanUploadFitnessData_Params.PrivilegeLevelHint, sizeof(CanUploadFitnessData_Params.PrivilegeLevelHint));
 
 	return CanUploadFitnessData_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.SetPrimaryPlayerGamepadToLastInput
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 
 void UOnlinePlayerInterfaceEOS::SetPrimaryPlayerGamepadToLastInput()
 {
@@ -5546,13 +5597,14 @@ void UOnlinePlayerInterfaceEOS::SetPrimaryPlayerGamepadToLastInput()
 	}
 
 	UOnlinePlayerInterfaceEOS_execSetPrimaryPlayerGamepadToLastInput_Params SetPrimaryPlayerGamepadToLastInput_Params;
+	memset(&SetPrimaryPlayerGamepadToLastInput_Params, 0, sizeof(SetPrimaryPlayerGamepadToLastInput_Params));
 
 	this->ProcessEvent(uFnSetPrimaryPlayerGamepadToLastInput, &SetPrimaryPlayerGamepadToLastInput_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearUserSwitchCompleteDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         UserSwitchCompleteDelegate     (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::ClearUserSwitchCompleteDelegate(struct FScriptDelegate UserSwitchCompleteDelegate)
@@ -5565,14 +5617,15 @@ void UOnlinePlayerInterfaceEOS::ClearUserSwitchCompleteDelegate(struct FScriptDe
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearUserSwitchCompleteDelegate_Params ClearUserSwitchCompleteDelegate_Params;
-	memcpy_s(&ClearUserSwitchCompleteDelegate_Params.UserSwitchCompleteDelegate, 0x18, &UserSwitchCompleteDelegate, 0x18);
+	memset(&ClearUserSwitchCompleteDelegate_Params, 0, sizeof(ClearUserSwitchCompleteDelegate_Params));
+	memcpy_s(&ClearUserSwitchCompleteDelegate_Params.UserSwitchCompleteDelegate, sizeof(ClearUserSwitchCompleteDelegate_Params.UserSwitchCompleteDelegate), &UserSwitchCompleteDelegate, sizeof(UserSwitchCompleteDelegate));
 
 	this->ProcessEvent(uFnClearUserSwitchCompleteDelegate, &ClearUserSwitchCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddUserSwitchCompleteDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         UserSwitchCompleteDelegate     (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::AddUserSwitchCompleteDelegate(struct FScriptDelegate UserSwitchCompleteDelegate)
@@ -5585,14 +5638,15 @@ void UOnlinePlayerInterfaceEOS::AddUserSwitchCompleteDelegate(struct FScriptDele
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddUserSwitchCompleteDelegate_Params AddUserSwitchCompleteDelegate_Params;
-	memcpy_s(&AddUserSwitchCompleteDelegate_Params.UserSwitchCompleteDelegate, 0x18, &UserSwitchCompleteDelegate, 0x18);
+	memset(&AddUserSwitchCompleteDelegate_Params, 0, sizeof(AddUserSwitchCompleteDelegate_Params));
+	memcpy_s(&AddUserSwitchCompleteDelegate_Params.UserSwitchCompleteDelegate, sizeof(AddUserSwitchCompleteDelegate_Params.UserSwitchCompleteDelegate), &UserSwitchCompleteDelegate, sizeof(UserSwitchCompleteDelegate));
 
 	this->ProcessEvent(uFnAddUserSwitchCompleteDelegate, &AddUserSwitchCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnUserSwitchComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
 void UOnlinePlayerInterfaceEOS::OnUserSwitchComplete(uint8_t LocalUserNum)
@@ -5605,14 +5659,15 @@ void UOnlinePlayerInterfaceEOS::OnUserSwitchComplete(uint8_t LocalUserNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnUserSwitchComplete_Params OnUserSwitchComplete_Params;
-	memcpy_s(&OnUserSwitchComplete_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&OnUserSwitchComplete_Params, 0, sizeof(OnUserSwitchComplete_Params));
+	memcpy_s(&OnUserSwitchComplete_Params.LocalUserNum, sizeof(OnUserSwitchComplete_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnOnUserSwitchComplete, &OnUserSwitchComplete_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearLoginStatusChangeDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -5626,15 +5681,16 @@ void UOnlinePlayerInterfaceEOS::ClearLoginStatusChangeDelegate(struct FScriptDel
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearLoginStatusChangeDelegate_Params ClearLoginStatusChangeDelegate_Params;
-	memcpy_s(&ClearLoginStatusChangeDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
-	memcpy_s(&ClearLoginStatusChangeDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&ClearLoginStatusChangeDelegate_Params, 0, sizeof(ClearLoginStatusChangeDelegate_Params));
+	memcpy_s(&ClearLoginStatusChangeDelegate_Params.InDelegate, sizeof(ClearLoginStatusChangeDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
+	memcpy_s(&ClearLoginStatusChangeDelegate_Params.LocalUserNum, sizeof(ClearLoginStatusChangeDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnClearLoginStatusChangeDelegate, &ClearLoginStatusChangeDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddLoginStatusChangeDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -5648,19 +5704,20 @@ void UOnlinePlayerInterfaceEOS::AddLoginStatusChangeDelegate(struct FScriptDeleg
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddLoginStatusChangeDelegate_Params AddLoginStatusChangeDelegate_Params;
-	memcpy_s(&AddLoginStatusChangeDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
-	memcpy_s(&AddLoginStatusChangeDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&AddLoginStatusChangeDelegate_Params, 0, sizeof(AddLoginStatusChangeDelegate_Params));
+	memcpy_s(&AddLoginStatusChangeDelegate_Params.InDelegate, sizeof(AddLoginStatusChangeDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
+	memcpy_s(&AddLoginStatusChangeDelegate_Params.LocalUserNum, sizeof(AddLoginStatusChangeDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnAddLoginStatusChangeDelegate, &AddLoginStatusChangeDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnLoginStatusChange
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// uint8_t                        NewStatus                      (CPF_Parm)
+// Parameter Info:
+// ELoginStatus                   NewStatus                      (CPF_Parm)
 // struct FUniqueNetId            NewId                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlinePlayerInterfaceEOS::OnLoginStatusChange(uint8_t NewStatus, struct FUniqueNetId NewId)
+void UOnlinePlayerInterfaceEOS::OnLoginStatusChange(ELoginStatus NewStatus, struct FUniqueNetId NewId)
 {
 	static UFunction* uFnOnLoginStatusChange = nullptr;
 
@@ -5670,15 +5727,16 @@ void UOnlinePlayerInterfaceEOS::OnLoginStatusChange(uint8_t NewStatus, struct FU
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnLoginStatusChange_Params OnLoginStatusChange_Params;
-	memcpy_s(&OnLoginStatusChange_Params.NewStatus, 0x1, &NewStatus, 0x1);
-	memcpy_s(&OnLoginStatusChange_Params.NewId, 0x48, &NewId, 0x48);
+	memset(&OnLoginStatusChange_Params, 0, sizeof(OnLoginStatusChange_Params));
+	memcpy_s(&OnLoginStatusChange_Params.NewStatus, sizeof(OnLoginStatusChange_Params.NewStatus), &NewStatus, sizeof(NewStatus));
+	memcpy_s(&OnLoginStatusChange_Params.NewId, sizeof(OnLoginStatusChange_Params.NewId), &NewId, sizeof(NewId));
 
 	this->ProcessEvent(uFnOnLoginStatusChange, &OnLoginStatusChange_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetPlayHistoryRegistrationKey
 // [0x00420001] (FUNC_Final | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // TArray<uint8_t>                Key                            (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
@@ -5692,22 +5750,23 @@ bool UOnlinePlayerInterfaceEOS::GetPlayHistoryRegistrationKey(TArray<uint8_t>& K
 	}
 
 	UOnlinePlayerInterfaceEOS_execGetPlayHistoryRegistrationKey_Params GetPlayHistoryRegistrationKey_Params;
-	memcpy_s(&GetPlayHistoryRegistrationKey_Params.Key, 0x10, &Key, 0x10);
+	memset(&GetPlayHistoryRegistrationKey_Params, 0, sizeof(GetPlayHistoryRegistrationKey_Params));
+	memcpy_s(&GetPlayHistoryRegistrationKey_Params.Key, sizeof(GetPlayHistoryRegistrationKey_Params.Key), &Key, sizeof(Key));
 
 	this->ProcessEvent(uFnGetPlayHistoryRegistrationKey, &GetPlayHistoryRegistrationKey_Params, nullptr);
 
-	memcpy_s(&Key, 0x10, &GetPlayHistoryRegistrationKey_Params.Key, 0x10);
+	memcpy_s(&Key, sizeof(Key), &GetPlayHistoryRegistrationKey_Params.Key, sizeof(GetPlayHistoryRegistrationKey_Params.Key));
 
 	return GetPlayHistoryRegistrationKey_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CheckParentalControlInfo
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// unsigned long                  bShowUi                        (CPF_Parm)
+// bool                           bShowUi                        (CPF_Parm)
 
-bool UOnlinePlayerInterfaceEOS::CheckParentalControlInfo(unsigned long bShowUi)
+bool UOnlinePlayerInterfaceEOS::CheckParentalControlInfo(bool bShowUi)
 {
 	static UFunction* uFnCheckParentalControlInfo = nullptr;
 
@@ -5717,6 +5776,7 @@ bool UOnlinePlayerInterfaceEOS::CheckParentalControlInfo(unsigned long bShowUi)
 	}
 
 	UOnlinePlayerInterfaceEOS_execCheckParentalControlInfo_Params CheckParentalControlInfo_Params;
+	memset(&CheckParentalControlInfo_Params, 0, sizeof(CheckParentalControlInfo_Params));
 	CheckParentalControlInfo_Params.bShowUi = bShowUi;
 
 	this->ProcessEvent(uFnCheckParentalControlInfo, &CheckParentalControlInfo_Params, nullptr);
@@ -5726,7 +5786,7 @@ bool UOnlinePlayerInterfaceEOS::CheckParentalControlInfo(unsigned long bShowUi)
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetActiveDiscDLC
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // TArray<struct FName>           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 
 TArray<struct FName> UOnlinePlayerInterfaceEOS::GetActiveDiscDLC()
@@ -5739,6 +5799,7 @@ TArray<struct FName> UOnlinePlayerInterfaceEOS::GetActiveDiscDLC()
 	}
 
 	UOnlinePlayerInterfaceEOS_execGetActiveDiscDLC_Params GetActiveDiscDLC_Params;
+	memset(&GetActiveDiscDLC_Params, 0, sizeof(GetActiveDiscDLC_Params));
 
 	this->ProcessEvent(uFnGetActiveDiscDLC, &GetActiveDiscDLC_Params, nullptr);
 
@@ -5747,10 +5808,10 @@ TArray<struct FName> UOnlinePlayerInterfaceEOS::GetActiveDiscDLC()
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.SetOnlineSubscriptionRequirement
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bRequiresOnlineSubscription    (CPF_Parm)
+// Parameter Info:
+// bool                           bRequiresOnlineSubscription    (CPF_Parm)
 
-void UOnlinePlayerInterfaceEOS::SetOnlineSubscriptionRequirement(unsigned long bRequiresOnlineSubscription)
+void UOnlinePlayerInterfaceEOS::SetOnlineSubscriptionRequirement(bool bRequiresOnlineSubscription)
 {
 	static UFunction* uFnSetOnlineSubscriptionRequirement = nullptr;
 
@@ -5760,6 +5821,7 @@ void UOnlinePlayerInterfaceEOS::SetOnlineSubscriptionRequirement(unsigned long b
 	}
 
 	UOnlinePlayerInterfaceEOS_execSetOnlineSubscriptionRequirement_Params SetOnlineSubscriptionRequirement_Params;
+	memset(&SetOnlineSubscriptionRequirement_Params, 0, sizeof(SetOnlineSubscriptionRequirement_Params));
 	SetOnlineSubscriptionRequirement_Params.bRequiresOnlineSubscription = bRequiresOnlineSubscription;
 
 	this->ProcessEvent(uFnSetOnlineSubscriptionRequirement, &SetOnlineSubscriptionRequirement_Params, nullptr);
@@ -5767,7 +5829,7 @@ void UOnlinePlayerInterfaceEOS::SetOnlineSubscriptionRequirement(unsigned long b
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetControllerID
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // int32_t                        LocalPlayerNum                 (CPF_Parm)
 
@@ -5781,7 +5843,8 @@ int32_t UOnlinePlayerInterfaceEOS::GetControllerID(int32_t LocalPlayerNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_execGetControllerID_Params GetControllerID_Params;
-	memcpy_s(&GetControllerID_Params.LocalPlayerNum, 0x4, &LocalPlayerNum, 0x4);
+	memset(&GetControllerID_Params, 0, sizeof(GetControllerID_Params));
+	memcpy_s(&GetControllerID_Params.LocalPlayerNum, sizeof(GetControllerID_Params.LocalPlayerNum), &LocalPlayerNum, sizeof(LocalPlayerNum));
 
 	this->ProcessEvent(uFnGetControllerID, &GetControllerID_Params, nullptr);
 
@@ -5790,7 +5853,7 @@ int32_t UOnlinePlayerInterfaceEOS::GetControllerID(int32_t LocalPlayerNum)
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetConnectedControllerNames
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // TArray<struct FName>           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 
 TArray<struct FName> UOnlinePlayerInterfaceEOS::GetConnectedControllerNames()
@@ -5803,6 +5866,7 @@ TArray<struct FName> UOnlinePlayerInterfaceEOS::GetConnectedControllerNames()
 	}
 
 	UOnlinePlayerInterfaceEOS_execGetConnectedControllerNames_Params GetConnectedControllerNames_Params;
+	memset(&GetConnectedControllerNames_Params, 0, sizeof(GetConnectedControllerNames_Params));
 
 	this->ProcessEvent(uFnGetConnectedControllerNames, &GetConnectedControllerNames_Params, nullptr);
 
@@ -5811,7 +5875,7 @@ TArray<struct FName> UOnlinePlayerInterfaceEOS::GetConnectedControllerNames()
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnLocalPlayerRemoved
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // int32_t                        LocalPlayerNum                 (CPF_Parm)
 
 void UOnlinePlayerInterfaceEOS::OnLocalPlayerRemoved(int32_t LocalPlayerNum)
@@ -5824,14 +5888,15 @@ void UOnlinePlayerInterfaceEOS::OnLocalPlayerRemoved(int32_t LocalPlayerNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnLocalPlayerRemoved_Params OnLocalPlayerRemoved_Params;
-	memcpy_s(&OnLocalPlayerRemoved_Params.LocalPlayerNum, 0x4, &LocalPlayerNum, 0x4);
+	memset(&OnLocalPlayerRemoved_Params, 0, sizeof(OnLocalPlayerRemoved_Params));
+	memcpy_s(&OnLocalPlayerRemoved_Params.LocalPlayerNum, sizeof(OnLocalPlayerRemoved_Params.LocalPlayerNum), &LocalPlayerNum, sizeof(LocalPlayerNum));
 
 	this->ProcessEvent(uFnOnLocalPlayerRemoved, &OnLocalPlayerRemoved_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.UnregisterController
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // int32_t                        LocalPlayerNum                 (CPF_Parm)
 
 void UOnlinePlayerInterfaceEOS::UnregisterController(int32_t LocalPlayerNum)
@@ -5844,14 +5909,15 @@ void UOnlinePlayerInterfaceEOS::UnregisterController(int32_t LocalPlayerNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_execUnregisterController_Params UnregisterController_Params;
-	memcpy_s(&UnregisterController_Params.LocalPlayerNum, 0x4, &LocalPlayerNum, 0x4);
+	memset(&UnregisterController_Params, 0, sizeof(UnregisterController_Params));
+	memcpy_s(&UnregisterController_Params.LocalPlayerNum, sizeof(UnregisterController_Params.LocalPlayerNum), &LocalPlayerNum, sizeof(LocalPlayerNum));
 
 	this->ProcessEvent(uFnUnregisterController, &UnregisterController_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.RegisterController
-// [0x00024001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // int32_t                        LocalPlayerNum                 (CPF_Parm)
 // int32_t                        ControllerId                   (CPF_OptionalParm | CPF_Parm)
 
@@ -5865,15 +5931,16 @@ void UOnlinePlayerInterfaceEOS::RegisterController(int32_t LocalPlayerNum, int32
 	}
 
 	UOnlinePlayerInterfaceEOS_execRegisterController_Params RegisterController_Params;
-	memcpy_s(&RegisterController_Params.LocalPlayerNum, 0x4, &LocalPlayerNum, 0x4);
-	memcpy_s(&RegisterController_Params.ControllerId, 0x4, &ControllerId, 0x4);
+	memset(&RegisterController_Params, 0, sizeof(RegisterController_Params));
+	memcpy_s(&RegisterController_Params.LocalPlayerNum, sizeof(RegisterController_Params.LocalPlayerNum), &LocalPlayerNum, sizeof(LocalPlayerNum));
+	memcpy_s(&RegisterController_Params.ControllerId, sizeof(RegisterController_Params.ControllerId), &ControllerId, sizeof(ControllerId));
 
 	this->ProcessEvent(uFnRegisterController, &RegisterController_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanRegisterController
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // int32_t                        LocalPlayerNum                 (CPF_Parm)
 
@@ -5887,7 +5954,8 @@ bool UOnlinePlayerInterfaceEOS::CanRegisterController(int32_t LocalPlayerNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_execCanRegisterController_Params CanRegisterController_Params;
-	memcpy_s(&CanRegisterController_Params.LocalPlayerNum, 0x4, &LocalPlayerNum, 0x4);
+	memset(&CanRegisterController_Params, 0, sizeof(CanRegisterController_Params));
+	memcpy_s(&CanRegisterController_Params.LocalPlayerNum, sizeof(CanRegisterController_Params.LocalPlayerNum), &LocalPlayerNum, sizeof(LocalPlayerNum));
 
 	this->ProcessEvent(uFnCanRegisterController, &CanRegisterController_Params, nullptr);
 
@@ -5896,7 +5964,7 @@ bool UOnlinePlayerInterfaceEOS::CanRegisterController(int32_t LocalPlayerNum)
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowBindings
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // int32_t                        ControllerId                   (CPF_Parm)
 
@@ -5910,7 +5978,8 @@ bool UOnlinePlayerInterfaceEOS::ShowBindings(int32_t ControllerId)
 	}
 
 	UOnlinePlayerInterfaceEOS_execShowBindings_Params ShowBindings_Params;
-	memcpy_s(&ShowBindings_Params.ControllerId, 0x4, &ControllerId, 0x4);
+	memset(&ShowBindings_Params, 0, sizeof(ShowBindings_Params));
+	memcpy_s(&ShowBindings_Params.ControllerId, sizeof(ShowBindings_Params.ControllerId), &ControllerId, sizeof(ControllerId));
 
 	this->ProcessEvent(uFnShowBindings, &ShowBindings_Params, nullptr);
 
@@ -5919,7 +5988,7 @@ bool UOnlinePlayerInterfaceEOS::ShowBindings(int32_t ControllerId)
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.SetControllerLayout
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // int32_t                        ControllerId                   (CPF_Parm)
 // struct FName                   LayoutName                     (CPF_Parm)
 
@@ -5933,18 +6002,19 @@ void UOnlinePlayerInterfaceEOS::SetControllerLayout(int32_t ControllerId, struct
 	}
 
 	UOnlinePlayerInterfaceEOS_execSetControllerLayout_Params SetControllerLayout_Params;
-	memcpy_s(&SetControllerLayout_Params.ControllerId, 0x4, &ControllerId, 0x4);
-	memcpy_s(&SetControllerLayout_Params.LayoutName, 0x8, &LayoutName, 0x8);
+	memset(&SetControllerLayout_Params, 0, sizeof(SetControllerLayout_Params));
+	memcpy_s(&SetControllerLayout_Params.ControllerId, sizeof(SetControllerLayout_Params.ControllerId), &ControllerId, sizeof(ControllerId));
+	memcpy_s(&SetControllerLayout_Params.LayoutName, sizeof(SetControllerLayout_Params.LayoutName), &LayoutName, sizeof(LayoutName));
 
 	this->ProcessEvent(uFnSetControllerLayout, &SetControllerLayout_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.SetInputAPI
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
-// uint8_t                        TargetAPI                      (CPF_Parm)
+// Parameter Info:
+// EInputAPI                      TargetAPI                      (CPF_Parm)
 
-void UOnlinePlayerInterfaceEOS::SetInputAPI(uint8_t TargetAPI)
+void UOnlinePlayerInterfaceEOS::SetInputAPI(EInputAPI TargetAPI)
 {
 	static UFunction* uFnSetInputAPI = nullptr;
 
@@ -5954,14 +6024,15 @@ void UOnlinePlayerInterfaceEOS::SetInputAPI(uint8_t TargetAPI)
 	}
 
 	UOnlinePlayerInterfaceEOS_execSetInputAPI_Params SetInputAPI_Params;
-	memcpy_s(&SetInputAPI_Params.TargetAPI, 0x1, &TargetAPI, 0x1);
+	memset(&SetInputAPI_Params, 0, sizeof(SetInputAPI_Params));
+	memcpy_s(&SetInputAPI_Params.TargetAPI, sizeof(SetInputAPI_Params.TargetAPI), &TargetAPI, sizeof(TargetAPI));
 
 	this->ProcessEvent(uFnSetInputAPI, &SetInputAPI_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearInputAPIChangedDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         InputAPIChangedDelegate        (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::ClearInputAPIChangedDelegate(struct FScriptDelegate InputAPIChangedDelegate)
@@ -5974,14 +6045,15 @@ void UOnlinePlayerInterfaceEOS::ClearInputAPIChangedDelegate(struct FScriptDeleg
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearInputAPIChangedDelegate_Params ClearInputAPIChangedDelegate_Params;
-	memcpy_s(&ClearInputAPIChangedDelegate_Params.InputAPIChangedDelegate, 0x18, &InputAPIChangedDelegate, 0x18);
+	memset(&ClearInputAPIChangedDelegate_Params, 0, sizeof(ClearInputAPIChangedDelegate_Params));
+	memcpy_s(&ClearInputAPIChangedDelegate_Params.InputAPIChangedDelegate, sizeof(ClearInputAPIChangedDelegate_Params.InputAPIChangedDelegate), &InputAPIChangedDelegate, sizeof(InputAPIChangedDelegate));
 
 	this->ProcessEvent(uFnClearInputAPIChangedDelegate, &ClearInputAPIChangedDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddInputAPIChangedDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         InputAPIChangedDelegate        (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::AddInputAPIChangedDelegate(struct FScriptDelegate InputAPIChangedDelegate)
@@ -5994,17 +6066,18 @@ void UOnlinePlayerInterfaceEOS::AddInputAPIChangedDelegate(struct FScriptDelegat
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddInputAPIChangedDelegate_Params AddInputAPIChangedDelegate_Params;
-	memcpy_s(&AddInputAPIChangedDelegate_Params.InputAPIChangedDelegate, 0x18, &InputAPIChangedDelegate, 0x18);
+	memset(&AddInputAPIChangedDelegate_Params, 0, sizeof(AddInputAPIChangedDelegate_Params));
+	memcpy_s(&AddInputAPIChangedDelegate_Params.InputAPIChangedDelegate, sizeof(AddInputAPIChangedDelegate_Params.InputAPIChangedDelegate), &InputAPIChangedDelegate, sizeof(InputAPIChangedDelegate));
 
 	this->ProcessEvent(uFnAddInputAPIChangedDelegate, &AddInputAPIChangedDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnInputAPIChanged
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// uint8_t                        TargetAPI                      (CPF_Parm)
+// Parameter Info:
+// EInputAPI                      TargetAPI                      (CPF_Parm)
 
-void UOnlinePlayerInterfaceEOS::OnInputAPIChanged(uint8_t TargetAPI)
+void UOnlinePlayerInterfaceEOS::OnInputAPIChanged(EInputAPI TargetAPI)
 {
 	static UFunction* uFnOnInputAPIChanged = nullptr;
 
@@ -6014,14 +6087,15 @@ void UOnlinePlayerInterfaceEOS::OnInputAPIChanged(uint8_t TargetAPI)
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnInputAPIChanged_Params OnInputAPIChanged_Params;
-	memcpy_s(&OnInputAPIChanged_Params.TargetAPI, 0x1, &TargetAPI, 0x1);
+	memset(&OnInputAPIChanged_Params, 0, sizeof(OnInputAPIChanged_Params));
+	memcpy_s(&OnInputAPIChanged_Params.TargetAPI, sizeof(OnInputAPIChanged_Params.TargetAPI), &TargetAPI, sizeof(TargetAPI));
 
 	this->ProcessEvent(uFnOnInputAPIChanged, &OnInputAPIChanged_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearUnregisteredControllerDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         UnregisteredControllerDelegate (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::ClearUnregisteredControllerDelegate(struct FScriptDelegate UnregisteredControllerDelegate)
@@ -6034,14 +6108,15 @@ void UOnlinePlayerInterfaceEOS::ClearUnregisteredControllerDelegate(struct FScri
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearUnregisteredControllerDelegate_Params ClearUnregisteredControllerDelegate_Params;
-	memcpy_s(&ClearUnregisteredControllerDelegate_Params.UnregisteredControllerDelegate, 0x18, &UnregisteredControllerDelegate, 0x18);
+	memset(&ClearUnregisteredControllerDelegate_Params, 0, sizeof(ClearUnregisteredControllerDelegate_Params));
+	memcpy_s(&ClearUnregisteredControllerDelegate_Params.UnregisteredControllerDelegate, sizeof(ClearUnregisteredControllerDelegate_Params.UnregisteredControllerDelegate), &UnregisteredControllerDelegate, sizeof(UnregisteredControllerDelegate));
 
 	this->ProcessEvent(uFnClearUnregisteredControllerDelegate, &ClearUnregisteredControllerDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearRegisteredControllerDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         RegisteredControllerDelegate   (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::ClearRegisteredControllerDelegate(struct FScriptDelegate RegisteredControllerDelegate)
@@ -6054,14 +6129,15 @@ void UOnlinePlayerInterfaceEOS::ClearRegisteredControllerDelegate(struct FScript
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearRegisteredControllerDelegate_Params ClearRegisteredControllerDelegate_Params;
-	memcpy_s(&ClearRegisteredControllerDelegate_Params.RegisteredControllerDelegate, 0x18, &RegisteredControllerDelegate, 0x18);
+	memset(&ClearRegisteredControllerDelegate_Params, 0, sizeof(ClearRegisteredControllerDelegate_Params));
+	memcpy_s(&ClearRegisteredControllerDelegate_Params.RegisteredControllerDelegate, sizeof(ClearRegisteredControllerDelegate_Params.RegisteredControllerDelegate), &RegisteredControllerDelegate, sizeof(RegisteredControllerDelegate));
 
 	this->ProcessEvent(uFnClearRegisteredControllerDelegate, &ClearRegisteredControllerDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddUnregisteredControllerDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         UnregisteredControllerDelegate (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::AddUnregisteredControllerDelegate(struct FScriptDelegate UnregisteredControllerDelegate)
@@ -6074,14 +6150,15 @@ void UOnlinePlayerInterfaceEOS::AddUnregisteredControllerDelegate(struct FScript
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddUnregisteredControllerDelegate_Params AddUnregisteredControllerDelegate_Params;
-	memcpy_s(&AddUnregisteredControllerDelegate_Params.UnregisteredControllerDelegate, 0x18, &UnregisteredControllerDelegate, 0x18);
+	memset(&AddUnregisteredControllerDelegate_Params, 0, sizeof(AddUnregisteredControllerDelegate_Params));
+	memcpy_s(&AddUnregisteredControllerDelegate_Params.UnregisteredControllerDelegate, sizeof(AddUnregisteredControllerDelegate_Params.UnregisteredControllerDelegate), &UnregisteredControllerDelegate, sizeof(UnregisteredControllerDelegate));
 
 	this->ProcessEvent(uFnAddUnregisteredControllerDelegate, &AddUnregisteredControllerDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddRegisteredControllerDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         RegisteredControllerDelegate   (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::AddRegisteredControllerDelegate(struct FScriptDelegate RegisteredControllerDelegate)
@@ -6094,14 +6171,15 @@ void UOnlinePlayerInterfaceEOS::AddRegisteredControllerDelegate(struct FScriptDe
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddRegisteredControllerDelegate_Params AddRegisteredControllerDelegate_Params;
-	memcpy_s(&AddRegisteredControllerDelegate_Params.RegisteredControllerDelegate, 0x18, &RegisteredControllerDelegate, 0x18);
+	memset(&AddRegisteredControllerDelegate_Params, 0, sizeof(AddRegisteredControllerDelegate_Params));
+	memcpy_s(&AddRegisteredControllerDelegate_Params.RegisteredControllerDelegate, sizeof(AddRegisteredControllerDelegate_Params.RegisteredControllerDelegate), &RegisteredControllerDelegate, sizeof(RegisteredControllerDelegate));
 
 	this->ProcessEvent(uFnAddRegisteredControllerDelegate, &AddRegisteredControllerDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnUnregisteredController
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // int32_t                        LocalPlayerNum                 (CPF_Parm)
 
 void UOnlinePlayerInterfaceEOS::OnUnregisteredController(int32_t LocalPlayerNum)
@@ -6114,14 +6192,15 @@ void UOnlinePlayerInterfaceEOS::OnUnregisteredController(int32_t LocalPlayerNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnUnregisteredController_Params OnUnregisteredController_Params;
-	memcpy_s(&OnUnregisteredController_Params.LocalPlayerNum, 0x4, &LocalPlayerNum, 0x4);
+	memset(&OnUnregisteredController_Params, 0, sizeof(OnUnregisteredController_Params));
+	memcpy_s(&OnUnregisteredController_Params.LocalPlayerNum, sizeof(OnUnregisteredController_Params.LocalPlayerNum), &LocalPlayerNum, sizeof(LocalPlayerNum));
 
 	this->ProcessEvent(uFnOnUnregisteredController, &OnUnregisteredController_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnRegisteredController
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // int32_t                        LocalPlayerNum                 (CPF_Parm)
 // int32_t                        ControllerId                   (CPF_Parm)
 
@@ -6135,15 +6214,16 @@ void UOnlinePlayerInterfaceEOS::OnRegisteredController(int32_t LocalPlayerNum, i
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnRegisteredController_Params OnRegisteredController_Params;
-	memcpy_s(&OnRegisteredController_Params.LocalPlayerNum, 0x4, &LocalPlayerNum, 0x4);
-	memcpy_s(&OnRegisteredController_Params.ControllerId, 0x4, &ControllerId, 0x4);
+	memset(&OnRegisteredController_Params, 0, sizeof(OnRegisteredController_Params));
+	memcpy_s(&OnRegisteredController_Params.LocalPlayerNum, sizeof(OnRegisteredController_Params.LocalPlayerNum), &LocalPlayerNum, sizeof(LocalPlayerNum));
+	memcpy_s(&OnRegisteredController_Params.ControllerId, sizeof(OnRegisteredController_Params.ControllerId), &ControllerId, sizeof(ControllerId));
 
 	this->ProcessEvent(uFnOnRegisteredController, &OnRegisteredController_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddInGamePost
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  InPostID                       (CPF_Parm | CPF_NeedCtorLink)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
@@ -6159,9 +6239,10 @@ bool UOnlinePlayerInterfaceEOS::AddInGamePost(class FString InPostID, uint8_t Lo
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddInGamePost_Params AddInGamePost_Params;
-	memcpy_s(&AddInGamePost_Params.InPostID, 0x10, &InPostID, 0x10);
-	memcpy_s(&AddInGamePost_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddInGamePost_Params.StringReplaceList, 0x10, &StringReplaceList, 0x10);
+	memset(&AddInGamePost_Params, 0, sizeof(AddInGamePost_Params));
+	memcpy_s(&AddInGamePost_Params.InPostID, sizeof(AddInGamePost_Params.InPostID), &InPostID, sizeof(InPostID));
+	memcpy_s(&AddInGamePost_Params.LocalUserNum, sizeof(AddInGamePost_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddInGamePost_Params.StringReplaceList, sizeof(AddInGamePost_Params.StringReplaceList), &StringReplaceList, sizeof(StringReplaceList));
 
 	this->ProcessEvent(uFnAddInGamePost, &AddInGamePost_Params, nullptr);
 
@@ -6170,7 +6251,7 @@ bool UOnlinePlayerInterfaceEOS::AddInGamePost(class FString InPostID, uint8_t Lo
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.UpdateStat
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FName                   StatName                       (CPF_Parm)
@@ -6186,9 +6267,10 @@ bool UOnlinePlayerInterfaceEOS::UpdateStat(uint8_t LocalUserNum, struct FName St
 	}
 
 	UOnlinePlayerInterfaceEOS_execUpdateStat_Params UpdateStat_Params;
-	memcpy_s(&UpdateStat_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&UpdateStat_Params.StatName, 0x8, &StatName, 0x8);
-	memcpy_s(&UpdateStat_Params.Points, 0x4, &Points, 0x4);
+	memset(&UpdateStat_Params, 0, sizeof(UpdateStat_Params));
+	memcpy_s(&UpdateStat_Params.LocalUserNum, sizeof(UpdateStat_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&UpdateStat_Params.StatName, sizeof(UpdateStat_Params.StatName), &StatName, sizeof(StatName));
+	memcpy_s(&UpdateStat_Params.Points, sizeof(UpdateStat_Params.Points), &Points, sizeof(Points));
 
 	this->ProcessEvent(uFnUpdateStat, &UpdateStat_Params, nullptr);
 
@@ -6197,7 +6279,7 @@ bool UOnlinePlayerInterfaceEOS::UpdateStat(uint8_t LocalUserNum, struct FName St
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearSaveDataNoSpaceDialogCompleteDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         DeviceDelegate                 (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::ClearSaveDataNoSpaceDialogCompleteDelegate(struct FScriptDelegate DeviceDelegate)
@@ -6210,14 +6292,15 @@ void UOnlinePlayerInterfaceEOS::ClearSaveDataNoSpaceDialogCompleteDelegate(struc
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearSaveDataNoSpaceDialogCompleteDelegate_Params ClearSaveDataNoSpaceDialogCompleteDelegate_Params;
-	memcpy_s(&ClearSaveDataNoSpaceDialogCompleteDelegate_Params.DeviceDelegate, 0x18, &DeviceDelegate, 0x18);
+	memset(&ClearSaveDataNoSpaceDialogCompleteDelegate_Params, 0, sizeof(ClearSaveDataNoSpaceDialogCompleteDelegate_Params));
+	memcpy_s(&ClearSaveDataNoSpaceDialogCompleteDelegate_Params.DeviceDelegate, sizeof(ClearSaveDataNoSpaceDialogCompleteDelegate_Params.DeviceDelegate), &DeviceDelegate, sizeof(DeviceDelegate));
 
 	this->ProcessEvent(uFnClearSaveDataNoSpaceDialogCompleteDelegate, &ClearSaveDataNoSpaceDialogCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddSaveDataNoSpaceDialogCompleteDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         DeviceDelegate                 (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::AddSaveDataNoSpaceDialogCompleteDelegate(struct FScriptDelegate DeviceDelegate)
@@ -6230,17 +6313,18 @@ void UOnlinePlayerInterfaceEOS::AddSaveDataNoSpaceDialogCompleteDelegate(struct 
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddSaveDataNoSpaceDialogCompleteDelegate_Params AddSaveDataNoSpaceDialogCompleteDelegate_Params;
-	memcpy_s(&AddSaveDataNoSpaceDialogCompleteDelegate_Params.DeviceDelegate, 0x18, &DeviceDelegate, 0x18);
+	memset(&AddSaveDataNoSpaceDialogCompleteDelegate_Params, 0, sizeof(AddSaveDataNoSpaceDialogCompleteDelegate_Params));
+	memcpy_s(&AddSaveDataNoSpaceDialogCompleteDelegate_Params.DeviceDelegate, sizeof(AddSaveDataNoSpaceDialogCompleteDelegate_Params.DeviceDelegate), &DeviceDelegate, sizeof(DeviceDelegate));
 
 	this->ProcessEvent(uFnAddSaveDataNoSpaceDialogCompleteDelegate, &AddSaveDataNoSpaceDialogCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnSaveDataNoSpaceDialogComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bContinueWithoutSave           (CPF_Parm)
+// Parameter Info:
+// bool                           bContinueWithoutSave           (CPF_Parm)
 
-void UOnlinePlayerInterfaceEOS::OnSaveDataNoSpaceDialogComplete(unsigned long bContinueWithoutSave)
+void UOnlinePlayerInterfaceEOS::OnSaveDataNoSpaceDialogComplete(bool bContinueWithoutSave)
 {
 	static UFunction* uFnOnSaveDataNoSpaceDialogComplete = nullptr;
 
@@ -6250,6 +6334,7 @@ void UOnlinePlayerInterfaceEOS::OnSaveDataNoSpaceDialogComplete(unsigned long bC
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnSaveDataNoSpaceDialogComplete_Params OnSaveDataNoSpaceDialogComplete_Params;
+	memset(&OnSaveDataNoSpaceDialogComplete_Params, 0, sizeof(OnSaveDataNoSpaceDialogComplete_Params));
 	OnSaveDataNoSpaceDialogComplete_Params.bContinueWithoutSave = bContinueWithoutSave;
 
 	this->ProcessEvent(uFnOnSaveDataNoSpaceDialogComplete, &OnSaveDataNoSpaceDialogComplete_Params, nullptr);
@@ -6257,7 +6342,7 @@ void UOnlinePlayerInterfaceEOS::OnSaveDataNoSpaceDialogComplete(unsigned long bC
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.RecordPlayersRecentlyMetKeys
 // [0x00420001] (FUNC_Final | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // TArray<struct FFriendHistoryKey> PlayerKeys                     (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
@@ -6272,19 +6357,20 @@ bool UOnlinePlayerInterfaceEOS::RecordPlayersRecentlyMetKeys(uint8_t LocalUserNu
 	}
 
 	UOnlinePlayerInterfaceEOS_execRecordPlayersRecentlyMetKeys_Params RecordPlayersRecentlyMetKeys_Params;
-	memcpy_s(&RecordPlayersRecentlyMetKeys_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&RecordPlayersRecentlyMetKeys_Params.PlayerKeys, 0x10, &PlayerKeys, 0x10);
+	memset(&RecordPlayersRecentlyMetKeys_Params, 0, sizeof(RecordPlayersRecentlyMetKeys_Params));
+	memcpy_s(&RecordPlayersRecentlyMetKeys_Params.LocalUserNum, sizeof(RecordPlayersRecentlyMetKeys_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&RecordPlayersRecentlyMetKeys_Params.PlayerKeys, sizeof(RecordPlayersRecentlyMetKeys_Params.PlayerKeys), &PlayerKeys, sizeof(PlayerKeys));
 
 	this->ProcessEvent(uFnRecordPlayersRecentlyMetKeys, &RecordPlayersRecentlyMetKeys_Params, nullptr);
 
-	memcpy_s(&PlayerKeys, 0x10, &RecordPlayersRecentlyMetKeys_Params.PlayerKeys, 0x10);
+	memcpy_s(&PlayerKeys, sizeof(PlayerKeys), &RecordPlayersRecentlyMetKeys_Params.PlayerKeys, sizeof(RecordPlayersRecentlyMetKeys_Params.PlayerKeys));
 
 	return RecordPlayersRecentlyMetKeys_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.IsAchievementUnlocked
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // int32_t                        AchievementId                  (CPF_Parm)
 
@@ -6298,7 +6384,8 @@ bool UOnlinePlayerInterfaceEOS::IsAchievementUnlocked(int32_t AchievementId)
 	}
 
 	UOnlinePlayerInterfaceEOS_execIsAchievementUnlocked_Params IsAchievementUnlocked_Params;
-	memcpy_s(&IsAchievementUnlocked_Params.AchievementId, 0x4, &AchievementId, 0x4);
+	memset(&IsAchievementUnlocked_Params, 0, sizeof(IsAchievementUnlocked_Params));
+	memcpy_s(&IsAchievementUnlocked_Params.AchievementId, sizeof(IsAchievementUnlocked_Params.AchievementId), &AchievementId, sizeof(AchievementId));
 
 	this->ProcessEvent(uFnIsAchievementUnlocked, &IsAchievementUnlocked_Params, nullptr);
 
@@ -6307,7 +6394,7 @@ bool UOnlinePlayerInterfaceEOS::IsAchievementUnlocked(int32_t AchievementId)
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowContentMarketplaceUI
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -6321,7 +6408,8 @@ bool UOnlinePlayerInterfaceEOS::ShowContentMarketplaceUI(uint8_t LocalUserNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_execShowContentMarketplaceUI_Params ShowContentMarketplaceUI_Params;
-	memcpy_s(&ShowContentMarketplaceUI_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&ShowContentMarketplaceUI_Params, 0, sizeof(ShowContentMarketplaceUI_Params));
+	memcpy_s(&ShowContentMarketplaceUI_Params.LocalUserNum, sizeof(ShowContentMarketplaceUI_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnShowContentMarketplaceUI, &ShowContentMarketplaceUI_Params, nullptr);
 
@@ -6330,7 +6418,7 @@ bool UOnlinePlayerInterfaceEOS::ShowContentMarketplaceUI(uint8_t LocalUserNum)
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowFriendsInviteUI
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
@@ -6345,8 +6433,9 @@ bool UOnlinePlayerInterfaceEOS::ShowFriendsInviteUI(uint8_t LocalUserNum, struct
 	}
 
 	UOnlinePlayerInterfaceEOS_execShowFriendsInviteUI_Params ShowFriendsInviteUI_Params;
-	memcpy_s(&ShowFriendsInviteUI_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ShowFriendsInviteUI_Params.PlayerID, 0x48, &PlayerID, 0x48);
+	memset(&ShowFriendsInviteUI_Params, 0, sizeof(ShowFriendsInviteUI_Params));
+	memcpy_s(&ShowFriendsInviteUI_Params.LocalUserNum, sizeof(ShowFriendsInviteUI_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ShowFriendsInviteUI_Params.PlayerID, sizeof(ShowFriendsInviteUI_Params.PlayerID), &PlayerID, sizeof(PlayerID));
 
 	this->ProcessEvent(uFnShowFriendsInviteUI, &ShowFriendsInviteUI_Params, nullptr);
 
@@ -6355,7 +6444,7 @@ bool UOnlinePlayerInterfaceEOS::ShowFriendsInviteUI(uint8_t LocalUserNum, struct
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowAchievementsUI
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -6369,7 +6458,8 @@ bool UOnlinePlayerInterfaceEOS::ShowAchievementsUI(uint8_t LocalUserNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_execShowAchievementsUI_Params ShowAchievementsUI_Params;
-	memcpy_s(&ShowAchievementsUI_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&ShowAchievementsUI_Params, 0, sizeof(ShowAchievementsUI_Params));
+	memcpy_s(&ShowAchievementsUI_Params.LocalUserNum, sizeof(ShowAchievementsUI_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnShowAchievementsUI, &ShowAchievementsUI_Params, nullptr);
 
@@ -6378,7 +6468,7 @@ bool UOnlinePlayerInterfaceEOS::ShowAchievementsUI(uint8_t LocalUserNum)
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowMessagesUI
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -6392,7 +6482,8 @@ bool UOnlinePlayerInterfaceEOS::ShowMessagesUI(uint8_t LocalUserNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_execShowMessagesUI_Params ShowMessagesUI_Params;
-	memcpy_s(&ShowMessagesUI_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&ShowMessagesUI_Params, 0, sizeof(ShowMessagesUI_Params));
+	memcpy_s(&ShowMessagesUI_Params.LocalUserNum, sizeof(ShowMessagesUI_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnShowMessagesUI, &ShowMessagesUI_Params, nullptr);
 
@@ -6401,7 +6492,7 @@ bool UOnlinePlayerInterfaceEOS::ShowMessagesUI(uint8_t LocalUserNum)
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowFeedbackUI
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
@@ -6416,8 +6507,9 @@ bool UOnlinePlayerInterfaceEOS::ShowFeedbackUI(uint8_t LocalUserNum, struct FUni
 	}
 
 	UOnlinePlayerInterfaceEOS_execShowFeedbackUI_Params ShowFeedbackUI_Params;
-	memcpy_s(&ShowFeedbackUI_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ShowFeedbackUI_Params.PlayerID, 0x48, &PlayerID, 0x48);
+	memset(&ShowFeedbackUI_Params, 0, sizeof(ShowFeedbackUI_Params));
+	memcpy_s(&ShowFeedbackUI_Params.LocalUserNum, sizeof(ShowFeedbackUI_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ShowFeedbackUI_Params.PlayerID, sizeof(ShowFeedbackUI_Params.PlayerID), &PlayerID, sizeof(PlayerID));
 
 	this->ProcessEvent(uFnShowFeedbackUI, &ShowFeedbackUI_Params, nullptr);
 
@@ -6426,7 +6518,7 @@ bool UOnlinePlayerInterfaceEOS::ShowFeedbackUI(uint8_t LocalUserNum, struct FUni
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.RemoveCanPlayOnlineChangedDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         Callback                       (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::RemoveCanPlayOnlineChangedDelegate(struct FScriptDelegate Callback)
@@ -6439,14 +6531,15 @@ void UOnlinePlayerInterfaceEOS::RemoveCanPlayOnlineChangedDelegate(struct FScrip
 	}
 
 	UOnlinePlayerInterfaceEOS_execRemoveCanPlayOnlineChangedDelegate_Params RemoveCanPlayOnlineChangedDelegate_Params;
-	memcpy_s(&RemoveCanPlayOnlineChangedDelegate_Params.Callback, 0x18, &Callback, 0x18);
+	memset(&RemoveCanPlayOnlineChangedDelegate_Params, 0, sizeof(RemoveCanPlayOnlineChangedDelegate_Params));
+	memcpy_s(&RemoveCanPlayOnlineChangedDelegate_Params.Callback, sizeof(RemoveCanPlayOnlineChangedDelegate_Params.Callback), &Callback, sizeof(Callback));
 
 	this->ProcessEvent(uFnRemoveCanPlayOnlineChangedDelegate, &RemoveCanPlayOnlineChangedDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddCanPlayOnlineChangedDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         Callback                       (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::AddCanPlayOnlineChangedDelegate(struct FScriptDelegate Callback)
@@ -6459,14 +6552,15 @@ void UOnlinePlayerInterfaceEOS::AddCanPlayOnlineChangedDelegate(struct FScriptDe
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddCanPlayOnlineChangedDelegate_Params AddCanPlayOnlineChangedDelegate_Params;
-	memcpy_s(&AddCanPlayOnlineChangedDelegate_Params.Callback, 0x18, &Callback, 0x18);
+	memset(&AddCanPlayOnlineChangedDelegate_Params, 0, sizeof(AddCanPlayOnlineChangedDelegate_Params));
+	memcpy_s(&AddCanPlayOnlineChangedDelegate_Params.Callback, sizeof(AddCanPlayOnlineChangedDelegate_Params.Callback), &Callback, sizeof(Callback));
 
 	this->ProcessEvent(uFnAddCanPlayOnlineChangedDelegate, &AddCanPlayOnlineChangedDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanPlayOnlineChanged
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
 void UOnlinePlayerInterfaceEOS::CanPlayOnlineChanged(uint8_t LocalUserNum)
@@ -6479,14 +6573,15 @@ void UOnlinePlayerInterfaceEOS::CanPlayOnlineChanged(uint8_t LocalUserNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_execCanPlayOnlineChanged_Params CanPlayOnlineChanged_Params;
-	memcpy_s(&CanPlayOnlineChanged_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&CanPlayOnlineChanged_Params, 0, sizeof(CanPlayOnlineChanged_Params));
+	memcpy_s(&CanPlayOnlineChanged_Params.LocalUserNum, sizeof(CanPlayOnlineChanged_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnCanPlayOnlineChanged, &CanPlayOnlineChanged_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearUserSignInCompleteDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::ClearUserSignInCompleteDelegate(struct FScriptDelegate InDelegate)
@@ -6499,14 +6594,15 @@ void UOnlinePlayerInterfaceEOS::ClearUserSignInCompleteDelegate(struct FScriptDe
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearUserSignInCompleteDelegate_Params ClearUserSignInCompleteDelegate_Params;
-	memcpy_s(&ClearUserSignInCompleteDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&ClearUserSignInCompleteDelegate_Params, 0, sizeof(ClearUserSignInCompleteDelegate_Params));
+	memcpy_s(&ClearUserSignInCompleteDelegate_Params.InDelegate, sizeof(ClearUserSignInCompleteDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnClearUserSignInCompleteDelegate, &ClearUserSignInCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddUserSignInCompleteDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::AddUserSignInCompleteDelegate(struct FScriptDelegate InDelegate)
@@ -6519,14 +6615,15 @@ void UOnlinePlayerInterfaceEOS::AddUserSignInCompleteDelegate(struct FScriptDele
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddUserSignInCompleteDelegate_Params AddUserSignInCompleteDelegate_Params;
-	memcpy_s(&AddUserSignInCompleteDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&AddUserSignInCompleteDelegate_Params, 0, sizeof(AddUserSignInCompleteDelegate_Params));
+	memcpy_s(&AddUserSignInCompleteDelegate_Params.InDelegate, sizeof(AddUserSignInCompleteDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnAddUserSignInCompleteDelegate, &AddUserSignInCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnUserSignInComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
 void UOnlinePlayerInterfaceEOS::OnUserSignInComplete(uint8_t LocalUserNum)
@@ -6539,14 +6636,15 @@ void UOnlinePlayerInterfaceEOS::OnUserSignInComplete(uint8_t LocalUserNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnUserSignInComplete_Params OnUserSignInComplete_Params;
-	memcpy_s(&OnUserSignInComplete_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&OnUserSignInComplete_Params, 0, sizeof(OnUserSignInComplete_Params));
+	memcpy_s(&OnUserSignInComplete_Params.LocalUserNum, sizeof(OnUserSignInComplete_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnOnUserSignInComplete, &OnUserSignInComplete_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowCustomMessageUI
-// [0x00424001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// [0x00424001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class FString                  MessageTitle                   (CPF_Parm | CPF_NeedCtorLink)
@@ -6564,22 +6662,23 @@ bool UOnlinePlayerInterfaceEOS::ShowCustomMessageUI(uint8_t LocalUserNum, class 
 	}
 
 	UOnlinePlayerInterfaceEOS_execShowCustomMessageUI_Params ShowCustomMessageUI_Params;
-	memcpy_s(&ShowCustomMessageUI_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ShowCustomMessageUI_Params.MessageTitle, 0x10, &MessageTitle, 0x10);
-	memcpy_s(&ShowCustomMessageUI_Params.NonEditableMessage, 0x10, &NonEditableMessage, 0x10);
-	memcpy_s(&ShowCustomMessageUI_Params.EditableMessage, 0x10, &EditableMessage, 0x10);
-	memcpy_s(&ShowCustomMessageUI_Params.Recipients, 0x10, &Recipients, 0x10);
+	memset(&ShowCustomMessageUI_Params, 0, sizeof(ShowCustomMessageUI_Params));
+	memcpy_s(&ShowCustomMessageUI_Params.LocalUserNum, sizeof(ShowCustomMessageUI_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ShowCustomMessageUI_Params.MessageTitle, sizeof(ShowCustomMessageUI_Params.MessageTitle), &MessageTitle, sizeof(MessageTitle));
+	memcpy_s(&ShowCustomMessageUI_Params.NonEditableMessage, sizeof(ShowCustomMessageUI_Params.NonEditableMessage), &NonEditableMessage, sizeof(NonEditableMessage));
+	memcpy_s(&ShowCustomMessageUI_Params.EditableMessage, sizeof(ShowCustomMessageUI_Params.EditableMessage), &EditableMessage, sizeof(EditableMessage));
+	memcpy_s(&ShowCustomMessageUI_Params.Recipients, sizeof(ShowCustomMessageUI_Params.Recipients), &Recipients, sizeof(Recipients));
 
 	this->ProcessEvent(uFnShowCustomMessageUI, &ShowCustomMessageUI_Params, nullptr);
 
-	memcpy_s(&Recipients, 0x10, &ShowCustomMessageUI_Params.Recipients, 0x10);
+	memcpy_s(&Recipients, sizeof(Recipients), &ShowCustomMessageUI_Params.Recipients, sizeof(ShowCustomMessageUI_Params.Recipients));
 
 	return ShowCustomMessageUI_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearCrossTitleProfileSettings
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // int32_t                        TitleId                        (CPF_Parm)
 
@@ -6593,15 +6692,16 @@ void UOnlinePlayerInterfaceEOS::ClearCrossTitleProfileSettings(uint8_t LocalUser
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearCrossTitleProfileSettings_Params ClearCrossTitleProfileSettings_Params;
-	memcpy_s(&ClearCrossTitleProfileSettings_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearCrossTitleProfileSettings_Params.TitleId, 0x4, &TitleId, 0x4);
+	memset(&ClearCrossTitleProfileSettings_Params, 0, sizeof(ClearCrossTitleProfileSettings_Params));
+	memcpy_s(&ClearCrossTitleProfileSettings_Params.LocalUserNum, sizeof(ClearCrossTitleProfileSettings_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearCrossTitleProfileSettings_Params.TitleId, sizeof(ClearCrossTitleProfileSettings_Params.TitleId), &TitleId, sizeof(TitleId));
 
 	this->ProcessEvent(uFnClearCrossTitleProfileSettings, &ClearCrossTitleProfileSettings_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetCrossTitleProfileSettings
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class UOnlineProfileSettings*  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // int32_t                        TitleId                        (CPF_Parm)
@@ -6616,8 +6716,9 @@ class UOnlineProfileSettings* UOnlinePlayerInterfaceEOS::GetCrossTitleProfileSet
 	}
 
 	UOnlinePlayerInterfaceEOS_execGetCrossTitleProfileSettings_Params GetCrossTitleProfileSettings_Params;
-	memcpy_s(&GetCrossTitleProfileSettings_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&GetCrossTitleProfileSettings_Params.TitleId, 0x4, &TitleId, 0x4);
+	memset(&GetCrossTitleProfileSettings_Params, 0, sizeof(GetCrossTitleProfileSettings_Params));
+	memcpy_s(&GetCrossTitleProfileSettings_Params.LocalUserNum, sizeof(GetCrossTitleProfileSettings_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&GetCrossTitleProfileSettings_Params.TitleId, sizeof(GetCrossTitleProfileSettings_Params.TitleId), &TitleId, sizeof(TitleId));
 
 	this->ProcessEvent(uFnGetCrossTitleProfileSettings, &GetCrossTitleProfileSettings_Params, nullptr);
 
@@ -6626,7 +6727,7 @@ class UOnlineProfileSettings* UOnlinePlayerInterfaceEOS::GetCrossTitleProfileSet
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearReadCrossTitleProfileSettingsCompleteDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
@@ -6640,15 +6741,16 @@ void UOnlinePlayerInterfaceEOS::ClearReadCrossTitleProfileSettingsCompleteDelega
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearReadCrossTitleProfileSettingsCompleteDelegate_Params ClearReadCrossTitleProfileSettingsCompleteDelegate_Params;
-	memcpy_s(&ClearReadCrossTitleProfileSettingsCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearReadCrossTitleProfileSettingsCompleteDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&ClearReadCrossTitleProfileSettingsCompleteDelegate_Params, 0, sizeof(ClearReadCrossTitleProfileSettingsCompleteDelegate_Params));
+	memcpy_s(&ClearReadCrossTitleProfileSettingsCompleteDelegate_Params.LocalUserNum, sizeof(ClearReadCrossTitleProfileSettingsCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearReadCrossTitleProfileSettingsCompleteDelegate_Params.InDelegate, sizeof(ClearReadCrossTitleProfileSettingsCompleteDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnClearReadCrossTitleProfileSettingsCompleteDelegate, &ClearReadCrossTitleProfileSettingsCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddReadCrossTitleProfileSettingsCompleteDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
@@ -6662,20 +6764,21 @@ void UOnlinePlayerInterfaceEOS::AddReadCrossTitleProfileSettingsCompleteDelegate
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddReadCrossTitleProfileSettingsCompleteDelegate_Params AddReadCrossTitleProfileSettingsCompleteDelegate_Params;
-	memcpy_s(&AddReadCrossTitleProfileSettingsCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddReadCrossTitleProfileSettingsCompleteDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&AddReadCrossTitleProfileSettingsCompleteDelegate_Params, 0, sizeof(AddReadCrossTitleProfileSettingsCompleteDelegate_Params));
+	memcpy_s(&AddReadCrossTitleProfileSettingsCompleteDelegate_Params.LocalUserNum, sizeof(AddReadCrossTitleProfileSettingsCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddReadCrossTitleProfileSettingsCompleteDelegate_Params.InDelegate, sizeof(AddReadCrossTitleProfileSettingsCompleteDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnAddReadCrossTitleProfileSettingsCompleteDelegate, &AddReadCrossTitleProfileSettingsCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnReadCrossTitleProfileSettingsComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // int32_t                        TitleId                        (CPF_Parm)
-// unsigned long                  bWasSuccessful                 (CPF_Parm)
+// bool                           bWasSuccessful                 (CPF_Parm)
 
-void UOnlinePlayerInterfaceEOS::OnReadCrossTitleProfileSettingsComplete(uint8_t LocalUserNum, int32_t TitleId, unsigned long bWasSuccessful)
+void UOnlinePlayerInterfaceEOS::OnReadCrossTitleProfileSettingsComplete(uint8_t LocalUserNum, int32_t TitleId, bool bWasSuccessful)
 {
 	static UFunction* uFnOnReadCrossTitleProfileSettingsComplete = nullptr;
 
@@ -6685,8 +6788,9 @@ void UOnlinePlayerInterfaceEOS::OnReadCrossTitleProfileSettingsComplete(uint8_t 
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnReadCrossTitleProfileSettingsComplete_Params OnReadCrossTitleProfileSettingsComplete_Params;
-	memcpy_s(&OnReadCrossTitleProfileSettingsComplete_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&OnReadCrossTitleProfileSettingsComplete_Params.TitleId, 0x4, &TitleId, 0x4);
+	memset(&OnReadCrossTitleProfileSettingsComplete_Params, 0, sizeof(OnReadCrossTitleProfileSettingsComplete_Params));
+	memcpy_s(&OnReadCrossTitleProfileSettingsComplete_Params.LocalUserNum, sizeof(OnReadCrossTitleProfileSettingsComplete_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&OnReadCrossTitleProfileSettingsComplete_Params.TitleId, sizeof(OnReadCrossTitleProfileSettingsComplete_Params.TitleId), &TitleId, sizeof(TitleId));
 	OnReadCrossTitleProfileSettingsComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnReadCrossTitleProfileSettingsComplete, &OnReadCrossTitleProfileSettingsComplete_Params, nullptr);
@@ -6694,7 +6798,7 @@ void UOnlinePlayerInterfaceEOS::OnReadCrossTitleProfileSettingsComplete(uint8_t 
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ReadCrossTitleProfileSettings
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // int32_t                        TitleId                        (CPF_Parm)
@@ -6710,9 +6814,10 @@ bool UOnlinePlayerInterfaceEOS::ReadCrossTitleProfileSettings(uint8_t LocalUserN
 	}
 
 	UOnlinePlayerInterfaceEOS_execReadCrossTitleProfileSettings_Params ReadCrossTitleProfileSettings_Params;
-	memcpy_s(&ReadCrossTitleProfileSettings_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ReadCrossTitleProfileSettings_Params.TitleId, 0x4, &TitleId, 0x4);
-	memcpy_s(&ReadCrossTitleProfileSettings_Params.ProfileSettings, 0x8, &ProfileSettings, 0x8);
+	memset(&ReadCrossTitleProfileSettings_Params, 0, sizeof(ReadCrossTitleProfileSettings_Params));
+	memcpy_s(&ReadCrossTitleProfileSettings_Params.LocalUserNum, sizeof(ReadCrossTitleProfileSettings_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ReadCrossTitleProfileSettings_Params.TitleId, sizeof(ReadCrossTitleProfileSettings_Params.TitleId), &TitleId, sizeof(TitleId));
+	memcpy_s(&ReadCrossTitleProfileSettings_Params.ProfileSettings, sizeof(ReadCrossTitleProfileSettings_Params.ProfileSettings), &ProfileSettings, sizeof(ProfileSettings));
 
 	this->ProcessEvent(uFnReadCrossTitleProfileSettings, &ReadCrossTitleProfileSettings_Params, nullptr);
 
@@ -6721,7 +6826,7 @@ bool UOnlinePlayerInterfaceEOS::ReadCrossTitleProfileSettings(uint8_t LocalUserN
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearWritePlayerStorageCompleteDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
@@ -6735,15 +6840,16 @@ void UOnlinePlayerInterfaceEOS::ClearWritePlayerStorageCompleteDelegate(uint8_t 
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearWritePlayerStorageCompleteDelegate_Params ClearWritePlayerStorageCompleteDelegate_Params;
-	memcpy_s(&ClearWritePlayerStorageCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearWritePlayerStorageCompleteDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&ClearWritePlayerStorageCompleteDelegate_Params, 0, sizeof(ClearWritePlayerStorageCompleteDelegate_Params));
+	memcpy_s(&ClearWritePlayerStorageCompleteDelegate_Params.LocalUserNum, sizeof(ClearWritePlayerStorageCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearWritePlayerStorageCompleteDelegate_Params.InDelegate, sizeof(ClearWritePlayerStorageCompleteDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnClearWritePlayerStorageCompleteDelegate, &ClearWritePlayerStorageCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddWritePlayerStorageCompleteDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
@@ -6757,19 +6863,20 @@ void UOnlinePlayerInterfaceEOS::AddWritePlayerStorageCompleteDelegate(uint8_t Lo
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddWritePlayerStorageCompleteDelegate_Params AddWritePlayerStorageCompleteDelegate_Params;
-	memcpy_s(&AddWritePlayerStorageCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddWritePlayerStorageCompleteDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&AddWritePlayerStorageCompleteDelegate_Params, 0, sizeof(AddWritePlayerStorageCompleteDelegate_Params));
+	memcpy_s(&AddWritePlayerStorageCompleteDelegate_Params.LocalUserNum, sizeof(AddWritePlayerStorageCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddWritePlayerStorageCompleteDelegate_Params.InDelegate, sizeof(AddWritePlayerStorageCompleteDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnAddWritePlayerStorageCompleteDelegate, &AddWritePlayerStorageCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnWritePlayerStorageComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// unsigned long                  bWasSuccessful                 (CPF_Parm)
+// bool                           bWasSuccessful                 (CPF_Parm)
 
-void UOnlinePlayerInterfaceEOS::OnWritePlayerStorageComplete(uint8_t LocalUserNum, unsigned long bWasSuccessful)
+void UOnlinePlayerInterfaceEOS::OnWritePlayerStorageComplete(uint8_t LocalUserNum, bool bWasSuccessful)
 {
 	static UFunction* uFnOnWritePlayerStorageComplete = nullptr;
 
@@ -6779,15 +6886,16 @@ void UOnlinePlayerInterfaceEOS::OnWritePlayerStorageComplete(uint8_t LocalUserNu
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnWritePlayerStorageComplete_Params OnWritePlayerStorageComplete_Params;
-	memcpy_s(&OnWritePlayerStorageComplete_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&OnWritePlayerStorageComplete_Params, 0, sizeof(OnWritePlayerStorageComplete_Params));
+	memcpy_s(&OnWritePlayerStorageComplete_Params.LocalUserNum, sizeof(OnWritePlayerStorageComplete_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 	OnWritePlayerStorageComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnWritePlayerStorageComplete, &OnWritePlayerStorageComplete_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.WritePlayerStorage
-// [0x00024001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class UOnlinePlayerStorage*    PlayerStorage                  (CPF_Parm)
@@ -6803,9 +6911,10 @@ bool UOnlinePlayerInterfaceEOS::WritePlayerStorage(uint8_t LocalUserNum, class U
 	}
 
 	UOnlinePlayerInterfaceEOS_execWritePlayerStorage_Params WritePlayerStorage_Params;
-	memcpy_s(&WritePlayerStorage_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&WritePlayerStorage_Params.PlayerStorage, 0x8, &PlayerStorage, 0x8);
-	memcpy_s(&WritePlayerStorage_Params.DeviceID, 0x4, &DeviceID, 0x4);
+	memset(&WritePlayerStorage_Params, 0, sizeof(WritePlayerStorage_Params));
+	memcpy_s(&WritePlayerStorage_Params.LocalUserNum, sizeof(WritePlayerStorage_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&WritePlayerStorage_Params.PlayerStorage, sizeof(WritePlayerStorage_Params.PlayerStorage), &PlayerStorage, sizeof(PlayerStorage));
+	memcpy_s(&WritePlayerStorage_Params.DeviceID, sizeof(WritePlayerStorage_Params.DeviceID), &DeviceID, sizeof(DeviceID));
 
 	this->ProcessEvent(uFnWritePlayerStorage, &WritePlayerStorage_Params, nullptr);
 
@@ -6814,7 +6923,7 @@ bool UOnlinePlayerInterfaceEOS::WritePlayerStorage(uint8_t LocalUserNum, class U
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearReadPlayerStorageForNetIdCompleteDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FUniqueNetId            NetId                          (CPF_Parm | CPF_NeedCtorLink)
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
@@ -6828,15 +6937,16 @@ void UOnlinePlayerInterfaceEOS::ClearReadPlayerStorageForNetIdCompleteDelegate(s
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearReadPlayerStorageForNetIdCompleteDelegate_Params ClearReadPlayerStorageForNetIdCompleteDelegate_Params;
-	memcpy_s(&ClearReadPlayerStorageForNetIdCompleteDelegate_Params.NetId, 0x48, &NetId, 0x48);
-	memcpy_s(&ClearReadPlayerStorageForNetIdCompleteDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&ClearReadPlayerStorageForNetIdCompleteDelegate_Params, 0, sizeof(ClearReadPlayerStorageForNetIdCompleteDelegate_Params));
+	memcpy_s(&ClearReadPlayerStorageForNetIdCompleteDelegate_Params.NetId, sizeof(ClearReadPlayerStorageForNetIdCompleteDelegate_Params.NetId), &NetId, sizeof(NetId));
+	memcpy_s(&ClearReadPlayerStorageForNetIdCompleteDelegate_Params.InDelegate, sizeof(ClearReadPlayerStorageForNetIdCompleteDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnClearReadPlayerStorageForNetIdCompleteDelegate, &ClearReadPlayerStorageForNetIdCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddReadPlayerStorageForNetIdCompleteDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FUniqueNetId            NetId                          (CPF_Parm | CPF_NeedCtorLink)
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
@@ -6850,19 +6960,20 @@ void UOnlinePlayerInterfaceEOS::AddReadPlayerStorageForNetIdCompleteDelegate(str
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddReadPlayerStorageForNetIdCompleteDelegate_Params AddReadPlayerStorageForNetIdCompleteDelegate_Params;
-	memcpy_s(&AddReadPlayerStorageForNetIdCompleteDelegate_Params.NetId, 0x48, &NetId, 0x48);
-	memcpy_s(&AddReadPlayerStorageForNetIdCompleteDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&AddReadPlayerStorageForNetIdCompleteDelegate_Params, 0, sizeof(AddReadPlayerStorageForNetIdCompleteDelegate_Params));
+	memcpy_s(&AddReadPlayerStorageForNetIdCompleteDelegate_Params.NetId, sizeof(AddReadPlayerStorageForNetIdCompleteDelegate_Params.NetId), &NetId, sizeof(NetId));
+	memcpy_s(&AddReadPlayerStorageForNetIdCompleteDelegate_Params.InDelegate, sizeof(AddReadPlayerStorageForNetIdCompleteDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnAddReadPlayerStorageForNetIdCompleteDelegate, &AddReadPlayerStorageForNetIdCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnReadPlayerStorageForNetIdComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FUniqueNetId            NetId                          (CPF_Parm | CPF_NeedCtorLink)
-// unsigned long                  bWasSuccessful                 (CPF_Parm)
+// bool                           bWasSuccessful                 (CPF_Parm)
 
-void UOnlinePlayerInterfaceEOS::OnReadPlayerStorageForNetIdComplete(struct FUniqueNetId NetId, unsigned long bWasSuccessful)
+void UOnlinePlayerInterfaceEOS::OnReadPlayerStorageForNetIdComplete(struct FUniqueNetId NetId, bool bWasSuccessful)
 {
 	static UFunction* uFnOnReadPlayerStorageForNetIdComplete = nullptr;
 
@@ -6872,7 +6983,8 @@ void UOnlinePlayerInterfaceEOS::OnReadPlayerStorageForNetIdComplete(struct FUniq
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnReadPlayerStorageForNetIdComplete_Params OnReadPlayerStorageForNetIdComplete_Params;
-	memcpy_s(&OnReadPlayerStorageForNetIdComplete_Params.NetId, 0x48, &NetId, 0x48);
+	memset(&OnReadPlayerStorageForNetIdComplete_Params, 0, sizeof(OnReadPlayerStorageForNetIdComplete_Params));
+	memcpy_s(&OnReadPlayerStorageForNetIdComplete_Params.NetId, sizeof(OnReadPlayerStorageForNetIdComplete_Params.NetId), &NetId, sizeof(NetId));
 	OnReadPlayerStorageForNetIdComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnReadPlayerStorageForNetIdComplete, &OnReadPlayerStorageForNetIdComplete_Params, nullptr);
@@ -6880,7 +6992,7 @@ void UOnlinePlayerInterfaceEOS::OnReadPlayerStorageForNetIdComplete(struct FUniq
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ReadPlayerStorageForNetId
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            NetId                          (CPF_Parm | CPF_NeedCtorLink)
@@ -6896,9 +7008,10 @@ bool UOnlinePlayerInterfaceEOS::ReadPlayerStorageForNetId(uint8_t LocalUserNum, 
 	}
 
 	UOnlinePlayerInterfaceEOS_execReadPlayerStorageForNetId_Params ReadPlayerStorageForNetId_Params;
-	memcpy_s(&ReadPlayerStorageForNetId_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ReadPlayerStorageForNetId_Params.NetId, 0x48, &NetId, 0x48);
-	memcpy_s(&ReadPlayerStorageForNetId_Params.PlayerStorage, 0x8, &PlayerStorage, 0x8);
+	memset(&ReadPlayerStorageForNetId_Params, 0, sizeof(ReadPlayerStorageForNetId_Params));
+	memcpy_s(&ReadPlayerStorageForNetId_Params.LocalUserNum, sizeof(ReadPlayerStorageForNetId_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ReadPlayerStorageForNetId_Params.NetId, sizeof(ReadPlayerStorageForNetId_Params.NetId), &NetId, sizeof(NetId));
+	memcpy_s(&ReadPlayerStorageForNetId_Params.PlayerStorage, sizeof(ReadPlayerStorageForNetId_Params.PlayerStorage), &PlayerStorage, sizeof(PlayerStorage));
 
 	this->ProcessEvent(uFnReadPlayerStorageForNetId, &ReadPlayerStorageForNetId_Params, nullptr);
 
@@ -6907,7 +7020,7 @@ bool UOnlinePlayerInterfaceEOS::ReadPlayerStorageForNetId(uint8_t LocalUserNum, 
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearReadPlayerStorageCompleteDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
@@ -6921,15 +7034,16 @@ void UOnlinePlayerInterfaceEOS::ClearReadPlayerStorageCompleteDelegate(uint8_t L
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearReadPlayerStorageCompleteDelegate_Params ClearReadPlayerStorageCompleteDelegate_Params;
-	memcpy_s(&ClearReadPlayerStorageCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearReadPlayerStorageCompleteDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&ClearReadPlayerStorageCompleteDelegate_Params, 0, sizeof(ClearReadPlayerStorageCompleteDelegate_Params));
+	memcpy_s(&ClearReadPlayerStorageCompleteDelegate_Params.LocalUserNum, sizeof(ClearReadPlayerStorageCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearReadPlayerStorageCompleteDelegate_Params.InDelegate, sizeof(ClearReadPlayerStorageCompleteDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnClearReadPlayerStorageCompleteDelegate, &ClearReadPlayerStorageCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddReadPlayerStorageCompleteDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
@@ -6943,19 +7057,20 @@ void UOnlinePlayerInterfaceEOS::AddReadPlayerStorageCompleteDelegate(uint8_t Loc
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddReadPlayerStorageCompleteDelegate_Params AddReadPlayerStorageCompleteDelegate_Params;
-	memcpy_s(&AddReadPlayerStorageCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddReadPlayerStorageCompleteDelegate_Params.InDelegate, 0x18, &InDelegate, 0x18);
+	memset(&AddReadPlayerStorageCompleteDelegate_Params, 0, sizeof(AddReadPlayerStorageCompleteDelegate_Params));
+	memcpy_s(&AddReadPlayerStorageCompleteDelegate_Params.LocalUserNum, sizeof(AddReadPlayerStorageCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddReadPlayerStorageCompleteDelegate_Params.InDelegate, sizeof(AddReadPlayerStorageCompleteDelegate_Params.InDelegate), &InDelegate, sizeof(InDelegate));
 
 	this->ProcessEvent(uFnAddReadPlayerStorageCompleteDelegate, &AddReadPlayerStorageCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnReadPlayerStorageComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// unsigned long                  bWasSuccessful                 (CPF_Parm)
+// bool                           bWasSuccessful                 (CPF_Parm)
 
-void UOnlinePlayerInterfaceEOS::OnReadPlayerStorageComplete(uint8_t LocalUserNum, unsigned long bWasSuccessful)
+void UOnlinePlayerInterfaceEOS::OnReadPlayerStorageComplete(uint8_t LocalUserNum, bool bWasSuccessful)
 {
 	static UFunction* uFnOnReadPlayerStorageComplete = nullptr;
 
@@ -6965,15 +7080,16 @@ void UOnlinePlayerInterfaceEOS::OnReadPlayerStorageComplete(uint8_t LocalUserNum
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnReadPlayerStorageComplete_Params OnReadPlayerStorageComplete_Params;
-	memcpy_s(&OnReadPlayerStorageComplete_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&OnReadPlayerStorageComplete_Params, 0, sizeof(OnReadPlayerStorageComplete_Params));
+	memcpy_s(&OnReadPlayerStorageComplete_Params.LocalUserNum, sizeof(OnReadPlayerStorageComplete_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 	OnReadPlayerStorageComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnReadPlayerStorageComplete, &OnReadPlayerStorageComplete_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ReadPlayerStorage
-// [0x00024001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class UOnlinePlayerStorage*    PlayerStorage                  (CPF_Parm)
@@ -6989,9 +7105,10 @@ bool UOnlinePlayerInterfaceEOS::ReadPlayerStorage(uint8_t LocalUserNum, class UO
 	}
 
 	UOnlinePlayerInterfaceEOS_execReadPlayerStorage_Params ReadPlayerStorage_Params;
-	memcpy_s(&ReadPlayerStorage_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ReadPlayerStorage_Params.PlayerStorage, 0x8, &PlayerStorage, 0x8);
-	memcpy_s(&ReadPlayerStorage_Params.DeviceID, 0x4, &DeviceID, 0x4);
+	memset(&ReadPlayerStorage_Params, 0, sizeof(ReadPlayerStorage_Params));
+	memcpy_s(&ReadPlayerStorage_Params.LocalUserNum, sizeof(ReadPlayerStorage_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ReadPlayerStorage_Params.PlayerStorage, sizeof(ReadPlayerStorage_Params.PlayerStorage), &PlayerStorage, sizeof(PlayerStorage));
+	memcpy_s(&ReadPlayerStorage_Params.DeviceID, sizeof(ReadPlayerStorage_Params.DeviceID), &DeviceID, sizeof(DeviceID));
 
 	this->ProcessEvent(uFnReadPlayerStorage, &ReadPlayerStorage_Params, nullptr);
 
@@ -7000,7 +7117,7 @@ bool UOnlinePlayerInterfaceEOS::ReadPlayerStorage(uint8_t LocalUserNum, class UO
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetPlayerStorage
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class UOnlinePlayerStorage*    ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -7014,7 +7131,8 @@ class UOnlinePlayerStorage* UOnlinePlayerInterfaceEOS::GetPlayerStorage(uint8_t 
 	}
 
 	UOnlinePlayerInterfaceEOS_execGetPlayerStorage_Params GetPlayerStorage_Params;
-	memcpy_s(&GetPlayerStorage_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&GetPlayerStorage_Params, 0, sizeof(GetPlayerStorage_Params));
+	memcpy_s(&GetPlayerStorage_Params.LocalUserNum, sizeof(GetPlayerStorage_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnGetPlayerStorage, &GetPlayerStorage_Params, nullptr);
 
@@ -7022,8 +7140,8 @@ class UOnlinePlayerStorage* UOnlinePlayerInterfaceEOS::GetPlayerStorage(uint8_t 
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.RequestNativePlatformAuthTicket
-// [0x00840003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Private | FUNC_HasDefaults | FUNC_AllFlags)
-// Parameter info:
+// [0x00840003] (FUNC_Final | FUNC_Defined | FUNC_Private | FUNC_HasDefaults | FUNC_AllFlags)
+// Parameter Info:
 // int32_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         Callback                       (CPF_Parm | CPF_NeedCtorLink)
 
@@ -7037,15 +7155,16 @@ void UOnlinePlayerInterfaceEOS::RequestNativePlatformAuthTicket(int32_t LocalUse
 	}
 
 	UOnlinePlayerInterfaceEOS_execRequestNativePlatformAuthTicket_Params RequestNativePlatformAuthTicket_Params;
-	memcpy_s(&RequestNativePlatformAuthTicket_Params.LocalUserNum, 0x4, &LocalUserNum, 0x4);
-	memcpy_s(&RequestNativePlatformAuthTicket_Params.Callback, 0x18, &Callback, 0x18);
+	memset(&RequestNativePlatformAuthTicket_Params, 0, sizeof(RequestNativePlatformAuthTicket_Params));
+	memcpy_s(&RequestNativePlatformAuthTicket_Params.LocalUserNum, sizeof(RequestNativePlatformAuthTicket_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&RequestNativePlatformAuthTicket_Params.Callback, sizeof(RequestNativePlatformAuthTicket_Params.Callback), &Callback, sizeof(Callback));
 
 	this->ProcessEvent(uFnRequestNativePlatformAuthTicket, &RequestNativePlatformAuthTicket_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnRequestNativePlatformAuthTicketComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // int32_t                        LocalUserNum                   (CPF_Parm)
 // class FString                  PlatformAuthTicket             (CPF_Parm | CPF_NeedCtorLink)
 
@@ -7059,15 +7178,16 @@ void UOnlinePlayerInterfaceEOS::OnRequestNativePlatformAuthTicketComplete(int32_
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnRequestNativePlatformAuthTicketComplete_Params OnRequestNativePlatformAuthTicketComplete_Params;
-	memcpy_s(&OnRequestNativePlatformAuthTicketComplete_Params.LocalUserNum, 0x4, &LocalUserNum, 0x4);
-	memcpy_s(&OnRequestNativePlatformAuthTicketComplete_Params.PlatformAuthTicket, 0x10, &PlatformAuthTicket, 0x10);
+	memset(&OnRequestNativePlatformAuthTicketComplete_Params, 0, sizeof(OnRequestNativePlatformAuthTicketComplete_Params));
+	memcpy_s(&OnRequestNativePlatformAuthTicketComplete_Params.LocalUserNum, sizeof(OnRequestNativePlatformAuthTicketComplete_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&OnRequestNativePlatformAuthTicketComplete_Params.PlatformAuthTicket, sizeof(OnRequestNativePlatformAuthTicketComplete_Params.PlatformAuthTicket), &PlatformAuthTicket, sizeof(PlatformAuthTicket));
 
 	this->ProcessEvent(uFnOnRequestNativePlatformAuthTicketComplete, &OnRequestNativePlatformAuthTicketComplete_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.LinkedAccount
-// [0x00040803] (FUNC_Final | FUNC_RequiredAPI | FUNC_Event | FUNC_Private | FUNC_AllFlags)
-// Parameter info:
+// [0x00040803] (FUNC_Final | FUNC_Defined | FUNC_Event | FUNC_Private | FUNC_AllFlags)
+// Parameter Info:
 // int32_t                        LocalUserNum                   (CPF_Parm)
 
 void UOnlinePlayerInterfaceEOS::eventLinkedAccount(int32_t LocalUserNum)
@@ -7080,14 +7200,15 @@ void UOnlinePlayerInterfaceEOS::eventLinkedAccount(int32_t LocalUserNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_eventLinkedAccount_Params LinkedAccount_Params;
-	memcpy_s(&LinkedAccount_Params.LocalUserNum, 0x4, &LocalUserNum, 0x4);
+	memset(&LinkedAccount_Params, 0, sizeof(LinkedAccount_Params));
+	memcpy_s(&LinkedAccount_Params.LocalUserNum, sizeof(LinkedAccount_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnLinkedAccount, &LinkedAccount_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ConnectLogin
 // [0x00040401] (FUNC_Final | FUNC_Native | FUNC_Private | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // int32_t                        LocalUserNum                   (CPF_Parm)
 
 void UOnlinePlayerInterfaceEOS::ConnectLogin(int32_t LocalUserNum)
@@ -7100,18 +7221,15 @@ void UOnlinePlayerInterfaceEOS::ConnectLogin(int32_t LocalUserNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_execConnectLogin_Params ConnectLogin_Params;
-	memcpy_s(&ConnectLogin_Params.LocalUserNum, 0x4, &LocalUserNum, 0x4);
-
-	uFnConnectLogin->FunctionFlags |= ~0x400;
+	memset(&ConnectLogin_Params, 0, sizeof(ConnectLogin_Params));
+	memcpy_s(&ConnectLogin_Params.LocalUserNum, sizeof(ConnectLogin_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnConnectLogin, &ConnectLogin_Params, nullptr);
-
-	uFnConnectLogin->FunctionFlags |= 0x400;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.HasIncomingFriendInvite
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            InviteFrom                     (CPF_Parm | CPF_NeedCtorLink)
@@ -7126,21 +7244,18 @@ bool UOnlinePlayerInterfaceEOS::HasIncomingFriendInvite(uint8_t LocalUserNum, st
 	}
 
 	UOnlinePlayerInterfaceEOS_execHasIncomingFriendInvite_Params HasIncomingFriendInvite_Params;
-	memcpy_s(&HasIncomingFriendInvite_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&HasIncomingFriendInvite_Params.InviteFrom, 0x48, &InviteFrom, 0x48);
-
-	uFnHasIncomingFriendInvite->FunctionFlags |= ~0x400;
+	memset(&HasIncomingFriendInvite_Params, 0, sizeof(HasIncomingFriendInvite_Params));
+	memcpy_s(&HasIncomingFriendInvite_Params.LocalUserNum, sizeof(HasIncomingFriendInvite_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&HasIncomingFriendInvite_Params.InviteFrom, sizeof(HasIncomingFriendInvite_Params.InviteFrom), &InviteFrom, sizeof(InviteFrom));
 
 	this->ProcessEvent(uFnHasIncomingFriendInvite, &HasIncomingFriendInvite_Params, nullptr);
-
-	uFnHasIncomingFriendInvite->FunctionFlags |= 0x400;
 
 	return HasIncomingFriendInvite_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.SupportInGameLogin
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
 bool UOnlinePlayerInterfaceEOS::SupportInGameLogin()
@@ -7153,6 +7268,7 @@ bool UOnlinePlayerInterfaceEOS::SupportInGameLogin()
 	}
 
 	UOnlinePlayerInterfaceEOS_execSupportInGameLogin_Params SupportInGameLogin_Params;
+	memset(&SupportInGameLogin_Params, 0, sizeof(SupportInGameLogin_Params));
 
 	this->ProcessEvent(uFnSupportInGameLogin, &SupportInGameLogin_Params, nullptr);
 
@@ -7160,8 +7276,8 @@ bool UOnlinePlayerInterfaceEOS::SupportInGameLogin()
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.HasFriendsFunctionality
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
 bool UOnlinePlayerInterfaceEOS::HasFriendsFunctionality()
@@ -7174,6 +7290,7 @@ bool UOnlinePlayerInterfaceEOS::HasFriendsFunctionality()
 	}
 
 	UOnlinePlayerInterfaceEOS_execHasFriendsFunctionality_Params HasFriendsFunctionality_Params;
+	memset(&HasFriendsFunctionality_Params, 0, sizeof(HasFriendsFunctionality_Params));
 
 	this->ProcessEvent(uFnHasFriendsFunctionality, &HasFriendsFunctionality_Params, nullptr);
 
@@ -7181,8 +7298,8 @@ bool UOnlinePlayerInterfaceEOS::HasFriendsFunctionality()
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.DeleteMessage
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // int32_t                        MessageIndex                   (CPF_Parm)
@@ -7197,8 +7314,9 @@ bool UOnlinePlayerInterfaceEOS::DeleteMessage(uint8_t LocalUserNum, int32_t Mess
 	}
 
 	UOnlinePlayerInterfaceEOS_execDeleteMessage_Params DeleteMessage_Params;
-	memcpy_s(&DeleteMessage_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&DeleteMessage_Params.MessageIndex, 0x4, &MessageIndex, 0x4);
+	memset(&DeleteMessage_Params, 0, sizeof(DeleteMessage_Params));
+	memcpy_s(&DeleteMessage_Params.LocalUserNum, sizeof(DeleteMessage_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&DeleteMessage_Params.MessageIndex, sizeof(DeleteMessage_Params.MessageIndex), &MessageIndex, sizeof(MessageIndex));
 
 	this->ProcessEvent(uFnDeleteMessage, &DeleteMessage_Params, nullptr);
 
@@ -7207,7 +7325,7 @@ bool UOnlinePlayerInterfaceEOS::DeleteMessage(uint8_t LocalUserNum, int32_t Mess
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearFriendMessageReceivedDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         MessageDelegate                (CPF_Parm | CPF_NeedCtorLink)
 
@@ -7221,15 +7339,16 @@ void UOnlinePlayerInterfaceEOS::ClearFriendMessageReceivedDelegate(uint8_t Local
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearFriendMessageReceivedDelegate_Params ClearFriendMessageReceivedDelegate_Params;
-	memcpy_s(&ClearFriendMessageReceivedDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearFriendMessageReceivedDelegate_Params.MessageDelegate, 0x18, &MessageDelegate, 0x18);
+	memset(&ClearFriendMessageReceivedDelegate_Params, 0, sizeof(ClearFriendMessageReceivedDelegate_Params));
+	memcpy_s(&ClearFriendMessageReceivedDelegate_Params.LocalUserNum, sizeof(ClearFriendMessageReceivedDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearFriendMessageReceivedDelegate_Params.MessageDelegate, sizeof(ClearFriendMessageReceivedDelegate_Params.MessageDelegate), &MessageDelegate, sizeof(MessageDelegate));
 
 	this->ProcessEvent(uFnClearFriendMessageReceivedDelegate, &ClearFriendMessageReceivedDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddFriendMessageReceivedDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         MessageDelegate                (CPF_Parm | CPF_NeedCtorLink)
 
@@ -7243,15 +7362,16 @@ void UOnlinePlayerInterfaceEOS::AddFriendMessageReceivedDelegate(uint8_t LocalUs
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddFriendMessageReceivedDelegate_Params AddFriendMessageReceivedDelegate_Params;
-	memcpy_s(&AddFriendMessageReceivedDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddFriendMessageReceivedDelegate_Params.MessageDelegate, 0x18, &MessageDelegate, 0x18);
+	memset(&AddFriendMessageReceivedDelegate_Params, 0, sizeof(AddFriendMessageReceivedDelegate_Params));
+	memcpy_s(&AddFriendMessageReceivedDelegate_Params.LocalUserNum, sizeof(AddFriendMessageReceivedDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddFriendMessageReceivedDelegate_Params.MessageDelegate, sizeof(AddFriendMessageReceivedDelegate_Params.MessageDelegate), &MessageDelegate, sizeof(MessageDelegate));
 
 	this->ProcessEvent(uFnAddFriendMessageReceivedDelegate, &AddFriendMessageReceivedDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnFriendMessageReceived
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            SendingPlayer                  (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SendingNick                    (CPF_Parm | CPF_NeedCtorLink)
@@ -7267,17 +7387,18 @@ void UOnlinePlayerInterfaceEOS::OnFriendMessageReceived(uint8_t LocalUserNum, st
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnFriendMessageReceived_Params OnFriendMessageReceived_Params;
-	memcpy_s(&OnFriendMessageReceived_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&OnFriendMessageReceived_Params.SendingPlayer, 0x48, &SendingPlayer, 0x48);
-	memcpy_s(&OnFriendMessageReceived_Params.SendingNick, 0x10, &SendingNick, 0x10);
-	memcpy_s(&OnFriendMessageReceived_Params.Message, 0x10, &Message, 0x10);
+	memset(&OnFriendMessageReceived_Params, 0, sizeof(OnFriendMessageReceived_Params));
+	memcpy_s(&OnFriendMessageReceived_Params.LocalUserNum, sizeof(OnFriendMessageReceived_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&OnFriendMessageReceived_Params.SendingPlayer, sizeof(OnFriendMessageReceived_Params.SendingPlayer), &SendingPlayer, sizeof(SendingPlayer));
+	memcpy_s(&OnFriendMessageReceived_Params.SendingNick, sizeof(OnFriendMessageReceived_Params.SendingNick), &SendingNick, sizeof(SendingNick));
+	memcpy_s(&OnFriendMessageReceived_Params.Message, sizeof(OnFriendMessageReceived_Params.Message), &Message, sizeof(Message));
 
 	this->ProcessEvent(uFnOnFriendMessageReceived, &OnFriendMessageReceived_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetFriendMessages
-// [0x00420003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// [0x00420003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // TArray<struct FOnlineFriendMessage> FriendMessages                 (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
@@ -7291,17 +7412,18 @@ void UOnlinePlayerInterfaceEOS::GetFriendMessages(uint8_t LocalUserNum, TArray<s
 	}
 
 	UOnlinePlayerInterfaceEOS_execGetFriendMessages_Params GetFriendMessages_Params;
-	memcpy_s(&GetFriendMessages_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&GetFriendMessages_Params.FriendMessages, 0x10, &FriendMessages, 0x10);
+	memset(&GetFriendMessages_Params, 0, sizeof(GetFriendMessages_Params));
+	memcpy_s(&GetFriendMessages_Params.LocalUserNum, sizeof(GetFriendMessages_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&GetFriendMessages_Params.FriendMessages, sizeof(GetFriendMessages_Params.FriendMessages), &FriendMessages, sizeof(FriendMessages));
 
 	this->ProcessEvent(uFnGetFriendMessages, &GetFriendMessages_Params, nullptr);
 
-	memcpy_s(&FriendMessages, 0x10, &GetFriendMessages_Params.FriendMessages, 0x10);
+	memcpy_s(&FriendMessages, sizeof(FriendMessages), &GetFriendMessages_Params.FriendMessages, sizeof(GetFriendMessages_Params.FriendMessages));
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearJoinFriendGameCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         JoinFriendGameCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::ClearJoinFriendGameCompleteDelegate(struct FScriptDelegate JoinFriendGameCompleteDelegate)
@@ -7314,14 +7436,15 @@ void UOnlinePlayerInterfaceEOS::ClearJoinFriendGameCompleteDelegate(struct FScri
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearJoinFriendGameCompleteDelegate_Params ClearJoinFriendGameCompleteDelegate_Params;
-	memcpy_s(&ClearJoinFriendGameCompleteDelegate_Params.JoinFriendGameCompleteDelegate, 0x18, &JoinFriendGameCompleteDelegate, 0x18);
+	memset(&ClearJoinFriendGameCompleteDelegate_Params, 0, sizeof(ClearJoinFriendGameCompleteDelegate_Params));
+	memcpy_s(&ClearJoinFriendGameCompleteDelegate_Params.JoinFriendGameCompleteDelegate, sizeof(ClearJoinFriendGameCompleteDelegate_Params.JoinFriendGameCompleteDelegate), &JoinFriendGameCompleteDelegate, sizeof(JoinFriendGameCompleteDelegate));
 
 	this->ProcessEvent(uFnClearJoinFriendGameCompleteDelegate, &ClearJoinFriendGameCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddJoinFriendGameCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         JoinFriendGameCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::AddJoinFriendGameCompleteDelegate(struct FScriptDelegate JoinFriendGameCompleteDelegate)
@@ -7334,17 +7457,18 @@ void UOnlinePlayerInterfaceEOS::AddJoinFriendGameCompleteDelegate(struct FScript
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddJoinFriendGameCompleteDelegate_Params AddJoinFriendGameCompleteDelegate_Params;
-	memcpy_s(&AddJoinFriendGameCompleteDelegate_Params.JoinFriendGameCompleteDelegate, 0x18, &JoinFriendGameCompleteDelegate, 0x18);
+	memset(&AddJoinFriendGameCompleteDelegate_Params, 0, sizeof(AddJoinFriendGameCompleteDelegate_Params));
+	memcpy_s(&AddJoinFriendGameCompleteDelegate_Params.JoinFriendGameCompleteDelegate, sizeof(AddJoinFriendGameCompleteDelegate_Params.JoinFriendGameCompleteDelegate), &JoinFriendGameCompleteDelegate, sizeof(JoinFriendGameCompleteDelegate));
 
 	this->ProcessEvent(uFnAddJoinFriendGameCompleteDelegate, &AddJoinFriendGameCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnJoinFriendGameComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bWasSuccessful                 (CPF_Parm)
+// Parameter Info:
+// bool                           bWasSuccessful                 (CPF_Parm)
 
-void UOnlinePlayerInterfaceEOS::OnJoinFriendGameComplete(unsigned long bWasSuccessful)
+void UOnlinePlayerInterfaceEOS::OnJoinFriendGameComplete(bool bWasSuccessful)
 {
 	static UFunction* uFnOnJoinFriendGameComplete = nullptr;
 
@@ -7354,6 +7478,7 @@ void UOnlinePlayerInterfaceEOS::OnJoinFriendGameComplete(unsigned long bWasSucce
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnJoinFriendGameComplete_Params OnJoinFriendGameComplete_Params;
+	memset(&OnJoinFriendGameComplete_Params, 0, sizeof(OnJoinFriendGameComplete_Params));
 	OnJoinFriendGameComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnJoinFriendGameComplete, &OnJoinFriendGameComplete_Params, nullptr);
@@ -7361,7 +7486,7 @@ void UOnlinePlayerInterfaceEOS::OnJoinFriendGameComplete(unsigned long bWasSucce
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.JoinFriendGame
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            Friend                         (CPF_Parm | CPF_NeedCtorLink)
@@ -7376,8 +7501,9 @@ bool UOnlinePlayerInterfaceEOS::JoinFriendGame(uint8_t LocalUserNum, struct FUni
 	}
 
 	UOnlinePlayerInterfaceEOS_execJoinFriendGame_Params JoinFriendGame_Params;
-	memcpy_s(&JoinFriendGame_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&JoinFriendGame_Params.Friend, 0x48, &Friend, 0x48);
+	memset(&JoinFriendGame_Params, 0, sizeof(JoinFriendGame_Params));
+	memcpy_s(&JoinFriendGame_Params.LocalUserNum, sizeof(JoinFriendGame_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&JoinFriendGame_Params.Friend, sizeof(JoinFriendGame_Params.Friend), &Friend, sizeof(Friend));
 
 	this->ProcessEvent(uFnJoinFriendGame, &JoinFriendGame_Params, nullptr);
 
@@ -7385,8 +7511,8 @@ bool UOnlinePlayerInterfaceEOS::JoinFriendGame(uint8_t LocalUserNum, struct FUni
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearReceivedGameInviteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         ReceivedGameInviteDelegate     (CPF_Parm | CPF_NeedCtorLink)
 
@@ -7400,15 +7526,16 @@ void UOnlinePlayerInterfaceEOS::ClearReceivedGameInviteDelegate(uint8_t LocalUse
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearReceivedGameInviteDelegate_Params ClearReceivedGameInviteDelegate_Params;
-	memcpy_s(&ClearReceivedGameInviteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearReceivedGameInviteDelegate_Params.ReceivedGameInviteDelegate, 0x18, &ReceivedGameInviteDelegate, 0x18);
+	memset(&ClearReceivedGameInviteDelegate_Params, 0, sizeof(ClearReceivedGameInviteDelegate_Params));
+	memcpy_s(&ClearReceivedGameInviteDelegate_Params.LocalUserNum, sizeof(ClearReceivedGameInviteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearReceivedGameInviteDelegate_Params.ReceivedGameInviteDelegate, sizeof(ClearReceivedGameInviteDelegate_Params.ReceivedGameInviteDelegate), &ReceivedGameInviteDelegate, sizeof(ReceivedGameInviteDelegate));
 
 	this->ProcessEvent(uFnClearReceivedGameInviteDelegate, &ClearReceivedGameInviteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddReceivedGameInviteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         ReceivedGameInviteDelegate     (CPF_Parm | CPF_NeedCtorLink)
 
@@ -7422,15 +7549,16 @@ void UOnlinePlayerInterfaceEOS::AddReceivedGameInviteDelegate(uint8_t LocalUserN
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddReceivedGameInviteDelegate_Params AddReceivedGameInviteDelegate_Params;
-	memcpy_s(&AddReceivedGameInviteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddReceivedGameInviteDelegate_Params.ReceivedGameInviteDelegate, 0x18, &ReceivedGameInviteDelegate, 0x18);
+	memset(&AddReceivedGameInviteDelegate_Params, 0, sizeof(AddReceivedGameInviteDelegate_Params));
+	memcpy_s(&AddReceivedGameInviteDelegate_Params.LocalUserNum, sizeof(AddReceivedGameInviteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddReceivedGameInviteDelegate_Params.ReceivedGameInviteDelegate, sizeof(AddReceivedGameInviteDelegate_Params.ReceivedGameInviteDelegate), &ReceivedGameInviteDelegate, sizeof(ReceivedGameInviteDelegate));
 
 	this->ProcessEvent(uFnAddReceivedGameInviteDelegate, &AddReceivedGameInviteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnReceivedGameInvite
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class FString                  InviterName                    (CPF_Parm | CPF_NeedCtorLink)
 
@@ -7444,15 +7572,16 @@ void UOnlinePlayerInterfaceEOS::OnReceivedGameInvite(uint8_t LocalUserNum, class
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnReceivedGameInvite_Params OnReceivedGameInvite_Params;
-	memcpy_s(&OnReceivedGameInvite_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&OnReceivedGameInvite_Params.InviterName, 0x10, &InviterName, 0x10);
+	memset(&OnReceivedGameInvite_Params, 0, sizeof(OnReceivedGameInvite_Params));
+	memcpy_s(&OnReceivedGameInvite_Params.LocalUserNum, sizeof(OnReceivedGameInvite_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&OnReceivedGameInvite_Params.InviterName, sizeof(OnReceivedGameInvite_Params.InviterName), &InviterName, sizeof(InviterName));
 
 	this->ProcessEvent(uFnOnReceivedGameInvite, &OnReceivedGameInvite_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.SendGameInviteToFriends
-// [0x00024001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // TArray<struct FUniqueNetId>    Friends                        (CPF_Parm | CPF_NeedCtorLink)
@@ -7468,9 +7597,10 @@ bool UOnlinePlayerInterfaceEOS::SendGameInviteToFriends(uint8_t LocalUserNum, TA
 	}
 
 	UOnlinePlayerInterfaceEOS_execSendGameInviteToFriends_Params SendGameInviteToFriends_Params;
-	memcpy_s(&SendGameInviteToFriends_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&SendGameInviteToFriends_Params.Friends, 0x10, &Friends, 0x10);
-	memcpy_s(&SendGameInviteToFriends_Params.Text, 0x10, &Text, 0x10);
+	memset(&SendGameInviteToFriends_Params, 0, sizeof(SendGameInviteToFriends_Params));
+	memcpy_s(&SendGameInviteToFriends_Params.LocalUserNum, sizeof(SendGameInviteToFriends_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&SendGameInviteToFriends_Params.Friends, sizeof(SendGameInviteToFriends_Params.Friends), &Friends, sizeof(Friends));
+	memcpy_s(&SendGameInviteToFriends_Params.Text, sizeof(SendGameInviteToFriends_Params.Text), &Text, sizeof(Text));
 
 	this->ProcessEvent(uFnSendGameInviteToFriends, &SendGameInviteToFriends_Params, nullptr);
 
@@ -7478,8 +7608,8 @@ bool UOnlinePlayerInterfaceEOS::SendGameInviteToFriends(uint8_t LocalUserNum, TA
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.SendGameInviteToFriend
-// [0x00024001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            Friend                         (CPF_Parm | CPF_NeedCtorLink)
@@ -7495,9 +7625,10 @@ bool UOnlinePlayerInterfaceEOS::SendGameInviteToFriend(uint8_t LocalUserNum, str
 	}
 
 	UOnlinePlayerInterfaceEOS_execSendGameInviteToFriend_Params SendGameInviteToFriend_Params;
-	memcpy_s(&SendGameInviteToFriend_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&SendGameInviteToFriend_Params.Friend, 0x48, &Friend, 0x48);
-	memcpy_s(&SendGameInviteToFriend_Params.Text, 0x10, &Text, 0x10);
+	memset(&SendGameInviteToFriend_Params, 0, sizeof(SendGameInviteToFriend_Params));
+	memcpy_s(&SendGameInviteToFriend_Params.LocalUserNum, sizeof(SendGameInviteToFriend_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&SendGameInviteToFriend_Params.Friend, sizeof(SendGameInviteToFriend_Params.Friend), &Friend, sizeof(Friend));
+	memcpy_s(&SendGameInviteToFriend_Params.Text, sizeof(SendGameInviteToFriend_Params.Text), &Text, sizeof(Text));
 
 	this->ProcessEvent(uFnSendGameInviteToFriend, &SendGameInviteToFriend_Params, nullptr);
 
@@ -7506,7 +7637,7 @@ bool UOnlinePlayerInterfaceEOS::SendGameInviteToFriend(uint8_t LocalUserNum, str
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.SendMessageToFriend
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            Friend                         (CPF_Parm | CPF_NeedCtorLink)
@@ -7522,9 +7653,10 @@ bool UOnlinePlayerInterfaceEOS::SendMessageToFriendW(uint8_t LocalUserNum, struc
 	}
 
 	UOnlinePlayerInterfaceEOS_execSendMessageToFriendW_Params SendMessageToFriendW_Params;
-	memcpy_s(&SendMessageToFriendW_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&SendMessageToFriendW_Params.Friend, 0x48, &Friend, 0x48);
-	memcpy_s(&SendMessageToFriendW_Params.Message, 0x10, &Message, 0x10);
+	memset(&SendMessageToFriendW_Params, 0, sizeof(SendMessageToFriendW_Params));
+	memcpy_s(&SendMessageToFriendW_Params.LocalUserNum, sizeof(SendMessageToFriendW_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&SendMessageToFriendW_Params.Friend, sizeof(SendMessageToFriendW_Params.Friend), &Friend, sizeof(Friend));
+	memcpy_s(&SendMessageToFriendW_Params.Message, sizeof(SendMessageToFriendW_Params.Message), &Message, sizeof(Message));
 
 	this->ProcessEvent(uFnSendMessageToFriendW, &SendMessageToFriendW_Params, nullptr);
 
@@ -7532,8 +7664,8 @@ bool UOnlinePlayerInterfaceEOS::SendMessageToFriendW(uint8_t LocalUserNum, struc
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearFriendInviteCanceledDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         InviteDelegate                 (CPF_Parm | CPF_NeedCtorLink)
 
@@ -7547,15 +7679,16 @@ void UOnlinePlayerInterfaceEOS::ClearFriendInviteCanceledDelegate(uint8_t LocalU
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearFriendInviteCanceledDelegate_Params ClearFriendInviteCanceledDelegate_Params;
-	memcpy_s(&ClearFriendInviteCanceledDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearFriendInviteCanceledDelegate_Params.InviteDelegate, 0x18, &InviteDelegate, 0x18);
+	memset(&ClearFriendInviteCanceledDelegate_Params, 0, sizeof(ClearFriendInviteCanceledDelegate_Params));
+	memcpy_s(&ClearFriendInviteCanceledDelegate_Params.LocalUserNum, sizeof(ClearFriendInviteCanceledDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearFriendInviteCanceledDelegate_Params.InviteDelegate, sizeof(ClearFriendInviteCanceledDelegate_Params.InviteDelegate), &InviteDelegate, sizeof(InviteDelegate));
 
 	this->ProcessEvent(uFnClearFriendInviteCanceledDelegate, &ClearFriendInviteCanceledDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddFriendInviteCanceledDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         InviteDelegate                 (CPF_Parm | CPF_NeedCtorLink)
 
@@ -7569,15 +7702,16 @@ void UOnlinePlayerInterfaceEOS::AddFriendInviteCanceledDelegate(uint8_t LocalUse
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddFriendInviteCanceledDelegate_Params AddFriendInviteCanceledDelegate_Params;
-	memcpy_s(&AddFriendInviteCanceledDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddFriendInviteCanceledDelegate_Params.InviteDelegate, 0x18, &InviteDelegate, 0x18);
+	memset(&AddFriendInviteCanceledDelegate_Params, 0, sizeof(AddFriendInviteCanceledDelegate_Params));
+	memcpy_s(&AddFriendInviteCanceledDelegate_Params.LocalUserNum, sizeof(AddFriendInviteCanceledDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddFriendInviteCanceledDelegate_Params.InviteDelegate, sizeof(AddFriendInviteCanceledDelegate_Params.InviteDelegate), &InviteDelegate, sizeof(InviteDelegate));
 
 	this->ProcessEvent(uFnAddFriendInviteCanceledDelegate, &AddFriendInviteCanceledDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnFriendInviteCanceled
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            CanceledUserId                 (CPF_Parm | CPF_NeedCtorLink)
 
@@ -7591,15 +7725,16 @@ void UOnlinePlayerInterfaceEOS::OnFriendInviteCanceled(uint8_t LocalUserNum, str
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnFriendInviteCanceled_Params OnFriendInviteCanceled_Params;
-	memcpy_s(&OnFriendInviteCanceled_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&OnFriendInviteCanceled_Params.CanceledUserId, 0x48, &CanceledUserId, 0x48);
+	memset(&OnFriendInviteCanceled_Params, 0, sizeof(OnFriendInviteCanceled_Params));
+	memcpy_s(&OnFriendInviteCanceled_Params.LocalUserNum, sizeof(OnFriendInviteCanceled_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&OnFriendInviteCanceled_Params.CanceledUserId, sizeof(OnFriendInviteCanceled_Params.CanceledUserId), &CanceledUserId, sizeof(CanceledUserId));
 
 	this->ProcessEvent(uFnOnFriendInviteCanceled, &OnFriendInviteCanceled_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearFriendInviteReceivedDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         InviteDelegate                 (CPF_Parm | CPF_NeedCtorLink)
 
@@ -7613,15 +7748,16 @@ void UOnlinePlayerInterfaceEOS::ClearFriendInviteReceivedDelegate(uint8_t LocalU
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearFriendInviteReceivedDelegate_Params ClearFriendInviteReceivedDelegate_Params;
-	memcpy_s(&ClearFriendInviteReceivedDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearFriendInviteReceivedDelegate_Params.InviteDelegate, 0x18, &InviteDelegate, 0x18);
+	memset(&ClearFriendInviteReceivedDelegate_Params, 0, sizeof(ClearFriendInviteReceivedDelegate_Params));
+	memcpy_s(&ClearFriendInviteReceivedDelegate_Params.LocalUserNum, sizeof(ClearFriendInviteReceivedDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearFriendInviteReceivedDelegate_Params.InviteDelegate, sizeof(ClearFriendInviteReceivedDelegate_Params.InviteDelegate), &InviteDelegate, sizeof(InviteDelegate));
 
 	this->ProcessEvent(uFnClearFriendInviteReceivedDelegate, &ClearFriendInviteReceivedDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddFriendInviteReceivedDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         InviteDelegate                 (CPF_Parm | CPF_NeedCtorLink)
 
@@ -7635,15 +7771,16 @@ void UOnlinePlayerInterfaceEOS::AddFriendInviteReceivedDelegate(uint8_t LocalUse
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddFriendInviteReceivedDelegate_Params AddFriendInviteReceivedDelegate_Params;
-	memcpy_s(&AddFriendInviteReceivedDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddFriendInviteReceivedDelegate_Params.InviteDelegate, 0x18, &InviteDelegate, 0x18);
+	memset(&AddFriendInviteReceivedDelegate_Params, 0, sizeof(AddFriendInviteReceivedDelegate_Params));
+	memcpy_s(&AddFriendInviteReceivedDelegate_Params.LocalUserNum, sizeof(AddFriendInviteReceivedDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddFriendInviteReceivedDelegate_Params.InviteDelegate, sizeof(AddFriendInviteReceivedDelegate_Params.InviteDelegate), &InviteDelegate, sizeof(InviteDelegate));
 
 	this->ProcessEvent(uFnAddFriendInviteReceivedDelegate, &AddFriendInviteReceivedDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnFriendInviteReceived
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            RequestingPlayer               (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  RequestingNick                 (CPF_Parm | CPF_NeedCtorLink)
@@ -7659,17 +7796,18 @@ void UOnlinePlayerInterfaceEOS::OnFriendInviteReceived(uint8_t LocalUserNum, str
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnFriendInviteReceived_Params OnFriendInviteReceived_Params;
-	memcpy_s(&OnFriendInviteReceived_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&OnFriendInviteReceived_Params.RequestingPlayer, 0x48, &RequestingPlayer, 0x48);
-	memcpy_s(&OnFriendInviteReceived_Params.RequestingNick, 0x10, &RequestingNick, 0x10);
-	memcpy_s(&OnFriendInviteReceived_Params.Message, 0x10, &Message, 0x10);
+	memset(&OnFriendInviteReceived_Params, 0, sizeof(OnFriendInviteReceived_Params));
+	memcpy_s(&OnFriendInviteReceived_Params.LocalUserNum, sizeof(OnFriendInviteReceived_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&OnFriendInviteReceived_Params.RequestingPlayer, sizeof(OnFriendInviteReceived_Params.RequestingPlayer), &RequestingPlayer, sizeof(RequestingPlayer));
+	memcpy_s(&OnFriendInviteReceived_Params.RequestingNick, sizeof(OnFriendInviteReceived_Params.RequestingNick), &RequestingNick, sizeof(RequestingNick));
+	memcpy_s(&OnFriendInviteReceived_Params.Message, sizeof(OnFriendInviteReceived_Params.Message), &Message, sizeof(Message));
 
 	this->ProcessEvent(uFnOnFriendInviteReceived, &OnFriendInviteReceived_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.RemoveFriend
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            FormerFriend                   (CPF_Parm | CPF_NeedCtorLink)
@@ -7684,8 +7822,9 @@ bool UOnlinePlayerInterfaceEOS::RemoveFriend(uint8_t LocalUserNum, struct FUniqu
 	}
 
 	UOnlinePlayerInterfaceEOS_execRemoveFriend_Params RemoveFriend_Params;
-	memcpy_s(&RemoveFriend_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&RemoveFriend_Params.FormerFriend, 0x48, &FormerFriend, 0x48);
+	memset(&RemoveFriend_Params, 0, sizeof(RemoveFriend_Params));
+	memcpy_s(&RemoveFriend_Params.LocalUserNum, sizeof(RemoveFriend_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&RemoveFriend_Params.FormerFriend, sizeof(RemoveFriend_Params.FormerFriend), &FormerFriend, sizeof(FormerFriend));
 
 	this->ProcessEvent(uFnRemoveFriend, &RemoveFriend_Params, nullptr);
 
@@ -7693,8 +7832,8 @@ bool UOnlinePlayerInterfaceEOS::RemoveFriend(uint8_t LocalUserNum, struct FUniqu
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearRemoveFriendCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         RemoveFriendDelegate           (CPF_Parm | CPF_NeedCtorLink)
 
@@ -7708,15 +7847,16 @@ void UOnlinePlayerInterfaceEOS::ClearRemoveFriendCompleteDelegate(uint8_t LocalU
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearRemoveFriendCompleteDelegate_Params ClearRemoveFriendCompleteDelegate_Params;
-	memcpy_s(&ClearRemoveFriendCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearRemoveFriendCompleteDelegate_Params.RemoveFriendDelegate, 0x18, &RemoveFriendDelegate, 0x18);
+	memset(&ClearRemoveFriendCompleteDelegate_Params, 0, sizeof(ClearRemoveFriendCompleteDelegate_Params));
+	memcpy_s(&ClearRemoveFriendCompleteDelegate_Params.LocalUserNum, sizeof(ClearRemoveFriendCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearRemoveFriendCompleteDelegate_Params.RemoveFriendDelegate, sizeof(ClearRemoveFriendCompleteDelegate_Params.RemoveFriendDelegate), &RemoveFriendDelegate, sizeof(RemoveFriendDelegate));
 
 	this->ProcessEvent(uFnClearRemoveFriendCompleteDelegate, &ClearRemoveFriendCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddRemoveFriendCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         RemoveFriendDelegate           (CPF_Parm | CPF_NeedCtorLink)
 
@@ -7730,19 +7870,20 @@ void UOnlinePlayerInterfaceEOS::AddRemoveFriendCompleteDelegate(uint8_t LocalUse
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddRemoveFriendCompleteDelegate_Params AddRemoveFriendCompleteDelegate_Params;
-	memcpy_s(&AddRemoveFriendCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddRemoveFriendCompleteDelegate_Params.RemoveFriendDelegate, 0x18, &RemoveFriendDelegate, 0x18);
+	memset(&AddRemoveFriendCompleteDelegate_Params, 0, sizeof(AddRemoveFriendCompleteDelegate_Params));
+	memcpy_s(&AddRemoveFriendCompleteDelegate_Params.LocalUserNum, sizeof(AddRemoveFriendCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddRemoveFriendCompleteDelegate_Params.RemoveFriendDelegate, sizeof(AddRemoveFriendCompleteDelegate_Params.RemoveFriendDelegate), &RemoveFriendDelegate, sizeof(RemoveFriendDelegate));
 
 	this->ProcessEvent(uFnAddRemoveFriendCompleteDelegate, &AddRemoveFriendCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnRemoveFriendComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bWasSuccessful                 (CPF_Parm)
+// Parameter Info:
+// bool                           bWasSuccessful                 (CPF_Parm)
 // struct FUniqueNetId            RemovedID                      (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlinePlayerInterfaceEOS::OnRemoveFriendComplete(unsigned long bWasSuccessful, struct FUniqueNetId RemovedID)
+void UOnlinePlayerInterfaceEOS::OnRemoveFriendComplete(bool bWasSuccessful, struct FUniqueNetId RemovedID)
 {
 	static UFunction* uFnOnRemoveFriendComplete = nullptr;
 
@@ -7752,15 +7893,16 @@ void UOnlinePlayerInterfaceEOS::OnRemoveFriendComplete(unsigned long bWasSuccess
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnRemoveFriendComplete_Params OnRemoveFriendComplete_Params;
+	memset(&OnRemoveFriendComplete_Params, 0, sizeof(OnRemoveFriendComplete_Params));
 	OnRemoveFriendComplete_Params.bWasSuccessful = bWasSuccessful;
-	memcpy_s(&OnRemoveFriendComplete_Params.RemovedID, 0x48, &RemovedID, 0x48);
+	memcpy_s(&OnRemoveFriendComplete_Params.RemovedID, sizeof(OnRemoveFriendComplete_Params.RemovedID), &RemovedID, sizeof(RemovedID));
 
 	this->ProcessEvent(uFnOnRemoveFriendComplete, &OnRemoveFriendComplete_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.DenyFriendInvite
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            RequestingPlayer               (CPF_Parm | CPF_NeedCtorLink)
@@ -7775,8 +7917,9 @@ bool UOnlinePlayerInterfaceEOS::DenyFriendInvite(uint8_t LocalUserNum, struct FU
 	}
 
 	UOnlinePlayerInterfaceEOS_execDenyFriendInvite_Params DenyFriendInvite_Params;
-	memcpy_s(&DenyFriendInvite_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&DenyFriendInvite_Params.RequestingPlayer, 0x48, &RequestingPlayer, 0x48);
+	memset(&DenyFriendInvite_Params, 0, sizeof(DenyFriendInvite_Params));
+	memcpy_s(&DenyFriendInvite_Params.LocalUserNum, sizeof(DenyFriendInvite_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&DenyFriendInvite_Params.RequestingPlayer, sizeof(DenyFriendInvite_Params.RequestingPlayer), &RequestingPlayer, sizeof(RequestingPlayer));
 
 	this->ProcessEvent(uFnDenyFriendInvite, &DenyFriendInvite_Params, nullptr);
 
@@ -7784,8 +7927,8 @@ bool UOnlinePlayerInterfaceEOS::DenyFriendInvite(uint8_t LocalUserNum, struct FU
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearDenyFriendInviteCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         FriendDelegate                 (CPF_Parm | CPF_NeedCtorLink)
 
@@ -7799,15 +7942,16 @@ void UOnlinePlayerInterfaceEOS::ClearDenyFriendInviteCompleteDelegate(uint8_t Lo
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearDenyFriendInviteCompleteDelegate_Params ClearDenyFriendInviteCompleteDelegate_Params;
-	memcpy_s(&ClearDenyFriendInviteCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearDenyFriendInviteCompleteDelegate_Params.FriendDelegate, 0x18, &FriendDelegate, 0x18);
+	memset(&ClearDenyFriendInviteCompleteDelegate_Params, 0, sizeof(ClearDenyFriendInviteCompleteDelegate_Params));
+	memcpy_s(&ClearDenyFriendInviteCompleteDelegate_Params.LocalUserNum, sizeof(ClearDenyFriendInviteCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearDenyFriendInviteCompleteDelegate_Params.FriendDelegate, sizeof(ClearDenyFriendInviteCompleteDelegate_Params.FriendDelegate), &FriendDelegate, sizeof(FriendDelegate));
 
 	this->ProcessEvent(uFnClearDenyFriendInviteCompleteDelegate, &ClearDenyFriendInviteCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddDenyFriendInviteCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         FriendDelegate                 (CPF_Parm | CPF_NeedCtorLink)
 
@@ -7821,15 +7965,16 @@ void UOnlinePlayerInterfaceEOS::AddDenyFriendInviteCompleteDelegate(uint8_t Loca
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddDenyFriendInviteCompleteDelegate_Params AddDenyFriendInviteCompleteDelegate_Params;
-	memcpy_s(&AddDenyFriendInviteCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddDenyFriendInviteCompleteDelegate_Params.FriendDelegate, 0x18, &FriendDelegate, 0x18);
+	memset(&AddDenyFriendInviteCompleteDelegate_Params, 0, sizeof(AddDenyFriendInviteCompleteDelegate_Params));
+	memcpy_s(&AddDenyFriendInviteCompleteDelegate_Params.LocalUserNum, sizeof(AddDenyFriendInviteCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddDenyFriendInviteCompleteDelegate_Params.FriendDelegate, sizeof(AddDenyFriendInviteCompleteDelegate_Params.FriendDelegate), &FriendDelegate, sizeof(FriendDelegate));
 
 	this->ProcessEvent(uFnAddDenyFriendInviteCompleteDelegate, &AddDenyFriendInviteCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnDenyFriendInviteComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FUniqueNetId            FriendId                       (CPF_Parm | CPF_NeedCtorLink)
 // class UError*                  Error                          (CPF_Const | CPF_Parm)
 
@@ -7843,15 +7988,16 @@ void UOnlinePlayerInterfaceEOS::OnDenyFriendInviteComplete(struct FUniqueNetId F
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnDenyFriendInviteComplete_Params OnDenyFriendInviteComplete_Params;
-	memcpy_s(&OnDenyFriendInviteComplete_Params.FriendId, 0x48, &FriendId, 0x48);
-	memcpy_s(&OnDenyFriendInviteComplete_Params.Error, 0x8, &Error, 0x8);
+	memset(&OnDenyFriendInviteComplete_Params, 0, sizeof(OnDenyFriendInviteComplete_Params));
+	memcpy_s(&OnDenyFriendInviteComplete_Params.FriendId, sizeof(OnDenyFriendInviteComplete_Params.FriendId), &FriendId, sizeof(FriendId));
+	memcpy_s(&OnDenyFriendInviteComplete_Params.Error, sizeof(OnDenyFriendInviteComplete_Params.Error), &Error, sizeof(Error));
 
 	this->ProcessEvent(uFnOnDenyFriendInviteComplete, &OnDenyFriendInviteComplete_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AcceptFriendInvite
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            RequestingPlayer               (CPF_Parm | CPF_NeedCtorLink)
@@ -7866,8 +8012,9 @@ bool UOnlinePlayerInterfaceEOS::AcceptFriendInvite(uint8_t LocalUserNum, struct 
 	}
 
 	UOnlinePlayerInterfaceEOS_execAcceptFriendInvite_Params AcceptFriendInvite_Params;
-	memcpy_s(&AcceptFriendInvite_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AcceptFriendInvite_Params.RequestingPlayer, 0x48, &RequestingPlayer, 0x48);
+	memset(&AcceptFriendInvite_Params, 0, sizeof(AcceptFriendInvite_Params));
+	memcpy_s(&AcceptFriendInvite_Params.LocalUserNum, sizeof(AcceptFriendInvite_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AcceptFriendInvite_Params.RequestingPlayer, sizeof(AcceptFriendInvite_Params.RequestingPlayer), &RequestingPlayer, sizeof(RequestingPlayer));
 
 	this->ProcessEvent(uFnAcceptFriendInvite, &AcceptFriendInvite_Params, nullptr);
 
@@ -7875,8 +8022,8 @@ bool UOnlinePlayerInterfaceEOS::AcceptFriendInvite(uint8_t LocalUserNum, struct 
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearAcceptFriendInviteCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         FriendDelegate                 (CPF_Parm | CPF_NeedCtorLink)
 
@@ -7890,15 +8037,16 @@ void UOnlinePlayerInterfaceEOS::ClearAcceptFriendInviteCompleteDelegate(uint8_t 
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearAcceptFriendInviteCompleteDelegate_Params ClearAcceptFriendInviteCompleteDelegate_Params;
-	memcpy_s(&ClearAcceptFriendInviteCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearAcceptFriendInviteCompleteDelegate_Params.FriendDelegate, 0x18, &FriendDelegate, 0x18);
+	memset(&ClearAcceptFriendInviteCompleteDelegate_Params, 0, sizeof(ClearAcceptFriendInviteCompleteDelegate_Params));
+	memcpy_s(&ClearAcceptFriendInviteCompleteDelegate_Params.LocalUserNum, sizeof(ClearAcceptFriendInviteCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearAcceptFriendInviteCompleteDelegate_Params.FriendDelegate, sizeof(ClearAcceptFriendInviteCompleteDelegate_Params.FriendDelegate), &FriendDelegate, sizeof(FriendDelegate));
 
 	this->ProcessEvent(uFnClearAcceptFriendInviteCompleteDelegate, &ClearAcceptFriendInviteCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddAcceptFriendInviteCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         FriendDelegate                 (CPF_Parm | CPF_NeedCtorLink)
 
@@ -7912,15 +8060,16 @@ void UOnlinePlayerInterfaceEOS::AddAcceptFriendInviteCompleteDelegate(uint8_t Lo
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddAcceptFriendInviteCompleteDelegate_Params AddAcceptFriendInviteCompleteDelegate_Params;
-	memcpy_s(&AddAcceptFriendInviteCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddAcceptFriendInviteCompleteDelegate_Params.FriendDelegate, 0x18, &FriendDelegate, 0x18);
+	memset(&AddAcceptFriendInviteCompleteDelegate_Params, 0, sizeof(AddAcceptFriendInviteCompleteDelegate_Params));
+	memcpy_s(&AddAcceptFriendInviteCompleteDelegate_Params.LocalUserNum, sizeof(AddAcceptFriendInviteCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddAcceptFriendInviteCompleteDelegate_Params.FriendDelegate, sizeof(AddAcceptFriendInviteCompleteDelegate_Params.FriendDelegate), &FriendDelegate, sizeof(FriendDelegate));
 
 	this->ProcessEvent(uFnAddAcceptFriendInviteCompleteDelegate, &AddAcceptFriendInviteCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnAcceptFriendInviteComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FUniqueNetId            FriendId                       (CPF_Parm | CPF_NeedCtorLink)
 // class UError*                  Error                          (CPF_Const | CPF_Parm)
 
@@ -7934,15 +8083,16 @@ void UOnlinePlayerInterfaceEOS::OnAcceptFriendInviteComplete(struct FUniqueNetId
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnAcceptFriendInviteComplete_Params OnAcceptFriendInviteComplete_Params;
-	memcpy_s(&OnAcceptFriendInviteComplete_Params.FriendId, 0x48, &FriendId, 0x48);
-	memcpy_s(&OnAcceptFriendInviteComplete_Params.Error, 0x8, &Error, 0x8);
+	memset(&OnAcceptFriendInviteComplete_Params, 0, sizeof(OnAcceptFriendInviteComplete_Params));
+	memcpy_s(&OnAcceptFriendInviteComplete_Params.FriendId, sizeof(OnAcceptFriendInviteComplete_Params.FriendId), &FriendId, sizeof(FriendId));
+	memcpy_s(&OnAcceptFriendInviteComplete_Params.Error, sizeof(OnAcceptFriendInviteComplete_Params.Error), &Error, sizeof(Error));
 
 	this->ProcessEvent(uFnOnAcceptFriendInviteComplete, &OnAcceptFriendInviteComplete_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearAddFriendByNameCompleteDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         FriendDelegate                 (CPF_Parm | CPF_NeedCtorLink)
 
@@ -7956,15 +8106,16 @@ void UOnlinePlayerInterfaceEOS::ClearAddFriendByNameCompleteDelegate(uint8_t Loc
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearAddFriendByNameCompleteDelegate_Params ClearAddFriendByNameCompleteDelegate_Params;
-	memcpy_s(&ClearAddFriendByNameCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearAddFriendByNameCompleteDelegate_Params.FriendDelegate, 0x18, &FriendDelegate, 0x18);
+	memset(&ClearAddFriendByNameCompleteDelegate_Params, 0, sizeof(ClearAddFriendByNameCompleteDelegate_Params));
+	memcpy_s(&ClearAddFriendByNameCompleteDelegate_Params.LocalUserNum, sizeof(ClearAddFriendByNameCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearAddFriendByNameCompleteDelegate_Params.FriendDelegate, sizeof(ClearAddFriendByNameCompleteDelegate_Params.FriendDelegate), &FriendDelegate, sizeof(FriendDelegate));
 
 	this->ProcessEvent(uFnClearAddFriendByNameCompleteDelegate, &ClearAddFriendByNameCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddAddFriendByNameCompleteDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         FriendDelegate                 (CPF_Parm | CPF_NeedCtorLink)
 
@@ -7978,18 +8129,19 @@ void UOnlinePlayerInterfaceEOS::AddAddFriendByNameCompleteDelegate(uint8_t Local
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddAddFriendByNameCompleteDelegate_Params AddAddFriendByNameCompleteDelegate_Params;
-	memcpy_s(&AddAddFriendByNameCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddAddFriendByNameCompleteDelegate_Params.FriendDelegate, 0x18, &FriendDelegate, 0x18);
+	memset(&AddAddFriendByNameCompleteDelegate_Params, 0, sizeof(AddAddFriendByNameCompleteDelegate_Params));
+	memcpy_s(&AddAddFriendByNameCompleteDelegate_Params.LocalUserNum, sizeof(AddAddFriendByNameCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddAddFriendByNameCompleteDelegate_Params.FriendDelegate, sizeof(AddAddFriendByNameCompleteDelegate_Params.FriendDelegate), &FriendDelegate, sizeof(FriendDelegate));
 
 	this->ProcessEvent(uFnAddAddFriendByNameCompleteDelegate, &AddAddFriendByNameCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnAddFriendByNameComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bWasSuccessful                 (CPF_Parm)
+// Parameter Info:
+// bool                           bWasSuccessful                 (CPF_Parm)
 
-void UOnlinePlayerInterfaceEOS::OnAddFriendByNameComplete(unsigned long bWasSuccessful)
+void UOnlinePlayerInterfaceEOS::OnAddFriendByNameComplete(bool bWasSuccessful)
 {
 	static UFunction* uFnOnAddFriendByNameComplete = nullptr;
 
@@ -7999,14 +8151,15 @@ void UOnlinePlayerInterfaceEOS::OnAddFriendByNameComplete(unsigned long bWasSucc
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnAddFriendByNameComplete_Params OnAddFriendByNameComplete_Params;
+	memset(&OnAddFriendByNameComplete_Params, 0, sizeof(OnAddFriendByNameComplete_Params));
 	OnAddFriendByNameComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnAddFriendByNameComplete, &OnAddFriendByNameComplete_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddFriendByName
-// [0x00024001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class FString                  FriendName                     (CPF_Parm | CPF_NeedCtorLink)
@@ -8022,9 +8175,10 @@ bool UOnlinePlayerInterfaceEOS::AddFriendByName(uint8_t LocalUserNum, class FStr
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddFriendByName_Params AddFriendByName_Params;
-	memcpy_s(&AddFriendByName_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddFriendByName_Params.FriendName, 0x10, &FriendName, 0x10);
-	memcpy_s(&AddFriendByName_Params.Message, 0x10, &Message, 0x10);
+	memset(&AddFriendByName_Params, 0, sizeof(AddFriendByName_Params));
+	memcpy_s(&AddFriendByName_Params.LocalUserNum, sizeof(AddFriendByName_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddFriendByName_Params.FriendName, sizeof(AddFriendByName_Params.FriendName), &FriendName, sizeof(FriendName));
+	memcpy_s(&AddFriendByName_Params.Message, sizeof(AddFriendByName_Params.Message), &Message, sizeof(Message));
 
 	this->ProcessEvent(uFnAddFriendByName, &AddFriendByName_Params, nullptr);
 
@@ -8033,7 +8187,7 @@ bool UOnlinePlayerInterfaceEOS::AddFriendByName(uint8_t LocalUserNum, class FStr
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.QueryUserByDisplayName
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class FString                  DisplayName                    (CPF_Parm | CPF_NeedCtorLink)
@@ -8048,21 +8202,18 @@ bool UOnlinePlayerInterfaceEOS::QueryUserByDisplayName(uint8_t LocalUserNum, cla
 	}
 
 	UOnlinePlayerInterfaceEOS_execQueryUserByDisplayName_Params QueryUserByDisplayName_Params;
-	memcpy_s(&QueryUserByDisplayName_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&QueryUserByDisplayName_Params.DisplayName, 0x10, &DisplayName, 0x10);
-
-	uFnQueryUserByDisplayName->FunctionFlags |= ~0x400;
+	memset(&QueryUserByDisplayName_Params, 0, sizeof(QueryUserByDisplayName_Params));
+	memcpy_s(&QueryUserByDisplayName_Params.LocalUserNum, sizeof(QueryUserByDisplayName_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&QueryUserByDisplayName_Params.DisplayName, sizeof(QueryUserByDisplayName_Params.DisplayName), &DisplayName, sizeof(DisplayName));
 
 	this->ProcessEvent(uFnQueryUserByDisplayName, &QueryUserByDisplayName_Params, nullptr);
-
-	uFnQueryUserByDisplayName->FunctionFlags |= 0x400;
 
 	return QueryUserByDisplayName_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearQueryUserByDisplayNameCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         QueryDelegate                  (CPF_Parm | CPF_NeedCtorLink)
 
@@ -8076,15 +8227,16 @@ void UOnlinePlayerInterfaceEOS::ClearQueryUserByDisplayNameCompleteDelegate(uint
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearQueryUserByDisplayNameCompleteDelegate_Params ClearQueryUserByDisplayNameCompleteDelegate_Params;
-	memcpy_s(&ClearQueryUserByDisplayNameCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearQueryUserByDisplayNameCompleteDelegate_Params.QueryDelegate, 0x18, &QueryDelegate, 0x18);
+	memset(&ClearQueryUserByDisplayNameCompleteDelegate_Params, 0, sizeof(ClearQueryUserByDisplayNameCompleteDelegate_Params));
+	memcpy_s(&ClearQueryUserByDisplayNameCompleteDelegate_Params.LocalUserNum, sizeof(ClearQueryUserByDisplayNameCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearQueryUserByDisplayNameCompleteDelegate_Params.QueryDelegate, sizeof(ClearQueryUserByDisplayNameCompleteDelegate_Params.QueryDelegate), &QueryDelegate, sizeof(QueryDelegate));
 
 	this->ProcessEvent(uFnClearQueryUserByDisplayNameCompleteDelegate, &ClearQueryUserByDisplayNameCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddQueryUserByDisplayNameCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         QueryDelegate                  (CPF_Parm | CPF_NeedCtorLink)
 
@@ -8098,20 +8250,21 @@ void UOnlinePlayerInterfaceEOS::AddQueryUserByDisplayNameCompleteDelegate(uint8_
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddQueryUserByDisplayNameCompleteDelegate_Params AddQueryUserByDisplayNameCompleteDelegate_Params;
-	memcpy_s(&AddQueryUserByDisplayNameCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddQueryUserByDisplayNameCompleteDelegate_Params.QueryDelegate, 0x18, &QueryDelegate, 0x18);
+	memset(&AddQueryUserByDisplayNameCompleteDelegate_Params, 0, sizeof(AddQueryUserByDisplayNameCompleteDelegate_Params));
+	memcpy_s(&AddQueryUserByDisplayNameCompleteDelegate_Params.LocalUserNum, sizeof(AddQueryUserByDisplayNameCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddQueryUserByDisplayNameCompleteDelegate_Params.QueryDelegate, sizeof(AddQueryUserByDisplayNameCompleteDelegate_Params.QueryDelegate), &QueryDelegate, sizeof(QueryDelegate));
 
 	this->ProcessEvent(uFnAddQueryUserByDisplayNameCompleteDelegate, &AddQueryUserByDisplayNameCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnQueryUserByDisplayName
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bWasSuccessful                 (CPF_Parm)
+// Parameter Info:
+// bool                           bWasSuccessful                 (CPF_Parm)
 // class FString                  QueriedDisplayName             (CPF_Parm | CPF_NeedCtorLink)
 // struct FUniqueNetId            UserId                         (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlinePlayerInterfaceEOS::OnQueryUserByDisplayName(unsigned long bWasSuccessful, class FString QueriedDisplayName, struct FUniqueNetId UserId)
+void UOnlinePlayerInterfaceEOS::OnQueryUserByDisplayName(bool bWasSuccessful, class FString QueriedDisplayName, struct FUniqueNetId UserId)
 {
 	static UFunction* uFnOnQueryUserByDisplayName = nullptr;
 
@@ -8121,16 +8274,17 @@ void UOnlinePlayerInterfaceEOS::OnQueryUserByDisplayName(unsigned long bWasSucce
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnQueryUserByDisplayName_Params OnQueryUserByDisplayName_Params;
+	memset(&OnQueryUserByDisplayName_Params, 0, sizeof(OnQueryUserByDisplayName_Params));
 	OnQueryUserByDisplayName_Params.bWasSuccessful = bWasSuccessful;
-	memcpy_s(&OnQueryUserByDisplayName_Params.QueriedDisplayName, 0x10, &QueriedDisplayName, 0x10);
-	memcpy_s(&OnQueryUserByDisplayName_Params.UserId, 0x48, &UserId, 0x48);
+	memcpy_s(&OnQueryUserByDisplayName_Params.QueriedDisplayName, sizeof(OnQueryUserByDisplayName_Params.QueriedDisplayName), &QueriedDisplayName, sizeof(QueriedDisplayName));
+	memcpy_s(&OnQueryUserByDisplayName_Params.UserId, sizeof(OnQueryUserByDisplayName_Params.UserId), &UserId, sizeof(UserId));
 
 	this->ProcessEvent(uFnOnQueryUserByDisplayName, &OnQueryUserByDisplayName_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddFriend
-// [0x00024001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            NewFriend                      (CPF_Parm | CPF_NeedCtorLink)
@@ -8146,9 +8300,10 @@ bool UOnlinePlayerInterfaceEOS::AddFriend(uint8_t LocalUserNum, struct FUniqueNe
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddFriend_Params AddFriend_Params;
-	memcpy_s(&AddFriend_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddFriend_Params.NewFriend, 0x48, &NewFriend, 0x48);
-	memcpy_s(&AddFriend_Params.Message, 0x10, &Message, 0x10);
+	memset(&AddFriend_Params, 0, sizeof(AddFriend_Params));
+	memcpy_s(&AddFriend_Params.LocalUserNum, sizeof(AddFriend_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddFriend_Params.NewFriend, sizeof(AddFriend_Params.NewFriend), &NewFriend, sizeof(NewFriend));
+	memcpy_s(&AddFriend_Params.Message, sizeof(AddFriend_Params.Message), &Message, sizeof(Message));
 
 	this->ProcessEvent(uFnAddFriend, &AddFriend_Params, nullptr);
 
@@ -8156,8 +8311,8 @@ bool UOnlinePlayerInterfaceEOS::AddFriend(uint8_t LocalUserNum, struct FUniqueNe
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearAddFriendCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         FriendDelegate                 (CPF_Parm | CPF_NeedCtorLink)
 
@@ -8171,15 +8326,16 @@ void UOnlinePlayerInterfaceEOS::ClearAddFriendCompleteDelegate(uint8_t LocalUser
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearAddFriendCompleteDelegate_Params ClearAddFriendCompleteDelegate_Params;
-	memcpy_s(&ClearAddFriendCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearAddFriendCompleteDelegate_Params.FriendDelegate, 0x18, &FriendDelegate, 0x18);
+	memset(&ClearAddFriendCompleteDelegate_Params, 0, sizeof(ClearAddFriendCompleteDelegate_Params));
+	memcpy_s(&ClearAddFriendCompleteDelegate_Params.LocalUserNum, sizeof(ClearAddFriendCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearAddFriendCompleteDelegate_Params.FriendDelegate, sizeof(ClearAddFriendCompleteDelegate_Params.FriendDelegate), &FriendDelegate, sizeof(FriendDelegate));
 
 	this->ProcessEvent(uFnClearAddFriendCompleteDelegate, &ClearAddFriendCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddAddFriendCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         FriendDelegate                 (CPF_Parm | CPF_NeedCtorLink)
 
@@ -8193,15 +8349,16 @@ void UOnlinePlayerInterfaceEOS::AddAddFriendCompleteDelegate(uint8_t LocalUserNu
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddAddFriendCompleteDelegate_Params AddAddFriendCompleteDelegate_Params;
-	memcpy_s(&AddAddFriendCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddAddFriendCompleteDelegate_Params.FriendDelegate, 0x18, &FriendDelegate, 0x18);
+	memset(&AddAddFriendCompleteDelegate_Params, 0, sizeof(AddAddFriendCompleteDelegate_Params));
+	memcpy_s(&AddAddFriendCompleteDelegate_Params.LocalUserNum, sizeof(AddAddFriendCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddAddFriendCompleteDelegate_Params.FriendDelegate, sizeof(AddAddFriendCompleteDelegate_Params.FriendDelegate), &FriendDelegate, sizeof(FriendDelegate));
 
 	this->ProcessEvent(uFnAddAddFriendCompleteDelegate, &AddAddFriendCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnAddFriendComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FUniqueNetId            NewFriendId                    (CPF_Parm | CPF_NeedCtorLink)
 // class UError*                  Error                          (CPF_Const | CPF_Parm)
 
@@ -8215,15 +8372,16 @@ void UOnlinePlayerInterfaceEOS::OnAddFriendComplete(struct FUniqueNetId NewFrien
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnAddFriendComplete_Params OnAddFriendComplete_Params;
-	memcpy_s(&OnAddFriendComplete_Params.NewFriendId, 0x48, &NewFriendId, 0x48);
-	memcpy_s(&OnAddFriendComplete_Params.Error, 0x8, &Error, 0x8);
+	memset(&OnAddFriendComplete_Params, 0, sizeof(OnAddFriendComplete_Params));
+	memcpy_s(&OnAddFriendComplete_Params.NewFriendId, sizeof(OnAddFriendComplete_Params.NewFriendId), &NewFriendId, sizeof(NewFriendId));
+	memcpy_s(&OnAddFriendComplete_Params.Error, sizeof(OnAddFriendComplete_Params.Error), &Error, sizeof(Error));
 
 	this->ProcessEvent(uFnOnAddFriendComplete, &OnAddFriendComplete_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetKeyboardInputResults
 // [0x00420001] (FUNC_Final | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // uint8_t                        bWasCanceled                   (CPF_Parm | CPF_OutParm)
 
@@ -8237,18 +8395,19 @@ class FString UOnlinePlayerInterfaceEOS::GetKeyboardInputResults(uint8_t& bWasCa
 	}
 
 	UOnlinePlayerInterfaceEOS_execGetKeyboardInputResults_Params GetKeyboardInputResults_Params;
-	memcpy_s(&GetKeyboardInputResults_Params.bWasCanceled, 0x1, &bWasCanceled, 0x1);
+	memset(&GetKeyboardInputResults_Params, 0, sizeof(GetKeyboardInputResults_Params));
+	memcpy_s(&GetKeyboardInputResults_Params.bWasCanceled, sizeof(GetKeyboardInputResults_Params.bWasCanceled), &bWasCanceled, sizeof(bWasCanceled));
 
 	this->ProcessEvent(uFnGetKeyboardInputResults, &GetKeyboardInputResults_Params, nullptr);
 
-	memcpy_s(&bWasCanceled, 0x1, &GetKeyboardInputResults_Params.bWasCanceled, 0x1);
+	memcpy_s(&bWasCanceled, sizeof(bWasCanceled), &GetKeyboardInputResults_Params.bWasCanceled, sizeof(GetKeyboardInputResults_Params.bWasCanceled));
 
 	return GetKeyboardInputResults_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearKeyboardInputDoneDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         InputDelegate                  (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::ClearKeyboardInputDoneDelegate(struct FScriptDelegate InputDelegate)
@@ -8261,14 +8420,15 @@ void UOnlinePlayerInterfaceEOS::ClearKeyboardInputDoneDelegate(struct FScriptDel
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearKeyboardInputDoneDelegate_Params ClearKeyboardInputDoneDelegate_Params;
-	memcpy_s(&ClearKeyboardInputDoneDelegate_Params.InputDelegate, 0x18, &InputDelegate, 0x18);
+	memset(&ClearKeyboardInputDoneDelegate_Params, 0, sizeof(ClearKeyboardInputDoneDelegate_Params));
+	memcpy_s(&ClearKeyboardInputDoneDelegate_Params.InputDelegate, sizeof(ClearKeyboardInputDoneDelegate_Params.InputDelegate), &InputDelegate, sizeof(InputDelegate));
 
 	this->ProcessEvent(uFnClearKeyboardInputDoneDelegate, &ClearKeyboardInputDoneDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddKeyboardInputDoneDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         InputDelegate                  (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::AddKeyboardInputDoneDelegate(struct FScriptDelegate InputDelegate)
@@ -8281,17 +8441,18 @@ void UOnlinePlayerInterfaceEOS::AddKeyboardInputDoneDelegate(struct FScriptDeleg
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddKeyboardInputDoneDelegate_Params AddKeyboardInputDoneDelegate_Params;
-	memcpy_s(&AddKeyboardInputDoneDelegate_Params.InputDelegate, 0x18, &InputDelegate, 0x18);
+	memset(&AddKeyboardInputDoneDelegate_Params, 0, sizeof(AddKeyboardInputDoneDelegate_Params));
+	memcpy_s(&AddKeyboardInputDoneDelegate_Params.InputDelegate, sizeof(AddKeyboardInputDoneDelegate_Params.InputDelegate), &InputDelegate, sizeof(InputDelegate));
 
 	this->ProcessEvent(uFnAddKeyboardInputDoneDelegate, &AddKeyboardInputDoneDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnKeyboardInputComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bWasSuccessful                 (CPF_Parm)
+// Parameter Info:
+// bool                           bWasSuccessful                 (CPF_Parm)
 
-void UOnlinePlayerInterfaceEOS::OnKeyboardInputComplete(unsigned long bWasSuccessful)
+void UOnlinePlayerInterfaceEOS::OnKeyboardInputComplete(bool bWasSuccessful)
 {
 	static UFunction* uFnOnKeyboardInputComplete = nullptr;
 
@@ -8301,24 +8462,25 @@ void UOnlinePlayerInterfaceEOS::OnKeyboardInputComplete(unsigned long bWasSucces
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnKeyboardInputComplete_Params OnKeyboardInputComplete_Params;
+	memset(&OnKeyboardInputComplete_Params, 0, sizeof(OnKeyboardInputComplete_Params));
 	OnKeyboardInputComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnKeyboardInputComplete, &OnKeyboardInputComplete_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowKeyboardUI
-// [0x00024001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class FString                  TitleText                      (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  DescriptionText                (CPF_Parm | CPF_NeedCtorLink)
-// unsigned long                  bIsPassword                    (CPF_OptionalParm | CPF_Parm)
-// unsigned long                  bShouldValidate                (CPF_OptionalParm | CPF_Parm)
+// bool                           bIsPassword                    (CPF_OptionalParm | CPF_Parm)
+// bool                           bShouldValidate                (CPF_OptionalParm | CPF_Parm)
 // class FString                  DefaultText                    (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        MaxResultLength                (CPF_OptionalParm | CPF_Parm)
 
-bool UOnlinePlayerInterfaceEOS::ShowKeyboardUI(uint8_t LocalUserNum, class FString TitleText, class FString DescriptionText, unsigned long bIsPassword, unsigned long bShouldValidate, class FString DefaultText, int32_t MaxResultLength)
+bool UOnlinePlayerInterfaceEOS::ShowKeyboardUI(uint8_t LocalUserNum, class FString TitleText, class FString DescriptionText, bool bIsPassword, bool bShouldValidate, class FString DefaultText, int32_t MaxResultLength)
 {
 	static UFunction* uFnShowKeyboardUI = nullptr;
 
@@ -8328,13 +8490,14 @@ bool UOnlinePlayerInterfaceEOS::ShowKeyboardUI(uint8_t LocalUserNum, class FStri
 	}
 
 	UOnlinePlayerInterfaceEOS_execShowKeyboardUI_Params ShowKeyboardUI_Params;
-	memcpy_s(&ShowKeyboardUI_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ShowKeyboardUI_Params.TitleText, 0x10, &TitleText, 0x10);
-	memcpy_s(&ShowKeyboardUI_Params.DescriptionText, 0x10, &DescriptionText, 0x10);
+	memset(&ShowKeyboardUI_Params, 0, sizeof(ShowKeyboardUI_Params));
+	memcpy_s(&ShowKeyboardUI_Params.LocalUserNum, sizeof(ShowKeyboardUI_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ShowKeyboardUI_Params.TitleText, sizeof(ShowKeyboardUI_Params.TitleText), &TitleText, sizeof(TitleText));
+	memcpy_s(&ShowKeyboardUI_Params.DescriptionText, sizeof(ShowKeyboardUI_Params.DescriptionText), &DescriptionText, sizeof(DescriptionText));
 	ShowKeyboardUI_Params.bIsPassword = bIsPassword;
 	ShowKeyboardUI_Params.bShouldValidate = bShouldValidate;
-	memcpy_s(&ShowKeyboardUI_Params.DefaultText, 0x10, &DefaultText, 0x10);
-	memcpy_s(&ShowKeyboardUI_Params.MaxResultLength, 0x4, &MaxResultLength, 0x4);
+	memcpy_s(&ShowKeyboardUI_Params.DefaultText, sizeof(ShowKeyboardUI_Params.DefaultText), &DefaultText, sizeof(DefaultText));
+	memcpy_s(&ShowKeyboardUI_Params.MaxResultLength, sizeof(ShowKeyboardUI_Params.MaxResultLength), &MaxResultLength, sizeof(MaxResultLength));
 
 	this->ProcessEvent(uFnShowKeyboardUI, &ShowKeyboardUI_Params, nullptr);
 
@@ -8343,7 +8506,7 @@ bool UOnlinePlayerInterfaceEOS::ShowKeyboardUI(uint8_t LocalUserNum, class FStri
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.SetOnlineStatus
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // int32_t                        StatusId                       (CPF_Parm)
 // TArray<struct FLocalizedStringSetting> LocalizedStringSettings        (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
@@ -8359,31 +8522,28 @@ void UOnlinePlayerInterfaceEOS::SetOnlineStatus(uint8_t LocalUserNum, int32_t St
 	}
 
 	UOnlinePlayerInterfaceEOS_execSetOnlineStatus_Params SetOnlineStatus_Params;
-	memcpy_s(&SetOnlineStatus_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&SetOnlineStatus_Params.StatusId, 0x4, &StatusId, 0x4);
-	memcpy_s(&SetOnlineStatus_Params.LocalizedStringSettings, 0x10, &LocalizedStringSettings, 0x10);
-	memcpy_s(&SetOnlineStatus_Params.Properties, 0x10, &Properties, 0x10);
-
-	uFnSetOnlineStatus->FunctionFlags |= ~0x400;
+	memset(&SetOnlineStatus_Params, 0, sizeof(SetOnlineStatus_Params));
+	memcpy_s(&SetOnlineStatus_Params.LocalUserNum, sizeof(SetOnlineStatus_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&SetOnlineStatus_Params.StatusId, sizeof(SetOnlineStatus_Params.StatusId), &StatusId, sizeof(StatusId));
+	memcpy_s(&SetOnlineStatus_Params.LocalizedStringSettings, sizeof(SetOnlineStatus_Params.LocalizedStringSettings), &LocalizedStringSettings, sizeof(LocalizedStringSettings));
+	memcpy_s(&SetOnlineStatus_Params.Properties, sizeof(SetOnlineStatus_Params.Properties), &Properties, sizeof(Properties));
 
 	this->ProcessEvent(uFnSetOnlineStatus, &SetOnlineStatus_Params, nullptr);
 
-	uFnSetOnlineStatus->FunctionFlags |= 0x400;
-
-	memcpy_s(&LocalizedStringSettings, 0x10, &SetOnlineStatus_Params.LocalizedStringSettings, 0x10);
-	memcpy_s(&Properties, 0x10, &SetOnlineStatus_Params.Properties, 0x10);
+	memcpy_s(&LocalizedStringSettings, sizeof(LocalizedStringSettings), &SetOnlineStatus_Params.LocalizedStringSettings, sizeof(SetOnlineStatus_Params.LocalizedStringSettings));
+	memcpy_s(&Properties, sizeof(Properties), &SetOnlineStatus_Params.Properties, sizeof(SetOnlineStatus_Params.Properties));
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetFriendsList
-// [0x00424401] (FUNC_Final | FUNC_Native | FUNC_NetMulticast | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
-// uint8_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+// [0x00424401] (FUNC_Final | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// Parameter Info:
+// EOnlineEnumerationReadState    ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // int32_t                        Count                          (CPF_OptionalParm | CPF_Parm)
 // int32_t                        StartingAt                     (CPF_OptionalParm | CPF_Parm)
 // TArray<struct FOnlineFriend>   Friends                        (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-uint8_t UOnlinePlayerInterfaceEOS::GetFriendsList(uint8_t LocalUserNum, int32_t Count, int32_t StartingAt, TArray<struct FOnlineFriend>& Friends)
+EOnlineEnumerationReadState UOnlinePlayerInterfaceEOS::GetFriendsList(uint8_t LocalUserNum, int32_t Count, int32_t StartingAt, TArray<struct FOnlineFriend>& Friends)
 {
 	static UFunction* uFnGetFriendsList = nullptr;
 
@@ -8393,25 +8553,22 @@ uint8_t UOnlinePlayerInterfaceEOS::GetFriendsList(uint8_t LocalUserNum, int32_t 
 	}
 
 	UOnlinePlayerInterfaceEOS_execGetFriendsList_Params GetFriendsList_Params;
-	memcpy_s(&GetFriendsList_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&GetFriendsList_Params.Count, 0x4, &Count, 0x4);
-	memcpy_s(&GetFriendsList_Params.StartingAt, 0x4, &StartingAt, 0x4);
-	memcpy_s(&GetFriendsList_Params.Friends, 0x10, &Friends, 0x10);
-
-	uFnGetFriendsList->FunctionFlags |= ~0x400;
+	memset(&GetFriendsList_Params, 0, sizeof(GetFriendsList_Params));
+	memcpy_s(&GetFriendsList_Params.LocalUserNum, sizeof(GetFriendsList_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&GetFriendsList_Params.Count, sizeof(GetFriendsList_Params.Count), &Count, sizeof(Count));
+	memcpy_s(&GetFriendsList_Params.StartingAt, sizeof(GetFriendsList_Params.StartingAt), &StartingAt, sizeof(StartingAt));
+	memcpy_s(&GetFriendsList_Params.Friends, sizeof(GetFriendsList_Params.Friends), &Friends, sizeof(Friends));
 
 	this->ProcessEvent(uFnGetFriendsList, &GetFriendsList_Params, nullptr);
 
-	uFnGetFriendsList->FunctionFlags |= 0x400;
-
-	memcpy_s(&Friends, 0x10, &GetFriendsList_Params.Friends, 0x10);
+	memcpy_s(&Friends, sizeof(Friends), &GetFriendsList_Params.Friends, sizeof(GetFriendsList_Params.Friends));
 
 	return GetFriendsList_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearReadFriendsCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         ReadFriendsCompleteDelegate    (CPF_Parm | CPF_NeedCtorLink)
 
@@ -8425,15 +8582,16 @@ void UOnlinePlayerInterfaceEOS::ClearReadFriendsCompleteDelegate(uint8_t LocalUs
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearReadFriendsCompleteDelegate_Params ClearReadFriendsCompleteDelegate_Params;
-	memcpy_s(&ClearReadFriendsCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearReadFriendsCompleteDelegate_Params.ReadFriendsCompleteDelegate, 0x18, &ReadFriendsCompleteDelegate, 0x18);
+	memset(&ClearReadFriendsCompleteDelegate_Params, 0, sizeof(ClearReadFriendsCompleteDelegate_Params));
+	memcpy_s(&ClearReadFriendsCompleteDelegate_Params.LocalUserNum, sizeof(ClearReadFriendsCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearReadFriendsCompleteDelegate_Params.ReadFriendsCompleteDelegate, sizeof(ClearReadFriendsCompleteDelegate_Params.ReadFriendsCompleteDelegate), &ReadFriendsCompleteDelegate, sizeof(ReadFriendsCompleteDelegate));
 
 	this->ProcessEvent(uFnClearReadFriendsCompleteDelegate, &ClearReadFriendsCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddReadFriendsCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         ReadFriendsCompleteDelegate    (CPF_Parm | CPF_NeedCtorLink)
 
@@ -8447,18 +8605,19 @@ void UOnlinePlayerInterfaceEOS::AddReadFriendsCompleteDelegate(uint8_t LocalUser
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddReadFriendsCompleteDelegate_Params AddReadFriendsCompleteDelegate_Params;
-	memcpy_s(&AddReadFriendsCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddReadFriendsCompleteDelegate_Params.ReadFriendsCompleteDelegate, 0x18, &ReadFriendsCompleteDelegate, 0x18);
+	memset(&AddReadFriendsCompleteDelegate_Params, 0, sizeof(AddReadFriendsCompleteDelegate_Params));
+	memcpy_s(&AddReadFriendsCompleteDelegate_Params.LocalUserNum, sizeof(AddReadFriendsCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddReadFriendsCompleteDelegate_Params.ReadFriendsCompleteDelegate, sizeof(AddReadFriendsCompleteDelegate_Params.ReadFriendsCompleteDelegate), &ReadFriendsCompleteDelegate, sizeof(ReadFriendsCompleteDelegate));
 
 	this->ProcessEvent(uFnAddReadFriendsCompleteDelegate, &AddReadFriendsCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnReadFriendsComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bWasSuccessful                 (CPF_Parm)
+// Parameter Info:
+// bool                           bWasSuccessful                 (CPF_Parm)
 
-void UOnlinePlayerInterfaceEOS::OnReadFriendsComplete(unsigned long bWasSuccessful)
+void UOnlinePlayerInterfaceEOS::OnReadFriendsComplete(bool bWasSuccessful)
 {
 	static UFunction* uFnOnReadFriendsComplete = nullptr;
 
@@ -8468,14 +8627,15 @@ void UOnlinePlayerInterfaceEOS::OnReadFriendsComplete(unsigned long bWasSuccessf
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnReadFriendsComplete_Params OnReadFriendsComplete_Params;
+	memset(&OnReadFriendsComplete_Params, 0, sizeof(OnReadFriendsComplete_Params));
 	OnReadFriendsComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnReadFriendsComplete, &OnReadFriendsComplete_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ReadFriendsList
-// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // int32_t                        Count                          (CPF_OptionalParm | CPF_Parm)
@@ -8491,22 +8651,19 @@ bool UOnlinePlayerInterfaceEOS::ReadFriendsList(uint8_t LocalUserNum, int32_t Co
 	}
 
 	UOnlinePlayerInterfaceEOS_execReadFriendsList_Params ReadFriendsList_Params;
-	memcpy_s(&ReadFriendsList_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ReadFriendsList_Params.Count, 0x4, &Count, 0x4);
-	memcpy_s(&ReadFriendsList_Params.StartingAt, 0x4, &StartingAt, 0x4);
-
-	uFnReadFriendsList->FunctionFlags |= ~0x400;
+	memset(&ReadFriendsList_Params, 0, sizeof(ReadFriendsList_Params));
+	memcpy_s(&ReadFriendsList_Params.LocalUserNum, sizeof(ReadFriendsList_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ReadFriendsList_Params.Count, sizeof(ReadFriendsList_Params.Count), &Count, sizeof(Count));
+	memcpy_s(&ReadFriendsList_Params.StartingAt, sizeof(ReadFriendsList_Params.StartingAt), &StartingAt, sizeof(StartingAt));
 
 	this->ProcessEvent(uFnReadFriendsList, &ReadFriendsList_Params, nullptr);
-
-	uFnReadFriendsList->FunctionFlags |= 0x400;
 
 	return ReadFriendsList_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearWriteProfileSettingsCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         WriteProfileSettingsCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
@@ -8520,15 +8677,16 @@ void UOnlinePlayerInterfaceEOS::ClearWriteProfileSettingsCompleteDelegate(uint8_
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearWriteProfileSettingsCompleteDelegate_Params ClearWriteProfileSettingsCompleteDelegate_Params;
-	memcpy_s(&ClearWriteProfileSettingsCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearWriteProfileSettingsCompleteDelegate_Params.WriteProfileSettingsCompleteDelegate, 0x18, &WriteProfileSettingsCompleteDelegate, 0x18);
+	memset(&ClearWriteProfileSettingsCompleteDelegate_Params, 0, sizeof(ClearWriteProfileSettingsCompleteDelegate_Params));
+	memcpy_s(&ClearWriteProfileSettingsCompleteDelegate_Params.LocalUserNum, sizeof(ClearWriteProfileSettingsCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearWriteProfileSettingsCompleteDelegate_Params.WriteProfileSettingsCompleteDelegate, sizeof(ClearWriteProfileSettingsCompleteDelegate_Params.WriteProfileSettingsCompleteDelegate), &WriteProfileSettingsCompleteDelegate, sizeof(WriteProfileSettingsCompleteDelegate));
 
 	this->ProcessEvent(uFnClearWriteProfileSettingsCompleteDelegate, &ClearWriteProfileSettingsCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddWriteProfileSettingsCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         WriteProfileSettingsCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
@@ -8542,19 +8700,20 @@ void UOnlinePlayerInterfaceEOS::AddWriteProfileSettingsCompleteDelegate(uint8_t 
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddWriteProfileSettingsCompleteDelegate_Params AddWriteProfileSettingsCompleteDelegate_Params;
-	memcpy_s(&AddWriteProfileSettingsCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddWriteProfileSettingsCompleteDelegate_Params.WriteProfileSettingsCompleteDelegate, 0x18, &WriteProfileSettingsCompleteDelegate, 0x18);
+	memset(&AddWriteProfileSettingsCompleteDelegate_Params, 0, sizeof(AddWriteProfileSettingsCompleteDelegate_Params));
+	memcpy_s(&AddWriteProfileSettingsCompleteDelegate_Params.LocalUserNum, sizeof(AddWriteProfileSettingsCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddWriteProfileSettingsCompleteDelegate_Params.WriteProfileSettingsCompleteDelegate, sizeof(AddWriteProfileSettingsCompleteDelegate_Params.WriteProfileSettingsCompleteDelegate), &WriteProfileSettingsCompleteDelegate, sizeof(WriteProfileSettingsCompleteDelegate));
 
 	this->ProcessEvent(uFnAddWriteProfileSettingsCompleteDelegate, &AddWriteProfileSettingsCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnWriteProfileSettingsComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// unsigned long                  bWasSuccessful                 (CPF_Parm)
+// bool                           bWasSuccessful                 (CPF_Parm)
 
-void UOnlinePlayerInterfaceEOS::OnWriteProfileSettingsComplete(uint8_t LocalUserNum, unsigned long bWasSuccessful)
+void UOnlinePlayerInterfaceEOS::OnWriteProfileSettingsComplete(uint8_t LocalUserNum, bool bWasSuccessful)
 {
 	static UFunction* uFnOnWriteProfileSettingsComplete = nullptr;
 
@@ -8564,7 +8723,8 @@ void UOnlinePlayerInterfaceEOS::OnWriteProfileSettingsComplete(uint8_t LocalUser
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnWriteProfileSettingsComplete_Params OnWriteProfileSettingsComplete_Params;
-	memcpy_s(&OnWriteProfileSettingsComplete_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&OnWriteProfileSettingsComplete_Params, 0, sizeof(OnWriteProfileSettingsComplete_Params));
+	memcpy_s(&OnWriteProfileSettingsComplete_Params.LocalUserNum, sizeof(OnWriteProfileSettingsComplete_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 	OnWriteProfileSettingsComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnWriteProfileSettingsComplete, &OnWriteProfileSettingsComplete_Params, nullptr);
@@ -8572,7 +8732,7 @@ void UOnlinePlayerInterfaceEOS::OnWriteProfileSettingsComplete(uint8_t LocalUser
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.WriteProfileSettings
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class UOnlineProfileSettings*  ProfileSettings                (CPF_Parm)
@@ -8587,21 +8747,18 @@ bool UOnlinePlayerInterfaceEOS::WriteProfileSettings(uint8_t LocalUserNum, class
 	}
 
 	UOnlinePlayerInterfaceEOS_execWriteProfileSettings_Params WriteProfileSettings_Params;
-	memcpy_s(&WriteProfileSettings_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&WriteProfileSettings_Params.ProfileSettings, 0x8, &ProfileSettings, 0x8);
-
-	uFnWriteProfileSettings->FunctionFlags |= ~0x400;
+	memset(&WriteProfileSettings_Params, 0, sizeof(WriteProfileSettings_Params));
+	memcpy_s(&WriteProfileSettings_Params.LocalUserNum, sizeof(WriteProfileSettings_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&WriteProfileSettings_Params.ProfileSettings, sizeof(WriteProfileSettings_Params.ProfileSettings), &ProfileSettings, sizeof(ProfileSettings));
 
 	this->ProcessEvent(uFnWriteProfileSettings, &WriteProfileSettings_Params, nullptr);
-
-	uFnWriteProfileSettings->FunctionFlags |= 0x400;
 
 	return WriteProfileSettings_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetProfileSettings
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // class UOnlineProfileSettings*  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -8615,7 +8772,8 @@ class UOnlineProfileSettings* UOnlinePlayerInterfaceEOS::GetProfileSettings(uint
 	}
 
 	UOnlinePlayerInterfaceEOS_execGetProfileSettings_Params GetProfileSettings_Params;
-	memcpy_s(&GetProfileSettings_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&GetProfileSettings_Params, 0, sizeof(GetProfileSettings_Params));
+	memcpy_s(&GetProfileSettings_Params.LocalUserNum, sizeof(GetProfileSettings_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnGetProfileSettings, &GetProfileSettings_Params, nullptr);
 
@@ -8623,8 +8781,8 @@ class UOnlineProfileSettings* UOnlinePlayerInterfaceEOS::GetProfileSettings(uint
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearReadProfileSettingsCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         ReadProfileSettingsCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
@@ -8638,15 +8796,16 @@ void UOnlinePlayerInterfaceEOS::ClearReadProfileSettingsCompleteDelegate(uint8_t
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearReadProfileSettingsCompleteDelegate_Params ClearReadProfileSettingsCompleteDelegate_Params;
-	memcpy_s(&ClearReadProfileSettingsCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearReadProfileSettingsCompleteDelegate_Params.ReadProfileSettingsCompleteDelegate, 0x18, &ReadProfileSettingsCompleteDelegate, 0x18);
+	memset(&ClearReadProfileSettingsCompleteDelegate_Params, 0, sizeof(ClearReadProfileSettingsCompleteDelegate_Params));
+	memcpy_s(&ClearReadProfileSettingsCompleteDelegate_Params.LocalUserNum, sizeof(ClearReadProfileSettingsCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearReadProfileSettingsCompleteDelegate_Params.ReadProfileSettingsCompleteDelegate, sizeof(ClearReadProfileSettingsCompleteDelegate_Params.ReadProfileSettingsCompleteDelegate), &ReadProfileSettingsCompleteDelegate, sizeof(ReadProfileSettingsCompleteDelegate));
 
 	this->ProcessEvent(uFnClearReadProfileSettingsCompleteDelegate, &ClearReadProfileSettingsCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddReadProfileSettingsCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         ReadProfileSettingsCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
@@ -8660,19 +8819,20 @@ void UOnlinePlayerInterfaceEOS::AddReadProfileSettingsCompleteDelegate(uint8_t L
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddReadProfileSettingsCompleteDelegate_Params AddReadProfileSettingsCompleteDelegate_Params;
-	memcpy_s(&AddReadProfileSettingsCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddReadProfileSettingsCompleteDelegate_Params.ReadProfileSettingsCompleteDelegate, 0x18, &ReadProfileSettingsCompleteDelegate, 0x18);
+	memset(&AddReadProfileSettingsCompleteDelegate_Params, 0, sizeof(AddReadProfileSettingsCompleteDelegate_Params));
+	memcpy_s(&AddReadProfileSettingsCompleteDelegate_Params.LocalUserNum, sizeof(AddReadProfileSettingsCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddReadProfileSettingsCompleteDelegate_Params.ReadProfileSettingsCompleteDelegate, sizeof(AddReadProfileSettingsCompleteDelegate_Params.ReadProfileSettingsCompleteDelegate), &ReadProfileSettingsCompleteDelegate, sizeof(ReadProfileSettingsCompleteDelegate));
 
 	this->ProcessEvent(uFnAddReadProfileSettingsCompleteDelegate, &AddReadProfileSettingsCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnReadProfileSettingsComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// unsigned long                  bWasSuccessful                 (CPF_Parm)
+// bool                           bWasSuccessful                 (CPF_Parm)
 
-void UOnlinePlayerInterfaceEOS::OnReadProfileSettingsComplete(uint8_t LocalUserNum, unsigned long bWasSuccessful)
+void UOnlinePlayerInterfaceEOS::OnReadProfileSettingsComplete(uint8_t LocalUserNum, bool bWasSuccessful)
 {
 	static UFunction* uFnOnReadProfileSettingsComplete = nullptr;
 
@@ -8682,7 +8842,8 @@ void UOnlinePlayerInterfaceEOS::OnReadProfileSettingsComplete(uint8_t LocalUserN
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnReadProfileSettingsComplete_Params OnReadProfileSettingsComplete_Params;
-	memcpy_s(&OnReadProfileSettingsComplete_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&OnReadProfileSettingsComplete_Params, 0, sizeof(OnReadProfileSettingsComplete_Params));
+	memcpy_s(&OnReadProfileSettingsComplete_Params.LocalUserNum, sizeof(OnReadProfileSettingsComplete_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 	OnReadProfileSettingsComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnReadProfileSettingsComplete, &OnReadProfileSettingsComplete_Params, nullptr);
@@ -8690,7 +8851,7 @@ void UOnlinePlayerInterfaceEOS::OnReadProfileSettingsComplete(uint8_t LocalUserN
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ReadProfileSettings
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class UOnlineProfileSettings*  ProfileSettings                (CPF_Parm)
@@ -8705,21 +8866,18 @@ bool UOnlinePlayerInterfaceEOS::ReadProfileSettings(uint8_t LocalUserNum, class 
 	}
 
 	UOnlinePlayerInterfaceEOS_execReadProfileSettings_Params ReadProfileSettings_Params;
-	memcpy_s(&ReadProfileSettings_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ReadProfileSettings_Params.ProfileSettings, 0x8, &ProfileSettings, 0x8);
-
-	uFnReadProfileSettings->FunctionFlags |= ~0x400;
+	memset(&ReadProfileSettings_Params, 0, sizeof(ReadProfileSettings_Params));
+	memcpy_s(&ReadProfileSettings_Params.LocalUserNum, sizeof(ReadProfileSettings_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ReadProfileSettings_Params.ProfileSettings, sizeof(ReadProfileSettings_Params.ProfileSettings), &ProfileSettings, sizeof(ProfileSettings));
 
 	this->ProcessEvent(uFnReadProfileSettings, &ReadProfileSettings_Params, nullptr);
-
-	uFnReadProfileSettings->FunctionFlags |= 0x400;
 
 	return ReadProfileSettings_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearFriendsChangeDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         FriendsDelegate                (CPF_Parm | CPF_NeedCtorLink)
 
@@ -8733,15 +8891,16 @@ void UOnlinePlayerInterfaceEOS::ClearFriendsChangeDelegate(uint8_t LocalUserNum,
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearFriendsChangeDelegate_Params ClearFriendsChangeDelegate_Params;
-	memcpy_s(&ClearFriendsChangeDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearFriendsChangeDelegate_Params.FriendsDelegate, 0x18, &FriendsDelegate, 0x18);
+	memset(&ClearFriendsChangeDelegate_Params, 0, sizeof(ClearFriendsChangeDelegate_Params));
+	memcpy_s(&ClearFriendsChangeDelegate_Params.LocalUserNum, sizeof(ClearFriendsChangeDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearFriendsChangeDelegate_Params.FriendsDelegate, sizeof(ClearFriendsChangeDelegate_Params.FriendsDelegate), &FriendsDelegate, sizeof(FriendsDelegate));
 
 	this->ProcessEvent(uFnClearFriendsChangeDelegate, &ClearFriendsChangeDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddFriendsChangeDelegate
-// [0x00020803] (FUNC_Final | FUNC_RequiredAPI | FUNC_Event | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020803] (FUNC_Final | FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         FriendsDelegate                (CPF_Parm | CPF_NeedCtorLink)
 
@@ -8755,15 +8914,16 @@ void UOnlinePlayerInterfaceEOS::eventAddFriendsChangeDelegate(uint8_t LocalUserN
 	}
 
 	UOnlinePlayerInterfaceEOS_eventAddFriendsChangeDelegate_Params AddFriendsChangeDelegate_Params;
-	memcpy_s(&AddFriendsChangeDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddFriendsChangeDelegate_Params.FriendsDelegate, 0x18, &FriendsDelegate, 0x18);
+	memset(&AddFriendsChangeDelegate_Params, 0, sizeof(AddFriendsChangeDelegate_Params));
+	memcpy_s(&AddFriendsChangeDelegate_Params.LocalUserNum, sizeof(AddFriendsChangeDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddFriendsChangeDelegate_Params.FriendsDelegate, sizeof(AddFriendsChangeDelegate_Params.FriendsDelegate), &FriendsDelegate, sizeof(FriendsDelegate));
 
 	this->ProcessEvent(uFnAddFriendsChangeDelegate, &AddFriendsChangeDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearMutingChangeDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         MutingDelegate                 (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::ClearMutingChangeDelegate(struct FScriptDelegate MutingDelegate)
@@ -8776,14 +8936,15 @@ void UOnlinePlayerInterfaceEOS::ClearMutingChangeDelegate(struct FScriptDelegate
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearMutingChangeDelegate_Params ClearMutingChangeDelegate_Params;
-	memcpy_s(&ClearMutingChangeDelegate_Params.MutingDelegate, 0x18, &MutingDelegate, 0x18);
+	memset(&ClearMutingChangeDelegate_Params, 0, sizeof(ClearMutingChangeDelegate_Params));
+	memcpy_s(&ClearMutingChangeDelegate_Params.MutingDelegate, sizeof(ClearMutingChangeDelegate_Params.MutingDelegate), &MutingDelegate, sizeof(MutingDelegate));
 
 	this->ProcessEvent(uFnClearMutingChangeDelegate, &ClearMutingChangeDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddMutingChangeDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         MutingDelegate                 (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::AddMutingChangeDelegate(struct FScriptDelegate MutingDelegate)
@@ -8796,14 +8957,15 @@ void UOnlinePlayerInterfaceEOS::AddMutingChangeDelegate(struct FScriptDelegate M
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddMutingChangeDelegate_Params AddMutingChangeDelegate_Params;
-	memcpy_s(&AddMutingChangeDelegate_Params.MutingDelegate, 0x18, &MutingDelegate, 0x18);
+	memset(&AddMutingChangeDelegate_Params, 0, sizeof(AddMutingChangeDelegate_Params));
+	memcpy_s(&AddMutingChangeDelegate_Params.MutingDelegate, sizeof(AddMutingChangeDelegate_Params.MutingDelegate), &MutingDelegate, sizeof(MutingDelegate));
 
 	this->ProcessEvent(uFnAddMutingChangeDelegate, &AddMutingChangeDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearLoginCancelledDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         CancelledDelegate              (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::ClearLoginCancelledDelegate(struct FScriptDelegate CancelledDelegate)
@@ -8816,14 +8978,15 @@ void UOnlinePlayerInterfaceEOS::ClearLoginCancelledDelegate(struct FScriptDelega
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearLoginCancelledDelegate_Params ClearLoginCancelledDelegate_Params;
-	memcpy_s(&ClearLoginCancelledDelegate_Params.CancelledDelegate, 0x18, &CancelledDelegate, 0x18);
+	memset(&ClearLoginCancelledDelegate_Params, 0, sizeof(ClearLoginCancelledDelegate_Params));
+	memcpy_s(&ClearLoginCancelledDelegate_Params.CancelledDelegate, sizeof(ClearLoginCancelledDelegate_Params.CancelledDelegate), &CancelledDelegate, sizeof(CancelledDelegate));
 
 	this->ProcessEvent(uFnClearLoginCancelledDelegate, &ClearLoginCancelledDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddLoginCancelledDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         CancelledDelegate              (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::AddLoginCancelledDelegate(struct FScriptDelegate CancelledDelegate)
@@ -8836,14 +8999,15 @@ void UOnlinePlayerInterfaceEOS::AddLoginCancelledDelegate(struct FScriptDelegate
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddLoginCancelledDelegate_Params AddLoginCancelledDelegate_Params;
-	memcpy_s(&AddLoginCancelledDelegate_Params.CancelledDelegate, 0x18, &CancelledDelegate, 0x18);
+	memset(&AddLoginCancelledDelegate_Params, 0, sizeof(AddLoginCancelledDelegate_Params));
+	memcpy_s(&AddLoginCancelledDelegate_Params.CancelledDelegate, sizeof(AddLoginCancelledDelegate_Params.CancelledDelegate), &CancelledDelegate, sizeof(CancelledDelegate));
 
 	this->ProcessEvent(uFnAddLoginCancelledDelegate, &AddLoginCancelledDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearLoginChangeDelegate
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         LoginDelegate                  (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::ClearLoginChangeDelegate(struct FScriptDelegate LoginDelegate)
@@ -8856,18 +9020,15 @@ void UOnlinePlayerInterfaceEOS::ClearLoginChangeDelegate(struct FScriptDelegate 
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearLoginChangeDelegate_Params ClearLoginChangeDelegate_Params;
-	memcpy_s(&ClearLoginChangeDelegate_Params.LoginDelegate, 0x18, &LoginDelegate, 0x18);
-
-	uFnClearLoginChangeDelegate->FunctionFlags |= ~0x400;
+	memset(&ClearLoginChangeDelegate_Params, 0, sizeof(ClearLoginChangeDelegate_Params));
+	memcpy_s(&ClearLoginChangeDelegate_Params.LoginDelegate, sizeof(ClearLoginChangeDelegate_Params.LoginDelegate), &LoginDelegate, sizeof(LoginDelegate));
 
 	this->ProcessEvent(uFnClearLoginChangeDelegate, &ClearLoginChangeDelegate_Params, nullptr);
-
-	uFnClearLoginChangeDelegate->FunctionFlags |= 0x400;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddLoginChangeDelegate
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         LoginDelegate                  (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlinePlayerInterfaceEOS::AddLoginChangeDelegate(struct FScriptDelegate LoginDelegate)
@@ -8880,18 +9041,15 @@ void UOnlinePlayerInterfaceEOS::AddLoginChangeDelegate(struct FScriptDelegate Lo
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddLoginChangeDelegate_Params AddLoginChangeDelegate_Params;
-	memcpy_s(&AddLoginChangeDelegate_Params.LoginDelegate, 0x18, &LoginDelegate, 0x18);
-
-	uFnAddLoginChangeDelegate->FunctionFlags |= ~0x400;
+	memset(&AddLoginChangeDelegate_Params, 0, sizeof(AddLoginChangeDelegate_Params));
+	memcpy_s(&AddLoginChangeDelegate_Params.LoginDelegate, sizeof(AddLoginChangeDelegate_Params.LoginDelegate), &LoginDelegate, sizeof(LoginDelegate));
 
 	this->ProcessEvent(uFnAddLoginChangeDelegate, &AddLoginChangeDelegate_Params, nullptr);
-
-	uFnAddLoginChangeDelegate->FunctionFlags |= 0x400;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowFriendsUI
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -8905,7 +9063,8 @@ bool UOnlinePlayerInterfaceEOS::ShowFriendsUI(uint8_t LocalUserNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_execShowFriendsUI_Params ShowFriendsUI_Params;
-	memcpy_s(&ShowFriendsUI_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&ShowFriendsUI_Params, 0, sizeof(ShowFriendsUI_Params));
+	memcpy_s(&ShowFriendsUI_Params.LocalUserNum, sizeof(ShowFriendsUI_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnShowFriendsUI, &ShowFriendsUI_Params, nullptr);
 
@@ -8914,7 +9073,7 @@ bool UOnlinePlayerInterfaceEOS::ShowFriendsUI(uint8_t LocalUserNum)
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.IsMuted
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
@@ -8929,8 +9088,9 @@ bool UOnlinePlayerInterfaceEOS::IsMuted(uint8_t LocalUserNum, struct FUniqueNetI
 	}
 
 	UOnlinePlayerInterfaceEOS_execIsMuted_Params IsMuted_Params;
-	memcpy_s(&IsMuted_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&IsMuted_Params.PlayerID, 0x48, &PlayerID, 0x48);
+	memset(&IsMuted_Params, 0, sizeof(IsMuted_Params));
+	memcpy_s(&IsMuted_Params.LocalUserNum, sizeof(IsMuted_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&IsMuted_Params.PlayerID, sizeof(IsMuted_Params.PlayerID), &PlayerID, sizeof(PlayerID));
 
 	this->ProcessEvent(uFnIsMuted, &IsMuted_Params, nullptr);
 
@@ -8939,7 +9099,7 @@ bool UOnlinePlayerInterfaceEOS::IsMuted(uint8_t LocalUserNum, struct FUniqueNetI
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AreAnyFriends
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // TArray<struct FFriendsQuery>   Query                          (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
@@ -8954,23 +9114,20 @@ bool UOnlinePlayerInterfaceEOS::AreAnyFriends(uint8_t LocalUserNum, TArray<struc
 	}
 
 	UOnlinePlayerInterfaceEOS_execAreAnyFriends_Params AreAnyFriends_Params;
-	memcpy_s(&AreAnyFriends_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AreAnyFriends_Params.Query, 0x10, &Query, 0x10);
-
-	uFnAreAnyFriends->FunctionFlags |= ~0x400;
+	memset(&AreAnyFriends_Params, 0, sizeof(AreAnyFriends_Params));
+	memcpy_s(&AreAnyFriends_Params.LocalUserNum, sizeof(AreAnyFriends_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AreAnyFriends_Params.Query, sizeof(AreAnyFriends_Params.Query), &Query, sizeof(Query));
 
 	this->ProcessEvent(uFnAreAnyFriends, &AreAnyFriends_Params, nullptr);
 
-	uFnAreAnyFriends->FunctionFlags |= 0x400;
-
-	memcpy_s(&Query, 0x10, &AreAnyFriends_Params.Query, 0x10);
+	memcpy_s(&Query, sizeof(Query), &AreAnyFriends_Params.Query, sizeof(AreAnyFriends_Params.Query));
 
 	return AreAnyFriends_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.IsFriend
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
@@ -8985,28 +9142,25 @@ bool UOnlinePlayerInterfaceEOS::IsFriend(uint8_t LocalUserNum, struct FUniqueNet
 	}
 
 	UOnlinePlayerInterfaceEOS_execIsFriend_Params IsFriend_Params;
-	memcpy_s(&IsFriend_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&IsFriend_Params.PlayerID, 0x48, &PlayerID, 0x48);
-
-	uFnIsFriend->FunctionFlags |= ~0x400;
+	memset(&IsFriend_Params, 0, sizeof(IsFriend_Params));
+	memcpy_s(&IsFriend_Params.LocalUserNum, sizeof(IsFriend_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&IsFriend_Params.PlayerID, sizeof(IsFriend_Params.PlayerID), &PlayerID, sizeof(PlayerID));
 
 	this->ProcessEvent(uFnIsFriend, &IsFriend_Params, nullptr);
-
-	uFnIsFriend->FunctionFlags |= 0x400;
 
 	return IsFriend_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanShowPresenceInformation
-// [0x00424003] (FUNC_Final | FUNC_RequiredAPI | FUNC_NetMulticast | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// [0x00424003] (FUNC_Final | FUNC_Defined | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// unsigned long                  bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
+// bool                           bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
 // class FString                  Reason                         (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-// uint8_t                        PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
+// EFeaturePrivilegeLevel         PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
 
-bool UOnlinePlayerInterfaceEOS::CanShowPresenceInformation(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint)
+bool UOnlinePlayerInterfaceEOS::CanShowPresenceInformation(uint8_t LocalUserNum, bool bAttemptToResolve, class FString Reason, EFeaturePrivilegeLevel& PrivilegeLevelHint)
 {
 	static UFunction* uFnCanShowPresenceInformation = nullptr;
 
@@ -9016,28 +9170,29 @@ bool UOnlinePlayerInterfaceEOS::CanShowPresenceInformation(uint8_t LocalUserNum,
 	}
 
 	UOnlinePlayerInterfaceEOS_execCanShowPresenceInformation_Params CanShowPresenceInformation_Params;
-	memcpy_s(&CanShowPresenceInformation_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&CanShowPresenceInformation_Params, 0, sizeof(CanShowPresenceInformation_Params));
+	memcpy_s(&CanShowPresenceInformation_Params.LocalUserNum, sizeof(CanShowPresenceInformation_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 	CanShowPresenceInformation_Params.bAttemptToResolve = bAttemptToResolve;
-	memcpy_s(&CanShowPresenceInformation_Params.Reason, 0x10, &Reason, 0x10);
-	memcpy_s(&CanShowPresenceInformation_Params.PrivilegeLevelHint, 0x1, &PrivilegeLevelHint, 0x1);
+	memcpy_s(&CanShowPresenceInformation_Params.Reason, sizeof(CanShowPresenceInformation_Params.Reason), &Reason, sizeof(Reason));
+	memcpy_s(&CanShowPresenceInformation_Params.PrivilegeLevelHint, sizeof(CanShowPresenceInformation_Params.PrivilegeLevelHint), &PrivilegeLevelHint, sizeof(PrivilegeLevelHint));
 
 	this->ProcessEvent(uFnCanShowPresenceInformation, &CanShowPresenceInformation_Params, nullptr);
 
-	memcpy_s(&PrivilegeLevelHint, 0x1, &CanShowPresenceInformation_Params.PrivilegeLevelHint, 0x1);
+	memcpy_s(&PrivilegeLevelHint, sizeof(PrivilegeLevelHint), &CanShowPresenceInformation_Params.PrivilegeLevelHint, sizeof(CanShowPresenceInformation_Params.PrivilegeLevelHint));
 
 	return CanShowPresenceInformation_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanViewPlayerProfiles
-// [0x00424003] (FUNC_Final | FUNC_RequiredAPI | FUNC_NetMulticast | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// [0x00424003] (FUNC_Final | FUNC_Defined | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// unsigned long                  bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
+// bool                           bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
 // class FString                  Reason                         (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-// uint8_t                        PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
+// EFeaturePrivilegeLevel         PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
 
-bool UOnlinePlayerInterfaceEOS::CanViewPlayerProfiles(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint)
+bool UOnlinePlayerInterfaceEOS::CanViewPlayerProfiles(uint8_t LocalUserNum, bool bAttemptToResolve, class FString Reason, EFeaturePrivilegeLevel& PrivilegeLevelHint)
 {
 	static UFunction* uFnCanViewPlayerProfiles = nullptr;
 
@@ -9047,28 +9202,29 @@ bool UOnlinePlayerInterfaceEOS::CanViewPlayerProfiles(uint8_t LocalUserNum, unsi
 	}
 
 	UOnlinePlayerInterfaceEOS_execCanViewPlayerProfiles_Params CanViewPlayerProfiles_Params;
-	memcpy_s(&CanViewPlayerProfiles_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&CanViewPlayerProfiles_Params, 0, sizeof(CanViewPlayerProfiles_Params));
+	memcpy_s(&CanViewPlayerProfiles_Params.LocalUserNum, sizeof(CanViewPlayerProfiles_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 	CanViewPlayerProfiles_Params.bAttemptToResolve = bAttemptToResolve;
-	memcpy_s(&CanViewPlayerProfiles_Params.Reason, 0x10, &Reason, 0x10);
-	memcpy_s(&CanViewPlayerProfiles_Params.PrivilegeLevelHint, 0x1, &PrivilegeLevelHint, 0x1);
+	memcpy_s(&CanViewPlayerProfiles_Params.Reason, sizeof(CanViewPlayerProfiles_Params.Reason), &Reason, sizeof(Reason));
+	memcpy_s(&CanViewPlayerProfiles_Params.PrivilegeLevelHint, sizeof(CanViewPlayerProfiles_Params.PrivilegeLevelHint), &PrivilegeLevelHint, sizeof(PrivilegeLevelHint));
 
 	this->ProcessEvent(uFnCanViewPlayerProfiles, &CanViewPlayerProfiles_Params, nullptr);
 
-	memcpy_s(&PrivilegeLevelHint, 0x1, &CanViewPlayerProfiles_Params.PrivilegeLevelHint, 0x1);
+	memcpy_s(&PrivilegeLevelHint, sizeof(PrivilegeLevelHint), &CanViewPlayerProfiles_Params.PrivilegeLevelHint, sizeof(CanViewPlayerProfiles_Params.PrivilegeLevelHint));
 
 	return CanViewPlayerProfiles_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanPurchaseContent
-// [0x00424003] (FUNC_Final | FUNC_RequiredAPI | FUNC_NetMulticast | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// [0x00424003] (FUNC_Final | FUNC_Defined | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// unsigned long                  bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
+// bool                           bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
 // class FString                  Reason                         (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-// uint8_t                        PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
+// EFeaturePrivilegeLevel         PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
 
-bool UOnlinePlayerInterfaceEOS::CanPurchaseContent(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint)
+bool UOnlinePlayerInterfaceEOS::CanPurchaseContent(uint8_t LocalUserNum, bool bAttemptToResolve, class FString Reason, EFeaturePrivilegeLevel& PrivilegeLevelHint)
 {
 	static UFunction* uFnCanPurchaseContent = nullptr;
 
@@ -9078,28 +9234,29 @@ bool UOnlinePlayerInterfaceEOS::CanPurchaseContent(uint8_t LocalUserNum, unsigne
 	}
 
 	UOnlinePlayerInterfaceEOS_execCanPurchaseContent_Params CanPurchaseContent_Params;
-	memcpy_s(&CanPurchaseContent_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&CanPurchaseContent_Params, 0, sizeof(CanPurchaseContent_Params));
+	memcpy_s(&CanPurchaseContent_Params.LocalUserNum, sizeof(CanPurchaseContent_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 	CanPurchaseContent_Params.bAttemptToResolve = bAttemptToResolve;
-	memcpy_s(&CanPurchaseContent_Params.Reason, 0x10, &Reason, 0x10);
-	memcpy_s(&CanPurchaseContent_Params.PrivilegeLevelHint, 0x1, &PrivilegeLevelHint, 0x1);
+	memcpy_s(&CanPurchaseContent_Params.Reason, sizeof(CanPurchaseContent_Params.Reason), &Reason, sizeof(Reason));
+	memcpy_s(&CanPurchaseContent_Params.PrivilegeLevelHint, sizeof(CanPurchaseContent_Params.PrivilegeLevelHint), &PrivilegeLevelHint, sizeof(PrivilegeLevelHint));
 
 	this->ProcessEvent(uFnCanPurchaseContent, &CanPurchaseContent_Params, nullptr);
 
-	memcpy_s(&PrivilegeLevelHint, 0x1, &CanPurchaseContent_Params.PrivilegeLevelHint, 0x1);
+	memcpy_s(&PrivilegeLevelHint, sizeof(PrivilegeLevelHint), &CanPurchaseContent_Params.PrivilegeLevelHint, sizeof(CanPurchaseContent_Params.PrivilegeLevelHint));
 
 	return CanPurchaseContent_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanDownloadUserContent
-// [0x00424003] (FUNC_Final | FUNC_RequiredAPI | FUNC_NetMulticast | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// [0x00424003] (FUNC_Final | FUNC_Defined | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// unsigned long                  bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
+// bool                           bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
 // class FString                  Reason                         (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-// uint8_t                        PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
+// EFeaturePrivilegeLevel         PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
 
-bool UOnlinePlayerInterfaceEOS::CanDownloadUserContent(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint)
+bool UOnlinePlayerInterfaceEOS::CanDownloadUserContent(uint8_t LocalUserNum, bool bAttemptToResolve, class FString Reason, EFeaturePrivilegeLevel& PrivilegeLevelHint)
 {
 	static UFunction* uFnCanDownloadUserContent = nullptr;
 
@@ -9109,27 +9266,28 @@ bool UOnlinePlayerInterfaceEOS::CanDownloadUserContent(uint8_t LocalUserNum, uns
 	}
 
 	UOnlinePlayerInterfaceEOS_execCanDownloadUserContent_Params CanDownloadUserContent_Params;
-	memcpy_s(&CanDownloadUserContent_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&CanDownloadUserContent_Params, 0, sizeof(CanDownloadUserContent_Params));
+	memcpy_s(&CanDownloadUserContent_Params.LocalUserNum, sizeof(CanDownloadUserContent_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 	CanDownloadUserContent_Params.bAttemptToResolve = bAttemptToResolve;
-	memcpy_s(&CanDownloadUserContent_Params.Reason, 0x10, &Reason, 0x10);
-	memcpy_s(&CanDownloadUserContent_Params.PrivilegeLevelHint, 0x1, &PrivilegeLevelHint, 0x1);
+	memcpy_s(&CanDownloadUserContent_Params.Reason, sizeof(CanDownloadUserContent_Params.Reason), &Reason, sizeof(Reason));
+	memcpy_s(&CanDownloadUserContent_Params.PrivilegeLevelHint, sizeof(CanDownloadUserContent_Params.PrivilegeLevelHint), &PrivilegeLevelHint, sizeof(PrivilegeLevelHint));
 
 	this->ProcessEvent(uFnCanDownloadUserContent, &CanDownloadUserContent_Params, nullptr);
 
-	memcpy_s(&PrivilegeLevelHint, 0x1, &CanDownloadUserContent_Params.PrivilegeLevelHint, 0x1);
+	memcpy_s(&PrivilegeLevelHint, sizeof(PrivilegeLevelHint), &CanDownloadUserContent_Params.PrivilegeLevelHint, sizeof(CanDownloadUserContent_Params.PrivilegeLevelHint));
 
 	return CanDownloadUserContent_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanCommunicate
-// [0x00024003] (FUNC_Final | FUNC_RequiredAPI | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
-// uint8_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+// [0x00024003] (FUNC_Final | FUNC_Defined | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
+// EFeaturePrivilegeLevel         ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// uint8_t                        CommMethod                     (CPF_Parm)
-// unsigned long                  bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
+// ECommunicationMethod           CommMethod                     (CPF_Parm)
+// bool                           bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
 
-uint8_t UOnlinePlayerInterfaceEOS::CanCommunicate(uint8_t LocalUserNum, uint8_t CommMethod, unsigned long bAttemptToResolve)
+EFeaturePrivilegeLevel UOnlinePlayerInterfaceEOS::CanCommunicate(uint8_t LocalUserNum, ECommunicationMethod CommMethod, bool bAttemptToResolve)
 {
 	static UFunction* uFnCanCommunicate = nullptr;
 
@@ -9139,8 +9297,9 @@ uint8_t UOnlinePlayerInterfaceEOS::CanCommunicate(uint8_t LocalUserNum, uint8_t 
 	}
 
 	UOnlinePlayerInterfaceEOS_execCanCommunicate_Params CanCommunicate_Params;
-	memcpy_s(&CanCommunicate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&CanCommunicate_Params.CommMethod, 0x1, &CommMethod, 0x1);
+	memset(&CanCommunicate_Params, 0, sizeof(CanCommunicate_Params));
+	memcpy_s(&CanCommunicate_Params.LocalUserNum, sizeof(CanCommunicate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&CanCommunicate_Params.CommMethod, sizeof(CanCommunicate_Params.CommMethod), &CommMethod, sizeof(CommMethod));
 	CanCommunicate_Params.bAttemptToResolve = bAttemptToResolve;
 
 	this->ProcessEvent(uFnCanCommunicate, &CanCommunicate_Params, nullptr);
@@ -9149,15 +9308,15 @@ uint8_t UOnlinePlayerInterfaceEOS::CanCommunicate(uint8_t LocalUserNum, uint8_t 
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.CanPlayOnline
-// [0x00424003] (FUNC_Final | FUNC_RequiredAPI | FUNC_NetMulticast | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// [0x00424003] (FUNC_Final | FUNC_Defined | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// unsigned long                  bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
+// bool                           bAttemptToResolve              (CPF_OptionalParm | CPF_Parm)
 // class FString                  Reason                         (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-// uint8_t                        PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
+// EFeaturePrivilegeLevel         PrivilegeLevelHint             (CPF_Parm | CPF_OutParm)
 
-bool UOnlinePlayerInterfaceEOS::CanPlayOnline(uint8_t LocalUserNum, unsigned long bAttemptToResolve, class FString Reason, uint8_t& PrivilegeLevelHint)
+bool UOnlinePlayerInterfaceEOS::CanPlayOnline(uint8_t LocalUserNum, bool bAttemptToResolve, class FString Reason, EFeaturePrivilegeLevel& PrivilegeLevelHint)
 {
 	static UFunction* uFnCanPlayOnline = nullptr;
 
@@ -9167,21 +9326,22 @@ bool UOnlinePlayerInterfaceEOS::CanPlayOnline(uint8_t LocalUserNum, unsigned lon
 	}
 
 	UOnlinePlayerInterfaceEOS_execCanPlayOnline_Params CanPlayOnline_Params;
-	memcpy_s(&CanPlayOnline_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&CanPlayOnline_Params, 0, sizeof(CanPlayOnline_Params));
+	memcpy_s(&CanPlayOnline_Params.LocalUserNum, sizeof(CanPlayOnline_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 	CanPlayOnline_Params.bAttemptToResolve = bAttemptToResolve;
-	memcpy_s(&CanPlayOnline_Params.Reason, 0x10, &Reason, 0x10);
-	memcpy_s(&CanPlayOnline_Params.PrivilegeLevelHint, 0x1, &PrivilegeLevelHint, 0x1);
+	memcpy_s(&CanPlayOnline_Params.Reason, sizeof(CanPlayOnline_Params.Reason), &Reason, sizeof(Reason));
+	memcpy_s(&CanPlayOnline_Params.PrivilegeLevelHint, sizeof(CanPlayOnline_Params.PrivilegeLevelHint), &PrivilegeLevelHint, sizeof(PrivilegeLevelHint));
 
 	this->ProcessEvent(uFnCanPlayOnline, &CanPlayOnline_Params, nullptr);
 
-	memcpy_s(&PrivilegeLevelHint, 0x1, &CanPlayOnline_Params.PrivilegeLevelHint, 0x1);
+	memcpy_s(&PrivilegeLevelHint, sizeof(PrivilegeLevelHint), &CanPlayOnline_Params.PrivilegeLevelHint, sizeof(CanPlayOnline_Params.PrivilegeLevelHint));
 
 	return CanPlayOnline_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetPlayerNickname
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -9195,20 +9355,17 @@ class FString UOnlinePlayerInterfaceEOS::GetPlayerNickname(uint8_t LocalUserNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_execGetPlayerNickname_Params GetPlayerNickname_Params;
-	memcpy_s(&GetPlayerNickname_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-
-	uFnGetPlayerNickname->FunctionFlags |= ~0x400;
+	memset(&GetPlayerNickname_Params, 0, sizeof(GetPlayerNickname_Params));
+	memcpy_s(&GetPlayerNickname_Params.LocalUserNum, sizeof(GetPlayerNickname_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnGetPlayerNickname, &GetPlayerNickname_Params, nullptr);
-
-	uFnGetPlayerNickname->FunctionFlags |= 0x400;
 
 	return GetPlayerNickname_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetUniquePlayerId
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
@@ -9223,27 +9380,24 @@ bool UOnlinePlayerInterfaceEOS::GetUniquePlayerId(uint8_t LocalUserNum, struct F
 	}
 
 	UOnlinePlayerInterfaceEOS_execGetUniquePlayerId_Params GetUniquePlayerId_Params;
-	memcpy_s(&GetUniquePlayerId_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&GetUniquePlayerId_Params.PlayerID, 0x48, &PlayerID, 0x48);
-
-	uFnGetUniquePlayerId->FunctionFlags |= ~0x400;
+	memset(&GetUniquePlayerId_Params, 0, sizeof(GetUniquePlayerId_Params));
+	memcpy_s(&GetUniquePlayerId_Params.LocalUserNum, sizeof(GetUniquePlayerId_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&GetUniquePlayerId_Params.PlayerID, sizeof(GetUniquePlayerId_Params.PlayerID), &PlayerID, sizeof(PlayerID));
 
 	this->ProcessEvent(uFnGetUniquePlayerId, &GetUniquePlayerId_Params, nullptr);
 
-	uFnGetUniquePlayerId->FunctionFlags |= 0x400;
-
-	memcpy_s(&PlayerID, 0x48, &GetUniquePlayerId_Params.PlayerID, 0x48);
+	memcpy_s(&PlayerID, sizeof(PlayerID), &GetUniquePlayerId_Params.PlayerID, sizeof(GetUniquePlayerId_Params.PlayerID));
 
 	return GetUniquePlayerId_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.GetLoginStatus
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
-// uint8_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+// Parameter Info:
+// ELoginStatus                   ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
-uint8_t UOnlinePlayerInterfaceEOS::GetLoginStatus(uint8_t LocalUserNum)
+ELoginStatus UOnlinePlayerInterfaceEOS::GetLoginStatus(uint8_t LocalUserNum)
 {
 	static UFunction* uFnGetLoginStatus = nullptr;
 
@@ -9253,20 +9407,17 @@ uint8_t UOnlinePlayerInterfaceEOS::GetLoginStatus(uint8_t LocalUserNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_execGetLoginStatus_Params GetLoginStatus_Params;
-	memcpy_s(&GetLoginStatus_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-
-	uFnGetLoginStatus->FunctionFlags |= ~0x400;
+	memset(&GetLoginStatus_Params, 0, sizeof(GetLoginStatus_Params));
+	memcpy_s(&GetLoginStatus_Params.LocalUserNum, sizeof(GetLoginStatus_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnGetLoginStatus, &GetLoginStatus_Params, nullptr);
-
-	uFnGetLoginStatus->FunctionFlags |= 0x400;
 
 	return GetLoginStatus_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearLogoutCompletedDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         LogoutDelegate                 (CPF_Parm | CPF_NeedCtorLink)
 
@@ -9280,15 +9431,16 @@ void UOnlinePlayerInterfaceEOS::ClearLogoutCompletedDelegate(uint8_t LocalUserNu
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearLogoutCompletedDelegate_Params ClearLogoutCompletedDelegate_Params;
-	memcpy_s(&ClearLogoutCompletedDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearLogoutCompletedDelegate_Params.LogoutDelegate, 0x18, &LogoutDelegate, 0x18);
+	memset(&ClearLogoutCompletedDelegate_Params, 0, sizeof(ClearLogoutCompletedDelegate_Params));
+	memcpy_s(&ClearLogoutCompletedDelegate_Params.LocalUserNum, sizeof(ClearLogoutCompletedDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearLogoutCompletedDelegate_Params.LogoutDelegate, sizeof(ClearLogoutCompletedDelegate_Params.LogoutDelegate), &LogoutDelegate, sizeof(LogoutDelegate));
 
 	this->ProcessEvent(uFnClearLogoutCompletedDelegate, &ClearLogoutCompletedDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddLogoutCompletedDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         LogoutDelegate                 (CPF_Parm | CPF_NeedCtorLink)
 
@@ -9302,18 +9454,19 @@ void UOnlinePlayerInterfaceEOS::AddLogoutCompletedDelegate(uint8_t LocalUserNum,
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddLogoutCompletedDelegate_Params AddLogoutCompletedDelegate_Params;
-	memcpy_s(&AddLogoutCompletedDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddLogoutCompletedDelegate_Params.LogoutDelegate, 0x18, &LogoutDelegate, 0x18);
+	memset(&AddLogoutCompletedDelegate_Params, 0, sizeof(AddLogoutCompletedDelegate_Params));
+	memcpy_s(&AddLogoutCompletedDelegate_Params.LocalUserNum, sizeof(AddLogoutCompletedDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddLogoutCompletedDelegate_Params.LogoutDelegate, sizeof(AddLogoutCompletedDelegate_Params.LogoutDelegate), &LogoutDelegate, sizeof(LogoutDelegate));
 
 	this->ProcessEvent(uFnAddLogoutCompletedDelegate, &AddLogoutCompletedDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnLogoutCompleted
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bWasSuccessful                 (CPF_Parm)
+// Parameter Info:
+// bool                           bWasSuccessful                 (CPF_Parm)
 
-void UOnlinePlayerInterfaceEOS::OnLogoutCompleted(unsigned long bWasSuccessful)
+void UOnlinePlayerInterfaceEOS::OnLogoutCompleted(bool bWasSuccessful)
 {
 	static UFunction* uFnOnLogoutCompleted = nullptr;
 
@@ -9323,6 +9476,7 @@ void UOnlinePlayerInterfaceEOS::OnLogoutCompleted(unsigned long bWasSuccessful)
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnLogoutCompleted_Params OnLogoutCompleted_Params;
+	memset(&OnLogoutCompleted_Params, 0, sizeof(OnLogoutCompleted_Params));
 	OnLogoutCompleted_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnLogoutCompleted, &OnLogoutCompleted_Params, nullptr);
@@ -9330,7 +9484,7 @@ void UOnlinePlayerInterfaceEOS::OnLogoutCompleted(unsigned long bWasSuccessful)
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.Logout
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -9344,20 +9498,17 @@ bool UOnlinePlayerInterfaceEOS::Logout(uint8_t LocalUserNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_execLogout_Params Logout_Params;
-	memcpy_s(&Logout_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-
-	uFnLogout->FunctionFlags |= ~0x400;
+	memset(&Logout_Params, 0, sizeof(Logout_Params));
+	memcpy_s(&Logout_Params.LocalUserNum, sizeof(Logout_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnLogout, &Logout_Params, nullptr);
-
-	uFnLogout->FunctionFlags |= 0x400;
 
 	return Logout_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ClearLoginFailedDelegate
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         LoginFailedDelegate            (CPF_Parm | CPF_NeedCtorLink)
 
@@ -9371,19 +9522,16 @@ void UOnlinePlayerInterfaceEOS::ClearLoginFailedDelegate(uint8_t LocalUserNum, s
 	}
 
 	UOnlinePlayerInterfaceEOS_execClearLoginFailedDelegate_Params ClearLoginFailedDelegate_Params;
-	memcpy_s(&ClearLoginFailedDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearLoginFailedDelegate_Params.LoginFailedDelegate, 0x18, &LoginFailedDelegate, 0x18);
-
-	uFnClearLoginFailedDelegate->FunctionFlags |= ~0x400;
+	memset(&ClearLoginFailedDelegate_Params, 0, sizeof(ClearLoginFailedDelegate_Params));
+	memcpy_s(&ClearLoginFailedDelegate_Params.LocalUserNum, sizeof(ClearLoginFailedDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearLoginFailedDelegate_Params.LoginFailedDelegate, sizeof(ClearLoginFailedDelegate_Params.LoginFailedDelegate), &LoginFailedDelegate, sizeof(LoginFailedDelegate));
 
 	this->ProcessEvent(uFnClearLoginFailedDelegate, &ClearLoginFailedDelegate_Params, nullptr);
-
-	uFnClearLoginFailedDelegate->FunctionFlags |= 0x400;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AddLoginFailedDelegate
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         LoginFailedDelegate            (CPF_Parm | CPF_NeedCtorLink)
 
@@ -9397,26 +9545,23 @@ void UOnlinePlayerInterfaceEOS::AddLoginFailedDelegate(uint8_t LocalUserNum, str
 	}
 
 	UOnlinePlayerInterfaceEOS_execAddLoginFailedDelegate_Params AddLoginFailedDelegate_Params;
-	memcpy_s(&AddLoginFailedDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddLoginFailedDelegate_Params.LoginFailedDelegate, 0x18, &LoginFailedDelegate, 0x18);
-
-	uFnAddLoginFailedDelegate->FunctionFlags |= ~0x400;
+	memset(&AddLoginFailedDelegate_Params, 0, sizeof(AddLoginFailedDelegate_Params));
+	memcpy_s(&AddLoginFailedDelegate_Params.LocalUserNum, sizeof(AddLoginFailedDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddLoginFailedDelegate_Params.LoginFailedDelegate, sizeof(AddLoginFailedDelegate_Params.LoginFailedDelegate), &LoginFailedDelegate, sizeof(LoginFailedDelegate));
 
 	this->ProcessEvent(uFnAddLoginFailedDelegate, &AddLoginFailedDelegate_Params, nullptr);
-
-	uFnAddLoginFailedDelegate->FunctionFlags |= 0x400;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnReceievedPinGrantCode
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// uint8_t                        Result                         (CPF_Parm)
+// Parameter Info:
+// EPinGrantResult                Result                         (CPF_Parm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class FString                  Code                           (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  URL                            (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        SecondsUntilExpiration         (CPF_Parm)
 
-void UOnlinePlayerInterfaceEOS::OnReceievedPinGrantCode(uint8_t Result, uint8_t LocalUserNum, class FString Code, class FString URL, int32_t SecondsUntilExpiration)
+void UOnlinePlayerInterfaceEOS::OnReceievedPinGrantCode(EPinGrantResult Result, uint8_t LocalUserNum, class FString Code, class FString URL, int32_t SecondsUntilExpiration)
 {
 	static UFunction* uFnOnReceievedPinGrantCode = nullptr;
 
@@ -9426,22 +9571,23 @@ void UOnlinePlayerInterfaceEOS::OnReceievedPinGrantCode(uint8_t Result, uint8_t 
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnReceievedPinGrantCode_Params OnReceievedPinGrantCode_Params;
-	memcpy_s(&OnReceievedPinGrantCode_Params.Result, 0x1, &Result, 0x1);
-	memcpy_s(&OnReceievedPinGrantCode_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&OnReceievedPinGrantCode_Params.Code, 0x10, &Code, 0x10);
-	memcpy_s(&OnReceievedPinGrantCode_Params.URL, 0x10, &URL, 0x10);
-	memcpy_s(&OnReceievedPinGrantCode_Params.SecondsUntilExpiration, 0x4, &SecondsUntilExpiration, 0x4);
+	memset(&OnReceievedPinGrantCode_Params, 0, sizeof(OnReceievedPinGrantCode_Params));
+	memcpy_s(&OnReceievedPinGrantCode_Params.Result, sizeof(OnReceievedPinGrantCode_Params.Result), &Result, sizeof(Result));
+	memcpy_s(&OnReceievedPinGrantCode_Params.LocalUserNum, sizeof(OnReceievedPinGrantCode_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&OnReceievedPinGrantCode_Params.Code, sizeof(OnReceievedPinGrantCode_Params.Code), &Code, sizeof(Code));
+	memcpy_s(&OnReceievedPinGrantCode_Params.URL, sizeof(OnReceievedPinGrantCode_Params.URL), &URL, sizeof(URL));
+	memcpy_s(&OnReceievedPinGrantCode_Params.SecondsUntilExpiration, sizeof(OnReceievedPinGrantCode_Params.SecondsUntilExpiration), &SecondsUntilExpiration, sizeof(SecondsUntilExpiration));
 
 	this->ProcessEvent(uFnOnReceievedPinGrantCode, &OnReceievedPinGrantCode_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnLoginFailed
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// uint8_t                        ErrorCode                      (CPF_Parm)
+// EOnlineServerConnectionStatus  ErrorCode                      (CPF_Parm)
 
-void UOnlinePlayerInterfaceEOS::OnLoginFailed(uint8_t LocalUserNum, uint8_t ErrorCode)
+void UOnlinePlayerInterfaceEOS::OnLoginFailed(uint8_t LocalUserNum, EOnlineServerConnectionStatus ErrorCode)
 {
 	static UFunction* uFnOnLoginFailed = nullptr;
 
@@ -9451,15 +9597,16 @@ void UOnlinePlayerInterfaceEOS::OnLoginFailed(uint8_t LocalUserNum, uint8_t Erro
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnLoginFailed_Params OnLoginFailed_Params;
-	memcpy_s(&OnLoginFailed_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&OnLoginFailed_Params.ErrorCode, 0x1, &ErrorCode, 0x1);
+	memset(&OnLoginFailed_Params, 0, sizeof(OnLoginFailed_Params));
+	memcpy_s(&OnLoginFailed_Params.LocalUserNum, sizeof(OnLoginFailed_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&OnLoginFailed_Params.ErrorCode, sizeof(OnLoginFailed_Params.ErrorCode), &ErrorCode, sizeof(ErrorCode));
 
 	this->ProcessEvent(uFnOnLoginFailed, &OnLoginFailed_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.AutoLogin
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
 bool UOnlinePlayerInterfaceEOS::AutoLogin()
@@ -9472,6 +9619,7 @@ bool UOnlinePlayerInterfaceEOS::AutoLogin()
 	}
 
 	UOnlinePlayerInterfaceEOS_execAutoLogin_Params AutoLogin_Params;
+	memset(&AutoLogin_Params, 0, sizeof(AutoLogin_Params));
 
 	this->ProcessEvent(uFnAutoLogin, &AutoLogin_Params, nullptr);
 
@@ -9479,15 +9627,15 @@ bool UOnlinePlayerInterfaceEOS::AutoLogin()
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.Login
-// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class FString                  LoginName                      (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Password                       (CPF_Parm | CPF_NeedCtorLink)
-// unsigned long                  bWantsLocalOnly                (CPF_OptionalParm | CPF_Parm)
+// bool                           bWantsLocalOnly                (CPF_OptionalParm | CPF_Parm)
 
-bool UOnlinePlayerInterfaceEOS::Login(uint8_t LocalUserNum, class FString LoginName, class FString Password, unsigned long bWantsLocalOnly)
+bool UOnlinePlayerInterfaceEOS::Login(uint8_t LocalUserNum, class FString LoginName, class FString Password, bool bWantsLocalOnly)
 {
 	static UFunction* uFnLogin = nullptr;
 
@@ -9497,28 +9645,25 @@ bool UOnlinePlayerInterfaceEOS::Login(uint8_t LocalUserNum, class FString LoginN
 	}
 
 	UOnlinePlayerInterfaceEOS_execLogin_Params Login_Params;
-	memcpy_s(&Login_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&Login_Params.LoginName, 0x10, &LoginName, 0x10);
-	memcpy_s(&Login_Params.Password, 0x10, &Password, 0x10);
+	memset(&Login_Params, 0, sizeof(Login_Params));
+	memcpy_s(&Login_Params.LocalUserNum, sizeof(Login_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&Login_Params.LoginName, sizeof(Login_Params.LoginName), &LoginName, sizeof(LoginName));
+	memcpy_s(&Login_Params.Password, sizeof(Login_Params.Password), &Password, sizeof(Password));
 	Login_Params.bWantsLocalOnly = bWantsLocalOnly;
 
-	uFnLogin->FunctionFlags |= ~0x400;
-
 	this->ProcessEvent(uFnLogin, &Login_Params, nullptr);
-
-	uFnLogin->FunctionFlags |= 0x400;
 
 	return Login_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.ShowLoginUI
-// [0x00024001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// unsigned long                  bShowOnlineOnly                (CPF_OptionalParm | CPF_Parm)
+// bool                           bShowOnlineOnly                (CPF_OptionalParm | CPF_Parm)
 
-bool UOnlinePlayerInterfaceEOS::ShowLoginUI(uint8_t LocalUserNum, unsigned long bShowOnlineOnly)
+bool UOnlinePlayerInterfaceEOS::ShowLoginUI(uint8_t LocalUserNum, bool bShowOnlineOnly)
 {
 	static UFunction* uFnShowLoginUI = nullptr;
 
@@ -9528,7 +9673,8 @@ bool UOnlinePlayerInterfaceEOS::ShowLoginUI(uint8_t LocalUserNum, unsigned long 
 	}
 
 	UOnlinePlayerInterfaceEOS_execShowLoginUI_Params ShowLoginUI_Params;
-	memcpy_s(&ShowLoginUI_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&ShowLoginUI_Params, 0, sizeof(ShowLoginUI_Params));
+	memcpy_s(&ShowLoginUI_Params.LocalUserNum, sizeof(ShowLoginUI_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 	ShowLoginUI_Params.bShowOnlineOnly = bShowOnlineOnly;
 
 	this->ProcessEvent(uFnShowLoginUI, &ShowLoginUI_Params, nullptr);
@@ -9538,7 +9684,7 @@ bool UOnlinePlayerInterfaceEOS::ShowLoginUI(uint8_t LocalUserNum, unsigned long 
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnFriendsChange
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 
 void UOnlinePlayerInterfaceEOS::OnFriendsChange()
 {
@@ -9550,13 +9696,14 @@ void UOnlinePlayerInterfaceEOS::OnFriendsChange()
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnFriendsChange_Params OnFriendsChange_Params;
+	memset(&OnFriendsChange_Params, 0, sizeof(OnFriendsChange_Params));
 
 	this->ProcessEvent(uFnOnFriendsChange, &OnFriendsChange_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnMutingChange
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 
 void UOnlinePlayerInterfaceEOS::OnMutingChange()
 {
@@ -9568,13 +9715,14 @@ void UOnlinePlayerInterfaceEOS::OnMutingChange()
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnMutingChange_Params OnMutingChange_Params;
+	memset(&OnMutingChange_Params, 0, sizeof(OnMutingChange_Params));
 
 	this->ProcessEvent(uFnOnMutingChange, &OnMutingChange_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnLoginCancelled
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 
 void UOnlinePlayerInterfaceEOS::OnLoginCancelled()
 {
@@ -9586,13 +9734,14 @@ void UOnlinePlayerInterfaceEOS::OnLoginCancelled()
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnLoginCancelled_Params OnLoginCancelled_Params;
+	memset(&OnLoginCancelled_Params, 0, sizeof(OnLoginCancelled_Params));
 
 	this->ProcessEvent(uFnOnLoginCancelled, &OnLoginCancelled_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnLoginChange
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
 void UOnlinePlayerInterfaceEOS::OnLoginChange(uint8_t LocalUserNum)
@@ -9605,14 +9754,15 @@ void UOnlinePlayerInterfaceEOS::OnLoginChange(uint8_t LocalUserNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnLoginChange_Params OnLoginChange_Params;
-	memcpy_s(&OnLoginChange_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&OnLoginChange_Params, 0, sizeof(OnLoginChange_Params));
+	memcpy_s(&OnLoginChange_Params.LocalUserNum, sizeof(OnLoginChange_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnOnLoginChange, &OnLoginChange_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnPlayerUnblocked
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
 // class UError*                  Error                          (CPF_Parm)
@@ -9627,16 +9777,17 @@ void UOnlinePlayerInterfaceEOS::OnPlayerUnblocked(uint8_t LocalUserNum, struct F
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnPlayerUnblocked_Params OnPlayerUnblocked_Params;
-	memcpy_s(&OnPlayerUnblocked_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&OnPlayerUnblocked_Params.PlayerID, 0x48, &PlayerID, 0x48);
-	memcpy_s(&OnPlayerUnblocked_Params.Error, 0x8, &Error, 0x8);
+	memset(&OnPlayerUnblocked_Params, 0, sizeof(OnPlayerUnblocked_Params));
+	memcpy_s(&OnPlayerUnblocked_Params.LocalUserNum, sizeof(OnPlayerUnblocked_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&OnPlayerUnblocked_Params.PlayerID, sizeof(OnPlayerUnblocked_Params.PlayerID), &PlayerID, sizeof(PlayerID));
+	memcpy_s(&OnPlayerUnblocked_Params.Error, sizeof(OnPlayerUnblocked_Params.Error), &Error, sizeof(Error));
 
 	this->ProcessEvent(uFnOnPlayerUnblocked, &OnPlayerUnblocked_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnPlayerBlocked
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
 // class UError*                  Error                          (CPF_Parm)
@@ -9651,16 +9802,17 @@ void UOnlinePlayerInterfaceEOS::OnPlayerBlocked(uint8_t LocalUserNum, struct FUn
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnPlayerBlocked_Params OnPlayerBlocked_Params;
-	memcpy_s(&OnPlayerBlocked_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&OnPlayerBlocked_Params.PlayerID, 0x48, &PlayerID, 0x48);
-	memcpy_s(&OnPlayerBlocked_Params.Error, 0x8, &Error, 0x8);
+	memset(&OnPlayerBlocked_Params, 0, sizeof(OnPlayerBlocked_Params));
+	memcpy_s(&OnPlayerBlocked_Params.LocalUserNum, sizeof(OnPlayerBlocked_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&OnPlayerBlocked_Params.PlayerID, sizeof(OnPlayerBlocked_Params.PlayerID), &PlayerID, sizeof(PlayerID));
+	memcpy_s(&OnPlayerBlocked_Params.Error, sizeof(OnPlayerBlocked_Params.Error), &Error, sizeof(Error));
 
 	this->ProcessEvent(uFnOnPlayerBlocked, &OnPlayerBlocked_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlinePlayerInterfaceEOS.OnBlockListUpdated
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
 void UOnlinePlayerInterfaceEOS::OnBlockListUpdated(uint8_t LocalUserNum)
@@ -9673,14 +9825,15 @@ void UOnlinePlayerInterfaceEOS::OnBlockListUpdated(uint8_t LocalUserNum)
 	}
 
 	UOnlinePlayerInterfaceEOS_execOnBlockListUpdated_Params OnBlockListUpdated_Params;
-	memcpy_s(&OnBlockListUpdated_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&OnBlockListUpdated_Params, 0, sizeof(OnBlockListUpdated_Params));
+	memcpy_s(&OnBlockListUpdated_Params.LocalUserNum, sizeof(OnBlockListUpdated_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnOnBlockListUpdated, &OnBlockListUpdated_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.RegisterStatGuid
 // [0x00420001] (FUNC_Final | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  ClientStatGuid                 (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
@@ -9695,19 +9848,20 @@ bool UOnlineStatsInterfaceEOS::RegisterStatGuid(struct FUniqueNetId PlayerID, cl
 	}
 
 	UOnlineStatsInterfaceEOS_execRegisterStatGuid_Params RegisterStatGuid_Params;
-	memcpy_s(&RegisterStatGuid_Params.PlayerID, 0x48, &PlayerID, 0x48);
-	memcpy_s(&RegisterStatGuid_Params.ClientStatGuid, 0x10, &ClientStatGuid, 0x10);
+	memset(&RegisterStatGuid_Params, 0, sizeof(RegisterStatGuid_Params));
+	memcpy_s(&RegisterStatGuid_Params.PlayerID, sizeof(RegisterStatGuid_Params.PlayerID), &PlayerID, sizeof(PlayerID));
+	memcpy_s(&RegisterStatGuid_Params.ClientStatGuid, sizeof(RegisterStatGuid_Params.ClientStatGuid), &ClientStatGuid, sizeof(ClientStatGuid));
 
 	this->ProcessEvent(uFnRegisterStatGuid, &RegisterStatGuid_Params, nullptr);
 
-	memcpy_s(&ClientStatGuid, 0x10, &RegisterStatGuid_Params.ClientStatGuid, 0x10);
+	memcpy_s(&ClientStatGuid, sizeof(ClientStatGuid), &RegisterStatGuid_Params.ClientStatGuid, sizeof(RegisterStatGuid_Params.ClientStatGuid));
 
 	return RegisterStatGuid_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.GetClientStatGuid
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 
 class FString UOnlineStatsInterfaceEOS::GetClientStatGuid()
@@ -9720,6 +9874,7 @@ class FString UOnlineStatsInterfaceEOS::GetClientStatGuid()
 	}
 
 	UOnlineStatsInterfaceEOS_execGetClientStatGuid_Params GetClientStatGuid_Params;
+	memset(&GetClientStatGuid_Params, 0, sizeof(GetClientStatGuid_Params));
 
 	this->ProcessEvent(uFnGetClientStatGuid, &GetClientStatGuid_Params, nullptr);
 
@@ -9728,7 +9883,7 @@ class FString UOnlineStatsInterfaceEOS::GetClientStatGuid()
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.ClearRegisterHostStatGuidCompleteDelegateDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         RegisterHostStatGuidCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineStatsInterfaceEOS::ClearRegisterHostStatGuidCompleteDelegateDelegate(struct FScriptDelegate RegisterHostStatGuidCompleteDelegate)
@@ -9741,14 +9896,15 @@ void UOnlineStatsInterfaceEOS::ClearRegisterHostStatGuidCompleteDelegateDelegate
 	}
 
 	UOnlineStatsInterfaceEOS_execClearRegisterHostStatGuidCompleteDelegateDelegate_Params ClearRegisterHostStatGuidCompleteDelegateDelegate_Params;
-	memcpy_s(&ClearRegisterHostStatGuidCompleteDelegateDelegate_Params.RegisterHostStatGuidCompleteDelegate, 0x18, &RegisterHostStatGuidCompleteDelegate, 0x18);
+	memset(&ClearRegisterHostStatGuidCompleteDelegateDelegate_Params, 0, sizeof(ClearRegisterHostStatGuidCompleteDelegateDelegate_Params));
+	memcpy_s(&ClearRegisterHostStatGuidCompleteDelegateDelegate_Params.RegisterHostStatGuidCompleteDelegate, sizeof(ClearRegisterHostStatGuidCompleteDelegateDelegate_Params.RegisterHostStatGuidCompleteDelegate), &RegisterHostStatGuidCompleteDelegate, sizeof(RegisterHostStatGuidCompleteDelegate));
 
 	this->ProcessEvent(uFnClearRegisterHostStatGuidCompleteDelegateDelegate, &ClearRegisterHostStatGuidCompleteDelegateDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.AddRegisterHostStatGuidCompleteDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         RegisterHostStatGuidCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineStatsInterfaceEOS::AddRegisterHostStatGuidCompleteDelegate(struct FScriptDelegate RegisterHostStatGuidCompleteDelegate)
@@ -9761,17 +9917,18 @@ void UOnlineStatsInterfaceEOS::AddRegisterHostStatGuidCompleteDelegate(struct FS
 	}
 
 	UOnlineStatsInterfaceEOS_execAddRegisterHostStatGuidCompleteDelegate_Params AddRegisterHostStatGuidCompleteDelegate_Params;
-	memcpy_s(&AddRegisterHostStatGuidCompleteDelegate_Params.RegisterHostStatGuidCompleteDelegate, 0x18, &RegisterHostStatGuidCompleteDelegate, 0x18);
+	memset(&AddRegisterHostStatGuidCompleteDelegate_Params, 0, sizeof(AddRegisterHostStatGuidCompleteDelegate_Params));
+	memcpy_s(&AddRegisterHostStatGuidCompleteDelegate_Params.RegisterHostStatGuidCompleteDelegate, sizeof(AddRegisterHostStatGuidCompleteDelegate_Params.RegisterHostStatGuidCompleteDelegate), &RegisterHostStatGuidCompleteDelegate, sizeof(RegisterHostStatGuidCompleteDelegate));
 
 	this->ProcessEvent(uFnAddRegisterHostStatGuidCompleteDelegate, &AddRegisterHostStatGuidCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.OnRegisterHostStatGuidComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bWasSuccessful                 (CPF_Parm)
+// Parameter Info:
+// bool                           bWasSuccessful                 (CPF_Parm)
 
-void UOnlineStatsInterfaceEOS::OnRegisterHostStatGuidComplete(unsigned long bWasSuccessful)
+void UOnlineStatsInterfaceEOS::OnRegisterHostStatGuidComplete(bool bWasSuccessful)
 {
 	static UFunction* uFnOnRegisterHostStatGuidComplete = nullptr;
 
@@ -9781,6 +9938,7 @@ void UOnlineStatsInterfaceEOS::OnRegisterHostStatGuidComplete(unsigned long bWas
 	}
 
 	UOnlineStatsInterfaceEOS_execOnRegisterHostStatGuidComplete_Params OnRegisterHostStatGuidComplete_Params;
+	memset(&OnRegisterHostStatGuidComplete_Params, 0, sizeof(OnRegisterHostStatGuidComplete_Params));
 	OnRegisterHostStatGuidComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnRegisterHostStatGuidComplete, &OnRegisterHostStatGuidComplete_Params, nullptr);
@@ -9788,7 +9946,7 @@ void UOnlineStatsInterfaceEOS::OnRegisterHostStatGuidComplete(unsigned long bWas
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.RegisterHostStatGuid
 // [0x00420001] (FUNC_Final | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  HostStatGuid                   (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
@@ -9802,18 +9960,19 @@ bool UOnlineStatsInterfaceEOS::RegisterHostStatGuid(class FString& HostStatGuid)
 	}
 
 	UOnlineStatsInterfaceEOS_execRegisterHostStatGuid_Params RegisterHostStatGuid_Params;
-	memcpy_s(&RegisterHostStatGuid_Params.HostStatGuid, 0x10, &HostStatGuid, 0x10);
+	memset(&RegisterHostStatGuid_Params, 0, sizeof(RegisterHostStatGuid_Params));
+	memcpy_s(&RegisterHostStatGuid_Params.HostStatGuid, sizeof(RegisterHostStatGuid_Params.HostStatGuid), &HostStatGuid, sizeof(HostStatGuid));
 
 	this->ProcessEvent(uFnRegisterHostStatGuid, &RegisterHostStatGuid_Params, nullptr);
 
-	memcpy_s(&HostStatGuid, 0x10, &RegisterHostStatGuid_Params.HostStatGuid, 0x10);
+	memcpy_s(&HostStatGuid, sizeof(HostStatGuid), &RegisterHostStatGuid_Params.HostStatGuid, sizeof(RegisterHostStatGuid_Params.HostStatGuid));
 
 	return RegisterHostStatGuid_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.GetHostStatGuid
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 
 class FString UOnlineStatsInterfaceEOS::GetHostStatGuid()
@@ -9826,6 +9985,7 @@ class FString UOnlineStatsInterfaceEOS::GetHostStatGuid()
 	}
 
 	UOnlineStatsInterfaceEOS_execGetHostStatGuid_Params GetHostStatGuid_Params;
+	memset(&GetHostStatGuid_Params, 0, sizeof(GetHostStatGuid_Params));
 
 	this->ProcessEvent(uFnGetHostStatGuid, &GetHostStatGuid_Params, nullptr);
 
@@ -9834,7 +9994,7 @@ class FString UOnlineStatsInterfaceEOS::GetHostStatGuid()
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.WriteOnlinePlayerScores
 // [0x00420001] (FUNC_Final | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FName                   SessionName                    (CPF_Parm)
 // int32_t                        LeaderboardId                  (CPF_Parm)
@@ -9850,20 +10010,21 @@ bool UOnlineStatsInterfaceEOS::WriteOnlinePlayerScores(struct FName SessionName,
 	}
 
 	UOnlineStatsInterfaceEOS_execWriteOnlinePlayerScores_Params WriteOnlinePlayerScores_Params;
-	memcpy_s(&WriteOnlinePlayerScores_Params.SessionName, 0x8, &SessionName, 0x8);
-	memcpy_s(&WriteOnlinePlayerScores_Params.LeaderboardId, 0x4, &LeaderboardId, 0x4);
-	memcpy_s(&WriteOnlinePlayerScores_Params.PlayerScores, 0x10, &PlayerScores, 0x10);
+	memset(&WriteOnlinePlayerScores_Params, 0, sizeof(WriteOnlinePlayerScores_Params));
+	memcpy_s(&WriteOnlinePlayerScores_Params.SessionName, sizeof(WriteOnlinePlayerScores_Params.SessionName), &SessionName, sizeof(SessionName));
+	memcpy_s(&WriteOnlinePlayerScores_Params.LeaderboardId, sizeof(WriteOnlinePlayerScores_Params.LeaderboardId), &LeaderboardId, sizeof(LeaderboardId));
+	memcpy_s(&WriteOnlinePlayerScores_Params.PlayerScores, sizeof(WriteOnlinePlayerScores_Params.PlayerScores), &PlayerScores, sizeof(PlayerScores));
 
 	this->ProcessEvent(uFnWriteOnlinePlayerScores, &WriteOnlinePlayerScores_Params, nullptr);
 
-	memcpy_s(&PlayerScores, 0x10, &WriteOnlinePlayerScores_Params.PlayerScores, 0x10);
+	memcpy_s(&PlayerScores, sizeof(PlayerScores), &WriteOnlinePlayerScores_Params.PlayerScores, sizeof(WriteOnlinePlayerScores_Params.PlayerScores));
 
 	return WriteOnlinePlayerScores_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.ClearFlushOnlineStatsCompleteDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         FlushOnlineStatsCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineStatsInterfaceEOS::ClearFlushOnlineStatsCompleteDelegate(struct FScriptDelegate FlushOnlineStatsCompleteDelegate)
@@ -9876,14 +10037,15 @@ void UOnlineStatsInterfaceEOS::ClearFlushOnlineStatsCompleteDelegate(struct FScr
 	}
 
 	UOnlineStatsInterfaceEOS_execClearFlushOnlineStatsCompleteDelegate_Params ClearFlushOnlineStatsCompleteDelegate_Params;
-	memcpy_s(&ClearFlushOnlineStatsCompleteDelegate_Params.FlushOnlineStatsCompleteDelegate, 0x18, &FlushOnlineStatsCompleteDelegate, 0x18);
+	memset(&ClearFlushOnlineStatsCompleteDelegate_Params, 0, sizeof(ClearFlushOnlineStatsCompleteDelegate_Params));
+	memcpy_s(&ClearFlushOnlineStatsCompleteDelegate_Params.FlushOnlineStatsCompleteDelegate, sizeof(ClearFlushOnlineStatsCompleteDelegate_Params.FlushOnlineStatsCompleteDelegate), &FlushOnlineStatsCompleteDelegate, sizeof(FlushOnlineStatsCompleteDelegate));
 
 	this->ProcessEvent(uFnClearFlushOnlineStatsCompleteDelegate, &ClearFlushOnlineStatsCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.AddFlushOnlineStatsCompleteDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         FlushOnlineStatsCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineStatsInterfaceEOS::AddFlushOnlineStatsCompleteDelegate(struct FScriptDelegate FlushOnlineStatsCompleteDelegate)
@@ -9896,18 +10058,19 @@ void UOnlineStatsInterfaceEOS::AddFlushOnlineStatsCompleteDelegate(struct FScrip
 	}
 
 	UOnlineStatsInterfaceEOS_execAddFlushOnlineStatsCompleteDelegate_Params AddFlushOnlineStatsCompleteDelegate_Params;
-	memcpy_s(&AddFlushOnlineStatsCompleteDelegate_Params.FlushOnlineStatsCompleteDelegate, 0x18, &FlushOnlineStatsCompleteDelegate, 0x18);
+	memset(&AddFlushOnlineStatsCompleteDelegate_Params, 0, sizeof(AddFlushOnlineStatsCompleteDelegate_Params));
+	memcpy_s(&AddFlushOnlineStatsCompleteDelegate_Params.FlushOnlineStatsCompleteDelegate, sizeof(AddFlushOnlineStatsCompleteDelegate_Params.FlushOnlineStatsCompleteDelegate), &FlushOnlineStatsCompleteDelegate, sizeof(FlushOnlineStatsCompleteDelegate));
 
 	this->ProcessEvent(uFnAddFlushOnlineStatsCompleteDelegate, &AddFlushOnlineStatsCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.OnFlushOnlineStatsComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FName                   SessionName                    (CPF_Parm)
-// unsigned long                  bWasSuccessful                 (CPF_Parm)
+// bool                           bWasSuccessful                 (CPF_Parm)
 
-void UOnlineStatsInterfaceEOS::OnFlushOnlineStatsComplete(struct FName SessionName, unsigned long bWasSuccessful)
+void UOnlineStatsInterfaceEOS::OnFlushOnlineStatsComplete(struct FName SessionName, bool bWasSuccessful)
 {
 	static UFunction* uFnOnFlushOnlineStatsComplete = nullptr;
 
@@ -9917,7 +10080,8 @@ void UOnlineStatsInterfaceEOS::OnFlushOnlineStatsComplete(struct FName SessionNa
 	}
 
 	UOnlineStatsInterfaceEOS_execOnFlushOnlineStatsComplete_Params OnFlushOnlineStatsComplete_Params;
-	memcpy_s(&OnFlushOnlineStatsComplete_Params.SessionName, 0x8, &SessionName, 0x8);
+	memset(&OnFlushOnlineStatsComplete_Params, 0, sizeof(OnFlushOnlineStatsComplete_Params));
+	memcpy_s(&OnFlushOnlineStatsComplete_Params.SessionName, sizeof(OnFlushOnlineStatsComplete_Params.SessionName), &SessionName, sizeof(SessionName));
 	OnFlushOnlineStatsComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnFlushOnlineStatsComplete, &OnFlushOnlineStatsComplete_Params, nullptr);
@@ -9925,7 +10089,7 @@ void UOnlineStatsInterfaceEOS::OnFlushOnlineStatsComplete(struct FName SessionNa
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.FlushOnlineStats
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FName                   SessionName                    (CPF_Parm)
 
@@ -9939,7 +10103,8 @@ bool UOnlineStatsInterfaceEOS::FlushOnlineStats(struct FName SessionName)
 	}
 
 	UOnlineStatsInterfaceEOS_execFlushOnlineStats_Params FlushOnlineStats_Params;
-	memcpy_s(&FlushOnlineStats_Params.SessionName, 0x8, &SessionName, 0x8);
+	memset(&FlushOnlineStats_Params, 0, sizeof(FlushOnlineStats_Params));
+	memcpy_s(&FlushOnlineStats_Params.SessionName, sizeof(FlushOnlineStats_Params.SessionName), &SessionName, sizeof(SessionName));
 
 	this->ProcessEvent(uFnFlushOnlineStats, &FlushOnlineStats_Params, nullptr);
 
@@ -9948,7 +10113,7 @@ bool UOnlineStatsInterfaceEOS::FlushOnlineStats(struct FName SessionName)
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.WriteOnlineStats
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FName                   SessionName                    (CPF_Parm)
 // struct FUniqueNetId            Player                         (CPF_Parm | CPF_NeedCtorLink)
@@ -9964,9 +10129,10 @@ bool UOnlineStatsInterfaceEOS::WriteOnlineStats(struct FName SessionName, struct
 	}
 
 	UOnlineStatsInterfaceEOS_execWriteOnlineStats_Params WriteOnlineStats_Params;
-	memcpy_s(&WriteOnlineStats_Params.SessionName, 0x8, &SessionName, 0x8);
-	memcpy_s(&WriteOnlineStats_Params.Player, 0x48, &Player, 0x48);
-	memcpy_s(&WriteOnlineStats_Params.StatsWrite, 0x8, &StatsWrite, 0x8);
+	memset(&WriteOnlineStats_Params, 0, sizeof(WriteOnlineStats_Params));
+	memcpy_s(&WriteOnlineStats_Params.SessionName, sizeof(WriteOnlineStats_Params.SessionName), &SessionName, sizeof(SessionName));
+	memcpy_s(&WriteOnlineStats_Params.Player, sizeof(WriteOnlineStats_Params.Player), &Player, sizeof(Player));
+	memcpy_s(&WriteOnlineStats_Params.StatsWrite, sizeof(WriteOnlineStats_Params.StatsWrite), &StatsWrite, sizeof(StatsWrite));
 
 	this->ProcessEvent(uFnWriteOnlineStats, &WriteOnlineStats_Params, nullptr);
 
@@ -9975,7 +10141,7 @@ bool UOnlineStatsInterfaceEOS::WriteOnlineStats(struct FName SessionName, struct
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.FreeStats
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class UOnlineStatsRead*        StatsRead                      (CPF_Parm)
 
 void UOnlineStatsInterfaceEOS::FreeStats(class UOnlineStatsRead* StatsRead)
@@ -9988,14 +10154,15 @@ void UOnlineStatsInterfaceEOS::FreeStats(class UOnlineStatsRead* StatsRead)
 	}
 
 	UOnlineStatsInterfaceEOS_execFreeStats_Params FreeStats_Params;
-	memcpy_s(&FreeStats_Params.StatsRead, 0x8, &StatsRead, 0x8);
+	memset(&FreeStats_Params, 0, sizeof(FreeStats_Params));
+	memcpy_s(&FreeStats_Params.StatsRead, sizeof(FreeStats_Params.StatsRead), &StatsRead, sizeof(StatsRead));
 
 	this->ProcessEvent(uFnFreeStats, &FreeStats_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.ClearReadOnlineStatsCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         ReadOnlineStatsCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineStatsInterfaceEOS::ClearReadOnlineStatsCompleteDelegate(struct FScriptDelegate ReadOnlineStatsCompleteDelegate)
@@ -10008,14 +10175,15 @@ void UOnlineStatsInterfaceEOS::ClearReadOnlineStatsCompleteDelegate(struct FScri
 	}
 
 	UOnlineStatsInterfaceEOS_execClearReadOnlineStatsCompleteDelegate_Params ClearReadOnlineStatsCompleteDelegate_Params;
-	memcpy_s(&ClearReadOnlineStatsCompleteDelegate_Params.ReadOnlineStatsCompleteDelegate, 0x18, &ReadOnlineStatsCompleteDelegate, 0x18);
+	memset(&ClearReadOnlineStatsCompleteDelegate_Params, 0, sizeof(ClearReadOnlineStatsCompleteDelegate_Params));
+	memcpy_s(&ClearReadOnlineStatsCompleteDelegate_Params.ReadOnlineStatsCompleteDelegate, sizeof(ClearReadOnlineStatsCompleteDelegate_Params.ReadOnlineStatsCompleteDelegate), &ReadOnlineStatsCompleteDelegate, sizeof(ReadOnlineStatsCompleteDelegate));
 
 	this->ProcessEvent(uFnClearReadOnlineStatsCompleteDelegate, &ClearReadOnlineStatsCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.AddReadOnlineStatsCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         ReadOnlineStatsCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineStatsInterfaceEOS::AddReadOnlineStatsCompleteDelegate(struct FScriptDelegate ReadOnlineStatsCompleteDelegate)
@@ -10028,17 +10196,18 @@ void UOnlineStatsInterfaceEOS::AddReadOnlineStatsCompleteDelegate(struct FScript
 	}
 
 	UOnlineStatsInterfaceEOS_execAddReadOnlineStatsCompleteDelegate_Params AddReadOnlineStatsCompleteDelegate_Params;
-	memcpy_s(&AddReadOnlineStatsCompleteDelegate_Params.ReadOnlineStatsCompleteDelegate, 0x18, &ReadOnlineStatsCompleteDelegate, 0x18);
+	memset(&AddReadOnlineStatsCompleteDelegate_Params, 0, sizeof(AddReadOnlineStatsCompleteDelegate_Params));
+	memcpy_s(&AddReadOnlineStatsCompleteDelegate_Params.ReadOnlineStatsCompleteDelegate, sizeof(AddReadOnlineStatsCompleteDelegate_Params.ReadOnlineStatsCompleteDelegate), &ReadOnlineStatsCompleteDelegate, sizeof(ReadOnlineStatsCompleteDelegate));
 
 	this->ProcessEvent(uFnAddReadOnlineStatsCompleteDelegate, &AddReadOnlineStatsCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.OnReadOnlineStatsComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bWasSuccessful                 (CPF_Parm)
+// Parameter Info:
+// bool                           bWasSuccessful                 (CPF_Parm)
 
-void UOnlineStatsInterfaceEOS::OnReadOnlineStatsComplete(unsigned long bWasSuccessful)
+void UOnlineStatsInterfaceEOS::OnReadOnlineStatsComplete(bool bWasSuccessful)
 {
 	static UFunction* uFnOnReadOnlineStatsComplete = nullptr;
 
@@ -10048,14 +10217,15 @@ void UOnlineStatsInterfaceEOS::OnReadOnlineStatsComplete(unsigned long bWasSucce
 	}
 
 	UOnlineStatsInterfaceEOS_execOnReadOnlineStatsComplete_Params OnReadOnlineStatsComplete_Params;
+	memset(&OnReadOnlineStatsComplete_Params, 0, sizeof(OnReadOnlineStatsComplete_Params));
 	OnReadOnlineStatsComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnReadOnlineStatsComplete, &OnReadOnlineStatsComplete_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.ReadOnlineStatsByRankAroundPlayer
-// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class UOnlineStatsRead*        StatsRead                      (CPF_Parm)
@@ -10071,22 +10241,19 @@ bool UOnlineStatsInterfaceEOS::ReadOnlineStatsByRankAroundPlayer(uint8_t LocalUs
 	}
 
 	UOnlineStatsInterfaceEOS_execReadOnlineStatsByRankAroundPlayer_Params ReadOnlineStatsByRankAroundPlayer_Params;
-	memcpy_s(&ReadOnlineStatsByRankAroundPlayer_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ReadOnlineStatsByRankAroundPlayer_Params.StatsRead, 0x8, &StatsRead, 0x8);
-	memcpy_s(&ReadOnlineStatsByRankAroundPlayer_Params.NumRows, 0x4, &NumRows, 0x4);
-
-	uFnReadOnlineStatsByRankAroundPlayer->FunctionFlags |= ~0x400;
+	memset(&ReadOnlineStatsByRankAroundPlayer_Params, 0, sizeof(ReadOnlineStatsByRankAroundPlayer_Params));
+	memcpy_s(&ReadOnlineStatsByRankAroundPlayer_Params.LocalUserNum, sizeof(ReadOnlineStatsByRankAroundPlayer_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ReadOnlineStatsByRankAroundPlayer_Params.StatsRead, sizeof(ReadOnlineStatsByRankAroundPlayer_Params.StatsRead), &StatsRead, sizeof(StatsRead));
+	memcpy_s(&ReadOnlineStatsByRankAroundPlayer_Params.NumRows, sizeof(ReadOnlineStatsByRankAroundPlayer_Params.NumRows), &NumRows, sizeof(NumRows));
 
 	this->ProcessEvent(uFnReadOnlineStatsByRankAroundPlayer, &ReadOnlineStatsByRankAroundPlayer_Params, nullptr);
-
-	uFnReadOnlineStatsByRankAroundPlayer->FunctionFlags |= 0x400;
 
 	return ReadOnlineStatsByRankAroundPlayer_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.ReadOnlineStatsByRank
-// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class UOnlineStatsRead*        StatsRead                      (CPF_Parm)
@@ -10103,23 +10270,20 @@ bool UOnlineStatsInterfaceEOS::ReadOnlineStatsByRank(uint8_t LocalUserNum, class
 	}
 
 	UOnlineStatsInterfaceEOS_execReadOnlineStatsByRank_Params ReadOnlineStatsByRank_Params;
-	memcpy_s(&ReadOnlineStatsByRank_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ReadOnlineStatsByRank_Params.StatsRead, 0x8, &StatsRead, 0x8);
-	memcpy_s(&ReadOnlineStatsByRank_Params.StartIndex, 0x4, &StartIndex, 0x4);
-	memcpy_s(&ReadOnlineStatsByRank_Params.NumToRead, 0x4, &NumToRead, 0x4);
-
-	uFnReadOnlineStatsByRank->FunctionFlags |= ~0x400;
+	memset(&ReadOnlineStatsByRank_Params, 0, sizeof(ReadOnlineStatsByRank_Params));
+	memcpy_s(&ReadOnlineStatsByRank_Params.LocalUserNum, sizeof(ReadOnlineStatsByRank_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ReadOnlineStatsByRank_Params.StatsRead, sizeof(ReadOnlineStatsByRank_Params.StatsRead), &StatsRead, sizeof(StatsRead));
+	memcpy_s(&ReadOnlineStatsByRank_Params.StartIndex, sizeof(ReadOnlineStatsByRank_Params.StartIndex), &StartIndex, sizeof(StartIndex));
+	memcpy_s(&ReadOnlineStatsByRank_Params.NumToRead, sizeof(ReadOnlineStatsByRank_Params.NumToRead), &NumToRead, sizeof(NumToRead));
 
 	this->ProcessEvent(uFnReadOnlineStatsByRank, &ReadOnlineStatsByRank_Params, nullptr);
-
-	uFnReadOnlineStatsByRank->FunctionFlags |= 0x400;
 
 	return ReadOnlineStatsByRank_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.ReadOnlineStatsForFriends
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class UOnlineStatsRead*        StatsRead                      (CPF_Parm)
@@ -10134,21 +10298,18 @@ bool UOnlineStatsInterfaceEOS::ReadOnlineStatsForFriends(uint8_t LocalUserNum, c
 	}
 
 	UOnlineStatsInterfaceEOS_execReadOnlineStatsForFriends_Params ReadOnlineStatsForFriends_Params;
-	memcpy_s(&ReadOnlineStatsForFriends_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ReadOnlineStatsForFriends_Params.StatsRead, 0x8, &StatsRead, 0x8);
-
-	uFnReadOnlineStatsForFriends->FunctionFlags |= ~0x400;
+	memset(&ReadOnlineStatsForFriends_Params, 0, sizeof(ReadOnlineStatsForFriends_Params));
+	memcpy_s(&ReadOnlineStatsForFriends_Params.LocalUserNum, sizeof(ReadOnlineStatsForFriends_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ReadOnlineStatsForFriends_Params.StatsRead, sizeof(ReadOnlineStatsForFriends_Params.StatsRead), &StatsRead, sizeof(StatsRead));
 
 	this->ProcessEvent(uFnReadOnlineStatsForFriends, &ReadOnlineStatsForFriends_Params, nullptr);
-
-	uFnReadOnlineStatsForFriends->FunctionFlags |= 0x400;
 
 	return ReadOnlineStatsForFriends_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineStatsInterfaceEOS.ReadOnlineStats
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class UOnlineStatsRead*        StatsRead                      (CPF_Parm)
@@ -10164,24 +10325,21 @@ bool UOnlineStatsInterfaceEOS::ReadOnlineStats(uint8_t LocalUserNum, class UOnli
 	}
 
 	UOnlineStatsInterfaceEOS_execReadOnlineStats_Params ReadOnlineStats_Params;
-	memcpy_s(&ReadOnlineStats_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ReadOnlineStats_Params.StatsRead, 0x8, &StatsRead, 0x8);
-	memcpy_s(&ReadOnlineStats_Params.Players, 0x10, &Players, 0x10);
-
-	uFnReadOnlineStats->FunctionFlags |= ~0x400;
+	memset(&ReadOnlineStats_Params, 0, sizeof(ReadOnlineStats_Params));
+	memcpy_s(&ReadOnlineStats_Params.LocalUserNum, sizeof(ReadOnlineStats_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ReadOnlineStats_Params.StatsRead, sizeof(ReadOnlineStats_Params.StatsRead), &StatsRead, sizeof(StatsRead));
+	memcpy_s(&ReadOnlineStats_Params.Players, sizeof(ReadOnlineStats_Params.Players), &Players, sizeof(Players));
 
 	this->ProcessEvent(uFnReadOnlineStats, &ReadOnlineStats_Params, nullptr);
 
-	uFnReadOnlineStats->FunctionFlags |= 0x400;
-
-	memcpy_s(&Players, 0x10, &ReadOnlineStats_Params.Players, 0x10);
+	memcpy_s(&Players, sizeof(Players), &ReadOnlineStats_Params.Players, sizeof(ReadOnlineStats_Params.Players));
 
 	return ReadOnlineStats_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.ClearAllDelegates
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 
 void UOnlineUserCloudFileInterfaceEOS::ClearAllDelegates()
 {
@@ -10193,13 +10351,14 @@ void UOnlineUserCloudFileInterfaceEOS::ClearAllDelegates()
 	}
 
 	UOnlineUserCloudFileInterfaceEOS_execClearAllDelegates_Params ClearAllDelegates_Params;
+	memset(&ClearAllDelegates_Params, 0, sizeof(ClearAllDelegates_Params));
 
 	this->ProcessEvent(uFnClearAllDelegates, &ClearAllDelegates_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.ClearDeleteUserFileCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         DeleteUserFileCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineUserCloudFileInterfaceEOS::ClearDeleteUserFileCompleteDelegate(struct FScriptDelegate DeleteUserFileCompleteDelegate)
@@ -10212,14 +10371,15 @@ void UOnlineUserCloudFileInterfaceEOS::ClearDeleteUserFileCompleteDelegate(struc
 	}
 
 	UOnlineUserCloudFileInterfaceEOS_execClearDeleteUserFileCompleteDelegate_Params ClearDeleteUserFileCompleteDelegate_Params;
-	memcpy_s(&ClearDeleteUserFileCompleteDelegate_Params.DeleteUserFileCompleteDelegate, 0x18, &DeleteUserFileCompleteDelegate, 0x18);
+	memset(&ClearDeleteUserFileCompleteDelegate_Params, 0, sizeof(ClearDeleteUserFileCompleteDelegate_Params));
+	memcpy_s(&ClearDeleteUserFileCompleteDelegate_Params.DeleteUserFileCompleteDelegate, sizeof(ClearDeleteUserFileCompleteDelegate_Params.DeleteUserFileCompleteDelegate), &DeleteUserFileCompleteDelegate, sizeof(DeleteUserFileCompleteDelegate));
 
 	this->ProcessEvent(uFnClearDeleteUserFileCompleteDelegate, &ClearDeleteUserFileCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.AddDeleteUserFileCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         DeleteUserFileCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineUserCloudFileInterfaceEOS::AddDeleteUserFileCompleteDelegate(struct FScriptDelegate DeleteUserFileCompleteDelegate)
@@ -10232,21 +10392,22 @@ void UOnlineUserCloudFileInterfaceEOS::AddDeleteUserFileCompleteDelegate(struct 
 	}
 
 	UOnlineUserCloudFileInterfaceEOS_execAddDeleteUserFileCompleteDelegate_Params AddDeleteUserFileCompleteDelegate_Params;
-	memcpy_s(&AddDeleteUserFileCompleteDelegate_Params.DeleteUserFileCompleteDelegate, 0x18, &DeleteUserFileCompleteDelegate, 0x18);
+	memset(&AddDeleteUserFileCompleteDelegate_Params, 0, sizeof(AddDeleteUserFileCompleteDelegate_Params));
+	memcpy_s(&AddDeleteUserFileCompleteDelegate_Params.DeleteUserFileCompleteDelegate, sizeof(AddDeleteUserFileCompleteDelegate_Params.DeleteUserFileCompleteDelegate), &DeleteUserFileCompleteDelegate, sizeof(DeleteUserFileCompleteDelegate));
 
 	this->ProcessEvent(uFnAddDeleteUserFileCompleteDelegate, &AddDeleteUserFileCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.DeleteUserFile
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
-// unsigned long                  bShouldCloudDelete             (CPF_Parm)
-// unsigned long                  bShouldLocallyDelete           (CPF_Parm)
+// bool                           bShouldCloudDelete             (CPF_Parm)
+// bool                           bShouldLocallyDelete           (CPF_Parm)
 
-bool UOnlineUserCloudFileInterfaceEOS::DeleteUserFile(class FString UserId, class FString Filename, unsigned long bShouldCloudDelete, unsigned long bShouldLocallyDelete)
+bool UOnlineUserCloudFileInterfaceEOS::DeleteUserFile(class FString UserId, class FString Filename, bool bShouldCloudDelete, bool bShouldLocallyDelete)
 {
 	static UFunction* uFnDeleteUserFile = nullptr;
 
@@ -10256,28 +10417,25 @@ bool UOnlineUserCloudFileInterfaceEOS::DeleteUserFile(class FString UserId, clas
 	}
 
 	UOnlineUserCloudFileInterfaceEOS_execDeleteUserFile_Params DeleteUserFile_Params;
-	memcpy_s(&DeleteUserFile_Params.UserId, 0x10, &UserId, 0x10);
-	memcpy_s(&DeleteUserFile_Params.Filename, 0x10, &Filename, 0x10);
+	memset(&DeleteUserFile_Params, 0, sizeof(DeleteUserFile_Params));
+	memcpy_s(&DeleteUserFile_Params.UserId, sizeof(DeleteUserFile_Params.UserId), &UserId, sizeof(UserId));
+	memcpy_s(&DeleteUserFile_Params.Filename, sizeof(DeleteUserFile_Params.Filename), &Filename, sizeof(Filename));
 	DeleteUserFile_Params.bShouldCloudDelete = bShouldCloudDelete;
 	DeleteUserFile_Params.bShouldLocallyDelete = bShouldLocallyDelete;
 
-	uFnDeleteUserFile->FunctionFlags |= ~0x400;
-
 	this->ProcessEvent(uFnDeleteUserFile, &DeleteUserFile_Params, nullptr);
-
-	uFnDeleteUserFile->FunctionFlags |= 0x400;
 
 	return DeleteUserFile_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.OnDeleteUserFileComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bWasSuccessful                 (CPF_Parm)
+// Parameter Info:
+// bool                           bWasSuccessful                 (CPF_Parm)
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineUserCloudFileInterfaceEOS::OnDeleteUserFileComplete(unsigned long bWasSuccessful, class FString UserId, class FString Filename)
+void UOnlineUserCloudFileInterfaceEOS::OnDeleteUserFileComplete(bool bWasSuccessful, class FString UserId, class FString Filename)
 {
 	static UFunction* uFnOnDeleteUserFileComplete = nullptr;
 
@@ -10287,16 +10445,17 @@ void UOnlineUserCloudFileInterfaceEOS::OnDeleteUserFileComplete(unsigned long bW
 	}
 
 	UOnlineUserCloudFileInterfaceEOS_execOnDeleteUserFileComplete_Params OnDeleteUserFileComplete_Params;
+	memset(&OnDeleteUserFileComplete_Params, 0, sizeof(OnDeleteUserFileComplete_Params));
 	OnDeleteUserFileComplete_Params.bWasSuccessful = bWasSuccessful;
-	memcpy_s(&OnDeleteUserFileComplete_Params.UserId, 0x10, &UserId, 0x10);
-	memcpy_s(&OnDeleteUserFileComplete_Params.Filename, 0x10, &Filename, 0x10);
+	memcpy_s(&OnDeleteUserFileComplete_Params.UserId, sizeof(OnDeleteUserFileComplete_Params.UserId), &UserId, sizeof(UserId));
+	memcpy_s(&OnDeleteUserFileComplete_Params.Filename, sizeof(OnDeleteUserFileComplete_Params.Filename), &Filename, sizeof(Filename));
 
 	this->ProcessEvent(uFnOnDeleteUserFileComplete, &OnDeleteUserFileComplete_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.ClearWriteUserFileCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         WriteUserFileCompleteDelegate  (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineUserCloudFileInterfaceEOS::ClearWriteUserFileCompleteDelegate(struct FScriptDelegate WriteUserFileCompleteDelegate)
@@ -10309,14 +10468,15 @@ void UOnlineUserCloudFileInterfaceEOS::ClearWriteUserFileCompleteDelegate(struct
 	}
 
 	UOnlineUserCloudFileInterfaceEOS_execClearWriteUserFileCompleteDelegate_Params ClearWriteUserFileCompleteDelegate_Params;
-	memcpy_s(&ClearWriteUserFileCompleteDelegate_Params.WriteUserFileCompleteDelegate, 0x18, &WriteUserFileCompleteDelegate, 0x18);
+	memset(&ClearWriteUserFileCompleteDelegate_Params, 0, sizeof(ClearWriteUserFileCompleteDelegate_Params));
+	memcpy_s(&ClearWriteUserFileCompleteDelegate_Params.WriteUserFileCompleteDelegate, sizeof(ClearWriteUserFileCompleteDelegate_Params.WriteUserFileCompleteDelegate), &WriteUserFileCompleteDelegate, sizeof(WriteUserFileCompleteDelegate));
 
 	this->ProcessEvent(uFnClearWriteUserFileCompleteDelegate, &ClearWriteUserFileCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.AddWriteUserFileCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         WriteUserFileCompleteDelegate  (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineUserCloudFileInterfaceEOS::AddWriteUserFileCompleteDelegate(struct FScriptDelegate WriteUserFileCompleteDelegate)
@@ -10329,14 +10489,15 @@ void UOnlineUserCloudFileInterfaceEOS::AddWriteUserFileCompleteDelegate(struct F
 	}
 
 	UOnlineUserCloudFileInterfaceEOS_execAddWriteUserFileCompleteDelegate_Params AddWriteUserFileCompleteDelegate_Params;
-	memcpy_s(&AddWriteUserFileCompleteDelegate_Params.WriteUserFileCompleteDelegate, 0x18, &WriteUserFileCompleteDelegate, 0x18);
+	memset(&AddWriteUserFileCompleteDelegate_Params, 0, sizeof(AddWriteUserFileCompleteDelegate_Params));
+	memcpy_s(&AddWriteUserFileCompleteDelegate_Params.WriteUserFileCompleteDelegate, sizeof(AddWriteUserFileCompleteDelegate_Params.WriteUserFileCompleteDelegate), &WriteUserFileCompleteDelegate, sizeof(WriteUserFileCompleteDelegate));
 
 	this->ProcessEvent(uFnAddWriteUserFileCompleteDelegate, &AddWriteUserFileCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.WriteUserFile
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
@@ -10352,29 +10513,26 @@ bool UOnlineUserCloudFileInterfaceEOS::WriteUserFile(class FString UserId, class
 	}
 
 	UOnlineUserCloudFileInterfaceEOS_execWriteUserFile_Params WriteUserFile_Params;
-	memcpy_s(&WriteUserFile_Params.UserId, 0x10, &UserId, 0x10);
-	memcpy_s(&WriteUserFile_Params.Filename, 0x10, &Filename, 0x10);
-	memcpy_s(&WriteUserFile_Params.FileContents, 0x10, &FileContents, 0x10);
-
-	uFnWriteUserFile->FunctionFlags |= ~0x400;
+	memset(&WriteUserFile_Params, 0, sizeof(WriteUserFile_Params));
+	memcpy_s(&WriteUserFile_Params.UserId, sizeof(WriteUserFile_Params.UserId), &UserId, sizeof(UserId));
+	memcpy_s(&WriteUserFile_Params.Filename, sizeof(WriteUserFile_Params.Filename), &Filename, sizeof(Filename));
+	memcpy_s(&WriteUserFile_Params.FileContents, sizeof(WriteUserFile_Params.FileContents), &FileContents, sizeof(FileContents));
 
 	this->ProcessEvent(uFnWriteUserFile, &WriteUserFile_Params, nullptr);
 
-	uFnWriteUserFile->FunctionFlags |= 0x400;
-
-	memcpy_s(&FileContents, 0x10, &WriteUserFile_Params.FileContents, 0x10);
+	memcpy_s(&FileContents, sizeof(FileContents), &WriteUserFile_Params.FileContents, sizeof(WriteUserFile_Params.FileContents));
 
 	return WriteUserFile_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.OnWriteUserFileComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bWasSuccessful                 (CPF_Parm)
+// Parameter Info:
+// bool                           bWasSuccessful                 (CPF_Parm)
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineUserCloudFileInterfaceEOS::OnWriteUserFileComplete(unsigned long bWasSuccessful, class FString UserId, class FString Filename)
+void UOnlineUserCloudFileInterfaceEOS::OnWriteUserFileComplete(bool bWasSuccessful, class FString UserId, class FString Filename)
 {
 	static UFunction* uFnOnWriteUserFileComplete = nullptr;
 
@@ -10384,16 +10542,17 @@ void UOnlineUserCloudFileInterfaceEOS::OnWriteUserFileComplete(unsigned long bWa
 	}
 
 	UOnlineUserCloudFileInterfaceEOS_execOnWriteUserFileComplete_Params OnWriteUserFileComplete_Params;
+	memset(&OnWriteUserFileComplete_Params, 0, sizeof(OnWriteUserFileComplete_Params));
 	OnWriteUserFileComplete_Params.bWasSuccessful = bWasSuccessful;
-	memcpy_s(&OnWriteUserFileComplete_Params.UserId, 0x10, &UserId, 0x10);
-	memcpy_s(&OnWriteUserFileComplete_Params.Filename, 0x10, &Filename, 0x10);
+	memcpy_s(&OnWriteUserFileComplete_Params.UserId, sizeof(OnWriteUserFileComplete_Params.UserId), &UserId, sizeof(UserId));
+	memcpy_s(&OnWriteUserFileComplete_Params.Filename, sizeof(OnWriteUserFileComplete_Params.Filename), &Filename, sizeof(Filename));
 
 	this->ProcessEvent(uFnOnWriteUserFileComplete, &OnWriteUserFileComplete_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.ClearReadUserFileCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         ReadUserFileCompleteDelegate   (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineUserCloudFileInterfaceEOS::ClearReadUserFileCompleteDelegate(struct FScriptDelegate ReadUserFileCompleteDelegate)
@@ -10406,14 +10565,15 @@ void UOnlineUserCloudFileInterfaceEOS::ClearReadUserFileCompleteDelegate(struct 
 	}
 
 	UOnlineUserCloudFileInterfaceEOS_execClearReadUserFileCompleteDelegate_Params ClearReadUserFileCompleteDelegate_Params;
-	memcpy_s(&ClearReadUserFileCompleteDelegate_Params.ReadUserFileCompleteDelegate, 0x18, &ReadUserFileCompleteDelegate, 0x18);
+	memset(&ClearReadUserFileCompleteDelegate_Params, 0, sizeof(ClearReadUserFileCompleteDelegate_Params));
+	memcpy_s(&ClearReadUserFileCompleteDelegate_Params.ReadUserFileCompleteDelegate, sizeof(ClearReadUserFileCompleteDelegate_Params.ReadUserFileCompleteDelegate), &ReadUserFileCompleteDelegate, sizeof(ReadUserFileCompleteDelegate));
 
 	this->ProcessEvent(uFnClearReadUserFileCompleteDelegate, &ClearReadUserFileCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.AddReadUserFileCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         ReadUserFileCompleteDelegate   (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineUserCloudFileInterfaceEOS::AddReadUserFileCompleteDelegate(struct FScriptDelegate ReadUserFileCompleteDelegate)
@@ -10426,14 +10586,15 @@ void UOnlineUserCloudFileInterfaceEOS::AddReadUserFileCompleteDelegate(struct FS
 	}
 
 	UOnlineUserCloudFileInterfaceEOS_execAddReadUserFileCompleteDelegate_Params AddReadUserFileCompleteDelegate_Params;
-	memcpy_s(&AddReadUserFileCompleteDelegate_Params.ReadUserFileCompleteDelegate, 0x18, &ReadUserFileCompleteDelegate, 0x18);
+	memset(&AddReadUserFileCompleteDelegate_Params, 0, sizeof(AddReadUserFileCompleteDelegate_Params));
+	memcpy_s(&AddReadUserFileCompleteDelegate_Params.ReadUserFileCompleteDelegate, sizeof(AddReadUserFileCompleteDelegate_Params.ReadUserFileCompleteDelegate), &ReadUserFileCompleteDelegate, sizeof(ReadUserFileCompleteDelegate));
 
 	this->ProcessEvent(uFnAddReadUserFileCompleteDelegate, &AddReadUserFileCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.ReadUserFile
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
@@ -10448,26 +10609,23 @@ bool UOnlineUserCloudFileInterfaceEOS::ReadUserFile(class FString UserId, class 
 	}
 
 	UOnlineUserCloudFileInterfaceEOS_execReadUserFile_Params ReadUserFile_Params;
-	memcpy_s(&ReadUserFile_Params.UserId, 0x10, &UserId, 0x10);
-	memcpy_s(&ReadUserFile_Params.Filename, 0x10, &Filename, 0x10);
-
-	uFnReadUserFile->FunctionFlags |= ~0x400;
+	memset(&ReadUserFile_Params, 0, sizeof(ReadUserFile_Params));
+	memcpy_s(&ReadUserFile_Params.UserId, sizeof(ReadUserFile_Params.UserId), &UserId, sizeof(UserId));
+	memcpy_s(&ReadUserFile_Params.Filename, sizeof(ReadUserFile_Params.Filename), &Filename, sizeof(Filename));
 
 	this->ProcessEvent(uFnReadUserFile, &ReadUserFile_Params, nullptr);
-
-	uFnReadUserFile->FunctionFlags |= 0x400;
 
 	return ReadUserFile_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.OnReadUserFileComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bWasSuccessful                 (CPF_Parm)
+// Parameter Info:
+// bool                           bWasSuccessful                 (CPF_Parm)
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineUserCloudFileInterfaceEOS::OnReadUserFileComplete(unsigned long bWasSuccessful, class FString UserId, class FString Filename)
+void UOnlineUserCloudFileInterfaceEOS::OnReadUserFileComplete(bool bWasSuccessful, class FString UserId, class FString Filename)
 {
 	static UFunction* uFnOnReadUserFileComplete = nullptr;
 
@@ -10477,16 +10635,17 @@ void UOnlineUserCloudFileInterfaceEOS::OnReadUserFileComplete(unsigned long bWas
 	}
 
 	UOnlineUserCloudFileInterfaceEOS_execOnReadUserFileComplete_Params OnReadUserFileComplete_Params;
+	memset(&OnReadUserFileComplete_Params, 0, sizeof(OnReadUserFileComplete_Params));
 	OnReadUserFileComplete_Params.bWasSuccessful = bWasSuccessful;
-	memcpy_s(&OnReadUserFileComplete_Params.UserId, 0x10, &UserId, 0x10);
-	memcpy_s(&OnReadUserFileComplete_Params.Filename, 0x10, &Filename, 0x10);
+	memcpy_s(&OnReadUserFileComplete_Params.UserId, sizeof(OnReadUserFileComplete_Params.UserId), &UserId, sizeof(UserId));
+	memcpy_s(&OnReadUserFileComplete_Params.Filename, sizeof(OnReadUserFileComplete_Params.Filename), &Filename, sizeof(Filename));
 
 	this->ProcessEvent(uFnOnReadUserFileComplete, &OnReadUserFileComplete_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.GetUserFileList
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 // TArray<struct FEmsFile>        UserFiles                      (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
@@ -10500,21 +10659,18 @@ void UOnlineUserCloudFileInterfaceEOS::GetUserFileList(class FString UserId, TAr
 	}
 
 	UOnlineUserCloudFileInterfaceEOS_execGetUserFileList_Params GetUserFileList_Params;
-	memcpy_s(&GetUserFileList_Params.UserId, 0x10, &UserId, 0x10);
-	memcpy_s(&GetUserFileList_Params.UserFiles, 0x10, &UserFiles, 0x10);
-
-	uFnGetUserFileList->FunctionFlags |= ~0x400;
+	memset(&GetUserFileList_Params, 0, sizeof(GetUserFileList_Params));
+	memcpy_s(&GetUserFileList_Params.UserId, sizeof(GetUserFileList_Params.UserId), &UserId, sizeof(UserId));
+	memcpy_s(&GetUserFileList_Params.UserFiles, sizeof(GetUserFileList_Params.UserFiles), &UserFiles, sizeof(UserFiles));
 
 	this->ProcessEvent(uFnGetUserFileList, &GetUserFileList_Params, nullptr);
 
-	uFnGetUserFileList->FunctionFlags |= 0x400;
-
-	memcpy_s(&UserFiles, 0x10, &GetUserFileList_Params.UserFiles, 0x10);
+	memcpy_s(&UserFiles, sizeof(UserFiles), &GetUserFileList_Params.UserFiles, sizeof(GetUserFileList_Params.UserFiles));
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.ClearEnumerateUserFileCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         EnumerateUserFileCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineUserCloudFileInterfaceEOS::ClearEnumerateUserFileCompleteDelegate(struct FScriptDelegate EnumerateUserFileCompleteDelegate)
@@ -10527,14 +10683,15 @@ void UOnlineUserCloudFileInterfaceEOS::ClearEnumerateUserFileCompleteDelegate(st
 	}
 
 	UOnlineUserCloudFileInterfaceEOS_execClearEnumerateUserFileCompleteDelegate_Params ClearEnumerateUserFileCompleteDelegate_Params;
-	memcpy_s(&ClearEnumerateUserFileCompleteDelegate_Params.EnumerateUserFileCompleteDelegate, 0x18, &EnumerateUserFileCompleteDelegate, 0x18);
+	memset(&ClearEnumerateUserFileCompleteDelegate_Params, 0, sizeof(ClearEnumerateUserFileCompleteDelegate_Params));
+	memcpy_s(&ClearEnumerateUserFileCompleteDelegate_Params.EnumerateUserFileCompleteDelegate, sizeof(ClearEnumerateUserFileCompleteDelegate_Params.EnumerateUserFileCompleteDelegate), &EnumerateUserFileCompleteDelegate, sizeof(EnumerateUserFileCompleteDelegate));
 
 	this->ProcessEvent(uFnClearEnumerateUserFileCompleteDelegate, &ClearEnumerateUserFileCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.AddEnumerateUserFileCompleteDelegate
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // struct FScriptDelegate         EnumerateUserFileCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineUserCloudFileInterfaceEOS::AddEnumerateUserFileCompleteDelegate(struct FScriptDelegate EnumerateUserFileCompleteDelegate)
@@ -10547,14 +10704,15 @@ void UOnlineUserCloudFileInterfaceEOS::AddEnumerateUserFileCompleteDelegate(stru
 	}
 
 	UOnlineUserCloudFileInterfaceEOS_execAddEnumerateUserFileCompleteDelegate_Params AddEnumerateUserFileCompleteDelegate_Params;
-	memcpy_s(&AddEnumerateUserFileCompleteDelegate_Params.EnumerateUserFileCompleteDelegate, 0x18, &EnumerateUserFileCompleteDelegate, 0x18);
+	memset(&AddEnumerateUserFileCompleteDelegate_Params, 0, sizeof(AddEnumerateUserFileCompleteDelegate_Params));
+	memcpy_s(&AddEnumerateUserFileCompleteDelegate_Params.EnumerateUserFileCompleteDelegate, sizeof(AddEnumerateUserFileCompleteDelegate_Params.EnumerateUserFileCompleteDelegate), &EnumerateUserFileCompleteDelegate, sizeof(EnumerateUserFileCompleteDelegate));
 
 	this->ProcessEvent(uFnAddEnumerateUserFileCompleteDelegate, &AddEnumerateUserFileCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.EnumerateUserFiles
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineUserCloudFileInterfaceEOS::EnumerateUserFiles(class FString UserId)
@@ -10567,22 +10725,19 @@ void UOnlineUserCloudFileInterfaceEOS::EnumerateUserFiles(class FString UserId)
 	}
 
 	UOnlineUserCloudFileInterfaceEOS_execEnumerateUserFiles_Params EnumerateUserFiles_Params;
-	memcpy_s(&EnumerateUserFiles_Params.UserId, 0x10, &UserId, 0x10);
-
-	uFnEnumerateUserFiles->FunctionFlags |= ~0x400;
+	memset(&EnumerateUserFiles_Params, 0, sizeof(EnumerateUserFiles_Params));
+	memcpy_s(&EnumerateUserFiles_Params.UserId, sizeof(EnumerateUserFiles_Params.UserId), &UserId, sizeof(UserId));
 
 	this->ProcessEvent(uFnEnumerateUserFiles, &EnumerateUserFiles_Params, nullptr);
-
-	uFnEnumerateUserFiles->FunctionFlags |= 0x400;
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.OnEnumerateUserFilesComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bWasSuccessful                 (CPF_Parm)
+// Parameter Info:
+// bool                           bWasSuccessful                 (CPF_Parm)
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineUserCloudFileInterfaceEOS::OnEnumerateUserFilesComplete(unsigned long bWasSuccessful, class FString UserId)
+void UOnlineUserCloudFileInterfaceEOS::OnEnumerateUserFilesComplete(bool bWasSuccessful, class FString UserId)
 {
 	static UFunction* uFnOnEnumerateUserFilesComplete = nullptr;
 
@@ -10592,15 +10747,16 @@ void UOnlineUserCloudFileInterfaceEOS::OnEnumerateUserFilesComplete(unsigned lon
 	}
 
 	UOnlineUserCloudFileInterfaceEOS_execOnEnumerateUserFilesComplete_Params OnEnumerateUserFilesComplete_Params;
+	memset(&OnEnumerateUserFilesComplete_Params, 0, sizeof(OnEnumerateUserFilesComplete_Params));
 	OnEnumerateUserFilesComplete_Params.bWasSuccessful = bWasSuccessful;
-	memcpy_s(&OnEnumerateUserFilesComplete_Params.UserId, 0x10, &UserId, 0x10);
+	memcpy_s(&OnEnumerateUserFilesComplete_Params.UserId, sizeof(OnEnumerateUserFilesComplete_Params.UserId), &UserId, sizeof(UserId));
 
 	this->ProcessEvent(uFnOnEnumerateUserFilesComplete, &OnEnumerateUserFilesComplete_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.ClearFile
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
@@ -10615,21 +10771,18 @@ bool UOnlineUserCloudFileInterfaceEOS::ClearFile(class FString UserId, class FSt
 	}
 
 	UOnlineUserCloudFileInterfaceEOS_execClearFile_Params ClearFile_Params;
-	memcpy_s(&ClearFile_Params.UserId, 0x10, &UserId, 0x10);
-	memcpy_s(&ClearFile_Params.Filename, 0x10, &Filename, 0x10);
-
-	uFnClearFile->FunctionFlags |= ~0x400;
+	memset(&ClearFile_Params, 0, sizeof(ClearFile_Params));
+	memcpy_s(&ClearFile_Params.UserId, sizeof(ClearFile_Params.UserId), &UserId, sizeof(UserId));
+	memcpy_s(&ClearFile_Params.Filename, sizeof(ClearFile_Params.Filename), &Filename, sizeof(Filename));
 
 	this->ProcessEvent(uFnClearFile, &ClearFile_Params, nullptr);
-
-	uFnClearFile->FunctionFlags |= 0x400;
 
 	return ClearFile_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.ClearFiles
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 
@@ -10643,20 +10796,17 @@ bool UOnlineUserCloudFileInterfaceEOS::ClearFiles(class FString UserId)
 	}
 
 	UOnlineUserCloudFileInterfaceEOS_execClearFiles_Params ClearFiles_Params;
-	memcpy_s(&ClearFiles_Params.UserId, 0x10, &UserId, 0x10);
-
-	uFnClearFiles->FunctionFlags |= ~0x400;
+	memset(&ClearFiles_Params, 0, sizeof(ClearFiles_Params));
+	memcpy_s(&ClearFiles_Params.UserId, sizeof(ClearFiles_Params.UserId), &UserId, sizeof(UserId));
 
 	this->ProcessEvent(uFnClearFiles, &ClearFiles_Params, nullptr);
-
-	uFnClearFiles->FunctionFlags |= 0x400;
 
 	return ClearFiles_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineUserCloudFileInterfaceEOS.GetFileContents
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
@@ -10672,24 +10822,21 @@ bool UOnlineUserCloudFileInterfaceEOS::GetFileContents(class FString UserId, cla
 	}
 
 	UOnlineUserCloudFileInterfaceEOS_execGetFileContents_Params GetFileContents_Params;
-	memcpy_s(&GetFileContents_Params.UserId, 0x10, &UserId, 0x10);
-	memcpy_s(&GetFileContents_Params.Filename, 0x10, &Filename, 0x10);
-	memcpy_s(&GetFileContents_Params.FileContents, 0x10, &FileContents, 0x10);
-
-	uFnGetFileContents->FunctionFlags |= ~0x400;
+	memset(&GetFileContents_Params, 0, sizeof(GetFileContents_Params));
+	memcpy_s(&GetFileContents_Params.UserId, sizeof(GetFileContents_Params.UserId), &UserId, sizeof(UserId));
+	memcpy_s(&GetFileContents_Params.Filename, sizeof(GetFileContents_Params.Filename), &Filename, sizeof(Filename));
+	memcpy_s(&GetFileContents_Params.FileContents, sizeof(GetFileContents_Params.FileContents), &FileContents, sizeof(FileContents));
 
 	this->ProcessEvent(uFnGetFileContents, &GetFileContents_Params, nullptr);
 
-	uFnGetFileContents->FunctionFlags |= 0x400;
-
-	memcpy_s(&FileContents, 0x10, &GetFileContents_Params.FileContents, 0x10);
+	memcpy_s(&FileContents, sizeof(FileContents), &GetFileContents_Params.FileContents, sizeof(GetFileContents_Params.FileContents));
 
 	return GetFileContents_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.SetVoiceReceiveVolume
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // float                          VoiceVolume                    (CPF_Parm)
 
@@ -10703,7 +10850,8 @@ bool UOnlineVoiceInterfaceEOS::SetVoiceReceiveVolume(float VoiceVolume)
 	}
 
 	UOnlineVoiceInterfaceEOS_execSetVoiceReceiveVolume_Params SetVoiceReceiveVolume_Params;
-	memcpy_s(&SetVoiceReceiveVolume_Params.VoiceVolume, 0x4, &VoiceVolume, 0x4);
+	memset(&SetVoiceReceiveVolume_Params, 0, sizeof(SetVoiceReceiveVolume_Params));
+	memcpy_s(&SetVoiceReceiveVolume_Params.VoiceVolume, sizeof(SetVoiceReceiveVolume_Params.VoiceVolume), &VoiceVolume, sizeof(VoiceVolume));
 
 	this->ProcessEvent(uFnSetVoiceReceiveVolume, &SetVoiceReceiveVolume_Params, nullptr);
 
@@ -10712,7 +10860,7 @@ bool UOnlineVoiceInterfaceEOS::SetVoiceReceiveVolume(float VoiceVolume)
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.UnmuteAll
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -10726,7 +10874,8 @@ bool UOnlineVoiceInterfaceEOS::UnmuteAll(uint8_t LocalUserNum)
 	}
 
 	UOnlineVoiceInterfaceEOS_execUnmuteAll_Params UnmuteAll_Params;
-	memcpy_s(&UnmuteAll_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&UnmuteAll_Params, 0, sizeof(UnmuteAll_Params));
+	memcpy_s(&UnmuteAll_Params.LocalUserNum, sizeof(UnmuteAll_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnUnmuteAll, &UnmuteAll_Params, nullptr);
 
@@ -10735,12 +10884,12 @@ bool UOnlineVoiceInterfaceEOS::UnmuteAll(uint8_t LocalUserNum)
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.MuteAll
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// unsigned long                  bAllowFriends                  (CPF_Parm)
+// bool                           bAllowFriends                  (CPF_Parm)
 
-bool UOnlineVoiceInterfaceEOS::MuteAll(uint8_t LocalUserNum, unsigned long bAllowFriends)
+bool UOnlineVoiceInterfaceEOS::MuteAll(uint8_t LocalUserNum, bool bAllowFriends)
 {
 	static UFunction* uFnMuteAll = nullptr;
 
@@ -10750,7 +10899,8 @@ bool UOnlineVoiceInterfaceEOS::MuteAll(uint8_t LocalUserNum, unsigned long bAllo
 	}
 
 	UOnlineVoiceInterfaceEOS_execMuteAll_Params MuteAll_Params;
-	memcpy_s(&MuteAll_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&MuteAll_Params, 0, sizeof(MuteAll_Params));
+	memcpy_s(&MuteAll_Params.LocalUserNum, sizeof(MuteAll_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 	MuteAll_Params.bAllowFriends = bAllowFriends;
 
 	this->ProcessEvent(uFnMuteAll, &MuteAll_Params, nullptr);
@@ -10760,7 +10910,7 @@ bool UOnlineVoiceInterfaceEOS::MuteAll(uint8_t LocalUserNum, unsigned long bAllo
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.SetSpeechRecognitionObject
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class USpeechRecognition*      SpeechRecogObj                 (CPF_Parm)
@@ -10775,8 +10925,9 @@ bool UOnlineVoiceInterfaceEOS::SetSpeechRecognitionObject(uint8_t LocalUserNum, 
 	}
 
 	UOnlineVoiceInterfaceEOS_execSetSpeechRecognitionObject_Params SetSpeechRecognitionObject_Params;
-	memcpy_s(&SetSpeechRecognitionObject_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&SetSpeechRecognitionObject_Params.SpeechRecogObj, 0x8, &SpeechRecogObj, 0x8);
+	memset(&SetSpeechRecognitionObject_Params, 0, sizeof(SetSpeechRecognitionObject_Params));
+	memcpy_s(&SetSpeechRecognitionObject_Params.LocalUserNum, sizeof(SetSpeechRecognitionObject_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&SetSpeechRecognitionObject_Params.SpeechRecogObj, sizeof(SetSpeechRecognitionObject_Params.SpeechRecogObj), &SpeechRecogObj, sizeof(SpeechRecogObj));
 
 	this->ProcessEvent(uFnSetSpeechRecognitionObject, &SetSpeechRecognitionObject_Params, nullptr);
 
@@ -10785,7 +10936,7 @@ bool UOnlineVoiceInterfaceEOS::SetSpeechRecognitionObject(uint8_t LocalUserNum, 
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.SelectVocabulary
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // int32_t                        VocabularyId                   (CPF_Parm)
@@ -10800,8 +10951,9 @@ bool UOnlineVoiceInterfaceEOS::SelectVocabulary(uint8_t LocalUserNum, int32_t Vo
 	}
 
 	UOnlineVoiceInterfaceEOS_execSelectVocabulary_Params SelectVocabulary_Params;
-	memcpy_s(&SelectVocabulary_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&SelectVocabulary_Params.VocabularyId, 0x4, &VocabularyId, 0x4);
+	memset(&SelectVocabulary_Params, 0, sizeof(SelectVocabulary_Params));
+	memcpy_s(&SelectVocabulary_Params.LocalUserNum, sizeof(SelectVocabulary_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&SelectVocabulary_Params.VocabularyId, sizeof(SelectVocabulary_Params.VocabularyId), &VocabularyId, sizeof(VocabularyId));
 
 	this->ProcessEvent(uFnSelectVocabulary, &SelectVocabulary_Params, nullptr);
 
@@ -10810,7 +10962,7 @@ bool UOnlineVoiceInterfaceEOS::SelectVocabulary(uint8_t LocalUserNum, int32_t Vo
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.ClearRecognitionCompleteDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         RecognitionDelegate            (CPF_Parm | CPF_NeedCtorLink)
 
@@ -10824,15 +10976,16 @@ void UOnlineVoiceInterfaceEOS::ClearRecognitionCompleteDelegate(uint8_t LocalUse
 	}
 
 	UOnlineVoiceInterfaceEOS_execClearRecognitionCompleteDelegate_Params ClearRecognitionCompleteDelegate_Params;
-	memcpy_s(&ClearRecognitionCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&ClearRecognitionCompleteDelegate_Params.RecognitionDelegate, 0x18, &RecognitionDelegate, 0x18);
+	memset(&ClearRecognitionCompleteDelegate_Params, 0, sizeof(ClearRecognitionCompleteDelegate_Params));
+	memcpy_s(&ClearRecognitionCompleteDelegate_Params.LocalUserNum, sizeof(ClearRecognitionCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&ClearRecognitionCompleteDelegate_Params.RecognitionDelegate, sizeof(ClearRecognitionCompleteDelegate_Params.RecognitionDelegate), &RecognitionDelegate, sizeof(RecognitionDelegate));
 
 	this->ProcessEvent(uFnClearRecognitionCompleteDelegate, &ClearRecognitionCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.AddRecognitionCompleteDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         RecognitionDelegate            (CPF_Parm | CPF_NeedCtorLink)
 
@@ -10846,15 +10999,16 @@ void UOnlineVoiceInterfaceEOS::AddRecognitionCompleteDelegate(uint8_t LocalUserN
 	}
 
 	UOnlineVoiceInterfaceEOS_execAddRecognitionCompleteDelegate_Params AddRecognitionCompleteDelegate_Params;
-	memcpy_s(&AddRecognitionCompleteDelegate_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&AddRecognitionCompleteDelegate_Params.RecognitionDelegate, 0x18, &RecognitionDelegate, 0x18);
+	memset(&AddRecognitionCompleteDelegate_Params, 0, sizeof(AddRecognitionCompleteDelegate_Params));
+	memcpy_s(&AddRecognitionCompleteDelegate_Params.LocalUserNum, sizeof(AddRecognitionCompleteDelegate_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&AddRecognitionCompleteDelegate_Params.RecognitionDelegate, sizeof(AddRecognitionCompleteDelegate_Params.RecognitionDelegate), &RecognitionDelegate, sizeof(RecognitionDelegate));
 
 	this->ProcessEvent(uFnAddRecognitionCompleteDelegate, &AddRecognitionCompleteDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.GetRecognitionResults
 // [0x00420001] (FUNC_Final | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // TArray<struct FSpeechRecognizedWord> Words                          (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
@@ -10869,19 +11023,20 @@ bool UOnlineVoiceInterfaceEOS::GetRecognitionResults(uint8_t LocalUserNum, TArra
 	}
 
 	UOnlineVoiceInterfaceEOS_execGetRecognitionResults_Params GetRecognitionResults_Params;
-	memcpy_s(&GetRecognitionResults_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&GetRecognitionResults_Params.Words, 0x10, &Words, 0x10);
+	memset(&GetRecognitionResults_Params, 0, sizeof(GetRecognitionResults_Params));
+	memcpy_s(&GetRecognitionResults_Params.LocalUserNum, sizeof(GetRecognitionResults_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&GetRecognitionResults_Params.Words, sizeof(GetRecognitionResults_Params.Words), &Words, sizeof(Words));
 
 	this->ProcessEvent(uFnGetRecognitionResults, &GetRecognitionResults_Params, nullptr);
 
-	memcpy_s(&Words, 0x10, &GetRecognitionResults_Params.Words, 0x10);
+	memcpy_s(&Words, sizeof(Words), &GetRecognitionResults_Params.Words, sizeof(GetRecognitionResults_Params.Words));
 
 	return GetRecognitionResults_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.StopSpeechRecognition
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -10895,7 +11050,8 @@ bool UOnlineVoiceInterfaceEOS::StopSpeechRecognition(uint8_t LocalUserNum)
 	}
 
 	UOnlineVoiceInterfaceEOS_execStopSpeechRecognition_Params StopSpeechRecognition_Params;
-	memcpy_s(&StopSpeechRecognition_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&StopSpeechRecognition_Params, 0, sizeof(StopSpeechRecognition_Params));
+	memcpy_s(&StopSpeechRecognition_Params.LocalUserNum, sizeof(StopSpeechRecognition_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnStopSpeechRecognition, &StopSpeechRecognition_Params, nullptr);
 
@@ -10904,7 +11060,7 @@ bool UOnlineVoiceInterfaceEOS::StopSpeechRecognition(uint8_t LocalUserNum)
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.StartSpeechRecognition
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -10918,7 +11074,8 @@ bool UOnlineVoiceInterfaceEOS::StartSpeechRecognition(uint8_t LocalUserNum)
 	}
 
 	UOnlineVoiceInterfaceEOS_execStartSpeechRecognition_Params StartSpeechRecognition_Params;
-	memcpy_s(&StartSpeechRecognition_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&StartSpeechRecognition_Params, 0, sizeof(StartSpeechRecognition_Params));
+	memcpy_s(&StartSpeechRecognition_Params.LocalUserNum, sizeof(StartSpeechRecognition_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnStartSpeechRecognition, &StartSpeechRecognition_Params, nullptr);
 
@@ -10927,7 +11084,7 @@ bool UOnlineVoiceInterfaceEOS::StartSpeechRecognition(uint8_t LocalUserNum)
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.StopNetworkedVoice
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
 void UOnlineVoiceInterfaceEOS::StopNetworkedVoice(uint8_t LocalUserNum)
@@ -10940,14 +11097,15 @@ void UOnlineVoiceInterfaceEOS::StopNetworkedVoice(uint8_t LocalUserNum)
 	}
 
 	UOnlineVoiceInterfaceEOS_execStopNetworkedVoice_Params StopNetworkedVoice_Params;
-	memcpy_s(&StopNetworkedVoice_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&StopNetworkedVoice_Params, 0, sizeof(StopNetworkedVoice_Params));
+	memcpy_s(&StopNetworkedVoice_Params.LocalUserNum, sizeof(StopNetworkedVoice_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnStopNetworkedVoice, &StopNetworkedVoice_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.StartNetworkedVoice
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
 void UOnlineVoiceInterfaceEOS::StartNetworkedVoice(uint8_t LocalUserNum)
@@ -10960,14 +11118,15 @@ void UOnlineVoiceInterfaceEOS::StartNetworkedVoice(uint8_t LocalUserNum)
 	}
 
 	UOnlineVoiceInterfaceEOS_execStartNetworkedVoice_Params StartNetworkedVoice_Params;
-	memcpy_s(&StartNetworkedVoice_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&StartNetworkedVoice_Params, 0, sizeof(StartNetworkedVoice_Params));
+	memcpy_s(&StartNetworkedVoice_Params.LocalUserNum, sizeof(StartNetworkedVoice_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnStartNetworkedVoice, &StartNetworkedVoice_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.ClearPlayerTalkingDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         TalkerDelegate                 (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineVoiceInterfaceEOS::ClearPlayerTalkingDelegate(struct FScriptDelegate TalkerDelegate)
@@ -10980,14 +11139,15 @@ void UOnlineVoiceInterfaceEOS::ClearPlayerTalkingDelegate(struct FScriptDelegate
 	}
 
 	UOnlineVoiceInterfaceEOS_execClearPlayerTalkingDelegate_Params ClearPlayerTalkingDelegate_Params;
-	memcpy_s(&ClearPlayerTalkingDelegate_Params.TalkerDelegate, 0x18, &TalkerDelegate, 0x18);
+	memset(&ClearPlayerTalkingDelegate_Params, 0, sizeof(ClearPlayerTalkingDelegate_Params));
+	memcpy_s(&ClearPlayerTalkingDelegate_Params.TalkerDelegate, sizeof(ClearPlayerTalkingDelegate_Params.TalkerDelegate), &TalkerDelegate, sizeof(TalkerDelegate));
 
 	this->ProcessEvent(uFnClearPlayerTalkingDelegate, &ClearPlayerTalkingDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.AddPlayerTalkingDelegate
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FScriptDelegate         TalkerDelegate                 (CPF_Parm | CPF_NeedCtorLink)
 
 void UOnlineVoiceInterfaceEOS::AddPlayerTalkingDelegate(struct FScriptDelegate TalkerDelegate)
@@ -11000,20 +11160,21 @@ void UOnlineVoiceInterfaceEOS::AddPlayerTalkingDelegate(struct FScriptDelegate T
 	}
 
 	UOnlineVoiceInterfaceEOS_execAddPlayerTalkingDelegate_Params AddPlayerTalkingDelegate_Params;
-	memcpy_s(&AddPlayerTalkingDelegate_Params.TalkerDelegate, 0x18, &TalkerDelegate, 0x18);
+	memset(&AddPlayerTalkingDelegate_Params, 0, sizeof(AddPlayerTalkingDelegate_Params));
+	memcpy_s(&AddPlayerTalkingDelegate_Params.TalkerDelegate, sizeof(AddPlayerTalkingDelegate_Params.TalkerDelegate), &TalkerDelegate, sizeof(TalkerDelegate));
 
 	this->ProcessEvent(uFnAddPlayerTalkingDelegate, &AddPlayerTalkingDelegate_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.UnmuteRemoteTalker
-// [0x00024001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
-// unsigned long                  bIsSystemWide                  (CPF_OptionalParm | CPF_Parm)
+// bool                           bIsSystemWide                  (CPF_OptionalParm | CPF_Parm)
 
-bool UOnlineVoiceInterfaceEOS::UnmuteRemoteTalker(uint8_t LocalUserNum, struct FUniqueNetId PlayerID, unsigned long bIsSystemWide)
+bool UOnlineVoiceInterfaceEOS::UnmuteRemoteTalker(uint8_t LocalUserNum, struct FUniqueNetId PlayerID, bool bIsSystemWide)
 {
 	static UFunction* uFnUnmuteRemoteTalker = nullptr;
 
@@ -11023,8 +11184,9 @@ bool UOnlineVoiceInterfaceEOS::UnmuteRemoteTalker(uint8_t LocalUserNum, struct F
 	}
 
 	UOnlineVoiceInterfaceEOS_execUnmuteRemoteTalker_Params UnmuteRemoteTalker_Params;
-	memcpy_s(&UnmuteRemoteTalker_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&UnmuteRemoteTalker_Params.PlayerID, 0x48, &PlayerID, 0x48);
+	memset(&UnmuteRemoteTalker_Params, 0, sizeof(UnmuteRemoteTalker_Params));
+	memcpy_s(&UnmuteRemoteTalker_Params.LocalUserNum, sizeof(UnmuteRemoteTalker_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&UnmuteRemoteTalker_Params.PlayerID, sizeof(UnmuteRemoteTalker_Params.PlayerID), &PlayerID, sizeof(PlayerID));
 	UnmuteRemoteTalker_Params.bIsSystemWide = bIsSystemWide;
 
 	this->ProcessEvent(uFnUnmuteRemoteTalker, &UnmuteRemoteTalker_Params, nullptr);
@@ -11033,14 +11195,14 @@ bool UOnlineVoiceInterfaceEOS::UnmuteRemoteTalker(uint8_t LocalUserNum, struct F
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.MuteRemoteTalker
-// [0x00024001] (FUNC_Final | FUNC_NetMulticast | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00024001] (FUNC_Final | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
-// unsigned long                  bIsSystemWide                  (CPF_OptionalParm | CPF_Parm)
+// bool                           bIsSystemWide                  (CPF_OptionalParm | CPF_Parm)
 
-bool UOnlineVoiceInterfaceEOS::MuteRemoteTalker(uint8_t LocalUserNum, struct FUniqueNetId PlayerID, unsigned long bIsSystemWide)
+bool UOnlineVoiceInterfaceEOS::MuteRemoteTalker(uint8_t LocalUserNum, struct FUniqueNetId PlayerID, bool bIsSystemWide)
 {
 	static UFunction* uFnMuteRemoteTalker = nullptr;
 
@@ -11050,8 +11212,9 @@ bool UOnlineVoiceInterfaceEOS::MuteRemoteTalker(uint8_t LocalUserNum, struct FUn
 	}
 
 	UOnlineVoiceInterfaceEOS_execMuteRemoteTalker_Params MuteRemoteTalker_Params;
-	memcpy_s(&MuteRemoteTalker_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&MuteRemoteTalker_Params.PlayerID, 0x48, &PlayerID, 0x48);
+	memset(&MuteRemoteTalker_Params, 0, sizeof(MuteRemoteTalker_Params));
+	memcpy_s(&MuteRemoteTalker_Params.LocalUserNum, sizeof(MuteRemoteTalker_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&MuteRemoteTalker_Params.PlayerID, sizeof(MuteRemoteTalker_Params.PlayerID), &PlayerID, sizeof(PlayerID));
 	MuteRemoteTalker_Params.bIsSystemWide = bIsSystemWide;
 
 	this->ProcessEvent(uFnMuteRemoteTalker, &MuteRemoteTalker_Params, nullptr);
@@ -11061,7 +11224,7 @@ bool UOnlineVoiceInterfaceEOS::MuteRemoteTalker(uint8_t LocalUserNum, struct FUn
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.SetRemoteTalkerPriority
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
@@ -11077,9 +11240,10 @@ bool UOnlineVoiceInterfaceEOS::SetRemoteTalkerPriority(uint8_t LocalUserNum, str
 	}
 
 	UOnlineVoiceInterfaceEOS_execSetRemoteTalkerPriority_Params SetRemoteTalkerPriority_Params;
-	memcpy_s(&SetRemoteTalkerPriority_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
-	memcpy_s(&SetRemoteTalkerPriority_Params.PlayerID, 0x48, &PlayerID, 0x48);
-	memcpy_s(&SetRemoteTalkerPriority_Params.Priority, 0x4, &Priority, 0x4);
+	memset(&SetRemoteTalkerPriority_Params, 0, sizeof(SetRemoteTalkerPriority_Params));
+	memcpy_s(&SetRemoteTalkerPriority_Params.LocalUserNum, sizeof(SetRemoteTalkerPriority_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
+	memcpy_s(&SetRemoteTalkerPriority_Params.PlayerID, sizeof(SetRemoteTalkerPriority_Params.PlayerID), &PlayerID, sizeof(PlayerID));
+	memcpy_s(&SetRemoteTalkerPriority_Params.Priority, sizeof(SetRemoteTalkerPriority_Params.Priority), &Priority, sizeof(Priority));
 
 	this->ProcessEvent(uFnSetRemoteTalkerPriority, &SetRemoteTalkerPriority_Params, nullptr);
 
@@ -11088,7 +11252,7 @@ bool UOnlineVoiceInterfaceEOS::SetRemoteTalkerPriority(uint8_t LocalUserNum, str
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.IsHeadsetPresent
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -11102,7 +11266,8 @@ bool UOnlineVoiceInterfaceEOS::IsHeadsetPresent(uint8_t LocalUserNum)
 	}
 
 	UOnlineVoiceInterfaceEOS_execIsHeadsetPresent_Params IsHeadsetPresent_Params;
-	memcpy_s(&IsHeadsetPresent_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&IsHeadsetPresent_Params, 0, sizeof(IsHeadsetPresent_Params));
+	memcpy_s(&IsHeadsetPresent_Params.LocalUserNum, sizeof(IsHeadsetPresent_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnIsHeadsetPresent, &IsHeadsetPresent_Params, nullptr);
 
@@ -11111,7 +11276,7 @@ bool UOnlineVoiceInterfaceEOS::IsHeadsetPresent(uint8_t LocalUserNum)
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.IsRemotePlayerTalking
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
 
@@ -11125,7 +11290,8 @@ bool UOnlineVoiceInterfaceEOS::IsRemotePlayerTalking(struct FUniqueNetId PlayerI
 	}
 
 	UOnlineVoiceInterfaceEOS_execIsRemotePlayerTalking_Params IsRemotePlayerTalking_Params;
-	memcpy_s(&IsRemotePlayerTalking_Params.PlayerID, 0x48, &PlayerID, 0x48);
+	memset(&IsRemotePlayerTalking_Params, 0, sizeof(IsRemotePlayerTalking_Params));
+	memcpy_s(&IsRemotePlayerTalking_Params.PlayerID, sizeof(IsRemotePlayerTalking_Params.PlayerID), &PlayerID, sizeof(PlayerID));
 
 	this->ProcessEvent(uFnIsRemotePlayerTalking, &IsRemotePlayerTalking_Params, nullptr);
 
@@ -11134,7 +11300,7 @@ bool UOnlineVoiceInterfaceEOS::IsRemotePlayerTalking(struct FUniqueNetId PlayerI
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.IsLocalPlayerTalking
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -11148,7 +11314,8 @@ bool UOnlineVoiceInterfaceEOS::IsLocalPlayerTalking(uint8_t LocalUserNum)
 	}
 
 	UOnlineVoiceInterfaceEOS_execIsLocalPlayerTalking_Params IsLocalPlayerTalking_Params;
-	memcpy_s(&IsLocalPlayerTalking_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&IsLocalPlayerTalking_Params, 0, sizeof(IsLocalPlayerTalking_Params));
+	memcpy_s(&IsLocalPlayerTalking_Params.LocalUserNum, sizeof(IsLocalPlayerTalking_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnIsLocalPlayerTalking, &IsLocalPlayerTalking_Params, nullptr);
 
@@ -11157,7 +11324,7 @@ bool UOnlineVoiceInterfaceEOS::IsLocalPlayerTalking(uint8_t LocalUserNum)
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.UnregisterRemoteTalker
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
 
@@ -11171,7 +11338,8 @@ bool UOnlineVoiceInterfaceEOS::UnregisterRemoteTalker(struct FUniqueNetId Player
 	}
 
 	UOnlineVoiceInterfaceEOS_execUnregisterRemoteTalker_Params UnregisterRemoteTalker_Params;
-	memcpy_s(&UnregisterRemoteTalker_Params.PlayerID, 0x48, &PlayerID, 0x48);
+	memset(&UnregisterRemoteTalker_Params, 0, sizeof(UnregisterRemoteTalker_Params));
+	memcpy_s(&UnregisterRemoteTalker_Params.PlayerID, sizeof(UnregisterRemoteTalker_Params.PlayerID), &PlayerID, sizeof(PlayerID));
 
 	this->ProcessEvent(uFnUnregisterRemoteTalker, &UnregisterRemoteTalker_Params, nullptr);
 
@@ -11180,7 +11348,7 @@ bool UOnlineVoiceInterfaceEOS::UnregisterRemoteTalker(struct FUniqueNetId Player
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.RegisterRemoteTalker
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
 
@@ -11194,7 +11362,8 @@ bool UOnlineVoiceInterfaceEOS::RegisterRemoteTalker(struct FUniqueNetId PlayerID
 	}
 
 	UOnlineVoiceInterfaceEOS_execRegisterRemoteTalker_Params RegisterRemoteTalker_Params;
-	memcpy_s(&RegisterRemoteTalker_Params.PlayerID, 0x48, &PlayerID, 0x48);
+	memset(&RegisterRemoteTalker_Params, 0, sizeof(RegisterRemoteTalker_Params));
+	memcpy_s(&RegisterRemoteTalker_Params.PlayerID, sizeof(RegisterRemoteTalker_Params.PlayerID), &PlayerID, sizeof(PlayerID));
 
 	this->ProcessEvent(uFnRegisterRemoteTalker, &RegisterRemoteTalker_Params, nullptr);
 
@@ -11203,7 +11372,7 @@ bool UOnlineVoiceInterfaceEOS::RegisterRemoteTalker(struct FUniqueNetId PlayerID
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.UnregisterLocalTalker
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -11217,7 +11386,8 @@ bool UOnlineVoiceInterfaceEOS::UnregisterLocalTalker(uint8_t LocalUserNum)
 	}
 
 	UOnlineVoiceInterfaceEOS_execUnregisterLocalTalker_Params UnregisterLocalTalker_Params;
-	memcpy_s(&UnregisterLocalTalker_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&UnregisterLocalTalker_Params, 0, sizeof(UnregisterLocalTalker_Params));
+	memcpy_s(&UnregisterLocalTalker_Params.LocalUserNum, sizeof(UnregisterLocalTalker_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnUnregisterLocalTalker, &UnregisterLocalTalker_Params, nullptr);
 
@@ -11226,7 +11396,7 @@ bool UOnlineVoiceInterfaceEOS::UnregisterLocalTalker(uint8_t LocalUserNum)
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.RegisterLocalTalker
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 
@@ -11240,7 +11410,8 @@ bool UOnlineVoiceInterfaceEOS::RegisterLocalTalker(uint8_t LocalUserNum)
 	}
 
 	UOnlineVoiceInterfaceEOS_execRegisterLocalTalker_Params RegisterLocalTalker_Params;
-	memcpy_s(&RegisterLocalTalker_Params.LocalUserNum, 0x1, &LocalUserNum, 0x1);
+	memset(&RegisterLocalTalker_Params, 0, sizeof(RegisterLocalTalker_Params));
+	memcpy_s(&RegisterLocalTalker_Params.LocalUserNum, sizeof(RegisterLocalTalker_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 
 	this->ProcessEvent(uFnRegisterLocalTalker, &RegisterLocalTalker_Params, nullptr);
 
@@ -11249,7 +11420,7 @@ bool UOnlineVoiceInterfaceEOS::RegisterLocalTalker(uint8_t LocalUserNum)
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.OnRecognitionComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 
 void UOnlineVoiceInterfaceEOS::OnRecognitionComplete()
 {
@@ -11261,17 +11432,18 @@ void UOnlineVoiceInterfaceEOS::OnRecognitionComplete()
 	}
 
 	UOnlineVoiceInterfaceEOS_execOnRecognitionComplete_Params OnRecognitionComplete_Params;
+	memset(&OnRecognitionComplete_Params, 0, sizeof(OnRecognitionComplete_Params));
 
 	this->ProcessEvent(uFnOnRecognitionComplete, &OnRecognitionComplete_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.OnPlayerTalkingStateChange
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // struct FUniqueNetId            Player                         (CPF_Parm | CPF_NeedCtorLink)
-// unsigned long                  bIsTalking                     (CPF_Parm)
+// bool                           bIsTalking                     (CPF_Parm)
 
-void UOnlineVoiceInterfaceEOS::OnPlayerTalkingStateChange(struct FUniqueNetId Player, unsigned long bIsTalking)
+void UOnlineVoiceInterfaceEOS::OnPlayerTalkingStateChange(struct FUniqueNetId Player, bool bIsTalking)
 {
 	static UFunction* uFnOnPlayerTalkingStateChange = nullptr;
 
@@ -11281,7 +11453,8 @@ void UOnlineVoiceInterfaceEOS::OnPlayerTalkingStateChange(struct FUniqueNetId Pl
 	}
 
 	UOnlineVoiceInterfaceEOS_execOnPlayerTalkingStateChange_Params OnPlayerTalkingStateChange_Params;
-	memcpy_s(&OnPlayerTalkingStateChange_Params.Player, 0x48, &Player, 0x48);
+	memset(&OnPlayerTalkingStateChange_Params, 0, sizeof(OnPlayerTalkingStateChange_Params));
+	memcpy_s(&OnPlayerTalkingStateChange_Params.Player, sizeof(OnPlayerTalkingStateChange_Params.Player), &Player, sizeof(Player));
 	OnPlayerTalkingStateChange_Params.bIsTalking = bIsTalking;
 
 	this->ProcessEvent(uFnOnPlayerTalkingStateChange, &OnPlayerTalkingStateChange_Params, nullptr);
@@ -11289,13 +11462,13 @@ void UOnlineVoiceInterfaceEOS::OnPlayerTalkingStateChange(struct FUniqueNetId Pl
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.SetPlayerBlockStatus
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bBlocked                       (CPF_Const | CPF_Parm)
+// Parameter Info:
+// bool                           bBlocked                       (CPF_Const | CPF_Parm)
 // class FString                  LocalEpicAccountId             (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 // class FString                  TargetEpicAccountId            (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 // class FString                  RoomName                       (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UOnlineVoiceInterfaceEOS::SetPlayerBlockStatus(unsigned long bBlocked, class FString& LocalEpicAccountId, class FString& TargetEpicAccountId, class FString& RoomName)
+void UOnlineVoiceInterfaceEOS::SetPlayerBlockStatus(bool bBlocked, class FString& LocalEpicAccountId, class FString& TargetEpicAccountId, class FString& RoomName)
 {
 	static UFunction* uFnSetPlayerBlockStatus = nullptr;
 
@@ -11305,31 +11478,28 @@ void UOnlineVoiceInterfaceEOS::SetPlayerBlockStatus(unsigned long bBlocked, clas
 	}
 
 	UOnlineVoiceInterfaceEOS_execSetPlayerBlockStatus_Params SetPlayerBlockStatus_Params;
+	memset(&SetPlayerBlockStatus_Params, 0, sizeof(SetPlayerBlockStatus_Params));
 	SetPlayerBlockStatus_Params.bBlocked = bBlocked;
-	memcpy_s(&SetPlayerBlockStatus_Params.LocalEpicAccountId, 0x10, &LocalEpicAccountId, 0x10);
-	memcpy_s(&SetPlayerBlockStatus_Params.TargetEpicAccountId, 0x10, &TargetEpicAccountId, 0x10);
-	memcpy_s(&SetPlayerBlockStatus_Params.RoomName, 0x10, &RoomName, 0x10);
-
-	uFnSetPlayerBlockStatus->FunctionFlags |= ~0x400;
+	memcpy_s(&SetPlayerBlockStatus_Params.LocalEpicAccountId, sizeof(SetPlayerBlockStatus_Params.LocalEpicAccountId), &LocalEpicAccountId, sizeof(LocalEpicAccountId));
+	memcpy_s(&SetPlayerBlockStatus_Params.TargetEpicAccountId, sizeof(SetPlayerBlockStatus_Params.TargetEpicAccountId), &TargetEpicAccountId, sizeof(TargetEpicAccountId));
+	memcpy_s(&SetPlayerBlockStatus_Params.RoomName, sizeof(SetPlayerBlockStatus_Params.RoomName), &RoomName, sizeof(RoomName));
 
 	this->ProcessEvent(uFnSetPlayerBlockStatus, &SetPlayerBlockStatus_Params, nullptr);
 
-	uFnSetPlayerBlockStatus->FunctionFlags |= 0x400;
-
-	memcpy_s(&LocalEpicAccountId, 0x10, &SetPlayerBlockStatus_Params.LocalEpicAccountId, 0x10);
-	memcpy_s(&TargetEpicAccountId, 0x10, &SetPlayerBlockStatus_Params.TargetEpicAccountId, 0x10);
-	memcpy_s(&RoomName, 0x10, &SetPlayerBlockStatus_Params.RoomName, 0x10);
+	memcpy_s(&LocalEpicAccountId, sizeof(LocalEpicAccountId), &SetPlayerBlockStatus_Params.LocalEpicAccountId, sizeof(SetPlayerBlockStatus_Params.LocalEpicAccountId));
+	memcpy_s(&TargetEpicAccountId, sizeof(TargetEpicAccountId), &SetPlayerBlockStatus_Params.TargetEpicAccountId, sizeof(SetPlayerBlockStatus_Params.TargetEpicAccountId));
+	memcpy_s(&RoomName, sizeof(RoomName), &SetPlayerBlockStatus_Params.RoomName, sizeof(SetPlayerBlockStatus_Params.RoomName));
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.SetPlayerMuteStatus
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bMuted                         (CPF_Const | CPF_Parm)
+// Parameter Info:
+// bool                           bMuted                         (CPF_Const | CPF_Parm)
 // class FString                  LocalEpicAccountId             (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 // class FString                  TargetEpicAccountId            (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 // class FString                  RoomName                       (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UOnlineVoiceInterfaceEOS::SetPlayerMuteStatus(unsigned long bMuted, class FString& LocalEpicAccountId, class FString& TargetEpicAccountId, class FString& RoomName)
+void UOnlineVoiceInterfaceEOS::SetPlayerMuteStatus(bool bMuted, class FString& LocalEpicAccountId, class FString& TargetEpicAccountId, class FString& RoomName)
 {
 	static UFunction* uFnSetPlayerMuteStatus = nullptr;
 
@@ -11339,29 +11509,26 @@ void UOnlineVoiceInterfaceEOS::SetPlayerMuteStatus(unsigned long bMuted, class F
 	}
 
 	UOnlineVoiceInterfaceEOS_execSetPlayerMuteStatus_Params SetPlayerMuteStatus_Params;
+	memset(&SetPlayerMuteStatus_Params, 0, sizeof(SetPlayerMuteStatus_Params));
 	SetPlayerMuteStatus_Params.bMuted = bMuted;
-	memcpy_s(&SetPlayerMuteStatus_Params.LocalEpicAccountId, 0x10, &LocalEpicAccountId, 0x10);
-	memcpy_s(&SetPlayerMuteStatus_Params.TargetEpicAccountId, 0x10, &TargetEpicAccountId, 0x10);
-	memcpy_s(&SetPlayerMuteStatus_Params.RoomName, 0x10, &RoomName, 0x10);
-
-	uFnSetPlayerMuteStatus->FunctionFlags |= ~0x400;
+	memcpy_s(&SetPlayerMuteStatus_Params.LocalEpicAccountId, sizeof(SetPlayerMuteStatus_Params.LocalEpicAccountId), &LocalEpicAccountId, sizeof(LocalEpicAccountId));
+	memcpy_s(&SetPlayerMuteStatus_Params.TargetEpicAccountId, sizeof(SetPlayerMuteStatus_Params.TargetEpicAccountId), &TargetEpicAccountId, sizeof(TargetEpicAccountId));
+	memcpy_s(&SetPlayerMuteStatus_Params.RoomName, sizeof(SetPlayerMuteStatus_Params.RoomName), &RoomName, sizeof(RoomName));
 
 	this->ProcessEvent(uFnSetPlayerMuteStatus, &SetPlayerMuteStatus_Params, nullptr);
 
-	uFnSetPlayerMuteStatus->FunctionFlags |= 0x400;
-
-	memcpy_s(&LocalEpicAccountId, 0x10, &SetPlayerMuteStatus_Params.LocalEpicAccountId, 0x10);
-	memcpy_s(&TargetEpicAccountId, 0x10, &SetPlayerMuteStatus_Params.TargetEpicAccountId, 0x10);
-	memcpy_s(&RoomName, 0x10, &SetPlayerMuteStatus_Params.RoomName, 0x10);
+	memcpy_s(&LocalEpicAccountId, sizeof(LocalEpicAccountId), &SetPlayerMuteStatus_Params.LocalEpicAccountId, sizeof(SetPlayerMuteStatus_Params.LocalEpicAccountId));
+	memcpy_s(&TargetEpicAccountId, sizeof(TargetEpicAccountId), &SetPlayerMuteStatus_Params.TargetEpicAccountId, sizeof(SetPlayerMuteStatus_Params.TargetEpicAccountId));
+	memcpy_s(&RoomName, sizeof(RoomName), &SetPlayerMuteStatus_Params.RoomName, sizeof(SetPlayerMuteStatus_Params.RoomName));
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.GetUserState
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
-// uint8_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+// Parameter Info:
+// EPlayerVoiceTransitionState    ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  EpicAccountId                  (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-uint8_t UOnlineVoiceInterfaceEOS::GetUserState(class FString& EpicAccountId)
+EPlayerVoiceTransitionState UOnlineVoiceInterfaceEOS::GetUserState(class FString& EpicAccountId)
 {
 	static UFunction* uFnGetUserState = nullptr;
 
@@ -11371,22 +11538,19 @@ uint8_t UOnlineVoiceInterfaceEOS::GetUserState(class FString& EpicAccountId)
 	}
 
 	UOnlineVoiceInterfaceEOS_execGetUserState_Params GetUserState_Params;
-	memcpy_s(&GetUserState_Params.EpicAccountId, 0x10, &EpicAccountId, 0x10);
-
-	uFnGetUserState->FunctionFlags |= ~0x400;
+	memset(&GetUserState_Params, 0, sizeof(GetUserState_Params));
+	memcpy_s(&GetUserState_Params.EpicAccountId, sizeof(GetUserState_Params.EpicAccountId), &EpicAccountId, sizeof(EpicAccountId));
 
 	this->ProcessEvent(uFnGetUserState, &GetUserState_Params, nullptr);
 
-	uFnGetUserState->FunctionFlags |= 0x400;
-
-	memcpy_s(&EpicAccountId, 0x10, &GetUserState_Params.EpicAccountId, 0x10);
+	memcpy_s(&EpicAccountId, sizeof(EpicAccountId), &GetUserState_Params.EpicAccountId, sizeof(GetUserState_Params.EpicAccountId));
 
 	return GetUserState_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.GetCurrentRoomNameForUser
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  EpicAccountId                  (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
@@ -11400,22 +11564,19 @@ class FString UOnlineVoiceInterfaceEOS::GetCurrentRoomNameForUser(class FString&
 	}
 
 	UOnlineVoiceInterfaceEOS_execGetCurrentRoomNameForUser_Params GetCurrentRoomNameForUser_Params;
-	memcpy_s(&GetCurrentRoomNameForUser_Params.EpicAccountId, 0x10, &EpicAccountId, 0x10);
-
-	uFnGetCurrentRoomNameForUser->FunctionFlags |= ~0x400;
+	memset(&GetCurrentRoomNameForUser_Params, 0, sizeof(GetCurrentRoomNameForUser_Params));
+	memcpy_s(&GetCurrentRoomNameForUser_Params.EpicAccountId, sizeof(GetCurrentRoomNameForUser_Params.EpicAccountId), &EpicAccountId, sizeof(EpicAccountId));
 
 	this->ProcessEvent(uFnGetCurrentRoomNameForUser, &GetCurrentRoomNameForUser_Params, nullptr);
 
-	uFnGetCurrentRoomNameForUser->FunctionFlags |= 0x400;
-
-	memcpy_s(&EpicAccountId, 0x10, &GetCurrentRoomNameForUser_Params.EpicAccountId, 0x10);
+	memcpy_s(&EpicAccountId, sizeof(EpicAccountId), &GetCurrentRoomNameForUser_Params.EpicAccountId, sizeof(GetCurrentRoomNameForUser_Params.EpicAccountId));
 
 	return GetCurrentRoomNameForUser_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.LeaveVoiceRoom
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  EpicAccountId                  (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 // class FString                  RoomName                       (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
@@ -11430,24 +11591,21 @@ bool UOnlineVoiceInterfaceEOS::LeaveVoiceRoom(class FString& EpicAccountId, clas
 	}
 
 	UOnlineVoiceInterfaceEOS_execLeaveVoiceRoom_Params LeaveVoiceRoom_Params;
-	memcpy_s(&LeaveVoiceRoom_Params.EpicAccountId, 0x10, &EpicAccountId, 0x10);
-	memcpy_s(&LeaveVoiceRoom_Params.RoomName, 0x10, &RoomName, 0x10);
-
-	uFnLeaveVoiceRoom->FunctionFlags |= ~0x400;
+	memset(&LeaveVoiceRoom_Params, 0, sizeof(LeaveVoiceRoom_Params));
+	memcpy_s(&LeaveVoiceRoom_Params.EpicAccountId, sizeof(LeaveVoiceRoom_Params.EpicAccountId), &EpicAccountId, sizeof(EpicAccountId));
+	memcpy_s(&LeaveVoiceRoom_Params.RoomName, sizeof(LeaveVoiceRoom_Params.RoomName), &RoomName, sizeof(RoomName));
 
 	this->ProcessEvent(uFnLeaveVoiceRoom, &LeaveVoiceRoom_Params, nullptr);
 
-	uFnLeaveVoiceRoom->FunctionFlags |= 0x400;
-
-	memcpy_s(&EpicAccountId, 0x10, &LeaveVoiceRoom_Params.EpicAccountId, 0x10);
-	memcpy_s(&RoomName, 0x10, &LeaveVoiceRoom_Params.RoomName, 0x10);
+	memcpy_s(&EpicAccountId, sizeof(EpicAccountId), &LeaveVoiceRoom_Params.EpicAccountId, sizeof(LeaveVoiceRoom_Params.EpicAccountId));
+	memcpy_s(&RoomName, sizeof(RoomName), &LeaveVoiceRoom_Params.RoomName, sizeof(LeaveVoiceRoom_Params.RoomName));
 
 	return LeaveVoiceRoom_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.JoinVoiceRoom
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  EpicAccountId                  (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 // class FString                  RoomName                       (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
@@ -11464,28 +11622,25 @@ bool UOnlineVoiceInterfaceEOS::JoinVoiceRoom(class FString& EpicAccountId, class
 	}
 
 	UOnlineVoiceInterfaceEOS_execJoinVoiceRoom_Params JoinVoiceRoom_Params;
-	memcpy_s(&JoinVoiceRoom_Params.EpicAccountId, 0x10, &EpicAccountId, 0x10);
-	memcpy_s(&JoinVoiceRoom_Params.RoomName, 0x10, &RoomName, 0x10);
-	memcpy_s(&JoinVoiceRoom_Params.ClientBaseUrl, 0x10, &ClientBaseUrl, 0x10);
-	memcpy_s(&JoinVoiceRoom_Params.JoinToken, 0x10, &JoinToken, 0x10);
-
-	uFnJoinVoiceRoom->FunctionFlags |= ~0x400;
+	memset(&JoinVoiceRoom_Params, 0, sizeof(JoinVoiceRoom_Params));
+	memcpy_s(&JoinVoiceRoom_Params.EpicAccountId, sizeof(JoinVoiceRoom_Params.EpicAccountId), &EpicAccountId, sizeof(EpicAccountId));
+	memcpy_s(&JoinVoiceRoom_Params.RoomName, sizeof(JoinVoiceRoom_Params.RoomName), &RoomName, sizeof(RoomName));
+	memcpy_s(&JoinVoiceRoom_Params.ClientBaseUrl, sizeof(JoinVoiceRoom_Params.ClientBaseUrl), &ClientBaseUrl, sizeof(ClientBaseUrl));
+	memcpy_s(&JoinVoiceRoom_Params.JoinToken, sizeof(JoinVoiceRoom_Params.JoinToken), &JoinToken, sizeof(JoinToken));
 
 	this->ProcessEvent(uFnJoinVoiceRoom, &JoinVoiceRoom_Params, nullptr);
 
-	uFnJoinVoiceRoom->FunctionFlags |= 0x400;
-
-	memcpy_s(&EpicAccountId, 0x10, &JoinVoiceRoom_Params.EpicAccountId, 0x10);
-	memcpy_s(&RoomName, 0x10, &JoinVoiceRoom_Params.RoomName, 0x10);
-	memcpy_s(&ClientBaseUrl, 0x10, &JoinVoiceRoom_Params.ClientBaseUrl, 0x10);
-	memcpy_s(&JoinToken, 0x10, &JoinVoiceRoom_Params.JoinToken, 0x10);
+	memcpy_s(&EpicAccountId, sizeof(EpicAccountId), &JoinVoiceRoom_Params.EpicAccountId, sizeof(JoinVoiceRoom_Params.EpicAccountId));
+	memcpy_s(&RoomName, sizeof(RoomName), &JoinVoiceRoom_Params.RoomName, sizeof(JoinVoiceRoom_Params.RoomName));
+	memcpy_s(&ClientBaseUrl, sizeof(ClientBaseUrl), &JoinVoiceRoom_Params.ClientBaseUrl, sizeof(JoinVoiceRoom_Params.ClientBaseUrl));
+	memcpy_s(&JoinToken, sizeof(JoinToken), &JoinVoiceRoom_Params.JoinToken, sizeof(JoinVoiceRoom_Params.JoinToken));
 
 	return JoinVoiceRoom_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.SetAudioOutputDevice
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // float                          OutputVolume                   (CPF_Parm)
 // class FString                  EpicAccountId                  (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
@@ -11501,25 +11656,22 @@ bool UOnlineVoiceInterfaceEOS::SetAudioOutputDevice(float OutputVolume, class FS
 	}
 
 	UOnlineVoiceInterfaceEOS_execSetAudioOutputDevice_Params SetAudioOutputDevice_Params;
-	memcpy_s(&SetAudioOutputDevice_Params.OutputVolume, 0x4, &OutputVolume, 0x4);
-	memcpy_s(&SetAudioOutputDevice_Params.EpicAccountId, 0x10, &EpicAccountId, 0x10);
-	memcpy_s(&SetAudioOutputDevice_Params.DeviceID, 0x10, &DeviceID, 0x10);
-
-	uFnSetAudioOutputDevice->FunctionFlags |= ~0x400;
+	memset(&SetAudioOutputDevice_Params, 0, sizeof(SetAudioOutputDevice_Params));
+	memcpy_s(&SetAudioOutputDevice_Params.OutputVolume, sizeof(SetAudioOutputDevice_Params.OutputVolume), &OutputVolume, sizeof(OutputVolume));
+	memcpy_s(&SetAudioOutputDevice_Params.EpicAccountId, sizeof(SetAudioOutputDevice_Params.EpicAccountId), &EpicAccountId, sizeof(EpicAccountId));
+	memcpy_s(&SetAudioOutputDevice_Params.DeviceID, sizeof(SetAudioOutputDevice_Params.DeviceID), &DeviceID, sizeof(DeviceID));
 
 	this->ProcessEvent(uFnSetAudioOutputDevice, &SetAudioOutputDevice_Params, nullptr);
 
-	uFnSetAudioOutputDevice->FunctionFlags |= 0x400;
-
-	memcpy_s(&EpicAccountId, 0x10, &SetAudioOutputDevice_Params.EpicAccountId, 0x10);
-	memcpy_s(&DeviceID, 0x10, &SetAudioOutputDevice_Params.DeviceID, 0x10);
+	memcpy_s(&EpicAccountId, sizeof(EpicAccountId), &SetAudioOutputDevice_Params.EpicAccountId, sizeof(SetAudioOutputDevice_Params.EpicAccountId));
+	memcpy_s(&DeviceID, sizeof(DeviceID), &SetAudioOutputDevice_Params.DeviceID, sizeof(SetAudioOutputDevice_Params.DeviceID));
 
 	return SetAudioOutputDevice_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.SetAudioInputDevice
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // float                          InputVolume                    (CPF_Parm)
 // class FString                  EpicAccountId                  (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
@@ -11535,29 +11687,26 @@ bool UOnlineVoiceInterfaceEOS::SetAudioInputDevice(float InputVolume, class FStr
 	}
 
 	UOnlineVoiceInterfaceEOS_execSetAudioInputDevice_Params SetAudioInputDevice_Params;
-	memcpy_s(&SetAudioInputDevice_Params.InputVolume, 0x4, &InputVolume, 0x4);
-	memcpy_s(&SetAudioInputDevice_Params.EpicAccountId, 0x10, &EpicAccountId, 0x10);
-	memcpy_s(&SetAudioInputDevice_Params.DeviceID, 0x10, &DeviceID, 0x10);
-
-	uFnSetAudioInputDevice->FunctionFlags |= ~0x400;
+	memset(&SetAudioInputDevice_Params, 0, sizeof(SetAudioInputDevice_Params));
+	memcpy_s(&SetAudioInputDevice_Params.InputVolume, sizeof(SetAudioInputDevice_Params.InputVolume), &InputVolume, sizeof(InputVolume));
+	memcpy_s(&SetAudioInputDevice_Params.EpicAccountId, sizeof(SetAudioInputDevice_Params.EpicAccountId), &EpicAccountId, sizeof(EpicAccountId));
+	memcpy_s(&SetAudioInputDevice_Params.DeviceID, sizeof(SetAudioInputDevice_Params.DeviceID), &DeviceID, sizeof(DeviceID));
 
 	this->ProcessEvent(uFnSetAudioInputDevice, &SetAudioInputDevice_Params, nullptr);
 
-	uFnSetAudioInputDevice->FunctionFlags |= 0x400;
-
-	memcpy_s(&EpicAccountId, 0x10, &SetAudioInputDevice_Params.EpicAccountId, 0x10);
-	memcpy_s(&DeviceID, 0x10, &SetAudioInputDevice_Params.DeviceID, 0x10);
+	memcpy_s(&EpicAccountId, sizeof(EpicAccountId), &SetAudioInputDevice_Params.EpicAccountId, sizeof(SetAudioInputDevice_Params.EpicAccountId));
+	memcpy_s(&DeviceID, sizeof(DeviceID), &SetAudioInputDevice_Params.DeviceID, sizeof(SetAudioInputDevice_Params.DeviceID));
 
 	return SetAudioInputDevice_Params.ReturnValue;
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.SetLocalPlayerRegisteredStatus
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bRegister                      (CPF_Const | CPF_Parm)
+// Parameter Info:
+// bool                           bRegister                      (CPF_Const | CPF_Parm)
 // class FString                  PlatformId                     (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UOnlineVoiceInterfaceEOS::SetLocalPlayerRegisteredStatus(unsigned long bRegister, class FString& PlatformId)
+void UOnlineVoiceInterfaceEOS::SetLocalPlayerRegisteredStatus(bool bRegister, class FString& PlatformId)
 {
 	static UFunction* uFnSetLocalPlayerRegisteredStatus = nullptr;
 
@@ -11567,21 +11716,18 @@ void UOnlineVoiceInterfaceEOS::SetLocalPlayerRegisteredStatus(unsigned long bReg
 	}
 
 	UOnlineVoiceInterfaceEOS_execSetLocalPlayerRegisteredStatus_Params SetLocalPlayerRegisteredStatus_Params;
+	memset(&SetLocalPlayerRegisteredStatus_Params, 0, sizeof(SetLocalPlayerRegisteredStatus_Params));
 	SetLocalPlayerRegisteredStatus_Params.bRegister = bRegister;
-	memcpy_s(&SetLocalPlayerRegisteredStatus_Params.PlatformId, 0x10, &PlatformId, 0x10);
-
-	uFnSetLocalPlayerRegisteredStatus->FunctionFlags |= ~0x400;
+	memcpy_s(&SetLocalPlayerRegisteredStatus_Params.PlatformId, sizeof(SetLocalPlayerRegisteredStatus_Params.PlatformId), &PlatformId, sizeof(PlatformId));
 
 	this->ProcessEvent(uFnSetLocalPlayerRegisteredStatus, &SetLocalPlayerRegisteredStatus_Params, nullptr);
 
-	uFnSetLocalPlayerRegisteredStatus->FunctionFlags |= 0x400;
-
-	memcpy_s(&PlatformId, 0x10, &SetLocalPlayerRegisteredStatus_Params.PlatformId, 0x10);
+	memcpy_s(&PlatformId, sizeof(PlatformId), &SetLocalPlayerRegisteredStatus_Params.PlatformId, sizeof(SetLocalPlayerRegisteredStatus_Params.PlatformId));
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.CacheOutputAudioDevices
 // [0x00040401] (FUNC_Final | FUNC_Native | FUNC_Private | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 
 void UOnlineVoiceInterfaceEOS::CacheOutputAudioDevices()
 {
@@ -11593,17 +11739,14 @@ void UOnlineVoiceInterfaceEOS::CacheOutputAudioDevices()
 	}
 
 	UOnlineVoiceInterfaceEOS_execCacheOutputAudioDevices_Params CacheOutputAudioDevices_Params;
-
-	uFnCacheOutputAudioDevices->FunctionFlags |= ~0x400;
+	memset(&CacheOutputAudioDevices_Params, 0, sizeof(CacheOutputAudioDevices_Params));
 
 	this->ProcessEvent(uFnCacheOutputAudioDevices, &CacheOutputAudioDevices_Params, nullptr);
-
-	uFnCacheOutputAudioDevices->FunctionFlags |= 0x400;
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.CacheInputAudioDevices
 // [0x00040401] (FUNC_Final | FUNC_Native | FUNC_Private | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 
 void UOnlineVoiceInterfaceEOS::CacheInputAudioDevices()
 {
@@ -11615,17 +11758,14 @@ void UOnlineVoiceInterfaceEOS::CacheInputAudioDevices()
 	}
 
 	UOnlineVoiceInterfaceEOS_execCacheInputAudioDevices_Params CacheInputAudioDevices_Params;
-
-	uFnCacheInputAudioDevices->FunctionFlags |= ~0x400;
+	memset(&CacheInputAudioDevices_Params, 0, sizeof(CacheInputAudioDevices_Params));
 
 	this->ProcessEvent(uFnCacheInputAudioDevices, &CacheInputAudioDevices_Params, nullptr);
-
-	uFnCacheInputAudioDevices->FunctionFlags |= 0x400;
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.Init
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 
 void UOnlineVoiceInterfaceEOS::Init()
 {
@@ -11637,17 +11777,14 @@ void UOnlineVoiceInterfaceEOS::Init()
 	}
 
 	UOnlineVoiceInterfaceEOS_execInit_Params Init_Params;
-
-	uFnInit->FunctionFlags |= ~0x400;
+	memset(&Init_Params, 0, sizeof(Init_Params));
 
 	this->ProcessEvent(uFnInit, &Init_Params, nullptr);
-
-	uFnInit->FunctionFlags |= 0x400;
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.EventPlayerStatusChanged
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class FString                  EpicAccountId                  (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  RoomName                       (CPF_Parm | CPF_NeedCtorLink)
 // struct FVoiceRoomMemberStatus  MemberStatus                   (CPF_Parm)
@@ -11662,16 +11799,17 @@ void UOnlineVoiceInterfaceEOS::EventPlayerStatusChanged(class FString EpicAccoun
 	}
 
 	UOnlineVoiceInterfaceEOS_execEventPlayerStatusChanged_Params EventPlayerStatusChanged_Params;
-	memcpy_s(&EventPlayerStatusChanged_Params.EpicAccountId, 0x10, &EpicAccountId, 0x10);
-	memcpy_s(&EventPlayerStatusChanged_Params.RoomName, 0x10, &RoomName, 0x10);
-	memcpy_s(&EventPlayerStatusChanged_Params.MemberStatus, 0x4, &MemberStatus, 0x4);
+	memset(&EventPlayerStatusChanged_Params, 0, sizeof(EventPlayerStatusChanged_Params));
+	memcpy_s(&EventPlayerStatusChanged_Params.EpicAccountId, sizeof(EventPlayerStatusChanged_Params.EpicAccountId), &EpicAccountId, sizeof(EpicAccountId));
+	memcpy_s(&EventPlayerStatusChanged_Params.RoomName, sizeof(EventPlayerStatusChanged_Params.RoomName), &RoomName, sizeof(RoomName));
+	memcpy_s(&EventPlayerStatusChanged_Params.MemberStatus, sizeof(EventPlayerStatusChanged_Params.MemberStatus), &MemberStatus, sizeof(MemberStatus));
 
 	this->ProcessEvent(uFnEventPlayerStatusChanged, &EventPlayerStatusChanged_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.EventPlayerLeftVoiceRoom
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class FString                  EpicAccountId                  (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  RoomName                       (CPF_Parm | CPF_NeedCtorLink)
 
@@ -11685,15 +11823,16 @@ void UOnlineVoiceInterfaceEOS::EventPlayerLeftVoiceRoom(class FString EpicAccoun
 	}
 
 	UOnlineVoiceInterfaceEOS_execEventPlayerLeftVoiceRoom_Params EventPlayerLeftVoiceRoom_Params;
-	memcpy_s(&EventPlayerLeftVoiceRoom_Params.EpicAccountId, 0x10, &EpicAccountId, 0x10);
-	memcpy_s(&EventPlayerLeftVoiceRoom_Params.RoomName, 0x10, &RoomName, 0x10);
+	memset(&EventPlayerLeftVoiceRoom_Params, 0, sizeof(EventPlayerLeftVoiceRoom_Params));
+	memcpy_s(&EventPlayerLeftVoiceRoom_Params.EpicAccountId, sizeof(EventPlayerLeftVoiceRoom_Params.EpicAccountId), &EpicAccountId, sizeof(EpicAccountId));
+	memcpy_s(&EventPlayerLeftVoiceRoom_Params.RoomName, sizeof(EventPlayerLeftVoiceRoom_Params.RoomName), &RoomName, sizeof(RoomName));
 
 	this->ProcessEvent(uFnEventPlayerLeftVoiceRoom, &EventPlayerLeftVoiceRoom_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.EventPlayerJoinedVoiceRoom
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class FString                  EpicAccountId                  (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  RoomName                       (CPF_Parm | CPF_NeedCtorLink)
 
@@ -11707,20 +11846,21 @@ void UOnlineVoiceInterfaceEOS::EventPlayerJoinedVoiceRoom(class FString EpicAcco
 	}
 
 	UOnlineVoiceInterfaceEOS_execEventPlayerJoinedVoiceRoom_Params EventPlayerJoinedVoiceRoom_Params;
-	memcpy_s(&EventPlayerJoinedVoiceRoom_Params.EpicAccountId, 0x10, &EpicAccountId, 0x10);
-	memcpy_s(&EventPlayerJoinedVoiceRoom_Params.RoomName, 0x10, &RoomName, 0x10);
+	memset(&EventPlayerJoinedVoiceRoom_Params, 0, sizeof(EventPlayerJoinedVoiceRoom_Params));
+	memcpy_s(&EventPlayerJoinedVoiceRoom_Params.EpicAccountId, sizeof(EventPlayerJoinedVoiceRoom_Params.EpicAccountId), &EpicAccountId, sizeof(EpicAccountId));
+	memcpy_s(&EventPlayerJoinedVoiceRoom_Params.RoomName, sizeof(EventPlayerJoinedVoiceRoom_Params.RoomName), &RoomName, sizeof(RoomName));
 
 	this->ProcessEvent(uFnEventPlayerJoinedVoiceRoom, &EventPlayerJoinedVoiceRoom_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.EventRemovedFromVoiceRoom
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class FString                  EpicAccountId                  (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  RoomName                       (CPF_Parm | CPF_NeedCtorLink)
-// uint8_t                        RemovedResult                  (CPF_Parm)
+// EVoiceResultCode               RemovedResult                  (CPF_Parm)
 
-void UOnlineVoiceInterfaceEOS::EventRemovedFromVoiceRoom(class FString EpicAccountId, class FString RoomName, uint8_t RemovedResult)
+void UOnlineVoiceInterfaceEOS::EventRemovedFromVoiceRoom(class FString EpicAccountId, class FString RoomName, EVoiceResultCode RemovedResult)
 {
 	static UFunction* uFnEventRemovedFromVoiceRoom = nullptr;
 
@@ -11730,21 +11870,22 @@ void UOnlineVoiceInterfaceEOS::EventRemovedFromVoiceRoom(class FString EpicAccou
 	}
 
 	UOnlineVoiceInterfaceEOS_execEventRemovedFromVoiceRoom_Params EventRemovedFromVoiceRoom_Params;
-	memcpy_s(&EventRemovedFromVoiceRoom_Params.EpicAccountId, 0x10, &EpicAccountId, 0x10);
-	memcpy_s(&EventRemovedFromVoiceRoom_Params.RoomName, 0x10, &RoomName, 0x10);
-	memcpy_s(&EventRemovedFromVoiceRoom_Params.RemovedResult, 0x1, &RemovedResult, 0x1);
+	memset(&EventRemovedFromVoiceRoom_Params, 0, sizeof(EventRemovedFromVoiceRoom_Params));
+	memcpy_s(&EventRemovedFromVoiceRoom_Params.EpicAccountId, sizeof(EventRemovedFromVoiceRoom_Params.EpicAccountId), &EpicAccountId, sizeof(EpicAccountId));
+	memcpy_s(&EventRemovedFromVoiceRoom_Params.RoomName, sizeof(EventRemovedFromVoiceRoom_Params.RoomName), &RoomName, sizeof(RoomName));
+	memcpy_s(&EventRemovedFromVoiceRoom_Params.RemovedResult, sizeof(EventRemovedFromVoiceRoom_Params.RemovedResult), &RemovedResult, sizeof(RemovedResult));
 
 	this->ProcessEvent(uFnEventRemovedFromVoiceRoom, &EventRemovedFromVoiceRoom_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.EventJoinedVoiceRoom
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class FString                  EpicAccountId                  (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  RoomName                       (CPF_Parm | CPF_NeedCtorLink)
-// uint8_t                        JoinResult                     (CPF_Parm)
+// EVoiceResultCode               JoinResult                     (CPF_Parm)
 
-void UOnlineVoiceInterfaceEOS::EventJoinedVoiceRoom(class FString EpicAccountId, class FString RoomName, uint8_t JoinResult)
+void UOnlineVoiceInterfaceEOS::EventJoinedVoiceRoom(class FString EpicAccountId, class FString RoomName, EVoiceResultCode JoinResult)
 {
 	static UFunction* uFnEventJoinedVoiceRoom = nullptr;
 
@@ -11754,21 +11895,22 @@ void UOnlineVoiceInterfaceEOS::EventJoinedVoiceRoom(class FString EpicAccountId,
 	}
 
 	UOnlineVoiceInterfaceEOS_execEventJoinedVoiceRoom_Params EventJoinedVoiceRoom_Params;
-	memcpy_s(&EventJoinedVoiceRoom_Params.EpicAccountId, 0x10, &EpicAccountId, 0x10);
-	memcpy_s(&EventJoinedVoiceRoom_Params.RoomName, 0x10, &RoomName, 0x10);
-	memcpy_s(&EventJoinedVoiceRoom_Params.JoinResult, 0x1, &JoinResult, 0x1);
+	memset(&EventJoinedVoiceRoom_Params, 0, sizeof(EventJoinedVoiceRoom_Params));
+	memcpy_s(&EventJoinedVoiceRoom_Params.EpicAccountId, sizeof(EventJoinedVoiceRoom_Params.EpicAccountId), &EpicAccountId, sizeof(EpicAccountId));
+	memcpy_s(&EventJoinedVoiceRoom_Params.RoomName, sizeof(EventJoinedVoiceRoom_Params.RoomName), &RoomName, sizeof(RoomName));
+	memcpy_s(&EventJoinedVoiceRoom_Params.JoinResult, sizeof(EventJoinedVoiceRoom_Params.JoinResult), &JoinResult, sizeof(JoinResult));
 
 	this->ProcessEvent(uFnEventJoinedVoiceRoom, &EventJoinedVoiceRoom_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.OnlineVoiceInterfaceEOS.EventLeftVoiceRoom
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter info:
+// Parameter Info:
 // class FString                  EpicAccountId                  (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  RoomName                       (CPF_Parm | CPF_NeedCtorLink)
-// uint8_t                        LeaveResult                    (CPF_Parm)
+// EVoiceResultCode               LeaveResult                    (CPF_Parm)
 
-void UOnlineVoiceInterfaceEOS::EventLeftVoiceRoom(class FString EpicAccountId, class FString RoomName, uint8_t LeaveResult)
+void UOnlineVoiceInterfaceEOS::EventLeftVoiceRoom(class FString EpicAccountId, class FString RoomName, EVoiceResultCode LeaveResult)
 {
 	static UFunction* uFnEventLeftVoiceRoom = nullptr;
 
@@ -11778,16 +11920,17 @@ void UOnlineVoiceInterfaceEOS::EventLeftVoiceRoom(class FString EpicAccountId, c
 	}
 
 	UOnlineVoiceInterfaceEOS_execEventLeftVoiceRoom_Params EventLeftVoiceRoom_Params;
-	memcpy_s(&EventLeftVoiceRoom_Params.EpicAccountId, 0x10, &EpicAccountId, 0x10);
-	memcpy_s(&EventLeftVoiceRoom_Params.RoomName, 0x10, &RoomName, 0x10);
-	memcpy_s(&EventLeftVoiceRoom_Params.LeaveResult, 0x1, &LeaveResult, 0x1);
+	memset(&EventLeftVoiceRoom_Params, 0, sizeof(EventLeftVoiceRoom_Params));
+	memcpy_s(&EventLeftVoiceRoom_Params.EpicAccountId, sizeof(EventLeftVoiceRoom_Params.EpicAccountId), &EpicAccountId, sizeof(EpicAccountId));
+	memcpy_s(&EventLeftVoiceRoom_Params.RoomName, sizeof(EventLeftVoiceRoom_Params.RoomName), &RoomName, sizeof(RoomName));
+	memcpy_s(&EventLeftVoiceRoom_Params.LeaveResult, sizeof(EventLeftVoiceRoom_Params.LeaveResult), &LeaveResult, sizeof(LeaveResult));
 
 	this->ProcessEvent(uFnEventLeftVoiceRoom, &EventLeftVoiceRoom_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.__OnlinePlayerInterfaceEOS__LinkedAccount_0x1.__OnlinePlayerInterfaceEOS__LinkedAccount_0x1
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
 // int32_t                        _                              (CPF_Parm)
 // class FString                  PlatformAuthTicket             (CPF_Parm | CPF_NeedCtorLink)
 
@@ -11801,19 +11944,20 @@ void U__OnlinePlayerInterfaceEOS__LinkedAccount_0x1::__OnlinePlayerInterfaceEOS_
 	}
 
 	U__OnlinePlayerInterfaceEOS__LinkedAccount_0x1_exec__OnlinePlayerInterfaceEOS__LinkedAccount_0x1_Params __OnlinePlayerInterfaceEOS__LinkedAccount_0x1_Params;
-	memcpy_s(&__OnlinePlayerInterfaceEOS__LinkedAccount_0x1_Params._, 0x4, &_, 0x4);
-	memcpy_s(&__OnlinePlayerInterfaceEOS__LinkedAccount_0x1_Params.PlatformAuthTicket, 0x10, &PlatformAuthTicket, 0x10);
+	memset(&__OnlinePlayerInterfaceEOS__LinkedAccount_0x1_Params, 0, sizeof(__OnlinePlayerInterfaceEOS__LinkedAccount_0x1_Params));
+	memcpy_s(&__OnlinePlayerInterfaceEOS__LinkedAccount_0x1_Params._, sizeof(__OnlinePlayerInterfaceEOS__LinkedAccount_0x1_Params._), &_, sizeof(_));
+	memcpy_s(&__OnlinePlayerInterfaceEOS__LinkedAccount_0x1_Params.PlatformAuthTicket, sizeof(__OnlinePlayerInterfaceEOS__LinkedAccount_0x1_Params.PlatformAuthTicket), &PlatformAuthTicket, sizeof(PlatformAuthTicket));
 
 	this->ProcessEvent(uFn__OnlinePlayerInterfaceEOS__LinkedAccount_0x1, &__OnlinePlayerInterfaceEOS__LinkedAccount_0x1_Params, nullptr);
 };
 
 // Function OnlineSubsystemEOS.__OnlinePlayerInterfaceEOS__RequestNativePlatformAuthTicket_0x1.__OnlinePlayerInterfaceEOS__RequestNativePlatformAuthTicket_0x1
-// [0x00020003] (FUNC_Final | FUNC_RequiredAPI | FUNC_Public | FUNC_AllFlags)
-// Parameter info:
-// unsigned long                  bSuccess                       (CPF_Parm)
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
+// bool                           bSuccess                       (CPF_Parm)
 // class FString                  Code                           (CPF_Parm | CPF_NeedCtorLink)
 
-void U__OnlinePlayerInterfaceEOS__RequestNativePlatformAuthTicket_0x1::__OnlinePlayerInterfaceEOS__RequestNativePlatformAuthTicket_0x1(unsigned long bSuccess, class FString Code)
+void U__OnlinePlayerInterfaceEOS__RequestNativePlatformAuthTicket_0x1::__OnlinePlayerInterfaceEOS__RequestNativePlatformAuthTicket_0x1(bool bSuccess, class FString Code)
 {
 	static UFunction* uFn__OnlinePlayerInterfaceEOS__RequestNativePlatformAuthTicket_0x1 = nullptr;
 
@@ -11823,8 +11967,9 @@ void U__OnlinePlayerInterfaceEOS__RequestNativePlatformAuthTicket_0x1::__OnlineP
 	}
 
 	U__OnlinePlayerInterfaceEOS__RequestNativePlatformAuthTicket_0x1_exec__OnlinePlayerInterfaceEOS__RequestNativePlatformAuthTicket_0x1_Params __OnlinePlayerInterfaceEOS__RequestNativePlatformAuthTicket_0x1_Params;
+	memset(&__OnlinePlayerInterfaceEOS__RequestNativePlatformAuthTicket_0x1_Params, 0, sizeof(__OnlinePlayerInterfaceEOS__RequestNativePlatformAuthTicket_0x1_Params));
 	__OnlinePlayerInterfaceEOS__RequestNativePlatformAuthTicket_0x1_Params.bSuccess = bSuccess;
-	memcpy_s(&__OnlinePlayerInterfaceEOS__RequestNativePlatformAuthTicket_0x1_Params.Code, 0x10, &Code, 0x10);
+	memcpy_s(&__OnlinePlayerInterfaceEOS__RequestNativePlatformAuthTicket_0x1_Params.Code, sizeof(__OnlinePlayerInterfaceEOS__RequestNativePlatformAuthTicket_0x1_Params.Code), &Code, sizeof(Code));
 
 	this->ProcessEvent(uFn__OnlinePlayerInterfaceEOS__RequestNativePlatformAuthTicket_0x1, &__OnlinePlayerInterfaceEOS__RequestNativePlatformAuthTicket_0x1_Params, nullptr);
 };

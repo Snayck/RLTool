@@ -1,12 +1,12 @@
 /*
 #############################################################################################
-# Rocket League (1.0) SDK
-# Generated with the UE3SDKGenerator v2.2.5
+# RocketLeague (1.0.10897.0) SDK
+# Generated with the CodeRedGenerator v1.0.2
 # ========================================================================================= #
 # File: WinDrv_parameters.hpp
 # ========================================================================================= #
 # Credits: TheFeckless, ItsBranK
-# Links: www.github.com/itsbrank/UE3SDKGenerator, www.twitter.com/itsbrank
+# Links: www.github.com/CodeRedModding/CodeRed-Generator, www.twitter.com/ItsBranK
 #############################################################################################
 */
 #pragma once
@@ -17,7 +17,7 @@
 
 /*
 # ========================================================================================= #
-# Function Parameters
+# Parameters
 # ========================================================================================= #
 */
 
@@ -27,7 +27,7 @@ struct UFacebookWindows_execOnFacebookFriendsRequestComplete_Params
 {
 	class UHttpRequestInterface*                       OriginalRequest;                                  		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bDidSucceed : 1;                                  		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bDidSucceed : 1;                                  		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// class FString                                      JsonPayload;                                      		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class UJsonObject*                                 ParsedJson;                                       		// 0x0028 (0x0008) [0x0000000000000000]               
 	// class UJsonObject*                                 FriendsJson;                                      		// 0x0030 (0x0008) [0x0000000000000000]               
@@ -48,7 +48,7 @@ struct UFacebookWindows_execOnFacebookMeRequestComplete_Params
 {
 	class UHttpRequestInterface*                       OriginalRequest;                                  		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bDidSucceed : 1;                                  		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bDidSucceed : 1;                                  		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// class FString                                      JsonPayload;                                      		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	// class UJsonObject*                                 ParsedJson;                                       		// 0x0028 (0x0008) [0x0000000000000000]               
 	// struct FPlatformInterfaceDelegateResult            DelegateResult;                                   		// 0x0030 (0x0048) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -66,7 +66,7 @@ struct UFacebookWindows_execFacebookRequestCallback_Params
 {
 	class UHttpRequestInterface*                       OriginalRequest;                                  		// 0x0000 (0x0008) [0x0000000000000080] (CPF_Parm)    
 	class UHttpResponseInterface*                      Response;                                         		// 0x0008 (0x0008) [0x0000000000000080] (CPF_Parm)    
-	bool                                               bDidSucceed : 1;                                  		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
+	uint32_t                                           bDidSucceed : 1;                                  		// 0x0010 (0x0004) [0x0000000000000080] [0x00000001] (CPF_Parm)
 	// class FString                                      Payload;                                          		// 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 };
 
@@ -97,28 +97,28 @@ struct UFacebookWindows_execDisconnect_Params
 // [0x400020400] 
 struct UFacebookWindows_execIsAuthorized_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function WinDrv.FacebookWindows.Authorize
 // [0x400020400] 
 struct UFacebookWindows_execAuthorize_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function WinDrv.FacebookWindows.Init
 // [0x400020400] 
 struct UFacebookWindows_execInit_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function WinDrv.HttpRequestWindows.ProcessRequest
 // [0x400020400] 
 struct UHttpRequestWindows_execProcessRequest_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 };
 
 // Function WinDrv.HttpRequestWindows.SetHeader
@@ -289,7 +289,7 @@ struct UHttpResponseWindows_execGetHeader_Params
 // [0x400020002] 
 struct UHttpRequestWindowsMcp_execProcessRequest_Params
 {
-	bool                                               ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+	uint32_t                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000580] [0x00000001] (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 	// class FString                                      URL;                                              		// 0x0008 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 };
 

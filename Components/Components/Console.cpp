@@ -102,7 +102,7 @@ void ConsoleComponent::Initialize(const std::filesystem::path& directory, const 
 		LogFile.open(directory / fileName);
 	}
 
-	SetConsoleTitle(L"Moneybot.cash (DO NOT CLOSE)");
+	SetConsoleTitle(L"Function Logger (DO NOT CLOSE)");
 
 	Write(GetNameFormatted() + "Initialized!");
 }

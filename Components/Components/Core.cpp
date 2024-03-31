@@ -56,7 +56,7 @@ uintptr_t CoreComponent::GetGNames() {
 
 void CoreComponent::InitializeGlobals(HMODULE hModule)
 {
-	Console.Initialize(std::filesystem::current_path(), "Moneybot.log");
+	Console.Initialize(std::filesystem::current_path(), "FunctionLogger.log");
 
 	GObjects = reinterpret_cast<TArray<UObject*>*>(GetGObjects());
 	GNames = reinterpret_cast<TArray<FNameEntry*>*>(GetGObjects() - 0x48);

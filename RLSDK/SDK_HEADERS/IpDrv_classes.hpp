@@ -1,12 +1,12 @@
 /*
 #############################################################################################
-# Rocket League (1.0) SDK
-# Generated with the UE3SDKGenerator v2.2.5
+# RocketLeague (1.0.10897.0) SDK
+# Generated with the CodeRedGenerator v1.0.2
 # ========================================================================================= #
 # File: IpDrv_classes.hpp
 # ========================================================================================= #
 # Credits: TheFeckless, ItsBranK
-# Links: www.github.com/itsbrank/UE3SDKGenerator, www.twitter.com/itsbrank
+# Links: www.github.com/CodeRedModding/CodeRed-Generator, www.twitter.com/ItsBranK
 #############################################################################################
 */
 #pragma once
@@ -402,7 +402,7 @@ class UAvatarDownload : public UObject
 public:
 	struct FUniqueNetId                                PlayerID;                                      // 0x0060 (0x0048) [0x0000000000400000] (CPF_NeedCtorLink)
 	class FString                                      URL;                                           // 0x00A8 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	uint8_t                                            AvatarSize;                                    // 0x00B8 (0x0001) [0x0000000000000000]               
+	EAvatarSize                                        AvatarSize;                                    // 0x00B8 (0x0001) [0x0000000000000000]               
 	class UTexture*                                    Texture;                                       // 0x00C0 (0x0008) [0x0000000000000000]               
 	struct FScriptDelegate                             Callbacks;                                     // 0x00C8 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
 
@@ -429,7 +429,7 @@ public:
 	struct FPointer                                    VoiceEngine;                                   // 0x0358 (0x0008) [0x0000000000003002] (CPF_Const | CPF_Native | CPF_Transient)
 	int32_t                                            MaxLocalTalkers;                               // 0x0360 (0x0004) [0x0000000000004000] (CPF_Config)  
 	int32_t                                            MaxRemoteTalkers;                              // 0x0364 (0x0004) [0x0000000000004000] (CPF_Config)  
-	unsigned long                                      bIsUsingSpeechRecognition : 1;                 // 0x0368 (0x0004) [0x0000000000004000] [0x00000001] (CPF_Config)
+	uint32_t                                           bIsUsingSpeechRecognition : 1;                 // 0x0368 (0x0004) [0x0000000000004000] [0x00000001] (CPF_Config)
 	class UOnlineGameInterfaceImpl*                    GameInterfaceImpl;                             // 0x0370 (0x0008) [0x0000000000000000]               
 	class UOnlineAuthInterfaceImpl*                    AuthInterfaceImpl;                             // 0x0378 (0x0008) [0x0000000000000000]               
 	class UOnlinePurchaseInterfaceImpl*                PurchaseInterfaceImpl;                         // 0x0380 (0x0008) [0x0000000000000000]               
@@ -479,13 +479,13 @@ public:
 
 	void TriggerAvatarCallbacks(class UAvatarDownload* Avatar);
 	void HandleOnlineImageDownloaded(struct FOnlineImageDownload ImageInfo);
-	class UAvatarDownload* GetAvatar(struct FUniqueNetId PlayerID, uint8_t Size);
+	class UAvatarDownload* GetAvatar(struct FUniqueNetId PlayerID, EAvatarSize Size);
 	void ClearPendingDownloads();
 	void CleanupAvatars();
-	void DownloadAvatar(struct FUniqueNetId PlayerID, uint8_t Size, class FString URL);
-	void StoreNewAvatars(uint8_t Size, struct FScriptDelegate ReadOnlineAvatarCompleteDelegate, TArray<struct FUniqueNetId>& NewPlayerIDs);
-	void ProcessOldRequests(uint8_t SizeType, struct FScriptDelegate ReadOnlineAvatarCompleteDelegate, TArray<struct FUniqueNetId>& InPlayerIDs, TArray<struct FUniqueNetId>& NewRequestIDs);
-	bool TryAddAvatarTextureCallback(struct FUniqueNetId PlayerNetId, uint8_t Size, struct FScriptDelegate ReadOnlineAvatarCompleteDelegate);
+	void DownloadAvatar(struct FUniqueNetId PlayerID, EAvatarSize Size, class FString URL);
+	void StoreNewAvatars(EAvatarSize Size, struct FScriptDelegate ReadOnlineAvatarCompleteDelegate, TArray<struct FUniqueNetId>& NewPlayerIDs);
+	void ProcessOldRequests(EAvatarSize SizeType, struct FScriptDelegate ReadOnlineAvatarCompleteDelegate, TArray<struct FUniqueNetId>& InPlayerIDs, TArray<struct FUniqueNetId>& NewRequestIDs);
+	bool TryAddAvatarTextureCallback(struct FUniqueNetId PlayerNetId, EAvatarSize Size, struct FScriptDelegate ReadOnlineAvatarCompleteDelegate);
 };
 
 // Class IpDrv.AvatarDownloadMap
@@ -529,7 +529,7 @@ public:
 	void SetImage(class FString URL, class UTexture* Value);
 	void SetAvatar(class UAvatarDownload* Value);
 	int32_t CountAvatars();
-	void AllValues(int32_t StartIndex, int32_t MaxValues, class UAvatarDownload*& OutAvatar);
+	void AllValues(int32_t optionalStartIndex, int32_t optionalMaxValues, class UAvatarDownload*& OutAvatar);
 };
 
 // Class IpDrv.ClientBeaconAddressResolver
@@ -562,7 +562,7 @@ class UHTTPDownload : public UDownload
 public:
 	class FString                                      ProxyServerHost;                               // 0x0AB0 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
 	int32_t                                            ProxyServerPort;                               // 0x0AC0 (0x0004) [0x0000000000004000] (CPF_Config)  
-	unsigned long                                      MaxRedirection : 1;                            // 0x0AC4 (0x0004) [0x0000000000004000] [0x00000001] (CPF_Config)
+	uint32_t                                           MaxRedirection : 1;                            // 0x0AC4 (0x0004) [0x0000000000004000] [0x00000001] (CPF_Config)
 	float                                              ConnectionTimeout;                             // 0x0AC8 (0x0004) [0x0000000000004000] (CPF_Config)  
 	uint8_t                                           UnknownData00[0x124];                          // 0x0ACC (0x0124) MISSED OFFSET
 
@@ -674,7 +674,7 @@ public:
 		return uClassPointer;
 	};
 
-	void RequestDecodeImage(class FString RequestURL, uint8_t ImageType, struct FScriptDelegate FinishedCallback, TArray<uint8_t>& ImageData);
+	void RequestDecodeImage(class FString RequestURL, EImageType ImageType, struct FScriptDelegate FinishedCallback, TArray<uint8_t>& ImageData);
 	void ImageDecodedDelegate(class FString RequestURL, struct FImageLayout Image);
 };
 
@@ -683,10 +683,10 @@ public:
 class AInternetLink : public AInfo
 {
 public:
-	uint8_t                                            LinkMode;                                      // 0x0268 (0x0001) [0x0000000000000000]               
-	uint8_t                                            InLineMode;                                    // 0x0269 (0x0001) [0x0000000000000000]               
-	uint8_t                                            OutLineMode;                                   // 0x026A (0x0001) [0x0000000000000000]               
-	uint8_t                                            ReceiveMode;                                   // 0x026B (0x0001) [0x0000000000000000]               
+	ELinkMode                                          LinkMode;                                      // 0x0268 (0x0001) [0x0000000000000000]               
+	ELineMode                                          InLineMode;                                    // 0x0269 (0x0001) [0x0000000000000000]               
+	ELineMode                                          OutLineMode;                                   // 0x026A (0x0001) [0x0000000000000000]               
+	EReceiveMode                                       ReceiveMode;                                   // 0x026B (0x0001) [0x0000000000000000]               
 	struct FPointer                                    Socket;                                        // 0x0270 (0x0008) [0x0000000000000002] (CPF_Const)   
 	int32_t                                            Port;                                          // 0x0278 (0x0004) [0x0000000000000002] (CPF_Const)   
 	struct FPointer                                    RemoteSocket;                                  // 0x0280 (0x0008) [0x0000000000000002] (CPF_Const)   
@@ -722,7 +722,7 @@ public:
 class ATcpLink : public AInternetLink
 {
 public:
-	uint8_t                                            LinkState;                                     // 0x0298 (0x0001) [0x0000000000000000]               
+	ELinkState                                         LinkState;                                     // 0x0298 (0x0001) [0x0000000000000000]               
 	struct FIpAddr                                     RemoteAddr;                                    // 0x029C (0x0014) [0x0000000000000000]               
 	class UClass*                                      AcceptClass;                                   // 0x02B0 (0x0008) [0x0000000000000000]               
 	TArray<uint8_t>                                    SendFIFO;                                      // 0x02B8 (0x0010) [0x0000000000400002] (CPF_Const | CPF_NeedCtorLink)
@@ -755,7 +755,7 @@ public:
 	bool Close();
 	bool Open(struct FIpAddr Addr);
 	bool Listen();
-	int32_t BindPort(int32_t PortNum, unsigned long bUseNextAvailable);
+	int32_t BindPort(int32_t optionalPortNum, bool optionalBUseNextAvailable);
 };
 
 // Class IpDrv.McpServiceBase
@@ -814,8 +814,8 @@ class UOnlineEventsInterfaceMcp : public UMCPBase
 public:
 	TArray<struct FEventUploadConfig>                  EventUploadConfigs;                            // 0x0080 (0x0010) [0x0000000000404002] (CPF_Const | CPF_Config | CPF_NeedCtorLink)
 	TArray<struct FPointer>                            MCPEventPostObjects;                           // 0x0090 (0x0010) [0x0000000000001002] (CPF_Const | CPF_Native)
-	TArray<uint8_t>                                    DisabledUploadTypes;                           // 0x00A0 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
-	unsigned long                                      bBinaryStats : 1;                              // 0x00B0 (0x0004) [0x0000000000004002] [0x00000001] (CPF_Const | CPF_Config)
+	TArray<EEventUploadType>                           DisabledUploadTypes;                           // 0x00A0 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
+	uint32_t                                           bBinaryStats : 1;                              // 0x00B0 (0x0004) [0x0000000000004002] [0x00000001] (CPF_Const | CPF_Config)
 
 public:
 	static UClass* StaticClass()
@@ -843,7 +843,7 @@ class UOnlineNewsInterfaceMcp : public UMCPBase
 public:
 	TArray<struct FNewsCacheEntry>                     NewsItems;                                     // 0x0080 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
 	TArray<struct FScriptDelegate>                     ReadNewsDelegates;                             // 0x0090 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      bNeedsTicking : 1;                             // 0x00A0 (0x0004) [0x0000000000002000] [0x00000001] (CPF_Transient)
+	uint32_t                                           bNeedsTicking : 1;                             // 0x00A0 (0x0004) [0x0000000000002000] [0x00000001] (CPF_Transient)
 	struct FScriptDelegate                             __OnReadNewsCompleted__Delegate;               // 0x00A8 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
 
 public:
@@ -859,11 +859,11 @@ public:
 		return uClassPointer;
 	};
 
-	class FString GetNews(uint8_t LocalUserNum, uint8_t NewsType);
+	class FString GetNews(uint8_t LocalUserNum, EOnlineNewsType NewsType);
 	void ClearReadNewsCompletedDelegate(struct FScriptDelegate ReadGameNewsDelegate);
 	void AddReadNewsCompletedDelegate(struct FScriptDelegate ReadNewsDelegate);
-	void OnReadNewsCompleted(unsigned long bWasSuccessful, uint8_t NewsType);
-	bool ReadNews(uint8_t LocalUserNum, uint8_t NewsType);
+	void OnReadNewsCompleted(bool bWasSuccessful, EOnlineNewsType NewsType);
+	bool ReadNews(uint8_t LocalUserNum, EOnlineNewsType NewsType);
 };
 
 // Class IpDrv.OnlineTitleFileDownloadBase
@@ -897,16 +897,16 @@ public:
 	class FString GetUrlForFile(class FString Filename);
 	void ClearRequestTitleFileListCompleteDelegate(struct FScriptDelegate RequestTitleFileListDelegate);
 	void AddRequestTitleFileListCompleteDelegate(struct FScriptDelegate RequestTitleFileListDelegate);
-	void OnRequestTitleFileListComplete(unsigned long bWasSuccessful, TArray<class FString> ResultStr);
+	void OnRequestTitleFileListComplete(bool bWasSuccessful, TArray<class FString> ResultStr);
 	bool RequestTitleFileList();
 	bool ClearDownloadedFile(class FString Filename);
 	bool ClearDownloadedFiles();
-	uint8_t GetTitleFileState(class FString Filename);
+	EOnlineEnumerationReadState GetTitleFileState(class FString Filename);
 	bool GetTitleFileContents(class FString Filename, TArray<uint8_t>& FileContents);
 	void ClearReadTitleFileCompleteDelegate(struct FScriptDelegate ReadTitleFileCompleteDelegate);
 	void AddReadTitleFileCompleteDelegate(struct FScriptDelegate ReadTitleFileCompleteDelegate);
-	bool ReadTitleFile(class FString FileToRead, uint8_t FileType);
-	void OnReadTitleFileComplete(unsigned long bWasSuccessful, class FString Filename);
+	bool ReadTitleFile(class FString FileToRead, EOnlineFileType optionalFileType);
+	void OnReadTitleFileComplete(bool bWasSuccessful, class FString Filename);
 };
 
 // Class IpDrv.OnlineTitleFileDownloadMcp
@@ -932,9 +932,9 @@ public:
 
 	bool ClearDownloadedFile(class FString Filename);
 	bool ClearDownloadedFiles();
-	uint8_t GetTitleFileState(class FString Filename);
+	EOnlineEnumerationReadState GetTitleFileState(class FString Filename);
 	bool GetTitleFileContents(class FString Filename, TArray<uint8_t>& FileContents);
-	bool ReadTitleFile(class FString FileToRead, uint8_t FileType);
+	bool ReadTitleFile(class FString FileToRead, EOnlineFileType optionalFileType);
 };
 
 // Class IpDrv.OnlineTitleFileDownloadWeb
@@ -958,16 +958,16 @@ public:
 	};
 
 	class FString GetUrlForFile(class FString Filename);
-	void OnFileListReceived(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bDidSucceed);
+	void OnFileListReceived(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bDidSucceed);
 	bool RequestTitleFileList();
 	bool ClearDownloadedFile(class FString Filename);
 	bool ClearDownloadedFiles();
-	uint8_t GetTitleFileState(class FString Filename);
+	EOnlineEnumerationReadState GetTitleFileState(class FString Filename);
 	bool GetTitleFileContents(class FString Filename, TArray<uint8_t>& FileContents);
-	void TriggerDelegates(unsigned long bSuccess, class FString FileRead);
-	void OnFileDownloadComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bDidSucceed);
-	bool ReadTitleFile(class FString FileToRead, uint8_t FileType);
-	bool UncompressTitleFileContents(uint8_t FileCompressionType, TArray<uint8_t>& CompressedFileContents, TArray<uint8_t>& UncompressedFileContents);
+	void TriggerDelegates(bool bSuccess, class FString FileRead);
+	void OnFileDownloadComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bDidSucceed);
+	bool ReadTitleFile(class FString FileToRead, EOnlineFileType optionalFileType);
+	bool UncompressTitleFileContents(EMcpFileCompressionType FileCompressionType, TArray<uint8_t>& CompressedFileContents, TArray<uint8_t>& UncompressedFileContents);
 };
 
 // Class IpDrv.TitleFileDownloadCache
@@ -1000,15 +1000,15 @@ public:
 	bool ClearCachedFiles();
 	class FString GetTitleFileLogicalName(class FString Filename);
 	class FString GetTitleFileHash(class FString Filename);
-	uint8_t GetTitleFileState(class FString Filename);
+	EOnlineEnumerationReadState GetTitleFileState(class FString Filename);
 	bool GetTitleFileContents(class FString Filename, TArray<uint8_t>& FileContents);
 	void ClearSaveTitleFileCompleteDelegate(struct FScriptDelegate SaveCompleteDelegate);
 	void AddSaveTitleFileCompleteDelegate(struct FScriptDelegate SaveCompleteDelegate);
-	void OnSaveTitleFileComplete(unsigned long bWasSuccessful, class FString Filename);
+	void OnSaveTitleFileComplete(bool bWasSuccessful, class FString Filename);
 	bool SaveTitleFile(class FString Filename, class FString LogicalName, TArray<uint8_t> FileContents);
 	void ClearLoadTitleFileCompleteDelegate(struct FScriptDelegate LoadCompleteDelegate);
 	void AddLoadTitleFileCompleteDelegate(struct FScriptDelegate LoadCompleteDelegate);
-	void OnLoadTitleFileComplete(unsigned long bWasSuccessful, class FString Filename);
+	void OnLoadTitleFileComplete(bool bWasSuccessful, class FString Filename);
 	bool LoadTitleFile(class FString Filename);
 };
 
@@ -1018,7 +1018,7 @@ class UMcpMessageBase : public UMcpServiceBase
 {
 public:
 	class FString                                      McpMessageManagerClassName;                    // 0x0078 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
-	uint8_t                                            CompressionType;                               // 0x0088 (0x0001) [0x0000000000004000] (CPF_Config)  
+	EMcpMessageCompressionType                         CompressionType;                               // 0x0088 (0x0001) [0x0000000000004000] (CPF_Config)  
 	TArray<struct FMcpMessageContents>                 MessageContentsList;                           // 0x0090 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	TArray<struct FMcpMessageList>                     MessageLists;                                  // 0x00A0 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	struct FScriptDelegate                             __OnCreateMessageComplete__Delegate;           // 0x00B0 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -1042,14 +1042,14 @@ public:
 	bool CacheMessageContents(class FString MessageId, TArray<uint8_t>& MessageContents);
 	void CacheMessage(struct FMcpMessage Message);
 	bool GetMessageContents(class FString MessageId, TArray<uint8_t>& MessageContents);
-	void OnQueryMessageContentsComplete(class FString MessageId, unsigned long bWasSuccessful, class FString Error);
+	void OnQueryMessageContentsComplete(class FString MessageId, bool bWasSuccessful, class FString Error);
 	void QueryMessageContents(class FString MessageId);
 	void GetMessageList(class FString ToUniqueUserId, struct FMcpMessageList& MessageList);
-	void OnQueryMessagesComplete(class FString UserId, unsigned long bWasSuccessful, class FString Error);
+	void OnQueryMessagesComplete(class FString UserId, bool bWasSuccessful, class FString Error);
 	void QueryMessages(class FString ToUniqueUserId);
-	void OnDeleteMessageComplete(class FString MessageId, unsigned long bWasSuccessful, class FString Error);
+	void OnDeleteMessageComplete(class FString MessageId, bool bWasSuccessful, class FString Error);
 	void DeleteMessage(class FString MessageId);
-	void OnCreateMessageComplete(struct FMcpMessage Message, unsigned long bWasSuccessful, class FString Error);
+	void OnCreateMessageComplete(struct FMcpMessage Message, bool bWasSuccessful, class FString Error);
 	void CreateMessage(class FString FromUniqueUserId, class FString FromFriendlyName, class FString MessageType, class FString PushMessage, class FString ValidUntil, TArray<class FString>& ToUniqueUserIds, TArray<uint8_t>& MessageContents);
 	static class UMcpMessageBase* CreateInstance();
 };
@@ -1085,18 +1085,18 @@ public:
 	bool GetMessageById(class FString MessageId, struct FMcpMessage& Message);
 	void CacheMessage(struct FMcpMessage Message);
 	bool GetMessageContents(class FString MessageId, TArray<uint8_t>& MessageContents);
-	void OnQueryMessageContentsRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, unsigned long bWasSuccessful);
+	void OnQueryMessageContentsRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
 	void QueryMessageContents(class FString MessageId);
 	void GetMessageList(class FString ToUniqueUserId, struct FMcpMessageList& MessageList);
-	void OnQueryMessagesRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, unsigned long bWasSuccessful);
+	void OnQueryMessagesRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
 	void QueryMessages(class FString ToUniqueUserId);
-	void OnDeleteMessageRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, unsigned long bWasSuccessful);
+	void OnDeleteMessageRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
 	void DeleteMessage(class FString MessageId);
-	void OnCreateMessageRequestComplete(class UHttpRequestInterface* CreateMessageRequest, class UHttpResponseInterface* HttpResponse, unsigned long bWasSuccessful);
+	void OnCreateMessageRequestComplete(class UHttpRequestInterface* CreateMessageRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
 	void CreateMessage(class FString FromUniqueUserId, class FString FromFriendlyName, class FString MessageType, class FString PushMessage, class FString ValidUntil, TArray<class FString>& ToUniqueUserIds, TArray<uint8_t>& MessageContents);
-	void eventFinishedAsyncUncompression(unsigned long bWasSuccessful, class FString MessageId, TArray<uint8_t>& UncompressedMessageContents);
-	bool StartAsyncUncompression(class FString MessageId, uint8_t MessageCompressionType, TArray<uint8_t>& MessageContent);
-	bool StartAsyncCompression(uint8_t MessageCompressionType, class UHttpRequestInterface* Request, TArray<uint8_t>& MessageContent);
+	void eventFinishedAsyncUncompression(bool bWasSuccessful, class FString MessageId, TArray<uint8_t>& UncompressedMessageContents);
+	bool StartAsyncUncompression(class FString MessageId, EMcpMessageCompressionType MessageCompressionType, TArray<uint8_t>& MessageContent);
+	bool StartAsyncCompression(EMcpMessageCompressionType MessageCompressionType, class UHttpRequestInterface* Request, TArray<uint8_t>& MessageContent);
 };
 
 // Class IpDrv.McpUserCloudFileDownload
@@ -1134,29 +1134,29 @@ public:
 	void ClearAllDelegates();
 	void ClearDeleteUserFileCompleteDelegate(struct FScriptDelegate DeleteUserFileCompleteDelegate);
 	void AddDeleteUserFileCompleteDelegate(struct FScriptDelegate DeleteUserFileCompleteDelegate);
-	void CallDeleteUserFileCompleteDelegates(unsigned long bWasSuccessful, class FString UserId, class FString Filename);
-	void OnDeleteUserFileComplete(unsigned long bWasSuccessful, class FString UserId, class FString Filename);
-	void OnHTTPRequestDeleteUserFileComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
-	bool DeleteUserFile(class FString UserId, class FString Filename, unsigned long bShouldCloudDelete, unsigned long bShouldLocallyDelete);
+	void CallDeleteUserFileCompleteDelegates(bool bWasSuccessful, class FString UserId, class FString Filename);
+	void OnDeleteUserFileComplete(bool bWasSuccessful, class FString UserId, class FString Filename);
+	void OnHTTPRequestDeleteUserFileComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	bool DeleteUserFile(class FString UserId, class FString Filename, bool bShouldCloudDelete, bool bShouldLocallyDelete);
 	void ClearWriteUserFileCompleteDelegate(struct FScriptDelegate WriteUserFileCompleteDelegate);
 	void AddWriteUserFileCompleteDelegate(struct FScriptDelegate WriteUserFileCompleteDelegate);
-	void CallWriteUserFileCompleteDelegates(unsigned long bWasSuccessful, class FString UserId, class FString Filename);
-	void OnWriteUserFileComplete(unsigned long bWasSuccessful, class FString UserId, class FString Filename);
-	void OnHTTPRequestWriteUserFileComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void CallWriteUserFileCompleteDelegates(bool bWasSuccessful, class FString UserId, class FString Filename);
+	void OnWriteUserFileComplete(bool bWasSuccessful, class FString UserId, class FString Filename);
+	void OnHTTPRequestWriteUserFileComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void GetUserFileIndexForRequest(class UHttpRequestInterface* Request, int32_t& UserIdx, int32_t& FileIdx);
 	bool WriteUserFile(class FString UserId, class FString Filename, TArray<uint8_t>& FileContents);
 	void ClearReadUserFileCompleteDelegate(struct FScriptDelegate ReadUserFileCompleteDelegate);
 	void AddReadUserFileCompleteDelegate(struct FScriptDelegate ReadUserFileCompleteDelegate);
-	void CallReadUserFileCompleteDelegates(unsigned long bWasSuccessful, class FString UserId, class FString Filename);
-	void OnReadUserFileComplete(unsigned long bWasSuccessful, class FString UserId, class FString Filename);
-	void OnHTTPRequestReadUserFileComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void CallReadUserFileCompleteDelegates(bool bWasSuccessful, class FString UserId, class FString Filename);
+	void OnReadUserFileComplete(bool bWasSuccessful, class FString UserId, class FString Filename);
+	void OnHTTPRequestReadUserFileComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	bool ReadUserFile(class FString UserId, class FString Filename);
 	void GetUserFileList(class FString UserId, TArray<struct FEmsFile>& UserFiles);
 	void ClearEnumerateUserFileCompleteDelegate(struct FScriptDelegate EnumerateUserFileCompleteDelegate);
 	void AddEnumerateUserFileCompleteDelegate(struct FScriptDelegate EnumerateUserFileCompleteDelegate);
-	void CallEnumerateUserFileCompleteDelegates(unsigned long bWasSuccessful, class FString UserId);
-	void OnEnumerateUserFilesComplete(unsigned long bWasSuccessful, class FString UserId);
-	void OnHTTPRequestEnumerateUserFilesComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void CallEnumerateUserFileCompleteDelegates(bool bWasSuccessful, class FString UserId);
+	void OnEnumerateUserFilesComplete(bool bWasSuccessful, class FString UserId);
+	void OnHTTPRequestEnumerateUserFilesComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void EnumerateUserFiles(class FString UserId);
 	bool ClearFile(class FString UserId, class FString Filename);
 	bool ClearFiles(class FString UserId);
@@ -1171,9 +1171,9 @@ public:
 	struct FPointer                                    VfTable_FTickableObject;                       // 0x0060 (0x0008) [0x0000000000801002] (CPF_Const | CPF_Native | CPF_NoExport)
 	int32_t                                            MeshBeaconPort;                                // 0x0068 (0x0004) [0x0000000000004000] (CPF_Config)  
 	struct FPointer                                    Socket;                                        // 0x0070 (0x0008) [0x0000000000003000] (CPF_Native | CPF_Transient)
-	unsigned long                                      bIsInTick : 1;                                 // 0x0078 (0x0004) [0x0000000000002000] [0x00000001] (CPF_Transient)
-	unsigned long                                      bWantsDeferredDestroy : 1;                     // 0x0078 (0x0004) [0x0000000000002000] [0x00000002] (CPF_Transient)
-	unsigned long                                      bShouldTick : 1;                               // 0x0078 (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           bIsInTick : 1;                                 // 0x0078 (0x0004) [0x0000000000002000] [0x00000001] (CPF_Transient)
+	uint32_t                                           bWantsDeferredDestroy : 1;                     // 0x0078 (0x0004) [0x0000000000002000] [0x00000002] (CPF_Transient)
+	uint32_t                                           bShouldTick : 1;                               // 0x0078 (0x0004) [0x0000000000000000] [0x00000004] 
 	float                                              HeartbeatTimeout;                              // 0x007C (0x0004) [0x0000000000004000] (CPF_Config)  
 	float                                              ElapsedHeartbeatTime;                          // 0x0080 (0x0004) [0x0000000000000000]               
 	struct FName                                       BeaconName;                                    // 0x0084 (0x0008) [0x0000000000000000]               
@@ -1209,14 +1209,14 @@ public:
 	struct FOnlineGameSearchResult                     HostPendingRequest;                            // 0x00A8 (0x0010) [0x0000000000000002] (CPF_Const)   
 	struct FClientConnectionRequest                    ClientPendingRequest;                          // 0x00B8 (0x0070) [0x0000000000400002] (CPF_Const | CPF_NeedCtorLink)
 	struct FClientBandwidthTestData                    CurrentBandwidthTest;                          // 0x0128 (0x0014) [0x0000000000000000]               
-	uint8_t                                            ClientBeaconState;                             // 0x013C (0x0001) [0x0000000000000000]               
-	uint8_t                                            ClientBeaconRequestType;                       // 0x013D (0x0001) [0x0000000000000000]               
+	EMeshBeaconClientState                             ClientBeaconState;                             // 0x013C (0x0001) [0x0000000000000000]               
+	EMeshBeaconPacketType                              ClientBeaconRequestType;                       // 0x013D (0x0001) [0x0000000000000000]               
 	float                                              ConnectionRequestTimeout;                      // 0x0140 (0x0004) [0x0000000000004000] (CPF_Config)  
 	float                                              ConnectionRequestElapsedTime;                  // 0x0144 (0x0004) [0x0000000000000000]               
 	class FString                                      ResolverClassName;                             // 0x0148 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
 	class UClass*                                      ResolverClass;                                 // 0x0158 (0x0008) [0x0000000000000000]               
 	class UClientBeaconAddressResolver*                Resolver;                                      // 0x0160 (0x0008) [0x0000000000000000]               
-	unsigned long                                      bUsingRegisteredAddr : 1;                      // 0x0168 (0x0004) [0x0000000000002000] [0x00000001] (CPF_Transient)
+	uint32_t                                           bUsingRegisteredAddr : 1;                      // 0x0168 (0x0004) [0x0000000000002000] [0x00000001] (CPF_Transient)
 	struct FScriptDelegate                             __OnConnectionRequestResult__Delegate;         // 0x0170 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
 	struct FScriptDelegate                             __OnReceivedBandwidthTestRequest__Delegate;    // 0x0188 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
 	struct FScriptDelegate                             __OnReceivedBandwidthTestResults__Delegate;    // 0x01A0 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -1236,14 +1236,14 @@ public:
 		return uClassPointer;
 	};
 
-	bool SendHostNewGameSessionResponse(unsigned long bSuccess, struct FName SessionName, class UClass* SearchClass, uint8_t& PlatformSpecificInfo);
+	bool SendHostNewGameSessionResponse(bool bSuccess, struct FName SessionName, class UClass* SearchClass, uint8_t& PlatformSpecificInfo);
 	void OnCreateNewSessionRequestReceived(struct FName SessionName, class UClass* SearchClass, TArray<struct FPlayerMember>& Players);
 	void OnTravelRequestReceived(struct FName SessionName, class UClass* SearchClass, uint8_t& PlatformSpecificInfo);
-	void OnReceivedBandwidthTestResults(uint8_t TestType, uint8_t TestResult, struct FConnectionBandwidthStats& BandwidthStats);
-	void OnReceivedBandwidthTestRequest(uint8_t TestType);
-	void OnConnectionRequestResult(uint8_t ConnectionResult);
-	bool BeginBandwidthTest(uint8_t TestType, int32_t TestBufferSize);
-	bool RequestConnection(unsigned long bRegisterSecureAddress, struct FOnlineGameSearchResult& DesiredHost, struct FClientConnectionRequest& ClientRequest);
+	void OnReceivedBandwidthTestResults(EMeshBeaconBandwidthTestType TestType, EMeshBeaconBandwidthTestResult TestResult, struct FConnectionBandwidthStats& BandwidthStats);
+	void OnReceivedBandwidthTestRequest(EMeshBeaconBandwidthTestType TestType);
+	void OnConnectionRequestResult(EMeshBeaconConnectionResult ConnectionResult);
+	bool BeginBandwidthTest(EMeshBeaconBandwidthTestType TestType, int32_t TestBufferSize);
+	bool RequestConnection(bool bRegisterSecureAddress, struct FOnlineGameSearchResult& DesiredHost, struct FClientConnectionRequest& ClientRequest);
 	void eventDestroyBeacon();
 };
 
@@ -1255,7 +1255,7 @@ public:
 	TArray<struct FClientMeshBeaconConnection>         ClientConnections;                             // 0x00A8 (0x0010) [0x0000000000400002] (CPF_Const | CPF_NeedCtorLink)
 	TArray<struct FUniqueNetId>                        PendingPlayerConnections;                      // 0x00B8 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	struct FUniqueNetId                                OwningPlayerId;                                // 0x00C8 (0x0048) [0x0000000000400002] (CPF_Const | CPF_NeedCtorLink)
-	unsigned long                                      bAllowBandwidthTesting : 1;                    // 0x0110 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bAllowBandwidthTesting : 1;                    // 0x0110 (0x0004) [0x0000000000000000] [0x00000001] 
 	int32_t                                            ConnectionBacklog;                             // 0x0114 (0x0004) [0x0000000000004000] (CPF_Config)  
 	struct FScriptDelegate                             __OnReceivedClientConnectionRequest__Delegate; // 0x0118 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
 	struct FScriptDelegate                             __OnStartedBandwidthTest__Delegate;            // 0x0130 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -1276,22 +1276,22 @@ public:
 		return uClassPointer;
 	};
 
-	void OnReceivedClientCreateNewSessionResult(unsigned long bSucceeded, struct FName SessionName, class UClass* SearchClass, uint8_t& PlatformSpecificInfo);
+	void OnReceivedClientCreateNewSessionResult(bool bSucceeded, struct FName SessionName, class UClass* SearchClass, uint8_t& PlatformSpecificInfo);
 	bool RequestClientCreateNewSession(struct FUniqueNetId PlayerNetId, struct FName SessionName, class UClass* SearchClass, TArray<struct FPlayerMember>& Players);
 	void TellClientsToTravel(struct FName SessionName, class UClass* SearchClass, uint8_t& PlatformSpecificInfo);
 	void OnAllPendingPlayersConnected();
 	bool AllPlayersConnected(TArray<struct FUniqueNetId>& Players);
 	int32_t GetConnectionIndexForPlayer(struct FUniqueNetId PlayerNetId);
 	void SetPendingPlayerConnections(TArray<struct FUniqueNetId>& Players);
-	void OnFinishedBandwidthTest(struct FUniqueNetId PlayerNetId, uint8_t TestType, uint8_t TestResult, struct FConnectionBandwidthStats& BandwidthStats);
-	void OnStartedBandwidthTest(struct FUniqueNetId PlayerNetId, uint8_t TestType);
+	void OnFinishedBandwidthTest(struct FUniqueNetId PlayerNetId, EMeshBeaconBandwidthTestType TestType, EMeshBeaconBandwidthTestResult TestResult, struct FConnectionBandwidthStats& BandwidthStats);
+	void OnStartedBandwidthTest(struct FUniqueNetId PlayerNetId, EMeshBeaconBandwidthTestType TestType);
 	void OnReceivedClientConnectionRequest(struct FClientMeshBeaconConnection& NewClientConnection);
-	void AllowBandwidthTesting(unsigned long bEnabled);
+	void AllowBandwidthTesting(bool bEnabled);
 	void CancelPendingBandwidthTests();
 	bool HasPendingBandwidthTest();
 	void CancelInProgressBandwidthTests();
 	bool HasInProgressBandwidthTest();
-	bool RequestClientBandwidthTest(struct FUniqueNetId PlayerNetId, uint8_t TestType, int32_t TestBufferSize);
+	bool RequestClientBandwidthTest(struct FUniqueNetId PlayerNetId, EMeshBeaconBandwidthTestType TestType, int32_t TestBufferSize);
 	void eventDestroyBeacon();
 	bool InitHostBeacon(struct FUniqueNetId InOwningPlayerId);
 };
@@ -1305,7 +1305,7 @@ public:
 	TArray<struct FAuthCodeRequest>                    AuthCodeRequests;                              // 0x0068 (0x0010) [0x0000000000402000] (CPF_Transient | CPF_NeedCtorLink)
 	int32_t                                            NextAuthCodeID;                                // 0x0078 (0x0004) [0x0000000000002000] (CPF_Transient)
 	class UOnlineSubsystemCommonImpl*                  OwningSubsystem;                               // 0x0080 (0x0008) [0x0000000000000000]               
-	unsigned long                                      bAuthReady : 1;                                // 0x0088 (0x0004) [0x0000000000000002] [0x00000001] (CPF_Const)
+	uint32_t                                           bAuthReady : 1;                                // 0x0088 (0x0004) [0x0000000000000002] [0x00000001] (CPF_Const)
 	struct FSparseArray_Mirror                         ClientAuthSessions;                            // 0x0090 (0x0038) [0x0000000000001002] (CPF_Const | CPF_Native)
 	struct FSparseArray_Mirror                         ServerAuthSessions;                            // 0x00C8 (0x0038) [0x0000000000001002] (CPF_Const | CPF_Native)
 	struct FSparseArray_Mirror                         PeerAuthSessions;                              // 0x0100 (0x0038) [0x0000000000001002] (CPF_Const | CPF_Native)
@@ -1352,11 +1352,11 @@ public:
 
 	class UAsyncTask* RequestAccountAuthorization(struct FUniqueNetId PlayerID, struct FScriptDelegate Callback);
 	void OnAccountAuthorization(class FString Token);
-	void OnLoginChanged(unsigned long bLoggedIn);
+	void OnLoginChanged(bool bLoggedIn);
 	bool RequestMtxCode(struct FUniqueNetId PlayerID, struct FScriptDelegate Callback);
 	bool RequestAuthTicket(struct FUniqueNetId PlayerID, struct FScriptDelegate Callback);
 	bool RequiresAuthTicket();
-	void OnReceivedAuthCode(unsigned long bSuccess, class FString Code);
+	void OnReceivedAuthCode(bool bSuccess, class FString Code);
 	bool GetServerAddr(struct FIpAddr& OutServerIP, int32_t& OutServerPort);
 	bool GetServerUniqueId(struct FUniqueNetId& OutServerUID);
 	bool FindLocalServerAuthSession(class UPlayer* ClientConnection, struct FLocalAuthSession& OutSessionInfo);
@@ -1378,7 +1378,7 @@ public:
 	void EndRemoteClientAuthSession(struct FUniqueNetId ClientUID, struct FIpAddr ClientIP);
 	void EndLocalClientAuthSession(struct FUniqueNetId ServerUID, struct FIpAddr ServerIP, int32_t ServerPort);
 	bool VerifyClientAuthSession(struct FUniqueNetId ClientUID, struct FIpAddr ClientIP, int32_t ClientPort, int32_t AuthTicketUID);
-	bool CreateClientAuthSession(struct FUniqueNetId ServerUID, struct FIpAddr ServerIP, int32_t ServerPort, unsigned long bSecure, int32_t& OutAuthTicketUID);
+	bool CreateClientAuthSession(struct FUniqueNetId ServerUID, struct FIpAddr ServerIP, int32_t ServerPort, bool bSecure, int32_t& OutAuthTicketUID);
 	bool SendServerAuthRetryRequest();
 	bool SendClientAuthEndSessionRequest(class UPlayer* ClientConnection);
 	bool SendServerAuthResponse(class UPlayer* ClientConnection, int32_t AuthTicketUID);
@@ -1399,10 +1399,10 @@ public:
 	void OnClientAuthEndSessionRequest(class UPlayer* ServerConnection);
 	void ClearServerAuthCompleteDelegate(struct FScriptDelegate ServerAuthCompleteDelegate);
 	void AddServerAuthCompleteDelegate(struct FScriptDelegate ServerAuthCompleteDelegate);
-	void OnServerAuthComplete(unsigned long bSuccess, struct FUniqueNetId ServerUID, class UPlayer* ServerConnection, class FString ExtraInfo);
+	void OnServerAuthComplete(bool bSuccess, struct FUniqueNetId ServerUID, class UPlayer* ServerConnection, class FString ExtraInfo);
 	void ClearClientAuthCompleteDelegate(struct FScriptDelegate ClientAuthCompleteDelegate);
 	void AddClientAuthCompleteDelegate(struct FScriptDelegate ClientAuthCompleteDelegate);
-	void OnClientAuthComplete(unsigned long bSuccess, struct FUniqueNetId ClientUID, class UPlayer* ClientConnection, class FString ExtraInfo);
+	void OnClientAuthComplete(bool bSuccess, struct FUniqueNetId ClientUID, class UPlayer* ClientConnection, class FString ExtraInfo);
 	void ClearServerAuthResponseDelegate(struct FScriptDelegate ServerAuthResponseDelegate);
 	void AddServerAuthResponseDelegate(struct FScriptDelegate ServerAuthResponseDelegate);
 	void OnServerAuthResponse(struct FUniqueNetId ServerUID, struct FIpAddr ServerIP, int32_t AuthTicketUID);
@@ -1414,7 +1414,7 @@ public:
 	void OnServerAuthRequest(class UPlayer* ClientConnection, struct FUniqueNetId ClientUID, struct FIpAddr ClientIP, int32_t ClientPort);
 	void ClearClientAuthRequestDelegate(struct FScriptDelegate ClientAuthRequestDelegate);
 	void AddClientAuthRequestDelegate(struct FScriptDelegate ClientAuthRequestDelegate);
-	void OnClientAuthRequest(struct FUniqueNetId ServerUID, struct FIpAddr ServerIP, int32_t ServerPort, unsigned long bSecure);
+	void OnClientAuthRequest(struct FUniqueNetId ServerUID, struct FIpAddr ServerIP, int32_t ServerPort, bool bSecure);
 	void ClearAuthReadyDelegate(struct FScriptDelegate AuthReadyDelegate);
 	void AddAuthReadyDelegate(struct FScriptDelegate AuthReadyDelegate);
 	void OnAuthReady();
@@ -1444,7 +1444,7 @@ public:
 
 	bool GetActivePlatformId(uint8_t LocalUserNum, struct FUniqueNetId AccountId, struct FUniqueNetId& PlatformId);
 	bool RequestLinkedAccounts(uint8_t LocalUserNum, TArray<struct FUniqueNetId> AccountIds, struct FScriptDelegate Callback);
-	void OnReceivedLinkedAccount(unsigned long bSuccess, TArray<struct FLinkedAccountData> LinkedAccountData);
+	void OnReceivedLinkedAccount(bool bSuccess, TArray<struct FLinkedAccountData> LinkedAccountData);
 };
 
 // Class IpDrv.OnlineGameInterfaceImpl
@@ -1466,7 +1466,7 @@ public:
 	TArray<struct FScriptDelegate>                     EndOnlineGameCompleteDelegates;                // 0x00F8 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	TArray<struct FScriptDelegate>                     FindOnlineGamesCompleteDelegates;              // 0x0108 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	TArray<struct FScriptDelegate>                     CancelFindOnlineGamesCompleteDelegates;        // 0x0118 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	uint8_t                                            LanBeaconState;                                // 0x0128 (0x0001) [0x0000000000000002] (CPF_Const)   
+	ELanBeaconState                                    LanBeaconState;                                // 0x0128 (0x0001) [0x0000000000000002] (CPF_Const)   
 	uint8_t                                            LanNonce[0x8];                                 // 0x0129 (0x0008) [0x0000000000000002] (CPF_Const)   
 	int32_t                                            LanAnnouncePort;                               // 0x0134 (0x0004) [0x0000000000004002] (CPF_Const | CPF_Config)
 	int32_t                                            LanGameUniqueId;                               // 0x0138 (0x0004) [0x0000000000004002] (CPF_Const | CPF_Config)
@@ -1511,7 +1511,7 @@ public:
 	void ClearGamePlayersChangedDelegate(struct FScriptDelegate GamePlayersChangedDelegate);
 	void AddGamePlayersChangedDelegate(struct FScriptDelegate GamePlayersChangedDelegate);
 	void OnGamePlayersChanged(struct FName SessionName, TArray<struct FUniqueNetId> Players);
-	void SetFriendJoinLocation(struct FUniqueNetId JoinablePlayerID, class FString ServerAddress, uint8_t Visibility);
+	void SetFriendJoinLocation(struct FUniqueNetId JoinablePlayerID, class FString ServerAddress, ELobbyVisibility Visibility);
 	void ClearReportMatchmakingInfoDelegate(struct FScriptDelegate OldDelegate);
 	void AddReportMatchmakingInfoDelegate(struct FScriptDelegate NewDelegate);
 	void EventReportMatchmakingInfo(class FString NewInfo);
@@ -1524,15 +1524,15 @@ public:
 	bool QueryNonAdvertisedData(int32_t StartAt, int32_t NumberToQuery);
 	void ClearJoinMigratedOnlineGameCompleteDelegate(struct FScriptDelegate JoinMigratedOnlineGameCompleteDelegate);
 	void AddJoinMigratedOnlineGameCompleteDelegate(struct FScriptDelegate JoinMigratedOnlineGameCompleteDelegate);
-	void OnJoinMigratedOnlineGameComplete(struct FName SessionName, unsigned long bWasSuccessful);
+	void OnJoinMigratedOnlineGameComplete(struct FName SessionName, bool bWasSuccessful);
 	bool JoinMigratedOnlineGame(uint8_t PlayerNum, struct FName SessionName, struct FOnlineGameSearchResult& DesiredGame);
 	void ClearMigrateOnlineGameCompleteDelegate(struct FScriptDelegate MigrateOnlineGameCompleteDelegate);
 	void AddMigrateOnlineGameCompleteDelegate(struct FScriptDelegate MigrateOnlineGameCompleteDelegate);
-	void OnMigrateOnlineGameComplete(struct FName SessionName, unsigned long bWasSuccessful);
+	void OnMigrateOnlineGameComplete(struct FName SessionName, bool bWasSuccessful);
 	bool MigrateOnlineGame(uint8_t HostingPlayerNum, struct FName SessionName);
 	void ClearRecalculateSkillRatingCompleteDelegate(struct FScriptDelegate RecalculateSkillRatingGameCompleteDelegate);
 	void AddRecalculateSkillRatingCompleteDelegate(struct FScriptDelegate RecalculateSkillRatingCompleteDelegate);
-	void OnRecalculateSkillRatingComplete(struct FName SessionName, unsigned long bWasSuccessful);
+	void OnRecalculateSkillRatingComplete(struct FName SessionName, bool bWasSuccessful);
 	bool RecalculateSkillRating(struct FName SessionName, TArray<struct FUniqueNetId>& Players);
 	bool AcceptGameInvite(uint8_t LocalUserNum, struct FName SessionName);
 	void ClearGameInviteAcceptedDelegate(uint8_t LocalUserNum, struct FScriptDelegate GameInviteAcceptedDelegate);
@@ -1541,54 +1541,54 @@ public:
 	TArray<struct FOnlineArbitrationRegistrant> GetArbitratedPlayers(struct FName SessionName);
 	void ClearArbitrationRegistrationCompleteDelegate(struct FScriptDelegate ArbitrationRegistrationCompleteDelegate);
 	void AddArbitrationRegistrationCompleteDelegate(struct FScriptDelegate ArbitrationRegistrationCompleteDelegate);
-	void OnArbitrationRegistrationComplete(struct FName SessionName, unsigned long bWasSuccessful);
+	void OnArbitrationRegistrationComplete(struct FName SessionName, bool bWasSuccessful);
 	bool RegisterForArbitration(struct FName SessionName);
 	void ClearEndOnlineGameCompleteDelegate(struct FScriptDelegate EndOnlineGameCompleteDelegate);
 	void AddEndOnlineGameCompleteDelegate(struct FScriptDelegate EndOnlineGameCompleteDelegate);
-	void OnEndOnlineGameComplete(struct FName SessionName, unsigned long bWasSuccessful);
+	void OnEndOnlineGameComplete(struct FName SessionName, bool bWasSuccessful);
 	bool EndOnlineGame(struct FName SessionName);
 	void ClearStartOnlineGameCompleteDelegate(struct FScriptDelegate StartOnlineGameCompleteDelegate);
 	void AddStartOnlineGameCompleteDelegate(struct FScriptDelegate StartOnlineGameCompleteDelegate);
-	void OnStartOnlineGameComplete(struct FName SessionName, unsigned long bWasSuccessful);
+	void OnStartOnlineGameComplete(struct FName SessionName, bool bWasSuccessful);
 	bool StartOnlineGame(struct FName SessionName);
 	void ClearUnregisterPlayerCompleteDelegate(struct FScriptDelegate UnregisterPlayerCompleteDelegate);
 	void AddUnregisterPlayerCompleteDelegate(struct FScriptDelegate UnregisterPlayerCompleteDelegate);
-	void OnUnregisterPlayerComplete(struct FName SessionName, struct FUniqueNetId PlayerID, unsigned long bWasSuccessful);
+	void OnUnregisterPlayerComplete(struct FName SessionName, struct FUniqueNetId PlayerID, bool bWasSuccessful);
 	bool UnregisterPlayers(struct FName SessionName, TArray<struct FUniqueNetId>& Players);
 	bool UnregisterPlayer(struct FName SessionName, struct FUniqueNetId PlayerID);
 	void ClearRegisterPlayerCompleteDelegate(struct FScriptDelegate RegisterPlayerCompleteDelegate);
 	void AddRegisterPlayerCompleteDelegate(struct FScriptDelegate RegisterPlayerCompleteDelegate);
-	void OnRegisterPlayerComplete(struct FName SessionName, struct FUniqueNetId PlayerID, unsigned long bWasSuccessful);
+	void OnRegisterPlayerComplete(struct FName SessionName, struct FUniqueNetId PlayerID, bool bWasSuccessful);
 	bool RegisterPlayers(struct FName SessionName, TArray<struct FUniqueNetId>& Players);
-	bool RegisterPlayer(struct FName SessionName, struct FUniqueNetId PlayerID, unsigned long bWasInvited);
+	bool RegisterPlayer(struct FName SessionName, struct FUniqueNetId PlayerID, bool bWasInvited);
 	bool GetResolvedConnectString(struct FName SessionName, class FString& ConnectInfo);
 	void ClearJoinOnlineGameCompleteDelegate(struct FScriptDelegate JoinOnlineGameCompleteDelegate);
 	void AddJoinOnlineGameCompleteDelegate(struct FScriptDelegate JoinOnlineGameCompleteDelegate);
-	void OnJoinOnlineGameComplete(struct FName SessionName, unsigned long bWasSuccessful);
+	void OnJoinOnlineGameComplete(struct FName SessionName, bool bWasSuccessful);
 	bool JoinOnlineGame(uint8_t PlayerNum, struct FName SessionName, struct FOnlineGameSearchResult& DesiredGame);
 	bool FreeSearchResults(class UOnlineGameSearch* Search);
 	void ClearCancelFindOnlineGamesCompleteDelegate(struct FScriptDelegate CancelFindOnlineGamesCompleteDelegate);
 	void AddCancelFindOnlineGamesCompleteDelegate(struct FScriptDelegate CancelFindOnlineGamesCompleteDelegate);
-	void OnCancelFindOnlineGamesComplete(unsigned long bWasSuccessful);
+	void OnCancelFindOnlineGamesComplete(bool bWasSuccessful);
 	bool CancelFindOnlineGames();
 	void ClearFindOnlineGamesCompleteDelegate(struct FScriptDelegate FindOnlineGamesCompleteDelegate);
 	void AddFindOnlineGamesCompleteDelegate(struct FScriptDelegate FindOnlineGamesCompleteDelegate);
 	bool FindOnlineGames(uint8_t SearchingPlayerNum, class UOnlineGameSearch* SearchSettings);
 	void ClearDestroyOnlineGameCompleteDelegate(struct FScriptDelegate DestroyOnlineGameCompleteDelegate);
 	void AddDestroyOnlineGameCompleteDelegate(struct FScriptDelegate DestroyOnlineGameCompleteDelegate);
-	void OnDestroyOnlineGameComplete(struct FName SessionName, unsigned long bWasSuccessful);
+	void OnDestroyOnlineGameComplete(struct FName SessionName, bool bWasSuccessful);
 	bool DestroyOnlineGame(struct FName SessionName);
 	void ClearUpdateOnlineGameCompleteDelegate(struct FScriptDelegate UpdateOnlineGameCompleteDelegate);
 	void AddUpdateOnlineGameCompleteDelegate(struct FScriptDelegate UpdateOnlineGameCompleteDelegate);
-	void OnUpdateOnlineGameComplete(struct FName SessionName, unsigned long bWasSuccessful);
-	bool UpdateOnlineGame(struct FName SessionName, class UOnlineGameSettings* UpdatedGameSettings, unsigned long bShouldRefreshOnlineData);
+	void OnUpdateOnlineGameComplete(struct FName SessionName, bool bWasSuccessful);
+	bool UpdateOnlineGame(struct FName SessionName, class UOnlineGameSettings* UpdatedGameSettings, bool optionalBShouldRefreshOnlineData);
 	void ClearCreateOnlineGameCompleteDelegate(struct FScriptDelegate CreateOnlineGameCompleteDelegate);
 	void AddCreateOnlineGameCompleteDelegate(struct FScriptDelegate CreateOnlineGameCompleteDelegate);
-	void OnCreateOnlineGameComplete(struct FName SessionName, unsigned long bWasSuccessful);
+	void OnCreateOnlineGameComplete(struct FName SessionName, bool bWasSuccessful);
 	bool CreateOnlineGame(uint8_t HostingPlayerNum, struct FName SessionName, class UOnlineGameSettings* NewGameSettings);
 	class UOnlineGameSearch* GetGameSearch();
 	class UOnlineGameSettings* GetGameSettings(struct FName SessionName);
-	void OnFindOnlineGamesComplete(unsigned long bWasSuccessful);
+	void OnFindOnlineGamesComplete(bool bWasSuccessful);
 };
 
 // Class IpDrv.OnlineImageDownloaderWeb
@@ -1620,12 +1620,12 @@ public:
 		return uClassPointer;
 	};
 
-	static uint8_t GetImageType(class FString ContentType);
-	void QueueURLForDownload(class FString NewURL, struct FScriptDelegate InternalCallbackOnComplete, struct FScriptDelegate ExternalCallback, unsigned long bSupportSRGB);
+	static EImageType GetImageType(class FString ContentType);
+	void QueueURLForDownload(class FString NewURL, struct FScriptDelegate InternalCallbackOnComplete, struct FScriptDelegate ExternalCallback, bool bSupportSRGB);
 	void DebugDraw(class UCanvas* Canvas);
-	void OnDownloadComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* Response, unsigned long bDidSucceed);
+	void OnDownloadComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* Response, bool bDidSucceed);
 	void DownloadNextImage();
-	void RequestOnlineImages(struct FScriptDelegate FinishedCallback, unsigned long bSupportSRGB, TArray<class FString>& URLs);
+	void RequestOnlineImages(struct FScriptDelegate FinishedCallback, bool optionalBSupportSRGB, TArray<class FString>& URLs);
 	class UTexture* GetOnlineImageTexture(class FString URL);
 	void ClearQueue();
 	class FString Dequeue();
@@ -1646,7 +1646,7 @@ public:
 	bool DidURLFail(class FString URL);
 	bool DidURLSucceed(class FString URL);
 	bool IsURLTracked(class FString URL);
-	void AllValues(int32_t StartIndex, int32_t MaxValues, struct FOnlineImageDownload& OutImage);
+	void AllValues(int32_t optionalStartIndex, int32_t optionalMaxValues, struct FOnlineImageDownload& OutImage);
 	void ClearPendingDownloads();
 	void ClearAllDownloads();
 	void EventImageDecoded(class FString RequestURL, struct FImageLayout& Image);
@@ -1719,19 +1719,19 @@ public:
 	int32_t eventGetLobbyIndex(struct FUniqueLobbyId& LobbyId);
 	void RemoveLocalPlayerFromSession(struct FUniqueNetId& PartyMember);
 	void AddLocalPartyMemberToSession(struct FUniqueNetId& NewPartyMember);
-	bool KickPlayer(uint8_t Reason, struct FUniqueLobbyId& LobbyId, struct FUniqueNetId& PlayerID);
+	bool KickPlayer(ELobbyKickReason Reason, struct FUniqueLobbyId& LobbyId, struct FUniqueNetId& PlayerID);
 	bool ShowInviteUI(uint8_t LocalUserNum, struct FUniqueLobbyId& LobbyId);
-	void eventTriggerLobbyDestroyedDelegates(int32_t LobbyIndex, uint8_t Reason);
+	void eventTriggerLobbyDestroyedDelegates(int32_t LobbyIndex, ELobbyKickReason Reason);
 	void ClearLobbyDestroyedDelegate(struct FScriptDelegate LobbyDestroyedDelegate);
 	void AddLobbyDestroyedDelegate(struct FScriptDelegate LobbyDestroyedDelegate);
-	void OnLobbyDestroyed(uint8_t Reason, struct FUniqueLobbyId& LobbyId);
+	void OnLobbyDestroyed(ELobbyKickReason Reason, struct FUniqueLobbyId& LobbyId);
 	void ClearLobbyInviteDelegate(struct FScriptDelegate LobbyInviteDelegate);
 	void AddLobbyInviteDelegate(struct FScriptDelegate LobbyInviteDelegate);
-	void OnLobbyInvite(unsigned long bAccepted, struct FUniqueLobbyId& LobbyId, struct FUniqueNetId& FriendId);
+	void OnLobbyInvite(bool bAccepted, struct FUniqueLobbyId& LobbyId, struct FUniqueNetId& FriendId);
 	bool InviteToLobby(struct FUniqueLobbyId& LobbyId, struct FUniqueNetId& PlayerID);
 	bool CanInviteToLobby(struct FUniqueLobbyId& LobbyId, struct FUniqueNetId& PlayerID);
 	bool SetLobbyOwner(struct FUniqueLobbyId& LobbyId, struct FUniqueNetId& NewOwner);
-	bool SetLobbyLock(unsigned long bLocked, struct FUniqueLobbyId& LobbyId);
+	bool SetLobbyLock(bool bLocked, struct FUniqueLobbyId& LobbyId);
 	bool SetLobbyServer(class FString ServerIP, struct FUniqueLobbyId& LobbyId, struct FUniqueNetId& ServerUID);
 	bool RemoveLobbySetting(class FString Key, struct FUniqueLobbyId& LobbyId);
 	bool SetLobbySetting(class FString Key, class FString Value, struct FUniqueLobbyId& LobbyId);
@@ -1766,19 +1766,19 @@ public:
 	bool LeaveLobby(struct FUniqueLobbyId& LobbyId);
 	void ClearJoinLobbyCompleteDelegate(struct FScriptDelegate JoinLobbyCompleteDelegate);
 	void AddJoinLobbyCompleteDelegate(struct FScriptDelegate JoinLobbyCompleteDelegate);
-	void eventTriggerJoinLobbyCompleteDelegates(unsigned long bWasSuccessful, class FString Error, struct FActiveLobbyInfo& LobbyInfo, struct FUniqueLobbyId& LobbyUID);
-	void OnJoinLobbyComplete(unsigned long bWasSuccessful, class FString Error, struct FActiveLobbyInfo& LobbyInfo, struct FUniqueLobbyId& LobbyUID);
+	void eventTriggerJoinLobbyCompleteDelegates(bool bWasSuccessful, class FString Error, struct FActiveLobbyInfo& LobbyInfo, struct FUniqueLobbyId& LobbyUID);
+	void OnJoinLobbyComplete(bool bWasSuccessful, class FString Error, struct FActiveLobbyInfo& LobbyInfo, struct FUniqueLobbyId& LobbyUID);
 	bool JoinLobby(int32_t LocalPlayerNum, struct FUniqueLobbyId& LobbyId);
 	void ClearFindLobbiesCompleteDelegate(struct FScriptDelegate FindLobbiesCompleteDelegate);
 	void AddFindLobbiesCompleteDelegate(struct FScriptDelegate FindLobbiesCompleteDelegate);
-	void eventTriggerFindLobbiesCompleteDelegates(unsigned long bWasSuccessful);
-	void OnFindLobbiesComplete(unsigned long bWasSuccessful, TArray<struct FBasicLobbyInfo>& LobbyList);
-	bool UpdateFoundLobbies(struct FUniqueLobbyId LobbyId);
-	bool FindLobbies(int32_t MaxResults, TArray<struct FLobbyFilter> Filters, TArray<struct FLobbySortFilter> SortFilters, int32_t MinSlots, uint8_t Distance);
+	void eventTriggerFindLobbiesCompleteDelegates(bool bWasSuccessful);
+	void OnFindLobbiesComplete(bool bWasSuccessful, TArray<struct FBasicLobbyInfo>& LobbyList);
+	bool UpdateFoundLobbies(struct FUniqueLobbyId optionalLobbyId);
+	bool FindLobbies(int32_t optionalMaxResults, TArray<struct FLobbyFilter> optionalFilters, TArray<struct FLobbySortFilter> optionalSortFilters, int32_t optionalMinSlots, ELobbyDistance optionalDistance);
 	void ClearCreateLobbyCompleteDelegate(struct FScriptDelegate CreateLobbyCompleteDelegate);
 	void AddCreateLobbyCompleteDelegate(struct FScriptDelegate CreateLobbyCompleteDelegate);
-	void OnCreateLobbyComplete(unsigned long bWasSuccessful, class FString Error, struct FUniqueLobbyId& LobbyId);
-	bool CreateLobby(int32_t LocalPlayerNum, int32_t MaxPlayers, uint8_t Type, TArray<struct FLobbyMetaData> InitialSettings);
+	void OnCreateLobbyComplete(bool bWasSuccessful, class FString Error, struct FUniqueLobbyId& LobbyId);
+	bool CreateLobby(int32_t LocalPlayerNum, int32_t MaxPlayers, ELobbyVisibility optionalType, TArray<struct FLobbyMetaData> optionalInitialSettings);
 };
 
 // Class IpDrv.OnlinePersistentAuthInterfaceImpl
@@ -1821,7 +1821,7 @@ public:
 	void OnUnderageUserDetected(uint8_t LocalUserNum, class FString ParentalConsentURL);
 	void ClearRequestPinGrantCodeDelegate(uint8_t LocalUserNum, struct FScriptDelegate Callback);
 	void AddRequestPinGrantCodeDelegate(uint8_t LocalUserNum, struct FScriptDelegate Callback);
-	void OnReceievedPinGrantCode(uint8_t Result, uint8_t LocalUserNum, class FString Code, class FString URL, int32_t SecondsUntilExpiration);
+	void OnReceievedPinGrantCode(EPinGrantResult Result, uint8_t LocalUserNum, class FString Code, class FString URL, int32_t SecondsUntilExpiration);
 };
 
 // Class IpDrv.OnlinePlaylistManager
@@ -1868,13 +1868,13 @@ public:
 	};
 
 	void ParseDataCenterId(TArray<uint8_t>& Data);
-	void OnReadDataCenterIdComplete(unsigned long bWasSuccessful, class FString Filename);
+	void OnReadDataCenterIdComplete(bool bWasSuccessful, class FString Filename);
 	void ReadDataCenterId();
 	void eventSendPlaylistPopulationUpdate(int32_t NumPlayers);
 	void GetPopulationInfoFromPlaylist(int32_t PlaylistId, int32_t& WorldwideTotal, int32_t& RegionTotal);
 	void ParsePlaylistPopulationData(TArray<uint8_t>& Data);
 	void OnPlaylistPopulationDataUpdated();
-	void OnReadPlaylistPopulationComplete(unsigned long bWasSuccessful, class FString Filename);
+	void OnReadPlaylistPopulationComplete(bool bWasSuccessful, class FString Filename);
 	void ReadPlaylistPopulation();
 	void Reset();
 	void GetContentIdsFromPlaylist(int32_t PlaylistId, TArray<int32_t>& ContentIds);
@@ -1888,11 +1888,11 @@ public:
 	bool HasAnyGameSettings(int32_t PlaylistId);
 	class UOnlineGameSettings* GetGameSettings(int32_t PlaylistId, int32_t GameSettingsId);
 	void FinalizePlaylistObjects();
-	void OnReadTitleFileComplete(unsigned long bWasSuccessful, class FString Filename);
+	void OnReadTitleFileComplete(bool bWasSuccessful, class FString Filename);
 	bool ShouldRefreshPlaylists();
 	void DetermineFilesToDownload();
 	void DownloadPlaylist();
-	void OnReadPlaylistComplete(unsigned long bWasSuccessful);
+	void OnReadPlaylistComplete(bool bWasSuccessful);
 };
 
 // Class IpDrv.OnlinePurchaseInterfaceImpl
@@ -1918,7 +1918,7 @@ public:
 
 	void ClearMicroTxnResponseDelegate(struct FScriptDelegate ResponseMicroTxnDelegate);
 	void AddMicroTxnResponseDelegate(struct FScriptDelegate ResponseMicroTxnDelegate);
-	void OnMicroTxnResponse(unsigned long bAuthorized, uint64_t OrderId);
+	void OnMicroTxnResponse(bool bAuthorized, uint64_t OrderId);
 	class FString FormatCurrency(class FString Currency, int32_t Price);
 	bool GetAppPriceInfo(struct FScriptDelegate Callback, struct FUniqueNetId& PlayerID, TArray<struct FName>& AppNames);
 	void EventGetAppPriceInfoComplete(struct FName AppName, class FString Price, class FString DiscountPrice, int32_t DiscountPercentage);
@@ -1932,9 +1932,9 @@ public:
 	struct FPointer                                    VfTable_FTickableObject;                       // 0x0060 (0x0008) [0x0000000000801002] (CPF_Const | CPF_Native | CPF_NoExport)
 	int32_t                                            PartyBeaconPort;                               // 0x0068 (0x0004) [0x0000000000004000] (CPF_Config)  
 	struct FPointer                                    Socket;                                        // 0x0070 (0x0008) [0x0000000000003000] (CPF_Native | CPF_Transient)
-	unsigned long                                      bIsInTick : 1;                                 // 0x0078 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bWantsDeferredDestroy : 1;                     // 0x0078 (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      bShouldTick : 1;                               // 0x0078 (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           bIsInTick : 1;                                 // 0x0078 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bWantsDeferredDestroy : 1;                     // 0x0078 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bShouldTick : 1;                               // 0x0078 (0x0004) [0x0000000000000000] [0x00000004] 
 	float                                              HeartbeatTimeout;                              // 0x007C (0x0004) [0x0000000000004000] (CPF_Config)  
 	float                                              ElapsedHeartbeatTime;                          // 0x0080 (0x0004) [0x0000000000000000]               
 	struct FName                                       BeaconName;                                    // 0x0084 (0x0008) [0x0000000000000000]               
@@ -1964,8 +1964,8 @@ class UPartyBeaconClient : public UPartyBeacon
 public:
 	struct FOnlineGameSearchResult                     HostPendingRequest;                            // 0x00A8 (0x0010) [0x0000000000000002] (CPF_Const)   
 	struct FPartyReservation                           PendingRequest;                                // 0x00B8 (0x0060) [0x0000000000400000] (CPF_NeedCtorLink)
-	uint8_t                                            ClientBeaconState;                             // 0x0118 (0x0001) [0x0000000000000000]               
-	uint8_t                                            ClientBeaconRequestType;                       // 0x0119 (0x0001) [0x0000000000000000]               
+	EPartyBeaconClientState                            ClientBeaconState;                             // 0x0118 (0x0001) [0x0000000000000000]               
+	EPartyBeaconClientRequest                          ClientBeaconRequestType;                       // 0x0119 (0x0001) [0x0000000000000000]               
 	float                                              ReservationRequestTimeout;                     // 0x011C (0x0004) [0x0000000000004000] (CPF_Config)  
 	float                                              ReservationRequestElapsedTime;                 // 0x0120 (0x0004) [0x0000000000000000]               
 	class FString                                      ResolverClassName;                             // 0x0128 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
@@ -1998,7 +1998,7 @@ public:
 	void OnHostIsReady();
 	void OnTravelRequestReceived(struct FName SessionName, class UClass* SearchClass, uint8_t PlatformSpecificInfo);
 	void OnReservationCountUpdated(int32_t ReservationRemaining);
-	void OnReservationRequestComplete(uint8_t ReservationResult);
+	void OnReservationRequestComplete(EPartyReservationResult ReservationResult);
 };
 
 // Class IpDrv.PartyBeaconHost
@@ -2016,8 +2016,8 @@ public:
 	int32_t                                            ConnectionBacklog;                             // 0x00E0 (0x0004) [0x0000000000004000] (CPF_Config)  
 	int32_t                                            ForceTeamNum;                                  // 0x00E4 (0x0004) [0x0000000000000002] (CPF_Const)   
 	int32_t                                            ReservedHostTeamNum;                           // 0x00E8 (0x0004) [0x0000000000000002] (CPF_Const)   
-	unsigned long                                      bBestFitTeamAssignment : 1;                    // 0x00EC (0x0004) [0x0000000000000000] [0x00000001] 
-	uint8_t                                            BeaconState;                                   // 0x00F0 (0x0001) [0x0000000000000002] (CPF_Const)   
+	uint32_t                                           bBestFitTeamAssignment : 1;                    // 0x00EC (0x0004) [0x0000000000000000] [0x00000001] 
+	EPartyBeaconHostState                              BeaconState;                                   // 0x00F0 (0x0001) [0x0000000000000002] (CPF_Const)   
 	struct FScriptDelegate                             __OnReservationChange__Delegate;               // 0x00F8 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
 	struct FScriptDelegate                             __OnReservationsFull__Delegate;                // 0x0110 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
 	struct FScriptDelegate                             __OnClientCancellationReceived__Delegate;      // 0x0128 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -2050,12 +2050,12 @@ public:
 	void OnClientCancellationReceived(struct FUniqueNetId PartyLeader);
 	void OnReservationsFull();
 	void OnReservationChange();
-	void HandlePlayerLogout(struct FUniqueNetId PlayerID, unsigned long bMaintainParty);
+	void HandlePlayerLogout(struct FUniqueNetId PlayerID, bool bMaintainParty);
 	int32_t GetExistingReservation(struct FUniqueNetId& PartyLeader);
-	uint8_t UpdatePartyReservationEntry(struct FUniqueNetId PartyLeader, TArray<struct FPlayerReservation>& PlayerMembers);
-	uint8_t AddPartyReservationEntry(struct FUniqueNetId PartyLeader, int32_t TeamNum, unsigned long bIsHost, TArray<struct FPlayerReservation>& PlayerMembers);
-	bool InitHostBeacon(int32_t InNumTeams, int32_t InNumPlayersPerTeam, int32_t InNumReservations, struct FName InSessionName, int32_t InForceTeamNum);
-	void PauseReservationRequests(unsigned long bPause);
+	EPartyReservationResult UpdatePartyReservationEntry(struct FUniqueNetId PartyLeader, TArray<struct FPlayerReservation>& PlayerMembers);
+	EPartyReservationResult AddPartyReservationEntry(struct FUniqueNetId PartyLeader, int32_t TeamNum, bool bIsHost, TArray<struct FPlayerReservation>& PlayerMembers);
+	bool InitHostBeacon(int32_t InNumTeams, int32_t InNumPlayersPerTeam, int32_t InNumReservations, struct FName InSessionName, int32_t optionalInForceTeamNum);
+	void PauseReservationRequests(bool bPause);
 };
 
 // Class IpDrv.TargetUserChatPermChangedEvent
@@ -2065,7 +2065,7 @@ class UTargetUserChatPermChangedEvent : public UObject
 public:
 	struct FUniqueNetId                                PlayerID;                                      // 0x0060 (0x0048) [0x0000000000400000] (CPF_NeedCtorLink)
 	struct FUniqueNetId                                TargetId;                                      // 0x00A8 (0x0048) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      bAllowed : 1;                                  // 0x00F0 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bAllowed : 1;                                  // 0x00F0 (0x0004) [0x0000000000000000] [0x00000001] 
 
 public:
 	static UClass* StaticClass()
@@ -2110,8 +2110,8 @@ class UTcpNetDriver : public UNetDriver
 {
 public:
 	uint8_t                                           UnknownData00[0x58];                           // 0x0208 (0x0058) MISSED OFFSET
-	unsigned long                                      AllowPlayerPortUnreach : 1;                    // 0x0260 (0x0004) [0x0000000000004000] [0x00000001] (CPF_Config)
-	unsigned long                                      LogPortUnreach : 1;                            // 0x0264 (0x0004) [0x0000000000004000] [0x00000001] (CPF_Config)
+	uint32_t                                           AllowPlayerPortUnreach : 1;                    // 0x0260 (0x0004) [0x0000000000004000] [0x00000001] (CPF_Config)
+	uint32_t                                           LogPortUnreach : 1;                            // 0x0264 (0x0004) [0x0000000000004000] [0x00000001] (CPF_Config)
 	uint8_t                                           UnknownData01[0x18];                           // 0x0268 (0x0018) MISSED OFFSET
 
 public:
@@ -2140,7 +2140,7 @@ public:
 	class FString                                      Password;                                      // 0x0090 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	int32_t                                            ContentLength;                                 // 0x00A0 (0x0004) [0x0000000000000000]               
 	class FString                                      ContentType;                                   // 0x00A8 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	uint8_t                                            RequestType;                                   // 0x00B8 (0x0001) [0x0000000000000000]               
+	ERequestType                                       RequestType;                                   // 0x00B8 (0x0001) [0x0000000000000000]               
 	struct FMap_Mirror                                 HeaderMap;                                     // 0x00C0 (0x0050) [0x0000000000001002] (CPF_Const | CPF_Native)
 	struct FMap_Mirror                                 VariableMap;                                   // 0x0110 (0x0050) [0x0000000000001002] (CPF_Const | CPF_Native)
 
@@ -2162,12 +2162,12 @@ public:
 	void ProcessHeaderString(class FString S);
 	void Dump();
 	void GetVariables(TArray<class FString>& varNames);
-	class FString GetVariableNumber(class FString VariableName, int32_t Number, class FString DefaultValue);
+	class FString GetVariableNumber(class FString VariableName, int32_t Number, class FString optionalDefaultValue);
 	int32_t GetVariableCount(class FString VariableName);
-	class FString GetVariable(class FString VariableName, class FString DefaultValue);
+	class FString GetVariable(class FString VariableName, class FString optionalDefaultValue);
 	void AddVariable(class FString VariableName, class FString Value);
 	void GetHeaders(TArray<class FString>& Headers);
-	class FString GetHeader(class FString HeaderName, class FString DefaultValue);
+	class FString GetHeader(class FString HeaderName, class FString optionalDefaultValue);
 	void AddHeader(class FString HeaderName, class FString Value);
 	static class FString EncodeBase64(class FString Decoded);
 	static class FString DecodeBase64(class FString Encoded);
@@ -2183,8 +2183,8 @@ public:
 	class FString                                      IncludePath;                                   // 0x00C0 (0x0010) [0x0000000000404002] (CPF_Const | CPF_Config | CPF_NeedCtorLink)
 	class FString                                      CharSet;                                       // 0x00D0 (0x0010) [0x0000000000408002] (CPF_Const | CPF_Localized | CPF_NeedCtorLink)
 	class AWebConnection*                              Connection;                                    // 0x00E0 (0x0008) [0x0000000000000000]               
-	unsigned long                                      bSentText : 1;                                 // 0x00E8 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bSentResponse : 1;                             // 0x00E8 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bSentText : 1;                                 // 0x00E8 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bSentResponse : 1;                             // 0x00E8 (0x0004) [0x0000000000000000] [0x00000002] 
 
 public:
 	static UClass* StaticClass()
@@ -2202,23 +2202,23 @@ public:
 	bool SentResponse();
 	bool SentText();
 	void Redirect(class FString URL);
-	void SendStandardHeaders(class FString ContentType, unsigned long bCache);
-	void HTTPError(int32_t ErrorNum, class FString Data);
+	void SendStandardHeaders(class FString optionalContentType, bool optionalBCache);
+	void HTTPError(int32_t ErrorNum, class FString optionalData);
 	void SendHeaders();
-	void AddHeader(class FString Header, unsigned long bReplace);
+	void AddHeader(class FString Header, bool optionalBReplace);
 	void HTTPHeader(class FString Header);
 	void HttpResponse(class FString Header);
 	void FailAuthentication(class FString Realm);
-	bool SendCachedFile(class FString Filename, class FString ContentType);
+	bool SendCachedFile(class FString Filename, class FString optionalContentType);
 	void eventSendBinary(int32_t Count, uint8_t B);
-	void eventSendText(class FString Text, unsigned long bNoCRLF);
+	void eventSendText(class FString Text, bool optionalBNoCRLF);
 	void Dump();
-	class FString GetHTTPExpiration(int32_t OffsetSeconds);
+	class FString GetHTTPExpiration(int32_t optionalOffsetSeconds);
 	class FString LoadParsedUHTM(class FString Filename);
 	bool IncludeBinaryFile(class FString Filename);
 	bool IncludeUHTM(class FString Filename);
 	void ClearSubst();
-	void Subst(class FString Variable, class FString Value, unsigned long bClear);
+	void Subst(class FString Variable, class FString Value, bool optionalBClear);
 	bool FileExists(class FString Filename);
 };
 
@@ -2318,7 +2318,7 @@ public:
 	class FString                                      ServerName;                                    // 0x02D8 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
 	class FString                                      Applications[0xA];                             // 0x02E8 (0x00A0) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
 	class FString                                      ApplicationPaths[0xA];                         // 0x0388 (0x00A0) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
-	unsigned long                                      bEnabled : 1;                                  // 0x0428 (0x0004) [0x0000000000004000] [0x00000001] (CPF_Config)
+	uint32_t                                           bEnabled : 1;                                  // 0x0428 (0x0004) [0x0000000000004000] [0x00000001] (CPF_Config)
 	int32_t                                            ListenPort;                                    // 0x042C (0x0004) [0x0000000000004000] (CPF_Config)  
 	int32_t                                            MaxConnections;                                // 0x0430 (0x0004) [0x0000000000004000] (CPF_Config)  
 	int32_t                                            DefaultApplication;                            // 0x0434 (0x0004) [0x0000000000004000] (CPF_Config)  
@@ -2446,24 +2446,24 @@ public:
 	};
 
 	void UpdateChallengeUserReward(class FString UniqueChallengeId, class FString UniqueUserId, int32_t UserReward);
-	void OnUpdateChallengeUserRewardComplete(unsigned long bWasSuccessful, class FString UniqueChallengeId, class FString UniqueUserId, class FString Error);
-	void UpdateChallengeUserProgress(class FString UniqueChallengeId, class FString UniqueUserId, unsigned long bDidComplete, int32_t GoalProgress);
-	void OnUpdateChallengeUserProgressComplete(unsigned long bWasSuccessful, class FString UniqueChallengeId, class FString UniqueUserId, class FString Error);
+	void OnUpdateChallengeUserRewardComplete(bool bWasSuccessful, class FString UniqueChallengeId, class FString UniqueUserId, class FString Error);
+	void UpdateChallengeUserProgress(class FString UniqueChallengeId, class FString UniqueUserId, bool bDidComplete, int32_t GoalProgress);
+	void OnUpdateChallengeUserProgressComplete(bool bWasSuccessful, class FString UniqueChallengeId, class FString UniqueUserId, class FString Error);
 	void GetChallengeUserStatus(class FString UniqueChallengeId, class FString UniqueUserId, struct FMcpClashMobChallengeUserStatus& OutChallengeUserStatus);
 	void QueryChallengeMultiUserStatus(class FString UniqueChallengeId, class FString UniqueUserId, TArray<class FString>& UserIdsToRead);
 	void QueryChallengeUserStatus(class FString UniqueChallengeId, class FString UniqueUserId);
-	void OnQueryChallengeUserStatusComplete(unsigned long bWasSuccessful, class FString UniqueChallengeId, class FString UniqueUserId, class FString Error);
+	void OnQueryChallengeUserStatusComplete(bool bWasSuccessful, class FString UniqueChallengeId, class FString UniqueUserId, class FString Error);
 	void AcceptChallenge(class FString UniqueChallengeId, class FString UniqueUserId);
-	void OnAcceptChallengeComplete(unsigned long bWasSuccessful, class FString UniqueChallengeId, class FString UniqueUserId, class FString Error);
+	void OnAcceptChallengeComplete(bool bWasSuccessful, class FString UniqueChallengeId, class FString UniqueUserId, class FString Error);
 	void DeleteCachedChallengeFile(class FString UniqueChallengeId, class FString DLName);
 	void ClearCachedChallengeFile(class FString UniqueChallengeId, class FString DLName);
 	void GetChallengeFileContents(class FString UniqueChallengeId, class FString DLName, TArray<uint8_t>& OutFileContents);
 	void DownloadChallengeFile(class FString UniqueChallengeId, class FString DLName);
 	void GetChallengeFileList(class FString UniqueChallengeId, TArray<struct FMcpClashMobChallengeFile>& OutChallengeFiles);
-	void OnDownloadChallengeFileComplete(unsigned long bWasSuccessful, class FString UniqueChallengeId, class FString DLName, class FString Filename, class FString Error);
+	void OnDownloadChallengeFileComplete(bool bWasSuccessful, class FString UniqueChallengeId, class FString DLName, class FString Filename, class FString Error);
 	void GetChallengeList(TArray<struct FMcpClashMobChallengeEvent>& OutChallengeEvents);
 	void QueryChallengeList();
-	void OnQueryChallengeListComplete(unsigned long bWasSuccessful, class FString Error);
+	void OnQueryChallengeListComplete(bool bWasSuccessful, class FString Error);
 	static class UMcpClashMobBase* CreateInstance();
 };
 
@@ -2523,26 +2523,26 @@ public:
 		return uClassPointer;
 	};
 
-	void OnUpdateChallengeUserRewardHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void OnUpdateChallengeUserRewardHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void UpdateChallengeUserReward(class FString UniqueChallengeId, class FString UniqueUserId, int32_t UserReward);
-	void OnUpdateChallengeUserProgressHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
-	void UpdateChallengeUserProgress(class FString UniqueChallengeId, class FString UniqueUserId, unsigned long bDidComplete, int32_t GoalProgress);
+	void OnUpdateChallengeUserProgressHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void UpdateChallengeUserProgress(class FString UniqueChallengeId, class FString UniqueUserId, bool bDidComplete, int32_t GoalProgress);
 	void GetChallengeUserStatus(class FString UniqueChallengeId, class FString UniqueUserId, struct FMcpClashMobChallengeUserStatus& OutChallengeUserStatus);
-	void OnQueryChallengeMultiStatusHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void OnQueryChallengeMultiStatusHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void QueryChallengeMultiUserStatus(class FString UniqueChallengeId, class FString UniqueUserId, TArray<class FString>& UserIdsToRead);
-	void OnQueryChallengeStatusHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void OnQueryChallengeStatusHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void QueryChallengeUserStatus(class FString UniqueChallengeId, class FString UniqueUserId);
-	void OnAcceptChallengeHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void OnAcceptChallengeHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void AcceptChallenge(class FString UniqueChallengeId, class FString UniqueUserId);
 	void DeleteCachedChallengeFile(class FString UniqueChallengeId, class FString DLName);
 	void ClearCachedChallengeFile(class FString UniqueChallengeId, class FString DLName);
 	void GetChallengeFileContents(class FString UniqueChallengeId, class FString DLName, TArray<uint8_t>& OutFileContents);
-	void OnDownloadMcpFileComplete(unsigned long bWasSuccessful, class FString DLName);
-	void OnLoadCachedFileComplete(unsigned long bWasSuccessful, class FString DLName);
+	void OnDownloadMcpFileComplete(bool bWasSuccessful, class FString DLName);
+	void OnLoadCachedFileComplete(bool bWasSuccessful, class FString DLName);
 	void DownloadChallengeFile(class FString UniqueChallengeId, class FString DLName);
 	void GetChallengeFileList(class FString UniqueChallengeId, TArray<struct FMcpClashMobChallengeFile>& OutChallengeFiles);
 	void GetChallengeList(TArray<struct FMcpClashMobChallengeEvent>& OutChallengeEvents);
-	void OnQueryChallengeListHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void OnQueryChallengeListHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void QueryChallengeList();
 	void Init();
 };
@@ -2577,26 +2577,26 @@ public:
 		return uClassPointer;
 	};
 
-	void OnAcceptGroupInviteComplete(class FString GroupId, unsigned long bWasSuccessful, class FString Error);
-	void AcceptGroupInvite(class FString UniqueUserId, class FString GroupId, unsigned long bShouldAccept);
+	void OnAcceptGroupInviteComplete(class FString GroupId, bool bWasSuccessful, class FString Error);
+	void AcceptGroupInvite(class FString UniqueUserId, class FString GroupId, bool bShouldAccept);
 	void GetGroupInviteList(class FString UserId, struct FMcpGroupList& InviteList);
-	void OnQueryGroupInvitesComplete(unsigned long bWasSuccessful, class FString Error);
+	void OnQueryGroupInvitesComplete(bool bWasSuccessful, class FString Error);
 	void QueryGroupInvites(class FString UniqueUserId);
-	void OnDeleteAllGroupsComplete(class FString RequesterId, unsigned long bWasSuccessful, class FString Error);
+	void OnDeleteAllGroupsComplete(class FString RequesterId, bool bWasSuccessful, class FString Error);
 	void DeleteAllGroups(class FString OwnerId);
-	void OnRemoveGroupMembersComplete(class FString GroupId, unsigned long bWasSuccessful, class FString Error);
+	void OnRemoveGroupMembersComplete(class FString GroupId, bool bWasSuccessful, class FString Error);
 	void RemoveGroupMembers(class FString OwnerId, class FString GroupId, TArray<class FString>& MemberIds);
-	void OnAddGroupMembersComplete(class FString GroupId, unsigned long bWasSuccessful, class FString Error);
-	void AddGroupMembers(class FString OwnerId, class FString GroupId, unsigned long bRequiresAcceptance, TArray<class FString>& MemberIds);
+	void OnAddGroupMembersComplete(class FString GroupId, bool bWasSuccessful, class FString Error);
+	void AddGroupMembers(class FString OwnerId, class FString GroupId, bool bRequiresAcceptance, TArray<class FString>& MemberIds);
 	void GetGroupMembers(class FString GroupId, TArray<struct FMcpGroupMember>& GroupMembers);
-	void OnQueryGroupMembersComplete(class FString GroupId, unsigned long bWasSuccessful, class FString Error);
+	void OnQueryGroupMembersComplete(class FString GroupId, bool bWasSuccessful, class FString Error);
 	void QueryGroupMembers(class FString UniqueUserId, class FString GroupId);
 	void GetGroupList(class FString UserId, struct FMcpGroupList& GroupList);
-	void OnQueryGroupsComplete(class FString UserId, unsigned long bWasSuccessful, class FString Error);
+	void OnQueryGroupsComplete(class FString UserId, bool bWasSuccessful, class FString Error);
 	void QueryGroups(class FString RequesterId);
-	void OnDeleteGroupComplete(class FString GroupId, unsigned long bWasSuccessful, class FString Error);
+	void OnDeleteGroupComplete(class FString GroupId, bool bWasSuccessful, class FString Error);
 	void DeleteGroup(class FString UniqueUserId, class FString GroupId);
-	void OnCreateGroupComplete(struct FMcpGroup Group, unsigned long bWasSuccessful, class FString Error);
+	void OnCreateGroupComplete(struct FMcpGroup Group, bool bWasSuccessful, class FString Error);
 	void CreateGroup(class FString OwnerId, class FString GroupName);
 	static class UMcpGroupsBase* CreateInstance();
 };
@@ -2633,25 +2633,25 @@ public:
 		return uClassPointer;
 	};
 
-	void CacheGroupMember(class FString MemberId, class FString GroupId, uint8_t AcceptState);
+	void CacheGroupMember(class FString MemberId, class FString GroupId, EMcpGroupAcceptState AcceptState);
 	void CacheGroup(class FString RequesterId, struct FMcpGroup Group);
-	void OnAcceptGroupInviteRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, unsigned long bWasSuccessful);
-	void AcceptGroupInvite(class FString UniqueUserId, class FString GroupId, unsigned long bShouldAccept);
-	void OnDeleteAllGroupsRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, unsigned long bWasSuccessful);
+	void OnAcceptGroupInviteRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
+	void AcceptGroupInvite(class FString UniqueUserId, class FString GroupId, bool bShouldAccept);
+	void OnDeleteAllGroupsRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
 	void DeleteAllGroups(class FString UniqueUserId);
-	void OnRemoveGroupMembersRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, unsigned long bWasSuccessful);
+	void OnRemoveGroupMembersRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
 	void RemoveGroupMembers(class FString UniqueUserId, class FString GroupId, TArray<class FString>& MemberIds);
-	void OnAddGroupMembersRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, unsigned long bWasSuccessful);
-	void AddGroupMembers(class FString UniqueUserId, class FString GroupId, unsigned long bRequiresAcceptance, TArray<class FString>& MemberIds);
+	void OnAddGroupMembersRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
+	void AddGroupMembers(class FString UniqueUserId, class FString GroupId, bool bRequiresAcceptance, TArray<class FString>& MemberIds);
 	void GetGroupMembers(class FString GroupId, TArray<struct FMcpGroupMember>& GroupMembers);
-	void OnQueryGroupMembersRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, unsigned long bWasSuccessful);
+	void OnQueryGroupMembersRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
 	void QueryGroupMembers(class FString UniqueUserId, class FString GroupId);
 	void GetGroupList(class FString UserId, struct FMcpGroupList& GroupList);
-	void OnQueryGroupsRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, unsigned long bWasSuccessful);
+	void OnQueryGroupsRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
 	void QueryGroups(class FString RequesterId);
-	void OnDeleteGroupRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, unsigned long bWasSuccessful);
+	void OnDeleteGroupRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
 	void DeleteGroup(class FString UniqueUserId, class FString GroupId);
-	void OnCreateGroupRequestComplete(class UHttpRequestInterface* CreateGroupRequest, class UHttpResponseInterface* HttpResponse, unsigned long bWasSuccessful);
+	void OnCreateGroupRequestComplete(class UHttpRequestInterface* CreateGroupRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
 	void CreateGroup(class FString UniqueUserId, class FString GroupName);
 };
 
@@ -2678,9 +2678,9 @@ public:
 	};
 
 	void GetIdMappings(class FString ExternalType, TArray<struct FMcpIdMapping>& IDMappings);
-	void OnQueryMappingsComplete(class FString ExternalType, unsigned long bWasSuccessful, class FString Error);
+	void OnQueryMappingsComplete(class FString ExternalType, bool bWasSuccessful, class FString Error);
 	void QueryMappings(class FString ExternalType, TArray<class FString>& ExternalIds);
-	void OnAddMappingComplete(class FString McpId, class FString ExternalId, class FString ExternalType, unsigned long bWasSuccessful, class FString Error);
+	void OnAddMappingComplete(class FString McpId, class FString ExternalId, class FString ExternalType, bool bWasSuccessful, class FString Error);
 	void AddMapping(class FString McpId, class FString ExternalId, class FString ExternalType);
 	static class UMcpIdMappingBase* CreateInstance();
 };
@@ -2710,9 +2710,9 @@ public:
 	};
 
 	void GetIdMappings(class FString ExternalType, TArray<struct FMcpIdMapping>& IDMappings);
-	void OnQueryMappingsRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void OnQueryMappingsRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void QueryMappings(class FString ExternalType, TArray<class FString>& ExternalIds);
-	void OnAddMappingRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void OnAddMappingRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void AddMapping(class FString McpId, class FString ExternalId, class FString ExternalType);
 };
 
@@ -2740,15 +2740,15 @@ public:
 		return uClassPointer;
 	};
 
-	void OnDeleteValueComplete(class FString McpId, class FString SaveSlot, struct FName ValueId, unsigned long bWasSuccessful, class FString Error);
+	void OnDeleteValueComplete(class FString McpId, class FString SaveSlot, struct FName ValueId, bool bWasSuccessful, class FString Error);
 	void DeleteValue(class FString McpId, class FString SaveSlot, struct FName ValueId);
-	void OnUpdateValueComplete(class FString McpId, class FString SaveSlot, struct FName ValueId, int32_t Value, unsigned long bWasSuccessful, class FString Error);
+	void OnUpdateValueComplete(class FString McpId, class FString SaveSlot, struct FName ValueId, int32_t Value, bool bWasSuccessful, class FString Error);
 	void UpdateValue(class FString McpId, class FString SaveSlot, struct FName ValueId, int32_t Value);
 	int32_t GetValue(class FString McpId, class FString SaveSlot, struct FName ValueId);
 	TArray<struct FManagedValue> GetValues(class FString McpId, class FString SaveSlot);
-	void OnReadSaveSlotComplete(class FString McpId, class FString SaveSlot, unsigned long bWasSuccessful, class FString Error);
+	void OnReadSaveSlotComplete(class FString McpId, class FString SaveSlot, bool bWasSuccessful, class FString Error);
 	void ReadSaveSlot(class FString McpId, class FString SaveSlot);
-	void OnCreateSaveSlotComplete(class FString McpId, class FString SaveSlot, unsigned long bWasSuccessful, class FString Error);
+	void OnCreateSaveSlotComplete(class FString McpId, class FString SaveSlot, bool bWasSuccessful, class FString Error);
 	void CreateSaveSlot(class FString McpId, class FString SaveSlot);
 	static class UMcpManagedValueManagerBase* CreateInstance();
 };
@@ -2781,17 +2781,17 @@ public:
 		return uClassPointer;
 	};
 
-	void OnDeleteValueRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void OnDeleteValueRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void DeleteValue(class FString McpId, class FString SaveSlot, struct FName ValueId);
-	void OnUpdateValueRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void OnUpdateValueRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void UpdateValue(class FString McpId, class FString SaveSlot, struct FName ValueId, int32_t Value);
 	int32_t GetValue(class FString McpId, class FString SaveSlot, struct FName ValueId);
 	TArray<struct FManagedValue> GetValues(class FString McpId, class FString SaveSlot);
-	void OnReadSaveSlotRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void OnReadSaveSlotRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void ReadSaveSlot(class FString McpId, class FString SaveSlot);
 	void ParseValuesForSaveSlot(class FString McpId, class FString SaveSlot, class FString JsonPayload);
 	int32_t FindSaveSlotIndex(class FString McpId, class FString SaveSlot);
-	void OnCreateSaveSlotRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void OnCreateSaveSlotRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void CreateSaveSlot(class FString McpId, class FString SaveSlot);
 };
 
@@ -2817,7 +2817,7 @@ public:
 	};
 
 	class FString GetLastServerTime();
-	void OnQueryServerTimeComplete(unsigned long bWasSuccessful, class FString DateTimeStr, class FString Error);
+	void OnQueryServerTimeComplete(bool bWasSuccessful, class FString DateTimeStr, class FString Error);
 	void QueryServerTime();
 	static class UMcpServerTimeBase* CreateInstance();
 };
@@ -2845,7 +2845,7 @@ public:
 	};
 
 	class FString GetLastServerTime();
-	void OnQueryServerTimeHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void OnQueryServerTimeHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void QueryServerTime();
 };
 
@@ -2879,29 +2879,29 @@ public:
 		return uClassPointer;
 	};
 
-	void OnRecordIapComplete(class FString McpId, class FString SaveSlotId, TArray<class FString> UpdatedItemIds, unsigned long bWasSuccessful, class FString Error);
+	void OnRecordIapComplete(class FString McpId, class FString SaveSlotId, TArray<class FString> UpdatedItemIds, bool bWasSuccessful, class FString Error);
 	void RecordIap(class FString McpId, class FString SaveSlotId, class FString Receipt);
-	void OnDeleteItemComplete(class FString McpId, class FString SaveSlotId, class FString InstanceItemId, unsigned long bWasSuccessful, class FString Error);
+	void OnDeleteItemComplete(class FString McpId, class FString SaveSlotId, class FString InstanceItemId, bool bWasSuccessful, class FString Error);
 	void DeleteItem(class FString McpId, class FString SaveSlotId, class FString InstanceItemId, int32_t StoreVersion);
-	void OnConsumeItemComplete(class FString McpId, class FString SaveSlotId, class FString InstanceItemId, TArray<class FString> UpdatedItemIds, unsigned long bWasSuccessful, class FString Error);
+	void OnConsumeItemComplete(class FString McpId, class FString SaveSlotId, class FString InstanceItemId, TArray<class FString> UpdatedItemIds, bool bWasSuccessful, class FString Error);
 	void ConsumeItem(class FString McpId, class FString SaveSlotId, class FString InstanceItemId, int32_t Quantity, int32_t StoreVersion);
-	void OnEarnItemComplete(class FString McpId, class FString SaveSlotId, class FString GlobalItemId, TArray<class FString> UpdatedItemIds, unsigned long bWasSuccessful, class FString Error);
+	void OnEarnItemComplete(class FString McpId, class FString SaveSlotId, class FString GlobalItemId, TArray<class FString> UpdatedItemIds, bool bWasSuccessful, class FString Error);
 	void EarnItem(class FString McpId, class FString SaveSlotId, class FString GlobalItemId, int32_t Quantity, int32_t StoreVersion);
-	void OnSellItemComplete(class FString McpId, class FString SaveSlotId, class FString InstanceItemId, TArray<class FString> UpdatedItemIds, unsigned long bWasSuccessful, class FString Error);
+	void OnSellItemComplete(class FString McpId, class FString SaveSlotId, class FString InstanceItemId, TArray<class FString> UpdatedItemIds, bool bWasSuccessful, class FString Error);
 	void SellItem(class FString McpId, class FString SaveSlotId, class FString InstanceItemId, int32_t Quantity, int32_t StoreVersion, TArray<struct FMcpInventoryItemContainer>& ExpectedResultItems);
-	void OnPurchaseItemComplete(class FString McpId, class FString SaveSlotId, class FString GlobalItemId, TArray<class FString> UpdatedItemIds, unsigned long bWasSuccessful, class FString Error);
+	void OnPurchaseItemComplete(class FString McpId, class FString SaveSlotId, class FString GlobalItemId, TArray<class FString> UpdatedItemIds, bool bWasSuccessful, class FString Error);
 	void PurchaseItem(class FString McpId, class FString SaveSlotId, class FString GlobalItemId, TArray<class FString> PurchaseItemIds, int32_t Quantity, int32_t StoreVersion, float Scalar);
 	bool GetInventoryItem(class FString McpId, class FString SaveSlotId, class FString InstanceItemId, struct FMcpInventoryItem& OutInventoryItem);
 	void GetInventoryItems(class FString McpId, class FString SaveSlotId, TArray<struct FMcpInventoryItem>& OutInventoryItems);
-	void OnQueryInventoryItemsComplete(class FString McpId, class FString SaveSlotId, unsigned long bWasSuccessful, class FString Error);
+	void OnQueryInventoryItemsComplete(class FString McpId, class FString SaveSlotId, bool bWasSuccessful, class FString Error);
 	void QueryInventoryItems(class FString McpId, class FString SaveSlotId);
-	void OnQuerySaveSlotListComplete(class FString McpId, unsigned long bWasSuccessful, class FString Error);
+	void OnQuerySaveSlotListComplete(class FString McpId, bool bWasSuccessful, class FString Error);
 	TArray<class FString> GetSaveSlotList(class FString McpId);
 	void QuerySaveSlotList(class FString McpId);
-	void OnDeleteSaveSlotComplete(class FString McpId, class FString SaveSlotId, unsigned long bWasSuccessful, class FString Error);
+	void OnDeleteSaveSlotComplete(class FString McpId, class FString SaveSlotId, bool bWasSuccessful, class FString Error);
 	void DeleteSaveSlot(class FString McpId, class FString SaveSlotId);
-	void OnCreateSaveSlotComplete(class FString McpId, class FString SaveSlotId, unsigned long bWasSuccessful, class FString Error);
-	void CreateSaveSlot(class FString McpId, class FString SaveSlotId, class FString ParentSaveSlotId);
+	void OnCreateSaveSlotComplete(class FString McpId, class FString SaveSlotId, bool bWasSuccessful, class FString Error);
+	void CreateSaveSlot(class FString McpId, class FString SaveSlotId, class FString optionalParentSaveSlotId);
 	static class UMcpUserInventoryBase* CreateInstance();
 };
 
@@ -2939,17 +2939,17 @@ public:
 		return uClassPointer;
 	};
 
-	void OnRecordIapRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void OnRecordIapRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void RecordIap(class FString McpId, class FString SaveSlotId, class FString Receipt);
-	void OnDeleteItemRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void OnDeleteItemRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void DeleteItem(class FString McpId, class FString SaveSlotId, class FString InstanceItemId, int32_t StoreVersion);
-	void OnConsumeItemRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void OnConsumeItemRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void ConsumeItem(class FString McpId, class FString SaveSlotId, class FString InstanceItemId, int32_t Quantity, int32_t StoreVersion);
-	void OnEarnItemRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void OnEarnItemRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void EarnItem(class FString McpId, class FString SaveSlotId, class FString GlobalItemId, int32_t Quantity, int32_t StoreVersion);
-	void OnSellItemRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void OnSellItemRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void SellItem(class FString McpId, class FString SaveSlotId, class FString InstanceItemId, int32_t Quantity, int32_t StoreVersion, TArray<struct FMcpInventoryItemContainer>& ExpectedResultItems);
-	void OnPurchaseItemRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void OnPurchaseItemRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void PurchaseItem(class FString McpId, class FString SaveSlotId, class FString GlobalItemId, TArray<class FString> PurchaseItemIds, int32_t Quantity, int32_t StoreVersion, float Scalar);
 	int32_t FindItemRequest(class FString McpId, class FString SaveSlotId, class FString ItemID, TArray<struct FInventoryItemRequestState>& InItemRequests);
 	int32_t FindSaveSlotRequest(class FString McpId, class FString SaveSlotId, TArray<struct UMcpUserInventoryManager_FSaveSlotRequestState>& InSaveSlotRequests);
@@ -2958,15 +2958,15 @@ public:
 	TArray<class FString> ParseInventoryForSaveSlot(class FString McpId, class FString SaveSlotId, class FString JsonPayload);
 	bool GetInventoryItem(class FString McpId, class FString SaveSlotId, class FString InstanceItemId, struct FMcpInventoryItem& OutInventoryItem);
 	void GetInventoryItems(class FString McpId, class FString SaveSlotId, TArray<struct FMcpInventoryItem>& OutInventoryItems);
-	void OnQueryInventoryItemsRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void OnQueryInventoryItemsRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void QueryInventoryItems(class FString McpId, class FString SaveSlotId);
 	TArray<class FString> GetSaveSlotList(class FString McpId);
-	void OnQuerySaveSlotListRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void OnQuerySaveSlotListRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void QuerySaveSlotList(class FString McpId);
-	void OnDeleteSaveSlotRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void OnDeleteSaveSlotRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void DeleteSaveSlot(class FString McpId, class FString SaveSlotId);
-	void OnCreateSaveSlotRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
-	void CreateSaveSlot(class FString McpId, class FString SaveSlotId, class FString ParentSaveSlotId);
+	void OnCreateSaveSlotRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void CreateSaveSlot(class FString McpId, class FString SaveSlotId, class FString optionalParentSaveSlotId);
 };
 
 // Class IpDrv.McpUserManagerBase
@@ -2993,17 +2993,17 @@ public:
 		return uClassPointer;
 	};
 
-	void OnDeleteUserComplete(unsigned long bWasSuccessful, class FString Error);
+	void OnDeleteUserComplete(bool bWasSuccessful, class FString Error);
 	void DeleteUser(class FString McpId);
 	bool GetUser(class FString McpId, struct FMcpUserStatus& User);
 	void GetUsers(TArray<struct FMcpUserStatus>& Users);
-	void OnQueryUsersComplete(unsigned long bWasSuccessful, class FString Error);
+	void OnQueryUsersComplete(bool bWasSuccessful, class FString Error);
 	void QueryUsers(TArray<class FString>& McpIds);
-	void QueryUser(class FString McpId, unsigned long bShouldUpdateLastActive);
-	void OnAuthenticateUserComplete(class FString McpId, class FString Token, unsigned long bWasSuccessful, class FString Error);
+	void QueryUser(class FString McpId, bool optionalBShouldUpdateLastActive);
+	void OnAuthenticateUserComplete(class FString McpId, class FString Token, bool bWasSuccessful, class FString Error);
 	void AuthenticateUserMcp(class FString McpId, class FString ClientSecret, class FString UDID);
 	void AuthenticateUserFacebook(class FString FacebookId, class FString FacebookToken, class FString UDID);
-	void OnRegisterUserComplete(class FString McpId, unsigned long bWasSuccessful, class FString Error);
+	void OnRegisterUserComplete(class FString McpId, bool bWasSuccessful, class FString Error);
 	void RegisterUserFacebook(class FString FacebookId, class FString FacebookAuthToken);
 	void RegisterUserGenerated();
 	static class UMcpUserManagerBase* CreateInstance();
@@ -3040,19 +3040,19 @@ public:
 		return uClassPointer;
 	};
 
-	void OnDeleteUserRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void OnDeleteUserRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void DeleteUser(class FString McpId);
 	bool GetUser(class FString McpId, struct FMcpUserStatus& User);
 	void GetUsers(TArray<struct FMcpUserStatus>& Users);
-	void OnQueryUsersRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void OnQueryUsersRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void ParseUsers(class FString JsonPayload);
 	void QueryUsers(TArray<class FString>& McpIds);
-	void OnQueryUserRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
-	void QueryUser(class FString McpId, unsigned long bShouldUpdateLastActive);
-	void OnAuthenticateUserRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void OnQueryUserRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void QueryUser(class FString McpId, bool optionalBShouldUpdateLastActive);
+	void OnAuthenticateUserRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void AuthenticateUserMcp(class FString McpId, class FString ClientSecret, class FString UDID);
 	void AuthenticateUserFacebook(class FString FacebookId, class FString FacebookToken, class FString UDID);
-	void OnRegisterUserRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, unsigned long bWasSuccessful);
+	void OnRegisterUserRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	int32_t ParseUser(class FString JsonPayload);
 	void RegisterUserFacebook(class FString FacebookId, class FString FacebookAuthToken);
 	void RegisterUserGenerated();
@@ -3068,7 +3068,7 @@ public:
 	class UWebRequest*                                 Request;                                       // 0x02F0 (0x0008) [0x0000000000000000]               
 	class UWebResponse*                                Response;                                      // 0x02F8 (0x0008) [0x0000000000000000]               
 	class UWebApplication*                             Application;                                   // 0x0300 (0x0008) [0x0000000000000000]               
-	unsigned long                                      bDelayCleanup : 1;                             // 0x0308 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bDelayCleanup : 1;                             // 0x0308 (0x0004) [0x0000000000000000] [0x00000001] 
 	int32_t                                            RawBytesExpecting;                             // 0x030C (0x0004) [0x0000000000000000]               
 	int32_t                                            MaxValueLength;                                // 0x0310 (0x0004) [0x0000000000004000] (CPF_Config)  
 	int32_t                                            MaxLineLength;                                 // 0x0314 (0x0004) [0x0000000000004000] (CPF_Config)  

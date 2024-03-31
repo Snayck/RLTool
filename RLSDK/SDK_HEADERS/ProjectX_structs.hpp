@@ -1,12 +1,12 @@
 /*
 #############################################################################################
-# Rocket League (1.0) SDK
-# Generated with the UE3SDKGenerator v2.2.5
+# RocketLeague (1.0.10897.0) SDK
+# Generated with the CodeRedGenerator v1.0.2
 # ========================================================================================= #
 # File: ProjectX_structs.hpp
 # ========================================================================================= #
 # Credits: TheFeckless, ItsBranK
-# Links: www.github.com/itsbrank/UE3SDKGenerator, www.twitter.com/itsbrank
+# Links: www.github.com/CodeRedModding/CodeRed-Generator, www.twitter.com/ItsBranK
 #############################################################################################
 */
 #pragma once
@@ -17,7 +17,7 @@
 
 /*
 # ========================================================================================= #
-# Script Structs
+# Structs
 # ========================================================================================= #
 */
 
@@ -75,7 +75,7 @@ struct FCheckReservationResponse
 	class FString                                      ReservationID;                                 // 0x0050 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	class FString                                      DSConnectToken;                                // 0x0060 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	class UNetworkEncryptionKey*                       Keys;                                          // 0x0070 (0x0008) [0x0000000000000000]               
-	unsigned long                                      IsServerKey : 1;                               // 0x0078 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           IsServerKey : 1;                               // 0x0078 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct ProjectX._Types_X.MapPrefs
@@ -119,8 +119,8 @@ struct FPsyNetBeaconReservation
 {
 	class FString                                      ReservationID;                                 // 0x0000 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	int32_t                                            Playlist;                                      // 0x0010 (0x0004) [0x0000000000000000]               
-	unsigned long                                      IsBackfill : 1;                                // 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      IsBotMatch : 1;                                // 0x0014 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           IsBackfill : 1;                                // 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           IsBotMatch : 1;                                // 0x0014 (0x0004) [0x0000000000000000] [0x00000002] 
 	TArray<class FString>                              BotNames;                                      // 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	TArray<struct FPsyNetBeaconPlayerReservation>      Players;                                       // 0x0028 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	TArray<struct FPsyNetBeaconPartyReservation>       Parties;                                       // 0x0038 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -165,7 +165,7 @@ struct FPsyNetPersonaData
 // 0x0014
 struct FBumpAngleCheckConfig
 {
-	unsigned long                                      bEnabled : 1;                                  // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bEnabled : 1;                                  // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 	float                                              BumpAngleYaw;                                  // 0x0004 (0x0004) [0x0000000000000000]               
 	float                                              BumpAnglePitch;                                // 0x0008 (0x0004) [0x0000000000000000]               
 	float                                              DemolishAngleYaw;                              // 0x000C (0x0004) [0x0000000000000000]               
@@ -176,7 +176,7 @@ struct FBumpAngleCheckConfig
 // 0x0068
 struct FBumpAngleCurveCheckConfig
 {
-	unsigned long                                      bEnabled : 1;                                  // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bEnabled : 1;                                  // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 	struct FInterpCurveFloat                           BumpAngleCurveYaw;                             // 0x0008 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
 	struct FInterpCurveFloat                           BumpAngleCurvePitch;                           // 0x0020 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
 	struct FInterpCurveFloat                           DemolishAngleCurveYaw;                         // 0x0038 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -196,7 +196,7 @@ struct FCarInteractionConfig
 	struct FBumpAngleCheckConfig                       VictimHitAngleCheck;                           // 0x0068 (0x0014) [0x0000000000000000]               
 	struct FBumpAngleCheckConfig                       AttackerHitAngleCheck;                         // 0x007C (0x0014) [0x0000000000000000]               
 	struct FBumpAngleCurveCheckConfig                  VictimHitAngleCurveCheck;                      // 0x0090 (0x0068) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      bCheckImpactNormal : 1;                        // 0x00F8 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bCheckImpactNormal : 1;                        // 0x00F8 (0x0004) [0x0000000000000000] [0x00000001] 
 	float                                              ImpactNormalDotProductDemo;                    // 0x00FC (0x0004) [0x0000000000000000]               
 	float                                              ImpactNormalDotProductBump;                    // 0x0100 (0x0004) [0x0000000000000000]               
 };
@@ -226,7 +226,7 @@ struct FMigrationReservationData
 	class FString                                      PlayerName;                                    // 0x0048 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	struct FUniqueNetId                                PartyID;                                       // 0x0058 (0x0048) [0x0000000000400000] (CPF_NeedCtorLink)
 	uint8_t                                            Status;                                        // 0x00A0 (0x0001) [0x0000000000000000]               
-	unsigned long                                      bDisableCrossPlay : 1;                         // 0x00A4 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bDisableCrossPlay : 1;                         // 0x00A4 (0x0004) [0x0000000000000000] [0x00000001] 
 	uint8_t                                            Team;                                          // 0x00A8 (0x0001) [0x0000000000000000]               
 	struct FSkillRating                                Skill;                                         // 0x00AC (0x0008) [0x0000000000000000]               
 	TArray<struct FName>                               MapLikes;                                      // 0x00B8 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -243,13 +243,13 @@ struct FReservationData
 	struct FUniqueNetId                                PartyID;                                       // 0x0058 (0x0048) [0x0000000000400000] (CPF_NeedCtorLink)
 	uint8_t                                            Status;                                        // 0x00A0 (0x0001) [0x0000000000000000]               
 	float                                              TimeoutTime;                                   // 0x00A4 (0x0004) [0x0000000000000000]               
-	unsigned long                                      bDisableCrossPlay : 1;                         // 0x00A8 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bDisableCrossPlay : 1;                         // 0x00A8 (0x0004) [0x0000000000000000] [0x00000001] 
 	class APlayerReplicationInfo*                      PRI;                                           // 0x00B0 (0x0008) [0x0000000000000000]               
 	uint8_t                                            Team;                                          // 0x00B8 (0x0001) [0x0000000000000000]               
 	class UAddReservationMessage_X*                    ReservationMessage;                            // 0x00C0 (0x0008) [0x0000000000000000]               
 	class UIReservationConnection_X*                   Connection_Object;                             // 0x00C8 (0x0010) [0x0000000000000000] 
 	class UIReservationConnection_X*                   Connection_Interface;                          // 0x00C8 (0x0010) [0x0000000000000000]               
-	unsigned long                                      bIgnoreBeaconDisconnect : 1;                   // 0x00D8 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bIgnoreBeaconDisconnect : 1;                   // 0x00D8 (0x0004) [0x0000000000000000] [0x00000001] 
 	struct FSkillRating                                Skill;                                         // 0x00DC (0x0008) [0x0000000000000000]               
 	TArray<struct FName>                               MapLikes;                                      // 0x00E8 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	TArray<struct FName>                               MapDislikes;                                   // 0x00F8 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -326,7 +326,7 @@ struct FSkillMatchParty
 {
 	int32_t                                            PartyID;                                       // 0x0000 (0x0004) [0x0000000000000000]               
 	float                                              PctTimePlayed;                                 // 0x0004 (0x0004) [0x0000000000000000]               
-	unsigned long                                      bQuitter : 1;                                  // 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bQuitter : 1;                                  // 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
 	TArray<struct FUniqueNetId>                        Players;                                       // 0x0010 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 };
 
@@ -339,7 +339,7 @@ struct FSkillMatchData
 	int32_t                                            WinningTeam;                                   // 0x0014 (0x0004) [0x0000000000000000]               
 	int32_t                                            Team0Score;                                    // 0x0018 (0x0004) [0x0000000000000000]               
 	int32_t                                            Team1Score;                                    // 0x001C (0x0004) [0x0000000000000000]               
-	unsigned long                                      bOverTime : 1;                                 // 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bOverTime : 1;                                 // 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct ProjectX._Types_X.ClubColorSet
@@ -348,8 +348,8 @@ struct FClubColorSet
 {
 	uint8_t                                            TeamColorID;                                   // 0x0000 (0x0001) [0x0000000000000000]               
 	uint8_t                                            CustomColorID;                                 // 0x0001 (0x0001) [0x0000000000000000]               
-	unsigned long                                      bTeamColorSet : 1;                             // 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bCustomColorSet : 1;                           // 0x0004 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bTeamColorSet : 1;                             // 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bCustomColorSet : 1;                           // 0x0004 (0x0004) [0x0000000000000000] [0x00000002] 
 };
 
 // ScriptStruct ProjectX._Types_X.CustomMatchTeamSettings
@@ -371,9 +371,9 @@ struct FCustomMatchSettings
 	int32_t                                            MaxPlayerCount;                                // 0x001C (0x0004) [0x0000000000000000]               
 	class FString                                      ServerName;                                    // 0x0020 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	class FString                                      Password;                                      // 0x0030 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      bPublic : 1;                                   // 0x0040 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bPublic : 1;                                   // 0x0040 (0x0004) [0x0000000000000000] [0x00000001] 
 	struct FCustomMatchTeamSettings                    TeamSettings[0x2];                             // 0x0048 (0x0040) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      bClubServer : 1;                               // 0x0088 (0x0004) [0x0001000000000000] [0x00000001] 
+	uint32_t                                           bClubServer : 1;                               // 0x0088 (0x0004) [0x0001000000000000] [0x00000001] 
 };
 
 // ScriptStruct ProjectX._Types_X.ServerResult
@@ -392,7 +392,7 @@ struct FSkillMatchPlayer
 	struct FUniqueNetId                                PlayerID;                                      // 0x0000 (0x0048) [0x0000000000400000] (CPF_NeedCtorLink)
 	float                                              PctTimePlayed;                                 // 0x0048 (0x0004) [0x0000000000000000]               
 	float                                              TimePlayed;                                    // 0x004C (0x0004) [0x0000000000000000]               
-	unsigned long                                      bQuitter : 1;                                  // 0x0050 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bQuitter : 1;                                  // 0x0050 (0x0004) [0x0000000000000000] [0x00000001] 
 	int32_t                                            PartyID;                                       // 0x0054 (0x0004) [0x0000000000000000]               
 	int32_t                                            Score;                                         // 0x0058 (0x0004) [0x0000000000000000]               
 	int32_t                                            Team;                                          // 0x005C (0x0004) [0x0000000000000000]               
@@ -413,7 +413,7 @@ struct FPartyJoinMatchSettings
 {
 	class FString                                      ServerName;                                    // 0x0000 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	int32_t                                            PlaylistId;                                    // 0x0010 (0x0004) [0x0000000000000000]               
-	unsigned long                                      bFriendJoin : 1;                               // 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bFriendJoin : 1;                               // 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
 	class FString                                      CustomPassword;                                // 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	class FString                                      ReservationID;                                 // 0x0028 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	class FString                                      JoinName;                                      // 0x0038 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -426,9 +426,9 @@ struct FJoinMatchSettings
 {
 	uint8_t                                            MatchType;                                     // 0x0000 (0x0001) [0x0000000000000000]               
 	int32_t                                            PlaylistId;                                    // 0x0004 (0x0004) [0x0000000000000000]               
-	unsigned long                                      bFriendJoin : 1;                               // 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bMigration : 1;                                // 0x0008 (0x0004) [0x0000000000000000] [0x00000002] 
-	unsigned long                                      bRankedReconnect : 1;                          // 0x0008 (0x0004) [0x0000000000000000] [0x00000004] 
+	uint32_t                                           bFriendJoin : 1;                               // 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bMigration : 1;                                // 0x0008 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bRankedReconnect : 1;                          // 0x0008 (0x0004) [0x0000000000000000] [0x00000004] 
 	class FString                                      Password;                                      // 0x0010 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 };
 
@@ -441,7 +441,7 @@ struct FReservationPlayerData
 	float                                              SkillMu;                                       // 0x0058 (0x0004) [0x0000000000000000]               
 	float                                              SkillSigma;                                    // 0x005C (0x0004) [0x0000000000000000]               
 	int32_t                                            Tier;                                          // 0x0060 (0x0004) [0x0000000000000000]               
-	unsigned long                                      bRemotePlayer : 1;                             // 0x0064 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bRemotePlayer : 1;                             // 0x0064 (0x0004) [0x0000000000000000] [0x00000001] 
 	TArray<int32_t>                                    Loadout;                                       // 0x0068 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	TArray<struct FName>                               MapLikes;                                      // 0x0078 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	TArray<struct FName>                               MapDislikes;                                   // 0x0088 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -459,7 +459,7 @@ struct FReplicatedRBStateNoQuat
 	struct FVector                                     Location;                                      // 0x0010 (0x000C) [0x0000000000000000]               
 	struct FVector                                     LinearVelocity;                                // 0x001C (0x000C) [0x0000000000000000]               
 	struct FVector                                     AngularVelocity;                               // 0x0028 (0x000C) [0x0000000000000000]               
-	unsigned long                                      bSleeping : 1;                                 // 0x0034 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bSleeping : 1;                                 // 0x0034 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct ProjectX._Types_X.ReplicatedRBState
@@ -471,8 +471,8 @@ struct FReplicatedRBState
 	struct FVector                                     LinearVelocity;                                // 0x001C (0x000C) [0x0000000000000000]               
 	struct FVector                                     AngularVelocity;                               // 0x0028 (0x000C) [0x0000000000000000]               
 	float                                              Time;                                          // 0x0034 (0x0004) [0x0000000000000000]               
-	unsigned long                                      bSleeping : 1;                                 // 0x0038 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bNewData : 1;                                  // 0x0038 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bSleeping : 1;                                 // 0x0038 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bNewData : 1;                                  // 0x0038 (0x0004) [0x0000000000000000] [0x00000002] 
 };
 
 // ScriptStruct ProjectX._Types_X.PlayerBinding
@@ -484,12 +484,12 @@ struct FPlayerBinding
 	uint8_t                                            AxisSign;                                      // 0x0010 (0x0001) [0x0000000040000000] (CPF_EditInlineNotify)
 	uint8_t                                            PressType;                                     // 0x0011 (0x0001) [0x0000000040000000] (CPF_EditInlineNotify)
 	float                                              Speed;                                         // 0x0014 (0x0004) [0x0000000040000000] (CPF_EditInlineNotify)
-	unsigned long                                      bRequired : 1;                                 // 0x0018 (0x0004) [0x0000000040000000] [0x00000001] (CPF_EditInlineNotify)
+	uint32_t                                           bRequired : 1;                                 // 0x0018 (0x0004) [0x0000000040000000] [0x00000001] (CPF_EditInlineNotify)
 	uint8_t                                            Remappable;                                    // 0x001C (0x0001) [0x0000000000000000]               
 	float                                              PressedTime;                                   // 0x0020 (0x0004) [0x0000000000002000] (CPF_Transient)
 	float                                              ReleasedTime;                                  // 0x0024 (0x0004) [0x0000000000002000] (CPF_Transient)
-	unsigned long                                      bTapped : 1;                                   // 0x0028 (0x0004) [0x0000000000002000] [0x00000001] (CPF_Transient)
-	unsigned long                                      bToggled : 1;                                  // 0x0028 (0x0004) [0x0000000000002000] [0x00000002] (CPF_Transient)
+	uint32_t                                           bTapped : 1;                                   // 0x0028 (0x0004) [0x0000000000002000] [0x00000001] (CPF_Transient)
+	uint32_t                                           bToggled : 1;                                  // 0x0028 (0x0004) [0x0000000000002000] [0x00000002] (CPF_Transient)
 };
 
 // ScriptStruct ProjectX._Types_X.BindingAction
@@ -501,7 +501,7 @@ struct FBindingAction
 	struct FName                                       Axis;                                          // 0x0010 (0x0008) [0x0000000040000000] (CPF_EditInlineNotify)
 	uint8_t                                            AxisSign;                                      // 0x0018 (0x0001) [0x0000000040000000] (CPF_EditInlineNotify)
 	class FString                                      Command;                                       // 0x0020 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      bDisableRemapping : 1;                         // 0x0030 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bDisableRemapping : 1;                         // 0x0030 (0x0004) [0x0000000000000000] [0x00000001] 
 	int32_t                                            Priority;                                      // 0x0034 (0x0004) [0x0000000000000000]               
 };
 
@@ -519,8 +519,8 @@ struct FPlayerPermissions
 	uint8_t                                            TextChat;                                      // 0x0000 (0x0001) [0x0000000000000000]               
 	uint8_t                                            VoiceChat;                                     // 0x0001 (0x0001) [0x0000000000000000]               
 	uint8_t                                            Trade;                                         // 0x0002 (0x0001) [0x0000000000000000]               
-	unsigned long                                      bRequirePinForFriends : 1;                     // 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bItemShopNotificationsAllowed : 1;             // 0x0004 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           bRequirePinForFriends : 1;                     // 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bItemShopNotificationsAllowed : 1;             // 0x0004 (0x0004) [0x0000000000000000] [0x00000002] 
 };
 
 // ScriptStruct ProjectX._Types_X.PlaylistSkillRating
@@ -567,7 +567,7 @@ struct FPartyMemberServer
 };
 
 // ScriptStruct ProjectX._Types_X.PartyMember
-// 0x0168
+// 0x0170
 struct FPartyMember
 {
 	struct FUniqueNetId                                PrimaryMemberId;                               // 0x0000 (0x0048) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -575,15 +575,16 @@ struct FPartyMember
 	class FString                                      MemberName;                                    // 0x0090 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	int32_t                                            MatchmakeRestrictions;                         // 0x00A0 (0x0004) [0x0000000000000000]               
 	int32_t                                            LocalControllerId;                             // 0x00A4 (0x0004) [0x0000000000000000]               
-	uint8_t                                            CrossChatState;                                // 0x00A8 (0x0001) [0x0000000000000000]               
-	unsigned long                                      bDisableCrossPlay : 1;                         // 0x00AC (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bTradingEnabled : 1;                           // 0x00AC (0x0004) [0x0000000000000000] [0x00000002] 
-	struct FUniqueNetId                                TradingMemberId;                               // 0x00B0 (0x0048) [0x0000000000400000] (CPF_NeedCtorLink)
-	struct FGuid                                       TradeId;                                       // 0x00F8 (0x0010) [0x0000000000000000]               
-	unsigned long                                      bReadyToLockTrade : 1;                         // 0x0108 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      bReadyToConfirmTrade : 1;                      // 0x0108 (0x0004) [0x0000000000000000] [0x00000002] 
-	struct FPartyMemberServer                          Server;                                        // 0x0110 (0x0048) [0x0000000000400000] (CPF_NeedCtorLink)
-	struct FUniqueLobbyId                              PlatformParty;                                 // 0x0158 (0x0010) [0x0001000000000000]               
+	int32_t                                            XpLevel;                                       // 0x00A8 (0x0004) [0x0000000000000000]               
+	uint8_t                                            CrossChatState;                                // 0x00AC (0x0001) [0x0000000000000000]               
+	uint32_t                                           bDisableCrossPlay : 1;                         // 0x00B0 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bTradingEnabled : 1;                           // 0x00B0 (0x0004) [0x0000000000000000] [0x00000002] 
+	struct FUniqueNetId                                TradingMemberId;                               // 0x00B8 (0x0048) [0x0000000000400000] (CPF_NeedCtorLink)
+	struct FGuid                                       TradeId;                                       // 0x0100 (0x0010) [0x0000000000000000]               
+	uint32_t                                           bReadyToLockTrade : 1;                         // 0x0110 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bReadyToConfirmTrade : 1;                      // 0x0110 (0x0004) [0x0000000000000000] [0x00000002] 
+	struct FPartyMemberServer                          Server;                                        // 0x0118 (0x0048) [0x0000000000400000] (CPF_NeedCtorLink)
+	struct FUniqueLobbyId                              PlatformParty;                                 // 0x0160 (0x0010) [0x0001000000000000]               
 };
 
 // ScriptStruct ProjectX._Types_X.PlayerTitleCategory
@@ -644,7 +645,7 @@ struct FSetPlayerStorageResultItem
 {
 	struct FName                                       Category;                                      // 0x0000 (0x0008) [0x0001000000000000]               
 	int32_t                                            Tick;                                          // 0x0008 (0x0004) [0x0001000000000000]               
-	unsigned long                                      bOutOfSync : 1;                                // 0x000C (0x0004) [0x0001000000000000] [0x00000001] 
+	uint32_t                                           bOutOfSync : 1;                                // 0x000C (0x0004) [0x0001000000000000] [0x00000001] 
 };
 
 // ScriptStruct ProjectX.OnlinePlayerStorageQueue_X.PendingStorage
@@ -668,7 +669,7 @@ struct FPlayerBlockListenData
 // 0x0004
 struct FCabinedModeData
 {
-	unsigned long                                      cabinedMode : 1;                               // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           cabinedMode : 1;                               // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct ProjectX.OnlineGameMatchmaking_X.DSRegionInfo
@@ -831,7 +832,7 @@ struct FCameraTransition
 	struct FViewTargetTransitionParams                 BlendParams;                                   // 0x0008 (0x0010) [0x0000000000000000]               
 	float                                              RemainingTime;                                 // 0x0018 (0x0004) [0x0000000000000000]               
 	struct FCameraOrientation                          SnapshotPOV;                                   // 0x001C (0x002C) [0x0000000000000000]               
-	unsigned long                                      bStarted : 1;                                  // 0x0048 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bStarted : 1;                                  // 0x0048 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct ProjectX.Camera_X.RotationCameraKnock
@@ -925,7 +926,7 @@ struct FEOSAccountInfo
 {
 	class FString                                      AccountId;                                     // 0x0000 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	class FString                                      Created;                                       // 0x0010 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      Favorite : 1;                                  // 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           Favorite : 1;                                  // 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
 	class FString                                      NickName;                                      // 0x0028 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 };
 
@@ -971,7 +972,7 @@ struct FTradePermissionPair
 struct FTradePermissionEnabledPair
 {
 	uint8_t                                            Level;                                         // 0x0000 (0x0001) [0x0000000000000000]               
-	unsigned long                                      bEnabled : 1;                                  // 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bEnabled : 1;                                  // 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct ProjectX.EpochTimerTick_X.EpochTimer
@@ -997,7 +998,7 @@ struct FFakeData1
 {
 	class FString                                      string1;                                       // 0x0000 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	struct FName                                       name1;                                         // 0x0010 (0x0008) [0x0000000000000000]               
-	unsigned long                                      bool1 : 1;                                     // 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bool1 : 1;                                     // 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
 	uint64_t                                           qword1;                                        // 0x0020 (0x0008) [0x0000000000000000]               
 	float                                              float1;                                        // 0x0028 (0x0004) [0x0000000000000000]               
 	uint8_t                                            byte1;                                         // 0x002C (0x0001) [0x0000000000000000]               
@@ -1012,7 +1013,7 @@ struct FFakeData2
 	struct FFakeData1                                  struct1;                                       // 0x0000 (0x0038) [0x0000000000400000] (CPF_NeedCtorLink)
 	class FString                                      string1;                                       // 0x0038 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	struct FName                                       name1;                                         // 0x0048 (0x0008) [0x0000000000000000]               
-	unsigned long                                      bool1 : 1;                                     // 0x0050 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bool1 : 1;                                     // 0x0050 (0x0004) [0x0000000000000000] [0x00000001] 
 	uint64_t                                           qword1;                                        // 0x0058 (0x0008) [0x0000000000000000]               
 	float                                              float1;                                        // 0x0060 (0x0004) [0x0000000000000000]               
 	uint8_t                                            byte1;                                         // 0x0064 (0x0001) [0x0000000000000000]               
@@ -1032,7 +1033,7 @@ struct FFakeData3
 	struct FName                                       name1;                                         // 0x0058 (0x0008) [0x0000000000000000]               
 	TArray<struct FFakeData2>                          array2;                                        // 0x0060 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	TArray<struct FFakeData2>                          array3;                                        // 0x0070 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      bool1 : 1;                                     // 0x0080 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bool1 : 1;                                     // 0x0080 (0x0004) [0x0000000000000000] [0x00000001] 
 	uint64_t                                           qword1;                                        // 0x0088 (0x0008) [0x0000000000000000]               
 	float                                              float1;                                        // 0x0090 (0x0004) [0x0000000000000000]               
 	uint8_t                                            byte1;                                         // 0x0094 (0x0001) [0x0000000000000000]               
@@ -1051,7 +1052,7 @@ struct FFakeData4
 	TArray<struct FFakeData2>                          array2;                                        // 0x00D8 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	class FString                                      string1;                                       // 0x00E8 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	struct FName                                       name1;                                         // 0x00F8 (0x0008) [0x0000000000000000]               
-	unsigned long                                      bool1 : 1;                                     // 0x0100 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bool1 : 1;                                     // 0x0100 (0x0004) [0x0000000000000000] [0x00000001] 
 	uint64_t                                           qword1;                                        // 0x0108 (0x0008) [0x0000000000000000]               
 	float                                              float1;                                        // 0x0110 (0x0004) [0x0000000000000000]               
 	uint8_t                                            byte1;                                         // 0x0114 (0x0001) [0x0000000000000000]               
@@ -1138,12 +1139,12 @@ struct FFXAttachment
 	uint8_t                                            OverrideAttachBehavior;                        // 0x0094 (0x0001) [0x0000000000000001] (CPF_Edit)    
 	struct FVector                                     OverrideAttachLocationOffset;                  // 0x0098 (0x000C) [0x0000000000000001] (CPF_Edit)    
 	struct FRotator                                    OverrideAttachRotationOffset;                  // 0x00A4 (0x000C) [0x0000000000000001] (CPF_Edit)    
-	unsigned long                                      bCreateDuplicates : 1;                         // 0x00B0 (0x0004) [0x0000000000000002] [0x00000001] (CPF_Const)
-	unsigned long                                      bWantsAttachment : 1;                          // 0x00B0 (0x0004) [0x0000000000002000] [0x00000002] (CPF_Transient)
-	unsigned long                                      bInitializedTraits : 1;                        // 0x00B0 (0x0004) [0x0000000000002000] [0x00000004] (CPF_Transient)
-	unsigned long                                      bWarnedMissingSocket : 1;                      // 0x00B0 (0x0004) [0x0000000000002000] [0x00000008] (CPF_Transient)
-	unsigned long                                      bExistingComponent : 1;                        // 0x00B0 (0x0004) [0x0000000800000000] [0x00000010] 
-	unsigned long                                      bExistingAttachment : 1;                       // 0x00B0 (0x0004) [0x0000000800000000] [0x00000020] 
+	uint32_t                                           bCreateDuplicates : 1;                         // 0x00B0 (0x0004) [0x0000000000000002] [0x00000001] (CPF_Const)
+	uint32_t                                           bWantsAttachment : 1;                          // 0x00B0 (0x0004) [0x0000000000002000] [0x00000002] (CPF_Transient)
+	uint32_t                                           bInitializedTraits : 1;                        // 0x00B0 (0x0004) [0x0000000000002000] [0x00000004] (CPF_Transient)
+	uint32_t                                           bWarnedMissingSocket : 1;                      // 0x00B0 (0x0004) [0x0000000000002000] [0x00000008] (CPF_Transient)
+	uint32_t                                           bExistingComponent : 1;                        // 0x00B0 (0x0004) [0x0000000800000000] [0x00000010] 
+	uint32_t                                           bExistingAttachment : 1;                       // 0x00B0 (0x0004) [0x0000000800000000] [0x00000020] 
 	float                                              AttachedTime;                                  // 0x00B4 (0x0004) [0x0000000000002000] (CPF_Transient)
 	uint8_t                                            State;                                         // 0x00B8 (0x0001) [0x0000000000002000] (CPF_Transient)
 	float                                              WantsAttachmentChangeTime;                     // 0x00BC (0x0004) [0x0000000000002000] (CPF_Transient)
@@ -1160,7 +1161,7 @@ struct FFXAttachment
 struct FFXActorEventCheck
 {
 	class UFXActorEvent_X*                             Event;                                         // 0x0000 (0x0008) [0x0000000000000000]               
-	unsigned long                                      bHasTicked : 1;                                // 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bHasTicked : 1;                                // 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct ProjectX.GameInfo_X.PauserData
@@ -1176,7 +1177,7 @@ struct FPauserData
 struct FGameSettingHidingOverride
 {
 	struct FName                                       SettingName;                                   // 0x0000 (0x0008) [0x0000000000000000]               
-	unsigned long                                      bHidden : 1;                                   // 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bHidden : 1;                                   // 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct ProjectX.GFxDataStore_X.GFxDataStoreColumn
@@ -1202,7 +1203,7 @@ struct FGFxDataStoreTable
 	struct FName                                       Name;                                          // 0x0000 (0x0008) [0x0000000000000000]               
 	TArray<struct FGFxDataStoreColumn>                 Columns;                                       // 0x0008 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	TArray<struct FGFxDataStoreRow>                    Rows;                                          // 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	unsigned long                                      bLevelTransitionPersistent : 1;                // 0x0028 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bLevelTransitionPersistent : 1;                // 0x0028 (0x0004) [0x0000000000000000] [0x00000001] 
 	struct FMap_Mirror                                 PrimaryKeyMap;                                 // 0x0030 (0x0050) [0x0000000000001000] (CPF_Native)  
 };
 
@@ -1308,7 +1309,7 @@ struct FLocOverride
 // 0x0024
 struct FMatchSkillUpdate
 {
-	unsigned long                                      bValid : 1;                                    // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bValid : 1;                                    // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 	float                                              Mu;                                            // 0x0004 (0x0004) [0x0000000000000000]               
 	float                                              Sigma;                                         // 0x0008 (0x0004) [0x0000000000000000]               
 	int32_t                                            Tier;                                          // 0x000C (0x0004) [0x0000000000000000]               
@@ -1351,8 +1352,8 @@ struct FSteamJsonResponseGetPublisherAppOwnership3
 {
 	uint64_t                                           AppID;                                         // 0x0000 (0x0008) [0x0000000000000000]               
 	uint64_t                                           OwnerSteamID;                                  // 0x0008 (0x0008) [0x0000000000000000]               
-	unsigned long                                      OwnsApp : 1;                                   // 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned long                                      Permanent : 1;                                 // 0x0010 (0x0004) [0x0000000000000000] [0x00000002] 
+	uint32_t                                           OwnsApp : 1;                                   // 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           Permanent : 1;                                 // 0x0010 (0x0004) [0x0000000000000000] [0x00000002] 
 	class FString                                      TimeStamp;                                     // 0x0018 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 };
 
@@ -1422,12 +1423,12 @@ struct FLeaderboardData
 	struct FUniqueNetId                                PlayerID;                                      // 0x0000 (0x0048) [0x0000000040400000] (CPF_NeedCtorLink | CPF_EditInlineNotify)
 	class FString                                      UnSanitizedPlayerName;                         // 0x0048 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	class FString                                      PlayerName;                                    // 0x0058 (0x0010) [0x0000000040400000] (CPF_NeedCtorLink | CPF_EditInlineNotify)
-	unsigned long                                      bPsyNetUser : 1;                               // 0x0068 (0x0004) [0x0000000040000000] [0x00000001] (CPF_EditInlineNotify)
+	uint32_t                                           bPsyNetUser : 1;                               // 0x0068 (0x0004) [0x0000000040000000] [0x00000001] (CPF_EditInlineNotify)
 	int32_t                                            Rank;                                          // 0x006C (0x0004) [0x0000000040000000] (CPF_EditInlineNotify)
 	int32_t                                            Value;                                         // 0x0070 (0x0004) [0x0000000040000000] (CPF_EditInlineNotify)
 	float                                              MMR;                                           // 0x0074 (0x0004) [0x0000000040000000] (CPF_EditInlineNotify)
 	int32_t                                            Division;                                      // 0x0078 (0x0004) [0x0000000040000000] (CPF_EditInlineNotify)
-	unsigned long                                      bIsPrimaryPlayer : 1;                          // 0x007C (0x0004) [0x0000000040000000] [0x00000001] (CPF_EditInlineNotify)
+	uint32_t                                           bIsPrimaryPlayer : 1;                          // 0x007C (0x0004) [0x0000000040000000] [0x00000001] (CPF_EditInlineNotify)
 };
 
 // ScriptStruct ProjectX.OnlineGameLeaderboards_X.CachedLeaderboardData
@@ -1554,7 +1555,7 @@ struct FWordFilterPair
 	class FString                                      Key;                                           // 0x0010 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	class FString                                      Value;                                         // 0x0020 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	uint8_t                                            Usage;                                         // 0x0030 (0x0001) [0x0000000000000000]               
-	unsigned long                                      bPending : 1;                                  // 0x0034 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bPending : 1;                                  // 0x0034 (0x0004) [0x0000000000000000] [0x00000001] 
 	float                                              LastRequestTime;                               // 0x0038 (0x0004) [0x0000000000000000]               
 	class UError*                                      Error;                                         // 0x0040 (0x0008) [0x0000000000000000]               
 	struct FScriptDelegate                             Callback;                                      // 0x0048 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -1588,7 +1589,7 @@ struct FOnlinePlayerStorageSyncResult
 	class UObject*                                     RemoteData;                                    // 0x0008 (0x0008) [0x0001000000000000]               
 	int32_t                                            ServerTick;                                    // 0x0010 (0x0004) [0x0001000000000000]               
 	int32_t                                            Checksum;                                      // 0x0014 (0x0004) [0x0001000000000000]               
-	unsigned long                                      bChecksumMatch : 1;                            // 0x0018 (0x0004) [0x0001000000000000] [0x00000001] 
+	uint32_t                                           bChecksumMatch : 1;                            // 0x0018 (0x0004) [0x0001000000000000] [0x00000001] 
 	uint8_t                                            Encoding;                                      // 0x001C (0x0001) [0x0001000000000000]               
 };
 
@@ -1647,7 +1648,7 @@ struct FPartyMetricsData
 {
 	int32_t                                            LocalPlayers;                                  // 0x0000 (0x0004) [0x0000000000000000]               
 	int32_t                                            RemotePlayers;                                 // 0x0004 (0x0004) [0x0000000000000000]               
-	unsigned long                                      bPartyLeader : 1;                              // 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bPartyLeader : 1;                              // 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct ProjectX.PlayerInput_X.GamepadDeadzoneSettings
@@ -1680,7 +1681,7 @@ struct FRawAxisValue
 struct FPPEffectDefaults
 {
 	struct FName                                       EffectName;                                    // 0x0000 (0x0008) [0x0000000000000003] (CPF_Edit | CPF_Const)
-	unsigned long                                      bEnabled : 1;                                  // 0x0008 (0x0004) [0x0000000000000003] [0x00000001] (CPF_Edit | CPF_Const)
+	uint32_t                                           bEnabled : 1;                                  // 0x0008 (0x0004) [0x0000000000000003] [0x00000001] (CPF_Edit | CPF_Const)
 };
 
 // ScriptStruct ProjectX.PostProcessManager_X.PPPersistentEffectDefaults
@@ -1710,8 +1711,8 @@ struct FPostProcessOverride
 	struct FName                                       Id;                                            // 0x0170 (0x0008) [0x0000000000000000]               
 	float                                              BlendInTime;                                   // 0x0178 (0x0004) [0x0000000000000000]               
 	float                                              BlendOutTime;                                  // 0x017C (0x0004) [0x0000000000000000]               
-	unsigned long                                      bEnabled : 1;                                  // 0x0180 (0x0004) [0x0000000000002000] [0x00000001] (CPF_Transient)
-	unsigned long                                      bDefaultEnabled : 1;                           // 0x0180 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
+	uint32_t                                           bEnabled : 1;                                  // 0x0180 (0x0004) [0x0000000000002000] [0x00000001] (CPF_Transient)
+	uint32_t                                           bDefaultEnabled : 1;                           // 0x0180 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
 };
 
 // ScriptStruct ProjectX.PsyNetServiceSubscriptions_X.ServiceSubscription
@@ -1827,7 +1828,7 @@ struct FPlayerPermissionsReponse
 // 0x0078
 struct FRPCTestItem
 {
-	unsigned long                                      BoolItem : 1;                                  // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           BoolItem : 1;                                  // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 	int32_t                                            IntItem;                                       // 0x0004 (0x0004) [0x0000000000000000]               
 	float                                              FloatItem;                                     // 0x0008 (0x0004) [0x0000000000000000]               
 	class FString                                      StringItem;                                    // 0x0010 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -1928,7 +1929,7 @@ struct FCachedDataRequest
 	class FString                                      Path;                                          // 0x0010 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	class UStringMap*                                  Headers;                                       // 0x0020 (0x0008) [0x0000000004080008] (CPF_ExportObject | CPF_Component | CPF_EditInline)
 	class UCachedWebData_X*                            CachedWebData;                                 // 0x0028 (0x0008) [0x0000000000000000]               
-	unsigned long                                      bZipResponse : 1;                              // 0x0030 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint32_t                                           bZipResponse : 1;                              // 0x0030 (0x0004) [0x0000000000000000] [0x00000001] 
 	struct FScriptDelegate                             Callback;                                      // 0x0038 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
 };
 

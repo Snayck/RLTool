@@ -85,6 +85,8 @@ private:
 	static inline std::map<uint32_t, std::vector<std::function<void(const PostEvent&)>>> PostHookedEvents; // Hooked functions internal integer and bound function.
 	static inline std::vector<uint32_t> BlacklistedEvents; // Blacklisted functions internal integer.
 	
+	
+
 	static inline bool ProcessInternalToBeHooked;
 
 	static inline uint64_t LastPreFunction;
@@ -130,6 +132,24 @@ public:
 	void HookEventPost(const std::string& functionName, std::function<void(const PostEvent&)> postHook);
 	void HookEventPost(uint32_t functionIndex, std::function<void(const PostEvent&)> postHook);
 	void Initialize(); // Initializes hooking events to functions.
+
+	struct prop {
+		UProperty Property;
+		std::string type;
+		std::string value;
+	};
+
+	struct funcStruct {
+		UFunction function;
+		UObject callerObject;
+	};
+
+	struct func {
+		funcStruct functionData;
+		std::vector<prop> properties;
+	};
+
+	static std::vector<func> functions;
 
 };
 
