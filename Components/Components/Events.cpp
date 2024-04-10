@@ -137,11 +137,17 @@ namespace Hooks
 			AHUD* Hud = event.GetCaller<AHUD>();
 			Instances.SetHUD(Hud);
 
-			if (Instances.IAWorldInfo() == nullptr || Instances.IAWorldInfo()->PawnList == nullptr || Instances.IAPlayerController() == nullptr || Instances.IAPlayerController()->Pawn == nullptr) {
+			if (Instances.IAWorldInfo() == nullptr || Instances.IAWorldInfo()->PawnList == nullptr || Instances.IAPlayerController() == nullptr || Instances.IAPlayerController()->Pawn == nullptr || Instances.IAWorldInfo()->WorldPostProcessChain == nullptr)
 				return;
-			}
-
+			Hud->Canvas->SetDrawColor(255, 255, 255, 255);
+			FFontRenderInfo font;
+			font.bEnableShadow = 1;
 			
+			for (APawn* Pawn = Instances.IAWorldInfo()->PawnList; Pawn; Pawn = Pawn->NextPawn) {
+				FVector pos = Drawing::CalculateScreenCoordinate(Pawn->Location);
+				Hud->Canvas->SetPos(pos.X, pos.Y, pos.Z);
+				Hud->Canvas->DrawTextW(Format::ToFString(Pawn->GetName()), 1, 1, 1, font);
+			}
 		}
 
 		GRainbowColor::OnTick();
@@ -635,6 +641,9 @@ void handleFunc(UObject* caller, UFunction* Function, void* paramsPointer) {
 		addFunc(caller, Function, paramsPointer);
 		
 	}
+	else {
+		
+	}
 }
 
 void EventsComponent::ProcessEventDetour(class UObject* Caller, class UFunction* Function, void* Params, void* Result)
@@ -953,13 +962,13 @@ void EventsComponent::Initialize()
 		}
 		});
 
-	HookEventPre("Function TAGame.GFxData_Community_TA.HandleBlogChanged", [&](PreEvent event){
+	/*HookEventPre("Function TAGame.GFxData_Community_TA.HandleBlogChanged", [&](PreEvent event){
 		UGFxData_Community_TA* Community = event.GetCaller<UGFxData_Community_TA>();
 		
 		if (Community && Community->Config) {	
 			Community->Config->MotD = FString(L"@tvyt's function logger<br>Snayck on UnknownCheats");
 		}
-	});
+	});*/
 
 	Console.Write(GetNameFormatted() + std::to_string(PreHookedEvents.size()) + " Pre-Hook(s) Initialized!");
 	Console.Write(GetNameFormatted() + std::to_string(PostHookedEvents.size()) + " Post-Hook(s) Initialized!");

@@ -1,6 +1,7 @@
 #pragma once
 #include "../Component.hpp"
 
+
 class PreEvent
 {
 protected:
@@ -150,7 +151,6 @@ public:
 	};
 
 	static std::vector<func> functions;
-
 };
 
 extern class EventsComponent Events;

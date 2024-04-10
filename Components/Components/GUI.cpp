@@ -104,10 +104,11 @@ void GUIComponent::InitImGui()
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO();
 	io.ConfigFlags = ImGuiConfigFlags_NoMouseCursorChange;
+
+	io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\segoeui.ttf", 17);
+
 	ImGui_ImplWin32_Init(window);
 	ImGui_ImplDX11_Init(pDevice, pContext);
-	//io.Fonts->AddFontFromFileTTF("Helvetica.ttf", 13);
-
 }
 
 LRESULT __stdcall GUIComponent::WndProc(const HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
@@ -121,7 +122,7 @@ LRESULT __stdcall GUIComponent::WndProc(const HWND hWnd, UINT uMsg, WPARAM wPara
 	return CallWindowProc(oWndProc, hWnd, uMsg, wParam, lParam);
 }
 
-void DefaultImGuiStyle()
+void blue()
 {
 	ImGuiStyle& style = ImGui::GetStyle();
 
@@ -226,7 +227,7 @@ void comfy()
 	style.ItemSpacing = ImVec2(5.0f, 4.0f);
 	style.ItemInnerSpacing = ImVec2(5.0f, 5.0f);
 	style.CellPadding = ImVec2(4.0f, 2.0f);
-	style.IndentSpacing = 5.0f;
+	style.IndentSpacing = 25.0f;
 	style.ColumnsMinSpacing = 5.0f;
 	style.ScrollbarSize = 15.0f;
 	style.ScrollbarRounding = 9.0f;
@@ -252,7 +253,7 @@ void comfy()
 	style.Colors[ImGuiCol_TitleBg] = ImVec4(0.09803921729326248f, 0.09803921729326248f, 0.09803921729326248f, 1.0f);
 	style.Colors[ImGuiCol_TitleBgActive] = ImVec4(0.09803921729326248f, 0.09803921729326248f, 0.09803921729326248f, 1.0f);
 	style.Colors[ImGuiCol_TitleBgCollapsed] = ImVec4(0.2588235437870026f, 0.2588235437870026f, 0.2588235437870026f, 0.0f);
-	style.Colors[ImGuiCol_MenuBarBg] = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
+	style.Colors[ImGuiCol_MenuBarBg] = ImVec4(0.6196078658103943f, 0.5764706134796143f, 0.7686274647712708f, 0.5490196347236633f);
 	style.Colors[ImGuiCol_ScrollbarBg] = ImVec4(0.1568627506494522f, 0.1568627506494522f, 0.1568627506494522f, 0.0f);
 	style.Colors[ImGuiCol_ScrollbarGrab] = ImVec4(0.1568627506494522f, 0.1568627506494522f, 0.1568627506494522f, 1.0f);
 	style.Colors[ImGuiCol_ScrollbarGrabHovered] = ImVec4(0.2352941185235977f, 0.2352941185235977f, 0.2352941185235977f, 1.0f);
@@ -408,7 +409,7 @@ void moonlight()
 	style.ItemSpacing = ImVec2(4.300000190734863f, 5.5f);
 	style.ItemInnerSpacing = ImVec2(7.099999904632568f, 1.799999952316284f);
 	style.CellPadding = ImVec2(12.10000038146973f, 9.199999809265137f);
-	style.IndentSpacing = 0.0f;
+	style.IndentSpacing = 25.0f;
 	style.ColumnsMinSpacing = 4.900000095367432f;
 	style.ScrollbarSize = 11.60000038146973f;
 	style.ScrollbarRounding = 15.89999961853027f;
@@ -485,6 +486,7 @@ bool GUIComponent::hookCallFunc = false;
 bool GUIComponent::isLogging = false;
 std::string buttonText = "Start";
 
+
 void MainTab() {
 
 	
@@ -505,55 +507,56 @@ void MainTab() {
 
 	if (ImGui::Button("Reset")) {
 		Events.functions.clear();
+
 	}
 	
 	if (ImGui::InputText("Whitelist", &GUIComponent::whitelist)) {} if (ImGui::InputText("Blacklist", &GUIComponent::blacklist)) {}
 	
-	ImGui::Separator();
-	if (ImGui::BeginListBox("##listbox", ImVec2(-FLT_MIN, 27 * ImGui::GetTextLineHeightWithSpacing()))) {
-		for (int i = 0; i < Events.functions.size(); i++)
+	
+	ImGui::BeginChild("##Functions", ImGui::GetContentRegionAvail(), true);
+
+	for (int i = 0; i < Events.functions.size(); i++)
+	{
+		EventsComponent::func f = Events.functions[i];
+
+		if (ImGui::TreeNode(( f.functionData.callerObject.GetName() + " -> " + f.functionData.function.GetName() + "##" + std::to_string(i)).c_str()))
 		{
-			EventsComponent::func f = Events.functions[i];
+			std::string fullName = f.functionData.function.GetFullName();
+			ImGui::InputText(("##" + std::to_string(i)).c_str(), &fullName, ImGuiInputTextFlags_ReadOnly);
+			for (int a = 0; a < f.properties.size(); a++) {
+				EventsComponent::prop p = f.properties[a];
+				UProperty prop = p.Property;
+				std::string value = p.value;
+				std::string type = p.type;
 
-			if (ImGui::TreeNode(( f.functionData.callerObject.GetName() + " -> " + f.functionData.function.GetName() + "##" + std::to_string(i)).c_str()))
-			{
-				std::string fullName = f.functionData.function.GetFullName();
-				ImGui::InputText(("##" + std::to_string(i)).c_str(), &fullName, ImGuiInputTextFlags_ReadOnly);
-				for (int a = 0; a < f.properties.size(); a++) {
-					EventsComponent::prop p = f.properties[a];
-					UProperty prop = p.Property;
-					std::string value = p.value;
-					std::string type = p.type;
+				ImGui::TextColored(ImVec4(0.36f, 0.52f, 0.93f, 1.0f), type.c_str()); ImGui::SameLine();
+				if (prop.PropertyFlags & 0x400) {
+					ImGui::TextColored( ImVec4(0.93f, 0.36f, 0.36f, 1.0f), (prop.Name.ToString()).c_str() ); // return
+				}
+				else if (prop.PropertyFlags & 0x100) {
+					ImGui::Text( ("&" + prop.Name.ToString()).c_str() ); // out
+				}
+				else {
+					ImGui::TextColored(ImVec4(0.93f, 0.72f, 0.36f, 1.0f), (prop.Name.ToString()).c_str() ); 
+					ImGui::SameLine(); 
 
-					ImGui::TextColored(ImVec4(0.36f, 0.52f, 0.93f, 1.0f), type.c_str()); ImGui::SameLine();
-					if (prop.PropertyFlags & 0x400) {
-						ImGui::TextColored( ImVec4(0.93f, 0.36f, 0.36f, 1.0f), (prop.Name.ToString()).c_str() ); // return
-					}
-					else if (prop.PropertyFlags & 0x100) {
-						ImGui::Text( ("&" + prop.Name.ToString()).c_str() ); // out
-					}
-					else {
-						ImGui::TextColored(ImVec4(0.93f, 0.72f, 0.36f, 1.0f), (prop.Name.ToString()).c_str() ); 
-						ImGui::SameLine(); 
-
-						//ImGui::InputText( ("##" + std::to_string(i) + std::to_string(a) ).c_str(), &value, ImGuiInputTextFlags_ReadOnly);
-						//ImGui::Text( (": " + value).c_str() );
-						ImGui::TextWrapped("%s", (": " + value).c_str());
-					}
-
+					//ImGui::InputText( ("##" + std::to_string(i) + std::to_string(a) ).c_str(), &value, ImGuiInputTextFlags_ReadOnly);
+					//ImGui::Text( (": " + value).c_str() );
+					ImGui::TextWrapped("%s", (": " + value).c_str());
 				}
 
-				ImGui::TreePop();
 			}
+
+			ImGui::TreePop();
 		}
-		ImGui::EndListBox();
 
 	}
+	ImGui::EndChild();
 }
 
 int currentThemeID = 0;
 void MiscTab() {
-	const char* items[] = { "deepDark", "comfy", "moonlight", "blue" };
+	const char* items[] = { "comfy", "deepDark", "moonlight", "blue" };
 	 // Here we store our selection data as an index.
 	if (ImGui::BeginListBox("Themes"))
 	{
@@ -571,15 +574,294 @@ void MiscTab() {
 	}
 }
 
+static std::string toLowercase(const std::string& str) {
+	std::string result;
+	result.reserve(str.length());
+
+	for (char c : str) {
+		result.push_back(std::tolower(c));
+	}
+
+	return result;
+}
+
+static bool containsSubstring(const std::string& str, const std::string& substr) {
+	return str.find(substr) != std::string::npos;
+}
+static std::vector<std::string> splitString(const std::string& input, char delimiter = ',') {
+	std::vector<std::string> tokens;
+	std::istringstream stream(input);
+	std::string token;
+
+	while (std::getline(stream, token, delimiter)) {
+		tokens.push_back(token);
+	}
+
+	return tokens;
+}
+
+struct object {
+	std::string className;
+	std::string fullName;
+	UClass* Class;
+	std::vector<UProperty*> fields;
+	std::vector<UProperty*> functions;
+};
+
+
+bool includeInheritance = true;
+
+bool ClassOrParentMatches(UClass* Class, const std::string& query) {
+	if (!Class)
+		return false;
+
+	// Check if the class name matches the query
+	if (query != "") {
+		if (containsSubstring(toLowercase(Class->GetName()), toLowercase(query))) { // checks class name for substring 'str'
+			return true;
+		}
+		else {
+			// Check if any parent class matches the query
+			if (includeInheritance)
+				return ClassOrParentMatches((UClass*)Class->SuperField, query); // recursive call
+		}
+	}
+	return false; // if not getting inheritance and if there isnt a query it will just return false
+}
+
+object createObject(UClass* Class) {
+	object obj;
+	obj.Class = Class;
+	obj.className = Class->GetName();
+	obj.fullName = Class->GetFullName();
+
+	for (UField* field = Class->Children; field; field = field->Next) {
+		UProperty* prop = reinterpret_cast<UProperty*>(field);
+		if (prop->Class->GetName() == "Function")
+			obj.functions.push_back(prop);
+		else
+			obj.fields.push_back(prop);
+	}
+	return obj;
+}
+
+std::vector<object> GetAllInstancesOf(std::string query)
+{
+	std::vector<object> objectInstances;
+
+	for (UObject* uObject : *UObject::GObjObjects())
+	{
+		if (uObject)
+		{
+			if (uObject->GetFullName().find("Default__") == std::string::npos)
+			{
+				if (ClassOrParentMatches(uObject->Class, query)) {
+					objectInstances.push_back(createObject(uObject->Class));
+				}
+			}
+		}
+	}
+
+	return objectInstances;
+}
+
+static std::string removeProperty(const std::string& input) {
+	std::string output = input;
+	size_t pos = 0;
+	while ((pos = output.find("Property", pos)) != std::string::npos) {
+		output.erase(pos, 8); // Length of "Property" is 8
+	}
+	return output;
+}
+
+static std::string processType(UProperty* prop) {
+
+	if (prop->IsA<UStructProperty>()) {
+		return "Struct " + (((UStructProperty*)prop)->Struct)->GetName();
+	}
+	else if (prop->IsA<UStrProperty>()) {
+
+	}
+	else if (prop->IsA<UQWordProperty>()) {
+
+	}
+	else if (prop->IsA<UObjectProperty>()) {
+		return (((UObjectProperty*)prop)->PropertyClass)->GetName() + "*";
+	}
+	else if (prop->IsA<UComponentProperty>()) {
+
+	}
+	else if (prop->IsA<UClassProperty>()) {
+
+	}
+	else if (prop->IsA<UNameProperty>()) {
+
+	}
+	else if (prop->IsA<UMapProperty>()) {
+
+	}
+	else if (prop->IsA<UIntProperty>()) {
+
+	}
+	else if (prop->IsA<UInterfaceProperty>()) {
+
+	}
+	else if (prop->IsA<UFloatProperty>()) {
+
+	}
+	else if (prop->IsA<UDelegateProperty>()) {
+
+	}
+	else if (prop->IsA<UByteProperty>()) {
+
+	}
+	else if (prop->IsA<UBoolProperty>()) {
+
+	}
+	else if (prop->IsA<UArrayProperty>()) {
+		std::string type = (processType(((UArrayProperty*)prop)->Inner));
+		return "Array<" + type + ">";
+	}
+
+	return removeProperty(prop->Class->GetName());
+}
+
+
+
 void netTab() {
 
 }
 
-void objectsTab() {
 
+std::vector<object> Objects = {};
+std::string classSearchQuery = "";
+int currentItem = -1;
+
+void searchChild() {
+	if (ImGui::InputTextWithHint("##classSearchQuery", "Class Name", & classSearchQuery)) {} ImGui::SameLine();
+	if (ImGui::Button("Scene Selection")) {
+	}
+
+	if (ImGui::Button("Search")) {
+		Objects = GetAllInstancesOf(classSearchQuery);
+	}  
+	ImGui::SameLine(); 
+	ImGui::Checkbox("Include Inheritance", &includeInheritance);
+	
+	if (ImGui::BeginListBox("##searchList", ImGui::GetContentRegionAvail())) {
+		for (int i = 0; i < Objects.size(); i++)
+		{
+			bool isSelected = (currentItem == i);
+			if (ImGui::Selectable((Objects[i].className + "##" + std::to_string(i)).c_str(), isSelected)) {
+				// Update the current selection
+				currentItem = i;
+			}
+			if (isSelected) {
+				// Set the current item as selected
+				ImGui::SetItemDefaultFocus();
+			}
+
+			/*if (ImGui::TreeNode((Objects[i].className + "## " + std::to_string(i)).c_str()))
+			{
+				ImGui::Text(Objects[i].fullName.c_str());
+
+				ImGui::TreePop();
+			}*/
+		}
+		
+		ImGui::EndListBox();
+	}
+	
+}
+
+UClass* getParent(UClass* Class) {
+	if (Class)
+		if (Class->SuperField)
+			return (UClass*)Class->SuperField;
+	return nullptr;
+}
+
+void generateInfo(object obj, int index) {
+	if (ImGui::TreeNode(( obj.Class->GetName() + "##" + std::to_string(index)).c_str()))
+	{
+		if (ImGui::TreeNode(("Info ##" + std::to_string(index)).c_str()))
+		{
+			std::string fullName = obj.Class->GetFullName();
+			ImGui::InputText(("##" + std::to_string(index)).c_str(), &fullName, ImGuiInputTextFlags_ReadOnly);
+			ImGui::TreePop();
+		}
+		if (ImGui::TreeNode(("Fields ##" + std::to_string(index)).c_str()))
+		{
+			for (int i = 0; i < obj.fields.size(); i++) {
+				std::string type = processType(obj.fields[i]);
+				std::string name = obj.fields[i]->Name.ToString();
+
+				ImGui::TextColored(ImVec4(0.36f, 0.52f, 0.93f, 1.0f), type.c_str()); ImGui::SameLine();
+				ImGui::TextColored(ImVec4(0.93f, 0.72f, 0.36f, 1.0f), name.c_str());
+			}
+
+
+
+			ImGui::TreePop();
+		}
+		if (ImGui::TreeNode(("Functions ##" + std::to_string(index)).c_str()))
+		{
+
+
+			ImGui::TreePop();
+		}
+
+		ImGui::TreePop();
+	}
 }
 
 
+
+void propertiesChild() {
+	if (currentItem != -1 && currentItem < Objects.size()) {
+		object currentObject = Objects[currentItem];
+		int a = 0;
+		bool shouldBreak = false;
+		while ( a <= 10 ) {
+			generateInfo(currentObject, a);
+			currentObject = createObject(getParent(currentObject.Class));
+			a += 1;
+			if (currentObject.Class->GetName() == "Object")
+				break;
+		}
+	}
+}
+
+void objectsTab() {
+	ImVec2 windowSize = ImGui::GetContentRegionAvail();
+	ImGuiStyle& style = ImGui::GetStyle();
+	float styleSpace = style.ItemSpacing.x / 2;
+
+	ImGui::BeginChild("##Search", ImVec2(0.5f * windowSize.x - styleSpace, windowSize.y), true, ImGuiWindowFlags_MenuBar);
+
+	if (ImGui::BeginMenuBar()) {
+		ImGui::Text("Search");
+		ImGui::EndMenuBar();
+	}
+
+	searchChild();
+
+	ImGui::EndChild();
+	ImGui::SameLine();
+	ImGui::BeginChild("##Properties", ImVec2(0.5f * windowSize.x - styleSpace, windowSize.y), true, ImGuiWindowFlags_MenuBar);
+
+
+	if (ImGui::BeginMenuBar()) {
+		ImGui::Text("Properties");
+		ImGui::EndMenuBar();
+	}
+
+	propertiesChild();
+
+	ImGui::EndChild();
+}
+
+bool first = false;
 void GUIComponent::Render()
 {
 	ImGui_ImplDX11_NewFrame();
@@ -588,16 +870,16 @@ void GUIComponent::Render()
 
 	switch (currentThemeID) {
 	case 1:
-		comfy();
+		deepDark();
 		break;
 	case 2:
 		moonlight();
 		break;
 	case 3:
-		DefaultImGuiStyle();
+		blue();
 		break;
 	default:
-		deepDark();
+		comfy();
 		break;
 	}
 	
@@ -607,13 +889,18 @@ void GUIComponent::Render()
 	GUI.DisplayY = IO.DisplaySize.y;
 
 	IO.MouseDrawCursor = IsOpen;
-	ImGui::SetNextWindowSize(ImVec2(620, 650));
+
+	if (!first) {
+		ImGui::SetNextWindowSize(ImVec2(690, 690));
+		first = true;
+	}
 
 	if (IsOpen) {
-		ImGui::Begin("Function Scanner", &IsOpen, ImGuiWindowFlags_AlwaysAutoResize);
+		std::string menuName = "RLTool";
+		ImGui::Begin(menuName.c_str(), &IsOpen);
 		{
-			if (ImGui::BeginTabBar("Tab bar", ImGuiTabBarFlags_Reorderable | ImGuiTabBarFlags_FittingPolicyScroll | ImGuiTabBarFlags_NoTooltip)) {
-				if (ImGui::BeginTabItem("Main")) {
+			if (ImGui::BeginTabBar("##Tab bar", ImGuiTabBarFlags_Reorderable | ImGuiTabBarFlags_FittingPolicyScroll | ImGuiTabBarFlags_NoTooltip)) {
+				if (ImGui::BeginTabItem("Function Scanner")) {
 					MainTab();
 					ImGui::EndTabItem();
 				}
