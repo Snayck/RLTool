@@ -601,9 +601,10 @@ static std::vector<std::string> splitString(const std::string& input, char delim
 }
 
 struct object {
+	UObject* Obj;
+	UClass* Class;
 	std::string className;
 	std::string fullName;
-	UClass* Class;
 	std::vector<UProperty*> fields;
 	std::vector<UProperty*> functions;
 };
@@ -629,8 +630,9 @@ bool ClassOrParentMatches(UClass* Class, const std::string& query) {
 	return false; // if not getting inheritance and if there isnt a query it will just return false
 }
 
-object createObject(UClass* Class) {
+object createObject(UClass* Class, UObject* Object) {
 	object obj;
+	obj.Obj = Object;
 	obj.Class = Class;
 	obj.className = Class->GetName();
 	obj.fullName = Class->GetFullName();
@@ -655,8 +657,9 @@ std::vector<object> GetAllInstancesOf(std::string query)
 		{
 			if (uObject->GetFullName().find("Default__") == std::string::npos)
 			{
+				bool ii = false;
 				if (ClassOrParentMatches(uObject->Class, query)) {
-					objectInstances.push_back(createObject(uObject->Class));
+					objectInstances.push_back(createObject(uObject->Class, uObject));
 				}
 			}
 		}
@@ -781,16 +784,131 @@ UClass* getParent(UClass* Class) {
 	return nullptr;
 }
 
-void generateInfo(object obj, int index) {
-	if (ImGui::TreeNode(( obj.Class->GetName() + "##" + std::to_string(index)).c_str()))
+std::string processFieldValue(UProperty* prop, object Object, uint32_t offset = 0) {
+	UObject* obj = Object.Obj;
+	if (prop->PropertyFlags & 0x400 || prop->PropertyFlags & 0x100) {}
+	else {
+
+		void* propPtr = reinterpret_cast<void*>((prop));
+		std::stringstream ss; ss << propPtr;
+		std::string textBoxID = "## " + ss.str() + " " + prop->Name.ToString();
+
+		void* valuePtr = reinterpret_cast<void*>(prop + prop->Offset + offset);
+		std::stringstream ss1; ss1 << valuePtr;
+		std::string valuePointerID = "## " + ss1.str();
+
+		if (prop->IsA<UStructProperty>()) {
+			ImGui::SameLine();
+			if (ImGui::TreeNode(("## am a struct" + textBoxID).c_str()))
+			{
+				for (UField* field = ((UStructProperty*)prop)->Struct->Children; field; field = field->Next) {
+					std::string type = processType((UProperty*)field);
+					std::string name = field->Name.ToString();
+
+					ImGui::TextColored(ImVec4(0.36f, 0.52f, 0.93f, 1.0f), type.c_str()); ImGui::SameLine();
+					ImGui::TextColored(ImVec4(0.93f, 0.72f, 0.36f, 1.0f), name.c_str());
+
+					UProperty* newProp = reinterpret_cast<UProperty*>(field);
+					std::string item = (processFieldValue(newProp, Object)).c_str();
+
+				}
+
+				ImGui::TreePop();
+			}
+		}
+		else if (prop->IsA<UStrProperty>()) {
+			
+		}
+		else if (prop->IsA<UQWordProperty>()) {
+
+		}
+		else if (prop->IsA<UObjectProperty>()) {
+
+		}
+		else if (prop->IsA<UComponentProperty>()) {
+
+		}
+		else if (prop->IsA<UClassProperty>()) {
+
+		}
+		else if (prop->IsA<UNameProperty>()) {
+			
+		}
+		else if (prop->IsA<UMapProperty>()) {
+
+		}
+		else if (prop->IsA<UIntProperty>()) {
+			
+
+			int* valueAddress = (int*)valuePtr;
+
+			std::string buffer = std::to_string(*valueAddress);
+			ImGui::SameLine();
+			ImGui::SetNextItemWidth(75);
+			if (ImGui::InputText(textBoxID.c_str(), &buffer, ImGuiInputTextFlags_EnterReturnsTrue || ImGuiInputTextFlags_CharsDecimal)) {
+				if (buffer == "")
+					*valueAddress = 0;
+				else
+					*valueAddress = std::stoi(buffer);
+			}
+		}
+		else if (prop->IsA<UInterfaceProperty>()) {
+
+		}
+		else if (prop->IsA<UFloatProperty>()) {
+			float* valueAddress = (float*)valuePtr;
+
+			std::string buffer = std::to_string(*valueAddress);
+			ImGui::SameLine();
+			ImGui::SetNextItemWidth(75);
+			if (ImGui::InputText(textBoxID.c_str(), &buffer, ImGuiInputTextFlags_EnterReturnsTrue || ImGuiInputTextFlags_CharsDecimal)) {
+				if (buffer == "")
+					*valueAddress = 0;
+				else
+					*valueAddress = std::stoi(buffer);
+			}
+		}
+		else if (prop->IsA<UDelegateProperty>()) {
+
+		}
+		else if (prop->IsA<UByteProperty>()) {
+
+		}
+		else if (prop->IsA<UBoolProperty>()) {
+			/*bool* valueAddress = (bool*)((uintptr_t)prop + prop->Offset);
+			if (prop) {
+				int w = (*valueAddress & 1);
+				return std::to_string(w);
+			}*/
+		}
+		else if (prop->IsA<UArrayProperty>()) {
+	
+		}
+
+		return "NOT HANDLED";
+	}
+	return "NOT PROCESSED";
+}
+
+void generateInfo(object obj) {
+
+	int* ptr = reinterpret_cast<int*>((obj.Obj));
+	std::stringstream ss; ss << ptr;
+
+	std::string rawPointer = ss.str();
+	std::string ID = "##" + rawPointer;
+
+	if (ImGui::TreeNode(( obj.Class->GetName() + ID).c_str()))
 	{
-		if (ImGui::TreeNode(("Info ##" + std::to_string(index)).c_str()))
+		if (ImGui::TreeNode(("Info" + ID).c_str()))
 		{
 			std::string fullName = obj.Class->GetFullName();
-			ImGui::InputText(("##" + std::to_string(index)).c_str(), &fullName, ImGuiInputTextFlags_ReadOnly);
+			ImGui::InputText((ID + fullName).c_str(), &fullName, ImGuiInputTextFlags_ReadOnly);
+			ImGui::InputText((ID).c_str(), &rawPointer, ImGuiInputTextFlags_ReadOnly);
+
 			ImGui::TreePop();
 		}
-		if (ImGui::TreeNode(("Fields ##" + std::to_string(index)).c_str()))
+		if (ImGui::TreeNode(("Fields" + ID).c_str()))
 		{
 			for (int i = 0; i < obj.fields.size(); i++) {
 				std::string type = processType(obj.fields[i]);
@@ -798,13 +916,16 @@ void generateInfo(object obj, int index) {
 
 				ImGui::TextColored(ImVec4(0.36f, 0.52f, 0.93f, 1.0f), type.c_str()); ImGui::SameLine();
 				ImGui::TextColored(ImVec4(0.93f, 0.72f, 0.36f, 1.0f), name.c_str());
+
+				processFieldValue(obj.fields[i], obj);
+			
 			}
 
 
 
 			ImGui::TreePop();
 		}
-		if (ImGui::TreeNode(("Functions ##" + std::to_string(index)).c_str()))
+		if (ImGui::TreeNode(("Functions" + ID).c_str()))
 		{
 
 
@@ -823,8 +944,8 @@ void propertiesChild() {
 		int a = 0;
 		bool shouldBreak = false;
 		while ( a <= 10 ) {
-			generateInfo(currentObject, a);
-			currentObject = createObject(getParent(currentObject.Class));
+			generateInfo(currentObject);
+			currentObject = createObject(getParent(currentObject.Class), currentObject.Obj);
 			a += 1;
 			if (currentObject.Class->GetName() == "Object")
 				break;

@@ -116,6 +116,20 @@ namespace Hooks
 	}
 
 	
+	void PriReplicatedEvent(PreEvent& event)
+	{
+
+		APRI_TA_eventReplicatedEvent_Params* Params = event.GetParams<APRI_TA_eventReplicatedEvent_Params>();
+		APRI_TA* Pri = event.GetCaller<APRI_TA>();
+
+		if (Params && Pri)
+		{
+			if (Pri->IsLocalPlayerPRI())
+			{
+				
+			}
+		}
+	}
 
 	void UpdatePriData(PreEvent& event)
 	{
@@ -144,9 +158,9 @@ namespace Hooks
 			font.bEnableShadow = 1;
 			
 			for (APawn* Pawn = Instances.IAWorldInfo()->PawnList; Pawn; Pawn = Pawn->NextPawn) {
-				FVector pos = Drawing::CalculateScreenCoordinate(Pawn->Location);
+				/*FVector pos = Drawing::CalculateScreenCoordinate(Pawn->Location);
 				Hud->Canvas->SetPos(pos.X, pos.Y, pos.Z);
-				Hud->Canvas->DrawTextW(Format::ToFString(Pawn->GetName()), 1, 1, 1, font);
+				Hud->Canvas->DrawTextW(Format::ToFString(Pawn->GetName()), 1, 1, 1, font);*/
 			}
 		}
 
@@ -945,7 +959,7 @@ void EventsComponent::Initialize()
 	HookEventPre("Function Engine.Interaction.Tick", &Hooks::ExecuteFunctions);
 
 
-
+	HookEventPre("Function TAGame.PRI_TA.ReplicatedEvent", &Hooks::PriReplicatedEvent);
 	HookEventPre("Function Engine.HUD.PostRender", &Hooks::HUDPostRender);
 	HookEventPre("Function Engine.PlayerController.PlayerTick", &Hooks::PlayerControllerTick);
 	HookEventPre("Function TAGame.GFxData_PRI_TA.UpdatePRIData", &Hooks::UpdatePriData);
