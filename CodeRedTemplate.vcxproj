@@ -23,7 +23,6 @@
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{0e009492-5109-44b5-aaa9-0d7867e847d0}</ProjectGuid>
     <RootNamespace>CodeRedTemplate</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>RLTool</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -220,6 +219,7 @@
     <ClInclude Include="Extensions\Extensions\Math.hpp" />
     <ClInclude Include="Extensions\Extensions\Memory.hpp" />
     <ClInclude Include="Extensions\Extensions\UnrealMemory.hpp" />
+    <ClInclude Include="Extensions\Extensions\XorStr.hpp" />
     <ClInclude Include="Extensions\Includes.hpp" />
     <ClInclude Include="ImGui\imconfig.h" />
     <ClInclude Include="ImGui\imgui.h" />

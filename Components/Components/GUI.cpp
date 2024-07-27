@@ -22,7 +22,7 @@ ID3D11Device* pDevice = NULL;
 ID3D11DeviceContext* pContext = NULL;
 ID3D11RenderTargetView* mainRenderTargetView;
 
-GUIComponent::GUIComponent() : Component("UserInterface", "Displays an interface") { OnCreate(); }
+GUIComponent::GUIComponent() : Component(_("UserInterface"), _("Displays an interface")) { OnCreate(); }
 
 GUIComponent::~GUIComponent() { OnDestroy(); }
 
@@ -105,7 +105,7 @@ void GUIComponent::InitImGui()
 	ImGuiIO& io = ImGui::GetIO();
 	io.ConfigFlags = ImGuiConfigFlags_NoMouseCursorChange;
 
-	io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\segoeui.ttf", 17);
+	io.Fonts->AddFontFromFileTTF(_("C:\\Windows\\Fonts\\segoeui.ttf"), 17);
 
 	ImGui_ImplWin32_Init(window);
 	ImGui_ImplDX11_Init(pDevice, pContext);
@@ -484,7 +484,7 @@ bool GUIComponent::hookEvent = true;
 bool GUIComponent::hookInternal = false;
 bool GUIComponent::hookCallFunc = false;
 bool GUIComponent::isLogging = false;
-std::string buttonText = "Start";
+std::string buttonText = _("Start");
 
 
 void MainTab() {
@@ -493,36 +493,36 @@ void MainTab() {
 	if (ImGui::Button(buttonText.c_str())) {
 		GUIComponent::isLogging = !GUIComponent::isLogging;
 		if (GUIComponent::isLogging) {
-			buttonText = "Pause";
+			buttonText = _("Pause");
 		}
 		else {
-			buttonText = "Resume";
+			buttonText = _("Resume");
 		}
 	} ImGui::SameLine();
 
-	ImGui::Checkbox("ProcessEvent", &GUIComponent::hookEvent); ImGui::SameLine();
-	ImGui::Checkbox("ProcessInternal", &GUIComponent::hookInternal); ImGui::SameLine();
-	ImGui::Checkbox("CallFunction", &GUIComponent::hookCallFunc); ImGui::SameLine();
+	ImGui::Checkbox(_("ProcessEvent"), &GUIComponent::hookEvent); ImGui::SameLine();
+	ImGui::Checkbox(_("ProcessInternal"), &GUIComponent::hookInternal); ImGui::SameLine();
+	ImGui::Checkbox(_("CallFunction"), &GUIComponent::hookCallFunc); ImGui::SameLine();
 
 
-	if (ImGui::Button("Reset")) {
+	if (ImGui::Button(_("Reset"))) {
 		Events.functions.clear();
 
 	}
 	
-	if (ImGui::InputText("Whitelist", &GUIComponent::whitelist)) {} if (ImGui::InputText("Blacklist", &GUIComponent::blacklist)) {}
+	if (ImGui::InputText(_("Whitelist"), &GUIComponent::whitelist)) {} if (ImGui::InputText(_("Blacklist"), &GUIComponent::blacklist)) {}
 	
 	
-	ImGui::BeginChild("##Functions", ImGui::GetContentRegionAvail(), true);
+	ImGui::BeginChild(_("##Functions"), ImGui::GetContentRegionAvail(), true);
 
 	for (int i = 0; i < Events.functions.size(); i++)
 	{
 		EventsComponent::func f = Events.functions[i];
 
-		if (ImGui::TreeNode(( f.functionData.callerObject.GetName() + " -> " + f.functionData.function.GetName() + "##" + std::to_string(i)).c_str()))
+		if (ImGui::TreeNode(( f.functionData.callerObject.GetName() + _(" -> ") + f.functionData.function.GetName() + _("##") + std::to_string(i)).c_str()))
 		{
 			std::string fullName = f.functionData.function.GetFullName();
-			ImGui::InputText(("##" + std::to_string(i)).c_str(), &fullName, ImGuiInputTextFlags_ReadOnly);
+			ImGui::InputText((_("##") + std::to_string(i)).c_str(), &fullName, ImGuiInputTextFlags_ReadOnly);
 			for (int a = 0; a < f.properties.size(); a++) {
 				EventsComponent::prop p = f.properties[a];
 				UProperty prop = p.Property;
@@ -534,7 +534,7 @@ void MainTab() {
 					ImGui::TextColored( ImVec4(0.93f, 0.36f, 0.36f, 1.0f), (prop.Name.ToString()).c_str() ); // return
 				}
 				else if (prop.PropertyFlags & 0x100) {
-					ImGui::Text( ("&" + prop.Name.ToString()).c_str() ); // out
+					ImGui::Text( (_("&") + prop.Name.ToString()).c_str() ); // out
 				}
 				else {
 					ImGui::TextColored(ImVec4(0.93f, 0.72f, 0.36f, 1.0f), (prop.Name.ToString()).c_str() ); 
@@ -542,7 +542,7 @@ void MainTab() {
 
 					//ImGui::InputText( ("##" + std::to_string(i) + std::to_string(a) ).c_str(), &value, ImGuiInputTextFlags_ReadOnly);
 					//ImGui::Text( (": " + value).c_str() );
-					ImGui::TextWrapped("%s", (": " + value).c_str());
+					ImGui::TextWrapped(_("%s"), (_(": ") + value).c_str());
 				}
 
 			}
@@ -632,6 +632,9 @@ bool ClassOrParentMatches(UClass* Class, const std::string& query) {
 
 object createObject(UClass* Class, UObject* Object) {
 	object obj;
+	if (!Class || !Object)
+		return obj;
+
 	obj.Obj = Object;
 	obj.Class = Class;
 	obj.className = Class->GetName();
@@ -639,7 +642,7 @@ object createObject(UClass* Class, UObject* Object) {
 
 	for (UField* field = Class->Children; field; field = field->Next) {
 		UProperty* prop = reinterpret_cast<UProperty*>(field);
-		if (prop->Class->GetName() == "Function")
+		if (prop->Class->GetName() == _("Function"))
 			obj.functions.push_back(prop);
 		else
 			obj.fields.push_back(prop);
@@ -655,7 +658,7 @@ std::vector<object> GetAllInstancesOf(std::string query)
 	{
 		if (uObject)
 		{
-			if (uObject->GetFullName().find("Default__") == std::string::npos)
+			if (uObject->GetFullName().find(_("Default__")) == std::string::npos)
 			{
 				bool ii = false;
 				if (ClassOrParentMatches(uObject->Class, query)) {
@@ -671,16 +674,18 @@ std::vector<object> GetAllInstancesOf(std::string query)
 static std::string removeProperty(const std::string& input) {
 	std::string output = input;
 	size_t pos = 0;
-	while ((pos = output.find("Property", pos)) != std::string::npos) {
+	while ((pos = output.find(_("Property"), pos)) != std::string::npos) {
 		output.erase(pos, 8); // Length of "Property" is 8
 	}
 	return output;
 }
 
 static std::string processType(UProperty* prop) {
+	if (!prop)
+		return _("NULL");
 
 	if (prop->IsA<UStructProperty>()) {
-		return "Struct " + (((UStructProperty*)prop)->Struct)->GetName();
+		return _("Struct ") + (((UStructProperty*)prop)->Struct)->GetName();
 	}
 	else if (prop->IsA<UStrProperty>()) {
 
@@ -689,7 +694,7 @@ static std::string processType(UProperty* prop) {
 
 	}
 	else if (prop->IsA<UObjectProperty>()) {
-		return (((UObjectProperty*)prop)->PropertyClass)->GetName() + "*";
+		return (((UObjectProperty*)prop)->PropertyClass)->GetName() + _("*");
 	}
 	else if (prop->IsA<UComponentProperty>()) {
 
@@ -723,7 +728,7 @@ static std::string processType(UProperty* prop) {
 	}
 	else if (prop->IsA<UArrayProperty>()) {
 		std::string type = (processType(((UArrayProperty*)prop)->Inner));
-		return "Array<" + type + ">";
+		return _("Array<") + type + _(">");
 	}
 
 	return removeProperty(prop->Class->GetName());
@@ -741,21 +746,23 @@ std::string classSearchQuery = "";
 int currentItem = -1;
 
 void searchChild() {
-	if (ImGui::InputTextWithHint("##classSearchQuery", "Class Name", & classSearchQuery)) {} ImGui::SameLine();
-	if (ImGui::Button("Scene Selection")) {
+	if (ImGui::InputTextWithHint(_("##classSearchQuery"), _("Class Name"), & classSearchQuery)) {} ImGui::SameLine();
+	if (ImGui::Button(_("Scene Selection"))) {
 	}
+	if (ImGui::IsItemHovered())
+		ImGui::SetTooltip((_("not yet implemented")));
 
-	if (ImGui::Button("Search")) {
+	if (ImGui::Button(_("Search"))) {
 		Objects = GetAllInstancesOf(classSearchQuery);
 	}  
 	ImGui::SameLine(); 
-	ImGui::Checkbox("Include Inheritance", &includeInheritance);
+	ImGui::Checkbox(_("Include Inheritance"), &includeInheritance);
 	
-	if (ImGui::BeginListBox("##searchList", ImGui::GetContentRegionAvail())) {
+	if (ImGui::BeginListBox(_("##searchList"), ImGui::GetContentRegionAvail())) {
 		for (int i = 0; i < Objects.size(); i++)
 		{
 			bool isSelected = (currentItem == i);
-			if (ImGui::Selectable((Objects[i].className + "##" + std::to_string(i)).c_str(), isSelected)) {
+			if (ImGui::Selectable((Objects[i].className + _("##") + std::to_string(i)).c_str(), isSelected)) {
 				// Update the current selection
 				currentItem = i;
 			}
@@ -784,23 +791,103 @@ UClass* getParent(UClass* Class) {
 	return nullptr;
 }
 
+int isValidNumber(std::string str)
+{
+	int i = 0, j = str.length() - 1;
+
+	// Handling whitespaces
+	while (i < str.length() && str[i] == ' ')
+		i++;
+	while (j >= 0 && str[j] == ' ')
+		j--;
+
+	if (i > j)
+		return 0;
+
+	// if string is of length 1 and the only
+	// character is not a digit
+	if (i == j && !(str[i] >= '0' && str[i] <= '9'))
+		return 0;
+
+	// If the 1st char is not '+', '-', '.' or digit
+	if (str[i] != '.' && str[i] != '+'
+		&& str[i] != '-' && !(str[i] >= '0' && str[i] <= '9'))
+		return 0;
+
+	// To check if a '.' or 'e' is found in given
+	// string. We use this flag to make sure that
+	// either of them appear only once.
+	bool flagDotOrE = false;
+
+	for (i; i <= j; i++) {
+		// If any of the char does not belong to
+		// {digit, +, -, ., e}
+		if (str[i] != 'e' && str[i] != '.'
+			&& str[i] != '+' && str[i] != '-'
+			&& !(str[i] >= '0' && str[i] <= '9'))
+			return 0;
+
+		if (str[i] == '.') {
+			// checks if the char 'e' has already
+			// occurred before '.' If yes, return 0.
+			if (flagDotOrE == true)
+				return 0;
+
+			// If '.' is the last character.
+			if (i + 1 > str.length())
+				return 0;
+
+			// if '.' is not followed by a digit.
+			if (!(str[i + 1] >= '0' && str[i + 1] <= '9'))
+				return 0;
+		}
+
+		else if (str[i] == 'e') {
+			// set flagDotOrE = 1 when e is encountered.
+			flagDotOrE = true;
+
+			// if there is no digit before 'e'.
+			if (!(str[i - 1] >= '0' && str[i - 1] <= '9'))
+				return 0;
+
+			// If 'e' is the last Character
+			if (i + 1 > str.length())
+				return 0;
+
+			// if e is not followed either by
+			// '+', '-' or a digit
+			if (str[i + 1] != '+' && str[i + 1] != '-'
+				&& (str[i + 1] >= '0' && str[i] <= '9'))
+				return 0;
+		}
+	}
+
+	/* If the string skips all above cases, then
+	it is numeric*/
+	return 1;
+}
+
 std::string processFieldValue(UProperty* prop, object Object, uint32_t offset = 0) {
-	UObject* obj = Object.Obj;
+	if (!prop || !Object.Obj)
+		return _("NULL");
+
+	BYTE* obj = (BYTE*)Object.Obj;
 	if (prop->PropertyFlags & 0x400 || prop->PropertyFlags & 0x100) {}
 	else {
-
 		void* propPtr = reinterpret_cast<void*>((prop));
 		std::stringstream ss; ss << propPtr;
-		std::string textBoxID = "## " + ss.str() + " " + prop->Name.ToString();
-
-		void* valuePtr = reinterpret_cast<void*>(prop + prop->Offset + offset);
+		std::string textBoxID = _("## ") + ss.str() + " " + prop->Name.ToString();
+		
+		void* valuePtr = reinterpret_cast<void*>(obj + prop->Offset + offset);
 		std::stringstream ss1; ss1 << valuePtr;
-		std::string valuePointerID = "## " + ss1.str();
+		std::string valuePointerID = _("## ") + ss1.str();
+
 
 		if (prop->IsA<UStructProperty>()) {
 			ImGui::SameLine();
-			if (ImGui::TreeNode(("## am a struct" + textBoxID).c_str()))
+			if (ImGui::TreeNode((_("## am a struct") + textBoxID).c_str()))
 			{
+				offset = prop->Offset;
 				for (UField* field = ((UStructProperty*)prop)->Struct->Children; field; field = field->Next) {
 					std::string type = processType((UProperty*)field);
 					std::string name = field->Name.ToString();
@@ -809,7 +896,27 @@ std::string processFieldValue(UProperty* prop, object Object, uint32_t offset = 
 					ImGui::TextColored(ImVec4(0.93f, 0.72f, 0.36f, 1.0f), name.c_str());
 
 					UProperty* newProp = reinterpret_cast<UProperty*>(field);
-					std::string item = (processFieldValue(newProp, Object)).c_str();
+					std::string item = (processFieldValue(newProp, Object, offset)).c_str();
+
+				}
+
+				ImGui::TreePop();
+			}
+		}
+		else if (prop->IsA<UScriptStruct>()) {
+			ImGui::SameLine();
+			if (ImGui::TreeNode((_("## am a sstruct") + textBoxID).c_str()))
+			{
+				offset = prop->Offset;
+				for (UField* field = ((UScriptStruct*)prop)->Children; field; field = field->Next) {
+					std::string type = processType((UProperty*)field);
+					std::string name = field->Name.ToString();
+
+					ImGui::TextColored(ImVec4(0.36f, 0.52f, 0.93f, 1.0f), type.c_str()); ImGui::SameLine();
+					ImGui::TextColored(ImVec4(0.93f, 0.72f, 0.36f, 1.0f), name.c_str());
+
+					UProperty* newProp = reinterpret_cast<UProperty*>(field);
+					std::string item = (processFieldValue(newProp, Object, offset)).c_str();
 
 				}
 
@@ -817,13 +924,20 @@ std::string processFieldValue(UProperty* prop, object Object, uint32_t offset = 
 			}
 		}
 		else if (prop->IsA<UStrProperty>()) {
-			
+			FString* valueAddress = (FString*)valuePtr;
+
+			std::string buffer = (*valueAddress).ToString();
+			ImGui::SameLine();
+			ImGui::SetNextItemWidth(75);
+			if (ImGui::InputText(textBoxID.c_str(), &buffer, ImGuiInputTextFlags_EnterReturnsTrue)) {
+				*valueAddress = Format::ToFString(buffer);
+			}
 		}
 		else if (prop->IsA<UQWordProperty>()) {
 
 		}
 		else if (prop->IsA<UObjectProperty>()) {
-
+			
 		}
 		else if (prop->IsA<UComponentProperty>()) {
 
@@ -832,22 +946,27 @@ std::string processFieldValue(UProperty* prop, object Object, uint32_t offset = 
 
 		}
 		else if (prop->IsA<UNameProperty>()) {
-			
+			FName* valueAddress = (FName*)valuePtr;
+
+			std::string buffer = (*valueAddress).ToString();
+			ImGui::SameLine();
+			ImGui::SetNextItemWidth(75);
+			if (ImGui::InputText(textBoxID.c_str(), &buffer, ImGuiInputTextFlags_EnterReturnsTrue)) {
+				*valueAddress = Format::ToFName(buffer);
+			}
 		}
 		else if (prop->IsA<UMapProperty>()) {
 
 		}
 		else if (prop->IsA<UIntProperty>()) {
-			
-
-			int* valueAddress = (int*)valuePtr;
+			INT* valueAddress = (INT*)valuePtr;
 
 			std::string buffer = std::to_string(*valueAddress);
 			ImGui::SameLine();
 			ImGui::SetNextItemWidth(75);
 			if (ImGui::InputText(textBoxID.c_str(), &buffer, ImGuiInputTextFlags_EnterReturnsTrue || ImGuiInputTextFlags_CharsDecimal)) {
-				if (buffer == "")
-					*valueAddress = 0;
+				if (!isValidNumber(buffer))
+					*valueAddress = 1;
 				else
 					*valueAddress = std::stoi(buffer);
 			}
@@ -862,10 +981,10 @@ std::string processFieldValue(UProperty* prop, object Object, uint32_t offset = 
 			ImGui::SameLine();
 			ImGui::SetNextItemWidth(75);
 			if (ImGui::InputText(textBoxID.c_str(), &buffer, ImGuiInputTextFlags_EnterReturnsTrue || ImGuiInputTextFlags_CharsDecimal)) {
-				if (buffer == "")
-					*valueAddress = 0;
+				if (!isValidNumber(buffer))
+					*valueAddress = 1;
 				else
-					*valueAddress = std::stoi(buffer);
+					*valueAddress = std::stof(buffer);
 			}
 		}
 		else if (prop->IsA<UDelegateProperty>()) {
@@ -875,22 +994,37 @@ std::string processFieldValue(UProperty* prop, object Object, uint32_t offset = 
 
 		}
 		else if (prop->IsA<UBoolProperty>()) {
-			/*bool* valueAddress = (bool*)((uintptr_t)prop + prop->Offset);
-			if (prop) {
-				int w = (*valueAddress & 1);
-				return std::to_string(w);
-			}*/
+			BOOL* valueAddress = (BOOL*)valuePtr;
+			BYTE Mask = ((UBoolProperty*)prop)->BitMask;
+			int w = (*valueAddress & Mask) ? 1 : 0;
+
+			std::string buffer = std::to_string(w);
+			ImGui::SameLine();
+			ImGui::SetNextItemWidth(75);
+			
+			if (ImGui::InputText(textBoxID.c_str(), &buffer, ImGuiInputTextFlags_EnterReturnsTrue || ImGuiInputTextFlags_CharsDecimal)) {
+				if (isValidNumber(buffer) && stoi(buffer))
+					*valueAddress |= Mask;
+				else
+					*valueAddress &= ~Mask;
+			}
 		}
 		else if (prop->IsA<UArrayProperty>()) {
 	
 		}
+		else if (prop->IsA<UEnum>()) {
 
-		return "NOT HANDLED";
+		}
+
+
+		return _("NOT HANDLED");
 	}
-	return "NOT PROCESSED";
+	return _("NOT PROCESSED");
 }
 
 void generateInfo(object obj) {
+	if (!obj.Class || !obj.Obj)
+		return;
 
 	int* ptr = reinterpret_cast<int*>((obj.Obj));
 	std::stringstream ss; ss << ptr;
@@ -900,7 +1034,7 @@ void generateInfo(object obj) {
 
 	if (ImGui::TreeNode(( obj.Class->GetName() + ID).c_str()))
 	{
-		if (ImGui::TreeNode(("Info" + ID).c_str()))
+		if (ImGui::TreeNode((_("Info") + ID).c_str()))
 		{
 			std::string fullName = obj.Class->GetFullName();
 			ImGui::InputText((ID + fullName).c_str(), &fullName, ImGuiInputTextFlags_ReadOnly);
@@ -908,7 +1042,7 @@ void generateInfo(object obj) {
 
 			ImGui::TreePop();
 		}
-		if (ImGui::TreeNode(("Fields" + ID).c_str()))
+		if (ImGui::TreeNode((_("Fields") + ID).c_str()))
 		{
 			for (int i = 0; i < obj.fields.size(); i++) {
 				std::string type = processType(obj.fields[i]);
@@ -944,10 +1078,13 @@ void propertiesChild() {
 		int a = 0;
 		bool shouldBreak = false;
 		while ( a <= 10 ) {
+			if (!currentObject.Class || !currentObject.Obj)
+				return;
+
 			generateInfo(currentObject);
 			currentObject = createObject(getParent(currentObject.Class), currentObject.Obj);
 			a += 1;
-			if (currentObject.Class->GetName() == "Object")
+			if (currentObject.Class->GetName() == _("Object"))
 				break;
 		}
 	}
@@ -958,10 +1095,10 @@ void objectsTab() {
 	ImGuiStyle& style = ImGui::GetStyle();
 	float styleSpace = style.ItemSpacing.x / 2;
 
-	ImGui::BeginChild("##Search", ImVec2(0.5f * windowSize.x - styleSpace, windowSize.y), true, ImGuiWindowFlags_MenuBar);
+	ImGui::BeginChild(_("##Search"), ImVec2(0.5f * windowSize.x - styleSpace, windowSize.y), true, ImGuiWindowFlags_MenuBar);
 
 	if (ImGui::BeginMenuBar()) {
-		ImGui::Text("Search");
+		ImGui::Text(_("Search"));
 		ImGui::EndMenuBar();
 	}
 
@@ -969,11 +1106,11 @@ void objectsTab() {
 
 	ImGui::EndChild();
 	ImGui::SameLine();
-	ImGui::BeginChild("##Properties", ImVec2(0.5f * windowSize.x - styleSpace, windowSize.y), true, ImGuiWindowFlags_MenuBar);
+	ImGui::BeginChild(_("##Properties"), ImVec2(0.5f * windowSize.x - styleSpace, windowSize.y), true, ImGuiWindowFlags_MenuBar);
 
 
 	if (ImGui::BeginMenuBar()) {
-		ImGui::Text("Properties");
+		ImGui::Text(_("Properties"));
 		ImGui::EndMenuBar();
 	}
 
@@ -1017,23 +1154,23 @@ void GUIComponent::Render()
 	}
 
 	if (IsOpen) {
-		std::string menuName = "RLTool";
+		std::string menuName = _("RLTool  |  by snayck");
 		ImGui::Begin(menuName.c_str(), &IsOpen);
 		{
-			if (ImGui::BeginTabBar("##Tab bar", ImGuiTabBarFlags_Reorderable | ImGuiTabBarFlags_FittingPolicyScroll | ImGuiTabBarFlags_NoTooltip)) {
-				if (ImGui::BeginTabItem("Function Scanner")) {
+			if (ImGui::BeginTabBar(_("##Tab bar"), ImGuiTabBarFlags_Reorderable | ImGuiTabBarFlags_FittingPolicyScroll | ImGuiTabBarFlags_NoTooltip)) {
+				if (ImGui::BeginTabItem(_("Function Scanner"))) {
 					MainTab();
 					ImGui::EndTabItem();
 				}
-				if (ImGui::BeginTabItem("Explorer")) {
+				if (ImGui::BeginTabItem(_("Explorer"))) {
 					objectsTab();
 					ImGui::EndTabItem();
 				}
-				if (ImGui::BeginTabItem("PsyNet")) {
+				/*if (ImGui::BeginTabItem("PsyNet")) {
 					netTab();
 					ImGui::EndTabItem();
-				}
-				if (ImGui::BeginTabItem("Misc")) {
+				}*/
+				if (ImGui::BeginTabItem(_("Misc"))) {
 					MiscTab();
 					ImGui::EndTabItem();
 				}

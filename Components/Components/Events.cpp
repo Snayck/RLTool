@@ -412,7 +412,7 @@ void EventsComponent::DetachAllDetours()
 std::string removeProperty(const std::string& input) {
 	std::string output = input;
 	size_t pos = 0;
-	while ((pos = output.find("Property", pos)) != std::string::npos) {
+	while ((pos = output.find(_("Property"), pos)) != std::string::npos) {
 		output.erase(pos, 8); // Length of "Property" is 8
 	}
 	return output;
@@ -485,9 +485,10 @@ std::string processValue(UProperty* prop, void* params) {
 
 		}
 		else if (prop->IsA<UBoolProperty>()) {
-			bool* valueAddress = (bool*)((uintptr_t)params + prop->Offset);
+			BOOL* valueAddress = (BOOL*)((uintptr_t)params + prop->Offset);
 			if (params) {
-				int w = (*valueAddress & 1);
+				BYTE Mask = ((UBoolProperty*)prop)->BitMask;
+				int w = (*valueAddress & Mask);
 				return std::to_string(w);
 			}
 		}
@@ -497,15 +498,15 @@ std::string processValue(UProperty* prop, void* params) {
 			return "'0x" + ss.str() + "'";
 		}
 
-		return "NOT HANDLED";
+		return _("NOT HANDLED");
 	}
-	return "NOT PROCESSED";
+	return _("NOT PROCESSED");
 }
 
 std::string processType(UProperty* prop) {
 
 	if (prop->IsA<UStructProperty>()) {
-		return "Struct " + (((UStructProperty*)prop)->Struct)->GetName();
+		return _("Struct ") + (((UStructProperty*)prop)->Struct)->GetName();
 	}
 	else if (prop->IsA<UStrProperty>()) {
 
@@ -514,7 +515,7 @@ std::string processType(UProperty* prop) {
 
 	}
 	else if (prop->IsA<UObjectProperty>()) {
-		return "Object " + (((UObjectProperty*)prop)->PropertyClass)->GetName();
+		return _("Object ") + (((UObjectProperty*)prop)->PropertyClass)->GetName();
 	}
 	else if (prop->IsA<UComponentProperty>()) {
 
@@ -548,7 +549,7 @@ std::string processType(UProperty* prop) {
 	}
 	else if (prop->IsA<UArrayProperty>()) {
 		std::string type = (processType(((UArrayProperty*)prop)->Inner));
-		return "Array<" + type + ">";
+		return _("Array<") + type + _(">");
 	}
 
 	return removeProperty(prop->Class->GetName());
@@ -976,13 +977,13 @@ void EventsComponent::Initialize()
 		}
 		});
 
-	/*HookEventPre("Function TAGame.GFxData_Community_TA.HandleBlogChanged", [&](PreEvent event){
+	HookEventPre("Function TAGame.GFxData_Community_TA.HandleBlogChanged", [&](PreEvent event){
 		UGFxData_Community_TA* Community = event.GetCaller<UGFxData_Community_TA>();
 		
 		if (Community && Community->Config) {	
-			Community->Config->MotD = FString(L"@tvyt's function logger<br>Snayck on UnknownCheats");
+			Community->Config->MotD = Format::ToFString(_("@tvyt's function logger<br>Snayck on UnknownCheats"));
 		}
-	});*/
+	});
 
 	Console.Write(GetNameFormatted() + std::to_string(PreHookedEvents.size()) + " Pre-Hook(s) Initialized!");
 	Console.Write(GetNameFormatted() + std::to_string(PostHookedEvents.size()) + " Post-Hook(s) Initialized!");

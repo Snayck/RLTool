@@ -1005,6 +1005,116 @@ enum class EContentKeyIndex_PrimeUpdate49 : uint8_t
 	PrimeUpdate49_END                                  = 32
 };
 
+// Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate50
+enum class EContentKeyIndex_PrimeUpdate50 : uint8_t
+{
+	PrimeUpdate50_F3D1F836D2AB4A4DAE38A3820EF42536     = 0,
+	PrimeUpdate50_071FCF1F6B53D3C4B73DE5700CFC4E32     = 1,
+	PrimeUpdate50_3AF0C7A0476E35569C49C19613DEC950     = 2,
+	PrimeUpdate50_078044D4CCF576219097B56F43F4592A     = 3,
+	PrimeUpdate50_8D546A00D7D4F875CD41682AA4742E4E     = 4,
+	PrimeUpdate50_2848A6873428E1973EE562B1DA375A0D     = 5,
+	PrimeUpdate50_CE2CDB2BBD868F853655FA81857607FA     = 6,
+	PrimeUpdate50_AB84FCB94926338CA5D33512CA095C99     = 7,
+	PrimeUpdate50_C623ECE9F4332FE67320376631056AA9     = 8,
+	PrimeUpdate50_2764230C6577DB9A7F73806EA7B4EB65     = 9,
+	PrimeUpdate50_6A08669DE9F305204ABB96F039A8F571     = 10,
+	PrimeUpdate50_C7F546C68229DEACFC577355ABE3A093     = 11,
+	PrimeUpdate50_CB2477FB783B5D0352AC661F03349B60     = 12,
+	PrimeUpdate50_BF9DBFFF3C2F942709622AAB37201C04     = 13,
+	PrimeUpdate50_2FE277D22BFEFF02DF6B12191E5BBBE3     = 14,
+	PrimeUpdate50_66D880FE5CEC47D0B56C087CEE88E1E5     = 15,
+	PrimeUpdate50_9FE6F44F321FC6A700490CBD6BB04613     = 16,
+	PrimeUpdate50_1DA79252C09A01B045FA2FE915923C0D     = 17,
+	PrimeUpdate50_544585EF0025E5083CA4326DDEF3655D     = 18,
+	PrimeUpdate50_F95190FC717AF94B6990942233E801FE     = 19,
+	PrimeUpdate50_11DE8FC8FC1BD4FE96831040496E0707     = 20,
+	PrimeUpdate50_4DC4EF0E5F6B3FA99241985EA91CF149     = 21,
+	PrimeUpdate50_D873B503F038FB4BEBA4543DBEF12220     = 22,
+	PrimeUpdate50_CE13BD9CF3291173F19434B573971494     = 23,
+	PrimeUpdate50_611027D90AC801CD0BEEA765469DC24D     = 24,
+	PrimeUpdate50_9D93359E3796F8C587EBE9F68B700C86     = 25,
+	PrimeUpdate50_441FEE23097BAF580714605D74A0E82A     = 26,
+	PrimeUpdate50_2084F788C5628F1E715A9D5362112800     = 27,
+	PrimeUpdate50_192CFB62EDB9CAE26F6F0F8A1DDBDADF     = 28,
+	PrimeUpdate50_6687B83178E7CBCE0CADB50C09033880     = 29,
+	PrimeUpdate50_51B4120CF5A04FBD110A0675E4813D3D     = 30,
+	PrimeUpdate50_47F4C4F07913803ED0A57D8AC4326382     = 31,
+	PrimeUpdate50_9AE526DBA07B2752A38D8D02E57CC1ED     = 32,
+	PrimeUpdate50_2CF20DA5A945E97120970A7D69EF30DF     = 33,
+	PrimeUpdate50_8288CCBFF3B9FE2BEFC038AFBB079CF5     = 34,
+	PrimeUpdate50_3A0A616CAF8A4BB78ADA62D9B8951EA3     = 35,
+	PrimeUpdate50_END                                  = 36
+};
+
+// Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate51
+enum class EContentKeyIndex_PrimeUpdate51 : uint8_t
+{
+	PrimeUpdate51_7060CB1DB66B07E8CBE3E6AAA3DC454B     = 0,
+	PrimeUpdate51_5E459EEB37CCF7C83748272B436D1D71     = 1,
+	PrimeUpdate51_0D576F3EBAAD4BB6CA7AE07746B95412     = 2,
+	PrimeUpdate51_D12696009BD16438B467D80BF5A076D0     = 3,
+	PrimeUpdate51_CDFC4EF93A9140954C851273092F9933     = 4,
+	PrimeUpdate51_627D56F1DEF28CED719B6E6C813680FA     = 5,
+	PrimeUpdate51_0A6F1A11F899707585A0B4CA967A420C     = 6,
+	PrimeUpdate51_93D25F24A29964A633C2427B644EF2B2     = 7,
+	PrimeUpdate51_74B8471339971E06535E05EF71C69115     = 8,
+	PrimeUpdate51_77046A1684701EE5274E90C50B6AD1AC     = 9,
+	PrimeUpdate51_B8C139C644F513969816473E7B889678     = 10,
+	PrimeUpdate51_C6174FA1231CFA7CEAB7ECECD437568F     = 11,
+	PrimeUpdate51_A54671833BCDD6E98C438E0832719B1E     = 12,
+	PrimeUpdate51_7C4D5294E866C6B7DBEC9D5854871A54     = 13,
+	PrimeUpdate51_7FA12DF8D1E4A759F429765B34FD6670     = 14,
+	PrimeUpdate51_041169E1E5A539744C254245E5F486C0     = 15,
+	PrimeUpdate51_CDB06895A851F961C0E1660D55042C49     = 16,
+	PrimeUpdate51_290D923ED0F506910EB8B699443649A9     = 17,
+	PrimeUpdate51_CF44EA9C716C51BACFA562E98EC359AA     = 18,
+	PrimeUpdate51_099E362A68FCFF6732CF71306075C707     = 19,
+	PrimeUpdate51_0F7DBDD2C5293EF40E324B19C47639B7     = 20,
+	PrimeUpdate51_5E9E9BA1D3F5E63A6A1CF62C2D3B21A3     = 21,
+	PrimeUpdate51_61A1D7AB38AA2F85EBD574B1C60FFB05     = 22,
+	PrimeUpdate51_D591A227D318ABAAA1789E38E5B98A0A     = 23,
+	PrimeUpdate51_98B0889F8CD2140B68268FA5ED077C7B     = 24,
+	PrimeUpdate51_8AFE3502E09D46361EC069D8610BBA0D     = 25,
+	PrimeUpdate51_0F5B3D454E9F8C0B31301ADF020105F5     = 26,
+	PrimeUpdate51_1C879C73D32B7BC9A7C073D52E300B7F     = 27,
+	PrimeUpdate51_FF7265649A1BD8FF3314AB74ECA727D8     = 28,
+	PrimeUpdate51_7F1C63549A526FF871C16F27DB278EBB     = 29,
+	PrimeUpdate51_70D9EAC680907ED2E1C75B9014AEA368     = 30,
+	PrimeUpdate51_5B1CB75C8D964A8BD24942B3E539DB8B     = 31,
+	PrimeUpdate51_B8C5319A8FD200FA9714C4129B3685CD     = 32,
+	PrimeUpdate51_BC41C0B66B8F535BCC7542E1207D7FA1     = 33,
+	PrimeUpdate51_658CEAE71B10B3AEB38A184D2BD6F9F7     = 34,
+	PrimeUpdate51_341F7EAD04BA71B44B9DD778AF4566F6     = 35,
+	PrimeUpdate51_6C8A8EAC8A71BCF48ED54C2DFD5E014E     = 36,
+	PrimeUpdate51_D2269297F5331CF16A37AADE5B856025     = 37,
+	PrimeUpdate51_2A0B1093AAE4A007F0C347F21B529A30     = 38,
+	PrimeUpdate51_3B1F7AA04D300A74B6EEB30993AED9F4     = 39,
+	PrimeUpdate51_8D084D943B1969B7F5564FCD5EDB6678     = 40,
+	PrimeUpdate51_8EC6003F43324F5A921E8369EB9D30CF     = 41,
+	PrimeUpdate51_C1CC01E21A874A04CAE963EE7B137244     = 42,
+	PrimeUpdate51_5CB2606A2228B4FF11D83ACB6828C9BB     = 43,
+	PrimeUpdate51_BDBA0EF164B4DF2D38D4D30566BD4ACD     = 44,
+	PrimeUpdate51_965004259371D512D1ADF52ED6648801     = 45,
+	PrimeUpdate51_062C42B8A4DDF91E6BF56FA7EF74C855     = 46,
+	PrimeUpdate51_D95E806C72C307327C4FA87C1EC03503     = 47,
+	PrimeUpdate51_BB7F238892B6B96E313DFB8A6F40BB4D     = 48,
+	PrimeUpdate51_BB2103452D34BB64C81E7DC652C9B0B0     = 49,
+	PrimeUpdate51_F77882E019D0470908A8EFFBE49BD788     = 50,
+	PrimeUpdate51_C2B7DE943C4C286C25A97178A8B63311     = 51,
+	PrimeUpdate51_56EDDA5440735216B8235124F7AFC5A3     = 52,
+	PrimeUpdate51_48A2E63062D69D4522F2A41F844B6E82     = 53,
+	PrimeUpdate51_8D30830DACA89B85BEB9593A85D799F5     = 54,
+	PrimeUpdate51_BF35D02A6E25F0A14B121BE579A7C32A     = 55,
+	PrimeUpdate51_50CB10F941DA7DCF8B7FB90300351704     = 56,
+	PrimeUpdate51_2F1B6BE2AB8FB8B5C4DA65A4BA8DFE01     = 57,
+	PrimeUpdate51_DC9694E8FE5D979E827AD61388B7A1D5     = 58,
+	PrimeUpdate51_C4C31ABC826B949D3E012068791ED1B4     = 59,
+	PrimeUpdate51_FD5AF6F7C5F71FDB89619DF41B331D6C     = 60,
+	PrimeUpdate51_F91E3175DB83B285FB094C408D80BB56     = 61,
+	PrimeUpdate51_END                                  = 62
+};
+
 // Enum Core._Types_Generated.EContentKeyIndex_ContinuousIntegration
 enum class EContentKeyIndex_ContinuousIntegration : uint8_t
 {
@@ -2654,62 +2764,64 @@ public:
 	uint32_t                                           EOSMetrics : 1;                                // 0x006C (0x0004) [0x0000000040000000] [0x00200000] (CPF_EditInlineNotify)
 	uint32_t                                           MusicPlaylistSelection : 1;                    // 0x006C (0x0004) [0x0000000040000000] [0x00400000] (CPF_EditInlineNotify)
 	uint32_t                                           SpecialEvents : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x00800000] (CPF_EditInlineNotify)
-	uint32_t                                           OnlineShop : 1;                                // 0x006C (0x0004) [0x0000000040000000] [0x01000000] (CPF_EditInlineNotify)
-	uint32_t                                           PlayerBannerCustomization : 1;                 // 0x006C (0x0004) [0x0000000040000000] [0x02000000] (CPF_EditInlineNotify)
-	uint32_t                                           SecureUDP : 1;                                 // 0x006C (0x0004) [0x0000000040000000] [0x04000000] (CPF_EditInlineNotify)
-	uint32_t                                           PsyNet : 1;                                    // 0x006C (0x0004) [0x0000000040000000] [0x08000000] (CPF_EditInlineNotify)
-	uint32_t                                           OnlinePlayerStorage : 1;                       // 0x006C (0x0004) [0x0000000040000000] [0x10000000] (CPF_EditInlineNotify)
-	uint32_t                                           LocalSaveData : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x20000000] (CPF_EditInlineNotify)
-	uint32_t                                           CrowdV2 : 1;                                   // 0x006C (0x0004) [0x0000000040000000] [0x40000000] (CPF_EditInlineNotify)
-	uint32_t                                           ChatBan : 1;                                   // 0x006C (0x0004) [0x0000000040000000] [0x80000000] (CPF_EditInlineNotify)
-	uint32_t                                           BacktraceCrashDumps : 1;                       // 0x0070 (0x0004) [0x0000000040000000] [0x00000001] (CPF_EditInlineNotify)
-	uint32_t                                           SpotifyButton : 1;                             // 0x0070 (0x0004) [0x0000000040000000] [0x00000002] (CPF_EditInlineNotify)
-	uint32_t                                           RocketPass : 1;                                // 0x0070 (0x0004) [0x0000000040000000] [0x00000004] (CPF_EditInlineNotify)
-	uint32_t                                           SeasonRewards : 1;                             // 0x0070 (0x0004) [0x0000000040000000] [0x00000010] (CPF_EditInlineNotify)
-	uint32_t                                           FaceIt : 1;                                    // 0x0070 (0x0004) [0x0000000040000000] [0x00000020] (CPF_EditInlineNotify)
-	uint32_t                                           KnockOut : 1;                                  // 0x0070 (0x0004) [0x0000000040000000] [0x00000040] (CPF_EditInlineNotify)
-	uint32_t                                           OnlinePlayerTitles : 1;                        // 0x0070 (0x0004) [0x0000000040000000] [0x00000080] (CPF_EditInlineNotify)
-	uint32_t                                           RestrictByRegion : 1;                          // 0x0070 (0x0004) [0x0000000040000000] [0x00000100] (CPF_EditInlineNotify)
-	uint32_t                                           FirstTimeExperience : 1;                       // 0x0070 (0x0004) [0x0000000040000000] [0x00000400] (CPF_EditInlineNotify)
-	uint32_t                                           RLBot : 1;                                     // 0x0070 (0x0004) [0x0000000040000000] [0x00000800] (CPF_EditInlineNotify)
-	uint32_t                                           UserBugReport : 1;                             // 0x0070 (0x0004) [0x0000000040000000] [0x00001000] (CPF_EditInlineNotify)
-	uint32_t                                           SteamInput : 1;                                // 0x0070 (0x0004) [0x0000000040000000] [0x00002000] (CPF_EditInlineNotify)
-	uint32_t                                           ReplayFXControls : 1;                          // 0x0070 (0x0004) [0x0000000040000000] [0x00040000] (CPF_EditInlineNotify)
-	uint32_t                                           ESportsShop : 1;                               // 0x0070 (0x0004) [0x0000000040000000] [0x00080000] (CPF_EditInlineNotify)
-	uint32_t                                           DynamicRangeAudioSettings : 1;                 // 0x0070 (0x0004) [0x0000000040000000] [0x00800000] (CPF_EditInlineNotify)
-	uint32_t                                           AutoTour : 1;                                  // 0x0070 (0x0004) [0x0000000040000000] [0x01000000] (CPF_EditInlineNotify)
-	uint32_t                                           QuickPlay : 1;                                 // 0x0070 (0x0004) [0x0000000040000000] [0x02000000] (CPF_EditInlineNotify)
-	uint32_t                                           NewsPanelV2 : 1;                               // 0x0070 (0x0004) [0x0000000040000000] [0x04000000] (CPF_EditInlineNotify)
-	uint32_t                                           Blueprints : 1;                                // 0x0070 (0x0004) [0x0000000040000000] [0x08000000] (CPF_EditInlineNotify)
-	uint32_t                                           GodBall : 1;                                   // 0x0070 (0x0004) [0x0000000040000000] [0x10000000] (CPF_EditInlineNotify)
-	uint32_t                                           RocketBucks : 1;                               // 0x0070 (0x0004) [0x0000000040000000] [0x40000000] (CPF_EditInlineNotify)
-	uint32_t                                           DiscordRichPresence : 1;                       // 0x0074 (0x0004) [0x0000000040000000] [0x00000004] (CPF_EditInlineNotify)
-	uint32_t                                           SupportACreator : 1;                           // 0x0074 (0x0004) [0x0000000040000000] [0x00000008] (CPF_EditInlineNotify)
-	uint32_t                                           CinematicIntro : 1;                            // 0x0074 (0x0004) [0x0000000040000000] [0x00000010] (CPF_EditInlineNotify)
-	uint32_t                                           TinyCrowd : 1;                                 // 0x0074 (0x0004) [0x0000000040000000] [0x00000020] (CPF_EditInlineNotify)
-	uint32_t                                           CrumbTrail : 1;                                // 0x0074 (0x0004) [0x0000000040000000] [0x00000040] (CPF_EditInlineNotify)
-	uint32_t                                           EpicGameStoreBuild : 1;                        // 0x0074 (0x0004) [0x0000000040000000] [0x00000080] (CPF_EditInlineNotify)
-	uint32_t                                           XPGatedPlaylists : 1;                          // 0x0074 (0x0004) [0x0000000040000000] [0x00000100] (CPF_EditInlineNotify)
-	uint32_t                                           TradeInV2 : 1;                                 // 0x0074 (0x0004) [0x0000000040000000] [0x00000400] (CPF_EditInlineNotify)
-	uint32_t                                           Football : 1;                                  // 0x0074 (0x0004) [0x0000000040000000] [0x00000800] (CPF_EditInlineNotify)
-	uint32_t                                           RumbleSelection : 1;                           // 0x0074 (0x0004) [0x0000000040000000] [0x00001000] (CPF_EditInlineNotify)
-	uint32_t                                           UndersizedParty : 1;                           // 0x0074 (0x0004) [0x0000000040000000] [0x00002000] (CPF_EditInlineNotify)
-	uint32_t                                           StreamerSafeAudio : 1;                         // 0x0074 (0x0004) [0x0000000040000000] [0x00004000] (CPF_EditInlineNotify)
-	uint32_t                                           FreeplayCommands : 1;                          // 0x0074 (0x0004) [0x0000000040000000] [0x00008000] (CPF_EditInlineNotify)
-	uint32_t                                           Rumble_BM : 1;                                 // 0x0074 (0x0004) [0x0000000040000000] [0x00010000] (CPF_EditInlineNotify)
-	uint32_t                                           PlayerReportingV2 : 1;                         // 0x0074 (0x0004) [0x0000000040000000] [0x00020000] (CPF_EditInlineNotify)
-	uint32_t                                           BlogScheduling : 1;                            // 0x0074 (0x0004) [0x0000000040000000] [0x00040000] (CPF_EditInlineNotify)
-	uint32_t                                           EOSVoice : 1;                                  // 0x0074 (0x0004) [0x0000000040000000] [0x00080000] (CPF_EditInlineNotify)
-	uint32_t                                           QuickPostMatchRequeue : 1;                     // 0x0074 (0x0004) [0x0000000040000000] [0x00100000] (CPF_EditInlineNotify)
-	uint32_t                                           TrainingNavigation : 1;                        // 0x0074 (0x0004) [0x0000000040000000] [0x00800000] (CPF_EditInlineNotify)
-	uint32_t                                           TrainingManipulation : 1;                      // 0x0074 (0x0004) [0x0000000040000000] [0x01000000] (CPF_EditInlineNotify)
-	uint32_t                                           FilterByColor : 1;                             // 0x0074 (0x0004) [0x0000000040000000] [0x04000000] (CPF_EditInlineNotify)
-	uint32_t                                           Scoreboard : 1;                                // 0x0074 (0x0004) [0x0000000040000000] [0x08000000] (CPF_EditInlineNotify)
-	uint32_t                                           DynamicMapEvents : 1;                          // 0x0074 (0x0004) [0x0000000040000000] [0x10000000] (CPF_EditInlineNotify)
-	uint32_t                                           EOSGameClips : 1;                              // 0x0074 (0x0004) [0x0000000040000000] [0x80000000] (CPF_EditInlineNotify)
-	uint32_t                                           DynamicLogos : 1;                              // 0x0078 (0x0004) [0x0000000040000000] [0x00000001] (CPF_EditInlineNotify)
-	uint32_t                                           XETagging : 1;                                 // 0x0078 (0x0004) [0x0000000040000000] [0x00000002] (CPF_EditInlineNotify)
-	uint32_t                                           PlayMenuV4 : 1;                                // 0x0078 (0x0004) [0x0000000040000000] [0x00000004] (CPF_EditInlineNotify)
+	uint32_t                                           PlayerBannerCustomization : 1;                 // 0x006C (0x0004) [0x0000000040000000] [0x01000000] (CPF_EditInlineNotify)
+	uint32_t                                           SecureUDP : 1;                                 // 0x006C (0x0004) [0x0000000040000000] [0x02000000] (CPF_EditInlineNotify)
+	uint32_t                                           PsyNet : 1;                                    // 0x006C (0x0004) [0x0000000040000000] [0x04000000] (CPF_EditInlineNotify)
+	uint32_t                                           OnlinePlayerStorage : 1;                       // 0x006C (0x0004) [0x0000000040000000] [0x08000000] (CPF_EditInlineNotify)
+	uint32_t                                           LocalSaveData : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x10000000] (CPF_EditInlineNotify)
+	uint32_t                                           CrowdV2 : 1;                                   // 0x006C (0x0004) [0x0000000040000000] [0x20000000] (CPF_EditInlineNotify)
+	uint32_t                                           ChatBan : 1;                                   // 0x006C (0x0004) [0x0000000040000000] [0x40000000] (CPF_EditInlineNotify)
+	uint32_t                                           BacktraceCrashDumps : 1;                       // 0x006C (0x0004) [0x0000000040000000] [0x80000000] (CPF_EditInlineNotify)
+	uint32_t                                           SpotifyButton : 1;                             // 0x0070 (0x0004) [0x0000000040000000] [0x00000001] (CPF_EditInlineNotify)
+	uint32_t                                           RocketPass : 1;                                // 0x0070 (0x0004) [0x0000000040000000] [0x00000002] (CPF_EditInlineNotify)
+	uint32_t                                           SeasonRewards : 1;                             // 0x0070 (0x0004) [0x0000000040000000] [0x00000008] (CPF_EditInlineNotify)
+	uint32_t                                           FaceIt : 1;                                    // 0x0070 (0x0004) [0x0000000040000000] [0x00000010] (CPF_EditInlineNotify)
+	uint32_t                                           KnockOut : 1;                                  // 0x0070 (0x0004) [0x0000000040000000] [0x00000020] (CPF_EditInlineNotify)
+	uint32_t                                           OnlinePlayerTitles : 1;                        // 0x0070 (0x0004) [0x0000000040000000] [0x00000040] (CPF_EditInlineNotify)
+	uint32_t                                           RestrictByRegion : 1;                          // 0x0070 (0x0004) [0x0000000040000000] [0x00000080] (CPF_EditInlineNotify)
+	uint32_t                                           FirstTimeExperience : 1;                       // 0x0070 (0x0004) [0x0000000040000000] [0x00000200] (CPF_EditInlineNotify)
+	uint32_t                                           RLBot : 1;                                     // 0x0070 (0x0004) [0x0000000040000000] [0x00000400] (CPF_EditInlineNotify)
+	uint32_t                                           UserBugReport : 1;                             // 0x0070 (0x0004) [0x0000000040000000] [0x00000800] (CPF_EditInlineNotify)
+	uint32_t                                           SteamInput : 1;                                // 0x0070 (0x0004) [0x0000000040000000] [0x00001000] (CPF_EditInlineNotify)
+	uint32_t                                           ReplayFXControls : 1;                          // 0x0070 (0x0004) [0x0000000040000000] [0x00020000] (CPF_EditInlineNotify)
+	uint32_t                                           ESportsShop : 1;                               // 0x0070 (0x0004) [0x0000000040000000] [0x00040000] (CPF_EditInlineNotify)
+	uint32_t                                           DynamicRangeAudioSettings : 1;                 // 0x0070 (0x0004) [0x0000000040000000] [0x00400000] (CPF_EditInlineNotify)
+	uint32_t                                           AutoTour : 1;                                  // 0x0070 (0x0004) [0x0000000040000000] [0x00800000] (CPF_EditInlineNotify)
+	uint32_t                                           QuickPlay : 1;                                 // 0x0070 (0x0004) [0x0000000040000000] [0x01000000] (CPF_EditInlineNotify)
+	uint32_t                                           NewsPanelV2 : 1;                               // 0x0070 (0x0004) [0x0000000040000000] [0x02000000] (CPF_EditInlineNotify)
+	uint32_t                                           Blueprints : 1;                                // 0x0070 (0x0004) [0x0000000040000000] [0x04000000] (CPF_EditInlineNotify)
+	uint32_t                                           GodBall : 1;                                   // 0x0070 (0x0004) [0x0000000040000000] [0x08000000] (CPF_EditInlineNotify)
+	uint32_t                                           RocketBucks : 1;                               // 0x0070 (0x0004) [0x0000000040000000] [0x20000000] (CPF_EditInlineNotify)
+	uint32_t                                           DiscordRichPresence : 1;                       // 0x0074 (0x0004) [0x0000000040000000] [0x00000002] (CPF_EditInlineNotify)
+	uint32_t                                           SupportACreator : 1;                           // 0x0074 (0x0004) [0x0000000040000000] [0x00000004] (CPF_EditInlineNotify)
+	uint32_t                                           CinematicIntro : 1;                            // 0x0074 (0x0004) [0x0000000040000000] [0x00000008] (CPF_EditInlineNotify)
+	uint32_t                                           TinyCrowd : 1;                                 // 0x0074 (0x0004) [0x0000000040000000] [0x00000010] (CPF_EditInlineNotify)
+	uint32_t                                           CrumbTrail : 1;                                // 0x0074 (0x0004) [0x0000000040000000] [0x00000020] (CPF_EditInlineNotify)
+	uint32_t                                           EpicGameStoreBuild : 1;                        // 0x0074 (0x0004) [0x0000000040000000] [0x00000040] (CPF_EditInlineNotify)
+	uint32_t                                           XPGatedPlaylists : 1;                          // 0x0074 (0x0004) [0x0000000040000000] [0x00000080] (CPF_EditInlineNotify)
+	uint32_t                                           TradeInV2 : 1;                                 // 0x0074 (0x0004) [0x0000000040000000] [0x00000200] (CPF_EditInlineNotify)
+	uint32_t                                           Football : 1;                                  // 0x0074 (0x0004) [0x0000000040000000] [0x00000400] (CPF_EditInlineNotify)
+	uint32_t                                           RumbleSelection : 1;                           // 0x0074 (0x0004) [0x0000000040000000] [0x00000800] (CPF_EditInlineNotify)
+	uint32_t                                           UndersizedParty : 1;                           // 0x0074 (0x0004) [0x0000000040000000] [0x00001000] (CPF_EditInlineNotify)
+	uint32_t                                           StreamerSafeAudio : 1;                         // 0x0074 (0x0004) [0x0000000040000000] [0x00002000] (CPF_EditInlineNotify)
+	uint32_t                                           FreeplayCommands : 1;                          // 0x0074 (0x0004) [0x0000000040000000] [0x00004000] (CPF_EditInlineNotify)
+	uint32_t                                           Rumble_BM : 1;                                 // 0x0074 (0x0004) [0x0000000040000000] [0x00008000] (CPF_EditInlineNotify)
+	uint32_t                                           PlayerReportingV2 : 1;                         // 0x0074 (0x0004) [0x0000000040000000] [0x00010000] (CPF_EditInlineNotify)
+	uint32_t                                           BlogScheduling : 1;                            // 0x0074 (0x0004) [0x0000000040000000] [0x00020000] (CPF_EditInlineNotify)
+	uint32_t                                           EOSVoice : 1;                                  // 0x0074 (0x0004) [0x0000000040000000] [0x00040000] (CPF_EditInlineNotify)
+	uint32_t                                           QuickPostMatchRequeue : 1;                     // 0x0074 (0x0004) [0x0000000040000000] [0x00080000] (CPF_EditInlineNotify)
+	uint32_t                                           TrainingNavigation : 1;                        // 0x0074 (0x0004) [0x0000000040000000] [0x00400000] (CPF_EditInlineNotify)
+	uint32_t                                           TrainingManipulation : 1;                      // 0x0074 (0x0004) [0x0000000040000000] [0x00800000] (CPF_EditInlineNotify)
+	uint32_t                                           FilterByColor : 1;                             // 0x0074 (0x0004) [0x0000000040000000] [0x02000000] (CPF_EditInlineNotify)
+	uint32_t                                           Scoreboard : 1;                                // 0x0074 (0x0004) [0x0000000040000000] [0x04000000] (CPF_EditInlineNotify)
+	uint32_t                                           DynamicMapEvents : 1;                          // 0x0074 (0x0004) [0x0000000040000000] [0x08000000] (CPF_EditInlineNotify)
+	uint32_t                                           NameplateBoost : 1;                            // 0x0074 (0x0004) [0x0000000040000000] [0x20000000] (CPF_EditInlineNotify)
+	uint32_t                                           EOSGameClips : 1;                              // 0x0074 (0x0004) [0x0000000040000000] [0x40000000] (CPF_EditInlineNotify)
+	uint32_t                                           DynamicLogos : 1;                              // 0x0074 (0x0004) [0x0000000040000000] [0x80000000] (CPF_EditInlineNotify)
+	uint32_t                                           XETagging : 1;                                 // 0x0078 (0x0004) [0x0000000040000000] [0x00000001] (CPF_EditInlineNotify)
+	uint32_t                                           PlayMenuV4 : 1;                                // 0x0078 (0x0004) [0x0000000040000000] [0x00000002] (CPF_EditInlineNotify)
+	uint32_t                                           QuickChatTimeStamp : 1;                        // 0x0078 (0x0004) [0x0000000040000000] [0x00000008] (CPF_EditInlineNotify)
+	uint32_t                                           TeamDemoAudio : 1;                             // 0x0078 (0x0004) [0x0000000040000000] [0x00000010] (CPF_EditInlineNotify)
 
 public:
 	static UClass* StaticClass()

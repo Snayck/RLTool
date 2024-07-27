@@ -12225,33 +12225,35 @@ public:
 };
 
 // Class Engine.NetDriver
-// 0x01A0 (0x0068 - 0x0208)
+// 0x01B0 (0x0068 - 0x0218)
 class UNetDriver : public USubsystem
 {
 public:
-	uint8_t                                           UnknownData00[0x3C];                           // 0x0068 (0x003C) MISSED OFFSET
-	float                                              ConnectionTimeout;                             // 0x00A4 (0x0004) [0x0000000000004000] (CPF_Config)  
-	float                                              KeepAliveTime;                                 // 0x00A8 (0x0004) [0x0000000000004000] (CPF_Config)  
-	float                                              RelevantTimeout;                               // 0x00AC (0x0004) [0x0000000000004000] (CPF_Config)  
-	float                                              SpawnPrioritySeconds;                          // 0x00B0 (0x0004) [0x0000000000004000] (CPF_Config)  
-	float                                              ServerTravelPause;                             // 0x00B4 (0x0004) [0x0000000000004000] (CPF_Config)  
-	int32_t                                            MinClientRate;                                 // 0x00B8 (0x0004) [0x0000000000004000] (CPF_Config)  
-	int32_t                                            MaxClientRate;                                 // 0x00BC (0x0004) [0x0000000000004000] (CPF_Config)  
-	int32_t                                            MedianClientRate;                              // 0x00C0 (0x0004) [0x0000000000004000] (CPF_Config)  
-	int32_t                                            MinReplicationRate;                            // 0x00C4 (0x0004) [0x0000000000004000] (CPF_Config)  
-	int32_t                                            MaxReplicationRate;                            // 0x00C8 (0x0004) [0x0000000000004000] (CPF_Config)  
-	int32_t                                            MedianReplicationRate;                         // 0x00CC (0x0004) [0x0000000000004000] (CPF_Config)  
-	int32_t                                            NetServerMaxTickRate;                          // 0x00D0 (0x0004) [0x0000000000004000] (CPF_Config)  
-	uint32_t                                           bClampListenServerTickRate : 1;                // 0x00D4 (0x0004) [0x0000000000004000] [0x00000001] (CPF_Config)
-	uint32_t                                           AllowDownloads : 1;                            // 0x00D8 (0x0004) [0x0000000000004000] [0x00000001] (CPF_Config)
-	uint32_t                                           AllowPeerConnections : 1;                      // 0x00DC (0x0004) [0x0000000000004000] [0x00000001] (CPF_Config)
-	uint32_t                                           AllowPeerVoice : 1;                            // 0x00E0 (0x0004) [0x0000000000004000] [0x00000001] (CPF_Config)
-	uint8_t                                           UnknownData01[0x24];                           // 0x00E4 (0x0024) MISSED OFFSET
-	int32_t                                            MaxDownloadSize;                               // 0x0108 (0x0004) [0x0000000000004000] (CPF_Config)  
-	TArray<class FString>                              DownloadManagers;                              // 0x0110 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
-	uint8_t                                           UnknownData02[0xA8];                           // 0x0120 (0x00A8) MISSED OFFSET
-	class FString                                      NetConnectionClassName;                        // 0x01C8 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
-	uint8_t                                           UnknownData03[0x30];                           // 0x01D8 (0x0030) MISSED OFFSET
+	uint8_t                                           UnknownData00[0x8];                            // 0x0068 (0x0008) MISSED OFFSET
+	float                                              MatchFailureSeconds;                           // 0x0070 (0x0004) [0x0000000000004000] (CPF_Config)  
+	uint8_t                                           UnknownData01[0x38];                           // 0x0074 (0x0038) MISSED OFFSET
+	float                                              ConnectionTimeout;                             // 0x00AC (0x0004) [0x0000000000004000] (CPF_Config)  
+	float                                              KeepAliveTime;                                 // 0x00B0 (0x0004) [0x0000000000004000] (CPF_Config)  
+	float                                              RelevantTimeout;                               // 0x00B4 (0x0004) [0x0000000000004000] (CPF_Config)  
+	float                                              SpawnPrioritySeconds;                          // 0x00B8 (0x0004) [0x0000000000004000] (CPF_Config)  
+	float                                              ServerTravelPause;                             // 0x00BC (0x0004) [0x0000000000004000] (CPF_Config)  
+	int32_t                                            MinClientRate;                                 // 0x00C0 (0x0004) [0x0000000000004000] (CPF_Config)  
+	int32_t                                            MaxClientRate;                                 // 0x00C4 (0x0004) [0x0000000000004000] (CPF_Config)  
+	int32_t                                            MedianClientRate;                              // 0x00C8 (0x0004) [0x0000000000004000] (CPF_Config)  
+	int32_t                                            MinReplicationRate;                            // 0x00CC (0x0004) [0x0000000000004000] (CPF_Config)  
+	int32_t                                            MaxReplicationRate;                            // 0x00D0 (0x0004) [0x0000000000004000] (CPF_Config)  
+	int32_t                                            MedianReplicationRate;                         // 0x00D4 (0x0004) [0x0000000000004000] (CPF_Config)  
+	int32_t                                            NetServerMaxTickRate;                          // 0x00D8 (0x0004) [0x0000000000004000] (CPF_Config)  
+	uint32_t                                           bClampListenServerTickRate : 1;                // 0x00DC (0x0004) [0x0000000000004000] [0x00000001] (CPF_Config)
+	uint32_t                                           AllowDownloads : 1;                            // 0x00E0 (0x0004) [0x0000000000004000] [0x00000001] (CPF_Config)
+	uint32_t                                           AllowPeerConnections : 1;                      // 0x00E4 (0x0004) [0x0000000000004000] [0x00000001] (CPF_Config)
+	uint32_t                                           AllowPeerVoice : 1;                            // 0x00E8 (0x0004) [0x0000000000004000] [0x00000001] (CPF_Config)
+	uint8_t                                           UnknownData02[0x24];                           // 0x00EC (0x0024) MISSED OFFSET
+	int32_t                                            MaxDownloadSize;                               // 0x0110 (0x0004) [0x0000000000004000] (CPF_Config)  
+	TArray<class FString>                              DownloadManagers;                              // 0x0118 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
+	uint8_t                                           UnknownData03[0xA8];                           // 0x0128 (0x00A8) MISSED OFFSET
+	class FString                                      NetConnectionClassName;                        // 0x01D0 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
+	uint8_t                                           UnknownData04[0x38];                           // 0x01E0 (0x0038) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()
@@ -12269,17 +12271,17 @@ public:
 };
 
 // Class Engine.DemoRecDriver
-// 0x00F8 (0x0208 - 0x0300)
+// 0x00F8 (0x0218 - 0x0310)
 class UDemoRecDriver : public UNetDriver
 {
 public:
-	uint8_t                                           UnknownData00[0x30];                           // 0x0208 (0x0030) MISSED OFFSET
-	class FString                                      DemoSpectatorClass;                            // 0x0238 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
-	uint8_t                                           UnknownData01[0xA0];                           // 0x0248 (0x00A0) MISSED OFFSET
-	int32_t                                            MaxRewindPoints;                               // 0x02E8 (0x0004) [0x0000000000004000] (CPF_Config)  
-	float                                              RewindPointInterval;                           // 0x02F0 (0x0004) [0x0000000000004000] (CPF_Config)  
-	int32_t                                            NumRecentRewindPoints;                         // 0x02F4 (0x0004) [0x0000000000004000] (CPF_Config)  
-	uint8_t                                           UnknownData02[0x8];                            // 0x02F8 (0x0008) MISSED OFFSET
+	uint8_t                                           UnknownData00[0x30];                           // 0x0218 (0x0030) MISSED OFFSET
+	class FString                                      DemoSpectatorClass;                            // 0x0248 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
+	uint8_t                                           UnknownData01[0xA0];                           // 0x0258 (0x00A0) MISSED OFFSET
+	int32_t                                            MaxRewindPoints;                               // 0x02F8 (0x0004) [0x0000000000004000] (CPF_Config)  
+	float                                              RewindPointInterval;                           // 0x0300 (0x0004) [0x0000000000004000] (CPF_Config)  
+	int32_t                                            NumRecentRewindPoints;                         // 0x0304 (0x0004) [0x0000000000004000] (CPF_Config)  
+	uint8_t                                           UnknownData02[0x8];                            // 0x0308 (0x0008) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()

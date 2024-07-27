@@ -1329,11 +1329,12 @@ struct FPlayerClubSyncResult
 };
 
 // ScriptStruct ProjectX.PresetMutators_X.CategorySettingPair
-// 0x0010
+// 0x0014
 struct FCategorySettingPair
 {
 	struct FName                                       Category;                                      // 0x0000 (0x0008) [0x0000000000000000]               
 	struct FName                                       Setting;                                       // 0x0008 (0x0008) [0x0000000000000000]               
+	uint32_t                                           bLockSetting : 1;                              // 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct ProjectX.RPC_CheckReplacementDedicatedServer_X.CheckReplacementDedicatedServerData
@@ -1871,6 +1872,14 @@ struct FRPCResponse
 	int32_t                                            Id;                                            // 0x0000 (0x0004) [0x0000000000000000]               
 	struct FRPCError                                   Error;                                         // 0x0008 (0x0020) [0x0000000000400000] (CPF_NeedCtorLink)
 	class URPC_X*                                      Result;                                        // 0x0028 (0x0008) [0x0000000000000000]               
+};
+
+// ScriptStruct ProjectX.ServerExploitManager_X.MatchExploitReportData
+// 0x0058
+struct FMatchExploitReportData
+{
+	struct FUniqueNetId                                PlayerID;                                      // 0x0000 (0x0048) [0x0000000000400000] (CPF_NeedCtorLink)
+	TArray<uint8_t>                                    ReportedReasons;                               // 0x0048 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 };
 
 // ScriptStruct ProjectX.ShakeComponent_X.ShakeReceiver

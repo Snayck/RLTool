@@ -6936,27 +6936,6 @@ void UEOSMetrics_X::Init(class ULocalPlayer_X* InLocalPlayer)
 	this->ProcessEvent(uFnInit, &Init_Params, nullptr);
 };
 
-// Function ProjectX.LocalPlayer_X.__LocalPlayer_X__OnCreated_0x1
-// [0x40040003] (FUNC_Final | FUNC_Defined | FUNC_Private | FUNC_Lambda | FUNC_AllFlags)
-// Parameter Info:
-// class UOnlinePlayer_X*         _                              (CPF_Parm)
-
-void ULocalPlayer_X::__LocalPlayer_X__OnCreated_0x1(class UOnlinePlayer_X* _)
-{
-	static UFunction* uFn__LocalPlayer_X__OnCreated_0x1 = nullptr;
-
-	if (!uFn__LocalPlayer_X__OnCreated_0x1)
-	{
-		uFn__LocalPlayer_X__OnCreated_0x1 = UFunction::FindFunction("Function ProjectX.LocalPlayer_X.__LocalPlayer_X__OnCreated_0x1");
-	}
-
-	ULocalPlayer_X_exec__LocalPlayer_X__OnCreated_0x1_Params __LocalPlayer_X__OnCreated_0x1_Params;
-	memset(&__LocalPlayer_X__OnCreated_0x1_Params, 0, sizeof(__LocalPlayer_X__OnCreated_0x1_Params));
-	memcpy_s(&__LocalPlayer_X__OnCreated_0x1_Params._, sizeof(__LocalPlayer_X__OnCreated_0x1_Params._), &_, sizeof(_));
-
-	this->ProcessEvent(uFn__LocalPlayer_X__OnCreated_0x1, &__LocalPlayer_X__OnCreated_0x1_Params, nullptr);
-};
-
 // Function ProjectX.LocalPlayer_X.SpawnPlayActor
 // [0x400420400] (FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_NetValidate | FUNC_AllFlags)
 // Parameter Info:
@@ -7092,6 +7071,27 @@ void ULocalPlayer_X::OnRemoved()
 	memset(&OnRemoved_Params, 0, sizeof(OnRemoved_Params));
 
 	this->ProcessEvent(uFnOnRemoved, &OnRemoved_Params, nullptr);
+};
+
+// Function ProjectX.LocalPlayer_X.HandleOnlineNameChanged
+// [0x00040003] (FUNC_Final | FUNC_Defined | FUNC_Private | FUNC_AllFlags)
+// Parameter Info:
+// class UOnlinePlayer_X*         PrimaryOnlinePlayer            (CPF_Parm)
+
+void ULocalPlayer_X::HandleOnlineNameChanged(class UOnlinePlayer_X* PrimaryOnlinePlayer)
+{
+	static UFunction* uFnHandleOnlineNameChanged = nullptr;
+
+	if (!uFnHandleOnlineNameChanged)
+	{
+		uFnHandleOnlineNameChanged = UFunction::FindFunction("Function ProjectX.LocalPlayer_X.HandleOnlineNameChanged");
+	}
+
+	ULocalPlayer_X_execHandleOnlineNameChanged_Params HandleOnlineNameChanged_Params;
+	memset(&HandleOnlineNameChanged_Params, 0, sizeof(HandleOnlineNameChanged_Params));
+	memcpy_s(&HandleOnlineNameChanged_Params.PrimaryOnlinePlayer, sizeof(HandleOnlineNameChanged_Params.PrimaryOnlinePlayer), &PrimaryOnlinePlayer, sizeof(PrimaryOnlinePlayer));
+
+	this->ProcessEvent(uFnHandleOnlineNameChanged, &HandleOnlineNameChanged_Params, nullptr);
 };
 
 // Function ProjectX.LocalPlayer_X.OnCreated
@@ -11553,6 +11553,30 @@ bool UEpicLogin_X::__EpicLogin_X__IsAnyLocalPlayerCabinedOrGuest_0x1(class ULoca
 	return __EpicLogin_X__IsAnyLocalPlayerCabinedOrGuest_0x1_Params.ReturnValue;
 };
 
+// Function ProjectX.EpicLogin_X.BuildIdentityURL
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
+// class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
+// class FString                  URLSuffix                      (CPF_Parm | CPF_NeedCtorLink)
+
+class FString UEpicLogin_X::BuildIdentityURL(class FString URLSuffix)
+{
+	static UFunction* uFnBuildIdentityURL = nullptr;
+
+	if (!uFnBuildIdentityURL)
+	{
+		uFnBuildIdentityURL = UFunction::FindFunction("Function ProjectX.EpicLogin_X.BuildIdentityURL");
+	}
+
+	UEpicLogin_X_execBuildIdentityURL_Params BuildIdentityURL_Params;
+	memset(&BuildIdentityURL_Params, 0, sizeof(BuildIdentityURL_Params));
+	memcpy_s(&BuildIdentityURL_Params.URLSuffix, sizeof(BuildIdentityURL_Params.URLSuffix), &URLSuffix, sizeof(URLSuffix));
+
+	this->ProcessEvent(uFnBuildIdentityURL, &BuildIdentityURL_Params, nullptr);
+
+	return BuildIdentityURL_Params.ReturnValue;
+};
+
 // Function ProjectX.EpicLogin_X.IsAnyLocalPlayerCabinedOrGuest
 // [0x00022003] (FUNC_Final | FUNC_Defined | FUNC_Static | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
@@ -12444,50 +12468,6 @@ void UEpicLogin_X::eventConstruct()
 	memset(&Construct_Params, 0, sizeof(Construct_Params));
 
 	this->ProcessEvent(uFnConstruct, &Construct_Params, nullptr);
-};
-
-// Function ProjectX.EpicLogin_X.RequestAgeGateRequired
-// [0x00120003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter Info:
-// struct FScriptDelegate         Callback                       (CPF_Parm | CPF_NeedCtorLink)
-
-void UEpicLogin_X::RequestAgeGateRequired(struct FScriptDelegate Callback)
-{
-	static UFunction* uFnRequestAgeGateRequired = nullptr;
-
-	if (!uFnRequestAgeGateRequired)
-	{
-		uFnRequestAgeGateRequired = UFunction::FindFunction("Function ProjectX.EpicLogin_X.RequestAgeGateRequired");
-	}
-
-	UEpicLogin_X_execRequestAgeGateRequired_Params RequestAgeGateRequired_Params;
-	memset(&RequestAgeGateRequired_Params, 0, sizeof(RequestAgeGateRequired_Params));
-	memcpy_s(&RequestAgeGateRequired_Params.Callback, sizeof(RequestAgeGateRequired_Params.Callback), &Callback, sizeof(Callback));
-
-	this->ProcessEvent(uFnRequestAgeGateRequired, &RequestAgeGateRequired_Params, nullptr);
-};
-
-// Function ProjectX.EpicLogin_X.RequestAgeGateRequiredCallback
-// [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter Info:
-// class UAgeGateRequiredResponse* ResponseAsObject               (CPF_Parm)
-// class UError*                  Error                          (CPF_Parm)
-
-void UEpicLogin_X::RequestAgeGateRequiredCallback(class UAgeGateRequiredResponse* ResponseAsObject, class UError* Error)
-{
-	static UFunction* uFnRequestAgeGateRequiredCallback = nullptr;
-
-	if (!uFnRequestAgeGateRequiredCallback)
-	{
-		uFnRequestAgeGateRequiredCallback = UFunction::FindFunction("Function ProjectX.EpicLogin_X.RequestAgeGateRequiredCallback");
-	}
-
-	UEpicLogin_X_execRequestAgeGateRequiredCallback_Params RequestAgeGateRequiredCallback_Params;
-	memset(&RequestAgeGateRequiredCallback_Params, 0, sizeof(RequestAgeGateRequiredCallback_Params));
-	memcpy_s(&RequestAgeGateRequiredCallback_Params.ResponseAsObject, sizeof(RequestAgeGateRequiredCallback_Params.ResponseAsObject), &ResponseAsObject, sizeof(ResponseAsObject));
-	memcpy_s(&RequestAgeGateRequiredCallback_Params.Error, sizeof(RequestAgeGateRequiredCallback_Params.Error), &Error, sizeof(Error));
-
-	this->ProcessEvent(uFnRequestAgeGateRequiredCallback, &RequestAgeGateRequiredCallback_Params, nullptr);
 };
 
 // Function ProjectX.EpicLogin_X.EventCreatedEpicGamesAccount
@@ -16534,6 +16514,27 @@ void UGFxDataStore_X::SetObjectCount(class UClass* ObjClass, int32_t Count)
 	memcpy_s(&SetObjectCount_Params.Count, sizeof(SetObjectCount_Params.Count), &Count, sizeof(Count));
 
 	this->ProcessEvent(uFnSetObjectCount, &SetObjectCount_Params, nullptr);
+};
+
+// Function ProjectX.GFxDataStore_X.SortTable
+// [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
+// class UClass*                  ObjClass                       (CPF_Parm)
+
+void UGFxDataStore_X::SortTable(class UClass* ObjClass)
+{
+	static UFunction* uFnSortTable = nullptr;
+
+	if (!uFnSortTable)
+	{
+		uFnSortTable = UFunction::FindFunction("Function ProjectX.GFxDataStore_X.SortTable");
+	}
+
+	UGFxDataStore_X_execSortTable_Params SortTable_Params;
+	memset(&SortTable_Params, 0, sizeof(SortTable_Params));
+	memcpy_s(&SortTable_Params.ObjClass, sizeof(SortTable_Params.ObjClass), &ObjClass, sizeof(ObjClass));
+
+	this->ProcessEvent(uFnSortTable, &SortTable_Params, nullptr);
 };
 
 // Function ProjectX.GFxDataStore_X.GetObjectCount
@@ -28665,8 +28666,9 @@ class FString UOnlineGameDedicatedServer_X::GetStartServerCommand()
 // struct FName                   ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // int32_t                        GameMode                       (CPF_Parm)
 // bool                           bStandardOnly                  (CPF_Parm)
+// bool                           bRocketLabsMedleyOnly          (CPF_Parm)
 
-struct FName UOnlineGameDedicatedServer_X::GetNextRandomMapName(int32_t GameMode, bool bStandardOnly)
+struct FName UOnlineGameDedicatedServer_X::GetNextRandomMapName(int32_t GameMode, bool bStandardOnly, bool bRocketLabsMedleyOnly)
 {
 	static UFunction* uFnGetNextRandomMapName = nullptr;
 
@@ -28679,6 +28681,7 @@ struct FName UOnlineGameDedicatedServer_X::GetNextRandomMapName(int32_t GameMode
 	memset(&GetNextRandomMapName_Params, 0, sizeof(GetNextRandomMapName_Params));
 	memcpy_s(&GetNextRandomMapName_Params.GameMode, sizeof(GetNextRandomMapName_Params.GameMode), &GameMode, sizeof(GameMode));
 	GetNextRandomMapName_Params.bStandardOnly = bStandardOnly;
+	GetNextRandomMapName_Params.bRocketLabsMedleyOnly = bRocketLabsMedleyOnly;
 
 	this->ProcessEvent(uFnGetNextRandomMapName, &GetNextRandomMapName_Params, nullptr);
 
@@ -28691,8 +28694,9 @@ struct FName UOnlineGameDedicatedServer_X::GetNextRandomMapName(int32_t GameMode
 // struct FName                   ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // int32_t                        GameMode                       (CPF_OptionalParm | CPF_Parm)
 // bool                           bStandardOnly                  (CPF_OptionalParm | CPF_Parm)
+// bool                           bRocketLabsMedleyOnly          (CPF_OptionalParm | CPF_Parm)
 
-struct FName UOnlineGameDedicatedServer_X::GetNextMapName(int32_t GameMode, bool bStandardOnly)
+struct FName UOnlineGameDedicatedServer_X::GetNextMapName(int32_t GameMode, bool bStandardOnly, bool bRocketLabsMedleyOnly)
 {
 	static UFunction* uFnGetNextMapName = nullptr;
 
@@ -28705,6 +28709,7 @@ struct FName UOnlineGameDedicatedServer_X::GetNextMapName(int32_t GameMode, bool
 	memset(&GetNextMapName_Params, 0, sizeof(GetNextMapName_Params));
 	memcpy_s(&GetNextMapName_Params.GameMode, sizeof(GetNextMapName_Params.GameMode), &GameMode, sizeof(GameMode));
 	GetNextMapName_Params.bStandardOnly = bStandardOnly;
+	GetNextMapName_Params.bRocketLabsMedleyOnly = bRocketLabsMedleyOnly;
 
 	this->ProcessEvent(uFnGetNextMapName, &GetNextMapName_Params, nullptr);
 
@@ -74208,6 +74213,173 @@ class URPC_UpdatePlayerPlaylist_X* URPC_UpdatePlayerPlaylist_X::SetPlaylist(int3
 	return SetPlaylist_Params.ReturnValue;
 };
 
+// Function ProjectX.ServerExploitManager_X.AddReport
+// [0x00040003] (FUNC_Final | FUNC_Defined | FUNC_Private | FUNC_AllFlags)
+// Parameter Info:
+// struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
+// EExploitType                   Reason                         (CPF_Parm)
+
+void UServerExploitManager_X::AddReport(struct FUniqueNetId PlayerID, EExploitType Reason)
+{
+	static UFunction* uFnAddReport = nullptr;
+
+	if (!uFnAddReport)
+	{
+		uFnAddReport = UFunction::FindFunction("Function ProjectX.ServerExploitManager_X.AddReport");
+	}
+
+	UServerExploitManager_X_execAddReport_Params AddReport_Params;
+	memset(&AddReport_Params, 0, sizeof(AddReport_Params));
+	memcpy_s(&AddReport_Params.PlayerID, sizeof(AddReport_Params.PlayerID), &PlayerID, sizeof(PlayerID));
+	memcpy_s(&AddReport_Params.Reason, sizeof(AddReport_Params.Reason), &Reason, sizeof(Reason));
+
+	this->ProcessEvent(uFnAddReport, &AddReport_Params, nullptr);
+};
+
+// Function ProjectX.ServerExploitManager_X.FindPlayerReportIndex
+// [0x00440003] (FUNC_Final | FUNC_Defined | FUNC_Private | FUNC_HasOutParms | FUNC_AllFlags)
+// Parameter Info:
+// bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+// struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
+// int32_t                        OutIndex                       (CPF_Parm | CPF_OutParm)
+
+bool UServerExploitManager_X::FindPlayerReportIndex(struct FUniqueNetId PlayerID, int32_t& OutIndex)
+{
+	static UFunction* uFnFindPlayerReportIndex = nullptr;
+
+	if (!uFnFindPlayerReportIndex)
+	{
+		uFnFindPlayerReportIndex = UFunction::FindFunction("Function ProjectX.ServerExploitManager_X.FindPlayerReportIndex");
+	}
+
+	UServerExploitManager_X_execFindPlayerReportIndex_Params FindPlayerReportIndex_Params;
+	memset(&FindPlayerReportIndex_Params, 0, sizeof(FindPlayerReportIndex_Params));
+	memcpy_s(&FindPlayerReportIndex_Params.PlayerID, sizeof(FindPlayerReportIndex_Params.PlayerID), &PlayerID, sizeof(PlayerID));
+	memcpy_s(&FindPlayerReportIndex_Params.OutIndex, sizeof(FindPlayerReportIndex_Params.OutIndex), &OutIndex, sizeof(OutIndex));
+
+	this->ProcessEvent(uFnFindPlayerReportIndex, &FindPlayerReportIndex_Params, nullptr);
+
+	memcpy_s(&OutIndex, sizeof(OutIndex), &FindPlayerReportIndex_Params.OutIndex, sizeof(FindPlayerReportIndex_Params.OutIndex));
+
+	return FindPlayerReportIndex_Params.ReturnValue;
+};
+
+// Function ProjectX.ServerExploitManager_X.DoesReportExist
+// [0x00040003] (FUNC_Final | FUNC_Defined | FUNC_Private | FUNC_AllFlags)
+// Parameter Info:
+// bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+// struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
+// EExploitType                   Reason                         (CPF_Parm)
+
+bool UServerExploitManager_X::DoesReportExist(struct FUniqueNetId PlayerID, EExploitType Reason)
+{
+	static UFunction* uFnDoesReportExist = nullptr;
+
+	if (!uFnDoesReportExist)
+	{
+		uFnDoesReportExist = UFunction::FindFunction("Function ProjectX.ServerExploitManager_X.DoesReportExist");
+	}
+
+	UServerExploitManager_X_execDoesReportExist_Params DoesReportExist_Params;
+	memset(&DoesReportExist_Params, 0, sizeof(DoesReportExist_Params));
+	memcpy_s(&DoesReportExist_Params.PlayerID, sizeof(DoesReportExist_Params.PlayerID), &PlayerID, sizeof(PlayerID));
+	memcpy_s(&DoesReportExist_Params.Reason, sizeof(DoesReportExist_Params.Reason), &Reason, sizeof(Reason));
+
+	this->ProcessEvent(uFnDoesReportExist, &DoesReportExist_Params, nullptr);
+
+	return DoesReportExist_Params.ReturnValue;
+};
+
+// Function ProjectX.ServerExploitManager_X.Reset
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
+
+void UServerExploitManager_X::Reset()
+{
+	static UFunction* uFnReset = nullptr;
+
+	if (!uFnReset)
+	{
+		uFnReset = UFunction::FindFunction("Function ProjectX.ServerExploitManager_X.Reset");
+	}
+
+	UServerExploitManager_X_execReset_Params Reset_Params;
+	memset(&Reset_Params, 0, sizeof(Reset_Params));
+
+	this->ProcessEvent(uFnReset, &Reset_Params, nullptr);
+};
+
+// Function ProjectX.ServerExploitManager_X.Report
+// [0x00024003] (FUNC_Final | FUNC_Defined | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
+// struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
+// EExploitType                   Reason                         (CPF_Parm)
+// class FString                  Data                           (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
+
+void UServerExploitManager_X::Report(struct FUniqueNetId PlayerID, EExploitType Reason, class FString Data)
+{
+	static UFunction* uFnReport = nullptr;
+
+	if (!uFnReport)
+	{
+		uFnReport = UFunction::FindFunction("Function ProjectX.ServerExploitManager_X.Report");
+	}
+
+	UServerExploitManager_X_execReport_Params Report_Params;
+	memset(&Report_Params, 0, sizeof(Report_Params));
+	memcpy_s(&Report_Params.PlayerID, sizeof(Report_Params.PlayerID), &PlayerID, sizeof(PlayerID));
+	memcpy_s(&Report_Params.Reason, sizeof(Report_Params.Reason), &Reason, sizeof(Reason));
+	memcpy_s(&Report_Params.Data, sizeof(Report_Params.Data), &Data, sizeof(Data));
+
+	this->ProcessEvent(uFnReport, &Report_Params, nullptr);
+};
+
+// Function ProjectX.ServerExploitManager_X.SetDedicatedServer
+// [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
+// class UOnlineGameDedicatedServer_X* InServer                       (CPF_Parm)
+
+void UServerExploitManager_X::SetDedicatedServer(class UOnlineGameDedicatedServer_X* InServer)
+{
+	static UFunction* uFnSetDedicatedServer = nullptr;
+
+	if (!uFnSetDedicatedServer)
+	{
+		uFnSetDedicatedServer = UFunction::FindFunction("Function ProjectX.ServerExploitManager_X.SetDedicatedServer");
+	}
+
+	UServerExploitManager_X_execSetDedicatedServer_Params SetDedicatedServer_Params;
+	memset(&SetDedicatedServer_Params, 0, sizeof(SetDedicatedServer_Params));
+	memcpy_s(&SetDedicatedServer_Params.InServer, sizeof(SetDedicatedServer_Params.InServer), &InServer, sizeof(InServer));
+
+	this->ProcessEvent(uFnSetDedicatedServer, &SetDedicatedServer_Params, nullptr);
+};
+
+// Function ProjectX.ServerExploitManager_X.SubmitReport
+// [0x00120003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
+// Parameter Info:
+// struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
+// EExploitType                   Reason                         (CPF_Parm)
+// class FString                  Data                           (CPF_Parm | CPF_NeedCtorLink)
+
+void UServerExploitManager_X::SubmitReport(struct FUniqueNetId PlayerID, EExploitType Reason, class FString Data)
+{
+	static UFunction* uFnSubmitReport = nullptr;
+
+	if (!uFnSubmitReport)
+	{
+		uFnSubmitReport = UFunction::FindFunction("Function ProjectX.ServerExploitManager_X.SubmitReport");
+	}
+
+	UServerExploitManager_X_execSubmitReport_Params SubmitReport_Params;
+	memset(&SubmitReport_Params, 0, sizeof(SubmitReport_Params));
+	memcpy_s(&SubmitReport_Params.PlayerID, sizeof(SubmitReport_Params.PlayerID), &PlayerID, sizeof(PlayerID));
+	memcpy_s(&SubmitReport_Params.Reason, sizeof(SubmitReport_Params.Reason), &Reason, sizeof(Reason));
+	memcpy_s(&SubmitReport_Params.Data, sizeof(SubmitReport_Params.Data), &Data, sizeof(Data));
+
+	this->ProcessEvent(uFnSubmitReport, &SubmitReport_Params, nullptr);
+};
+
 // Function ProjectX.OnlinePlayerPermissions_X.HasPermission
 // [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
@@ -80807,6 +80979,129 @@ class URPC_RemovePlayerFromRole_X* URPC_RemovePlayerFromRole_X::SetRole(EOnlineP
 	this->ProcessEvent(uFnSetRole, &SetRole_Params, nullptr);
 
 	return SetRole_Params.ReturnValue;
+};
+
+// Function ProjectX.RPC_ReportExploiter_X.SetData
+// [0x00040003] (FUNC_Final | FUNC_Defined | FUNC_Private | FUNC_AllFlags)
+// Parameter Info:
+// class URPC_ReportExploiter_X*  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+// class FString                  InData                         (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
+
+class URPC_ReportExploiter_X* URPC_ReportExploiter_X::SetData(class FString InData)
+{
+	static UFunction* uFnSetData = nullptr;
+
+	if (!uFnSetData)
+	{
+		uFnSetData = UFunction::FindFunction("Function ProjectX.RPC_ReportExploiter_X.SetData");
+	}
+
+	URPC_ReportExploiter_X_execSetData_Params SetData_Params;
+	memset(&SetData_Params, 0, sizeof(SetData_Params));
+	memcpy_s(&SetData_Params.InData, sizeof(SetData_Params.InData), &InData, sizeof(InData));
+
+	this->ProcessEvent(uFnSetData, &SetData_Params, nullptr);
+
+	return SetData_Params.ReturnValue;
+};
+
+// Function ProjectX.RPC_ReportExploiter_X.SetMatchGUID
+// [0x00040003] (FUNC_Final | FUNC_Defined | FUNC_Private | FUNC_AllFlags)
+// Parameter Info:
+// class URPC_ReportExploiter_X*  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+// class FString                  InMatchGUID                    (CPF_Parm | CPF_NeedCtorLink)
+
+class URPC_ReportExploiter_X* URPC_ReportExploiter_X::SetMatchGUID(class FString InMatchGUID)
+{
+	static UFunction* uFnSetMatchGUID = nullptr;
+
+	if (!uFnSetMatchGUID)
+	{
+		uFnSetMatchGUID = UFunction::FindFunction("Function ProjectX.RPC_ReportExploiter_X.SetMatchGUID");
+	}
+
+	URPC_ReportExploiter_X_execSetMatchGUID_Params SetMatchGUID_Params;
+	memset(&SetMatchGUID_Params, 0, sizeof(SetMatchGUID_Params));
+	memcpy_s(&SetMatchGUID_Params.InMatchGUID, sizeof(SetMatchGUID_Params.InMatchGUID), &InMatchGUID, sizeof(InMatchGUID));
+
+	this->ProcessEvent(uFnSetMatchGUID, &SetMatchGUID_Params, nullptr);
+
+	return SetMatchGUID_Params.ReturnValue;
+};
+
+// Function ProjectX.RPC_ReportExploiter_X.SetReason
+// [0x00040003] (FUNC_Final | FUNC_Defined | FUNC_Private | FUNC_AllFlags)
+// Parameter Info:
+// class URPC_ReportExploiter_X*  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+// EExploitType                   InReason                       (CPF_Parm)
+
+class URPC_ReportExploiter_X* URPC_ReportExploiter_X::SetReason(EExploitType InReason)
+{
+	static UFunction* uFnSetReason = nullptr;
+
+	if (!uFnSetReason)
+	{
+		uFnSetReason = UFunction::FindFunction("Function ProjectX.RPC_ReportExploiter_X.SetReason");
+	}
+
+	URPC_ReportExploiter_X_execSetReason_Params SetReason_Params;
+	memset(&SetReason_Params, 0, sizeof(SetReason_Params));
+	memcpy_s(&SetReason_Params.InReason, sizeof(SetReason_Params.InReason), &InReason, sizeof(InReason));
+
+	this->ProcessEvent(uFnSetReason, &SetReason_Params, nullptr);
+
+	return SetReason_Params.ReturnValue;
+};
+
+// Function ProjectX.RPC_ReportExploiter_X.SetPlayerID
+// [0x00040003] (FUNC_Final | FUNC_Defined | FUNC_Private | FUNC_AllFlags)
+// Parameter Info:
+// class URPC_ReportExploiter_X*  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+// struct FUniqueNetId            InPlayerId                     (CPF_Parm | CPF_NeedCtorLink)
+
+class URPC_ReportExploiter_X* URPC_ReportExploiter_X::SetPlayerID(struct FUniqueNetId InPlayerId)
+{
+	static UFunction* uFnSetPlayerID = nullptr;
+
+	if (!uFnSetPlayerID)
+	{
+		uFnSetPlayerID = UFunction::FindFunction("Function ProjectX.RPC_ReportExploiter_X.SetPlayerID");
+	}
+
+	URPC_ReportExploiter_X_execSetPlayerID_Params SetPlayerID_Params;
+	memset(&SetPlayerID_Params, 0, sizeof(SetPlayerID_Params));
+	memcpy_s(&SetPlayerID_Params.InPlayerId, sizeof(SetPlayerID_Params.InPlayerId), &InPlayerId, sizeof(InPlayerId));
+
+	this->ProcessEvent(uFnSetPlayerID, &SetPlayerID_Params, nullptr);
+
+	return SetPlayerID_Params.ReturnValue;
+};
+
+// Function ProjectX.RPC_ReportExploiter_X.Send
+// [0x00026003] (FUNC_Final | FUNC_Defined | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
+// struct FUniqueNetId            InPlayerId                     (CPF_Parm | CPF_NeedCtorLink)
+// EExploitType                   InReason                       (CPF_Parm)
+// class FString                  InMatchGUID                    (CPF_Parm | CPF_NeedCtorLink)
+// class FString                  InData                         (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
+
+void URPC_ReportExploiter_X::Send(struct FUniqueNetId InPlayerId, EExploitType InReason, class FString InMatchGUID, class FString InData)
+{
+	static UFunction* uFnSend = nullptr;
+
+	if (!uFnSend)
+	{
+		uFnSend = UFunction::FindFunction("Function ProjectX.RPC_ReportExploiter_X.Send");
+	}
+
+	URPC_ReportExploiter_X_execSend_Params Send_Params;
+	memset(&Send_Params, 0, sizeof(Send_Params));
+	memcpy_s(&Send_Params.InPlayerId, sizeof(Send_Params.InPlayerId), &InPlayerId, sizeof(InPlayerId));
+	memcpy_s(&Send_Params.InReason, sizeof(Send_Params.InReason), &InReason, sizeof(InReason));
+	memcpy_s(&Send_Params.InMatchGUID, sizeof(Send_Params.InMatchGUID), &InMatchGUID, sizeof(InMatchGUID));
+	memcpy_s(&Send_Params.InData, sizeof(Send_Params.InData), &InData, sizeof(InData));
+
+	URPC_ReportExploiter_X::StaticClass()->ProcessEvent(uFnSend, &Send_Params, nullptr);
 };
 
 // Function ProjectX.RPC_ReportLowFPS_X.SetNumBots

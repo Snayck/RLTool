@@ -358,6 +358,9 @@
     <ClInclude Include="Modules\Mods\Drawing.hpp">
       <Filter>Modules\Mods</Filter>
     </ClInclude>
+    <ClInclude Include="Extensions\Extensions\XorStr.hpp">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="Detours\detours.lib">
