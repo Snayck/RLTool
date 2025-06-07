@@ -7,3 +7,4 @@
 #include "Components/Manager.hpp"
 #include "Components/GUI.hpp"
 #include "Components/Main.hpp"
+#include "Components/FunctionLogger.hpp"

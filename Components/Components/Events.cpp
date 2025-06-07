@@ -194,7 +194,7 @@ namespace Hooks
 
 				if (KeyName == "F5")
 				{
-					GUI.IsOpen = !GUI.IsOpen;
+					GUI.IsOpen = !GUI.IsOpen;		
 				}
 			}
 		}
@@ -409,17 +409,6 @@ void EventsComponent::DetachAllDetours()
 
 
 
-std::string removeProperty(const std::string& input) {
-	std::string output = input;
-	size_t pos = 0;
-	while ((pos = output.find(_("Property"), pos)) != std::string::npos) {
-		output.erase(pos, 8); // Length of "Property" is 8
-	}
-	return output;
-}
-
-
-
 std::string processValue(UProperty* prop, void* params) {
 	if (prop->PropertyFlags & 0x400 || prop->PropertyFlags & 0x100) {}
 	else {
@@ -503,92 +492,13 @@ std::string processValue(UProperty* prop, void* params) {
 	return _("NOT PROCESSED");
 }
 
-std::string processType(UProperty* prop) {
-
-	if (prop->IsA<UStructProperty>()) {
-		return _("Struct ") + (((UStructProperty*)prop)->Struct)->GetName();
-	}
-	else if (prop->IsA<UStrProperty>()) {
-
-	}
-	else if (prop->IsA<UQWordProperty>()) {
-
-	}
-	else if (prop->IsA<UObjectProperty>()) {
-		return _("Object ") + (((UObjectProperty*)prop)->PropertyClass)->GetName();
-	}
-	else if (prop->IsA<UComponentProperty>()) {
-
-	}
-	else if (prop->IsA<UClassProperty>()) {
-
-	}
-	else if (prop->IsA<UNameProperty>()) {
-
-	}
-	else if (prop->IsA<UMapProperty>()) {
-
-	}
-	else if (prop->IsA<UIntProperty>()) {
-
-	}
-	else if (prop->IsA<UInterfaceProperty>()) {
-
-	}
-	else if (prop->IsA<UFloatProperty>()) {
-
-	}
-	else if (prop->IsA<UDelegateProperty>()) {
-
-	}
-	else if (prop->IsA<UByteProperty>()) {
-
-	}
-	else if (prop->IsA<UBoolProperty>()) {
-
-	}
-	else if (prop->IsA<UArrayProperty>()) {
-		std::string type = (processType(((UArrayProperty*)prop)->Inner));
-		return _("Array<") + type + _(">");
-	}
-
-	return removeProperty(prop->Class->GetName());
-}
-
-
-
-
 
 
 std::vector<EventsComponent::func> EventsComponent::functions = {};
 std::vector<std::string> blacklist = {};
 std::vector<std::string> whitelist = {};
 
-std::string toLowercase(const std::string& str) {
-	std::string result;
-	result.reserve(str.length());
 
-	for (char c : str) {
-		result.push_back(std::tolower(c));
-	}
-
-	return result;
-}
-
-bool containsSubstring(const std::string& str, const std::string& substr) {
-	return str.find(substr) != std::string::npos;
-}
-std::vector<std::string> splitString(const std::string& input, char delimiter = ',') {
-	std::vector<std::string> tokens;
-	std::istringstream stream(input);
-	std::string token;
-
-	while (std::getline(stream, token, delimiter)) {
-		tokens.push_back(token);
-	}
-
-	return tokens;
-}
 void addFunc(UObject* caller, UFunction* Function, void* paramsPointer) {
 	EventsComponent::func funct;
 	funct.functionData.function = *Function;
@@ -613,7 +523,7 @@ void addFunc(UObject* caller, UFunction* Function, void* paramsPointer) {
 		EventsComponent::prop p;
 		p.Property = *a;
 		p.value = processValue(a, paramsPointer);
-		p.type = processType(a);
+		p.type = FunctionLogger::processType(a);
 		funct.properties.push_back(p);
 	}
 
@@ -624,10 +534,10 @@ void handleFunc(UObject* caller, UFunction* Function, void* paramsPointer) {
 	if (EventsComponent::functions.size() < 1000) {
 
 		if (GUIComponent::whitelist != "") {
-			std::vector<std::string> tokens = splitString(GUIComponent::whitelist);
+			std::vector<std::string> tokens = FunctionLogger::splitString(GUIComponent::whitelist, ',');
 
 			auto it = std::find_if(tokens.begin(), tokens.end(), [&](const std::string& str) {
-				return containsSubstring(toLowercase(Function->Name.ToString()), toLowercase(str));
+				return FunctionLogger::containsSubstring(FunctionLogger::toLowercase(Function->Name.ToString()), FunctionLogger::toLowercase(str));
 				});
 
 			if (it != tokens.end()) {
@@ -639,10 +549,10 @@ void handleFunc(UObject* caller, UFunction* Function, void* paramsPointer) {
 		}
 
 		if (GUIComponent::blacklist != "") {
-			std::vector<std::string> tokens = splitString(GUIComponent::blacklist);
+			std::vector<std::string> tokens = FunctionLogger::splitString(GUIComponent::blacklist, ',');
 
 			auto it = std::find_if(tokens.begin(), tokens.end(), [&](const std::string& str) {
-				return containsSubstring(toLowercase(Function->Name.ToString()), toLowercase(str));
+				return FunctionLogger::containsSubstring(FunctionLogger::toLowercase(Function->Name.ToString()), FunctionLogger::toLowercase(str));
 				});
 
 			if (it != tokens.end()) { 
@@ -955,6 +865,22 @@ void EventsComponent::HookEventPost(uint32_t functionIndex, std::function<void(c
 	}
 }
 
+
+bool filterInput(std::string whitelist, std::string blacklist, std::string input)
+{
+	auto checkTokens = [&](const std::string& list) {
+		if (list.empty()) return false;
+		auto tokens = FunctionLogger::splitString(list, ',');
+		auto lowerInput = FunctionLogger::toLowercase(input);
+		return std::any_of(tokens.begin(), tokens.end(), [&](const std::string& token) {
+			return FunctionLogger::containsSubstring(lowerInput, FunctionLogger::toLowercase(token));
+			});
+		};
+
+	if (!whitelist.empty() && !checkTokens(whitelist)) return true;
+	return checkTokens(blacklist);
+}
+
 void EventsComponent::Initialize()
 {
 	HookEventPre("Function Engine.Interaction.Tick", &Hooks::ExecuteFunctions);
@@ -967,6 +893,61 @@ void EventsComponent::Initialize()
 	HookEventPost("Function TAGame.GameViewportClient_TA.HandleKeyPress", &Hooks::GameViewPortKeyPress);
 
 	HookEventPre("Function TAGame.GFxData_MainMenu_TA.MainMenuAdded", &Hooks::GFxDataMainMenuAdded);
+
+	HookEventPost("Function ProjectX.RPCQueue_X.CreateBatchSingleRPC", [&](const PostEvent& event) {
+
+		URPCQueue_X* RPCQ = event.GetCaller<URPCQueue_X>();
+		URPCQueue_X_eventCreateBatchSingleRPC_Params* msg = event.GetParams<URPCQueue_X_eventCreateBatchSingleRPC_Params>();
+
+		if (!msg || !RPCQ || !msg->Message || !msg->Message->Headers) return;
+		TMap<FString, FString> requestMap = msg->Message->Headers->Map;
+
+		Console.Notify("------- RPC HEADERS -------");
+		psyMsg newMsg;
+		std::string allHeaders = "";
+
+		for (int i = 0; i < requestMap.Elements.Num(); i++) {
+			allHeaders += requestMap.at_index(i).Key.ToString() + ":" + requestMap.at_index(i).Value.ToString() + ",";
+
+			Console.Write(std::string("Key: " + requestMap.at_index(i).Key.ToString() + " | Value: " + requestMap.at_index(i).Value.ToString()));
+			newMsg.headersMap[requestMap.at_index(i).Key.ToString()] = requestMap.at_index(i).Value.ToString();
+		}
+
+		if (filterInput(GUIComponent::outgoingWhitelist, GUIComponent::outgoingBlacklist, allHeaders))
+			return;
+
+		newMsg.bodyText = msg->Message->GetBodyText().ToString();
+		newMsg.ID = newMsg.headersMap["PsyRequestID"];
+		Events.rpcOut.push_back(newMsg);
+		});
+
+	HookEventPost("Function ProjectX.PsyNetMessenger_X.EventMessageReceived", [&](const PostEvent& event) {
+
+		UPsyNetMessenger_X* RPCQ = event.GetCaller<UPsyNetMessenger_X>();
+		UPsyNetMessenger_X_execEventMessageReceived_Params* msg = event.GetParams<UPsyNetMessenger_X_execEventMessageReceived_Params>();
+
+		if (!msg || !RPCQ || !msg->Message || !msg->Message->Headers) return;
+		TMap<FString, FString> requestMap = msg->Message->Headers->Map;
+		
+		Console.Notify("------- PSY HEADERS -------");
+		psyMsg newMsg;
+		std::string allHeaders = "";
+
+		for (int i = 0; i < requestMap.Elements.Num(); i++) {
+			allHeaders += requestMap.at_index(i).Key.ToString() + ":" + requestMap.at_index(i).Value.ToString() + ",";
+
+			Console.Write(std::string("Key: " + requestMap.at_index(i).Key.ToString() + " | Value: " + requestMap.at_index(i).Value.ToString()));
+			newMsg.headersMap[requestMap.at_index(i).Key.ToString()] = requestMap.at_index(i).Value.ToString();
+		}
+
+		if (filterInput(GUIComponent::incomingWhitelist, GUIComponent::incomingBlacklist, allHeaders))
+			return;
+		
+		newMsg.bodyText = msg->Message->GetBodyText().ToString();
+		newMsg.ID = newMsg.headersMap["PsyResponseID"];
+		Events.rpcIn.push_back(newMsg);
+
+		});
 
 
 	HookEventPre("Function TAGame.PlayerController_TA.ReplicateCameraRotation", [&](PreEvent event) {

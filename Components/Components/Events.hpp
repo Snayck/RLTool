@@ -151,6 +151,18 @@ public:
 	};
 
 	static std::vector<func> functions;
+
+	struct psyMsg {
+		std::unordered_map<std::string, std::string> headersMap;
+		std::string bodyText;
+
+		std::string ID;
+	};
+
+	//std::unordered_map<std::string, std::pair<psyMsg, psyMsg>> linkedMessages;
+
+	std::vector<psyMsg> rpcOut = {};
+	std::vector<psyMsg> rpcIn = {};
 };
 
 extern class EventsComponent Events;

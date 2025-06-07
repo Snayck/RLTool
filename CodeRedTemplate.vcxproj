@@ -162,6 +162,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Components\Component.cpp" />
+    <ClCompile Include="Components\Components\FunctionLogger.cpp" />
     <ClCompile Include="Components\Components\Main.cpp" />
     <ClCompile Include="Components\Components\Console.cpp" />
     <ClCompile Include="Components\Components\Core.cpp" />
@@ -199,9 +200,11 @@
     <ClCompile Include="RLSDK\SDK_HEADERS\TAGame_classes.cpp" />
     <ClCompile Include="RLSDK\SDK_HEADERS\WinDrv_classes.cpp" />
     <ClCompile Include="RLSDK\SDK_HEADERS\XAudio2_classes.cpp" />
+    <ClCompile Include="Extensions\Extensions\VEH.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Components\Component.hpp" />
+    <ClInclude Include="Components\Components\FunctionLogger.hpp" />
     <ClInclude Include="Components\Components\Main.hpp" />
     <ClInclude Include="Components\Components\Console.hpp" />
     <ClInclude Include="Components\Components\Core.hpp" />
@@ -268,6 +271,7 @@
     <ClInclude Include="RLSDK\SDK_HEADERS\XAudio2_classes.hpp" />
     <ClInclude Include="RLSDK\SDK_HEADERS\XAudio2_parameters.hpp" />
     <ClInclude Include="RLSDK\SDK_HEADERS\XAudio2_structs.hpp" />
+    <ClInclude Include="Extensions\Extensions\VEH.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Detours\detours.lib" />

@@ -28,15 +28,32 @@ uintptr_t CoreComponent::GetGObjects() {
 	HANDLE CurrentBaseHandle = GetCurrentProcess();
 
 	BYTE Bytes[4];
-	uintptr_t Pattern;
+	uintptr_t offset;
+	//E8 ?? ?? ?? ?? 8B 5D BF 48
+	offset = Memory::FindPattern(GetModuleHandleW(NULL), (const unsigned char*)"\xE8\x00\x00\x00\x00\x8B\x5D\xBF\x48", "x????xxxx");
 
-	Pattern = Memory::FindPattern(GetModuleHandleW(NULL), (const unsigned char*)"\xE8\x00\x00\x00\x00\x8B\x5D\xAF", "x????xxx") + 1;
-	ReadProcessMemory(CurrentBaseHandle, (LPCVOID)Pattern, Bytes, sizeof(Bytes), NULL);
-	Pattern += Memory::BytesToInt32(Bytes, 0) + 0x69;
-	ReadProcessMemory(CurrentBaseHandle, (LPCVOID)(Pattern + 3), Bytes, sizeof(Bytes), NULL);
-	Pattern += Memory::BytesToInt32(Bytes, 0) + 7;
+	// Offset to memory portion to read of the instruction.
+	offset += 0x01;
 
-	return Pattern;
+	// Offset to add
+	offset += *reinterpret_cast<int*>(offset);
+
+	// Add additional 0x04 (size of the  previous int we read)
+	offset += 0x04;
+
+	// Offset to pointer from pattern.
+	offset += 0x65;
+
+	// Offset to memory portion to read of the instruction.
+	offset += 0x3;
+
+	// Offset to add
+	offset += *reinterpret_cast<int*>(offset);
+
+	// Add additional 0x04 (size of the  previous int we read)
+	offset += 0x04;
+
+	return offset;
 }
 
 uintptr_t CoreComponent::GetGNames() {

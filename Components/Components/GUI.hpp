@@ -24,6 +24,12 @@ public:
 	static std::string whitelist;
 	static std::string blacklist;
 
+	static std::string outgoingWhitelist;
+	static std::string outgoingBlacklist;
+
+	static std::string incomingWhitelist;
+	static std::string incomingBlacklist;
+
 	int DisplayX;
 	int DisplayY;
 

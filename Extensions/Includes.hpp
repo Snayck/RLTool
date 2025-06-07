@@ -5,3 +5,4 @@
 #include "Extensions/Memory.hpp"
 #include "Extensions/UnrealMemory.hpp"
 #include "Extensions/XorStr.hpp"
+#include "Extensions/VEH.hpp"
