@@ -1,18 +1,16 @@
 #include "GameState.hpp"
 #include "../Includes.hpp"
 
-GameStateComponent::GameStateComponent() : Component("GameState", "Tracks which game state the player is currently in.") { OnCreate(); }
+GameStateComponent::GameStateComponent() : Component(_("GameState"), _("Tracks which game state the player is currently in.")) { OnCreate(); }
 
 GameStateComponent::~GameStateComponent() { OnDestroy(); }
 
 void GameStateComponent::OnCreate()
 {
-	StateLabelMap.emplace(States::STATES_Unknown, "Unknown");
-	StateLabelMap.emplace(States::STATES_MainMenu, "MainMenu");
-	StateLabelMap.emplace(States::STATES_Trading, "Trading");
-	StateLabelMap.emplace(States::STATES_CasualMatch, "CasualMatch");
-	StateLabelMap.emplace(States::STATES_RankedMatch, "RankedMatch");
-	StateLabelMap.emplace(States::STATES_All, "All");
+	StateLabelMap.emplace(States::STATES_Unknown, _("Unknown"));
+	StateLabelMap.emplace(States::STATES_MainMenu, _("MainMenu"));
+	StateLabelMap.emplace(States::STATES_InGame, _("InGame"));
+	StateLabelMap.emplace(States::STATES_All, _("All"));
 }
 
 void GameStateComponent::OnDestroy() {}
@@ -44,7 +42,7 @@ void GameStateComponent::SetState(States state)
 
 bool GameStateComponent::IsInGame() const
 {
-	if ((GetRawState() & States::STATES_CasualMatch) || (GetRawState() & States::STATES_RankedMatch))
+	if ((GetRawState() & States::STATES_InGame))
 	{
 		return true;
 	}
@@ -57,4 +55,4 @@ void GameStateComponent::MainMenuAdded()
 	CurrentState = States::STATES_MainMenu;
 }
 
-class GameStateComponent GameState{};
+class GameStateComponent GameState {};

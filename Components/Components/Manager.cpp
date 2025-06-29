@@ -73,7 +73,7 @@ bool Setting::InRange(const std::string& sValue) const
 	{
 		if (GetType() == SettingTypes::TYPE_BOOL)
 		{
-			return (sValue == "0" || sValue == "false" || sValue == "1" || sValue == "true");
+			return (sValue == _("0") || sValue == _("false") || sValue == _("1") || sValue == _("true"));
 		}
 		else if (GetType() == SettingTypes::TYPE_INT)
 		{
@@ -136,9 +136,9 @@ bool Setting::IsValueValid(const std::string& sValue) const
 {
 	if (GetType() == SettingTypes::TYPE_BOOL)
 	{
-		if (!(sValue == "1" || sValue == "true" || sValue == "0" || sValue == "false"))
+		if (!(sValue == _("1") || sValue == _("true") || sValue == _("0") || sValue == _("false")))
 		{
-			Console.Warning("[Setting] (" + GetName() + ") Warning: Input is invalid, this setting only supports true or false values.");
+			Console.Warning(_("[Setting] (") + GetName() + _(") Warning: Input is invalid, this setting only supports true or false values."));
 			return false;
 		}
 	}
@@ -146,7 +146,7 @@ bool Setting::IsValueValid(const std::string& sValue) const
 	{
 		if (!Format::IsStringFloat(sValue))
 		{
-			Console.Warning("[Setting] (" + GetName() + ") Warning: Input is invalid, this setting only supports floating point numbers or 32 bit integer values.");
+			Console.Warning(_("[Setting] (") + GetName() + _(") Warning: Input is invalid, this setting only supports floating point numbers or 32 bit integer values."));
 			return false;
 		}
 	}
@@ -154,7 +154,7 @@ bool Setting::IsValueValid(const std::string& sValue) const
 	{
 		if (!Format::IsStringFloat(sValue))
 		{
-			Console.Warning("[Setting] (" + GetName() + ") Warning: Input is invalid, this setting only supports floating point numbers or optionally 32 bit integer values.");
+			Console.Warning(_("[Setting] (") + GetName() + _(") Warning: Input is invalid, this setting only supports floating point numbers or optionally 32 bit integer values."));
 			return false;
 		}
 	}
@@ -172,7 +172,7 @@ bool Setting::IsValueValid(const std::string& sValue) const
 			}
 		}
 
-		Console.Warning("[Setting] (" + GetName() + ") Warning: Input is invalid, this setting only supports RGBA hexadecimal values (alpha value optional).");
+		Console.Warning(_("[Setting] (") + GetName() + _(") Warning: Input is invalid, this setting only supports RGBA hexadecimal values (alpha value optional)."));
 		return false;
 	}
 	else if (GetType() == SettingTypes::TYPE_ROTATOR)
@@ -187,7 +187,7 @@ bool Setting::IsValueValid(const std::string& sValue) const
 			}
 		}
 
-		Console.Warning("[Setting] (" + GetName() + ") Warning: Input is invalid, this setting only supports three 32 bit integer values.");
+		Console.Warning(_("[Setting] (") + GetName() + _(") Warning: Input is invalid, this setting only supports three 32 bit integer values."));
 		return false;
 	}
 	else if (GetType() == SettingTypes::TYPE_VECTOR_3D)
@@ -202,7 +202,7 @@ bool Setting::IsValueValid(const std::string& sValue) const
 			}
 		}
 
-		Console.Warning("[Setting] (" + GetName() + ") Warning: Input is invalid, this setting only supports three floating point numbers or optionally 32 bit integer values.");
+		Console.Warning(_("[Setting] (") + GetName() + _(") Warning: Input is invalid, this setting only supports three floating point numbers or optionally 32 bit integer values."));
 		return false;
 	}
 	else if (GetType() == SettingTypes::TYPE_VECTOR_2D)
@@ -217,7 +217,7 @@ bool Setting::IsValueValid(const std::string& sValue) const
 			}
 		}
 
-		Console.Warning("[Setting] (" + GetName() + ") Warning: Input is invalid, this setting only supports two floating point numbers or optionally 32 bit integer values.");
+		Console.Warning(_("[Setting] (") + GetName() + _(") Warning: Input is invalid, this setting only supports two floating point numbers or optionally 32 bit integer values."));
 		return false;
 	}
 
@@ -263,7 +263,7 @@ bool Setting::GetBoolValue() const
 {
 	if (GetType() == SettingTypes::TYPE_BOOL)
 	{
-		if ((GetStringValue() == "true") || (GetStringValue() == "1"))
+		if ((GetStringValue() == _("true")) || (GetStringValue() == _("1")))
 		{
 			return true;
 		}
@@ -370,13 +370,13 @@ Setting* Setting::SetStringValue(const std::string& sValue, ThreadTypes thread)
 		{
 			if (GetType() == SettingTypes::TYPE_BOOL)
 			{
-				if (sValue == "1" || sValue == "true")
+				if (sValue == _("1") || sValue == _("true"))
 				{
-					CurrentValue = "true";
+					CurrentValue = _("true");
 				}
 				else
 				{
-					CurrentValue = "false";
+					CurrentValue = _("false");
 				}
 			}
 			else
@@ -388,7 +388,7 @@ Setting* Setting::SetStringValue(const std::string& sValue, ThreadTypes thread)
 		}
 		else
 		{
-			Console.Warning("[Setting] (" + GetName() + ") Warning: Input is out of range, this setting has a minimum value of \"" + Range.first + "\" and a maximum value of \"" + Range.second + "\".");
+			Console.Warning(_("[Setting] (") + GetName() + _(") Warning: Input is out of range, this setting has a minimum value of \"") + Range.first + _("\" and a maximum value of \"") + Range.second + _("\"."));
 		}
 	}
 
@@ -403,7 +403,7 @@ Setting* Setting::SetIntValue(int32_t iValue, ThreadTypes thread)
 
 Setting* Setting::SetBoolValue(bool bValue, ThreadTypes thread)
 {
-	SetStringValue((bValue ? "true" : "false"), thread);
+	SetStringValue((bValue ? _("true") : _("false")), thread);
 	return this;
 }
 
@@ -427,31 +427,31 @@ Setting* Setting::SetLinearValue(const LinearColor& lValue, ThreadTypes thread)
 
 Setting* Setting::SetRotatorValue(const Rotator& rValue, ThreadTypes thread)
 {
-	SetStringValue(std::to_string(rValue.Pitch) + " " + std::to_string(rValue.Yaw) + " " + std::to_string(rValue.Roll), thread);
+	SetStringValue(std::to_string(rValue.Pitch) + _(" ") + std::to_string(rValue.Yaw) + _(" ") + std::to_string(rValue.Roll), thread);
 	return this;
 }
 
 Setting* Setting::SetVectorFValue(const VectorF& vfValue, ThreadTypes thread)
 {
-	SetStringValue(std::to_string(vfValue.X) + " " + std::to_string(vfValue.Y) + " " + std::to_string(vfValue.Z), thread);
+	SetStringValue(std::to_string(vfValue.X) + _(" ") + std::to_string(vfValue.Y) + _(" ") + std::to_string(vfValue.Z), thread);
 	return this;
 }
 
 Setting* Setting::SetVectorIValue(const VectorI& viValue, ThreadTypes thread)
 {
-	SetStringValue(std::to_string(viValue.X) + " " + std::to_string(viValue.Y) + " " + std::to_string(viValue.Z), thread);
+	SetStringValue(std::to_string(viValue.X) + _(" ") + std::to_string(viValue.Y) + _(" ") + std::to_string(viValue.Z), thread);
 	return this;
 }
 
 Setting* Setting::SetVector2DFValue(const Vector2DF& vfValue, ThreadTypes thread)
 {
-	SetStringValue(std::to_string(vfValue.X) + " " + std::to_string(vfValue.Y), thread);
+	SetStringValue(std::to_string(vfValue.X) + _(" ") + std::to_string(vfValue.Y), thread);
 	return this;
 }
 
 Setting* Setting::SetVector2DIValue(const Vector2DI& viValue, ThreadTypes thread)
 {
-	SetStringValue(std::to_string(viValue.X) + " " + std::to_string(viValue.Y), thread);
+	SetStringValue(std::to_string(viValue.X) + _(" ") + std::to_string(viValue.Y), thread);
 	return this;
 }
 
@@ -482,31 +482,31 @@ Setting* Setting::SetFloatRange(float minValue, float maxValue)
 
 Setting* Setting::SetRotatorRange(const Rotator& minValue, const Rotator& maxValue)
 {
-	SetStringRange(std::to_string(minValue.Pitch) + " " + std::to_string(minValue.Yaw) + " " + std::to_string(minValue.Roll), std::to_string(maxValue.Pitch) + " " + std::to_string(maxValue.Yaw) + " " + std::to_string(maxValue.Roll));
+	SetStringRange(std::to_string(minValue.Pitch) + _(" ") + std::to_string(minValue.Yaw) + _(" ") + std::to_string(minValue.Roll), std::to_string(maxValue.Pitch) + _(" ") + std::to_string(maxValue.Yaw) + _(" ") + std::to_string(maxValue.Roll));
 	return this;
 }
 
 Setting* Setting::SetVectorFRange(const VectorF& minValue, const VectorF& maxValue)
 {
-	SetStringRange(std::to_string(minValue.X) + " " + std::to_string(minValue.Y) + " " + std::to_string(minValue.Z), std::to_string(maxValue.X) + " " + std::to_string(maxValue.Y) + " " + std::to_string(maxValue.Z));
+	SetStringRange(std::to_string(minValue.X) + _(" ") + std::to_string(minValue.Y) + _(" ") + std::to_string(minValue.Z), std::to_string(maxValue.X) + _(" ") + std::to_string(maxValue.Y) + _(" ") + std::to_string(maxValue.Z));
 	return this;
 }
 
 Setting* Setting::SetVectorIRange(const VectorI& minValue, const VectorI& maxValue)
 {
-	SetStringRange(std::to_string(minValue.X) + " " + std::to_string(minValue.Y) + " " + std::to_string(minValue.Z), std::to_string(maxValue.X) + " " + std::to_string(maxValue.Y) + " " + std::to_string(maxValue.Z));
+	SetStringRange(std::to_string(minValue.X) + _(" ") + std::to_string(minValue.Y) + _(" ") + std::to_string(minValue.Z), std::to_string(maxValue.X) + _(" ") + std::to_string(maxValue.Y) + _(" ") + std::to_string(maxValue.Z));
 	return this;
 }
 
 Setting* Setting::SetVector2DFRange(const Vector2DF& minValue, const Vector2DF& maxValue)
 {
-	SetStringRange(std::to_string(minValue.X) + " " + std::to_string(minValue.Y), std::to_string(maxValue.X) + " " + std::to_string(maxValue.Y));
+	SetStringRange(std::to_string(minValue.X) + _(" ") + std::to_string(minValue.Y), std::to_string(maxValue.X) + _(" ") + std::to_string(maxValue.Y));
 	return this;
 }
 
 Setting* Setting::SetVector2DIRange(const Vector2DI& minValue, const Vector2DI& maxValue)
 {
-	SetStringRange(std::to_string(minValue.X) + " " + std::to_string(minValue.Y), std::to_string(maxValue.X) + " " + std::to_string(maxValue.Y));
+	SetStringRange(std::to_string(minValue.X) + _(" ") + std::to_string(minValue.Y), std::to_string(maxValue.X) + _(" ") + std::to_string(maxValue.Y));
 	return this;
 }
 
@@ -721,7 +721,7 @@ void Command::TriggerCallback() const
 	}
 	else
 	{
-		Console.Warning("[Command] (" + GetName() + ") Warning: Unbound callback triggered!");
+		Console.Warning(_("[Command] (") + GetName() + _(") Warning: Unbound callback triggered!"));
 	}
 }
 
@@ -733,7 +733,7 @@ void Command::TriggerCallback(const std::string& arguments) const
 	}
 	else
 	{
-		Console.Warning("[Command] (" + GetName() + ") Warning: Unbound argument callback triggered!");
+		Console.Warning(_("[Command] (") + GetName() + _(") Warning: Unbound argument callback triggered!"));
 	}
 }
 
@@ -816,7 +816,7 @@ QueueData& QueueData::operator=(const QueueData& queueData)
 	return *this;
 }
 
-ManagerComponent::ManagerComponent() : Component("Manager", "Manages settings, commands, and mods.") { OnCreate(); }
+ManagerComponent::ManagerComponent() : Component(_("Manager"), _("Manages settings, commands, and mods.")) { OnCreate(); }
 
 ManagerComponent::~ManagerComponent() { OnDestroy(); }
 
@@ -840,14 +840,14 @@ void ManagerComponent::UnrealCommand(const std::string& unrealCommand, bool bLog
 
 	if (defaultActor)
 	{
-		if (unrealCommand.find("unreal_command") == 0)
+		if (unrealCommand.find(_("unreal_command")) == 0)
 		{
 			std::string formattedCommand = unrealCommand;
 			formattedCommand.erase(0, 15);
 
 			if (bLogToConsole)
 			{
-				Console.Write(GetNameFormatted() + "Executing unreal command \"" + formattedCommand + "\".");
+				Console.Write(GetNameFormatted() + _("Executing unreal command \"") + formattedCommand + _("\"."));
 			}
 
 			defaultActor->ConsoleCommand(Format::ToFString(formattedCommand), 1);
@@ -856,7 +856,7 @@ void ManagerComponent::UnrealCommand(const std::string& unrealCommand, bool bLog
 		{
 			if (bLogToConsole)
 			{
-				Console.Write(GetNameFormatted() + "Executing unreal command \"" + unrealCommand + "\".");
+				Console.Write(GetNameFormatted() + _("Executing unreal command \"") + unrealCommand + _("\"."));
 			}
 
 			defaultActor->ConsoleCommand(Format::ToFString(unrealCommand), 1);
@@ -889,12 +889,12 @@ std::pair<CommandTypes, std::string> ManagerComponent::InternalCommand(const Que
 				}
 				else
 				{
-					return std::make_pair(CommandTypes::TYPE_EMPTY_ARGUMENTS, "");
+					return std::make_pair(CommandTypes::TYPE_EMPTY_ARGUMENTS, _(""));
 				}
 			}
 			else
 			{
-				return std::make_pair(CommandTypes::TYPE_INVALID_ARGUMENTS, "");
+				return std::make_pair(CommandTypes::TYPE_INVALID_ARGUMENTS, _(""));
 			}
 		}
 		else
@@ -911,17 +911,17 @@ std::pair<CommandTypes, std::string> ManagerComponent::InternalCommand(const Que
 				}
 				else
 				{
-					return std::make_pair(CommandTypes::TYPE_PRINT_SETTING, "");
+					return std::make_pair(CommandTypes::TYPE_PRINT_SETTING, _(""));
 				}
 			}
 			else
 			{
-				return std::make_pair(CommandTypes::TYPE_UNRECOGNIZED, "");
+				return std::make_pair(CommandTypes::TYPE_UNRECOGNIZED, _(""));
 			}
 		}
 	}
 
-	return std::make_pair(CommandTypes::TYPE_NONE, "");
+	return std::make_pair(CommandTypes::TYPE_NONE, _(""));
 }
 
 std::pair<CommandTypes, std::string> ManagerComponent::InternalCommand(const std::string& command, const std::string& arguments, ThreadTypes thread)
@@ -931,7 +931,7 @@ std::pair<CommandTypes, std::string> ManagerComponent::InternalCommand(const std
 
 std::pair<CommandTypes, std::string> ManagerComponent::InternalCommand(const std::string& command, ThreadTypes thread)
 {
-	return InternalCommand(command, "", thread);
+	return InternalCommand(command, _(""), thread);
 }
 
 void ManagerComponent::ConsoleCommand(const QueueData& queueData, ThreadTypes thread)
@@ -948,15 +948,15 @@ void ManagerComponent::ConsoleCommand(const QueueData& queueData, ThreadTypes th
 		{
 			if (returnType.first == CommandTypes::TYPE_UNRECOGNIZED)
 			{
-				Console.Error(GetNameFormatted() + "Unrecognized command or setting: \"" + queueData.Command + "\".");
+				Console.Error(GetNameFormatted() + _("Unrecognized command or setting: \"") + queueData.Command + _("\"."));
 			}
 			else if (returnType.first == CommandTypes::TYPE_EMPTY_ARGUMENTS)
 			{
-				Console.Error(GetNameFormatted() + "Invalid arguments provided for: \"" + queueData.Command + "\".");
+				Console.Error(GetNameFormatted() + _("Invalid arguments provided for: \"") + queueData.Command + _("\"."));
 			}
 			else if (returnType.first == CommandTypes::TYPE_INVALID_ARGUMENTS)
 			{
-				Console.Error(GetNameFormatted() + "Arguments are not supported for: \"" + queueData.Command + "\".");
+				Console.Error(GetNameFormatted() + _("Arguments are not supported for: \"") + queueData.Command + _("\"."));
 			}
 			else if (returnType.first == CommandTypes::TYPE_MODIFY_SETTING)
 			{
@@ -964,7 +964,7 @@ void ManagerComponent::ConsoleCommand(const QueueData& queueData, ThreadTypes th
 
 				if (consoleSetting)
 				{
-					Console.Notify(GetNameFormatted() + consoleSetting->GetName() + ": " + returnType.second + " -> " + consoleSetting->GetStringValue());
+					Console.Notify(GetNameFormatted() + consoleSetting->GetName() + _(": ") + returnType.second + _(" -> ") + consoleSetting->GetStringValue());
 				}
 			}
 			else if (returnType.first == CommandTypes::TYPE_PRINT_SETTING)
@@ -974,8 +974,8 @@ void ManagerComponent::ConsoleCommand(const QueueData& queueData, ThreadTypes th
 				if (consoleSetting)
 				{
 					Console.Notify(GetNameFormatted() + consoleSetting->GetName());
-					Console.Notify(GetNameFormatted() + "Description: " + consoleSetting->GetDescription());
-					Console.Notify(GetNameFormatted() + "Current Value: " + consoleSetting->GetStringValue());
+					Console.Notify(GetNameFormatted() + _("Description: ") + consoleSetting->GetDescription());
+					Console.Notify(GetNameFormatted() + _("Current Value: ") + consoleSetting->GetStringValue());
 				}
 			}
 		}
@@ -989,7 +989,7 @@ void ManagerComponent::ConsoleCommand(const std::string& command, const std::str
 
 void ManagerComponent::ConsoleCommand(const std::string& command, ThreadTypes thread)
 {
-	ConsoleCommand(command, "", thread);
+	ConsoleCommand(command, _(""), thread);
 }
 
 void ManagerComponent::AsyncCommand(const std::string& command, const std::string& arguments, uint64_t delay, ThreadTypes thread)
@@ -999,7 +999,7 @@ void ManagerComponent::AsyncCommand(const std::string& command, const std::strin
 
 void ManagerComponent::AsyncCommand(const std::string& command, uint64_t delay, ThreadTypes thread)
 {
-	ConsoleCommand(QueueData(command, "", false, delay), thread);
+	ConsoleCommand(QueueData(command, _(""), false, delay), thread);
 }
 
 void ManagerComponent::OnTick()
@@ -1059,17 +1059,17 @@ void ManagerComponent::ResetSetting(const std::string& settingName, bool bLogToC
 
 		if (bLogToConsole)
 		{
-			Console.Notify("[Manager Component] Reset setting to its default value!");
-			Console.Notify("[Manager Component] Name: " + setting->GetName());
-			Console.Notify("[Manager Component] Description: " + setting->GetDescription());
-			Console.Notify("[Manager Component] Current Value: " + setting->GetStringValue());
+			Console.Notify(_("[Manager Component] Reset setting to its default value!"));
+			Console.Notify(_("[Manager Component] Name: ") + setting->GetName());
+			Console.Notify(_("[Manager Component] Description: ") + setting->GetDescription());
+			Console.Notify(_("[Manager Component] Current Value: ") + setting->GetStringValue());
 		}
 	}
 	else
 	{
 		if (bLogToConsole)
 		{
-			Console.Error("[Manager Component] Unrecognized setting: \"" + settingName + "\"");
+			Console.Error(_("[Manager Component] Unrecognized setting: \"") + settingName + _("\""));
 		}
 	}
 }
@@ -1085,21 +1085,19 @@ void ManagerComponent::PrintModule(const std::string& moduleName)
 		std::string allowedStates;
 
 		// Again, these states will all be game specific, please check ou the "GameState.hpp" file for more info.
-		if (states & States::STATES_MainMenu) { allowedStates += (first ? "(" : " | ") + std::string("MainMenu"); first = false; }
-		if (states & States::STATES_Trading) { allowedStates += (first ? "(" : " | ") + std::string("Trading"); first = false; }
-		if (states & States::STATES_CasualMatch) { allowedStates += (first ? "(" : " | ") + std::string("CasualMatch"); first = false; }
-		if (states & States::STATES_RankedMatch) { allowedStates += (first ? "(" : " | ") + std::string("RankedMatch"); first = false; }
-		if (states & States::STATES_All) { allowedStates += (first ? "(" : " | ") + std::string("All"); first = false; }
+		if (states & States::STATES_MainMenu) { allowedStates += (first ? _("(") : _(" | ")) + std::string(_("MainMenu")); first = false; }
+		if (states & States::STATES_InGame) { allowedStates += (first ? _("(") : _(" | ")) + std::string(_("InGame")); first = false; }
+		if (states & States::STATES_All) { allowedStates += (first ? _("(") : _(" | ")) + std::string(_("All")); first = false; }
 
 		if (!first)
 		{
-			allowedStates += ")";
+			allowedStates += _(")");
 		}
 
-		Console.Notify("[Manager Component] Module Name: " + mod->GetName());
-		Console.Notify("[Manager Component] Module Description: " + mod->GetDescription());
-		Console.Notify("[Manager Component] Allowed States/Permissions: " + allowedStates);
-		Console.Notify("[Manager Component] Allowed In Current State: " + std::string((mod->IsAllowed() ? "true" : "false")));
+		Console.Notify(_("[Manager Component] Module Name: ") + mod->GetName());
+		Console.Notify(_("[Manager Component] Module Description: ") + mod->GetDescription());
+		Console.Notify(_("[Manager Component] Allowed States/Permissions: ") + allowedStates);
+		Console.Notify(_("[Manager Component] Allowed In Current State: ") + std::string((mod->IsAllowed() ? _("true") : _("false"))));
 	}
 	else
 	{
@@ -1125,7 +1123,7 @@ void ManagerComponent::CreateVariable(std::string name, VariableIds variable)
 	{
 		if (variableIt->second == name)
 		{
-			Console.Warning("[Manager Component] Warning: Duplicate variable name detected for \"" + name + "\"!");
+			Console.Warning(_("[Manager Component] Warning: Duplicate variable name detected for \"") + name + _("\"!"));
 			return;
 		}
 	}
@@ -1136,7 +1134,7 @@ void ManagerComponent::CreateVariable(std::string name, VariableIds variable)
 	}
 	else
 	{
-		Console.Warning("[Manager Component] Warning: Duplicate variable id detected for \"" + std::to_string(static_cast<int32_t>(variable)) + "\"!");
+		Console.Warning(_("[Manager Component] Warning: Duplicate variable id detected for \"") + std::to_string(static_cast<int32_t>(variable)) + _("\"!"));
 	}
 }
 
@@ -1155,12 +1153,12 @@ template <typename T> std::shared_ptr<T> ManagerComponent::CreateModule(Module* 
 		}
 		else
 		{
-			Console.Warning("[Manager Component] Warning: Duplicate module name detected for \"" + moduleName + "\"!");
+			Console.Warning(_("[Manager Component] Warning: Duplicate module name detected for \"") + moduleName + _("\"!"));
 		}
 	}
 	else
 	{
-		Console.Error("[Manager Component] Error: Failed to create module, given pointer is invalid!");
+		Console.Error(_("[Manager Component] Error: Failed to create module, given pointer is invalid!"));
 	}
 
 	return nullptr;
@@ -1189,12 +1187,12 @@ std::shared_ptr<Command> ManagerComponent::CreateCommand(Command* command)
 		}
 		else
 		{
-			Console.Warning("[Manager Component] Warning: Duplicate command name detected for \"" + commandName + "\"!");
+			Console.Warning(_("[Manager Component] Warning: Duplicate command name detected for \"") + commandName + _("\"!"));
 		}
 	}
 	else
 	{
-		Console.Error("[Manager Component] Error: Failed to create command, given pointer is invalid!");
+		Console.Error(_("[Manager Component] Error: Failed to create command, given pointer is invalid!"));
 	}
 
 	return nullptr;
@@ -1228,12 +1226,12 @@ std::shared_ptr<Setting> ManagerComponent::CreateSetting(Setting* setting)
 		}
 		else
 		{
-			Console.Warning("[Manager Component] Warning: Duplicate setting name detected for \"" + settingName + "\"!");
+			Console.Warning(_("[Manager Component] Warning: Duplicate setting name detected for \"") + settingName + _("\"!"));
 		}
 	}
 	else
 	{
-		Console.Error("[Manager Component] Error: Failed to create setting, given pointer is invalid!");
+		Console.Error(_("[Manager Component] Error: Failed to create setting, given pointer is invalid!"));
 	}
 
 	return nullptr;
@@ -1256,8 +1254,8 @@ std::shared_ptr<Setting> ManagerComponent::GetSetting(VariableIds variable)
 
 void ManagerComponent::Initialize()
 {
-	Console.Write(GetNameFormatted() + std::to_string(CommandMap.size()) + " Command(s) Initialized!");
-	Console.Write(GetNameFormatted() + std::to_string(SettingMap.size()) + " Setting(s) Initialized!");
+	Console.Write(GetNameFormatted() + std::to_string(CommandMap.size()) + _(" Command(s) Initialized!"));
+	Console.Write(GetNameFormatted() + std::to_string(SettingMap.size()) + _(" Setting(s) Initialized!"));
 }
 
-class ManagerComponent Manager{};
+class ManagerComponent Manager {};

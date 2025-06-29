@@ -83,7 +83,7 @@
     <ClCompile Include="Modules\Module.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="Extensions\Extensions\Math.cpp">
+    <ClCompile Include="Extensions\Extensions\Math2.cpp">
       <Filter>Extensions\Extensions</Filter>
     </ClCompile>
     <ClCompile Include="Extensions\Extensions\Formatting.cpp">
@@ -160,6 +160,112 @@
     </ClCompile>
     <ClCompile Include="Components\Components\FunctionLogger.cpp" />
     <ClCompile Include="Extensions\Extensions\VEH.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\BroadphaseCollision\btAxisSweep3.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\BroadphaseCollision\btBroadphaseProxy.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\BroadphaseCollision\btCollisionAlgorithm.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\BroadphaseCollision\btDbvt.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\BroadphaseCollision\btDbvtBroadphase.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\BroadphaseCollision\btOverlappingPairCache.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\BroadphaseCollision\btQuantizedBvh.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\BroadphaseCollision\btRSBroadphase.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\BroadphaseCollision\btSimpleBroadphase.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btActivatingCollisionAlgorithm.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btBoxBoxCollisionAlgorithm.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btBoxBoxDetector.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btCollisionDispatcher.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btCollisionObject.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btCollisionWorld.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btCompoundCollisionAlgorithm.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btCompoundCompoundCollisionAlgorithm.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btConvexConcaveCollisionAlgorithm.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btConvexConvexAlgorithm.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btConvexPlaneCollisionAlgorithm.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btDefaultCollisionConfiguration.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btEmptyCollisionAlgorithm.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btGhostObject.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btHashedSimplePairCache.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btInternalEdgeUtility.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btManifoldResult.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btSimulationIslandManager.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btSphereBoxCollisionAlgorithm.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btSphereSphereCollisionAlgorithm.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btSphereTriangleCollisionAlgorithm.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btUnionFind.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\SphereTriangleDetector.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btBoxShape.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btBvhTriangleMeshShape.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btCollisionShape.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btCompoundShape.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btConcaveShape.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btConvexHullShape.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btConvexInternalShape.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btConvexPolyhedron.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btConvexShape.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btEmptyShape.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btOptimizedBvh.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btPolyhedralConvexShape.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btShapeHull.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btSphereShape.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btStaticPlaneShape.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btStridingMeshInterface.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btTetrahedronShape.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btTriangleBuffer.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btTriangleCallback.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btTriangleIndexVertexArray.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btTriangleMesh.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btTriangleMeshShape.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btContinuousConvexCollision.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btConvexCast.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btGjkConvexCast.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btGjkEpa2.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btGjkEpaPenetrationDepthSolver.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btGjkPairDetector.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btPersistentManifold.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btPolyhedralContactClipping.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btRaycastCallback.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btSubSimplexConvexCast.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btVoronoiSimplexSolver.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletDynamics\ConstraintSolver\btContactConstraint.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletDynamics\ConstraintSolver\btSequentialImpulseConstraintSolver.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletDynamics\ConstraintSolver\btTypedConstraint.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletDynamics\Dynamics\btDiscreteDynamicsWorld.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletDynamics\Dynamics\btRigidBody.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletDynamics\Vehicle\btDefaultVehicleRaycaster.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletDynamics\Vehicle\btWheelInfo.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\TaskScheduler\btTaskScheduler.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\TaskScheduler\btThreadSupportPosix.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\TaskScheduler\btThreadSupportWin32.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btAlignedAllocator.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btConvexHull.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btConvexHullComputer.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btGeometryUtil.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btPolarDecomposition.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btQuickprof.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btReducedVector.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btSerializer.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btSerializer64.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btThreads.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btVector3.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\src\CollisionMeshFile\CollisionMeshFile.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\src\Math\MathTypes\MathTypes.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\src\Math\Math.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\src\Sim\Arena\ArenaConfig\ArenaConfig.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\src\Sim\Arena\DropshotTiles\DropshotTiles.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\src\Sim\Arena\Arena.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\src\Sim\Ball\Ball.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\src\Sim\BallHitInfo\BallHitInfo.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\src\Sim\BallPredTracker\BallPredTracker.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\src\Sim\BoostPad\BoostPadGrid\BoostPadGrid.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\src\Sim\BoostPad\BoostPad.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\src\Sim\btVehicleRL\btVehicleRL.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\src\Sim\Car\CarConfig\CarConfig.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\src\Sim\Car\Car.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\src\Sim\GameEventTracker\GameEventTracker.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\src\Sim\MutatorConfig\MutatorConfig.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\src\Sim\PhysState\PhysState.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\src\BulletLink.cpp" />
+    <ClCompile Include="EngineSim\RocketSim\src\RocketSim.cpp" />
+    <ClCompile Include="EngineSim\engineSim.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Components\Component.hpp">
@@ -216,7 +322,7 @@
     <ClInclude Include="Modules\Module.hpp">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="Extensions\Extensions\Math.hpp">
+    <ClInclude Include="Extensions\Extensions\Math2.hpp">
       <Filter>Extensions\Extensions</Filter>
     </ClInclude>
     <ClInclude Include="Extensions\Extensions\Formatting.hpp">
@@ -367,6 +473,489 @@
       <Filter>CodeRed</Filter>
     </ClInclude>
     <ClInclude Include="Extensions\Extensions\VEH.hpp">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\BroadphaseCollision\btAxisSweep3.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\BroadphaseCollision\btAxisSweep3Internal.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\BroadphaseCollision\btBroadphaseInterface.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\BroadphaseCollision\btBroadphaseProxy.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\BroadphaseCollision\btCollisionAlgorithm.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\BroadphaseCollision\btDbvt.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\BroadphaseCollision\btDbvtBroadphase.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\BroadphaseCollision\btDispatcher.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\BroadphaseCollision\btOverlappingPairCache.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\BroadphaseCollision\btOverlappingPairCallback.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\BroadphaseCollision\btQuantizedBvh.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\BroadphaseCollision\btRSBroadphase.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\BroadphaseCollision\btSimpleBroadphase.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btActivatingCollisionAlgorithm.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btBoxBoxCollisionAlgorithm.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btBoxBoxDetector.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btCollisionConfiguration.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btCollisionCreateFunc.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btCollisionDispatcher.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btCollisionObject.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btCollisionObjectWrapper.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btCollisionWorld.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btCompoundCollisionAlgorithm.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btCompoundCompoundCollisionAlgorithm.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btConvexConcaveCollisionAlgorithm.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btConvexConvexAlgorithm.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btConvexPlaneCollisionAlgorithm.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btDefaultCollisionConfiguration.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btEmptyCollisionAlgorithm.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btGhostObject.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btHashedSimplePairCache.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btInternalEdgeUtility.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btManifoldResult.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btSimulationIslandManager.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btSphereBoxCollisionAlgorithm.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btSphereSphereCollisionAlgorithm.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btSphereTriangleCollisionAlgorithm.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\btUnionFind.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionDispatch\SphereTriangleDetector.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btBoxShape.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btBvhTriangleMeshShape.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btCollisionMargin.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btCollisionShape.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btCompoundShape.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btConcaveShape.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btConvexHullShape.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btConvexInternalShape.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btConvexPolyhedron.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btConvexShape.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btEmptyShape.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btOptimizedBvh.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btPolyhedralConvexShape.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btShapeHull.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btSphereShape.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btStaticPlaneShape.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btStridingMeshInterface.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btTetrahedronShape.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btTriangleBuffer.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btTriangleCallback.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btTriangleIndexVertexArray.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btTriangleInfoMap.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btTriangleMesh.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btTriangleMeshShape.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\CollisionShapes\btTriangleShape.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btComputeGjkEpaPenetration.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btContinuousConvexCollision.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btConvexCast.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btConvexPenetrationDepthSolver.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btDiscreteCollisionDetectorInterface.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btGjkCollisionDescription.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btGjkConvexCast.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btGjkEpa2.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btGjkEpa3.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btGjkEpaPenetrationDepthSolver.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btGjkPairDetector.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btManifoldPoint.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btMprPenetration.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btPersistentManifold.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btPointCollector.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btPolyhedralContactClipping.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btRaycastCallback.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btSimplexSolverInterface.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btSubSimplexConvexCast.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletCollision\NarrowPhaseCollision\btVoronoiSimplexSolver.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletDynamics\ConstraintSolver\btContactConstraint.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletDynamics\ConstraintSolver\btContactSolverInfo.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletDynamics\ConstraintSolver\btJacobianEntry.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletDynamics\ConstraintSolver\btSequentialImpulseConstraintSolver.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletDynamics\ConstraintSolver\btSolverBody.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletDynamics\ConstraintSolver\btSolverConstraint.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletDynamics\ConstraintSolver\btTypedConstraint.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletDynamics\Dynamics\btActionInterface.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletDynamics\Dynamics\btDiscreteDynamicsWorld.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletDynamics\Dynamics\btDynamicsWorld.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletDynamics\Dynamics\btRigidBody.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletDynamics\Vehicle\btDefaultVehicleRaycaster.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletDynamics\Vehicle\btVehicleRaycaster.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\BulletDynamics\Vehicle\btWheelInfo.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\TaskScheduler\btThreadSupportInterface.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btAabbUtil2.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btAlignedAllocator.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btAlignedObjectArray.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btConvexHull.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btConvexHullComputer.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btCpuFeatureUtility.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btDefaultMotionState.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btGeometryUtil.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btGrahamScan2dConvexHull.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btHashMap.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btImplicitQRSVD.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btList.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btMatrix3x3.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btMatrixX.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btMinMax.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btModifiedGramSchmidt.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btMotionState.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btPolarDecomposition.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btPoolAllocator.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btQuadWord.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btQuaternion.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btQuickprof.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btRandom.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btReducedVector.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btScalar.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btSpatialAlgebra.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btStackAlloc.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btThreads.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btTransform.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btTransformUtil.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\LinearMath\btVector3.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\btBulletCollisionCommon.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\libsrc\bullet3-3.24\btBulletDynamicsCommon.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\CollisionMeshFile\CollisionMeshFile.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\DataStream\DataStreamIn.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\DataStream\DataStreamOut.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\DataStream\SerializeObject.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\Math\MathTypes\MathTypes.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\Math\Math.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\Sim\Arena\ArenaConfig\ArenaConfig.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\Sim\Arena\DropshotTiles\DropshotTiles.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\Sim\Arena\Arena.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\Sim\Ball\Ball.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\Sim\BallHitInfo\BallHitInfo.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\Sim\BallPredTracker\BallPredTracker.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\Sim\BoostPad\BoostPadGrid\BoostPadGrid.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\Sim\BoostPad\BoostPad.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\Sim\btVehicleRL\btVehicleRL.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\Sim\Car\CarConfig\CarConfig.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\Sim\Car\Car.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\Sim\GameEventTracker\GameEventTracker.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\Sim\MutatorConfig\MutatorConfig.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\Sim\PhysState\PhysState.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\Sim\CarControls.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\Sim\CollisionMasks.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\Sim\GameMode.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\BaseInc.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\BulletLink.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\Framework.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\RLConst.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\RocketSim\src\RocketSim.h">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSim\engineSim.hpp">
       <Filter>CodeRed</Filter>
     </ClInclude>
   </ItemGroup>

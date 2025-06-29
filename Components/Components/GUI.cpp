@@ -11,6 +11,7 @@
 #include "../ImGui/imgui_stdlib.h"
 
 #include "../../nlohmann.hpp"
+#include "../../EngineSim/engineSim.hpp"
 
 typedef HRESULT(__stdcall* Present) (IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT Flags);
 typedef LRESULT(CALLBACK* WNDPROC)(HWND, UINT, WPARAM, LPARAM);
@@ -555,10 +556,11 @@ void MainTab() {
 	ImGui::EndChild();
 }
 
+
+int currentGamemodeIdx = 0;
 int currentThemeID = 0;
 void MiscTab() {
 	const char* items[] = { "comfy", "deepDark", "moonlight", "blue" };
-	 // Here we store our selection data as an index.
 	if (ImGui::BeginListBox("Themes"))
 	{
 		for (int n = 0; n < IM_ARRAYSIZE(items); n++)
@@ -567,12 +569,78 @@ void MiscTab() {
 			if (ImGui::Selectable(items[n], is_selected))
 				currentThemeID = n;
 
-			// Set the initial focus when opening the combo (scrolling + keyboard navigation focus)
 			if (is_selected)
 				ImGui::SetItemDefaultFocus();
 		}
 		ImGui::EndListBox();
 	}
+
+
+	const char* GAMEMODE_STRS[] = {
+	"soccar",
+	"hoops",
+	"heatseeker",
+	"snowday",
+	"dropshot",
+	"void"
+	};
+	
+	RocketSim::GameMode gameMode = RocketSim::GameMode::SOCCAR;
+	switch (currentGamemodeIdx) {
+	case 0:
+		gameMode = RocketSim::GameMode::SOCCAR;
+		break;
+	case 1:
+		gameMode = RocketSim::GameMode::HOOPS;
+		break;
+	case 2:
+		gameMode = RocketSim::GameMode::HEATSEEKER;
+		break;
+	case 3:
+		gameMode = RocketSim::GameMode::SNOWDAY;
+		break;
+	case 4:
+		gameMode = RocketSim::GameMode::DROPSHOT;
+		break;
+	case 5:
+		gameMode = RocketSim::GameMode::THE_VOID;
+		break;
+	default:
+		gameMode = RocketSim::GameMode::SOCCAR;
+		break;
+	}
+
+
+	if (ImGui::Checkbox("Ball Prediction", &engineSim.enablePrediction)) {
+		if (engineSim.enablePrediction) {
+			if (!engineSim.arena) {
+				engineSim.arena = RocketSim::Arena::Create(gameMode);
+				Console.Write("Created virtual arena!");
+			}
+		}
+		else {
+			if (engineSim.arena) {
+				delete engineSim.arena;
+				engineSim.arena = nullptr;
+
+				Console.Write("Removed virtual arena!");
+			}
+		}
+	}
+
+	/*if (ImGui::BeginListBox("##Map type"))
+	{
+		for (int n = 0; n < IM_ARRAYSIZE(GAMEMODE_STRS); n++)
+		{
+			const bool is_selected = (currentGamemodeIdx == n);
+			if (ImGui::Selectable(GAMEMODE_STRS[n], is_selected))
+				currentGamemodeIdx = n;
+
+			if (is_selected)
+				ImGui::SetItemDefaultFocus();
+		}
+		ImGui::EndListBox();
+	}*/
 }
 
 bool includeInheritance = true;
@@ -870,6 +938,7 @@ void GUIComponent::Render()
 		break;
 	}
 	
+	engineSim.Render(ImGui::GetBackgroundDrawList());
 
 	ImGuiIO IO = ImGui::GetIO();
 	GUI.DisplayX = IO.DisplaySize.x;
@@ -895,11 +964,11 @@ void GUIComponent::Render()
 					objectsTab();
 					ImGui::EndTabItem();
 				}
-				if (ImGui::BeginTabItem("PsyNet")) {
+				if (ImGui::BeginTabItem(_("PsyNet"))) {
 					netTab();
 					ImGui::EndTabItem();
 				}
-				if (ImGui::BeginTabItem(_("Misc"))) {
+				if (ImGui::BeginTabItem(_("Misc##123"))) {
 					MiscTab();
 					ImGui::EndTabItem();
 				}

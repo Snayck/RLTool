@@ -7,11 +7,9 @@
 enum States
 {
 	STATES_Unknown = 0U,
-	STATES_MainMenu  = 1U << 0U,
-	STATES_Trading = 1U << 1U,
-	STATES_CasualMatch = 1U << 2U,
-	STATES_RankedMatch = 1U << 3U,
-	STATES_All = 1U << 4U
+	STATES_MainMenu = 1U << 0U,
+	STATES_InGame = 1U << 2U,
+	STATES_All = 1U << 3U
 };
 
 // THIS COMPONENT IS LARGELY DEPENDENT ON YOUR GAME

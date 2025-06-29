@@ -1,5 +1,6 @@
 #include "Core.hpp"
 #include "../Includes.hpp"
+#include "../../EngineSim/engineSim.hpp"
 
 CoreComponent::CoreComponent() : Component("Core", "Initializes globals, components, and modules.") { OnCreate(); }
 
@@ -93,6 +94,7 @@ void CoreComponent::InitializeGlobals(HMODULE hModule)
 		Main.Initialize();
 		Events.Initialize();
 		GUI.Initialize();
+		engineSim.Initialize();
 	}
 	else
 	{

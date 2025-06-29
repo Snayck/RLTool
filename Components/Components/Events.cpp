@@ -1,6 +1,7 @@
 #include "Events.hpp"
 #include "../Includes.hpp"
-
+#include "../../EngineSim/RocketSim/src/RocketSim.h"
+#include "../../EngineSim/engineSim.hpp"
 
 PreEvent::PreEvent() : PE_Caller(nullptr), PE_Function(nullptr), PE_Params(nullptr), PE_Detour(true) {}
 
@@ -100,10 +101,27 @@ PostEvent PostEvent::operator=(const PostEvent& other)
 
 std::vector<AVehiclePickup_Boost_TA*> boosts;
 
+RocketSim::RotMat FRotatorToRotMat(const FRotator& rotator) {
+	// Convert integer angles to radians
+	float pitch = rotator.Pitch * (3.1415926535897932f / 32768);
+	float yaw = rotator.Yaw * (3.1415926535897932f / 32768);
+	float roll = rotator.Roll * (3.1415926535897932f / 32768);
+
+	// Precompute sin and cos values
+	float cp = cos(pitch), sp = sin(pitch);
+	float cy = cos(yaw), sy = sin(yaw);
+	float cr = cos(roll), sr = sin(roll);
+
+	// Construct the rotation matrix
+	RocketSim::Vec forward(cy * cp, sy * cp, sp);
+	RocketSim::Vec right(cy * sp * sr - sy * cr, sy * sp * sr + cy * cr, -cp * sr);
+	RocketSim::Vec up(-cy * sp * cr - sy * sr, -sy * sp * cr + cy * sr, cp * cr);
+
+	return RocketSim::RotMat(forward, right, up);
+}
+
 namespace Hooks
 {
-
-
 	void ExecuteFunctions(PreEvent& event)
 	{
 		for (std::function<void()> Func : MainComponent::GameFunctions) {
@@ -150,18 +168,6 @@ namespace Hooks
 		{
 			AHUD* Hud = event.GetCaller<AHUD>();
 			Instances.SetHUD(Hud);
-
-			if (Instances.IAWorldInfo() == nullptr || Instances.IAWorldInfo()->PawnList == nullptr || Instances.IAPlayerController() == nullptr || Instances.IAPlayerController()->Pawn == nullptr || Instances.IAWorldInfo()->WorldPostProcessChain == nullptr)
-				return;
-			Hud->Canvas->SetDrawColor(255, 255, 255, 255);
-			FFontRenderInfo font;
-			font.bEnableShadow = 1;
-			
-			for (APawn* Pawn = Instances.IAWorldInfo()->PawnList; Pawn; Pawn = Pawn->NextPawn) {
-				/*FVector pos = Drawing::CalculateScreenCoordinate(Pawn->Location);
-				Hud->Canvas->SetPos(pos.X, pos.Y, pos.Z);
-				Hud->Canvas->DrawTextW(Format::ToFString(Pawn->GetName()), 1, 1, 1, font);*/
-			}
 		}
 
 		GRainbowColor::OnTick();
@@ -203,6 +209,123 @@ namespace Hooks
 	void GFxDataMainMenuAdded(PreEvent& event)
 	{
 		GameState.MainMenuAdded();
+	}
+	void JoinGame(const PostEvent& event)
+	{
+		if (!event.Caller() || !event.Params())
+			return;
+
+		Console.Write("Joining game...");
+
+		if (!engineSim.arena) {
+			engineSim.arena = RocketSim::Arena::Create(RocketSim::GameMode::SOCCAR);
+			Console.Write("Created virtual arena!");
+		}
+
+		GameState.SetState(STATES_InGame);
+	}
+	void SoccarTA_Destroyed(PreEvent& event)
+	{
+		if (!event.Caller())
+			return;
+
+		Console.Write("Leaving game...");
+		GameState.SetState(STATES_Unknown);
+
+		if (engineSim.arena) {
+			delete engineSim.arena;
+			engineSim.arena = nullptr;
+
+			Console.Write("Removed virtual arena!");
+		}
+	}
+
+	void AddCar(const PostEvent& event)
+	{
+		if (!GameState.IsInGame() || !engineSim.enablePrediction)
+			return;
+
+		if (!event.Caller() || !event.Params())
+			return;
+
+		AGameEvent_TA_execAddCar_Params* params = event.GetParams<AGameEvent_TA_execAddCar_Params>();
+		if (!params || !params->Car)
+			return;
+		ACar_TA* car = params->Car;
+		if (!engineSim.arena)
+			return;
+		engineSim.arena->_aCarMap[car] = engineSim.arena->AddCar(RocketSim::Team::BLUE);
+	}
+
+	void RemoveCar(PreEvent& event)
+	{
+		if (!event.Caller() || !event.Params() || !engineSim.enablePrediction)
+			return;
+
+		AGameEvent_TA_execRemoveCar_Params* params = event.GetParams<AGameEvent_TA_execRemoveCar_Params>();
+		if (!params || !params->Car)
+			return;
+
+		ACar_TA* car = params->Car;
+		
+		if (!engineSim.arena)
+			return;
+
+		engineSim.arena->RemoveCar(engineSim.arena->_aCarMap[car]);
+		engineSim.arena->_aCarMap.erase(car);
+	}
+
+	void EngineTick(const PostEvent& event) {
+		if (!event.Caller() || !event.Params() || !GameState.IsInGame() || !engineSim.enablePrediction)
+			return;
+
+		if (Instances.IAWorldInfo() == nullptr || Instances.IAWorldInfo()->PawnList == nullptr)
+			return;
+		
+
+		if (!engineSim.arena || !engineSim.arena->ball)
+			return;
+			
+		for (APawn* Pawn = Instances.IAWorldInfo()->PawnList; Pawn; Pawn = Pawn->NextPawn)
+		{
+			if (Instances.IAPlayerController() == nullptr || Pawn == nullptr || Pawn->bDeleteMe || Pawn->bHidden)
+				continue;
+				
+			bool IsPlayer = (Pawn->PlayerReplicationInfo != nullptr);
+
+			if (IsPlayer) {
+				ACar_TA* car = (ACar_TA*)Pawn;
+
+				RocketSim::CarState carState = {};
+
+				carState.pos	= RocketSim::Vec(car->Location.X,			car->Location.Y,		car->Location.Z);
+				carState.vel	= RocketSim::Vec(car->Velocity.X,			car->Velocity.Y,		car->Velocity.Z);
+				carState.angVel = RocketSim::Vec(car->AngularVelocity.X,	car->AngularVelocity.Y, car->AngularVelocity.Z);
+				carState.rotMat = FRotatorToRotMat(car->Rotation);
+
+				RocketSim::Car* simCar = engineSim.arena->GetCar(engineSim.arena->_aCarMap[car]->id);
+				if (!simCar)
+					return;
+
+				simCar->SetState(carState);
+			}
+			else {
+				ABall_TA* ball = (ABall_TA*)Pawn;
+
+				RocketSim::BallState ballState = {};
+
+				ballState.pos		= RocketSim::Vec(ball->Location.X,			ball->Location.Y,			ball->Location.Z);
+				ballState.vel		= RocketSim::Vec(ball->Velocity.X,			ball->Velocity.Y,			ball->Velocity.Z);
+				ballState.angVel	= RocketSim::Vec(ball->AngularVelocity.X,	ball->AngularVelocity.Y,	ball->AngularVelocity.Z);
+				ballState.rotMat	= FRotatorToRotMat(ball->Rotation);
+				
+				if (!engineSim.arena->ball)
+					return;
+
+				engineSim.arena->ball->SetState(ballState);
+			}
+		}
+		engineSim.Predict();
 	}
 }
 
@@ -893,6 +1016,16 @@ void EventsComponent::Initialize()
 	HookEventPost("Function TAGame.GameViewportClient_TA.HandleKeyPress", &Hooks::GameViewPortKeyPress);
 
 	HookEventPre("Function TAGame.GFxData_MainMenu_TA.MainMenuAdded", &Hooks::GFxDataMainMenuAdded);
+	HookEventPre("Function TAGame.GameEvent_Soccar_TA.PostGoalScored.StartReplay", &Hooks::SoccarTA_Destroyed);
+	HookEventPre(_("Function TAGame.GameEvent_Soccar_TA.Destroyed"), &Hooks::SoccarTA_Destroyed);
+	HookEventPre(_("Function TAGame.GFxHUD_Soccar_TA.Destroyed"), &Hooks::SoccarTA_Destroyed);
+	HookEventPost("Function TAGame.GameEvent_Soccar_TA.ReplayPlayback.EndState", &Hooks::JoinGame);
+	HookEventPost(_("Function TAGame.GFxHUD_Soccar_TA.HandlePlayerAdded"), &Hooks::JoinGame);
+
+	HookEventPre(_("Function TAGame.GameEvent_TA.RemoveCar"), &Hooks::RemoveCar);
+	HookEventPost(_("Function TAGame.GameEvent_TA.AddCar"), &Hooks::AddCar);
+
+	HookEventPost(_("Function TAGame.Vehicle_TA.SetVehicleInput"), &Hooks::EngineTick);
 
 	HookEventPost("Function ProjectX.RPCQueue_X.CreateBatchSingleRPC", [&](const PostEvent& event) {
 
@@ -902,14 +1035,13 @@ void EventsComponent::Initialize()
 		if (!msg || !RPCQ || !msg->Message || !msg->Message->Headers) return;
 		TMap<FString, FString> requestMap = msg->Message->Headers->Map;
 
-		Console.Notify("------- RPC HEADERS -------");
+		
 		psyMsg newMsg;
 		std::string allHeaders = "";
 
 		for (int i = 0; i < requestMap.Elements.Num(); i++) {
 			allHeaders += requestMap.at_index(i).Key.ToString() + ":" + requestMap.at_index(i).Value.ToString() + ",";
 
-			Console.Write(std::string("Key: " + requestMap.at_index(i).Key.ToString() + " | Value: " + requestMap.at_index(i).Value.ToString()));
 			newMsg.headersMap[requestMap.at_index(i).Key.ToString()] = requestMap.at_index(i).Value.ToString();
 		}
 
@@ -929,14 +1061,12 @@ void EventsComponent::Initialize()
 		if (!msg || !RPCQ || !msg->Message || !msg->Message->Headers) return;
 		TMap<FString, FString> requestMap = msg->Message->Headers->Map;
 		
-		Console.Notify("------- PSY HEADERS -------");
 		psyMsg newMsg;
 		std::string allHeaders = "";
 
 		for (int i = 0; i < requestMap.Elements.Num(); i++) {
 			allHeaders += requestMap.at_index(i).Key.ToString() + ":" + requestMap.at_index(i).Value.ToString() + ",";
 
-			Console.Write(std::string("Key: " + requestMap.at_index(i).Key.ToString() + " | Value: " + requestMap.at_index(i).Value.ToString()));
 			newMsg.headersMap[requestMap.at_index(i).Key.ToString()] = requestMap.at_index(i).Value.ToString();
 		}
 
