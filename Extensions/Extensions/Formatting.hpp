@@ -1,6 +1,6 @@
 #pragma once
 #include "../pch.hpp"
-#include "Math2.hpp"
+#include "Math.hpp"
 
 // Helper functions for formatting streams and strings.
 namespace Format
