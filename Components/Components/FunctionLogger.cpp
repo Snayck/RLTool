@@ -347,9 +347,13 @@ std::string FunctionLogger::ProcessFieldValue(UProperty* prop, object& obj, uint
 			ImGui::SameLine();
 			if (objectValue && !IsBadReadPtr(objectValue, sizeof(UObject))) {
 				if (objectValue->Class && !IsBadReadPtr(objectValue->Class, sizeof(UClass))) {
-					object tempObj = CreateObject(objectValue->Class, objectValue);
-					RenderObjectInfo(tempObj);
-				} else {
+					if (ImGui::TreeNode(textBoxID.c_str(), propName.c_str())) {
+						object tempObj = CreateObject(objectValue->Class, objectValue);
+						RenderObjectProperties(tempObj);
+						ImGui::TreePop();
+					}
+				}
+				else {
 					ImGui::Text("Invalid Class");
 				}
 			}
@@ -577,16 +581,34 @@ std::string FunctionLogger::ProcessFieldValue(UProperty* prop, object& obj, uint
 						continue;
 					}
 
-					object tempObj = obj;
-					tempObj.Obj = reinterpret_cast<UObject*>(elementDataPtr - arrayProp->Inner->Offset);
-
-					std::string elementType = ProcessType(arrayProp->Inner);
 					ImGui::Text("[%d]", i);
 					ImGui::SameLine();
-					ImGui::TextColored(ImVec4(0.36f, 0.52f, 0.93f, 1.0f), elementType.c_str());
-					ImGui::SameLine();
 
-					ProcessFieldValue(arrayProp->Inner, tempObj, 0);
+					if (arrayProp->Inner->IsA<UObjectProperty>())
+					{
+						UObject* elementObject = *reinterpret_cast<UObject**>(elementDataPtr);
+
+						if (elementObject && !IsBadReadPtr(elementObject, sizeof(UObject)) && elementObject->Class && !IsBadReadPtr(elementObject->Class, sizeof(UClass)))
+						{
+							object newObj = CreateObject(elementObject->Class, elementObject);
+							RenderObjectProperties(newObj);
+						}
+						else
+						{
+							ImGui::Text("NULL Object");
+						}
+					}
+					else
+					{
+						object tempObj = obj;
+						tempObj.Obj = reinterpret_cast<UObject*>(elementDataPtr - arrayProp->Inner->Offset);
+
+						std::string elementType = ProcessType(arrayProp->Inner);
+						ImGui::TextColored(ImVec4(0.36f, 0.52f, 0.93f, 1.0f), elementType.c_str());
+						ImGui::SameLine();
+
+						ProcessFieldValue(arrayProp->Inner, tempObj, 0);
+					}
 				}
 				ImGui::TreePop();
 			}
@@ -706,31 +728,31 @@ void FunctionLogger::RenderFunctions(object& obj)
 	}
 }
 
-void FunctionLogger::RenderObjectProperties()
+void FunctionLogger::RenderObjectProperties(object& currentObject)
 {
-	if (selectedIndex < 0 || selectedIndex >= searchResults.size())
+	if (!currentObject.Class || !currentObject.Obj)
 		return;
 
-	object currentObject = searchResults[selectedIndex];
+	object obj = currentObject;
 	int depth = 0;
 
 	while (depth <= 10) {
-		if (!currentObject.Class || !currentObject.Obj)
+		if (!obj.Class || !obj.Obj)
 			return;
 
 		std::stringstream ss;
-		ss << currentObject.Obj;
+		ss << obj.Obj;
 		std::string ID = "##" + ss.str();
 
-		if (ImGui::TreeNode((currentObject.Class->GetName() + ID).c_str())) {
-			RenderObjectInfo(currentObject);
-			RenderFields(currentObject);
-			RenderFunctions(currentObject);
+		if (ImGui::TreeNode((obj.Class->GetName() + ID).c_str())) {
+			RenderObjectInfo(obj);
+			RenderFields(obj);
+			RenderFunctions(obj);
 			ImGui::TreePop();
 		}
 
-		currentObject = CreateObject(GetParent(currentObject.Class), currentObject.Obj);
-		if (currentObject.Class && currentObject.Class->GetName() == "Object")
+		obj = CreateObject(GetParent(obj.Class), obj.Obj);
+		if (obj.Class && obj.Class->GetName() == "Object")
 			break;
 		depth++;
 	}
@@ -778,7 +800,10 @@ void FunctionLogger::RenderObjectExplorer()
 		ImGui::Text("Properties");
 		ImGui::EndMenuBar();
 	}
-	RenderObjectProperties();
+	if (selectedIndex >= 0 && selectedIndex < searchResults.size())
+	{
+		RenderObjectProperties(searchResults[selectedIndex]);
+	}
 	ImGui::EndChild();
 }
 

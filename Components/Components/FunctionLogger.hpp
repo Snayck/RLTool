@@ -39,7 +39,7 @@ private:
 	UClass* GetParent(UClass* Class);
 
 	void RenderObjectList();
-	void RenderObjectProperties();
+	void RenderObjectProperties(object& obj);
 	void RenderObjectInfo(object& obj);
 	void RenderFields(object& obj);
 	void RenderFunctions(object& obj);
