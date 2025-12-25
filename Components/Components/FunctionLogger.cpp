@@ -347,7 +347,7 @@ std::string FunctionLogger::ProcessFieldValue(UProperty* prop, object& obj, uint
 			ImGui::SameLine();
 			if (objectValue && !IsBadReadPtr(objectValue, sizeof(UObject))) {
 				if (objectValue->Class && !IsBadReadPtr(objectValue->Class, sizeof(UClass))) {
-					if (ImGui::TreeNode(textBoxID.c_str(), propName.c_str())) {
+					if (ImGui::TreeNode(textBoxID.c_str(), "")) {
 						object tempObj = CreateObject(objectValue->Class, objectValue);
 						RenderObjectProperties(tempObj);
 						ImGui::TreePop();
@@ -581,25 +581,38 @@ std::string FunctionLogger::ProcessFieldValue(UProperty* prop, object& obj, uint
 						continue;
 					}
 
-					ImGui::Text("[%d]", i);
-					ImGui::SameLine();
-
 					if (arrayProp->Inner->IsA<UObjectProperty>())
 					{
 						UObject* elementObject = *reinterpret_cast<UObject**>(elementDataPtr);
 
-						if (elementObject && !IsBadReadPtr(elementObject, sizeof(UObject)) && elementObject->Class && !IsBadReadPtr(elementObject->Class, sizeof(UClass)))
+						std::string object_name = "NULL";
+						if (elementObject && !IsBadReadPtr(elementObject, sizeof(UObject)))
 						{
-							object newObj = CreateObject(elementObject->Class, elementObject);
-							RenderObjectProperties(newObj);
+							object_name = elementObject->GetName();
 						}
-						else
+
+						std::string index_label = "[" + std::to_string(i) + "] " + object_name;
+						std::string node_id = textBoxID + std::to_string(i);
+
+						if (ImGui::TreeNode(node_id.c_str(), index_label.c_str()))
 						{
-							ImGui::Text("NULL Object");
+							if (elementObject && !IsBadReadPtr(elementObject, sizeof(UObject)) && elementObject->Class && !IsBadReadPtr(elementObject->Class, sizeof(UClass)))
+							{
+								object newObj = CreateObject(elementObject->Class, elementObject);
+								RenderObjectProperties(newObj);
+							}
+							else
+							{
+								ImGui::Text("NULL Object");
+							}
+							ImGui::TreePop();
 						}
 					}
 					else
 					{
+						ImGui::Text("[%d]", i);
+						ImGui::SameLine();
+
 						object tempObj = obj;
 						tempObj.Obj = reinterpret_cast<UObject*>(elementDataPtr - arrayProp->Inner->Offset);
 
