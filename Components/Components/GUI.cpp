@@ -753,96 +753,6 @@ void netTab() {
 }
 
 
-std::vector<object> Objects = {};
-std::string classSearchQuery = "";
-int currentItem = -1;
-
-void searchChild() {
-	if (ImGui::InputTextWithHint(_("##classSearchQuery"), _("Class Name"), & classSearchQuery)) {} ImGui::SameLine();
-	if (ImGui::Button(_("Scene Selection"))) {
-	}
-	if (ImGui::IsItemHovered())
-		ImGui::SetTooltip((_("not yet implemented")));
-
-	if (ImGui::Button(_("Search"))) {
-		Objects = FuncLog.GetAllInstancesOf(classSearchQuery);
-	}  
-	//ImGui::SameLine(); 
-	//ImGui::Checkbox(_("Include Inheritance"), &includeInheritance);
-	
-	if (ImGui::BeginListBox(_("##searchList"), ImGui::GetContentRegionAvail())) {
-		for (int i = 0; i < Objects.size(); i++)
-		{
-			bool isSelected = (currentItem == i);
-			if (ImGui::Selectable((Objects[i].className + _("##") + std::to_string(i)).c_str(), isSelected)) {
-				// Update the current selection
-				currentItem = i;
-			}
-			if (isSelected) {
-				// Set the current item as selected
-				ImGui::SetItemDefaultFocus();
-			}
-
-			/*if (ImGui::TreeNode((Objects[i].className + "## " + std::to_string(i)).c_str()))
-			{
-				ImGui::Text(Objects[i].fullName.c_str());
-
-				ImGui::TreePop();
-			}*/
-		}
-		
-		ImGui::EndListBox();
-	}
-	
-}
-
-void propertiesChild() {
-	if (currentItem != -1 && currentItem < Objects.size()) {
-		object currentObject = Objects[currentItem];
-		int a = 0;
-		bool shouldBreak = false;
-		while ( a <= 10 ) {
-			if (!currentObject.Class || !currentObject.Obj)
-				return;
-
-			FuncLog.generateInfo(currentObject);
-			currentObject = FuncLog.createObject(FuncLog.getParent(currentObject.Class), currentObject.Obj);
-			a += 1;
-			if (currentObject.Class->GetName() == _("Object"))
-				break;
-		}
-	}
-}
-
-void objectsTab() {
-	ImVec2 windowSize = ImGui::GetContentRegionAvail();
-	ImGuiStyle& style = ImGui::GetStyle();
-	float styleSpace = style.ItemSpacing.x / 2;
-
-	ImGui::BeginChild(_("##Search"), ImVec2(0.5f * windowSize.x - styleSpace, windowSize.y), true, ImGuiWindowFlags_MenuBar);
-
-	if (ImGui::BeginMenuBar()) {
-		ImGui::Text(_("Search"));
-		ImGui::EndMenuBar();
-	}
-
-	searchChild();
-
-	ImGui::EndChild();
-	ImGui::SameLine();
-	ImGui::BeginChild(_("##Properties"), ImVec2(0.5f * windowSize.x - styleSpace, windowSize.y), true, ImGuiWindowFlags_MenuBar);
-
-
-	if (ImGui::BeginMenuBar()) {
-		ImGui::Text(_("Properties"));
-		ImGui::EndMenuBar();
-	}
-
-	propertiesChild();
-
-	ImGui::EndChild();
-}
-
 
 
 
@@ -890,7 +800,7 @@ void GUIComponent::Render()
 					ImGui::EndTabItem();
 				}
 				if (ImGui::BeginTabItem(_("Explorer"))) {
-					objectsTab();
+					FuncLog.RenderObjectExplorer();
 					ImGui::EndTabItem();
 				}
 				if (ImGui::BeginTabItem("PsyNet")) {

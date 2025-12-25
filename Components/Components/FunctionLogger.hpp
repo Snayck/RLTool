@@ -12,29 +12,42 @@ struct object {
 
 class FunctionLogger : public Component
 {
+private:
+	std::vector<object> searchResults;
+	int selectedIndex;
+	std::string searchQuery;
+
 public:
 	FunctionLogger();
 	~FunctionLogger() override;
 
-public:
 	void OnCreate() override;
 	void OnDestroy() override;
 
-	static std::string toLowercase(const std::string& str);
-	static bool containsSubstring(const std::string& str, const std::string& substr);
-	static std::vector<std::string> splitString(const std::string& input, char delimiter);
-	bool ClassOrParentMatches(UClass* Class, const std::string& query, bool includeInheritance);
-	object createObject(UClass* Class, UObject* Object);
-	std::vector<object> GetAllInstancesOf(std::string query);
-	static std::string removeProperty(const std::string& input);
-	static std::string processType(UProperty* prop);
-	UClass* getParent(UClass* Class);
-	int isValidNumber(std::string str);
-	std::string processFieldValue(UProperty* prop, object Object, uint32_t offset);
-	void generateInfo(object obj);
+	void RenderObjectExplorer();
+	void RenderFunctionLogger();
 
-public:
+	static std::string ProcessType(UProperty* prop);
+	static std::string ToLowercase(const std::string& str);
+	static bool ContainsSubstring(const std::string& str, const std::string& substr);
+	static std::string RemoveProperty(const std::string& input);
+	static std::vector<std::string> SplitString(const std::string& str, char delimiter);
 
+private:
+	object CreateObject(UClass* Class, UObject* Object);
+	std::vector<object> GetAllInstancesOf(const std::string& query);
+	UClass* GetParent(UClass* Class);
+
+	void RenderObjectList();
+	void RenderObjectProperties();
+	void RenderObjectInfo(object& obj);
+	void RenderFields(object& obj);
+	void RenderFunctions(object& obj);
+
+	std::string ProcessFieldValue(UProperty* prop, object& obj, uint32_t offset);
+
+	bool ClassOrParentMatches(UClass* Class, const std::string& query);
+	bool IsValidNumber(const std::string& str);
 };
 
 extern class FunctionLogger FuncLog;

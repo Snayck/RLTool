@@ -523,7 +523,7 @@ void addFunc(UObject* caller, UFunction* Function, void* paramsPointer) {
 		EventsComponent::prop p;
 		p.Property = *a;
 		p.value = processValue(a, paramsPointer);
-		p.type = FunctionLogger::processType(a);
+		p.type = FunctionLogger::ProcessType(a);
 		funct.properties.push_back(p);
 	}
 
@@ -534,10 +534,10 @@ void handleFunc(UObject* caller, UFunction* Function, void* paramsPointer) {
 	if (EventsComponent::functions.size() < 1000) {
 
 		if (GUIComponent::whitelist != "") {
-			std::vector<std::string> tokens = FunctionLogger::splitString(GUIComponent::whitelist, ',');
+			std::vector<std::string> tokens = FunctionLogger::SplitString(GUIComponent::whitelist, ',');
 
 			auto it = std::find_if(tokens.begin(), tokens.end(), [&](const std::string& str) {
-				return FunctionLogger::containsSubstring(FunctionLogger::toLowercase(Function->Name.ToString()), FunctionLogger::toLowercase(str));
+				return FunctionLogger::ContainsSubstring(FunctionLogger::ToLowercase(Function->Name.ToString()), FunctionLogger::ToLowercase(str));
 				});
 
 			if (it != tokens.end()) {
@@ -549,10 +549,10 @@ void handleFunc(UObject* caller, UFunction* Function, void* paramsPointer) {
 		}
 
 		if (GUIComponent::blacklist != "") {
-			std::vector<std::string> tokens = FunctionLogger::splitString(GUIComponent::blacklist, ',');
+			std::vector<std::string> tokens = FunctionLogger::SplitString(GUIComponent::blacklist, ',');
 
 			auto it = std::find_if(tokens.begin(), tokens.end(), [&](const std::string& str) {
-				return FunctionLogger::containsSubstring(FunctionLogger::toLowercase(Function->Name.ToString()), FunctionLogger::toLowercase(str));
+				return FunctionLogger::ContainsSubstring(FunctionLogger::ToLowercase(Function->Name.ToString()), FunctionLogger::ToLowercase(str));
 				});
 
 			if (it != tokens.end()) { 
@@ -870,10 +870,10 @@ bool filterInput(std::string whitelist, std::string blacklist, std::string input
 {
 	auto checkTokens = [&](const std::string& list) {
 		if (list.empty()) return false;
-		auto tokens = FunctionLogger::splitString(list, ',');
-		auto lowerInput = FunctionLogger::toLowercase(input);
+		auto tokens = FunctionLogger::SplitString(list, ',');
+		auto lowerInput = FunctionLogger::ToLowercase(input);
 		return std::any_of(tokens.begin(), tokens.end(), [&](const std::string& token) {
-			return FunctionLogger::containsSubstring(lowerInput, FunctionLogger::toLowercase(token));
+			return FunctionLogger::ContainsSubstring(lowerInput, FunctionLogger::ToLowercase(token));
 			});
 		};
 
