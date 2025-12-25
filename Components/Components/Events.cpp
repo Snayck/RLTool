@@ -902,22 +902,24 @@ void EventsComponent::Initialize()
 		if (!msg || !RPCQ || !msg->Message || !msg->Message->Headers) return;
 		TMap<FString, FString> requestMap = msg->Message->Headers->Map;
 
-		Console.Notify("------- RPC HEADERS -------");
 		psyMsg newMsg;
 		std::string allHeaders = "";
 
-		for (int i = 0; i < requestMap.Elements.Num(); i++) {
-			allHeaders += requestMap.at_index(i).Key.ToString() + ":" + requestMap.at_index(i).Value.ToString() + ",";
+		for (auto& pair : requestMap) {
+			std::string key = pair.Key.ToString();
+			std::string value = pair.Value.ToString();
+			allHeaders += key + ":" + value + ",";
 
-			Console.Write(std::string("Key: " + requestMap.at_index(i).Key.ToString() + " | Value: " + requestMap.at_index(i).Value.ToString()));
-			newMsg.headersMap[requestMap.at_index(i).Key.ToString()] = requestMap.at_index(i).Value.ToString();
+			newMsg.headersMap[key] = value;
 		}
 
 		if (filterInput(GUIComponent::outgoingWhitelist, GUIComponent::outgoingBlacklist, allHeaders))
 			return;
 
 		newMsg.bodyText = msg->Message->GetBodyText().ToString();
-		newMsg.ID = newMsg.headersMap["PsyRequestID"];
+		if (newMsg.headersMap.find("PsyRequestID") != newMsg.headersMap.end()) {
+			newMsg.ID = newMsg.headersMap["PsyRequestID"];
+		}
 		Events.rpcOut.push_back(newMsg);
 		});
 
@@ -928,23 +930,25 @@ void EventsComponent::Initialize()
 
 		if (!msg || !RPCQ || !msg->Message || !msg->Message->Headers) return;
 		TMap<FString, FString> requestMap = msg->Message->Headers->Map;
-		
-		Console.Notify("------- PSY HEADERS -------");
+
 		psyMsg newMsg;
 		std::string allHeaders = "";
 
-		for (int i = 0; i < requestMap.Elements.Num(); i++) {
-			allHeaders += requestMap.at_index(i).Key.ToString() + ":" + requestMap.at_index(i).Value.ToString() + ",";
+		for (auto& pair : requestMap) {
+			std::string key = pair.Key.ToString();
+			std::string value = pair.Value.ToString();
+			allHeaders += key + ":" + value + ",";
 
-			Console.Write(std::string("Key: " + requestMap.at_index(i).Key.ToString() + " | Value: " + requestMap.at_index(i).Value.ToString()));
-			newMsg.headersMap[requestMap.at_index(i).Key.ToString()] = requestMap.at_index(i).Value.ToString();
+			newMsg.headersMap[key] = value;
 		}
 
 		if (filterInput(GUIComponent::incomingWhitelist, GUIComponent::incomingBlacklist, allHeaders))
 			return;
-		
+
 		newMsg.bodyText = msg->Message->GetBodyText().ToString();
-		newMsg.ID = newMsg.headersMap["PsyResponseID"];
+		if (newMsg.headersMap.find("PsyResponseID") != newMsg.headersMap.end()) {
+			newMsg.ID = newMsg.headersMap["PsyResponseID"];
+		}
 		Events.rpcIn.push_back(newMsg);
 
 		});

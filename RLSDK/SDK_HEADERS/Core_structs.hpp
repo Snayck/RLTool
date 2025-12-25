@@ -1,18 +1,18 @@
 /*
 #############################################################################################
-# RocketLeague (1.0.10897.0) SDK
-# Generated with the CodeRedGenerator v1.0.2
+# RocketLeague (RLSDK) SDK 1.0.0
+# Generated with the CodeRedGenerator v1.1.6
 # ========================================================================================= #
 # File: Core_structs.hpp
 # ========================================================================================= #
-# Credits: TheFeckless, ItsBranK
-# Links: www.github.com/CodeRedModding/CodeRed-Generator, www.twitter.com/ItsBranK
+# Credits: ItsBranK, TheFeckless
+# Links: www.github.com/CodeRedModding/CodeRed-Generator
 #############################################################################################
 */
 #pragma once
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+#pragma pack(push, 0x8)
 #endif
 
 /*
@@ -21,88 +21,6 @@
 # ========================================================================================= #
 */
 
-// ScriptStruct Core.Object.Vector
-// 0x000C
-struct FVector
-{
-	float                                              X;                                             // 0x0000 (0x0004) [0x0000000000000001] (CPF_Edit)    
-	float                                              Y;                                             // 0x0004 (0x0004) [0x0000000000000001] (CPF_Edit)    
-	float                                              Z;                                             // 0x0008 (0x0004) [0x0000000000000001] (CPF_Edit)    
-
-	FVector operator - () { return FVector(-X, -Y, -Z); }
-
-	FVector operator + (FVector& v) { return FVector(X + v.X, Y + v.Y, Z + v.Z); }
-	FVector operator - (FVector& v) { return FVector(X - v.X, Y - v.Y, Z - v.Z); }
-	FVector operator * (FVector& v) { return FVector(X * v.X, Y * v.Y, Z * v.Z); }
-	FVector operator / (FVector& v) { return FVector(X / v.X, Y / v.Y, Z / v.Z); }
-
-	FVector operator = (FVector v)
-	{
-		this->X = v.X;
-		this->Y = v.Y;
-		this->Z = v.Z;
-
-		return *this;
-	}
-
-	FVector operator += (FVector& v)
-	{
-		this->X += v.X;
-		this->Y += v.Y;
-		this->Z += v.Z;
-
-		return *this;
-	}
-
-	FVector operator -= (FVector& v)
-	{
-		this->X -= v.X;
-		this->Y -= v.Y;
-		this->Z -= v.Z;
-
-		return *this;
-	}
-
-	FVector operator /= (FVector& v)
-	{
-		this->X /= v.X;
-		this->Y /= v.Y;
-		this->Z /= v.Z;
-
-		return *this;
-	}
-
-	FVector operator *= (FVector& v)
-	{
-		this->X *= v.X;
-		this->Y *= v.Y;
-		this->Z *= v.Z;
-
-		return *this;
-	}
-
-	float DotProduct(FVector& Other)
-	{
-		return ((this->X * Other.X) + (this->Y * Other.Y) + (this->Z * Other.Z));
-	}
-
-	void Normalize()
-	{
-		float Size = sqrt(X * X + Y * Y + Z * Z);
-
-		if (!Size)
-		{
-			X = Y = Z = 1;
-		}
-		else
-		{
-			X /= Size;
-			Y /= Size;
-			Z /= Size;
-		}
-	}
-};
-
 // ScriptStruct Core.Object.Rotator
 // 0x000C
 struct FRotator
@@ -110,22 +28,16 @@ struct FRotator
 	int32_t                                            Pitch;                                         // 0x0000 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	int32_t                                            Yaw;                                           // 0x0004 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	int32_t                                            Roll;                                          // 0x0008 (0x0004) [0x0000000000000001] (CPF_Edit)    
-
-	FVector ToVector()
-	{
-		FVector Return;
-		float fYaw = Yaw * (3.1415926535897932f / 32768);
-		float fPitch = Pitch * (3.1415926535897932f / 32768);
-		float CosPitch = cos(fPitch);
-		
-		Return.X = cos(fYaw) * CosPitch;
-		Return.Y = sin(fYaw) * CosPitch;
-		Return.Z = sin(fPitch);
-
-		return Return;
-	}
 };
 
+// ScriptStruct Core.Object.Vector
+// 0x000C
+struct FVector
+{
+	float                                              X;                                             // 0x0000 (0x0004) [0x0000000000000001] (CPF_Edit)    
+	float                                              Y;                                             // 0x0004 (0x0004) [0x0000000000000001] (CPF_Edit)    
+	float                                              Z;                                             // 0x0008 (0x0004) [0x0000000000000001] (CPF_Edit)    
+};
 
 // ScriptStruct Core.Object.Plane
 // 0x0004 (0x000C - 0x0010)
@@ -179,35 +91,6 @@ struct FColor
 	uint8_t                                            G;                                             // 0x0001 (0x0001) [0x0000000000000001] (CPF_Edit)    
 	uint8_t                                            R;                                             // 0x0002 (0x0001) [0x0000000000000001] (CPF_Edit)    
 	uint8_t                                            A;                                             // 0x0003 (0x0001) [0x0000000000000001] (CPF_Edit)    
-
-	static FLinearColor InvertColor(FLinearColor LinearColor)
-	{
-		LinearColor.R = 1 - LinearColor.R;
-		LinearColor.G = 1 - LinearColor.G;
-		LinearColor.B = 1 - LinearColor.B;
-		LinearColor.A = LinearColor.A;
-		return LinearColor;
-	}
-
-	static FLinearColor ToLinearColor(FColor Color)
-	{
-		FLinearColor LinearColor;
-		LinearColor.R = (Color.R > 0 ? (static_cast<float>(Color.R) / 255.0f) : 0);
-		LinearColor.G = (Color.G > 0 ? (static_cast<float>(Color.G) / 255.0f) : 0);
-		LinearColor.B = (Color.B > 0 ? (static_cast<float>(Color.B) / 255.0f) : 0);
-		LinearColor.A = (Color.A > 0 ? (static_cast<float>(Color.A) / 255.0f) : 0);
-		return LinearColor;
-	}
-
-	FLinearColor ToLinearColor()
-	{
-		FLinearColor LinearColor;
-		LinearColor.R = (R > 0 ? (static_cast<float>(R) / 255.0f) : 0);
-		LinearColor.G = (G > 0 ? (static_cast<float>(G) / 255.0f) : 0);
-		LinearColor.B = (B > 0 ? (static_cast<float>(B) / 255.0f) : 0);
-		LinearColor.A = (A > 0 ? (static_cast<float>(A) / 255.0f) : 0);
-		return LinearColor;
-	}
 };
 
 // ScriptStruct Core.Object.Vector2D
@@ -411,7 +294,7 @@ struct FInterpCurveLinearColor
 struct FInterpCurvePointQuat
 {
 	float                                              InVal;                                         // 0x0000 (0x0004) [0x0000000000000001] (CPF_Edit)    
-	uint8_t                                           UnknownData00[0xC];                               		// 0x0004 (0x000C) MISSED OFFSET
+	uint8_t                                            UnknownData00[0xC];                              // 0x0004 (0x000C) MISSED OFFSET
 	struct FQuat                                       OutVal;                                        // 0x0010 (0x0010) [0x0000000000000001] (CPF_Edit)    
 	struct FQuat                                       ArriveTangent;                                 // 0x0020 (0x0010) [0x0000000000000001] (CPF_Edit)    
 	struct FQuat                                       LeaveTangent;                                  // 0x0030 (0x0010) [0x0000000000000001] (CPF_Edit)    
@@ -471,8 +354,8 @@ struct FTPOV
 // 0x0030
 struct FSHVector
 {
-	float                                              V[0x9];                                        // 0x0000 (0x0024) [0x0000000000000001] (CPF_Edit)    
-	float                                              Padding[0x3];                                  // 0x0024 (0x000C) [0x0000000000000000]               
+	float                                              V[9];                                          // 0x0000 (0x0024) [0x0000000000000001] (CPF_Edit)    
+	float                                              Padding[3];                                    // 0x0024 (0x000C) [0x0000000000000000]               
 };
 
 // ScriptStruct Core.Object.SHVectorRGB
@@ -553,7 +436,7 @@ struct FUntypedBulkData_Mirror
 struct FBitArray_Mirror
 {
 	struct FPointer                                    IndirectData;                                  // 0x0000 (0x0008) [0x0000000000001002] (CPF_Const | CPF_Native)
-	int32_t                                            InlineData[0x4];                               // 0x0008 (0x0010) [0x0000000000001002] (CPF_Const | CPF_Native)
+	int32_t                                            InlineData[4];                                 // 0x0008 (0x0010) [0x0000000000001002] (CPF_Const | CPF_Native)
 	int32_t                                            NumBits;                                       // 0x0018 (0x0004) [0x0000000000001002] (CPF_Const | CPF_Native)
 	int32_t                                            MaxBits;                                       // 0x001C (0x0004) [0x0000000000001002] (CPF_Const | CPF_Native)
 };
@@ -629,9 +512,9 @@ struct FHatPointer
 // 0x0014
 struct FSceNpOnlineId
 {
-	uint64_t                                           Data[0x2];                                     // 0x0000 (0x0010) [0x0000000000000000]               
+	uint64_t                                           Data[2];                                       // 0x0000 (0x0010) [0x0000000000000000]               
 	uint8_t                                            Term;                                          // 0x0010 (0x0001) [0x0000000000000000]               
-	uint8_t                                            Dummy[0x3];                                    // 0x0011 (0x0003) [0x0000000000000000]               
+	uint8_t                                            Dummy[3];                                      // 0x0011 (0x0003) [0x0000000000000000]               
 };
 
 // ScriptStruct Core._Types_Core.SceNpId
@@ -652,21 +535,6 @@ struct FUniqueNetId
 	class FString                                      EpicAccountId;                                 // 0x0030 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	uint8_t                                            Platform;                                      // 0x0040 (0x0001) [0x0000000000000000]               
 	uint8_t                                            SplitscreenID;                                 // 0x0041 (0x0001) [0x0000000000000000]               
-
-	bool operator==(const FUniqueNetId& Other) const
-	{
-		if (Uid == Other.Uid && EpicAccountId.ToString() == Other.EpicAccountId.ToString() && Platform == Other.Platform && SplitscreenID == Other.SplitscreenID)
-		{
-			return true;
-		}
-
-		return false;
-	}
-
-	bool operator!=(const FUniqueNetId& Other) const
-	{
-		return !(*this == Other);
-	}
 };
 
 // ScriptStruct Core._Types_Core.ProductHashID
@@ -687,9 +555,9 @@ struct FEncryptedKeyIndex
 // 0x0024
 struct FVoiceAudioDevice
 {
-	class FString                                      Id;                                            // 0x0000 (0x0010) [0x0000000040400000] (CPF_NeedCtorLink | CPF_EditInlineNotify)
-	class FString                                      Name;                                          // 0x0010 (0x0010) [0x0000000040400000] (CPF_NeedCtorLink | CPF_EditInlineNotify)
-	uint32_t                                           bDefault : 1;                                  // 0x0020 (0x0004) [0x0000000040000000] [0x00000001] (CPF_EditInlineNotify)
+	class FString                                      Id;                                            // 0x0000 (0x0010) [0x0000000040400000] (CPF_NeedCtorLink | CPF_DataBinding)
+	class FString                                      Name;                                          // 0x0010 (0x0010) [0x0000000040400000] (CPF_NeedCtorLink | CPF_DataBinding)
+	uint32_t                                           bDefault : 1;                                  // 0x0020 (0x0004) [0x0000000040000000] [0x00000001] (CPF_DataBinding)
 };
 
 // ScriptStruct Core._Types_Core.VoiceRoomMemberStatus
@@ -811,12 +679,6 @@ struct FRotatorRadians
 	float                                              Roll;                                          // 0x0008 (0x0004) [0x0000000000000001] (CPF_Edit)    
 };
 
-// ScriptStruct Core.Default__ScriptStruct
-// 0x0000
-struct FDefault__ScriptStruct
-{
-};
-
 /*
 # ========================================================================================= #
 #
@@ -824,5 +686,5 @@ struct FDefault__ScriptStruct
 */
 
 #ifdef _MSC_VER
-	#pragma pack(pop)
+#pragma pack(pop)
 #endif

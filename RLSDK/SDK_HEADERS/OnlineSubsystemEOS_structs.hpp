@@ -1,18 +1,18 @@
 /*
 #############################################################################################
-# RocketLeague (1.0.10897.0) SDK
-# Generated with the CodeRedGenerator v1.0.2
+# RocketLeague (RLSDK) SDK 1.0.0
+# Generated with the CodeRedGenerator v1.1.6
 # ========================================================================================= #
 # File: OnlineSubsystemEOS_structs.hpp
 # ========================================================================================= #
-# Credits: TheFeckless, ItsBranK
-# Links: www.github.com/CodeRedModding/CodeRed-Generator, www.twitter.com/ItsBranK
+# Credits: ItsBranK, TheFeckless
+# Links: www.github.com/CodeRedModding/CodeRed-Generator
 #############################################################################################
 */
 #pragma once
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+#pragma pack(push, 0x8)
 #endif
 
 /*
@@ -43,5 +43,5 @@ struct FLoginDelegates
 */
 
 #ifdef _MSC_VER
-	#pragma pack(pop)
+#pragma pack(pop)
 #endif

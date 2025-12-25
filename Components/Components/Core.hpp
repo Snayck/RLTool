@@ -25,6 +25,8 @@ public:
 	static uintptr_t GetGNames();
 
 private:
+	static bool ValidateTArray(HANDLE hProcess, uintptr_t address);
+	static std::vector<uintptr_t> FindPattern(HANDLE hProcess, uintptr_t baseAddress, SIZE_T moduleSize);
 	static bool AreGlobalsValid();
 	static bool AreGObjectsValid();
 	static bool AreGNamesValid();

@@ -1,18 +1,18 @@
 /*
 #############################################################################################
-# RocketLeague (1.0.10897.0) SDK
-# Generated with the CodeRedGenerator v1.0.2
+# RocketLeague (RLSDK) SDK 1.0.0
+# Generated with the CodeRedGenerator v1.1.6
 # ========================================================================================= #
 # File: Core_classes.cpp
 # ========================================================================================= #
-# Credits: TheFeckless, ItsBranK
-# Links: www.github.com/CodeRedModding/CodeRed-Generator, www.twitter.com/ItsBranK
+# Credits: ItsBranK, TheFeckless
+# Links: www.github.com/CodeRedModding/CodeRed-Generator
 #############################################################################################
 */
 #include "../SdkHeaders.hpp"
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+#pragma pack(push, 0x8)
 #endif
 
 /*
@@ -170,7 +170,7 @@ void UObject::ProcessEvent(class UFunction* uFunction, void* uParams, void* uRes
 // float                          Lambda                         (CPF_Parm)
 // float                          DeltaTime                      (CPF_Parm)
 
-struct FRotator UObject::RSmoothInterpTo(struct FRotator From, struct FRotator To, float Lambda, float DeltaTime)
+struct FRotator UObject::RSmoothInterpTo(const struct FRotator& From, const struct FRotator& To, float Lambda, float DeltaTime)
 {
 	static UFunction* uFnRSmoothInterpTo = nullptr;
 
@@ -200,7 +200,7 @@ struct FRotator UObject::RSmoothInterpTo(struct FRotator From, struct FRotator T
 // float                          Lambda                         (CPF_Parm)
 // float                          DeltaTime                      (CPF_Parm)
 
-struct FVector UObject::VSmoothInterpTo(struct FVector From, struct FVector To, float Lambda, float DeltaTime)
+struct FVector UObject::VSmoothInterpTo(const struct FVector& From, const struct FVector& To, float Lambda, float DeltaTime)
 {
 	static UFunction* uFnVSmoothInterpTo = nullptr;
 
@@ -294,9 +294,11 @@ class UObject* UObject::GetTypedOuter(class UClass* ObjClass)
 
 	UObject_execGetTypedOuter_Params GetTypedOuter_Params;
 	memset(&GetTypedOuter_Params, 0, sizeof(GetTypedOuter_Params));
-	memcpy_s(&GetTypedOuter_Params.ObjClass, sizeof(GetTypedOuter_Params.ObjClass), &ObjClass, sizeof(ObjClass));
+	GetTypedOuter_Params.ObjClass = ObjClass;
 
+	uFnGetTypedOuter->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGetTypedOuter, &GetTypedOuter_Params, nullptr);
+	uFnGetTypedOuter->FunctionFlags |= 0x400;
 
 	return GetTypedOuter_Params.ReturnValue;
 };
@@ -317,7 +319,9 @@ void UObject::MarkPendingKill()
 	UObject_execMarkPendingKill_Params MarkPendingKill_Params;
 	memset(&MarkPendingKill_Params, 0, sizeof(MarkPendingKill_Params));
 
+	uFnMarkPendingKill->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnMarkPendingKill, &MarkPendingKill_Params, nullptr);
+	uFnMarkPendingKill->FunctionFlags |= 0x400;
 };
 
 // Function Core.Object.NotNone
@@ -337,7 +341,7 @@ bool UObject::NotNone(class UObject* O)
 
 	UObject_execNotNone_Params NotNone_Params;
 	memset(&NotNone_Params, 0, sizeof(NotNone_Params));
-	memcpy_s(&NotNone_Params.O, sizeof(NotNone_Params.O), &O, sizeof(O));
+	NotNone_Params.O = O;
 
 	UObject::StaticClass()->ProcessEvent(uFnNotNone, &NotNone_Params, nullptr);
 
@@ -493,7 +497,7 @@ int32_t UObject::SortAscendingFloat(float A, float B)
 // class FString                  A                              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  B                              (CPF_Parm | CPF_NeedCtorLink)
 
-int32_t UObject::SortDescendingString(class FString A, class FString B)
+int32_t UObject::SortDescendingString(const class FString& A, const class FString& B)
 {
 	static UFunction* uFnSortDescendingString = nullptr;
 
@@ -519,7 +523,7 @@ int32_t UObject::SortDescendingString(class FString A, class FString B)
 // class FString                  A                              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  B                              (CPF_Parm | CPF_NeedCtorLink)
 
-int32_t UObject::SortAscendingString(class FString A, class FString B)
+int32_t UObject::SortAscendingString(const class FString& A, const class FString& B)
 {
 	static UFunction* uFnSortAscendingString = nullptr;
 
@@ -556,8 +560,8 @@ int32_t UObject::SortDescendingQWORD(uint64_t A, uint64_t B)
 
 	UObject_execSortDescendingQWORD_Params SortDescendingQWORD_Params;
 	memset(&SortDescendingQWORD_Params, 0, sizeof(SortDescendingQWORD_Params));
-	SortDescendingQWORD_Params.A = A;
-	SortDescendingQWORD_Params.B = B;
+	memcpy_s(&SortDescendingQWORD_Params.A, sizeof(SortDescendingQWORD_Params.A), &A, sizeof(A));
+	memcpy_s(&SortDescendingQWORD_Params.B, sizeof(SortDescendingQWORD_Params.B), &B, sizeof(B));
 
 	UObject::StaticClass()->ProcessEvent(uFnSortDescendingQWORD, &SortDescendingQWORD_Params, nullptr);
 
@@ -582,8 +586,8 @@ int32_t UObject::SortAscendingQWORD(uint64_t A, uint64_t B)
 
 	UObject_execSortAscendingQWORD_Params SortAscendingQWORD_Params;
 	memset(&SortAscendingQWORD_Params, 0, sizeof(SortAscendingQWORD_Params));
-	SortAscendingQWORD_Params.A = A;
-	SortAscendingQWORD_Params.B = B;
+	memcpy_s(&SortAscendingQWORD_Params.A, sizeof(SortAscendingQWORD_Params.A), &A, sizeof(A));
+	memcpy_s(&SortAscendingQWORD_Params.B, sizeof(SortAscendingQWORD_Params.B), &B, sizeof(B));
 
 	UObject::StaticClass()->ProcessEvent(uFnSortAscendingQWORD, &SortAscendingQWORD_Params, nullptr);
 
@@ -649,7 +653,7 @@ int32_t UObject::SortAscendingInt(int32_t A, int32_t B)
 // class FString                  Str                            (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 // int32_t                        Characters                     (CPF_Parm)
 
-class FString UObject::PadString(class FString Str, int32_t Characters)
+class FString UObject::PadString(const class FString& Str, int32_t Characters)
 {
 	static UFunction* uFnPadString = nullptr;
 
@@ -685,7 +689,9 @@ uint64_t UObject::GetFrameCounter()
 	UObject_execGetFrameCounter_Params GetFrameCounter_Params;
 	memset(&GetFrameCounter_Params, 0, sizeof(GetFrameCounter_Params));
 
+	uFnGetFrameCounter->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGetFrameCounter, &GetFrameCounter_Params, nullptr);
+	uFnGetFrameCounter->FunctionFlags |= 0x400;
 
 	return GetFrameCounter_Params.ReturnValue;
 };
@@ -713,7 +719,9 @@ float UObject::GetScaledAxisValue(float Value, float Sensitivity, float MaxSensi
 	memcpy_s(&GetScaledAxisValue_Params.Sensitivity, sizeof(GetScaledAxisValue_Params.Sensitivity), &Sensitivity, sizeof(Sensitivity));
 	memcpy_s(&GetScaledAxisValue_Params.MaxSensitivity, sizeof(GetScaledAxisValue_Params.MaxSensitivity), &MaxSensitivity, sizeof(MaxSensitivity));
 
+	uFnGetScaledAxisValue->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGetScaledAxisValue, &GetScaledAxisValue_Params, nullptr);
+	uFnGetScaledAxisValue->FunctionFlags |= 0x400;
 
 	return GetScaledAxisValue_Params.ReturnValue;
 };
@@ -735,9 +743,11 @@ class UObject* UObject::GetSingleton(class UClass* ObjClass)
 
 	UObject_execGetSingleton_Params GetSingleton_Params;
 	memset(&GetSingleton_Params, 0, sizeof(GetSingleton_Params));
-	memcpy_s(&GetSingleton_Params.ObjClass, sizeof(GetSingleton_Params.ObjClass), &ObjClass, sizeof(ObjClass));
+	GetSingleton_Params.ObjClass = ObjClass;
 
+	uFnGetSingleton->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGetSingleton, &GetSingleton_Params, nullptr);
+	uFnGetSingleton->FunctionFlags |= 0x400;
 
 	return GetSingleton_Params.ReturnValue;
 };
@@ -759,7 +769,9 @@ class UObjectProvider* UObject::GetObjectProviderW()
 	UObject_execGetObjectProviderW_Params GetObjectProviderW_Params;
 	memset(&GetObjectProviderW_Params, 0, sizeof(GetObjectProviderW_Params));
 
+	uFnGetObjectProviderW->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGetObjectProviderW, &GetObjectProviderW_Params, nullptr);
+	uFnGetObjectProviderW->FunctionFlags |= 0x400;
 
 	return GetObjectProviderW_Params.ReturnValue;
 };
@@ -781,7 +793,9 @@ bool UObject::IsAutomationTest()
 	UObject_execIsAutomationTest_Params IsAutomationTest_Params;
 	memset(&IsAutomationTest_Params, 0, sizeof(IsAutomationTest_Params));
 
+	uFnIsAutomationTest->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnIsAutomationTest, &IsAutomationTest_Params, nullptr);
+	uFnIsAutomationTest->FunctionFlags |= 0x400;
 
 	return IsAutomationTest_Params.ReturnValue;
 };
@@ -803,7 +817,9 @@ class FString UObject::ToJson()
 	UObject_execToJson_Params ToJson_Params;
 	memset(&ToJson_Params, 0, sizeof(ToJson_Params));
 
+	uFnToJson->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnToJson, &ToJson_Params, nullptr);
+	uFnToJson->FunctionFlags |= 0x400;
 
 	return ToJson_Params.ReturnValue;
 };
@@ -811,7 +827,7 @@ class FString UObject::ToJson()
 // Function Core.Object.SetRooted
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bRooted                        (CPF_Parm)
+// uint32_t                       bRooted                        (CPF_Parm)
 
 void UObject::SetRooted(bool bRooted)
 {
@@ -826,7 +842,9 @@ void UObject::SetRooted(bool bRooted)
 	memset(&SetRooted_Params, 0, sizeof(SetRooted_Params));
 	SetRooted_Params.bRooted = bRooted;
 
+	uFnSetRooted->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSetRooted, &SetRooted_Params, nullptr);
+	uFnSetRooted->FunctionFlags |= 0x400;
 };
 
 // Function Core.Object.ProfNodeEvent
@@ -834,7 +852,7 @@ void UObject::SetRooted(bool bRooted)
 // Parameter Info:
 // class FString                  EventName                      (CPF_Parm | CPF_NeedCtorLink)
 
-void UObject::ProfNodeEvent(class FString EventName)
+void UObject::ProfNodeEvent(const class FString& EventName)
 {
 	static UFunction* uFnProfNodeEvent = nullptr;
 
@@ -847,7 +865,9 @@ void UObject::ProfNodeEvent(class FString EventName)
 	memset(&ProfNodeEvent_Params, 0, sizeof(ProfNodeEvent_Params));
 	memcpy_s(&ProfNodeEvent_Params.EventName, sizeof(ProfNodeEvent_Params.EventName), &EventName, sizeof(EventName));
 
+	uFnProfNodeEvent->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnProfNodeEvent, &ProfNodeEvent_Params, nullptr);
+	uFnProfNodeEvent->FunctionFlags |= 0x400;
 };
 
 // Function Core.Object.ProfNodeSetDepthThreshold
@@ -868,7 +888,9 @@ void UObject::ProfNodeSetDepthThreshold(int32_t Depth)
 	memset(&ProfNodeSetDepthThreshold_Params, 0, sizeof(ProfNodeSetDepthThreshold_Params));
 	memcpy_s(&ProfNodeSetDepthThreshold_Params.Depth, sizeof(ProfNodeSetDepthThreshold_Params.Depth), &Depth, sizeof(Depth));
 
+	uFnProfNodeSetDepthThreshold->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnProfNodeSetDepthThreshold, &ProfNodeSetDepthThreshold_Params, nullptr);
+	uFnProfNodeSetDepthThreshold->FunctionFlags |= 0x400;
 };
 
 // Function Core.Object.ProfNodeSetTimeThresholdSeconds
@@ -889,11 +911,13 @@ void UObject::ProfNodeSetTimeThresholdSeconds(float Threshold)
 	memset(&ProfNodeSetTimeThresholdSeconds_Params, 0, sizeof(ProfNodeSetTimeThresholdSeconds_Params));
 	memcpy_s(&ProfNodeSetTimeThresholdSeconds_Params.Threshold, sizeof(ProfNodeSetTimeThresholdSeconds_Params.Threshold), &Threshold, sizeof(Threshold));
 
+	uFnProfNodeSetTimeThresholdSeconds->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnProfNodeSetTimeThresholdSeconds, &ProfNodeSetTimeThresholdSeconds_Params, nullptr);
+	uFnProfNodeSetTimeThresholdSeconds->FunctionFlags |= 0x400;
 };
 
 // Function Core.Object.ProfNodeStop
-// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // int32_t                        AssumedTimerIndex              (CPF_OptionalParm | CPF_Parm)
 
@@ -910,7 +934,9 @@ void UObject::ProfNodeStop(int32_t AssumedTimerIndex)
 	memset(&ProfNodeStop_Params, 0, sizeof(ProfNodeStop_Params));
 	memcpy_s(&ProfNodeStop_Params.AssumedTimerIndex, sizeof(ProfNodeStop_Params.AssumedTimerIndex), &AssumedTimerIndex, sizeof(AssumedTimerIndex));
 
+	uFnProfNodeStop->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnProfNodeStop, &ProfNodeStop_Params, nullptr);
+	uFnProfNodeStop->FunctionFlags |= 0x400;
 };
 
 // Function Core.Object.ProfNodeStart
@@ -919,7 +945,7 @@ void UObject::ProfNodeStop(int32_t AssumedTimerIndex)
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  TimerName                      (CPF_Parm | CPF_NeedCtorLink)
 
-int32_t UObject::ProfNodeStart(class FString TimerName)
+int32_t UObject::ProfNodeStart(const class FString& TimerName)
 {
 	static UFunction* uFnProfNodeStart = nullptr;
 
@@ -932,7 +958,9 @@ int32_t UObject::ProfNodeStart(class FString TimerName)
 	memset(&ProfNodeStart_Params, 0, sizeof(ProfNodeStart_Params));
 	memcpy_s(&ProfNodeStart_Params.TimerName, sizeof(ProfNodeStart_Params.TimerName), &TimerName, sizeof(TimerName));
 
+	uFnProfNodeStart->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnProfNodeStart, &ProfNodeStart_Params, nullptr);
+	uFnProfNodeStart->FunctionFlags |= 0x400;
 
 	return ProfNodeStart_Params.ReturnValue;
 };
@@ -978,7 +1006,9 @@ class FString UObject::GetStringFromGuid(struct FGuid& InGuid)
 	memset(&GetStringFromGuid_Params, 0, sizeof(GetStringFromGuid_Params));
 	memcpy_s(&GetStringFromGuid_Params.InGuid, sizeof(GetStringFromGuid_Params.InGuid), &InGuid, sizeof(InGuid));
 
+	uFnGetStringFromGuid->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGetStringFromGuid, &GetStringFromGuid_Params, nullptr);
+	uFnGetStringFromGuid->FunctionFlags |= 0x400;
 
 	memcpy_s(&InGuid, sizeof(InGuid), &GetStringFromGuid_Params.InGuid, sizeof(GetStringFromGuid_Params.InGuid));
 
@@ -1004,7 +1034,9 @@ struct FGuid UObject::GetGuidFromString(class FString& InGuidString)
 	memset(&GetGuidFromString_Params, 0, sizeof(GetGuidFromString_Params));
 	memcpy_s(&GetGuidFromString_Params.InGuidString, sizeof(GetGuidFromString_Params.InGuidString), &InGuidString, sizeof(InGuidString));
 
+	uFnGetGuidFromString->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGetGuidFromString, &GetGuidFromString_Params, nullptr);
+	uFnGetGuidFromString->FunctionFlags |= 0x400;
 
 	memcpy_s(&InGuidString, sizeof(InGuidString), &GetGuidFromString_Params.InGuidString, sizeof(GetGuidFromString_Params.InGuidString));
 
@@ -1028,7 +1060,9 @@ struct FGuid UObject::CreateGuid()
 	UObject_execCreateGuid_Params CreateGuid_Params;
 	memset(&CreateGuid_Params, 0, sizeof(CreateGuid_Params));
 
+	uFnCreateGuid->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnCreateGuid, &CreateGuid_Params, nullptr);
+	uFnCreateGuid->FunctionFlags |= 0x400;
 
 	return CreateGuid_Params.ReturnValue;
 };
@@ -1052,7 +1086,9 @@ bool UObject::IsGuidValid(struct FGuid& InGuid)
 	memset(&IsGuidValid_Params, 0, sizeof(IsGuidValid_Params));
 	memcpy_s(&IsGuidValid_Params.InGuid, sizeof(IsGuidValid_Params.InGuid), &InGuid, sizeof(InGuid));
 
+	uFnIsGuidValid->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnIsGuidValid, &IsGuidValid_Params, nullptr);
+	uFnIsGuidValid->FunctionFlags |= 0x400;
 
 	memcpy_s(&InGuid, sizeof(InGuid), &IsGuidValid_Params.InGuid, sizeof(IsGuidValid_Params.InGuid));
 
@@ -1077,7 +1113,9 @@ void UObject::InvalidateGuid(struct FGuid& InGuid)
 	memset(&InvalidateGuid_Params, 0, sizeof(InvalidateGuid_Params));
 	memcpy_s(&InvalidateGuid_Params.InGuid, sizeof(InvalidateGuid_Params.InGuid), &InGuid, sizeof(InGuid));
 
+	uFnInvalidateGuid->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnInvalidateGuid, &InvalidateGuid_Params, nullptr);
+	uFnInvalidateGuid->FunctionFlags |= 0x400;
 
 	memcpy_s(&InGuid, sizeof(InGuid), &InvalidateGuid_Params.InGuid, sizeof(InvalidateGuid_Params.InGuid));
 };
@@ -1090,7 +1128,7 @@ void UObject::InvalidateGuid(struct FGuid& InGuid)
 // struct FName                   PropertyName                   (CPF_Parm)
 // struct FName                   StructName                     (CPF_Parm)
 
-class UObject* UObject::FindStructProperty(class UClass* PropertyClass, struct FName PropertyName, struct FName StructName)
+class UObject* UObject::FindStructProperty(class UClass* PropertyClass, const struct FName& PropertyName, const struct FName& StructName)
 {
 	static UFunction* uFnFindStructProperty = nullptr;
 
@@ -1101,11 +1139,13 @@ class UObject* UObject::FindStructProperty(class UClass* PropertyClass, struct F
 
 	UObject_execFindStructProperty_Params FindStructProperty_Params;
 	memset(&FindStructProperty_Params, 0, sizeof(FindStructProperty_Params));
-	memcpy_s(&FindStructProperty_Params.PropertyClass, sizeof(FindStructProperty_Params.PropertyClass), &PropertyClass, sizeof(PropertyClass));
+	FindStructProperty_Params.PropertyClass = PropertyClass;
 	memcpy_s(&FindStructProperty_Params.PropertyName, sizeof(FindStructProperty_Params.PropertyName), &PropertyName, sizeof(PropertyName));
 	memcpy_s(&FindStructProperty_Params.StructName, sizeof(FindStructProperty_Params.StructName), &StructName, sizeof(StructName));
 
+	uFnFindStructProperty->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnFindStructProperty, &FindStructProperty_Params, nullptr);
+	uFnFindStructProperty->FunctionFlags |= 0x400;
 
 	return FindStructProperty_Params.ReturnValue;
 };
@@ -1117,7 +1157,7 @@ class UObject* UObject::FindStructProperty(class UClass* PropertyClass, struct F
 // class UClass*                  PropertyClass                  (CPF_Parm)
 // struct FName                   PropertyName                   (CPF_Parm)
 
-class UObject* UObject::FindProperty(class UClass* PropertyClass, struct FName PropertyName)
+class UObject* UObject::FindProperty(class UClass* PropertyClass, const struct FName& PropertyName)
 {
 	static UFunction* uFnFindProperty = nullptr;
 
@@ -1128,16 +1168,18 @@ class UObject* UObject::FindProperty(class UClass* PropertyClass, struct FName P
 
 	UObject_execFindProperty_Params FindProperty_Params;
 	memset(&FindProperty_Params, 0, sizeof(FindProperty_Params));
-	memcpy_s(&FindProperty_Params.PropertyClass, sizeof(FindProperty_Params.PropertyClass), &PropertyClass, sizeof(PropertyClass));
+	FindProperty_Params.PropertyClass = PropertyClass;
 	memcpy_s(&FindProperty_Params.PropertyName, sizeof(FindProperty_Params.PropertyName), &PropertyName, sizeof(PropertyName));
 
+	uFnFindProperty->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnFindProperty, &FindProperty_Params, nullptr);
+	uFnFindProperty->FunctionFlags |= 0x400;
 
 	return FindProperty_Params.ReturnValue;
 };
 
 // Function Core.Object.DuplicateObject
-// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class UObject*                 ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_CoerceParm)
 // class UObject*                 Template                       (CPF_Parm)
@@ -1155,11 +1197,13 @@ class UObject* UObject::DuplicateObject(class UObject* Template, class UObject* 
 
 	UObject_execDuplicateObject_Params DuplicateObject_Params;
 	memset(&DuplicateObject_Params, 0, sizeof(DuplicateObject_Params));
-	memcpy_s(&DuplicateObject_Params.Template, sizeof(DuplicateObject_Params.Template), &Template, sizeof(Template));
-	memcpy_s(&DuplicateObject_Params.ObjOuter, sizeof(DuplicateObject_Params.ObjOuter), &ObjOuter, sizeof(ObjOuter));
-	memcpy_s(&DuplicateObject_Params.DestClass, sizeof(DuplicateObject_Params.DestClass), &DestClass, sizeof(DestClass));
+	DuplicateObject_Params.Template = Template;
+	DuplicateObject_Params.ObjOuter = ObjOuter;
+	DuplicateObject_Params.DestClass = DestClass;
 
+	uFnDuplicateObject->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnDuplicateObject, &DuplicateObject_Params, nullptr);
+	uFnDuplicateObject->FunctionFlags |= 0x400;
 
 	return DuplicateObject_Params.ReturnValue;
 };
@@ -1187,7 +1231,9 @@ float UObject::RunningAverage(float OldAverage, float NewValue, int32_t NewCount
 	memcpy_s(&RunningAverage_Params.NewValue, sizeof(RunningAverage_Params.NewValue), &NewValue, sizeof(NewValue));
 	memcpy_s(&RunningAverage_Params.NewCount, sizeof(RunningAverage_Params.NewCount), &NewCount, sizeof(NewCount));
 
+	uFnRunningAverage->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnRunningAverage, &RunningAverage_Params, nullptr);
+	uFnRunningAverage->FunctionFlags |= 0x400;
 
 	return RunningAverage_Params.ReturnValue;
 };
@@ -1209,7 +1255,9 @@ float UObject::GetCurrentTimeW()
 	UObject_execGetCurrentTimeW_Params GetCurrentTimeW_Params;
 	memset(&GetCurrentTimeW_Params, 0, sizeof(GetCurrentTimeW_Params));
 
+	uFnGetCurrentTimeW->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGetCurrentTimeW, &GetCurrentTimeW_Params, nullptr);
+	uFnGetCurrentTimeW->FunctionFlags |= 0x400;
 
 	return GetCurrentTimeW_Params.ReturnValue;
 };
@@ -1220,7 +1268,7 @@ float UObject::GetCurrentTimeW()
 // struct FLinearColor            ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FLinearColor            C                              (CPF_Parm)
 
-struct FLinearColor UObject::GetMaxLinearColorBrightness(struct FLinearColor C)
+struct FLinearColor UObject::GetMaxLinearColorBrightness(const struct FLinearColor& C)
 {
 	static UFunction* uFnGetMaxLinearColorBrightness = nullptr;
 
@@ -1233,7 +1281,9 @@ struct FLinearColor UObject::GetMaxLinearColorBrightness(struct FLinearColor C)
 	memset(&GetMaxLinearColorBrightness_Params, 0, sizeof(GetMaxLinearColorBrightness_Params));
 	memcpy_s(&GetMaxLinearColorBrightness_Params.C, sizeof(GetMaxLinearColorBrightness_Params.C), &C, sizeof(C));
 
+	uFnGetMaxLinearColorBrightness->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnGetMaxLinearColorBrightness, &GetMaxLinearColorBrightness_Params, nullptr);
+	uFnGetMaxLinearColorBrightness->FunctionFlags |= 0x400;
 
 	return GetMaxLinearColorBrightness_Params.ReturnValue;
 };
@@ -1244,7 +1294,7 @@ struct FLinearColor UObject::GetMaxLinearColorBrightness(struct FLinearColor C)
 // struct FColor                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FColor                  C                              (CPF_Parm)
 
-struct FColor UObject::GetMaxColorBrightness(struct FColor C)
+struct FColor UObject::GetMaxColorBrightness(const struct FColor& C)
 {
 	static UFunction* uFnGetMaxColorBrightness = nullptr;
 
@@ -1268,7 +1318,7 @@ struct FColor UObject::GetMaxColorBrightness(struct FColor C)
 // struct FLinearColor            ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FLinearColor            C                              (CPF_Parm)
 
-struct FLinearColor UObject::LABtoRGB(struct FLinearColor C)
+struct FLinearColor UObject::LABtoRGB(const struct FLinearColor& C)
 {
 	static UFunction* uFnLABtoRGB = nullptr;
 
@@ -1281,7 +1331,9 @@ struct FLinearColor UObject::LABtoRGB(struct FLinearColor C)
 	memset(&LABtoRGB_Params, 0, sizeof(LABtoRGB_Params));
 	memcpy_s(&LABtoRGB_Params.C, sizeof(LABtoRGB_Params.C), &C, sizeof(C));
 
+	uFnLABtoRGB->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnLABtoRGB, &LABtoRGB_Params, nullptr);
+	uFnLABtoRGB->FunctionFlags |= 0x400;
 
 	return LABtoRGB_Params.ReturnValue;
 };
@@ -1292,7 +1344,7 @@ struct FLinearColor UObject::LABtoRGB(struct FLinearColor C)
 // struct FLinearColor            ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FLinearColor            C                              (CPF_Parm)
 
-struct FLinearColor UObject::RGBtoLAB(struct FLinearColor C)
+struct FLinearColor UObject::RGBtoLAB(const struct FLinearColor& C)
 {
 	static UFunction* uFnRGBtoLAB = nullptr;
 
@@ -1305,7 +1357,9 @@ struct FLinearColor UObject::RGBtoLAB(struct FLinearColor C)
 	memset(&RGBtoLAB_Params, 0, sizeof(RGBtoLAB_Params));
 	memcpy_s(&RGBtoLAB_Params.C, sizeof(RGBtoLAB_Params.C), &C, sizeof(C));
 
+	uFnRGBtoLAB->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnRGBtoLAB, &RGBtoLAB_Params, nullptr);
+	uFnRGBtoLAB->FunctionFlags |= 0x400;
 
 	return RGBtoLAB_Params.ReturnValue;
 };
@@ -1316,7 +1370,7 @@ struct FLinearColor UObject::RGBtoLAB(struct FLinearColor C)
 // struct FLinearColor            ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FLinearColor            C                              (CPF_Parm)
 
-struct FLinearColor UObject::HSVtoRGB(struct FLinearColor C)
+struct FLinearColor UObject::HSVtoRGB(const struct FLinearColor& C)
 {
 	static UFunction* uFnHSVtoRGB = nullptr;
 
@@ -1329,7 +1383,9 @@ struct FLinearColor UObject::HSVtoRGB(struct FLinearColor C)
 	memset(&HSVtoRGB_Params, 0, sizeof(HSVtoRGB_Params));
 	memcpy_s(&HSVtoRGB_Params.C, sizeof(HSVtoRGB_Params.C), &C, sizeof(C));
 
+	uFnHSVtoRGB->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnHSVtoRGB, &HSVtoRGB_Params, nullptr);
+	uFnHSVtoRGB->FunctionFlags |= 0x400;
 
 	return HSVtoRGB_Params.ReturnValue;
 };
@@ -1340,7 +1396,7 @@ struct FLinearColor UObject::HSVtoRGB(struct FLinearColor C)
 // struct FLinearColor            ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FLinearColor            C                              (CPF_Parm)
 
-struct FLinearColor UObject::RGBtoHSV(struct FLinearColor C)
+struct FLinearColor UObject::RGBtoHSV(const struct FLinearColor& C)
 {
 	static UFunction* uFnRGBtoHSV = nullptr;
 
@@ -1353,7 +1409,9 @@ struct FLinearColor UObject::RGBtoHSV(struct FLinearColor C)
 	memset(&RGBtoHSV_Params, 0, sizeof(RGBtoHSV_Params));
 	memcpy_s(&RGBtoHSV_Params.C, sizeof(RGBtoHSV_Params.C), &C, sizeof(C));
 
+	uFnRGBtoHSV->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnRGBtoHSV, &RGBtoHSV_Params, nullptr);
+	uFnRGBtoHSV->FunctionFlags |= 0x400;
 
 	return RGBtoHSV_Params.ReturnValue;
 };
@@ -1401,7 +1459,9 @@ struct FColor UObject::IntToColor(int32_t I)
 	memset(&IntToColor_Params, 0, sizeof(IntToColor_Params));
 	memcpy_s(&IntToColor_Params.I, sizeof(IntToColor_Params.I), &I, sizeof(I));
 
+	uFnIntToColor->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnIntToColor, &IntToColor_Params, nullptr);
+	uFnIntToColor->FunctionFlags |= 0x400;
 
 	return IntToColor_Params.ReturnValue;
 };
@@ -1412,7 +1472,7 @@ struct FColor UObject::IntToColor(int32_t I)
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FLinearColor            C                              (CPF_Parm)
 
-int32_t UObject::LinearColorToInt(struct FLinearColor C)
+int32_t UObject::LinearColorToInt(const struct FLinearColor& C)
 {
 	static UFunction* uFnLinearColorToInt = nullptr;
 
@@ -1436,7 +1496,7 @@ int32_t UObject::LinearColorToInt(struct FLinearColor C)
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FColor                  C                              (CPF_Parm)
 
-int32_t UObject::ColorToInt(struct FColor C)
+int32_t UObject::ColorToInt(const struct FColor& C)
 {
 	static UFunction* uFnColorToInt = nullptr;
 
@@ -1449,7 +1509,9 @@ int32_t UObject::ColorToInt(struct FColor C)
 	memset(&ColorToInt_Params, 0, sizeof(ColorToInt_Params));
 	memcpy_s(&ColorToInt_Params.C, sizeof(ColorToInt_Params.C), &C, sizeof(C));
 
+	uFnColorToInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnColorToInt, &ColorToInt_Params, nullptr);
+	uFnColorToInt->FunctionFlags |= 0x400;
 
 	return ColorToInt_Params.ReturnValue;
 };
@@ -1479,7 +1541,9 @@ bool UObject::SolveVelocityQuadratic(float Distance, float Speed, float Accel, f
 	memcpy_s(&SolveVelocityQuadratic_Params.Accel, sizeof(SolveVelocityQuadratic_Params.Accel), &Accel, sizeof(Accel));
 	memcpy_s(&SolveVelocityQuadratic_Params.Time, sizeof(SolveVelocityQuadratic_Params.Time), &Time, sizeof(Time));
 
+	uFnSolveVelocityQuadratic->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSolveVelocityQuadratic, &SolveVelocityQuadratic_Params, nullptr);
+	uFnSolveVelocityQuadratic->FunctionFlags |= 0x400;
 
 	memcpy_s(&Time, sizeof(Time), &SolveVelocityQuadratic_Params.Time, sizeof(SolveVelocityQuadratic_Params.Time));
 
@@ -1505,7 +1569,9 @@ float UObject::Sign(float X)
 	memset(&Sign_Params, 0, sizeof(Sign_Params));
 	memcpy_s(&Sign_Params.X, sizeof(Sign_Params.X), &X, sizeof(X));
 
+	uFnSign->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSign, &Sign_Params, nullptr);
+	uFnSign->FunctionFlags |= 0x400;
 
 	return Sign_Params.ReturnValue;
 };
@@ -1542,7 +1608,7 @@ struct FVector2D UObject::MakeVector2D(float X, float Y)
 // struct FVector                 ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FVector                 V                              (CPF_Parm)
 
-struct FVector UObject::VAbs(struct FVector V)
+struct FVector UObject::VAbs(const struct FVector& V)
 {
 	static UFunction* uFnVAbs = nullptr;
 
@@ -1595,7 +1661,7 @@ struct FVector UObject::MakeVector(float X, float Y, float Z)
 // struct FVector                 NormalToFlatten                (CPF_Parm)
 // struct FVector                 PlaneNormal                    (CPF_Parm)
 
-struct FVector UObject::FlattenVector(struct FVector NormalToFlatten, struct FVector PlaneNormal)
+struct FVector UObject::FlattenVector(const struct FVector& NormalToFlatten, const struct FVector& PlaneNormal)
 {
 	static UFunction* uFnFlattenVector = nullptr;
 
@@ -1631,7 +1697,9 @@ struct FName UObject::GetRealArchetypeName()
 	UObject_execGetRealArchetypeName_Params GetRealArchetypeName_Params;
 	memset(&GetRealArchetypeName_Params, 0, sizeof(GetRealArchetypeName_Params));
 
+	uFnGetRealArchetypeName->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnGetRealArchetypeName, &GetRealArchetypeName_Params, nullptr);
+	uFnGetRealArchetypeName->FunctionFlags |= 0x400;
 
 	return GetRealArchetypeName_Params.ReturnValue;
 };
@@ -1667,7 +1735,7 @@ class FString UObject::FormatTime(int32_t Seconds)
 // class UClass*                  ArchetypeClass                 (CPF_Parm)
 // class FString                  Path                           (CPF_Const | CPF_Parm | CPF_NeedCtorLink)
 
-class UObject* UObject::GetTextArchetype(class UClass* ArchetypeClass, class FString Path)
+class UObject* UObject::GetTextArchetype(class UClass* ArchetypeClass, const class FString& Path)
 {
 	static UFunction* uFnGetTextArchetype = nullptr;
 
@@ -1678,10 +1746,12 @@ class UObject* UObject::GetTextArchetype(class UClass* ArchetypeClass, class FSt
 
 	UObject_execGetTextArchetype_Params GetTextArchetype_Params;
 	memset(&GetTextArchetype_Params, 0, sizeof(GetTextArchetype_Params));
-	memcpy_s(&GetTextArchetype_Params.ArchetypeClass, sizeof(GetTextArchetype_Params.ArchetypeClass), &ArchetypeClass, sizeof(ArchetypeClass));
+	GetTextArchetype_Params.ArchetypeClass = ArchetypeClass;
 	memcpy_s(&GetTextArchetype_Params.Path, sizeof(GetTextArchetype_Params.Path), &Path, sizeof(Path));
 
+	uFnGetTextArchetype->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGetTextArchetype, &GetTextArchetype_Params, nullptr);
+	uFnGetTextArchetype->FunctionFlags |= 0x400;
 
 	return GetTextArchetype_Params.ReturnValue;
 };
@@ -1703,7 +1773,9 @@ bool UObject::IsArchetype()
 	UObject_execIsArchetype_Params IsArchetype_Params;
 	memset(&IsArchetype_Params, 0, sizeof(IsArchetype_Params));
 
+	uFnIsArchetype->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnIsArchetype, &IsArchetype_Params, nullptr);
+	uFnIsArchetype->FunctionFlags |= 0x400;
 
 	return IsArchetype_Params.ReturnValue;
 };
@@ -1724,17 +1796,19 @@ void UObject::UnsubscribeFromAllEvents()
 	UObject_execUnsubscribeFromAllEvents_Params UnsubscribeFromAllEvents_Params;
 	memset(&UnsubscribeFromAllEvents_Params, 0, sizeof(UnsubscribeFromAllEvents_Params));
 
+	uFnUnsubscribeFromAllEvents->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnUnsubscribeFromAllEvents, &UnsubscribeFromAllEvents_Params, nullptr);
+	uFnUnsubscribeFromAllEvents->FunctionFlags |= 0x400;
 };
 
 // Function Core.Object.NewInstance
-// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class UObject*                 ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_CoerceParm)
 // class UObject*                 ObjOuter                       (CPF_OptionalParm | CPF_Parm)
 // struct FName                   ObjName                        (CPF_OptionalParm | CPF_Parm)
 
-class UObject* UObject::NewInstance(class UObject* ObjOuter, struct FName ObjName)
+class UObject* UObject::NewInstance(class UObject* ObjOuter, const struct FName& ObjName)
 {
 	static UFunction* uFnNewInstance = nullptr;
 
@@ -1745,10 +1819,12 @@ class UObject* UObject::NewInstance(class UObject* ObjOuter, struct FName ObjNam
 
 	UObject_execNewInstance_Params NewInstance_Params;
 	memset(&NewInstance_Params, 0, sizeof(NewInstance_Params));
-	memcpy_s(&NewInstance_Params.ObjOuter, sizeof(NewInstance_Params.ObjOuter), &ObjOuter, sizeof(ObjOuter));
+	NewInstance_Params.ObjOuter = ObjOuter;
 	memcpy_s(&NewInstance_Params.ObjName, sizeof(NewInstance_Params.ObjName), &ObjName, sizeof(ObjName));
 
+	uFnNewInstance->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnNewInstance, &NewInstance_Params, nullptr);
+	uFnNewInstance->FunctionFlags |= 0x400;
 
 	return NewInstance_Params.ReturnValue;
 };
@@ -1769,7 +1845,7 @@ void UObject::PrintDebugInfo(class UDebugDrawer* Drawer)
 
 	UObject_execPrintDebugInfo_Params PrintDebugInfo_Params;
 	memset(&PrintDebugInfo_Params, 0, sizeof(PrintDebugInfo_Params));
-	memcpy_s(&PrintDebugInfo_Params.Drawer, sizeof(PrintDebugInfo_Params.Drawer), &Drawer, sizeof(Drawer));
+	PrintDebugInfo_Params.Drawer = Drawer;
 
 	this->ProcessEvent(uFnPrintDebugInfo, &PrintDebugInfo_Params, nullptr);
 };
@@ -1804,7 +1880,7 @@ struct FRotator UObject::RotatorFromInt(int32_t RotationPitchAndYaw)
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FRotator                Rotation                       (CPF_Parm)
 
-int32_t UObject::RotatorToInt(struct FRotator Rotation)
+int32_t UObject::RotatorToInt(const struct FRotator& Rotation)
 {
 	static UFunction* uFnRotatorToInt = nullptr;
 
@@ -1839,7 +1915,9 @@ class FString UObject::GetLanguage()
 	UObject_execGetLanguage_Params GetLanguage_Params;
 	memset(&GetLanguage_Params, 0, sizeof(GetLanguage_Params));
 
+	uFnGetLanguage->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGetLanguage, &GetLanguage_Params, nullptr);
+	uFnGetLanguage->FunctionFlags |= 0x400;
 
 	return GetLanguage_Params.ReturnValue;
 };
@@ -1887,7 +1965,9 @@ int32_t UObject::GetBuildChangelistNumber()
 	UObject_execGetBuildChangelistNumber_Params GetBuildChangelistNumber_Params;
 	memset(&GetBuildChangelistNumber_Params, 0, sizeof(GetBuildChangelistNumber_Params));
 
+	uFnGetBuildChangelistNumber->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnGetBuildChangelistNumber, &GetBuildChangelistNumber_Params, nullptr);
+	uFnGetBuildChangelistNumber->FunctionFlags |= 0x400;
 
 	return GetBuildChangelistNumber_Params.ReturnValue;
 };
@@ -1909,7 +1989,9 @@ int32_t UObject::GetEngineVersion()
 	UObject_execGetEngineVersion_Params GetEngineVersion_Params;
 	memset(&GetEngineVersion_Params, 0, sizeof(GetEngineVersion_Params));
 
+	uFnGetEngineVersion->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnGetEngineVersion, &GetEngineVersion_Params, nullptr);
+	uFnGetEngineVersion->FunctionFlags |= 0x400;
 
 	return GetEngineVersion_Params.ReturnValue;
 };
@@ -1931,7 +2013,9 @@ float UObject::GetAppSeconds()
 	UObject_execGetAppSeconds_Params GetAppSeconds_Params;
 	memset(&GetAppSeconds_Params, 0, sizeof(GetAppSeconds_Params));
 
+	uFnGetAppSeconds->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnGetAppSeconds, &GetAppSeconds_Params, nullptr);
+	uFnGetAppSeconds->FunctionFlags |= 0x400;
 
 	return GetAppSeconds_Params.ReturnValue;
 };
@@ -1968,7 +2052,9 @@ void UObject::GetSystemTime(int32_t& Year, int32_t& Month, int32_t& DayOfWeek, i
 	memcpy_s(&GetSystemTime_Params.Sec, sizeof(GetSystemTime_Params.Sec), &Sec, sizeof(Sec));
 	memcpy_s(&GetSystemTime_Params.MSec, sizeof(GetSystemTime_Params.MSec), &MSec, sizeof(MSec));
 
+	uFnGetSystemTime->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnGetSystemTime, &GetSystemTime_Params, nullptr);
+	uFnGetSystemTime->FunctionFlags |= 0x400;
 
 	memcpy_s(&Year, sizeof(Year), &GetSystemTime_Params.Year, sizeof(GetSystemTime_Params.Year));
 	memcpy_s(&Month, sizeof(Month), &GetSystemTime_Params.Month, sizeof(GetSystemTime_Params.Month));
@@ -1997,20 +2083,22 @@ class FString UObject::TimeStamp()
 	UObject_execTimeStamp_Params TimeStamp_Params;
 	memset(&TimeStamp_Params, 0, sizeof(TimeStamp_Params));
 
+	uFnTimeStamp->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnTimeStamp, &TimeStamp_Params, nullptr);
+	uFnTimeStamp->FunctionFlags |= 0x400;
 
 	return TimeStamp_Params.ReturnValue;
 };
 
 // Function Core.Object.TransformVectorByRotation
-// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // struct FVector                 ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FRotator                SourceRotation                 (CPF_Parm)
 // struct FVector                 SourceVector                   (CPF_Parm)
-// bool                           bInverse                       (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bInverse                       (CPF_OptionalParm | CPF_Parm)
 
-struct FVector UObject::TransformVectorByRotation(struct FRotator SourceRotation, struct FVector SourceVector, bool bInverse)
+struct FVector UObject::TransformVectorByRotation(const struct FRotator& SourceRotation, const struct FVector& SourceVector, bool bInverse)
 {
 	static UFunction* uFnTransformVectorByRotation = nullptr;
 
@@ -2025,7 +2113,9 @@ struct FVector UObject::TransformVectorByRotation(struct FRotator SourceRotation
 	memcpy_s(&TransformVectorByRotation_Params.SourceVector, sizeof(TransformVectorByRotation_Params.SourceVector), &SourceVector, sizeof(SourceVector));
 	TransformVectorByRotation_Params.bInverse = bInverse;
 
+	uFnTransformVectorByRotation->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnTransformVectorByRotation, &TransformVectorByRotation_Params, nullptr);
+	uFnTransformVectorByRotation->FunctionFlags |= 0x400;
 
 	return TransformVectorByRotation_Params.ReturnValue;
 };
@@ -2069,7 +2159,9 @@ bool UObject::IsPendingKill()
 	UObject_execIsPendingKill_Params IsPendingKill_Params;
 	memset(&IsPendingKill_Params, 0, sizeof(IsPendingKill_Params));
 
+	uFnIsPendingKill->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnIsPendingKill, &IsPendingKill_Params, nullptr);
+	uFnIsPendingKill->FunctionFlags |= 0x400;
 
 	return IsPendingKill_Params.ReturnValue;
 };
@@ -2093,7 +2185,9 @@ float UObject::RangeByteToFloatUnsigned(uint8_t inputByte)
 	memset(&RangeByteToFloatUnsigned_Params, 0, sizeof(RangeByteToFloatUnsigned_Params));
 	memcpy_s(&RangeByteToFloatUnsigned_Params.inputByte, sizeof(RangeByteToFloatUnsigned_Params.inputByte), &inputByte, sizeof(inputByte));
 
+	uFnRangeByteToFloatUnsigned->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnRangeByteToFloatUnsigned, &RangeByteToFloatUnsigned_Params, nullptr);
+	uFnRangeByteToFloatUnsigned->FunctionFlags |= 0x400;
 
 	return RangeByteToFloatUnsigned_Params.ReturnValue;
 };
@@ -2117,7 +2211,9 @@ float UObject::RangeByteToFloatSigned(uint8_t inputByte)
 	memset(&RangeByteToFloatSigned_Params, 0, sizeof(RangeByteToFloatSigned_Params));
 	memcpy_s(&RangeByteToFloatSigned_Params.inputByte, sizeof(RangeByteToFloatSigned_Params.inputByte), &inputByte, sizeof(inputByte));
 
+	uFnRangeByteToFloatSigned->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnRangeByteToFloatSigned, &RangeByteToFloatSigned_Params, nullptr);
+	uFnRangeByteToFloatSigned->FunctionFlags |= 0x400;
 
 	return RangeByteToFloatSigned_Params.ReturnValue;
 };
@@ -2141,7 +2237,9 @@ uint8_t UObject::FloatToRangeByteUnsigned(float inputFloat)
 	memset(&FloatToRangeByteUnsigned_Params, 0, sizeof(FloatToRangeByteUnsigned_Params));
 	memcpy_s(&FloatToRangeByteUnsigned_Params.inputFloat, sizeof(FloatToRangeByteUnsigned_Params.inputFloat), &inputFloat, sizeof(inputFloat));
 
+	uFnFloatToRangeByteUnsigned->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnFloatToRangeByteUnsigned, &FloatToRangeByteUnsigned_Params, nullptr);
+	uFnFloatToRangeByteUnsigned->FunctionFlags |= 0x400;
 
 	return FloatToRangeByteUnsigned_Params.ReturnValue;
 };
@@ -2165,7 +2263,9 @@ uint8_t UObject::FloatToRangeByteSigned(float inputFloat)
 	memset(&FloatToRangeByteSigned_Params, 0, sizeof(FloatToRangeByteSigned_Params));
 	memcpy_s(&FloatToRangeByteSigned_Params.inputFloat, sizeof(FloatToRangeByteSigned_Params.inputFloat), &inputFloat, sizeof(inputFloat));
 
+	uFnFloatToRangeByteSigned->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnFloatToRangeByteSigned, &FloatToRangeByteSigned_Params, nullptr);
+	uFnFloatToRangeByteSigned->FunctionFlags |= 0x400;
 
 	return FloatToRangeByteSigned_Params.ReturnValue;
 };
@@ -2226,7 +2326,7 @@ float UObject::FindDeltaAngle(float A1, float A2)
 // float                          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FVector                 Dir                            (CPF_Parm)
 
-float UObject::GetHeadingAngle(struct FVector Dir)
+float UObject::GetHeadingAngle(const struct FVector& Dir)
 {
 	static UFunction* uFnGetHeadingAngle = nullptr;
 
@@ -2273,7 +2373,7 @@ void UObject::GetAngularDegreesFromRadians(struct FVector2D& OutFOV)
 // struct FVector2D               DotDist                        (CPF_Parm)
 // struct FVector2D               OutAngDist                     (CPF_Parm | CPF_OutParm)
 
-void UObject::GetAngularFromDotDist(struct FVector2D DotDist, struct FVector2D& OutAngDist)
+void UObject::GetAngularFromDotDist(const struct FVector2D& DotDist, struct FVector2D& OutAngDist)
 {
 	static UFunction* uFnGetAngularFromDotDist = nullptr;
 
@@ -2287,7 +2387,9 @@ void UObject::GetAngularFromDotDist(struct FVector2D DotDist, struct FVector2D& 
 	memcpy_s(&GetAngularFromDotDist_Params.DotDist, sizeof(GetAngularFromDotDist_Params.DotDist), &DotDist, sizeof(DotDist));
 	memcpy_s(&GetAngularFromDotDist_Params.OutAngDist, sizeof(GetAngularFromDotDist_Params.OutAngDist), &OutAngDist, sizeof(OutAngDist));
 
+	uFnGetAngularFromDotDist->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGetAngularFromDotDist, &GetAngularFromDotDist_Params, nullptr);
+	uFnGetAngularFromDotDist->FunctionFlags |= 0x400;
 
 	memcpy_s(&OutAngDist, sizeof(OutAngDist), &GetAngularFromDotDist_Params.OutAngDist, sizeof(GetAngularFromDotDist_Params.OutAngDist));
 };
@@ -2302,7 +2404,7 @@ void UObject::GetAngularFromDotDist(struct FVector2D DotDist, struct FVector2D& 
 // struct FVector                 AxisZ                          (CPF_Parm)
 // struct FVector2D               OutAngularDist                 (CPF_Parm | CPF_OutParm)
 
-bool UObject::GetAngularDistance(struct FVector Direction, struct FVector AxisX, struct FVector AxisY, struct FVector AxisZ, struct FVector2D& OutAngularDist)
+bool UObject::GetAngularDistance(const struct FVector& Direction, const struct FVector& AxisX, const struct FVector& AxisY, const struct FVector& AxisZ, struct FVector2D& OutAngularDist)
 {
 	static UFunction* uFnGetAngularDistance = nullptr;
 
@@ -2319,7 +2421,9 @@ bool UObject::GetAngularDistance(struct FVector Direction, struct FVector AxisX,
 	memcpy_s(&GetAngularDistance_Params.AxisZ, sizeof(GetAngularDistance_Params.AxisZ), &AxisZ, sizeof(AxisZ));
 	memcpy_s(&GetAngularDistance_Params.OutAngularDist, sizeof(GetAngularDistance_Params.OutAngularDist), &OutAngularDist, sizeof(OutAngularDist));
 
+	uFnGetAngularDistance->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGetAngularDistance, &GetAngularDistance_Params, nullptr);
+	uFnGetAngularDistance->FunctionFlags |= 0x400;
 
 	memcpy_s(&OutAngularDist, sizeof(OutAngularDist), &GetAngularDistance_Params.OutAngularDist, sizeof(GetAngularDistance_Params.OutAngularDist));
 
@@ -2336,7 +2440,7 @@ bool UObject::GetAngularDistance(struct FVector Direction, struct FVector AxisX,
 // struct FVector                 AxisZ                          (CPF_Parm)
 // struct FVector2D               OutDotDist                     (CPF_Parm | CPF_OutParm)
 
-bool UObject::GetDotDistance(struct FVector Direction, struct FVector AxisX, struct FVector AxisY, struct FVector AxisZ, struct FVector2D& OutDotDist)
+bool UObject::GetDotDistance(const struct FVector& Direction, const struct FVector& AxisX, const struct FVector& AxisY, const struct FVector& AxisZ, struct FVector2D& OutDotDist)
 {
 	static UFunction* uFnGetDotDistance = nullptr;
 
@@ -2353,7 +2457,9 @@ bool UObject::GetDotDistance(struct FVector Direction, struct FVector AxisX, str
 	memcpy_s(&GetDotDistance_Params.AxisZ, sizeof(GetDotDistance_Params.AxisZ), &AxisZ, sizeof(AxisZ));
 	memcpy_s(&GetDotDistance_Params.OutDotDist, sizeof(GetDotDistance_Params.OutDotDist), &OutDotDist, sizeof(OutDotDist));
 
+	uFnGetDotDistance->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGetDotDistance, &GetDotDistance_Params, nullptr);
+	uFnGetDotDistance->FunctionFlags |= 0x400;
 
 	memcpy_s(&OutDotDist, sizeof(OutDotDist), &GetDotDistance_Params.OutDotDist, sizeof(GetDotDistance_Params.OutDotDist));
 
@@ -2361,18 +2467,18 @@ bool UObject::GetDotDistance(struct FVector Direction, struct FVector AxisX, str
 };
 
 // Function Core.Object.LinePlaneIntersection
-// [0x00C24003] (FUNC_Final | FUNC_Defined | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_HasDefaults | FUNC_AllFlags)
+// [0x00C24003] (FUNC_Final | FUNC_Defined | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_HasDefaults | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FVector                 LineStart                      (CPF_Parm)
 // struct FVector                 LineEnd                        (CPF_Parm)
 // struct FVector                 PlaneOrigin                    (CPF_Parm)
 // struct FVector                 PlaneNormal                    (CPF_Parm)
-// bool                           bCheckLineSegment              (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bCheckLineSegment              (CPF_OptionalParm | CPF_Parm)
 // struct FVector                 Out_Intersection               (CPF_Parm | CPF_OutParm)
 // float                          Out_T                          (CPF_OptionalParm | CPF_Parm | CPF_OutParm)
 
-bool UObject::LinePlaneIntersection(struct FVector LineStart, struct FVector LineEnd, struct FVector PlaneOrigin, struct FVector PlaneNormal, bool bCheckLineSegment, struct FVector& Out_Intersection, float& Out_T)
+bool UObject::LinePlaneIntersection(const struct FVector& LineStart, const struct FVector& LineEnd, const struct FVector& PlaneOrigin, const struct FVector& PlaneNormal, bool bCheckLineSegment, struct FVector& Out_Intersection, float& Out_T)
 {
 	static UFunction* uFnLinePlaneIntersection = nullptr;
 
@@ -2408,7 +2514,7 @@ bool UObject::LinePlaneIntersection(struct FVector LineStart, struct FVector Lin
 // struct FVector                 B                              (CPF_Parm)
 // struct FVector                 C                              (CPF_Parm)
 
-struct FVector UObject::PointProjectToPlane(struct FVector Point, struct FVector A, struct FVector B, struct FVector C)
+struct FVector UObject::PointProjectToPlane(const struct FVector& Point, const struct FVector& A, const struct FVector& B, const struct FVector& C)
 {
 	static UFunction* uFnPointProjectToPlane = nullptr;
 
@@ -2424,13 +2530,15 @@ struct FVector UObject::PointProjectToPlane(struct FVector Point, struct FVector
 	memcpy_s(&PointProjectToPlane_Params.B, sizeof(PointProjectToPlane_Params.B), &B, sizeof(B));
 	memcpy_s(&PointProjectToPlane_Params.C, sizeof(PointProjectToPlane_Params.C), &C, sizeof(C));
 
+	uFnPointProjectToPlane->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnPointProjectToPlane, &PointProjectToPlane_Params, nullptr);
+	uFnPointProjectToPlane->FunctionFlags |= 0x400;
 
 	return PointProjectToPlane_Params.ReturnValue;
 };
 
 // Function Core.Object.PointDistToPlane
-// [0x00C24103] (FUNC_Final | FUNC_Defined | FUNC_Simulated | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_HasDefaults | FUNC_AllFlags)
+// [0x00C24103] (FUNC_Final | FUNC_Defined | FUNC_Simulated | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_HasDefaults | FUNC_AllFlags)
 // Parameter Info:
 // float                          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FVector                 Point                          (CPF_Parm)
@@ -2438,7 +2546,7 @@ struct FVector UObject::PointProjectToPlane(struct FVector Point, struct FVector
 // struct FVector                 Origin                         (CPF_Parm)
 // struct FVector                 out_ClosestPoint               (CPF_OptionalParm | CPF_Parm | CPF_OutParm)
 
-float UObject::PointDistToPlane(struct FVector Point, struct FRotator Orientation, struct FVector Origin, struct FVector& out_ClosestPoint)
+float UObject::PointDistToPlane(const struct FVector& Point, const struct FRotator& Orientation, const struct FVector& Origin, struct FVector& out_ClosestPoint)
 {
 	static UFunction* uFnPointDistToPlane = nullptr;
 
@@ -2462,7 +2570,7 @@ float UObject::PointDistToPlane(struct FVector Point, struct FRotator Orientatio
 };
 
 // Function Core.Object.PointDistToSegment
-// [0x00424401] (FUNC_Final | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// [0x00424401] (FUNC_Final | FUNC_Native | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // float                          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FVector                 Point                          (CPF_Parm)
@@ -2470,7 +2578,7 @@ float UObject::PointDistToPlane(struct FVector Point, struct FRotator Orientatio
 // struct FVector                 EndPoint                       (CPF_Parm)
 // struct FVector                 OutClosestPoint                (CPF_OptionalParm | CPF_Parm | CPF_OutParm)
 
-float UObject::PointDistToSegment(struct FVector Point, struct FVector StartPoint, struct FVector EndPoint, struct FVector& OutClosestPoint)
+float UObject::PointDistToSegment(const struct FVector& Point, const struct FVector& StartPoint, const struct FVector& EndPoint, struct FVector& OutClosestPoint)
 {
 	static UFunction* uFnPointDistToSegment = nullptr;
 
@@ -2486,7 +2594,9 @@ float UObject::PointDistToSegment(struct FVector Point, struct FVector StartPoin
 	memcpy_s(&PointDistToSegment_Params.EndPoint, sizeof(PointDistToSegment_Params.EndPoint), &EndPoint, sizeof(EndPoint));
 	memcpy_s(&PointDistToSegment_Params.OutClosestPoint, sizeof(PointDistToSegment_Params.OutClosestPoint), &OutClosestPoint, sizeof(OutClosestPoint));
 
+	uFnPointDistToSegment->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnPointDistToSegment, &PointDistToSegment_Params, nullptr);
+	uFnPointDistToSegment->FunctionFlags |= 0x400;
 
 	memcpy_s(&OutClosestPoint, sizeof(OutClosestPoint), &PointDistToSegment_Params.OutClosestPoint, sizeof(PointDistToSegment_Params.OutClosestPoint));
 
@@ -2494,7 +2604,7 @@ float UObject::PointDistToSegment(struct FVector Point, struct FVector StartPoin
 };
 
 // Function Core.Object.PointDistToLine
-// [0x00426401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// [0x00426401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // float                          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FVector                 Point                          (CPF_Parm)
@@ -2502,7 +2612,7 @@ float UObject::PointDistToSegment(struct FVector Point, struct FVector StartPoin
 // struct FVector                 Origin                         (CPF_Parm)
 // struct FVector                 OutClosestPoint                (CPF_OptionalParm | CPF_Parm | CPF_OutParm)
 
-float UObject::PointDistToLine(struct FVector Point, struct FVector Line, struct FVector Origin, struct FVector& OutClosestPoint)
+float UObject::PointDistToLine(const struct FVector& Point, const struct FVector& Line, const struct FVector& Origin, struct FVector& OutClosestPoint)
 {
 	static UFunction* uFnPointDistToLine = nullptr;
 
@@ -2518,7 +2628,9 @@ float UObject::PointDistToLine(struct FVector Point, struct FVector Line, struct
 	memcpy_s(&PointDistToLine_Params.Origin, sizeof(PointDistToLine_Params.Origin), &Origin, sizeof(Origin));
 	memcpy_s(&PointDistToLine_Params.OutClosestPoint, sizeof(PointDistToLine_Params.OutClosestPoint), &OutClosestPoint, sizeof(OutClosestPoint));
 
+	uFnPointDistToLine->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnPointDistToLine, &PointDistToLine_Params, nullptr);
+	uFnPointDistToLine->FunctionFlags |= 0x400;
 
 	memcpy_s(&OutClosestPoint, sizeof(OutClosestPoint), &PointDistToLine_Params.OutClosestPoint, sizeof(PointDistToLine_Params.OutClosestPoint));
 
@@ -2526,7 +2638,7 @@ float UObject::PointDistToLine(struct FVector Point, struct FVector Line, struct
 };
 
 // Function Core.Object.GetPerObjectConfigObjects
-// [0x00426405] (FUNC_Final | FUNC_Iterator | FUNC_Native | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// [0x00426405] (FUNC_Final | FUNC_Iterator | FUNC_Native | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class UClass*                  SearchClass                    (CPF_Parm)
 // class UObject*                 ObjectOuter                    (CPF_OptionalParm | CPF_Parm)
@@ -2544,18 +2656,20 @@ void UObject::GetPerObjectConfigObjects(class UClass* SearchClass, class UObject
 
 	UObject_execGetPerObjectConfigObjects_Params GetPerObjectConfigObjects_Params;
 	memset(&GetPerObjectConfigObjects_Params, 0, sizeof(GetPerObjectConfigObjects_Params));
-	memcpy_s(&GetPerObjectConfigObjects_Params.SearchClass, sizeof(GetPerObjectConfigObjects_Params.SearchClass), &SearchClass, sizeof(SearchClass));
-	memcpy_s(&GetPerObjectConfigObjects_Params.ObjectOuter, sizeof(GetPerObjectConfigObjects_Params.ObjectOuter), &ObjectOuter, sizeof(ObjectOuter));
+	GetPerObjectConfigObjects_Params.SearchClass = SearchClass;
+	GetPerObjectConfigObjects_Params.ObjectOuter = ObjectOuter;
 	memcpy_s(&GetPerObjectConfigObjects_Params.MaxResults, sizeof(GetPerObjectConfigObjects_Params.MaxResults), &MaxResults, sizeof(MaxResults));
-	memcpy_s(&GetPerObjectConfigObjects_Params.OutObject, sizeof(GetPerObjectConfigObjects_Params.OutObject), &OutObject, sizeof(OutObject));
+	GetPerObjectConfigObjects_Params.OutObject = OutObject;
 
+	uFnGetPerObjectConfigObjects->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGetPerObjectConfigObjects, &GetPerObjectConfigObjects_Params, nullptr);
+	uFnGetPerObjectConfigObjects->FunctionFlags |= 0x400;
 
-	memcpy_s(&OutObject, sizeof(OutObject), &GetPerObjectConfigObjects_Params.OutObject, sizeof(GetPerObjectConfigObjects_Params.OutObject));
+	OutObject = GetPerObjectConfigObjects_Params.OutObject;
 };
 
 // Function Core.Object.GetPerObjectConfigSections
-// [0x00426401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// [0x00426401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class UClass*                  SearchClass                    (CPF_Parm)
@@ -2574,12 +2688,14 @@ bool UObject::GetPerObjectConfigSections(class UClass* SearchClass, class UObjec
 
 	UObject_execGetPerObjectConfigSections_Params GetPerObjectConfigSections_Params;
 	memset(&GetPerObjectConfigSections_Params, 0, sizeof(GetPerObjectConfigSections_Params));
-	memcpy_s(&GetPerObjectConfigSections_Params.SearchClass, sizeof(GetPerObjectConfigSections_Params.SearchClass), &SearchClass, sizeof(SearchClass));
-	memcpy_s(&GetPerObjectConfigSections_Params.ObjectOuter, sizeof(GetPerObjectConfigSections_Params.ObjectOuter), &ObjectOuter, sizeof(ObjectOuter));
+	GetPerObjectConfigSections_Params.SearchClass = SearchClass;
+	GetPerObjectConfigSections_Params.ObjectOuter = ObjectOuter;
 	memcpy_s(&GetPerObjectConfigSections_Params.MaxResults, sizeof(GetPerObjectConfigSections_Params.MaxResults), &MaxResults, sizeof(MaxResults));
 	memcpy_s(&GetPerObjectConfigSections_Params.out_SectionNames, sizeof(GetPerObjectConfigSections_Params.out_SectionNames), &out_SectionNames, sizeof(out_SectionNames));
 
+	uFnGetPerObjectConfigSections->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGetPerObjectConfigSections, &GetPerObjectConfigSections_Params, nullptr);
+	uFnGetPerObjectConfigSections->FunctionFlags |= 0x400;
 
 	memcpy_s(&out_SectionNames, sizeof(out_SectionNames), &GetPerObjectConfigSections_Params.out_SectionNames, sizeof(GetPerObjectConfigSections_Params.out_SectionNames));
 
@@ -2592,7 +2708,7 @@ bool UObject::GetPerObjectConfigSections(class UClass* SearchClass, class UObjec
 // class FString                  PropertyName                   (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  JSON                           (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UObject::ImportJSON(class FString PropertyName, class FString& JSON)
+void UObject::ImportJSON(const class FString& PropertyName, class FString& JSON)
 {
 	static UFunction* uFnImportJSON = nullptr;
 
@@ -2606,7 +2722,9 @@ void UObject::ImportJSON(class FString PropertyName, class FString& JSON)
 	memcpy_s(&ImportJSON_Params.PropertyName, sizeof(ImportJSON_Params.PropertyName), &PropertyName, sizeof(PropertyName));
 	memcpy_s(&ImportJSON_Params.JSON, sizeof(ImportJSON_Params.JSON), &JSON, sizeof(JSON));
 
+	uFnImportJSON->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnImportJSON, &ImportJSON_Params, nullptr);
+	uFnImportJSON->FunctionFlags |= 0x400;
 
 	memcpy_s(&JSON, sizeof(JSON), &ImportJSON_Params.JSON, sizeof(ImportJSON_Params.JSON));
 };
@@ -2627,7 +2745,9 @@ void UObject::StaticSaveConfig()
 	UObject_execStaticSaveConfig_Params StaticSaveConfig_Params;
 	memset(&StaticSaveConfig_Params, 0, sizeof(StaticSaveConfig_Params));
 
+	uFnStaticSaveConfig->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnStaticSaveConfig, &StaticSaveConfig_Params, nullptr);
+	uFnStaticSaveConfig->FunctionFlags |= 0x400;
 };
 
 // Function Core.Object.SaveConfig
@@ -2646,7 +2766,11 @@ void UObject::SaveConfig()
 	UObject_execSaveConfig_Params SaveConfig_Params;
 	memset(&SaveConfig_Params, 0, sizeof(SaveConfig_Params));
 
+	uFnSaveConfig->iNative = 0;
+	uFnSaveConfig->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSaveConfig, &SaveConfig_Params, nullptr);
+	uFnSaveConfig->FunctionFlags |= 0x400;
+	uFnSaveConfig->iNative = 536;
 };
 
 // Function Core.Object.LoadSeekFreeObject
@@ -2656,7 +2780,7 @@ void UObject::SaveConfig()
 // class UClass*                  ObjClass                       (CPF_Parm)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 
-class UObject* UObject::LoadSeekFreeObject(class UClass* ObjClass, class FString Path)
+class UObject* UObject::LoadSeekFreeObject(class UClass* ObjClass, const class FString& Path)
 {
 	static UFunction* uFnLoadSeekFreeObject = nullptr;
 
@@ -2667,10 +2791,12 @@ class UObject* UObject::LoadSeekFreeObject(class UClass* ObjClass, class FString
 
 	UObject_execLoadSeekFreeObject_Params LoadSeekFreeObject_Params;
 	memset(&LoadSeekFreeObject_Params, 0, sizeof(LoadSeekFreeObject_Params));
-	memcpy_s(&LoadSeekFreeObject_Params.ObjClass, sizeof(LoadSeekFreeObject_Params.ObjClass), &ObjClass, sizeof(ObjClass));
+	LoadSeekFreeObject_Params.ObjClass = ObjClass;
 	memcpy_s(&LoadSeekFreeObject_Params.Path, sizeof(LoadSeekFreeObject_Params.Path), &Path, sizeof(Path));
 
+	uFnLoadSeekFreeObject->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnLoadSeekFreeObject, &LoadSeekFreeObject_Params, nullptr);
+	uFnLoadSeekFreeObject->FunctionFlags |= 0x400;
 
 	return LoadSeekFreeObject_Params.ReturnValue;
 };
@@ -2682,7 +2808,7 @@ class UObject* UObject::LoadSeekFreeObject(class UClass* ObjClass, class FString
 // class FString                  ObjectName                     (CPF_Parm | CPF_NeedCtorLink)
 // class UClass*                  ObjectClass                    (CPF_Parm)
 
-class UObject* UObject::FindObject(class FString ObjectName, class UClass* ObjectClass)
+class UObject* UObject::FindObject(const class FString& ObjectName, class UClass* ObjectClass)
 {
 	static UFunction* uFnFindObject = nullptr;
 
@@ -2694,22 +2820,24 @@ class UObject* UObject::FindObject(class FString ObjectName, class UClass* Objec
 	UObject_execFindObject_Params FindObject_Params;
 	memset(&FindObject_Params, 0, sizeof(FindObject_Params));
 	memcpy_s(&FindObject_Params.ObjectName, sizeof(FindObject_Params.ObjectName), &ObjectName, sizeof(ObjectName));
-	memcpy_s(&FindObject_Params.ObjectClass, sizeof(FindObject_Params.ObjectClass), &ObjectClass, sizeof(ObjectClass));
+	FindObject_Params.ObjectClass = ObjectClass;
 
+	uFnFindObject->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnFindObject, &FindObject_Params, nullptr);
+	uFnFindObject->FunctionFlags |= 0x400;
 
 	return FindObject_Params.ReturnValue;
 };
 
 // Function Core.Object.DynamicLoadObject
-// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class UObject*                 ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  ObjectName                     (CPF_Parm | CPF_NeedCtorLink)
 // class UClass*                  ObjectClass                    (CPF_Parm)
-// bool                           MayFail                        (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       MayFail                        (CPF_OptionalParm | CPF_Parm)
 
-class UObject* UObject::DynamicLoadObject(class FString ObjectName, class UClass* ObjectClass, bool MayFail)
+class UObject* UObject::DynamicLoadObject(const class FString& ObjectName, class UClass* ObjectClass, bool MayFail)
 {
 	static UFunction* uFnDynamicLoadObject = nullptr;
 
@@ -2721,10 +2849,12 @@ class UObject* UObject::DynamicLoadObject(class FString ObjectName, class UClass
 	UObject_execDynamicLoadObject_Params DynamicLoadObject_Params;
 	memset(&DynamicLoadObject_Params, 0, sizeof(DynamicLoadObject_Params));
 	memcpy_s(&DynamicLoadObject_Params.ObjectName, sizeof(DynamicLoadObject_Params.ObjectName), &ObjectName, sizeof(ObjectName));
-	memcpy_s(&DynamicLoadObject_Params.ObjectClass, sizeof(DynamicLoadObject_Params.ObjectClass), &ObjectClass, sizeof(ObjectClass));
+	DynamicLoadObject_Params.ObjectClass = ObjectClass;
 	DynamicLoadObject_Params.MayFail = MayFail;
 
+	uFnDynamicLoadObject->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnDynamicLoadObject, &DynamicLoadObject_Params, nullptr);
+	uFnDynamicLoadObject->FunctionFlags |= 0x400;
 
 	return DynamicLoadObject_Params.ReturnValue;
 };
@@ -2736,7 +2866,7 @@ class UObject* UObject::DynamicLoadObject(class FString ObjectName, class UClass
 // class UObject*                 E                              (CPF_Parm)
 // struct FName                   ValueName                      (CPF_Parm | CPF_CoerceParm)
 
-int32_t UObject::EnumFromString(class UObject* E, struct FName ValueName)
+int32_t UObject::EnumFromString(class UObject* E, const struct FName& ValueName)
 {
 	static UFunction* uFnEnumFromString = nullptr;
 
@@ -2747,10 +2877,12 @@ int32_t UObject::EnumFromString(class UObject* E, struct FName ValueName)
 
 	UObject_execEnumFromString_Params EnumFromString_Params;
 	memset(&EnumFromString_Params, 0, sizeof(EnumFromString_Params));
-	memcpy_s(&EnumFromString_Params.E, sizeof(EnumFromString_Params.E), &E, sizeof(E));
+	EnumFromString_Params.E = E;
 	memcpy_s(&EnumFromString_Params.ValueName, sizeof(EnumFromString_Params.ValueName), &ValueName, sizeof(ValueName));
 
+	uFnEnumFromString->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnEnumFromString, &EnumFromString_Params, nullptr);
+	uFnEnumFromString->FunctionFlags |= 0x400;
 
 	return EnumFromString_Params.ReturnValue;
 };
@@ -2773,10 +2905,12 @@ struct FName UObject::GetEnum(class UObject* E, int32_t I)
 
 	UObject_execGetEnum_Params GetEnum_Params;
 	memset(&GetEnum_Params, 0, sizeof(GetEnum_Params));
-	memcpy_s(&GetEnum_Params.E, sizeof(GetEnum_Params.E), &E, sizeof(E));
+	GetEnum_Params.E = E;
 	memcpy_s(&GetEnum_Params.I, sizeof(GetEnum_Params.I), &I, sizeof(I));
 
+	uFnGetEnum->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGetEnum, &GetEnum_Params, nullptr);
+	uFnGetEnum->FunctionFlags |= 0x400;
 
 	return GetEnum_Params.ReturnValue;
 };
@@ -2786,7 +2920,7 @@ struct FName UObject::GetEnum(class UObject* E, int32_t I)
 // Parameter Info:
 // struct FName                   ProbeFunc                      (CPF_Parm)
 
-void UObject::Disable(struct FName ProbeFunc)
+void UObject::Disable(const struct FName& ProbeFunc)
 {
 	static UFunction* uFnDisable = nullptr;
 
@@ -2799,7 +2933,11 @@ void UObject::Disable(struct FName ProbeFunc)
 	memset(&Disable_Params, 0, sizeof(Disable_Params));
 	memcpy_s(&Disable_Params.ProbeFunc, sizeof(Disable_Params.ProbeFunc), &ProbeFunc, sizeof(ProbeFunc));
 
+	uFnDisable->iNative = 0;
+	uFnDisable->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnDisable, &Disable_Params, nullptr);
+	uFnDisable->FunctionFlags |= 0x400;
+	uFnDisable->iNative = 333;
 };
 
 // Function Core.Object.Enable
@@ -2807,7 +2945,7 @@ void UObject::Disable(struct FName ProbeFunc)
 // Parameter Info:
 // struct FName                   ProbeFunc                      (CPF_Parm)
 
-void UObject::Enable(struct FName ProbeFunc)
+void UObject::Enable(const struct FName& ProbeFunc)
 {
 	static UFunction* uFnEnable = nullptr;
 
@@ -2820,7 +2958,11 @@ void UObject::Enable(struct FName ProbeFunc)
 	memset(&Enable_Params, 0, sizeof(Enable_Params));
 	memcpy_s(&Enable_Params.ProbeFunc, sizeof(Enable_Params.ProbeFunc), &ProbeFunc, sizeof(ProbeFunc));
 
+	uFnEnable->iNative = 0;
+	uFnEnable->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnEnable, &Enable_Params, nullptr);
+	uFnEnable->FunctionFlags |= 0x400;
+	uFnEnable->iNative = 332;
 };
 
 // Function Core.Object.ContinuedState
@@ -2904,7 +3046,7 @@ void UObject::eventPushedState()
 // Parameter Info:
 // struct FName                   NextStateName                  (CPF_Parm)
 
-void UObject::eventEndState(struct FName NextStateName)
+void UObject::eventEndState(const struct FName& NextStateName)
 {
 	static UFunction* uFnEndState = nullptr;
 
@@ -2925,7 +3067,7 @@ void UObject::eventEndState(struct FName NextStateName)
 // Parameter Info:
 // struct FName                   PreviousStateName              (CPF_Parm)
 
-void UObject::eventBeginState(struct FName PreviousStateName)
+void UObject::eventBeginState(const struct FName& PreviousStateName)
 {
 	static UFunction* uFnBeginState = nullptr;
 
@@ -2957,13 +3099,15 @@ void UObject::DumpStateStack()
 	UObject_execDumpStateStack_Params DumpStateStack_Params;
 	memset(&DumpStateStack_Params, 0, sizeof(DumpStateStack_Params));
 
+	uFnDumpStateStack->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnDumpStateStack, &DumpStateStack_Params, nullptr);
+	uFnDumpStateStack->FunctionFlags |= 0x400;
 };
 
 // Function Core.Object.PopState
-// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bPopAll                        (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bPopAll                        (CPF_OptionalParm | CPF_Parm)
 
 void UObject::PopState(bool bPopAll)
 {
@@ -2978,16 +3122,18 @@ void UObject::PopState(bool bPopAll)
 	memset(&PopState_Params, 0, sizeof(PopState_Params));
 	PopState_Params.bPopAll = bPopAll;
 
+	uFnPopState->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnPopState, &PopState_Params, nullptr);
+	uFnPopState->FunctionFlags |= 0x400;
 };
 
 // Function Core.Object.PushState
-// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // struct FName                   NewState                       (CPF_Parm)
 // struct FName                   NewLabel                       (CPF_OptionalParm | CPF_Parm)
 
-void UObject::PushState(struct FName NewState, struct FName NewLabel)
+void UObject::PushState(const struct FName& NewState, const struct FName& NewLabel)
 {
 	static UFunction* uFnPushState = nullptr;
 
@@ -3001,7 +3147,9 @@ void UObject::PushState(struct FName NewState, struct FName NewLabel)
 	memcpy_s(&PushState_Params.NewState, sizeof(PushState_Params.NewState), &NewState, sizeof(NewState));
 	memcpy_s(&PushState_Params.NewLabel, sizeof(PushState_Params.NewLabel), &NewLabel, sizeof(NewLabel));
 
+	uFnPushState->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnPushState, &PushState_Params, nullptr);
+	uFnPushState->FunctionFlags |= 0x400;
 };
 
 // Function Core.Object.GetStateName
@@ -3021,7 +3169,11 @@ struct FName UObject::GetStateName()
 	UObject_execGetStateName_Params GetStateName_Params;
 	memset(&GetStateName_Params, 0, sizeof(GetStateName_Params));
 
+	uFnGetStateName->iNative = 0;
+	uFnGetStateName->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnGetStateName, &GetStateName_Params, nullptr);
+	uFnGetStateName->FunctionFlags |= 0x400;
+	uFnGetStateName->iNative = 284;
 
 	return GetStateName_Params.ReturnValue;
 };
@@ -3033,7 +3185,7 @@ struct FName UObject::GetStateName()
 // struct FName                   TestState                      (CPF_Parm)
 // struct FName                   TestParentState                (CPF_Parm)
 
-bool UObject::IsChildState(struct FName TestState, struct FName TestParentState)
+bool UObject::IsChildState(const struct FName& TestState, const struct FName& TestParentState)
 {
 	static UFunction* uFnIsChildState = nullptr;
 
@@ -3047,19 +3199,21 @@ bool UObject::IsChildState(struct FName TestState, struct FName TestParentState)
 	memcpy_s(&IsChildState_Params.TestState, sizeof(IsChildState_Params.TestState), &TestState, sizeof(TestState));
 	memcpy_s(&IsChildState_Params.TestParentState, sizeof(IsChildState_Params.TestParentState), &TestParentState, sizeof(TestParentState));
 
+	uFnIsChildState->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnIsChildState, &IsChildState_Params, nullptr);
+	uFnIsChildState->FunctionFlags |= 0x400;
 
 	return IsChildState_Params.ReturnValue;
 };
 
 // Function Core.Object.IsInState
-// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags) (iNative[281])
+// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags) (iNative[281])
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FName                   TestState                      (CPF_Parm)
-// bool                           bTestStateStack                (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bTestStateStack                (CPF_OptionalParm | CPF_Parm)
 
-bool UObject::IsInState(struct FName TestState, bool bTestStateStack)
+bool UObject::IsInState(const struct FName& TestState, bool bTestStateStack)
 {
 	static UFunction* uFnIsInState = nullptr;
 
@@ -3073,20 +3227,24 @@ bool UObject::IsInState(struct FName TestState, bool bTestStateStack)
 	memcpy_s(&IsInState_Params.TestState, sizeof(IsInState_Params.TestState), &TestState, sizeof(TestState));
 	IsInState_Params.bTestStateStack = bTestStateStack;
 
+	uFnIsInState->iNative = 0;
+	uFnIsInState->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnIsInState, &IsInState_Params, nullptr);
+	uFnIsInState->FunctionFlags |= 0x400;
+	uFnIsInState->iNative = 281;
 
 	return IsInState_Params.ReturnValue;
 };
 
 // Function Core.Object.GotoState
-// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags) (iNative[205])
+// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags) (iNative[205])
 // Parameter Info:
 // struct FName                   NewState                       (CPF_OptionalParm | CPF_Parm)
 // struct FName                   Label                          (CPF_OptionalParm | CPF_Parm)
-// bool                           bForceEvents                   (CPF_OptionalParm | CPF_Parm)
-// bool                           bKeepStack                     (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bForceEvents                   (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bKeepStack                     (CPF_OptionalParm | CPF_Parm)
 
-void UObject::GotoState(struct FName NewState, struct FName Label, bool bForceEvents, bool bKeepStack)
+void UObject::GotoState(const struct FName& NewState, const struct FName& Label, bool bForceEvents, bool bKeepStack)
 {
 	static UFunction* uFnGotoState = nullptr;
 
@@ -3102,7 +3260,11 @@ void UObject::GotoState(struct FName NewState, struct FName Label, bool bForceEv
 	GotoState_Params.bForceEvents = bForceEvents;
 	GotoState_Params.bKeepStack = bKeepStack;
 
+	uFnGotoState->iNative = 0;
+	uFnGotoState->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnGotoState, &GotoState_Params, nullptr);
+	uFnGotoState->FunctionFlags |= 0x400;
+	uFnGotoState->iNative = 205;
 };
 
 // Function Core.Object.IsUTracing
@@ -3122,7 +3284,9 @@ bool UObject::IsUTracing()
 	UObject_execIsUTracing_Params IsUTracing_Params;
 	memset(&IsUTracing_Params, 0, sizeof(IsUTracing_Params));
 
+	uFnIsUTracing->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnIsUTracing, &IsUTracing_Params, nullptr);
+	uFnIsUTracing->FunctionFlags |= 0x400;
 
 	return IsUTracing_Params.ReturnValue;
 };
@@ -3130,7 +3294,7 @@ bool UObject::IsUTracing()
 // Function Core.Object.SetUTracing
 // [0x00022401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bShouldUTrace                  (CPF_Parm)
+// uint32_t                       bShouldUTrace                  (CPF_Parm)
 
 void UObject::SetUTracing(bool bShouldUTrace)
 {
@@ -3145,7 +3309,9 @@ void UObject::SetUTracing(bool bShouldUTrace)
 	memset(&SetUTracing_Params, 0, sizeof(SetUTracing_Params));
 	SetUTracing_Params.bShouldUTrace = bShouldUTrace;
 
+	uFnSetUTracing->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnSetUTracing, &SetUTracing_Params, nullptr);
+	uFnSetUTracing->FunctionFlags |= 0x400;
 };
 
 // Function Core.Object.GetFuncName
@@ -3165,13 +3331,15 @@ struct FName UObject::GetFuncName()
 	UObject_execGetFuncName_Params GetFuncName_Params;
 	memset(&GetFuncName_Params, 0, sizeof(GetFuncName_Params));
 
+	uFnGetFuncName->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGetFuncName, &GetFuncName_Params, nullptr);
+	uFnGetFuncName->FunctionFlags |= 0x400;
 
 	return GetFuncName_Params.ReturnValue;
 };
 
 // Function Core.Object.DebugBreak
-// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // int32_t                        UserFlags                      (CPF_OptionalParm | CPF_Parm)
 // EDebugBreakType                DebuggerType                   (CPF_OptionalParm | CPF_Parm)
@@ -3190,7 +3358,9 @@ void UObject::DebugBreak(int32_t UserFlags, EDebugBreakType DebuggerType)
 	memcpy_s(&DebugBreak_Params.UserFlags, sizeof(DebugBreak_Params.UserFlags), &UserFlags, sizeof(UserFlags));
 	memcpy_s(&DebugBreak_Params.DebuggerType, sizeof(DebugBreak_Params.DebuggerType), &DebuggerType, sizeof(DebuggerType));
 
+	uFnDebugBreak->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnDebugBreak, &DebugBreak_Params, nullptr);
+	uFnDebugBreak->FunctionFlags |= 0x400;
 };
 
 // Function Core.Object.GetScriptTrace
@@ -3210,7 +3380,9 @@ class FString UObject::GetScriptTrace()
 	UObject_execGetScriptTrace_Params GetScriptTrace_Params;
 	memset(&GetScriptTrace_Params, 0, sizeof(GetScriptTrace_Params));
 
+	uFnGetScriptTrace->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGetScriptTrace, &GetScriptTrace_Params, nullptr);
+	uFnGetScriptTrace->FunctionFlags |= 0x400;
 
 	return GetScriptTrace_Params.ReturnValue;
 };
@@ -3231,7 +3403,9 @@ void UObject::ScriptTrace()
 	UObject_execScriptTrace_Params ScriptTrace_Params;
 	memset(&ScriptTrace_Params, 0, sizeof(ScriptTrace_Params));
 
+	uFnScriptTrace->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnScriptTrace, &ScriptTrace_Params, nullptr);
+	uFnScriptTrace->FunctionFlags |= 0x400;
 };
 
 // Function Core.Object.ParseLocalizedPropertyPath
@@ -3240,7 +3414,7 @@ void UObject::ScriptTrace()
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  PathName                       (CPF_Parm | CPF_NeedCtorLink)
 
-class FString UObject::ParseLocalizedPropertyPath(class FString PathName)
+class FString UObject::ParseLocalizedPropertyPath(const class FString& PathName)
 {
 	static UFunction* uFnParseLocalizedPropertyPath = nullptr;
 
@@ -3259,15 +3433,15 @@ class FString UObject::ParseLocalizedPropertyPath(class FString PathName)
 };
 
 // Function Core.Object.Localize
-// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  SectionName                    (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 // class FString                  KeyName                        (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 // class FString                  PackageName                    (CPF_OptionalParm | CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
-// bool                           bOptional                      (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bOptional                      (CPF_OptionalParm | CPF_Parm)
 
-class FString UObject::Localize(class FString SectionName, class FString KeyName, class FString PackageName, bool bOptional)
+class FString UObject::Localize(const class FString& SectionName, const class FString& KeyName, const class FString& PackageName, bool bOptional)
 {
 	static UFunction* uFnLocalize = nullptr;
 
@@ -3283,7 +3457,9 @@ class FString UObject::Localize(class FString SectionName, class FString KeyName
 	memcpy_s(&Localize_Params.PackageName, sizeof(Localize_Params.PackageName), &PackageName, sizeof(PackageName));
 	Localize_Params.bOptional = bOptional;
 
+	uFnLocalize->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnLocalize, &Localize_Params, nullptr);
+	uFnLocalize->FunctionFlags |= 0x400;
 
 	return Localize_Params.ReturnValue;
 };
@@ -3293,7 +3469,7 @@ class FString UObject::Localize(class FString SectionName, class FString KeyName
 // Parameter Info:
 // class FString                  S                              (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 
-void UObject::WarnInternal(class FString S)
+void UObject::WarnInternal(const class FString& S)
 {
 	static UFunction* uFnWarnInternal = nullptr;
 
@@ -3306,17 +3482,21 @@ void UObject::WarnInternal(class FString S)
 	memset(&WarnInternal_Params, 0, sizeof(WarnInternal_Params));
 	memcpy_s(&WarnInternal_Params.S, sizeof(WarnInternal_Params.S), &S, sizeof(S));
 
+	uFnWarnInternal->iNative = 0;
+	uFnWarnInternal->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnWarnInternal, &WarnInternal_Params, nullptr);
+	uFnWarnInternal->FunctionFlags |= 0x400;
+	uFnWarnInternal->iNative = 232;
 };
 
 // Function Core.Object.LogInternal
-// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags) (iNative[231])
+// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags) (iNative[231])
 // Parameter Info:
 // class FString                  S                              (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 // struct FName                   Tag                            (CPF_OptionalParm | CPF_Parm)
-// bool                           bFileOnly                      (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bFileOnly                      (CPF_OptionalParm | CPF_Parm)
 
-void UObject::LogInternal(class FString S, struct FName Tag, bool bFileOnly)
+void UObject::LogInternal(const class FString& S, const struct FName& Tag, bool bFileOnly)
 {
 	static UFunction* uFnLogInternal = nullptr;
 
@@ -3331,7 +3511,11 @@ void UObject::LogInternal(class FString S, struct FName Tag, bool bFileOnly)
 	memcpy_s(&LogInternal_Params.Tag, sizeof(LogInternal_Params.Tag), &Tag, sizeof(Tag));
 	LogInternal_Params.bFileOnly = bFileOnly;
 
+	uFnLogInternal->iNative = 0;
+	uFnLogInternal->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnLogInternal, &LogInternal_Params, nullptr);
+	uFnLogInternal->FunctionFlags |= 0x400;
+	uFnLogInternal->iNative = 231;
 };
 
 // Function Core.Object.LinearColorLerp
@@ -3342,7 +3526,7 @@ void UObject::LogInternal(class FString S, struct FName Tag, bool bFileOnly)
 // struct FLinearColor            ColorB                         (CPF_Parm)
 // float                          Alpha                          (CPF_Parm)
 
-struct FLinearColor UObject::LinearColorLerp(struct FLinearColor ColorA, struct FLinearColor ColorB, float Alpha)
+struct FLinearColor UObject::LinearColorLerp(const struct FLinearColor& ColorA, const struct FLinearColor& ColorB, float Alpha)
 {
 	static UFunction* uFnLinearColorLerp = nullptr;
 
@@ -3369,7 +3553,7 @@ struct FLinearColor UObject::LinearColorLerp(struct FLinearColor ColorA, struct 
 // struct FLinearColor            A                              (CPF_Parm)
 // struct FLinearColor            B                              (CPF_Parm)
 
-struct FLinearColor UObject::Subtract_LinearColorLinearColor(struct FLinearColor A, struct FLinearColor B)
+struct FLinearColor UObject::Subtract_LinearColorLinearColor(const struct FLinearColor& A, const struct FLinearColor& B)
 {
 	static UFunction* uFnSubtract_LinearColorLinearColor = nullptr;
 
@@ -3395,7 +3579,7 @@ struct FLinearColor UObject::Subtract_LinearColorLinearColor(struct FLinearColor
 // struct FLinearColor            LC                             (CPF_Parm)
 // float                          Mult                           (CPF_Parm)
 
-struct FLinearColor UObject::Multiply_LinearColorFloat(struct FLinearColor LC, float Mult)
+struct FLinearColor UObject::Multiply_LinearColorFloat(const struct FLinearColor& LC, float Mult)
 {
 	static UFunction* uFnMultiply_LinearColorFloat = nullptr;
 
@@ -3420,7 +3604,7 @@ struct FLinearColor UObject::Multiply_LinearColorFloat(struct FLinearColor LC, f
 // struct FLinearColor            ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FLinearColor            OldColor                       (CPF_Parm)
 
-struct FLinearColor UObject::ConvertFromSRGB(struct FLinearColor OldColor)
+struct FLinearColor UObject::ConvertFromSRGB(const struct FLinearColor& OldColor)
 {
 	static UFunction* uFnConvertFromSRGB = nullptr;
 
@@ -3433,7 +3617,9 @@ struct FLinearColor UObject::ConvertFromSRGB(struct FLinearColor OldColor)
 	memset(&ConvertFromSRGB_Params, 0, sizeof(ConvertFromSRGB_Params));
 	memcpy_s(&ConvertFromSRGB_Params.OldColor, sizeof(ConvertFromSRGB_Params.OldColor), &OldColor, sizeof(OldColor));
 
+	uFnConvertFromSRGB->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnConvertFromSRGB, &ConvertFromSRGB_Params, nullptr);
+	uFnConvertFromSRGB->FunctionFlags |= 0x400;
 
 	return ConvertFromSRGB_Params.ReturnValue;
 };
@@ -3444,7 +3630,7 @@ struct FLinearColor UObject::ConvertFromSRGB(struct FLinearColor OldColor)
 // struct FColor                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FLinearColor            OldColor                       (CPF_Parm)
 
-struct FColor UObject::LinearColorToColor(struct FLinearColor OldColor)
+struct FColor UObject::LinearColorToColor(const struct FLinearColor& OldColor)
 {
 	static UFunction* uFnLinearColorToColor = nullptr;
 
@@ -3468,7 +3654,7 @@ struct FColor UObject::LinearColorToColor(struct FLinearColor OldColor)
 // struct FLinearColor            ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FColor                  OldColor                       (CPF_Parm)
 
-struct FLinearColor UObject::ColorToLinearColor(struct FColor OldColor)
+struct FLinearColor UObject::ColorToLinearColor(const struct FColor& OldColor)
 {
 	static UFunction* uFnColorToLinearColor = nullptr;
 
@@ -3481,13 +3667,15 @@ struct FLinearColor UObject::ColorToLinearColor(struct FColor OldColor)
 	memset(&ColorToLinearColor_Params, 0, sizeof(ColorToLinearColor_Params));
 	memcpy_s(&ColorToLinearColor_Params.OldColor, sizeof(ColorToLinearColor_Params.OldColor), &OldColor, sizeof(OldColor));
 
+	uFnColorToLinearColor->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnColorToLinearColor, &ColorToLinearColor_Params, nullptr);
+	uFnColorToLinearColor->FunctionFlags |= 0x400;
 
 	return ColorToLinearColor_Params.ReturnValue;
 };
 
 // Function Core.Object.MakeLinearColor
-// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // struct FLinearColor            ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // float                          R                              (CPF_Parm)
@@ -3511,7 +3699,9 @@ struct FLinearColor UObject::MakeLinearColor(float R, float G, float B, float A)
 	memcpy_s(&MakeLinearColor_Params.B, sizeof(MakeLinearColor_Params.B), &B, sizeof(B));
 	memcpy_s(&MakeLinearColor_Params.A, sizeof(MakeLinearColor_Params.A), &A, sizeof(A));
 
+	uFnMakeLinearColor->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMakeLinearColor, &MakeLinearColor_Params, nullptr);
+	uFnMakeLinearColor->FunctionFlags |= 0x400;
 
 	return MakeLinearColor_Params.ReturnValue;
 };
@@ -3524,7 +3714,7 @@ struct FLinearColor UObject::MakeLinearColor(float R, float G, float B, float A)
 // struct FColor                  B                              (CPF_Parm)
 // float                          Alpha                          (CPF_Parm)
 
-struct FColor UObject::LerpColor(struct FColor A, struct FColor B, float Alpha)
+struct FColor UObject::LerpColor(const struct FColor& A, const struct FColor& B, float Alpha)
 {
 	static UFunction* uFnLerpColor = nullptr;
 
@@ -3539,13 +3729,15 @@ struct FColor UObject::LerpColor(struct FColor A, struct FColor B, float Alpha)
 	memcpy_s(&LerpColor_Params.B, sizeof(LerpColor_Params.B), &B, sizeof(B));
 	memcpy_s(&LerpColor_Params.Alpha, sizeof(LerpColor_Params.Alpha), &Alpha, sizeof(Alpha));
 
+	uFnLerpColor->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnLerpColor, &LerpColor_Params, nullptr);
+	uFnLerpColor->FunctionFlags |= 0x400;
 
 	return LerpColor_Params.ReturnValue;
 };
 
 // Function Core.Object.MakeColor
-// [0x00826003] (FUNC_Final | FUNC_Defined | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasDefaults | FUNC_AllFlags)
+// [0x00826003] (FUNC_Final | FUNC_Defined | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_HasDefaults | FUNC_AllFlags)
 // Parameter Info:
 // struct FColor                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        R                              (CPF_Parm)
@@ -3581,7 +3773,7 @@ struct FColor UObject::MakeColor(uint8_t R, uint8_t G, uint8_t B, uint8_t A)
 // struct FColor                  A                              (CPF_Parm)
 // struct FColor                  B                              (CPF_Parm)
 
-struct FColor UObject::Add_ColorColor(struct FColor A, struct FColor B)
+struct FColor UObject::Add_ColorColor(const struct FColor& A, const struct FColor& B)
 {
 	static UFunction* uFnAdd_ColorColor = nullptr;
 
@@ -3607,7 +3799,7 @@ struct FColor UObject::Add_ColorColor(struct FColor A, struct FColor B)
 // struct FColor                  A                              (CPF_Parm)
 // float                          B                              (CPF_Parm)
 
-struct FColor UObject::Multiply_ColorFloat(struct FColor A, float B)
+struct FColor UObject::Multiply_ColorFloat(const struct FColor& A, float B)
 {
 	static UFunction* uFnMultiply_ColorFloat = nullptr;
 
@@ -3633,7 +3825,7 @@ struct FColor UObject::Multiply_ColorFloat(struct FColor A, float B)
 // float                          A                              (CPF_Parm)
 // struct FColor                  B                              (CPF_Parm)
 
-struct FColor UObject::Multiply_FloatColor(float A, struct FColor B)
+struct FColor UObject::Multiply_FloatColor(float A, const struct FColor& B)
 {
 	static UFunction* uFnMultiply_FloatColor = nullptr;
 
@@ -3659,7 +3851,7 @@ struct FColor UObject::Multiply_FloatColor(float A, struct FColor B)
 // struct FColor                  A                              (CPF_Parm)
 // struct FColor                  B                              (CPF_Parm)
 
-struct FColor UObject::Subtract_ColorColor(struct FColor A, struct FColor B)
+struct FColor UObject::Subtract_ColorColor(const struct FColor& A, const struct FColor& B)
 {
 	static UFunction* uFnSubtract_ColorColor = nullptr;
 
@@ -3699,7 +3891,9 @@ struct FVector2D UObject::EvalInterpCurveVector2D(float InVal, struct FInterpCur
 	memcpy_s(&EvalInterpCurveVector2D_Params.InVal, sizeof(EvalInterpCurveVector2D_Params.InVal), &InVal, sizeof(InVal));
 	memcpy_s(&EvalInterpCurveVector2D_Params.Vector2DCurve, sizeof(EvalInterpCurveVector2D_Params.Vector2DCurve), &Vector2DCurve, sizeof(Vector2DCurve));
 
+	uFnEvalInterpCurveVector2D->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnEvalInterpCurveVector2D, &EvalInterpCurveVector2D_Params, nullptr);
+	uFnEvalInterpCurveVector2D->FunctionFlags |= 0x400;
 
 	memcpy_s(&Vector2DCurve, sizeof(Vector2DCurve), &EvalInterpCurveVector2D_Params.Vector2DCurve, sizeof(EvalInterpCurveVector2D_Params.Vector2DCurve));
 
@@ -3724,7 +3918,9 @@ void UObject::AutoSetTangentsVector(struct FInterpCurveVector& Curve)
 	memset(&AutoSetTangentsVector_Params, 0, sizeof(AutoSetTangentsVector_Params));
 	memcpy_s(&AutoSetTangentsVector_Params.Curve, sizeof(AutoSetTangentsVector_Params.Curve), &Curve, sizeof(Curve));
 
+	uFnAutoSetTangentsVector->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAutoSetTangentsVector, &AutoSetTangentsVector_Params, nullptr);
+	uFnAutoSetTangentsVector->FunctionFlags |= 0x400;
 
 	memcpy_s(&Curve, sizeof(Curve), &AutoSetTangentsVector_Params.Curve, sizeof(AutoSetTangentsVector_Params.Curve));
 };
@@ -3750,7 +3946,9 @@ struct FVector UObject::EvalInterpCurveVector(float InVal, struct FInterpCurveVe
 	memcpy_s(&EvalInterpCurveVector_Params.InVal, sizeof(EvalInterpCurveVector_Params.InVal), &InVal, sizeof(InVal));
 	memcpy_s(&EvalInterpCurveVector_Params.VectorCurve, sizeof(EvalInterpCurveVector_Params.VectorCurve), &VectorCurve, sizeof(VectorCurve));
 
+	uFnEvalInterpCurveVector->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnEvalInterpCurveVector, &EvalInterpCurveVector_Params, nullptr);
+	uFnEvalInterpCurveVector->FunctionFlags |= 0x400;
 
 	memcpy_s(&VectorCurve, sizeof(VectorCurve), &EvalInterpCurveVector_Params.VectorCurve, sizeof(EvalInterpCurveVector_Params.VectorCurve));
 
@@ -3775,7 +3973,9 @@ void UObject::AutoSetTangentsFloat(struct FInterpCurveFloat& Curve)
 	memset(&AutoSetTangentsFloat_Params, 0, sizeof(AutoSetTangentsFloat_Params));
 	memcpy_s(&AutoSetTangentsFloat_Params.Curve, sizeof(AutoSetTangentsFloat_Params.Curve), &Curve, sizeof(Curve));
 
+	uFnAutoSetTangentsFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAutoSetTangentsFloat, &AutoSetTangentsFloat_Params, nullptr);
+	uFnAutoSetTangentsFloat->FunctionFlags |= 0x400;
 
 	memcpy_s(&Curve, sizeof(Curve), &AutoSetTangentsFloat_Params.Curve, sizeof(AutoSetTangentsFloat_Params.Curve));
 };
@@ -3801,7 +4001,9 @@ float UObject::EvalInterpCurveFloat(float InVal, struct FInterpCurveFloat& Float
 	memcpy_s(&EvalInterpCurveFloat_Params.InVal, sizeof(EvalInterpCurveFloat_Params.InVal), &InVal, sizeof(InVal));
 	memcpy_s(&EvalInterpCurveFloat_Params.FloatCurve, sizeof(EvalInterpCurveFloat_Params.FloatCurve), &FloatCurve, sizeof(FloatCurve));
 
+	uFnEvalInterpCurveFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnEvalInterpCurveFloat, &EvalInterpCurveFloat_Params, nullptr);
+	uFnEvalInterpCurveFloat->FunctionFlags |= 0x400;
 
 	memcpy_s(&FloatCurve, sizeof(FloatCurve), &EvalInterpCurveFloat_Params.FloatCurve, sizeof(EvalInterpCurveFloat_Params.FloatCurve));
 
@@ -3842,7 +4044,7 @@ struct FVector2D UObject::vect2d(float InX, float InY)
 // struct FVector2D               OutputRange                    (CPF_Parm)
 // float                          Value                          (CPF_Parm)
 
-float UObject::GetMappedRangeValue(struct FVector2D InputRange, struct FVector2D OutputRange, float Value)
+float UObject::GetMappedRangeValue(const struct FVector2D& InputRange, const struct FVector2D& OutputRange, float Value)
 {
 	static UFunction* uFnGetMappedRangeValue = nullptr;
 
@@ -3857,7 +4059,9 @@ float UObject::GetMappedRangeValue(struct FVector2D InputRange, struct FVector2D
 	memcpy_s(&GetMappedRangeValue_Params.OutputRange, sizeof(GetMappedRangeValue_Params.OutputRange), &OutputRange, sizeof(OutputRange));
 	memcpy_s(&GetMappedRangeValue_Params.Value, sizeof(GetMappedRangeValue_Params.Value), &Value, sizeof(Value));
 
+	uFnGetMappedRangeValue->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGetMappedRangeValue, &GetMappedRangeValue_Params, nullptr);
+	uFnGetMappedRangeValue->FunctionFlags |= 0x400;
 
 	return GetMappedRangeValue_Params.ReturnValue;
 };
@@ -3869,7 +4073,7 @@ float UObject::GetMappedRangeValue(struct FVector2D InputRange, struct FVector2D
 // struct FVector2D               Range                          (CPF_Parm)
 // float                          Value                          (CPF_Parm)
 
-float UObject::GetRangePctByValue(struct FVector2D Range, float Value)
+float UObject::GetRangePctByValue(const struct FVector2D& Range, float Value)
 {
 	static UFunction* uFnGetRangePctByValue = nullptr;
 
@@ -3895,7 +4099,7 @@ float UObject::GetRangePctByValue(struct FVector2D Range, float Value)
 // struct FVector2D               Range                          (CPF_Parm)
 // float                          Pct                            (CPF_Parm)
 
-float UObject::GetRangeValueByPct(struct FVector2D Range, float Pct)
+float UObject::GetRangeValueByPct(const struct FVector2D& Range, float Pct)
 {
 	static UFunction* uFnGetRangeValueByPct = nullptr;
 
@@ -3920,7 +4124,7 @@ float UObject::GetRangeValueByPct(struct FVector2D Range, float Pct)
 // struct FVector2D               ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FVector2D               A                              (CPF_Parm)
 
-struct FVector2D UObject::V2DNormal(struct FVector2D A)
+struct FVector2D UObject::V2DNormal(const struct FVector2D& A)
 {
 	static UFunction* uFnV2DNormal = nullptr;
 
@@ -3933,7 +4137,9 @@ struct FVector2D UObject::V2DNormal(struct FVector2D A)
 	memset(&V2DNormal_Params, 0, sizeof(V2DNormal_Params));
 	memcpy_s(&V2DNormal_Params.A, sizeof(V2DNormal_Params.A), &A, sizeof(A));
 
+	uFnV2DNormal->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnV2DNormal, &V2DNormal_Params, nullptr);
+	uFnV2DNormal->FunctionFlags |= 0x400;
 
 	return V2DNormal_Params.ReturnValue;
 };
@@ -3944,7 +4150,7 @@ struct FVector2D UObject::V2DNormal(struct FVector2D A)
 // float                          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FVector2D               A                              (CPF_Parm)
 
-float UObject::V2DSizeSq(struct FVector2D A)
+float UObject::V2DSizeSq(const struct FVector2D& A)
 {
 	static UFunction* uFnV2DSizeSq = nullptr;
 
@@ -3957,7 +4163,9 @@ float UObject::V2DSizeSq(struct FVector2D A)
 	memset(&V2DSizeSq_Params, 0, sizeof(V2DSizeSq_Params));
 	memcpy_s(&V2DSizeSq_Params.A, sizeof(V2DSizeSq_Params.A), &A, sizeof(A));
 
+	uFnV2DSizeSq->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnV2DSizeSq, &V2DSizeSq_Params, nullptr);
+	uFnV2DSizeSq->FunctionFlags |= 0x400;
 
 	return V2DSizeSq_Params.ReturnValue;
 };
@@ -3968,7 +4176,7 @@ float UObject::V2DSizeSq(struct FVector2D A)
 // float                          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FVector2D               A                              (CPF_Parm)
 
-float UObject::V2DSize(struct FVector2D A)
+float UObject::V2DSize(const struct FVector2D& A)
 {
 	static UFunction* uFnV2DSize = nullptr;
 
@@ -3981,7 +4189,9 @@ float UObject::V2DSize(struct FVector2D A)
 	memset(&V2DSize_Params, 0, sizeof(V2DSize_Params));
 	memcpy_s(&V2DSize_Params.A, sizeof(V2DSize_Params.A), &A, sizeof(A));
 
+	uFnV2DSize->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnV2DSize, &V2DSize_Params, nullptr);
+	uFnV2DSize->FunctionFlags |= 0x400;
 
 	return V2DSize_Params.ReturnValue;
 };
@@ -3993,7 +4203,7 @@ float UObject::V2DSize(struct FVector2D A)
 // struct FVector2D               A                              (CPF_Parm)
 // struct FVector2D               B                              (CPF_Parm)
 
-float UObject::Dot_Vector2DVector2D(struct FVector2D A, struct FVector2D B)
+float UObject::Dot_Vector2DVector2D(const struct FVector2D& A, const struct FVector2D& B)
 {
 	static UFunction* uFnDot_Vector2DVector2D = nullptr;
 
@@ -4007,7 +4217,9 @@ float UObject::Dot_Vector2DVector2D(struct FVector2D A, struct FVector2D B)
 	memcpy_s(&Dot_Vector2DVector2D_Params.A, sizeof(Dot_Vector2DVector2D_Params.A), &A, sizeof(A));
 	memcpy_s(&Dot_Vector2DVector2D_Params.B, sizeof(Dot_Vector2DVector2D_Params.B), &B, sizeof(B));
 
+	uFnDot_Vector2DVector2D->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnDot_Vector2DVector2D, &Dot_Vector2DVector2D_Params, nullptr);
+	uFnDot_Vector2DVector2D->FunctionFlags |= 0x400;
 
 	return Dot_Vector2DVector2D_Params.ReturnValue;
 };
@@ -4019,7 +4231,7 @@ float UObject::Dot_Vector2DVector2D(struct FVector2D A, struct FVector2D B)
 // struct FVector2D               B                              (CPF_Parm)
 // struct FVector2D               A                              (CPF_Parm | CPF_OutParm)
 
-struct FVector2D UObject::SubtractEqual_Vector2DVector2D(struct FVector2D B, struct FVector2D& A)
+struct FVector2D UObject::SubtractEqual_Vector2DVector2D(const struct FVector2D& B, struct FVector2D& A)
 {
 	static UFunction* uFnSubtractEqual_Vector2DVector2D = nullptr;
 
@@ -4033,7 +4245,9 @@ struct FVector2D UObject::SubtractEqual_Vector2DVector2D(struct FVector2D B, str
 	memcpy_s(&SubtractEqual_Vector2DVector2D_Params.B, sizeof(SubtractEqual_Vector2DVector2D_Params.B), &B, sizeof(B));
 	memcpy_s(&SubtractEqual_Vector2DVector2D_Params.A, sizeof(SubtractEqual_Vector2DVector2D_Params.A), &A, sizeof(A));
 
+	uFnSubtractEqual_Vector2DVector2D->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnSubtractEqual_Vector2DVector2D, &SubtractEqual_Vector2DVector2D_Params, nullptr);
+	uFnSubtractEqual_Vector2DVector2D->FunctionFlags |= 0x400;
 
 	memcpy_s(&A, sizeof(A), &SubtractEqual_Vector2DVector2D_Params.A, sizeof(SubtractEqual_Vector2DVector2D_Params.A));
 
@@ -4047,7 +4261,7 @@ struct FVector2D UObject::SubtractEqual_Vector2DVector2D(struct FVector2D B, str
 // struct FVector2D               B                              (CPF_Parm)
 // struct FVector2D               A                              (CPF_Parm | CPF_OutParm)
 
-struct FVector2D UObject::AddEqual_Vector2DVector2D(struct FVector2D B, struct FVector2D& A)
+struct FVector2D UObject::AddEqual_Vector2DVector2D(const struct FVector2D& B, struct FVector2D& A)
 {
 	static UFunction* uFnAddEqual_Vector2DVector2D = nullptr;
 
@@ -4061,7 +4275,9 @@ struct FVector2D UObject::AddEqual_Vector2DVector2D(struct FVector2D B, struct F
 	memcpy_s(&AddEqual_Vector2DVector2D_Params.B, sizeof(AddEqual_Vector2DVector2D_Params.B), &B, sizeof(B));
 	memcpy_s(&AddEqual_Vector2DVector2D_Params.A, sizeof(AddEqual_Vector2DVector2D_Params.A), &A, sizeof(A));
 
+	uFnAddEqual_Vector2DVector2D->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAddEqual_Vector2DVector2D, &AddEqual_Vector2DVector2D_Params, nullptr);
+	uFnAddEqual_Vector2DVector2D->FunctionFlags |= 0x400;
 
 	memcpy_s(&A, sizeof(A), &AddEqual_Vector2DVector2D_Params.A, sizeof(AddEqual_Vector2DVector2D_Params.A));
 
@@ -4089,7 +4305,9 @@ struct FVector2D UObject::DivideEqual_Vector2DFloat(float B, struct FVector2D& A
 	memcpy_s(&DivideEqual_Vector2DFloat_Params.B, sizeof(DivideEqual_Vector2DFloat_Params.B), &B, sizeof(B));
 	memcpy_s(&DivideEqual_Vector2DFloat_Params.A, sizeof(DivideEqual_Vector2DFloat_Params.A), &A, sizeof(A));
 
+	uFnDivideEqual_Vector2DFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnDivideEqual_Vector2DFloat, &DivideEqual_Vector2DFloat_Params, nullptr);
+	uFnDivideEqual_Vector2DFloat->FunctionFlags |= 0x400;
 
 	memcpy_s(&A, sizeof(A), &DivideEqual_Vector2DFloat_Params.A, sizeof(DivideEqual_Vector2DFloat_Params.A));
 
@@ -4117,7 +4335,9 @@ struct FVector2D UObject::MultiplyEqual_Vector2DFloat(float B, struct FVector2D&
 	memcpy_s(&MultiplyEqual_Vector2DFloat_Params.B, sizeof(MultiplyEqual_Vector2DFloat_Params.B), &B, sizeof(B));
 	memcpy_s(&MultiplyEqual_Vector2DFloat_Params.A, sizeof(MultiplyEqual_Vector2DFloat_Params.A), &A, sizeof(A));
 
+	uFnMultiplyEqual_Vector2DFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMultiplyEqual_Vector2DFloat, &MultiplyEqual_Vector2DFloat_Params, nullptr);
+	uFnMultiplyEqual_Vector2DFloat->FunctionFlags |= 0x400;
 
 	memcpy_s(&A, sizeof(A), &MultiplyEqual_Vector2DFloat_Params.A, sizeof(MultiplyEqual_Vector2DFloat_Params.A));
 
@@ -4131,7 +4351,7 @@ struct FVector2D UObject::MultiplyEqual_Vector2DFloat(float B, struct FVector2D&
 // struct FVector2D               A                              (CPF_Parm)
 // float                          B                              (CPF_Parm)
 
-struct FVector2D UObject::Divide_Vector2DFloat(struct FVector2D A, float B)
+struct FVector2D UObject::Divide_Vector2DFloat(const struct FVector2D& A, float B)
 {
 	static UFunction* uFnDivide_Vector2DFloat = nullptr;
 
@@ -4145,7 +4365,9 @@ struct FVector2D UObject::Divide_Vector2DFloat(struct FVector2D A, float B)
 	memcpy_s(&Divide_Vector2DFloat_Params.A, sizeof(Divide_Vector2DFloat_Params.A), &A, sizeof(A));
 	memcpy_s(&Divide_Vector2DFloat_Params.B, sizeof(Divide_Vector2DFloat_Params.B), &B, sizeof(B));
 
+	uFnDivide_Vector2DFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnDivide_Vector2DFloat, &Divide_Vector2DFloat_Params, nullptr);
+	uFnDivide_Vector2DFloat->FunctionFlags |= 0x400;
 
 	return Divide_Vector2DFloat_Params.ReturnValue;
 };
@@ -4157,7 +4379,7 @@ struct FVector2D UObject::Divide_Vector2DFloat(struct FVector2D A, float B)
 // struct FVector2D               A                              (CPF_Parm)
 // float                          B                              (CPF_Parm)
 
-struct FVector2D UObject::Multiply_Vector2DFloat(struct FVector2D A, float B)
+struct FVector2D UObject::Multiply_Vector2DFloat(const struct FVector2D& A, float B)
 {
 	static UFunction* uFnMultiply_Vector2DFloat = nullptr;
 
@@ -4171,7 +4393,9 @@ struct FVector2D UObject::Multiply_Vector2DFloat(struct FVector2D A, float B)
 	memcpy_s(&Multiply_Vector2DFloat_Params.A, sizeof(Multiply_Vector2DFloat_Params.A), &A, sizeof(A));
 	memcpy_s(&Multiply_Vector2DFloat_Params.B, sizeof(Multiply_Vector2DFloat_Params.B), &B, sizeof(B));
 
+	uFnMultiply_Vector2DFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMultiply_Vector2DFloat, &Multiply_Vector2DFloat_Params, nullptr);
+	uFnMultiply_Vector2DFloat->FunctionFlags |= 0x400;
 
 	return Multiply_Vector2DFloat_Params.ReturnValue;
 };
@@ -4183,7 +4407,7 @@ struct FVector2D UObject::Multiply_Vector2DFloat(struct FVector2D A, float B)
 // struct FVector2D               A                              (CPF_Parm)
 // struct FVector2D               B                              (CPF_Parm)
 
-struct FVector2D UObject::Subtract_Vector2DVector2D(struct FVector2D A, struct FVector2D B)
+struct FVector2D UObject::Subtract_Vector2DVector2D(const struct FVector2D& A, const struct FVector2D& B)
 {
 	static UFunction* uFnSubtract_Vector2DVector2D = nullptr;
 
@@ -4197,7 +4421,9 @@ struct FVector2D UObject::Subtract_Vector2DVector2D(struct FVector2D A, struct F
 	memcpy_s(&Subtract_Vector2DVector2D_Params.A, sizeof(Subtract_Vector2DVector2D_Params.A), &A, sizeof(A));
 	memcpy_s(&Subtract_Vector2DVector2D_Params.B, sizeof(Subtract_Vector2DVector2D_Params.B), &B, sizeof(B));
 
+	uFnSubtract_Vector2DVector2D->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnSubtract_Vector2DVector2D, &Subtract_Vector2DVector2D_Params, nullptr);
+	uFnSubtract_Vector2DVector2D->FunctionFlags |= 0x400;
 
 	return Subtract_Vector2DVector2D_Params.ReturnValue;
 };
@@ -4209,7 +4435,7 @@ struct FVector2D UObject::Subtract_Vector2DVector2D(struct FVector2D A, struct F
 // struct FVector2D               A                              (CPF_Parm)
 // struct FVector2D               B                              (CPF_Parm)
 
-struct FVector2D UObject::Add_Vector2DVector2D(struct FVector2D A, struct FVector2D B)
+struct FVector2D UObject::Add_Vector2DVector2D(const struct FVector2D& A, const struct FVector2D& B)
 {
 	static UFunction* uFnAdd_Vector2DVector2D = nullptr;
 
@@ -4223,7 +4449,9 @@ struct FVector2D UObject::Add_Vector2DVector2D(struct FVector2D A, struct FVecto
 	memcpy_s(&Add_Vector2DVector2D_Params.A, sizeof(Add_Vector2DVector2D_Params.A), &A, sizeof(A));
 	memcpy_s(&Add_Vector2DVector2D_Params.B, sizeof(Add_Vector2DVector2D_Params.B), &B, sizeof(B));
 
+	uFnAdd_Vector2DVector2D->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAdd_Vector2DVector2D, &Add_Vector2DVector2D_Params, nullptr);
+	uFnAdd_Vector2DVector2D->FunctionFlags |= 0x400;
 
 	return Add_Vector2DVector2D_Params.ReturnValue;
 };
@@ -4235,7 +4463,7 @@ struct FVector2D UObject::Add_Vector2DVector2D(struct FVector2D A, struct FVecto
 // struct FQuat                   A                              (CPF_Parm)
 // struct FQuat                   B                              (CPF_Parm)
 
-struct FQuat UObject::Subtract_QuatQuat(struct FQuat A, struct FQuat B)
+struct FQuat UObject::Subtract_QuatQuat(const struct FQuat& A, const struct FQuat& B)
 {
 	static UFunction* uFnSubtract_QuatQuat = nullptr;
 
@@ -4249,7 +4477,11 @@ struct FQuat UObject::Subtract_QuatQuat(struct FQuat A, struct FQuat B)
 	memcpy_s(&Subtract_QuatQuat_Params.A, sizeof(Subtract_QuatQuat_Params.A), &A, sizeof(A));
 	memcpy_s(&Subtract_QuatQuat_Params.B, sizeof(Subtract_QuatQuat_Params.B), &B, sizeof(B));
 
+	uFnSubtract_QuatQuat->iNative = 0;
+	uFnSubtract_QuatQuat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnSubtract_QuatQuat, &Subtract_QuatQuat_Params, nullptr);
+	uFnSubtract_QuatQuat->FunctionFlags |= 0x400;
+	uFnSubtract_QuatQuat->iNative = 271;
 
 	return Subtract_QuatQuat_Params.ReturnValue;
 };
@@ -4261,7 +4493,7 @@ struct FQuat UObject::Subtract_QuatQuat(struct FQuat A, struct FQuat B)
 // struct FQuat                   A                              (CPF_Parm)
 // struct FQuat                   B                              (CPF_Parm)
 
-struct FQuat UObject::Add_QuatQuat(struct FQuat A, struct FQuat B)
+struct FQuat UObject::Add_QuatQuat(const struct FQuat& A, const struct FQuat& B)
 {
 	static UFunction* uFnAdd_QuatQuat = nullptr;
 
@@ -4275,21 +4507,25 @@ struct FQuat UObject::Add_QuatQuat(struct FQuat A, struct FQuat B)
 	memcpy_s(&Add_QuatQuat_Params.A, sizeof(Add_QuatQuat_Params.A), &A, sizeof(A));
 	memcpy_s(&Add_QuatQuat_Params.B, sizeof(Add_QuatQuat_Params.B), &B, sizeof(B));
 
+	uFnAdd_QuatQuat->iNative = 0;
+	uFnAdd_QuatQuat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAdd_QuatQuat, &Add_QuatQuat_Params, nullptr);
+	uFnAdd_QuatQuat->FunctionFlags |= 0x400;
+	uFnAdd_QuatQuat->iNative = 270;
 
 	return Add_QuatQuat_Params.ReturnValue;
 };
 
 // Function Core.Object.QuatSlerp
-// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // struct FQuat                   ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FQuat                   A                              (CPF_Parm)
 // struct FQuat                   B                              (CPF_Parm)
 // float                          Alpha                          (CPF_Parm)
-// bool                           bShortestPath                  (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bShortestPath                  (CPF_OptionalParm | CPF_Parm)
 
-struct FQuat UObject::QuatSlerp(struct FQuat A, struct FQuat B, float Alpha, bool bShortestPath)
+struct FQuat UObject::QuatSlerp(const struct FQuat& A, const struct FQuat& B, float Alpha, bool bShortestPath)
 {
 	static UFunction* uFnQuatSlerp = nullptr;
 
@@ -4305,7 +4541,9 @@ struct FQuat UObject::QuatSlerp(struct FQuat A, struct FQuat B, float Alpha, boo
 	memcpy_s(&QuatSlerp_Params.Alpha, sizeof(QuatSlerp_Params.Alpha), &Alpha, sizeof(Alpha));
 	QuatSlerp_Params.bShortestPath = bShortestPath;
 
+	uFnQuatSlerp->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnQuatSlerp, &QuatSlerp_Params, nullptr);
+	uFnQuatSlerp->FunctionFlags |= 0x400;
 
 	return QuatSlerp_Params.ReturnValue;
 };
@@ -4316,7 +4554,7 @@ struct FQuat UObject::QuatSlerp(struct FQuat A, struct FQuat B, float Alpha, boo
 // struct FRotator                ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FQuat                   A                              (CPF_Parm)
 
-struct FRotator UObject::QuatToRotator(struct FQuat A)
+struct FRotator UObject::QuatToRotator(const struct FQuat& A)
 {
 	static UFunction* uFnQuatToRotator = nullptr;
 
@@ -4329,7 +4567,9 @@ struct FRotator UObject::QuatToRotator(struct FQuat A)
 	memset(&QuatToRotator_Params, 0, sizeof(QuatToRotator_Params));
 	memcpy_s(&QuatToRotator_Params.A, sizeof(QuatToRotator_Params.A), &A, sizeof(A));
 
+	uFnQuatToRotator->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnQuatToRotator, &QuatToRotator_Params, nullptr);
+	uFnQuatToRotator->FunctionFlags |= 0x400;
 
 	return QuatToRotator_Params.ReturnValue;
 };
@@ -4340,7 +4580,7 @@ struct FRotator UObject::QuatToRotator(struct FQuat A)
 // struct FQuat                   ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FRotator                A                              (CPF_Parm)
 
-struct FQuat UObject::QuatFromRotator(struct FRotator A)
+struct FQuat UObject::QuatFromRotator(const struct FRotator& A)
 {
 	static UFunction* uFnQuatFromRotator = nullptr;
 
@@ -4353,7 +4593,9 @@ struct FQuat UObject::QuatFromRotator(struct FRotator A)
 	memset(&QuatFromRotator_Params, 0, sizeof(QuatFromRotator_Params));
 	memcpy_s(&QuatFromRotator_Params.A, sizeof(QuatFromRotator_Params.A), &A, sizeof(A));
 
+	uFnQuatFromRotator->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnQuatFromRotator, &QuatFromRotator_Params, nullptr);
+	uFnQuatFromRotator->FunctionFlags |= 0x400;
 
 	return QuatFromRotator_Params.ReturnValue;
 };
@@ -4365,7 +4607,7 @@ struct FQuat UObject::QuatFromRotator(struct FRotator A)
 // struct FVector                 Axis                           (CPF_Parm)
 // float                          Angle                          (CPF_Parm)
 
-struct FQuat UObject::QuatFromAxisAndAngle(struct FVector Axis, float Angle)
+struct FQuat UObject::QuatFromAxisAndAngle(const struct FVector& Axis, float Angle)
 {
 	static UFunction* uFnQuatFromAxisAndAngle = nullptr;
 
@@ -4379,7 +4621,9 @@ struct FQuat UObject::QuatFromAxisAndAngle(struct FVector Axis, float Angle)
 	memcpy_s(&QuatFromAxisAndAngle_Params.Axis, sizeof(QuatFromAxisAndAngle_Params.Axis), &Axis, sizeof(Axis));
 	memcpy_s(&QuatFromAxisAndAngle_Params.Angle, sizeof(QuatFromAxisAndAngle_Params.Angle), &Angle, sizeof(Angle));
 
+	uFnQuatFromAxisAndAngle->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnQuatFromAxisAndAngle, &QuatFromAxisAndAngle_Params, nullptr);
+	uFnQuatFromAxisAndAngle->FunctionFlags |= 0x400;
 
 	return QuatFromAxisAndAngle_Params.ReturnValue;
 };
@@ -4391,7 +4635,7 @@ struct FQuat UObject::QuatFromAxisAndAngle(struct FVector Axis, float Angle)
 // struct FVector                 A                              (CPF_Parm)
 // struct FVector                 B                              (CPF_Parm)
 
-struct FQuat UObject::QuatFindBetween(struct FVector A, struct FVector B)
+struct FQuat UObject::QuatFindBetween(const struct FVector& A, const struct FVector& B)
 {
 	static UFunction* uFnQuatFindBetween = nullptr;
 
@@ -4405,7 +4649,9 @@ struct FQuat UObject::QuatFindBetween(struct FVector A, struct FVector B)
 	memcpy_s(&QuatFindBetween_Params.A, sizeof(QuatFindBetween_Params.A), &A, sizeof(A));
 	memcpy_s(&QuatFindBetween_Params.B, sizeof(QuatFindBetween_Params.B), &B, sizeof(B));
 
+	uFnQuatFindBetween->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnQuatFindBetween, &QuatFindBetween_Params, nullptr);
+	uFnQuatFindBetween->FunctionFlags |= 0x400;
 
 	return QuatFindBetween_Params.ReturnValue;
 };
@@ -4417,7 +4663,7 @@ struct FQuat UObject::QuatFindBetween(struct FVector A, struct FVector B)
 // struct FQuat                   A                              (CPF_Parm)
 // struct FVector                 B                              (CPF_Parm)
 
-struct FVector UObject::QuatRotateVector(struct FQuat A, struct FVector B)
+struct FVector UObject::QuatRotateVector(const struct FQuat& A, const struct FVector& B)
 {
 	static UFunction* uFnQuatRotateVector = nullptr;
 
@@ -4431,7 +4677,9 @@ struct FVector UObject::QuatRotateVector(struct FQuat A, struct FVector B)
 	memcpy_s(&QuatRotateVector_Params.A, sizeof(QuatRotateVector_Params.A), &A, sizeof(A));
 	memcpy_s(&QuatRotateVector_Params.B, sizeof(QuatRotateVector_Params.B), &B, sizeof(B));
 
+	uFnQuatRotateVector->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnQuatRotateVector, &QuatRotateVector_Params, nullptr);
+	uFnQuatRotateVector->FunctionFlags |= 0x400;
 
 	return QuatRotateVector_Params.ReturnValue;
 };
@@ -4442,7 +4690,7 @@ struct FVector UObject::QuatRotateVector(struct FQuat A, struct FVector B)
 // struct FQuat                   ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FQuat                   A                              (CPF_Parm)
 
-struct FQuat UObject::QuatInvert(struct FQuat A)
+struct FQuat UObject::QuatInvert(const struct FQuat& A)
 {
 	static UFunction* uFnQuatInvert = nullptr;
 
@@ -4455,7 +4703,9 @@ struct FQuat UObject::QuatInvert(struct FQuat A)
 	memset(&QuatInvert_Params, 0, sizeof(QuatInvert_Params));
 	memcpy_s(&QuatInvert_Params.A, sizeof(QuatInvert_Params.A), &A, sizeof(A));
 
+	uFnQuatInvert->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnQuatInvert, &QuatInvert_Params, nullptr);
+	uFnQuatInvert->FunctionFlags |= 0x400;
 
 	return QuatInvert_Params.ReturnValue;
 };
@@ -4467,7 +4717,7 @@ struct FQuat UObject::QuatInvert(struct FQuat A)
 // struct FQuat                   A                              (CPF_Parm)
 // struct FQuat                   B                              (CPF_Parm)
 
-float UObject::QuatDot(struct FQuat A, struct FQuat B)
+float UObject::QuatDot(const struct FQuat& A, const struct FQuat& B)
 {
 	static UFunction* uFnQuatDot = nullptr;
 
@@ -4481,7 +4731,9 @@ float UObject::QuatDot(struct FQuat A, struct FQuat B)
 	memcpy_s(&QuatDot_Params.A, sizeof(QuatDot_Params.A), &A, sizeof(A));
 	memcpy_s(&QuatDot_Params.B, sizeof(QuatDot_Params.B), &B, sizeof(B));
 
+	uFnQuatDot->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnQuatDot, &QuatDot_Params, nullptr);
+	uFnQuatDot->FunctionFlags |= 0x400;
 
 	return QuatDot_Params.ReturnValue;
 };
@@ -4493,7 +4745,7 @@ float UObject::QuatDot(struct FQuat A, struct FQuat B)
 // struct FQuat                   A                              (CPF_Parm)
 // struct FQuat                   B                              (CPF_Parm)
 
-struct FQuat UObject::QuatProduct(struct FQuat A, struct FQuat B)
+struct FQuat UObject::QuatProduct(const struct FQuat& A, const struct FQuat& B)
 {
 	static UFunction* uFnQuatProduct = nullptr;
 
@@ -4507,7 +4759,9 @@ struct FQuat UObject::QuatProduct(struct FQuat A, struct FQuat B)
 	memcpy_s(&QuatProduct_Params.A, sizeof(QuatProduct_Params.A), &A, sizeof(A));
 	memcpy_s(&QuatProduct_Params.B, sizeof(QuatProduct_Params.B), &B, sizeof(B));
 
+	uFnQuatProduct->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnQuatProduct, &QuatProduct_Params, nullptr);
+	uFnQuatProduct->FunctionFlags |= 0x400;
 
 	return QuatProduct_Params.ReturnValue;
 };
@@ -4519,7 +4773,7 @@ struct FQuat UObject::QuatProduct(struct FQuat A, struct FQuat B)
 // struct FMatrix                 TM                             (CPF_Parm)
 // EAxis                          Axis                           (CPF_Parm)
 
-struct FVector UObject::MatrixGetAxis(struct FMatrix TM, EAxis Axis)
+struct FVector UObject::MatrixGetAxis(const struct FMatrix& TM, EAxis Axis)
 {
 	static UFunction* uFnMatrixGetAxis = nullptr;
 
@@ -4533,7 +4787,9 @@ struct FVector UObject::MatrixGetAxis(struct FMatrix TM, EAxis Axis)
 	memcpy_s(&MatrixGetAxis_Params.TM, sizeof(MatrixGetAxis_Params.TM), &TM, sizeof(TM));
 	memcpy_s(&MatrixGetAxis_Params.Axis, sizeof(MatrixGetAxis_Params.Axis), &Axis, sizeof(Axis));
 
+	uFnMatrixGetAxis->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMatrixGetAxis, &MatrixGetAxis_Params, nullptr);
+	uFnMatrixGetAxis->FunctionFlags |= 0x400;
 
 	return MatrixGetAxis_Params.ReturnValue;
 };
@@ -4544,7 +4800,7 @@ struct FVector UObject::MatrixGetAxis(struct FMatrix TM, EAxis Axis)
 // struct FVector                 ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FMatrix                 TM                             (CPF_Parm)
 
-struct FVector UObject::MatrixGetOrigin(struct FMatrix TM)
+struct FVector UObject::MatrixGetOrigin(const struct FMatrix& TM)
 {
 	static UFunction* uFnMatrixGetOrigin = nullptr;
 
@@ -4557,7 +4813,9 @@ struct FVector UObject::MatrixGetOrigin(struct FMatrix TM)
 	memset(&MatrixGetOrigin_Params, 0, sizeof(MatrixGetOrigin_Params));
 	memcpy_s(&MatrixGetOrigin_Params.TM, sizeof(MatrixGetOrigin_Params.TM), &TM, sizeof(TM));
 
+	uFnMatrixGetOrigin->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMatrixGetOrigin, &MatrixGetOrigin_Params, nullptr);
+	uFnMatrixGetOrigin->FunctionFlags |= 0x400;
 
 	return MatrixGetOrigin_Params.ReturnValue;
 };
@@ -4568,7 +4826,7 @@ struct FVector UObject::MatrixGetOrigin(struct FMatrix TM)
 // struct FRotator                ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FMatrix                 TM                             (CPF_Parm)
 
-struct FRotator UObject::MatrixGetRotator(struct FMatrix TM)
+struct FRotator UObject::MatrixGetRotator(const struct FMatrix& TM)
 {
 	static UFunction* uFnMatrixGetRotator = nullptr;
 
@@ -4581,7 +4839,9 @@ struct FRotator UObject::MatrixGetRotator(struct FMatrix TM)
 	memset(&MatrixGetRotator_Params, 0, sizeof(MatrixGetRotator_Params));
 	memcpy_s(&MatrixGetRotator_Params.TM, sizeof(MatrixGetRotator_Params.TM), &TM, sizeof(TM));
 
+	uFnMatrixGetRotator->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMatrixGetRotator, &MatrixGetRotator_Params, nullptr);
+	uFnMatrixGetRotator->FunctionFlags |= 0x400;
 
 	return MatrixGetRotator_Params.ReturnValue;
 };
@@ -4592,7 +4852,7 @@ struct FRotator UObject::MatrixGetRotator(struct FMatrix TM)
 // struct FMatrix                 ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FRotator                Rotation                       (CPF_Parm)
 
-struct FMatrix UObject::MakeRotationMatrix(struct FRotator Rotation)
+struct FMatrix UObject::MakeRotationMatrix(const struct FRotator& Rotation)
 {
 	static UFunction* uFnMakeRotationMatrix = nullptr;
 
@@ -4605,7 +4865,9 @@ struct FMatrix UObject::MakeRotationMatrix(struct FRotator Rotation)
 	memset(&MakeRotationMatrix_Params, 0, sizeof(MakeRotationMatrix_Params));
 	memcpy_s(&MakeRotationMatrix_Params.Rotation, sizeof(MakeRotationMatrix_Params.Rotation), &Rotation, sizeof(Rotation));
 
+	uFnMakeRotationMatrix->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMakeRotationMatrix, &MakeRotationMatrix_Params, nullptr);
+	uFnMakeRotationMatrix->FunctionFlags |= 0x400;
 
 	return MakeRotationMatrix_Params.ReturnValue;
 };
@@ -4617,7 +4879,7 @@ struct FMatrix UObject::MakeRotationMatrix(struct FRotator Rotation)
 // struct FVector                 Translation                    (CPF_Parm)
 // struct FRotator                Rotation                       (CPF_Parm)
 
-struct FMatrix UObject::MakeRotationTranslationMatrix(struct FVector Translation, struct FRotator Rotation)
+struct FMatrix UObject::MakeRotationTranslationMatrix(const struct FVector& Translation, const struct FRotator& Rotation)
 {
 	static UFunction* uFnMakeRotationTranslationMatrix = nullptr;
 
@@ -4631,7 +4893,9 @@ struct FMatrix UObject::MakeRotationTranslationMatrix(struct FVector Translation
 	memcpy_s(&MakeRotationTranslationMatrix_Params.Translation, sizeof(MakeRotationTranslationMatrix_Params.Translation), &Translation, sizeof(Translation));
 	memcpy_s(&MakeRotationTranslationMatrix_Params.Rotation, sizeof(MakeRotationTranslationMatrix_Params.Rotation), &Rotation, sizeof(Rotation));
 
+	uFnMakeRotationTranslationMatrix->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMakeRotationTranslationMatrix, &MakeRotationTranslationMatrix_Params, nullptr);
+	uFnMakeRotationTranslationMatrix->FunctionFlags |= 0x400;
 
 	return MakeRotationTranslationMatrix_Params.ReturnValue;
 };
@@ -4643,7 +4907,7 @@ struct FMatrix UObject::MakeRotationTranslationMatrix(struct FVector Translation
 // struct FMatrix                 TM                             (CPF_Parm)
 // struct FVector                 A                              (CPF_Parm)
 
-struct FVector UObject::InverseTransformNormal(struct FMatrix TM, struct FVector A)
+struct FVector UObject::InverseTransformNormal(const struct FMatrix& TM, const struct FVector& A)
 {
 	static UFunction* uFnInverseTransformNormal = nullptr;
 
@@ -4657,7 +4921,9 @@ struct FVector UObject::InverseTransformNormal(struct FMatrix TM, struct FVector
 	memcpy_s(&InverseTransformNormal_Params.TM, sizeof(InverseTransformNormal_Params.TM), &TM, sizeof(TM));
 	memcpy_s(&InverseTransformNormal_Params.A, sizeof(InverseTransformNormal_Params.A), &A, sizeof(A));
 
+	uFnInverseTransformNormal->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnInverseTransformNormal, &InverseTransformNormal_Params, nullptr);
+	uFnInverseTransformNormal->FunctionFlags |= 0x400;
 
 	return InverseTransformNormal_Params.ReturnValue;
 };
@@ -4669,7 +4935,7 @@ struct FVector UObject::InverseTransformNormal(struct FMatrix TM, struct FVector
 // struct FMatrix                 TM                             (CPF_Parm)
 // struct FVector                 A                              (CPF_Parm)
 
-struct FVector UObject::TransformNormal(struct FMatrix TM, struct FVector A)
+struct FVector UObject::TransformNormal(const struct FMatrix& TM, const struct FVector& A)
 {
 	static UFunction* uFnTransformNormal = nullptr;
 
@@ -4683,7 +4949,9 @@ struct FVector UObject::TransformNormal(struct FMatrix TM, struct FVector A)
 	memcpy_s(&TransformNormal_Params.TM, sizeof(TransformNormal_Params.TM), &TM, sizeof(TM));
 	memcpy_s(&TransformNormal_Params.A, sizeof(TransformNormal_Params.A), &A, sizeof(A));
 
+	uFnTransformNormal->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnTransformNormal, &TransformNormal_Params, nullptr);
+	uFnTransformNormal->FunctionFlags |= 0x400;
 
 	return TransformNormal_Params.ReturnValue;
 };
@@ -4695,7 +4963,7 @@ struct FVector UObject::TransformNormal(struct FMatrix TM, struct FVector A)
 // struct FMatrix                 TM                             (CPF_Parm)
 // struct FVector                 A                              (CPF_Parm)
 
-struct FVector UObject::InverseTransformVector(struct FMatrix TM, struct FVector A)
+struct FVector UObject::InverseTransformVector(const struct FMatrix& TM, const struct FVector& A)
 {
 	static UFunction* uFnInverseTransformVector = nullptr;
 
@@ -4709,7 +4977,9 @@ struct FVector UObject::InverseTransformVector(struct FMatrix TM, struct FVector
 	memcpy_s(&InverseTransformVector_Params.TM, sizeof(InverseTransformVector_Params.TM), &TM, sizeof(TM));
 	memcpy_s(&InverseTransformVector_Params.A, sizeof(InverseTransformVector_Params.A), &A, sizeof(A));
 
+	uFnInverseTransformVector->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnInverseTransformVector, &InverseTransformVector_Params, nullptr);
+	uFnInverseTransformVector->FunctionFlags |= 0x400;
 
 	return InverseTransformVector_Params.ReturnValue;
 };
@@ -4721,7 +4991,7 @@ struct FVector UObject::InverseTransformVector(struct FMatrix TM, struct FVector
 // struct FMatrix                 TM                             (CPF_Parm)
 // struct FVector                 A                              (CPF_Parm)
 
-struct FVector UObject::TransformVector(struct FMatrix TM, struct FVector A)
+struct FVector UObject::TransformVector(const struct FMatrix& TM, const struct FVector& A)
 {
 	static UFunction* uFnTransformVector = nullptr;
 
@@ -4735,7 +5005,9 @@ struct FVector UObject::TransformVector(struct FMatrix TM, struct FVector A)
 	memcpy_s(&TransformVector_Params.TM, sizeof(TransformVector_Params.TM), &TM, sizeof(TM));
 	memcpy_s(&TransformVector_Params.A, sizeof(TransformVector_Params.A), &A, sizeof(A));
 
+	uFnTransformVector->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnTransformVector, &TransformVector_Params, nullptr);
+	uFnTransformVector->FunctionFlags |= 0x400;
 
 	return TransformVector_Params.ReturnValue;
 };
@@ -4747,7 +5019,7 @@ struct FVector UObject::TransformVector(struct FMatrix TM, struct FVector A)
 // struct FMatrix                 A                              (CPF_Parm)
 // struct FMatrix                 B                              (CPF_Parm)
 
-struct FMatrix UObject::Multiply_MatrixMatrix(struct FMatrix A, struct FMatrix B)
+struct FMatrix UObject::Multiply_MatrixMatrix(const struct FMatrix& A, const struct FMatrix& B)
 {
 	static UFunction* uFnMultiply_MatrixMatrix = nullptr;
 
@@ -4761,7 +5033,9 @@ struct FMatrix UObject::Multiply_MatrixMatrix(struct FMatrix A, struct FMatrix B
 	memcpy_s(&Multiply_MatrixMatrix_Params.A, sizeof(Multiply_MatrixMatrix_Params.A), &A, sizeof(A));
 	memcpy_s(&Multiply_MatrixMatrix_Params.B, sizeof(Multiply_MatrixMatrix_Params.B), &B, sizeof(B));
 
+	uFnMultiply_MatrixMatrix->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMultiply_MatrixMatrix, &Multiply_MatrixMatrix_Params, nullptr);
+	uFnMultiply_MatrixMatrix->FunctionFlags |= 0x400;
 
 	return Multiply_MatrixMatrix_Params.ReturnValue;
 };
@@ -4773,7 +5047,7 @@ struct FMatrix UObject::Multiply_MatrixMatrix(struct FMatrix A, struct FMatrix B
 // struct FName                   A                              (CPF_Parm)
 // struct FName                   B                              (CPF_Parm)
 
-bool UObject::NotEqual_NameName(struct FName A, struct FName B)
+bool UObject::NotEqual_NameName(const struct FName& A, const struct FName& B)
 {
 	static UFunction* uFnNotEqual_NameName = nullptr;
 
@@ -4787,7 +5061,11 @@ bool UObject::NotEqual_NameName(struct FName A, struct FName B)
 	memcpy_s(&NotEqual_NameName_Params.A, sizeof(NotEqual_NameName_Params.A), &A, sizeof(A));
 	memcpy_s(&NotEqual_NameName_Params.B, sizeof(NotEqual_NameName_Params.B), &B, sizeof(B));
 
+	uFnNotEqual_NameName->iNative = 0;
+	uFnNotEqual_NameName->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnNotEqual_NameName, &NotEqual_NameName_Params, nullptr);
+	uFnNotEqual_NameName->FunctionFlags |= 0x400;
+	uFnNotEqual_NameName->iNative = 255;
 
 	return NotEqual_NameName_Params.ReturnValue;
 };
@@ -4799,7 +5077,7 @@ bool UObject::NotEqual_NameName(struct FName A, struct FName B)
 // struct FName                   A                              (CPF_Parm)
 // struct FName                   B                              (CPF_Parm)
 
-bool UObject::EqualEqual_NameName(struct FName A, struct FName B)
+bool UObject::EqualEqual_NameName(const struct FName& A, const struct FName& B)
 {
 	static UFunction* uFnEqualEqual_NameName = nullptr;
 
@@ -4813,7 +5091,11 @@ bool UObject::EqualEqual_NameName(struct FName A, struct FName B)
 	memcpy_s(&EqualEqual_NameName_Params.A, sizeof(EqualEqual_NameName_Params.A), &A, sizeof(A));
 	memcpy_s(&EqualEqual_NameName_Params.B, sizeof(EqualEqual_NameName_Params.B), &B, sizeof(B));
 
+	uFnEqualEqual_NameName->iNative = 0;
+	uFnEqualEqual_NameName->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnEqualEqual_NameName, &EqualEqual_NameName_Params, nullptr);
+	uFnEqualEqual_NameName->FunctionFlags |= 0x400;
+	uFnEqualEqual_NameName->iNative = 254;
 
 	return EqualEqual_NameName_Params.ReturnValue;
 };
@@ -4824,7 +5106,7 @@ bool UObject::EqualEqual_NameName(struct FName A, struct FName B)
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FName                   ClassName                      (CPF_Parm)
 
-bool UObject::IsA(struct FName ClassName)
+bool UObject::IsA(const struct FName& ClassName)
 {
 	static UFunction* uFnIsA = nullptr;
 
@@ -4837,7 +5119,11 @@ bool UObject::IsA(struct FName ClassName)
 	memset(&IsA_Params, 0, sizeof(IsA_Params));
 	memcpy_s(&IsA_Params.ClassName, sizeof(IsA_Params.ClassName), &ClassName, sizeof(ClassName));
 
+	uFnIsA->iNative = 0;
+	uFnIsA->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnIsA, &IsA_Params, nullptr);
+	uFnIsA->FunctionFlags |= 0x400;
+	uFnIsA->iNative = 197;
 
 	return IsA_Params.ReturnValue;
 };
@@ -4860,10 +5146,14 @@ bool UObject::ClassIsChildOf(class UClass* TestClass, class UClass* ParentClass)
 
 	UObject_execClassIsChildOf_Params ClassIsChildOf_Params;
 	memset(&ClassIsChildOf_Params, 0, sizeof(ClassIsChildOf_Params));
-	memcpy_s(&ClassIsChildOf_Params.TestClass, sizeof(ClassIsChildOf_Params.TestClass), &TestClass, sizeof(TestClass));
-	memcpy_s(&ClassIsChildOf_Params.ParentClass, sizeof(ClassIsChildOf_Params.ParentClass), &ParentClass, sizeof(ParentClass));
+	ClassIsChildOf_Params.TestClass = TestClass;
+	ClassIsChildOf_Params.ParentClass = ParentClass;
 
+	uFnClassIsChildOf->iNative = 0;
+	uFnClassIsChildOf->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnClassIsChildOf, &ClassIsChildOf_Params, nullptr);
+	uFnClassIsChildOf->FunctionFlags |= 0x400;
+	uFnClassIsChildOf->iNative = 258;
 
 	return ClassIsChildOf_Params.ReturnValue;
 };
@@ -4886,10 +5176,12 @@ bool UObject::NotEqual_InterfaceInterface(class UInterface* A, class UInterface*
 
 	UObject_execNotEqual_InterfaceInterface_Params NotEqual_InterfaceInterface_Params;
 	memset(&NotEqual_InterfaceInterface_Params, 0, sizeof(NotEqual_InterfaceInterface_Params));
-	memcpy_s(&NotEqual_InterfaceInterface_Params.A, sizeof(NotEqual_InterfaceInterface_Params.A), &A, sizeof(A));
-	memcpy_s(&NotEqual_InterfaceInterface_Params.B, sizeof(NotEqual_InterfaceInterface_Params.B), &B, sizeof(B));
+	NotEqual_InterfaceInterface_Params.A = A;
+	NotEqual_InterfaceInterface_Params.B = B;
 
+	uFnNotEqual_InterfaceInterface->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnNotEqual_InterfaceInterface, &NotEqual_InterfaceInterface_Params, nullptr);
+	uFnNotEqual_InterfaceInterface->FunctionFlags |= 0x400;
 
 	return NotEqual_InterfaceInterface_Params.ReturnValue;
 };
@@ -4912,10 +5204,12 @@ bool UObject::EqualEqual_InterfaceInterface(class UInterface* A, class UInterfac
 
 	UObject_execEqualEqual_InterfaceInterface_Params EqualEqual_InterfaceInterface_Params;
 	memset(&EqualEqual_InterfaceInterface_Params, 0, sizeof(EqualEqual_InterfaceInterface_Params));
-	memcpy_s(&EqualEqual_InterfaceInterface_Params.A, sizeof(EqualEqual_InterfaceInterface_Params.A), &A, sizeof(A));
-	memcpy_s(&EqualEqual_InterfaceInterface_Params.B, sizeof(EqualEqual_InterfaceInterface_Params.B), &B, sizeof(B));
+	EqualEqual_InterfaceInterface_Params.A = A;
+	EqualEqual_InterfaceInterface_Params.B = B;
 
+	uFnEqualEqual_InterfaceInterface->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnEqualEqual_InterfaceInterface, &EqualEqual_InterfaceInterface_Params, nullptr);
+	uFnEqualEqual_InterfaceInterface->FunctionFlags |= 0x400;
 
 	return EqualEqual_InterfaceInterface_Params.ReturnValue;
 };
@@ -4938,10 +5232,14 @@ bool UObject::NotEqual_ObjectObject(class UObject* A, class UObject* B)
 
 	UObject_execNotEqual_ObjectObject_Params NotEqual_ObjectObject_Params;
 	memset(&NotEqual_ObjectObject_Params, 0, sizeof(NotEqual_ObjectObject_Params));
-	memcpy_s(&NotEqual_ObjectObject_Params.A, sizeof(NotEqual_ObjectObject_Params.A), &A, sizeof(A));
-	memcpy_s(&NotEqual_ObjectObject_Params.B, sizeof(NotEqual_ObjectObject_Params.B), &B, sizeof(B));
+	NotEqual_ObjectObject_Params.A = A;
+	NotEqual_ObjectObject_Params.B = B;
 
+	uFnNotEqual_ObjectObject->iNative = 0;
+	uFnNotEqual_ObjectObject->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnNotEqual_ObjectObject, &NotEqual_ObjectObject_Params, nullptr);
+	uFnNotEqual_ObjectObject->FunctionFlags |= 0x400;
+	uFnNotEqual_ObjectObject->iNative = 206;
 
 	return NotEqual_ObjectObject_Params.ReturnValue;
 };
@@ -4964,10 +5262,14 @@ bool UObject::EqualEqual_ObjectObject(class UObject* A, class UObject* B)
 
 	UObject_execEqualEqual_ObjectObject_Params EqualEqual_ObjectObject_Params;
 	memset(&EqualEqual_ObjectObject_Params, 0, sizeof(EqualEqual_ObjectObject_Params));
-	memcpy_s(&EqualEqual_ObjectObject_Params.A, sizeof(EqualEqual_ObjectObject_Params.A), &A, sizeof(A));
-	memcpy_s(&EqualEqual_ObjectObject_Params.B, sizeof(EqualEqual_ObjectObject_Params.B), &B, sizeof(B));
+	EqualEqual_ObjectObject_Params.A = A;
+	EqualEqual_ObjectObject_Params.B = B;
 
+	uFnEqualEqual_ObjectObject->iNative = 0;
+	uFnEqualEqual_ObjectObject->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnEqualEqual_ObjectObject, &EqualEqual_ObjectObject_Params, nullptr);
+	uFnEqualEqual_ObjectObject->FunctionFlags |= 0x400;
+	uFnEqualEqual_ObjectObject->iNative = 207;
 
 	return EqualEqual_ObjectObject_Params.ReturnValue;
 };
@@ -5011,22 +5313,24 @@ class FString UObject::PathName(class UObject* CheckObject)
 
 	UObject_execPathName_Params PathName_Params;
 	memset(&PathName_Params, 0, sizeof(PathName_Params));
-	memcpy_s(&PathName_Params.CheckObject, sizeof(PathName_Params.CheckObject), &CheckObject, sizeof(CheckObject));
+	PathName_Params.CheckObject = CheckObject;
 
+	uFnPathName->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnPathName, &PathName_Params, nullptr);
+	uFnPathName->FunctionFlags |= 0x400;
 
 	return PathName_Params.ReturnValue;
 };
 
 // Function Core.Object.SplitString
-// [0x00026003] (FUNC_Final | FUNC_Defined | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// [0x00026003] (FUNC_Final | FUNC_Defined | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // TArray<class FString>          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Source                         (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Delimiter                      (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-// bool                           bCullEmpty                     (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bCullEmpty                     (CPF_OptionalParm | CPF_Parm)
 
-TArray<class FString> UObject::SplitString(class FString Source, class FString Delimiter, bool bCullEmpty)
+TArray<class FString> UObject::SplitString(const class FString& Source, const class FString& Delimiter, bool bCullEmpty)
 {
 	static UFunction* uFnSplitString = nullptr;
 
@@ -5051,10 +5355,10 @@ TArray<class FString> UObject::SplitString(class FString Source, class FString D
 // Parameter Info:
 // class FString                  BaseString                     (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  delim                          (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bCullEmpty                     (CPF_Parm)
+// uint32_t                       bCullEmpty                     (CPF_Parm)
 // TArray<class FString>          Pieces                         (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UObject::ParseStringIntoArray(class FString BaseString, class FString delim, bool bCullEmpty, TArray<class FString>& Pieces)
+void UObject::ParseStringIntoArray(const class FString& BaseString, const class FString& delim, bool bCullEmpty, TArray<class FString>& Pieces)
 {
 	static UFunction* uFnParseStringIntoArray = nullptr;
 
@@ -5070,7 +5374,9 @@ void UObject::ParseStringIntoArray(class FString BaseString, class FString delim
 	ParseStringIntoArray_Params.bCullEmpty = bCullEmpty;
 	memcpy_s(&ParseStringIntoArray_Params.Pieces, sizeof(ParseStringIntoArray_Params.Pieces), &Pieces, sizeof(Pieces));
 
+	uFnParseStringIntoArray->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnParseStringIntoArray, &ParseStringIntoArray_Params, nullptr);
+	uFnParseStringIntoArray->FunctionFlags |= 0x400;
 
 	memcpy_s(&Pieces, sizeof(Pieces), &ParseStringIntoArray_Params.Pieces, sizeof(ParseStringIntoArray_Params.Pieces));
 };
@@ -5081,7 +5387,7 @@ void UObject::ParseStringIntoArray(class FString BaseString, class FString delim
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Text                           (CPF_Parm | CPF_NeedCtorLink)
 
-bool UObject::ContainsWhitespace(class FString Text)
+bool UObject::ContainsWhitespace(const class FString& Text)
 {
 	static UFunction* uFnContainsWhitespace = nullptr;
 
@@ -5094,7 +5400,9 @@ bool UObject::ContainsWhitespace(class FString Text)
 	memset(&ContainsWhitespace_Params, 0, sizeof(ContainsWhitespace_Params));
 	memcpy_s(&ContainsWhitespace_Params.Text, sizeof(ContainsWhitespace_Params.Text), &Text, sizeof(Text));
 
+	uFnContainsWhitespace->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnContainsWhitespace, &ContainsWhitespace_Params, nullptr);
+	uFnContainsWhitespace->FunctionFlags |= 0x400;
 
 	return ContainsWhitespace_Params.ReturnValue;
 };
@@ -5106,7 +5414,7 @@ bool UObject::ContainsWhitespace(class FString Text)
 // class FString                  InValue                        (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        Count                          (CPF_Parm)
 
-class FString UObject::RepeatString(class FString InValue, int32_t Count)
+class FString UObject::RepeatString(const class FString& InValue, int32_t Count)
 {
 	static UFunction* uFnRepeatString = nullptr;
 
@@ -5126,14 +5434,14 @@ class FString UObject::RepeatString(class FString InValue, int32_t Count)
 };
 
 // Function Core.Object.JoinArrayQWord
-// [0x00426003] (FUNC_Final | FUNC_Defined | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// [0x00426003] (FUNC_Final | FUNC_Defined | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  delim                          (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-// bool                           bIgnoreBlanks                  (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bIgnoreBlanks                  (CPF_OptionalParm | CPF_Parm)
 // TArray<uint64_t>               QWordArray                     (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-class FString UObject::JoinArrayQWord(class FString delim, bool bIgnoreBlanks, TArray<uint64_t>& QWordArray)
+class FString UObject::JoinArrayQWord(const class FString& delim, bool bIgnoreBlanks, TArray<uint64_t>& QWordArray)
 {
 	static UFunction* uFnJoinArrayQWord = nullptr;
 
@@ -5156,14 +5464,14 @@ class FString UObject::JoinArrayQWord(class FString delim, bool bIgnoreBlanks, T
 };
 
 // Function Core.Object.JoinArrayInt
-// [0x00426003] (FUNC_Final | FUNC_Defined | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// [0x00426003] (FUNC_Final | FUNC_Defined | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  delim                          (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-// bool                           bIgnoreBlanks                  (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bIgnoreBlanks                  (CPF_OptionalParm | CPF_Parm)
 // TArray<int32_t>                IntArray                       (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-class FString UObject::JoinArrayInt(class FString delim, bool bIgnoreBlanks, TArray<int32_t>& IntArray)
+class FString UObject::JoinArrayInt(const class FString& delim, bool bIgnoreBlanks, TArray<int32_t>& IntArray)
 {
 	static UFunction* uFnJoinArrayInt = nullptr;
 
@@ -5186,14 +5494,14 @@ class FString UObject::JoinArrayInt(class FString delim, bool bIgnoreBlanks, TAr
 };
 
 // Function Core.Object.JoinArrayName
-// [0x00426003] (FUNC_Final | FUNC_Defined | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// [0x00426003] (FUNC_Final | FUNC_Defined | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  delim                          (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-// bool                           bIgnoreBlanks                  (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bIgnoreBlanks                  (CPF_OptionalParm | CPF_Parm)
 // TArray<struct FName>           NameArray                      (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-class FString UObject::JoinArrayName(class FString delim, bool bIgnoreBlanks, TArray<struct FName>& NameArray)
+class FString UObject::JoinArrayName(const class FString& delim, bool bIgnoreBlanks, TArray<struct FName>& NameArray)
 {
 	static UFunction* uFnJoinArrayName = nullptr;
 
@@ -5216,14 +5524,14 @@ class FString UObject::JoinArrayName(class FString delim, bool bIgnoreBlanks, TA
 };
 
 // Function Core.Object.JoinArrayStr
-// [0x00426003] (FUNC_Final | FUNC_Defined | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// [0x00426003] (FUNC_Final | FUNC_Defined | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  delim                          (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-// bool                           bIgnoreBlanks                  (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bIgnoreBlanks                  (CPF_OptionalParm | CPF_Parm)
 // TArray<class FString>          StringArray                    (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-class FString UObject::JoinArrayStr(class FString delim, bool bIgnoreBlanks, TArray<class FString>& StringArray)
+class FString UObject::JoinArrayStr(const class FString& delim, bool bIgnoreBlanks, TArray<class FString>& StringArray)
 {
 	static UFunction* uFnJoinArrayStr = nullptr;
 
@@ -5246,14 +5554,14 @@ class FString UObject::JoinArrayStr(class FString delim, bool bIgnoreBlanks, TAr
 };
 
 // Function Core.Object.JoinArray
-// [0x00426401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// [0x00426401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  delim                          (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-// bool                           bIgnoreBlanks                  (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bIgnoreBlanks                  (CPF_OptionalParm | CPF_Parm)
 // TArray<class FString>          StringArray                    (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 // class FString                  out_Result                     (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UObject::JoinArray(class FString delim, bool bIgnoreBlanks, TArray<class FString>& StringArray, class FString& out_Result)
+void UObject::JoinArray(const class FString& delim, bool bIgnoreBlanks, TArray<class FString>& StringArray, class FString& out_Result)
 {
 	static UFunction* uFnJoinArray = nullptr;
 
@@ -5269,7 +5577,9 @@ void UObject::JoinArray(class FString delim, bool bIgnoreBlanks, TArray<class FS
 	memcpy_s(&JoinArray_Params.StringArray, sizeof(JoinArray_Params.StringArray), &StringArray, sizeof(StringArray));
 	memcpy_s(&JoinArray_Params.out_Result, sizeof(JoinArray_Params.out_Result), &out_Result, sizeof(out_Result));
 
+	uFnJoinArray->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnJoinArray, &JoinArray_Params, nullptr);
+	uFnJoinArray->FunctionFlags |= 0x400;
 
 	memcpy_s(&StringArray, sizeof(StringArray), &JoinArray_Params.StringArray, sizeof(JoinArray_Params.StringArray));
 	memcpy_s(&out_Result, sizeof(out_Result), &JoinArray_Params.out_Result, sizeof(JoinArray_Params.out_Result));
@@ -5281,7 +5591,7 @@ void UObject::JoinArray(class FString delim, bool bIgnoreBlanks, TArray<class FS
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Text                           (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 
-class FString UObject::GetRightMost(class FString Text)
+class FString UObject::GetRightMost(const class FString& Text)
 {
 	static UFunction* uFnGetRightMost = nullptr;
 
@@ -5300,14 +5610,14 @@ class FString UObject::GetRightMost(class FString Text)
 };
 
 // Function Core.Object.Split
-// [0x00026003] (FUNC_Final | FUNC_Defined | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// [0x00026003] (FUNC_Final | FUNC_Defined | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Text                           (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 // class FString                  SplitStr                       (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
-// bool                           bOmitSplitStr                  (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bOmitSplitStr                  (CPF_OptionalParm | CPF_Parm)
 
-class FString UObject::Split(class FString Text, class FString SplitStr, bool bOmitSplitStr)
+class FString UObject::Split(const class FString& Text, const class FString& SplitStr, bool bOmitSplitStr)
 {
 	static UFunction* uFnSplit = nullptr;
 
@@ -5327,6 +5637,108 @@ class FString UObject::Split(class FString Text, class FString SplitStr, bool bO
 	return Split_Params.ReturnValue;
 };
 
+// Function Core.Object.TCharToUTF8
+// [0x00022401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
+// class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
+// class FString                  Src                            (CPF_Parm | CPF_NeedCtorLink)
+
+class FString UObject::TCharToUTF8(const class FString& Src)
+{
+	static UFunction* uFnTCharToUTF8 = nullptr;
+
+	if (!uFnTCharToUTF8)
+	{
+		uFnTCharToUTF8 = UFunction::FindFunction("Function Core.Object.TCharToUTF8");
+	}
+
+	UObject_execTCharToUTF8_Params TCharToUTF8_Params;
+	memset(&TCharToUTF8_Params, 0, sizeof(TCharToUTF8_Params));
+	memcpy_s(&TCharToUTF8_Params.Src, sizeof(TCharToUTF8_Params.Src), &Src, sizeof(Src));
+
+	uFnTCharToUTF8->FunctionFlags |= ~0x400;
+	UObject::StaticClass()->ProcessEvent(uFnTCharToUTF8, &TCharToUTF8_Params, nullptr);
+	uFnTCharToUTF8->FunctionFlags |= 0x400;
+
+	return TCharToUTF8_Params.ReturnValue;
+};
+
+// Function Core.Object.UTF8ToTChar
+// [0x00022401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
+// class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
+// class FString                  Src                            (CPF_Parm | CPF_NeedCtorLink)
+
+class FString UObject::UTF8ToTChar(const class FString& Src)
+{
+	static UFunction* uFnUTF8ToTChar = nullptr;
+
+	if (!uFnUTF8ToTChar)
+	{
+		uFnUTF8ToTChar = UFunction::FindFunction("Function Core.Object.UTF8ToTChar");
+	}
+
+	UObject_execUTF8ToTChar_Params UTF8ToTChar_Params;
+	memset(&UTF8ToTChar_Params, 0, sizeof(UTF8ToTChar_Params));
+	memcpy_s(&UTF8ToTChar_Params.Src, sizeof(UTF8ToTChar_Params.Src), &Src, sizeof(Src));
+
+	uFnUTF8ToTChar->FunctionFlags |= ~0x400;
+	UObject::StaticClass()->ProcessEvent(uFnUTF8ToTChar, &UTF8ToTChar_Params, nullptr);
+	uFnUTF8ToTChar->FunctionFlags |= 0x400;
+
+	return UTF8ToTChar_Params.ReturnValue;
+};
+
+// Function Core.Object.MakeAsciiSafe
+// [0x00022003] (FUNC_Final | FUNC_Defined | FUNC_Static | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
+// class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
+// class FString                  InStr                          (CPF_Parm | CPF_NeedCtorLink)
+
+class FString UObject::MakeAsciiSafe(const class FString& InStr)
+{
+	static UFunction* uFnMakeAsciiSafe = nullptr;
+
+	if (!uFnMakeAsciiSafe)
+	{
+		uFnMakeAsciiSafe = UFunction::FindFunction("Function Core.Object.MakeAsciiSafe");
+	}
+
+	UObject_execMakeAsciiSafe_Params MakeAsciiSafe_Params;
+	memset(&MakeAsciiSafe_Params, 0, sizeof(MakeAsciiSafe_Params));
+	memcpy_s(&MakeAsciiSafe_Params.InStr, sizeof(MakeAsciiSafe_Params.InStr), &InStr, sizeof(InStr));
+
+	UObject::StaticClass()->ProcessEvent(uFnMakeAsciiSafe, &MakeAsciiSafe_Params, nullptr);
+
+	return MakeAsciiSafe_Params.ReturnValue;
+};
+
+// Function Core.Object.PadRight
+// [0x00026003] (FUNC_Final | FUNC_Defined | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
+// class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
+// class FString                  S                              (CPF_Parm | CPF_NeedCtorLink)
+// int32_t                        WidthChars                     (CPF_OptionalParm | CPF_Parm)
+
+class FString UObject::PadRight(const class FString& S, int32_t WidthChars)
+{
+	static UFunction* uFnPadRight = nullptr;
+
+	if (!uFnPadRight)
+	{
+		uFnPadRight = UFunction::FindFunction("Function Core.Object.PadRight");
+	}
+
+	UObject_execPadRight_Params PadRight_Params;
+	memset(&PadRight_Params, 0, sizeof(PadRight_Params));
+	memcpy_s(&PadRight_Params.S, sizeof(PadRight_Params.S), &S, sizeof(S));
+	memcpy_s(&PadRight_Params.WidthChars, sizeof(PadRight_Params.WidthChars), &WidthChars, sizeof(WidthChars));
+
+	UObject::StaticClass()->ProcessEvent(uFnPadRight, &PadRight_Params, nullptr);
+
+	return PadRight_Params.ReturnValue;
+};
+
 // Function Core.Object.StartsWith
 // [0x00022401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
@@ -5334,7 +5746,7 @@ class FString UObject::Split(class FString Text, class FString SplitStr, bool bO
 // class FString                  Src                            (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 // class FString                  Prefix                         (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 
-bool UObject::StartsWith(class FString Src, class FString Prefix)
+bool UObject::StartsWith(const class FString& Src, const class FString& Prefix)
 {
 	static UFunction* uFnStartsWith = nullptr;
 
@@ -5348,7 +5760,9 @@ bool UObject::StartsWith(class FString Src, class FString Prefix)
 	memcpy_s(&StartsWith_Params.Src, sizeof(StartsWith_Params.Src), &Src, sizeof(Src));
 	memcpy_s(&StartsWith_Params.Prefix, sizeof(StartsWith_Params.Prefix), &Prefix, sizeof(Prefix));
 
+	uFnStartsWith->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnStartsWith, &StartsWith_Params, nullptr);
+	uFnStartsWith->FunctionFlags |= 0x400;
 
 	return StartsWith_Params.ReturnValue;
 };
@@ -5359,7 +5773,7 @@ bool UObject::StartsWith(class FString Src, class FString Prefix)
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Src                            (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 
-class FString UObject::Trim(class FString Src)
+class FString UObject::Trim(const class FString& Src)
 {
 	static UFunction* uFnTrim = nullptr;
 
@@ -5372,21 +5786,25 @@ class FString UObject::Trim(class FString Src)
 	memset(&Trim_Params, 0, sizeof(Trim_Params));
 	memcpy_s(&Trim_Params.Src, sizeof(Trim_Params.Src), &Src, sizeof(Src));
 
+	uFnTrim->iNative = 0;
+	uFnTrim->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnTrim, &Trim_Params, nullptr);
+	uFnTrim->FunctionFlags |= 0x400;
+	uFnTrim->iNative = 202;
 
 	return Trim_Params.ReturnValue;
 };
 
 // Function Core.Object.Repl
-// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags) (iNative[201])
+// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags) (iNative[201])
 // Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Src                            (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 // class FString                  Match                          (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 // class FString                  With                           (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
-// bool                           bCaseSensitive                 (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bCaseSensitive                 (CPF_OptionalParm | CPF_Parm)
 
-class FString UObject::Repl(class FString Src, class FString Match, class FString With, bool bCaseSensitive)
+class FString UObject::Repl(const class FString& Src, const class FString& Match, const class FString& With, bool bCaseSensitive)
 {
 	static UFunction* uFnRepl = nullptr;
 
@@ -5402,7 +5820,11 @@ class FString UObject::Repl(class FString Src, class FString Match, class FStrin
 	memcpy_s(&Repl_Params.With, sizeof(Repl_Params.With), &With, sizeof(With));
 	Repl_Params.bCaseSensitive = bCaseSensitive;
 
+	uFnRepl->iNative = 0;
+	uFnRepl->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnRepl, &Repl_Params, nullptr);
+	uFnRepl->FunctionFlags |= 0x400;
+	uFnRepl->iNative = 201;
 
 	return Repl_Params.ReturnValue;
 };
@@ -5413,7 +5835,7 @@ class FString UObject::Repl(class FString Src, class FString Match, class FStrin
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  S                              (CPF_Parm | CPF_NeedCtorLink)
 
-int32_t UObject::Asc(class FString S)
+int32_t UObject::Asc(const class FString& S)
 {
 	static UFunction* uFnAsc = nullptr;
 
@@ -5426,7 +5848,11 @@ int32_t UObject::Asc(class FString S)
 	memset(&Asc_Params, 0, sizeof(Asc_Params));
 	memcpy_s(&Asc_Params.S, sizeof(Asc_Params.S), &S, sizeof(S));
 
+	uFnAsc->iNative = 0;
+	uFnAsc->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAsc, &Asc_Params, nullptr);
+	uFnAsc->FunctionFlags |= 0x400;
+	uFnAsc->iNative = 237;
 
 	return Asc_Params.ReturnValue;
 };
@@ -5450,7 +5876,11 @@ class FString UObject::Chr(int32_t I)
 	memset(&Chr_Params, 0, sizeof(Chr_Params));
 	memcpy_s(&Chr_Params.I, sizeof(Chr_Params.I), &I, sizeof(I));
 
+	uFnChr->iNative = 0;
+	uFnChr->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnChr, &Chr_Params, nullptr);
+	uFnChr->FunctionFlags |= 0x400;
+	uFnChr->iNative = 236;
 
 	return Chr_Params.ReturnValue;
 };
@@ -5461,7 +5891,7 @@ class FString UObject::Chr(int32_t I)
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  S                              (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 
-class FString UObject::Locs(class FString S)
+class FString UObject::Locs(const class FString& S)
 {
 	static UFunction* uFnLocs = nullptr;
 
@@ -5474,7 +5904,11 @@ class FString UObject::Locs(class FString S)
 	memset(&Locs_Params, 0, sizeof(Locs_Params));
 	memcpy_s(&Locs_Params.S, sizeof(Locs_Params.S), &S, sizeof(S));
 
+	uFnLocs->iNative = 0;
+	uFnLocs->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnLocs, &Locs_Params, nullptr);
+	uFnLocs->FunctionFlags |= 0x400;
+	uFnLocs->iNative = 238;
 
 	return Locs_Params.ReturnValue;
 };
@@ -5485,7 +5919,7 @@ class FString UObject::Locs(class FString S)
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  S                              (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 
-class FString UObject::Caps(class FString S)
+class FString UObject::Caps(const class FString& S)
 {
 	static UFunction* uFnCaps = nullptr;
 
@@ -5498,7 +5932,11 @@ class FString UObject::Caps(class FString S)
 	memset(&Caps_Params, 0, sizeof(Caps_Params));
 	memcpy_s(&Caps_Params.S, sizeof(Caps_Params.S), &S, sizeof(S));
 
+	uFnCaps->iNative = 0;
+	uFnCaps->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnCaps, &Caps_Params, nullptr);
+	uFnCaps->FunctionFlags |= 0x400;
+	uFnCaps->iNative = 235;
 
 	return Caps_Params.ReturnValue;
 };
@@ -5510,7 +5948,7 @@ class FString UObject::Caps(class FString S)
 // class FString                  S                              (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 // int32_t                        I                              (CPF_Parm)
 
-class FString UObject::Right(class FString S, int32_t I)
+class FString UObject::Right(const class FString& S, int32_t I)
 {
 	static UFunction* uFnRight = nullptr;
 
@@ -5524,7 +5962,11 @@ class FString UObject::Right(class FString S, int32_t I)
 	memcpy_s(&Right_Params.S, sizeof(Right_Params.S), &S, sizeof(S));
 	memcpy_s(&Right_Params.I, sizeof(Right_Params.I), &I, sizeof(I));
 
+	uFnRight->iNative = 0;
+	uFnRight->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnRight, &Right_Params, nullptr);
+	uFnRight->FunctionFlags |= 0x400;
+	uFnRight->iNative = 234;
 
 	return Right_Params.ReturnValue;
 };
@@ -5536,7 +5978,7 @@ class FString UObject::Right(class FString S, int32_t I)
 // class FString                  S                              (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 // int32_t                        I                              (CPF_Parm)
 
-class FString UObject::Left(class FString S, int32_t I)
+class FString UObject::Left(const class FString& S, int32_t I)
 {
 	static UFunction* uFnLeft = nullptr;
 
@@ -5550,20 +5992,24 @@ class FString UObject::Left(class FString S, int32_t I)
 	memcpy_s(&Left_Params.S, sizeof(Left_Params.S), &S, sizeof(S));
 	memcpy_s(&Left_Params.I, sizeof(Left_Params.I), &I, sizeof(I));
 
+	uFnLeft->iNative = 0;
+	uFnLeft->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnLeft, &Left_Params, nullptr);
+	uFnLeft->FunctionFlags |= 0x400;
+	uFnLeft->iNative = 128;
 
 	return Left_Params.ReturnValue;
 };
 
 // Function Core.Object.Mid
-// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags) (iNative[208])
+// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags) (iNative[208])
 // Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  S                              (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 // int32_t                        I                              (CPF_Parm)
 // int32_t                        J                              (CPF_OptionalParm | CPF_Parm)
 
-class FString UObject::Mid(class FString S, int32_t I, int32_t J)
+class FString UObject::Mid(const class FString& S, int32_t I, int32_t J)
 {
 	static UFunction* uFnMid = nullptr;
 
@@ -5578,22 +6024,26 @@ class FString UObject::Mid(class FString S, int32_t I, int32_t J)
 	memcpy_s(&Mid_Params.I, sizeof(Mid_Params.I), &I, sizeof(I));
 	memcpy_s(&Mid_Params.J, sizeof(Mid_Params.J), &J, sizeof(J));
 
+	uFnMid->iNative = 0;
+	uFnMid->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMid, &Mid_Params, nullptr);
+	uFnMid->FunctionFlags |= 0x400;
+	uFnMid->iNative = 208;
 
 	return Mid_Params.ReturnValue;
 };
 
 // Function Core.Object.InStr
-// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags) (iNative[209])
+// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags) (iNative[209])
 // Parameter Info:
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  S                              (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 // class FString                  T                              (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
-// bool                           bSearchFromRight               (CPF_OptionalParm | CPF_Parm)
-// bool                           bIgnoreCase                    (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bSearchFromRight               (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bIgnoreCase                    (CPF_OptionalParm | CPF_Parm)
 // int32_t                        StartPos                       (CPF_OptionalParm | CPF_Parm)
 
-int32_t UObject::InStr(class FString S, class FString T, bool bSearchFromRight, bool bIgnoreCase, int32_t StartPos)
+int32_t UObject::InStr(const class FString& S, const class FString& T, bool bSearchFromRight, bool bIgnoreCase, int32_t StartPos)
 {
 	static UFunction* uFnInStr = nullptr;
 
@@ -5610,7 +6060,11 @@ int32_t UObject::InStr(class FString S, class FString T, bool bSearchFromRight, 
 	InStr_Params.bIgnoreCase = bIgnoreCase;
 	memcpy_s(&InStr_Params.StartPos, sizeof(InStr_Params.StartPos), &StartPos, sizeof(StartPos));
 
+	uFnInStr->iNative = 0;
+	uFnInStr->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnInStr, &InStr_Params, nullptr);
+	uFnInStr->FunctionFlags |= 0x400;
+	uFnInStr->iNative = 209;
 
 	return InStr_Params.ReturnValue;
 };
@@ -5621,7 +6075,7 @@ int32_t UObject::InStr(class FString S, class FString T, bool bSearchFromRight, 
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  S                              (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 
-int32_t UObject::Len(class FString S)
+int32_t UObject::Len(const class FString& S)
 {
 	static UFunction* uFnLen = nullptr;
 
@@ -5634,7 +6088,11 @@ int32_t UObject::Len(class FString S)
 	memset(&Len_Params, 0, sizeof(Len_Params));
 	memcpy_s(&Len_Params.S, sizeof(Len_Params.S), &S, sizeof(S));
 
+	uFnLen->iNative = 0;
+	uFnLen->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnLen, &Len_Params, nullptr);
+	uFnLen->FunctionFlags |= 0x400;
+	uFnLen->iNative = 239;
 
 	return Len_Params.ReturnValue;
 };
@@ -5646,7 +6104,7 @@ int32_t UObject::Len(class FString S)
 // class FString                  B                              (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 // class FString                  A                              (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-class FString UObject::SubtractEqual_StrStr(class FString B, class FString& A)
+class FString UObject::SubtractEqual_StrStr(const class FString& B, class FString& A)
 {
 	static UFunction* uFnSubtractEqual_StrStr = nullptr;
 
@@ -5660,7 +6118,11 @@ class FString UObject::SubtractEqual_StrStr(class FString B, class FString& A)
 	memcpy_s(&SubtractEqual_StrStr_Params.B, sizeof(SubtractEqual_StrStr_Params.B), &B, sizeof(B));
 	memcpy_s(&SubtractEqual_StrStr_Params.A, sizeof(SubtractEqual_StrStr_Params.A), &A, sizeof(A));
 
+	uFnSubtractEqual_StrStr->iNative = 0;
+	uFnSubtractEqual_StrStr->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnSubtractEqual_StrStr, &SubtractEqual_StrStr_Params, nullptr);
+	uFnSubtractEqual_StrStr->FunctionFlags |= 0x400;
+	uFnSubtractEqual_StrStr->iNative = 324;
 
 	memcpy_s(&A, sizeof(A), &SubtractEqual_StrStr_Params.A, sizeof(SubtractEqual_StrStr_Params.A));
 
@@ -5674,7 +6136,7 @@ class FString UObject::SubtractEqual_StrStr(class FString B, class FString& A)
 // class FString                  B                              (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 // class FString                  A                              (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-class FString UObject::AtEqual_StrStr(class FString B, class FString& A)
+class FString UObject::AtEqual_StrStr(const class FString& B, class FString& A)
 {
 	static UFunction* uFnAtEqual_StrStr = nullptr;
 
@@ -5688,7 +6150,11 @@ class FString UObject::AtEqual_StrStr(class FString B, class FString& A)
 	memcpy_s(&AtEqual_StrStr_Params.B, sizeof(AtEqual_StrStr_Params.B), &B, sizeof(B));
 	memcpy_s(&AtEqual_StrStr_Params.A, sizeof(AtEqual_StrStr_Params.A), &A, sizeof(A));
 
+	uFnAtEqual_StrStr->iNative = 0;
+	uFnAtEqual_StrStr->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAtEqual_StrStr, &AtEqual_StrStr_Params, nullptr);
+	uFnAtEqual_StrStr->FunctionFlags |= 0x400;
+	uFnAtEqual_StrStr->iNative = 323;
 
 	memcpy_s(&A, sizeof(A), &AtEqual_StrStr_Params.A, sizeof(AtEqual_StrStr_Params.A));
 
@@ -5702,7 +6168,7 @@ class FString UObject::AtEqual_StrStr(class FString B, class FString& A)
 // class FString                  B                              (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 // class FString                  A                              (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-class FString UObject::ConcatEqual_StrStr(class FString B, class FString& A)
+class FString UObject::ConcatEqual_StrStr(const class FString& B, class FString& A)
 {
 	static UFunction* uFnConcatEqual_StrStr = nullptr;
 
@@ -5716,7 +6182,11 @@ class FString UObject::ConcatEqual_StrStr(class FString B, class FString& A)
 	memcpy_s(&ConcatEqual_StrStr_Params.B, sizeof(ConcatEqual_StrStr_Params.B), &B, sizeof(B));
 	memcpy_s(&ConcatEqual_StrStr_Params.A, sizeof(ConcatEqual_StrStr_Params.A), &A, sizeof(A));
 
+	uFnConcatEqual_StrStr->iNative = 0;
+	uFnConcatEqual_StrStr->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnConcatEqual_StrStr, &ConcatEqual_StrStr_Params, nullptr);
+	uFnConcatEqual_StrStr->FunctionFlags |= 0x400;
+	uFnConcatEqual_StrStr->iNative = 322;
 
 	memcpy_s(&A, sizeof(A), &ConcatEqual_StrStr_Params.A, sizeof(ConcatEqual_StrStr_Params.A));
 
@@ -5730,7 +6200,7 @@ class FString UObject::ConcatEqual_StrStr(class FString B, class FString& A)
 // class FString                  A                              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  B                              (CPF_Parm | CPF_NeedCtorLink)
 
-bool UObject::ComplementEqual_StrStr(class FString A, class FString B)
+bool UObject::ComplementEqual_StrStr(const class FString& A, const class FString& B)
 {
 	static UFunction* uFnComplementEqual_StrStr = nullptr;
 
@@ -5744,7 +6214,11 @@ bool UObject::ComplementEqual_StrStr(class FString A, class FString B)
 	memcpy_s(&ComplementEqual_StrStr_Params.A, sizeof(ComplementEqual_StrStr_Params.A), &A, sizeof(A));
 	memcpy_s(&ComplementEqual_StrStr_Params.B, sizeof(ComplementEqual_StrStr_Params.B), &B, sizeof(B));
 
+	uFnComplementEqual_StrStr->iNative = 0;
+	uFnComplementEqual_StrStr->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnComplementEqual_StrStr, &ComplementEqual_StrStr_Params, nullptr);
+	uFnComplementEqual_StrStr->FunctionFlags |= 0x400;
+	uFnComplementEqual_StrStr->iNative = 191;
 
 	return ComplementEqual_StrStr_Params.ReturnValue;
 };
@@ -5756,7 +6230,7 @@ bool UObject::ComplementEqual_StrStr(class FString A, class FString B)
 // class FString                  A                              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  B                              (CPF_Parm | CPF_NeedCtorLink)
 
-bool UObject::NotEqual_StrStr(class FString A, class FString B)
+bool UObject::NotEqual_StrStr(const class FString& A, const class FString& B)
 {
 	static UFunction* uFnNotEqual_StrStr = nullptr;
 
@@ -5770,7 +6244,11 @@ bool UObject::NotEqual_StrStr(class FString A, class FString B)
 	memcpy_s(&NotEqual_StrStr_Params.A, sizeof(NotEqual_StrStr_Params.A), &A, sizeof(A));
 	memcpy_s(&NotEqual_StrStr_Params.B, sizeof(NotEqual_StrStr_Params.B), &B, sizeof(B));
 
+	uFnNotEqual_StrStr->iNative = 0;
+	uFnNotEqual_StrStr->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnNotEqual_StrStr, &NotEqual_StrStr_Params, nullptr);
+	uFnNotEqual_StrStr->FunctionFlags |= 0x400;
+	uFnNotEqual_StrStr->iNative = 192;
 
 	return NotEqual_StrStr_Params.ReturnValue;
 };
@@ -5782,7 +6260,7 @@ bool UObject::NotEqual_StrStr(class FString A, class FString B)
 // class FString                  A                              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  B                              (CPF_Parm | CPF_NeedCtorLink)
 
-bool UObject::EqualEqual_StrStr(class FString A, class FString B)
+bool UObject::EqualEqual_StrStr(const class FString& A, const class FString& B)
 {
 	static UFunction* uFnEqualEqual_StrStr = nullptr;
 
@@ -5796,7 +6274,11 @@ bool UObject::EqualEqual_StrStr(class FString A, class FString B)
 	memcpy_s(&EqualEqual_StrStr_Params.A, sizeof(EqualEqual_StrStr_Params.A), &A, sizeof(A));
 	memcpy_s(&EqualEqual_StrStr_Params.B, sizeof(EqualEqual_StrStr_Params.B), &B, sizeof(B));
 
+	uFnEqualEqual_StrStr->iNative = 0;
+	uFnEqualEqual_StrStr->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnEqualEqual_StrStr, &EqualEqual_StrStr_Params, nullptr);
+	uFnEqualEqual_StrStr->FunctionFlags |= 0x400;
+	uFnEqualEqual_StrStr->iNative = 204;
 
 	return EqualEqual_StrStr_Params.ReturnValue;
 };
@@ -5808,7 +6290,7 @@ bool UObject::EqualEqual_StrStr(class FString A, class FString B)
 // class FString                  A                              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  B                              (CPF_Parm | CPF_NeedCtorLink)
 
-bool UObject::GreaterEqual_StrStr(class FString A, class FString B)
+bool UObject::GreaterEqual_StrStr(const class FString& A, const class FString& B)
 {
 	static UFunction* uFnGreaterEqual_StrStr = nullptr;
 
@@ -5822,7 +6304,11 @@ bool UObject::GreaterEqual_StrStr(class FString A, class FString B)
 	memcpy_s(&GreaterEqual_StrStr_Params.A, sizeof(GreaterEqual_StrStr_Params.A), &A, sizeof(A));
 	memcpy_s(&GreaterEqual_StrStr_Params.B, sizeof(GreaterEqual_StrStr_Params.B), &B, sizeof(B));
 
+	uFnGreaterEqual_StrStr->iNative = 0;
+	uFnGreaterEqual_StrStr->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGreaterEqual_StrStr, &GreaterEqual_StrStr_Params, nullptr);
+	uFnGreaterEqual_StrStr->FunctionFlags |= 0x400;
+	uFnGreaterEqual_StrStr->iNative = 327;
 
 	return GreaterEqual_StrStr_Params.ReturnValue;
 };
@@ -5834,7 +6320,7 @@ bool UObject::GreaterEqual_StrStr(class FString A, class FString B)
 // class FString                  A                              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  B                              (CPF_Parm | CPF_NeedCtorLink)
 
-bool UObject::LessEqual_StrStr(class FString A, class FString B)
+bool UObject::LessEqual_StrStr(const class FString& A, const class FString& B)
 {
 	static UFunction* uFnLessEqual_StrStr = nullptr;
 
@@ -5848,7 +6334,11 @@ bool UObject::LessEqual_StrStr(class FString A, class FString B)
 	memcpy_s(&LessEqual_StrStr_Params.A, sizeof(LessEqual_StrStr_Params.A), &A, sizeof(A));
 	memcpy_s(&LessEqual_StrStr_Params.B, sizeof(LessEqual_StrStr_Params.B), &B, sizeof(B));
 
+	uFnLessEqual_StrStr->iNative = 0;
+	uFnLessEqual_StrStr->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnLessEqual_StrStr, &LessEqual_StrStr_Params, nullptr);
+	uFnLessEqual_StrStr->FunctionFlags |= 0x400;
+	uFnLessEqual_StrStr->iNative = 326;
 
 	return LessEqual_StrStr_Params.ReturnValue;
 };
@@ -5860,7 +6350,7 @@ bool UObject::LessEqual_StrStr(class FString A, class FString B)
 // class FString                  A                              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  B                              (CPF_Parm | CPF_NeedCtorLink)
 
-bool UObject::Greater_StrStr(class FString A, class FString B)
+bool UObject::Greater_StrStr(const class FString& A, const class FString& B)
 {
 	static UFunction* uFnGreater_StrStr = nullptr;
 
@@ -5874,7 +6364,11 @@ bool UObject::Greater_StrStr(class FString A, class FString B)
 	memcpy_s(&Greater_StrStr_Params.A, sizeof(Greater_StrStr_Params.A), &A, sizeof(A));
 	memcpy_s(&Greater_StrStr_Params.B, sizeof(Greater_StrStr_Params.B), &B, sizeof(B));
 
+	uFnGreater_StrStr->iNative = 0;
+	uFnGreater_StrStr->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGreater_StrStr, &Greater_StrStr_Params, nullptr);
+	uFnGreater_StrStr->FunctionFlags |= 0x400;
+	uFnGreater_StrStr->iNative = 240;
 
 	return Greater_StrStr_Params.ReturnValue;
 };
@@ -5886,7 +6380,7 @@ bool UObject::Greater_StrStr(class FString A, class FString B)
 // class FString                  A                              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  B                              (CPF_Parm | CPF_NeedCtorLink)
 
-bool UObject::Less_StrStr(class FString A, class FString B)
+bool UObject::Less_StrStr(const class FString& A, const class FString& B)
 {
 	static UFunction* uFnLess_StrStr = nullptr;
 
@@ -5900,7 +6394,11 @@ bool UObject::Less_StrStr(class FString A, class FString B)
 	memcpy_s(&Less_StrStr_Params.A, sizeof(Less_StrStr_Params.A), &A, sizeof(A));
 	memcpy_s(&Less_StrStr_Params.B, sizeof(Less_StrStr_Params.B), &B, sizeof(B));
 
+	uFnLess_StrStr->iNative = 0;
+	uFnLess_StrStr->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnLess_StrStr, &Less_StrStr_Params, nullptr);
+	uFnLess_StrStr->FunctionFlags |= 0x400;
+	uFnLess_StrStr->iNative = 241;
 
 	return Less_StrStr_Params.ReturnValue;
 };
@@ -5912,7 +6410,7 @@ bool UObject::Less_StrStr(class FString A, class FString B)
 // class FString                  A                              (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 // class FString                  B                              (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 
-class FString UObject::At_StrStr(class FString A, class FString B)
+class FString UObject::At_StrStr(const class FString& A, const class FString& B)
 {
 	static UFunction* uFnAt_StrStr = nullptr;
 
@@ -5926,7 +6424,11 @@ class FString UObject::At_StrStr(class FString A, class FString B)
 	memcpy_s(&At_StrStr_Params.A, sizeof(At_StrStr_Params.A), &A, sizeof(A));
 	memcpy_s(&At_StrStr_Params.B, sizeof(At_StrStr_Params.B), &B, sizeof(B));
 
+	uFnAt_StrStr->iNative = 0;
+	uFnAt_StrStr->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAt_StrStr, &At_StrStr_Params, nullptr);
+	uFnAt_StrStr->FunctionFlags |= 0x400;
+	uFnAt_StrStr->iNative = 168;
 
 	return At_StrStr_Params.ReturnValue;
 };
@@ -5938,7 +6440,7 @@ class FString UObject::At_StrStr(class FString A, class FString B)
 // class FString                  A                              (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 // class FString                  B                              (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 
-class FString UObject::Concat_StrStr(class FString A, class FString B)
+class FString UObject::Concat_StrStr(const class FString& A, const class FString& B)
 {
 	static UFunction* uFnConcat_StrStr = nullptr;
 
@@ -5952,7 +6454,11 @@ class FString UObject::Concat_StrStr(class FString A, class FString B)
 	memcpy_s(&Concat_StrStr_Params.A, sizeof(Concat_StrStr_Params.A), &A, sizeof(A));
 	memcpy_s(&Concat_StrStr_Params.B, sizeof(Concat_StrStr_Params.B), &B, sizeof(B));
 
+	uFnConcat_StrStr->iNative = 0;
+	uFnConcat_StrStr->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnConcat_StrStr, &Concat_StrStr_Params, nullptr);
+	uFnConcat_StrStr->FunctionFlags |= 0x400;
+	uFnConcat_StrStr->iNative = 248;
 
 	return Concat_StrStr_Params.ReturnValue;
 };
@@ -5966,7 +6472,7 @@ class FString UObject::Concat_StrStr(class FString A, class FString B)
 // struct FRotator                Direction                      (CPF_Parm)
 // float                          Amount                         (CPF_Parm)
 
-struct FRotator UObject::RotateRotator(struct FVector Axis, struct FRotator Rot, struct FRotator Direction, float Amount)
+struct FRotator UObject::RotateRotator(const struct FVector& Axis, const struct FRotator& Rot, const struct FRotator& Direction, float Amount)
 {
 	static UFunction* uFnRotateRotator = nullptr;
 
@@ -6167,14 +6673,14 @@ void UObject::ClampRotAxis(int32_t ViewAxis, int32_t MaxLimit, int32_t MinLimit,
 };
 
 // Function Core.Object.FlattenRotatorOnAxis
-// [0x00826003] (FUNC_Final | FUNC_Defined | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasDefaults | FUNC_AllFlags)
+// [0x00826003] (FUNC_Final | FUNC_Defined | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_HasDefaults | FUNC_AllFlags)
 // Parameter Info:
 // struct FRotator                ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FVector                 AxisToRemove                   (CPF_Parm)
 // struct FRotator                RotToFlatten                   (CPF_Parm)
 // struct FRotator                RotToFlattenTo                 (CPF_OptionalParm | CPF_Parm)
 
-struct FRotator UObject::FlattenRotatorOnAxis(struct FVector AxisToRemove, struct FRotator RotToFlatten, struct FRotator RotToFlattenTo)
+struct FRotator UObject::FlattenRotatorOnAxis(const struct FVector& AxisToRemove, const struct FRotator& RotToFlatten, const struct FRotator& RotToFlattenTo)
 {
 	static UFunction* uFnFlattenRotatorOnAxis = nullptr;
 
@@ -6200,7 +6706,7 @@ struct FRotator UObject::FlattenRotatorOnAxis(struct FVector AxisToRemove, struc
 // float                          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FRotator                R                              (CPF_Parm)
 
-float UObject::RSize(struct FRotator R)
+float UObject::RSize(const struct FRotator& R)
 {
 	static UFunction* uFnRSize = nullptr;
 
@@ -6213,7 +6719,9 @@ float UObject::RSize(struct FRotator R)
 	memset(&RSize_Params, 0, sizeof(RSize_Params));
 	memcpy_s(&RSize_Params.R, sizeof(RSize_Params.R), &R, sizeof(R));
 
+	uFnRSize->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnRSize, &RSize_Params, nullptr);
+	uFnRSize->FunctionFlags |= 0x400;
 
 	return RSize_Params.ReturnValue;
 };
@@ -6225,7 +6733,7 @@ float UObject::RSize(struct FRotator R)
 // struct FRotator                A                              (CPF_Parm)
 // struct FRotator                B                              (CPF_Parm)
 
-float UObject::RDiff(struct FRotator A, struct FRotator B)
+float UObject::RDiff(const struct FRotator& A, const struct FRotator& B)
 {
 	static UFunction* uFnRDiff = nullptr;
 
@@ -6239,7 +6747,9 @@ float UObject::RDiff(struct FRotator A, struct FRotator B)
 	memcpy_s(&RDiff_Params.A, sizeof(RDiff_Params.A), &A, sizeof(A));
 	memcpy_s(&RDiff_Params.B, sizeof(RDiff_Params.B), &B, sizeof(B));
 
+	uFnRDiff->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnRDiff, &RDiff_Params, nullptr);
+	uFnRDiff->FunctionFlags |= 0x400;
 
 	return RDiff_Params.ReturnValue;
 };
@@ -6263,22 +6773,24 @@ int32_t UObject::NormalizeRotAxis(int32_t Angle)
 	memset(&NormalizeRotAxis_Params, 0, sizeof(NormalizeRotAxis_Params));
 	memcpy_s(&NormalizeRotAxis_Params.Angle, sizeof(NormalizeRotAxis_Params.Angle), &Angle, sizeof(Angle));
 
+	uFnNormalizeRotAxis->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnNormalizeRotAxis, &NormalizeRotAxis_Params, nullptr);
+	uFnNormalizeRotAxis->FunctionFlags |= 0x400;
 
 	return NormalizeRotAxis_Params.ReturnValue;
 };
 
 // Function Core.Object.RInterpTo
-// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // struct FRotator                ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FRotator                Current                        (CPF_Parm)
 // struct FRotator                Target                         (CPF_Parm)
 // float                          DeltaTime                      (CPF_Parm)
 // float                          InterpSpeed                    (CPF_Parm)
-// bool                           bConstantInterpSpeed           (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bConstantInterpSpeed           (CPF_OptionalParm | CPF_Parm)
 
-struct FRotator UObject::RInterpTo(struct FRotator Current, struct FRotator Target, float DeltaTime, float InterpSpeed, bool bConstantInterpSpeed)
+struct FRotator UObject::RInterpTo(const struct FRotator& Current, const struct FRotator& Target, float DeltaTime, float InterpSpeed, bool bConstantInterpSpeed)
 {
 	static UFunction* uFnRInterpTo = nullptr;
 
@@ -6295,7 +6807,9 @@ struct FRotator UObject::RInterpTo(struct FRotator Current, struct FRotator Targ
 	memcpy_s(&RInterpTo_Params.InterpSpeed, sizeof(RInterpTo_Params.InterpSpeed), &InterpSpeed, sizeof(InterpSpeed));
 	RInterpTo_Params.bConstantInterpSpeed = bConstantInterpSpeed;
 
+	uFnRInterpTo->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnRInterpTo, &RInterpTo_Params, nullptr);
+	uFnRInterpTo->FunctionFlags |= 0x400;
 
 	return RInterpTo_Params.ReturnValue;
 };
@@ -6307,7 +6821,7 @@ struct FRotator UObject::RInterpTo(struct FRotator Current, struct FRotator Targ
 // struct FRotator                R                              (CPF_Parm)
 // struct FRotator                RBasis                         (CPF_Parm)
 
-struct FRotator UObject::RTransform(struct FRotator R, struct FRotator RBasis)
+struct FRotator UObject::RTransform(const struct FRotator& R, const struct FRotator& RBasis)
 {
 	static UFunction* uFnRTransform = nullptr;
 
@@ -6321,21 +6835,23 @@ struct FRotator UObject::RTransform(struct FRotator R, struct FRotator RBasis)
 	memcpy_s(&RTransform_Params.R, sizeof(RTransform_Params.R), &R, sizeof(R));
 	memcpy_s(&RTransform_Params.RBasis, sizeof(RTransform_Params.RBasis), &RBasis, sizeof(RBasis));
 
+	uFnRTransform->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnRTransform, &RTransform_Params, nullptr);
+	uFnRTransform->FunctionFlags |= 0x400;
 
 	return RTransform_Params.ReturnValue;
 };
 
 // Function Core.Object.RLerp
-// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags) (iNative[325])
+// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags) (iNative[325])
 // Parameter Info:
 // struct FRotator                ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FRotator                A                              (CPF_Parm)
 // struct FRotator                B                              (CPF_Parm)
 // float                          Alpha                          (CPF_Parm)
-// bool                           bShortestPath                  (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bShortestPath                  (CPF_OptionalParm | CPF_Parm)
 
-struct FRotator UObject::RLerp(struct FRotator A, struct FRotator B, float Alpha, bool bShortestPath)
+struct FRotator UObject::RLerp(const struct FRotator& A, const struct FRotator& B, float Alpha, bool bShortestPath)
 {
 	static UFunction* uFnRLerp = nullptr;
 
@@ -6351,7 +6867,11 @@ struct FRotator UObject::RLerp(struct FRotator A, struct FRotator B, float Alpha
 	memcpy_s(&RLerp_Params.Alpha, sizeof(RLerp_Params.Alpha), &Alpha, sizeof(Alpha));
 	RLerp_Params.bShortestPath = bShortestPath;
 
+	uFnRLerp->iNative = 0;
+	uFnRLerp->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnRLerp, &RLerp_Params, nullptr);
+	uFnRLerp->FunctionFlags |= 0x400;
+	uFnRLerp->iNative = 325;
 
 	return RLerp_Params.ReturnValue;
 };
@@ -6362,7 +6882,7 @@ struct FRotator UObject::RLerp(struct FRotator A, struct FRotator B, float Alpha
 // struct FRotator                ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FRotator                Rot                            (CPF_Parm)
 
-struct FRotator UObject::Normalize(struct FRotator Rot)
+struct FRotator UObject::Normalize(const struct FRotator& Rot)
 {
 	static UFunction* uFnNormalize = nullptr;
 
@@ -6375,7 +6895,11 @@ struct FRotator UObject::Normalize(struct FRotator Rot)
 	memset(&Normalize_Params, 0, sizeof(Normalize_Params));
 	memcpy_s(&Normalize_Params.Rot, sizeof(Normalize_Params.Rot), &Rot, sizeof(Rot));
 
+	uFnNormalize->iNative = 0;
+	uFnNormalize->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnNormalize, &Normalize_Params, nullptr);
+	uFnNormalize->FunctionFlags |= 0x400;
+	uFnNormalize->iNative = 330;
 
 	return Normalize_Params.ReturnValue;
 };
@@ -6388,7 +6912,7 @@ struct FRotator UObject::Normalize(struct FRotator Rot)
 // struct FVector                 Y                              (CPF_Parm)
 // struct FVector                 Z                              (CPF_Parm)
 
-struct FRotator UObject::OrthoRotation(struct FVector X, struct FVector Y, struct FVector Z)
+struct FRotator UObject::OrthoRotation(const struct FVector& X, const struct FVector& Y, const struct FVector& Z)
 {
 	static UFunction* uFnOrthoRotation = nullptr;
 
@@ -6403,16 +6927,18 @@ struct FRotator UObject::OrthoRotation(struct FVector X, struct FVector Y, struc
 	memcpy_s(&OrthoRotation_Params.Y, sizeof(OrthoRotation_Params.Y), &Y, sizeof(Y));
 	memcpy_s(&OrthoRotation_Params.Z, sizeof(OrthoRotation_Params.Z), &Z, sizeof(Z));
 
+	uFnOrthoRotation->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnOrthoRotation, &OrthoRotation_Params, nullptr);
+	uFnOrthoRotation->FunctionFlags |= 0x400;
 
 	return OrthoRotation_Params.ReturnValue;
 };
 
 // Function Core.Object.RotRand
-// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags) (iNative[320])
+// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags) (iNative[320])
 // Parameter Info:
 // struct FRotator                ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// bool                           bRoll                          (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bRoll                          (CPF_OptionalParm | CPF_Parm)
 
 struct FRotator UObject::RotRand(bool bRoll)
 {
@@ -6427,7 +6953,11 @@ struct FRotator UObject::RotRand(bool bRoll)
 	memset(&RotRand_Params, 0, sizeof(RotRand_Params));
 	RotRand_Params.bRoll = bRoll;
 
+	uFnRotRand->iNative = 0;
+	uFnRotRand->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnRotRand, &RotRand_Params, nullptr);
+	uFnRotRand->FunctionFlags |= 0x400;
+	uFnRotRand->iNative = 320;
 
 	return RotRand_Params.ReturnValue;
 };
@@ -6439,7 +6969,7 @@ struct FRotator UObject::RotRand(bool bRoll)
 // struct FRotator                A                              (CPF_Parm)
 // int32_t                        Axis                           (CPF_Parm)
 
-struct FVector UObject::GetRotatorAxis(struct FRotator A, int32_t Axis)
+struct FVector UObject::GetRotatorAxis(const struct FRotator& A, int32_t Axis)
 {
 	static UFunction* uFnGetRotatorAxis = nullptr;
 
@@ -6453,7 +6983,9 @@ struct FVector UObject::GetRotatorAxis(struct FRotator A, int32_t Axis)
 	memcpy_s(&GetRotatorAxis_Params.A, sizeof(GetRotatorAxis_Params.A), &A, sizeof(A));
 	memcpy_s(&GetRotatorAxis_Params.Axis, sizeof(GetRotatorAxis_Params.Axis), &Axis, sizeof(Axis));
 
+	uFnGetRotatorAxis->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGetRotatorAxis, &GetRotatorAxis_Params, nullptr);
+	uFnGetRotatorAxis->FunctionFlags |= 0x400;
 
 	return GetRotatorAxis_Params.ReturnValue;
 };
@@ -6466,7 +6998,7 @@ struct FVector UObject::GetRotatorAxis(struct FRotator A, int32_t Axis)
 // struct FVector                 Y                              (CPF_Parm | CPF_OutParm)
 // struct FVector                 Z                              (CPF_Parm | CPF_OutParm)
 
-void UObject::GetUnAxes(struct FRotator A, struct FVector& X, struct FVector& Y, struct FVector& Z)
+void UObject::GetUnAxes(const struct FRotator& A, struct FVector& X, struct FVector& Y, struct FVector& Z)
 {
 	static UFunction* uFnGetUnAxes = nullptr;
 
@@ -6482,7 +7014,11 @@ void UObject::GetUnAxes(struct FRotator A, struct FVector& X, struct FVector& Y,
 	memcpy_s(&GetUnAxes_Params.Y, sizeof(GetUnAxes_Params.Y), &Y, sizeof(Y));
 	memcpy_s(&GetUnAxes_Params.Z, sizeof(GetUnAxes_Params.Z), &Z, sizeof(Z));
 
+	uFnGetUnAxes->iNative = 0;
+	uFnGetUnAxes->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGetUnAxes, &GetUnAxes_Params, nullptr);
+	uFnGetUnAxes->FunctionFlags |= 0x400;
+	uFnGetUnAxes->iNative = 230;
 
 	memcpy_s(&X, sizeof(X), &GetUnAxes_Params.X, sizeof(GetUnAxes_Params.X));
 	memcpy_s(&Y, sizeof(Y), &GetUnAxes_Params.Y, sizeof(GetUnAxes_Params.Y));
@@ -6497,7 +7033,7 @@ void UObject::GetUnAxes(struct FRotator A, struct FVector& X, struct FVector& Y,
 // struct FVector                 Y                              (CPF_Parm | CPF_OutParm)
 // struct FVector                 Z                              (CPF_Parm | CPF_OutParm)
 
-void UObject::GetAxes(struct FRotator A, struct FVector& X, struct FVector& Y, struct FVector& Z)
+void UObject::GetAxes(const struct FRotator& A, struct FVector& X, struct FVector& Y, struct FVector& Z)
 {
 	static UFunction* uFnGetAxes = nullptr;
 
@@ -6513,7 +7049,11 @@ void UObject::GetAxes(struct FRotator A, struct FVector& X, struct FVector& Y, s
 	memcpy_s(&GetAxes_Params.Y, sizeof(GetAxes_Params.Y), &Y, sizeof(Y));
 	memcpy_s(&GetAxes_Params.Z, sizeof(GetAxes_Params.Z), &Z, sizeof(Z));
 
+	uFnGetAxes->iNative = 0;
+	uFnGetAxes->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGetAxes, &GetAxes_Params, nullptr);
+	uFnGetAxes->FunctionFlags |= 0x400;
+	uFnGetAxes->iNative = 229;
 
 	memcpy_s(&X, sizeof(X), &GetAxes_Params.X, sizeof(GetAxes_Params.X));
 	memcpy_s(&Y, sizeof(Y), &GetAxes_Params.Y, sizeof(GetAxes_Params.Y));
@@ -6541,7 +7081,9 @@ bool UObject::ClockwiseFrom_IntInt(int32_t A, int32_t B)
 	memcpy_s(&ClockwiseFrom_IntInt_Params.A, sizeof(ClockwiseFrom_IntInt_Params.A), &A, sizeof(A));
 	memcpy_s(&ClockwiseFrom_IntInt_Params.B, sizeof(ClockwiseFrom_IntInt_Params.B), &B, sizeof(B));
 
+	uFnClockwiseFrom_IntInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnClockwiseFrom_IntInt, &ClockwiseFrom_IntInt_Params, nullptr);
+	uFnClockwiseFrom_IntInt->FunctionFlags |= 0x400;
 
 	return ClockwiseFrom_IntInt_Params.ReturnValue;
 };
@@ -6553,7 +7095,7 @@ bool UObject::ClockwiseFrom_IntInt(int32_t A, int32_t B)
 // struct FRotator                B                              (CPF_Parm)
 // struct FRotator                A                              (CPF_Parm | CPF_OutParm)
 
-struct FRotator UObject::SubtractEqual_RotatorRotator(struct FRotator B, struct FRotator& A)
+struct FRotator UObject::SubtractEqual_RotatorRotator(const struct FRotator& B, struct FRotator& A)
 {
 	static UFunction* uFnSubtractEqual_RotatorRotator = nullptr;
 
@@ -6567,7 +7109,11 @@ struct FRotator UObject::SubtractEqual_RotatorRotator(struct FRotator B, struct 
 	memcpy_s(&SubtractEqual_RotatorRotator_Params.B, sizeof(SubtractEqual_RotatorRotator_Params.B), &B, sizeof(B));
 	memcpy_s(&SubtractEqual_RotatorRotator_Params.A, sizeof(SubtractEqual_RotatorRotator_Params.A), &A, sizeof(A));
 
+	uFnSubtractEqual_RotatorRotator->iNative = 0;
+	uFnSubtractEqual_RotatorRotator->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnSubtractEqual_RotatorRotator, &SubtractEqual_RotatorRotator_Params, nullptr);
+	uFnSubtractEqual_RotatorRotator->FunctionFlags |= 0x400;
+	uFnSubtractEqual_RotatorRotator->iNative = 319;
 
 	memcpy_s(&A, sizeof(A), &SubtractEqual_RotatorRotator_Params.A, sizeof(SubtractEqual_RotatorRotator_Params.A));
 
@@ -6581,7 +7127,7 @@ struct FRotator UObject::SubtractEqual_RotatorRotator(struct FRotator B, struct 
 // struct FRotator                B                              (CPF_Parm)
 // struct FRotator                A                              (CPF_Parm | CPF_OutParm)
 
-struct FRotator UObject::AddEqual_RotatorRotator(struct FRotator B, struct FRotator& A)
+struct FRotator UObject::AddEqual_RotatorRotator(const struct FRotator& B, struct FRotator& A)
 {
 	static UFunction* uFnAddEqual_RotatorRotator = nullptr;
 
@@ -6595,7 +7141,11 @@ struct FRotator UObject::AddEqual_RotatorRotator(struct FRotator B, struct FRota
 	memcpy_s(&AddEqual_RotatorRotator_Params.B, sizeof(AddEqual_RotatorRotator_Params.B), &B, sizeof(B));
 	memcpy_s(&AddEqual_RotatorRotator_Params.A, sizeof(AddEqual_RotatorRotator_Params.A), &A, sizeof(A));
 
+	uFnAddEqual_RotatorRotator->iNative = 0;
+	uFnAddEqual_RotatorRotator->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAddEqual_RotatorRotator, &AddEqual_RotatorRotator_Params, nullptr);
+	uFnAddEqual_RotatorRotator->FunctionFlags |= 0x400;
+	uFnAddEqual_RotatorRotator->iNative = 318;
 
 	memcpy_s(&A, sizeof(A), &AddEqual_RotatorRotator_Params.A, sizeof(AddEqual_RotatorRotator_Params.A));
 
@@ -6609,7 +7159,7 @@ struct FRotator UObject::AddEqual_RotatorRotator(struct FRotator B, struct FRota
 // struct FRotator                A                              (CPF_Parm)
 // struct FRotator                B                              (CPF_Parm)
 
-struct FRotator UObject::Subtract_RotatorRotator(struct FRotator A, struct FRotator B)
+struct FRotator UObject::Subtract_RotatorRotator(const struct FRotator& A, const struct FRotator& B)
 {
 	static UFunction* uFnSubtract_RotatorRotator = nullptr;
 
@@ -6623,7 +7173,11 @@ struct FRotator UObject::Subtract_RotatorRotator(struct FRotator A, struct FRota
 	memcpy_s(&Subtract_RotatorRotator_Params.A, sizeof(Subtract_RotatorRotator_Params.A), &A, sizeof(A));
 	memcpy_s(&Subtract_RotatorRotator_Params.B, sizeof(Subtract_RotatorRotator_Params.B), &B, sizeof(B));
 
+	uFnSubtract_RotatorRotator->iNative = 0;
+	uFnSubtract_RotatorRotator->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnSubtract_RotatorRotator, &Subtract_RotatorRotator_Params, nullptr);
+	uFnSubtract_RotatorRotator->FunctionFlags |= 0x400;
+	uFnSubtract_RotatorRotator->iNative = 317;
 
 	return Subtract_RotatorRotator_Params.ReturnValue;
 };
@@ -6635,7 +7189,7 @@ struct FRotator UObject::Subtract_RotatorRotator(struct FRotator A, struct FRota
 // struct FRotator                A                              (CPF_Parm)
 // struct FRotator                B                              (CPF_Parm)
 
-struct FRotator UObject::Add_RotatorRotator(struct FRotator A, struct FRotator B)
+struct FRotator UObject::Add_RotatorRotator(const struct FRotator& A, const struct FRotator& B)
 {
 	static UFunction* uFnAdd_RotatorRotator = nullptr;
 
@@ -6649,7 +7203,11 @@ struct FRotator UObject::Add_RotatorRotator(struct FRotator A, struct FRotator B
 	memcpy_s(&Add_RotatorRotator_Params.A, sizeof(Add_RotatorRotator_Params.A), &A, sizeof(A));
 	memcpy_s(&Add_RotatorRotator_Params.B, sizeof(Add_RotatorRotator_Params.B), &B, sizeof(B));
 
+	uFnAdd_RotatorRotator->iNative = 0;
+	uFnAdd_RotatorRotator->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAdd_RotatorRotator, &Add_RotatorRotator_Params, nullptr);
+	uFnAdd_RotatorRotator->FunctionFlags |= 0x400;
+	uFnAdd_RotatorRotator->iNative = 316;
 
 	return Add_RotatorRotator_Params.ReturnValue;
 };
@@ -6675,7 +7233,11 @@ struct FRotator UObject::DivideEqual_RotatorFloat(float B, struct FRotator& A)
 	memcpy_s(&DivideEqual_RotatorFloat_Params.B, sizeof(DivideEqual_RotatorFloat_Params.B), &B, sizeof(B));
 	memcpy_s(&DivideEqual_RotatorFloat_Params.A, sizeof(DivideEqual_RotatorFloat_Params.A), &A, sizeof(A));
 
+	uFnDivideEqual_RotatorFloat->iNative = 0;
+	uFnDivideEqual_RotatorFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnDivideEqual_RotatorFloat, &DivideEqual_RotatorFloat_Params, nullptr);
+	uFnDivideEqual_RotatorFloat->FunctionFlags |= 0x400;
+	uFnDivideEqual_RotatorFloat->iNative = 291;
 
 	memcpy_s(&A, sizeof(A), &DivideEqual_RotatorFloat_Params.A, sizeof(DivideEqual_RotatorFloat_Params.A));
 
@@ -6703,7 +7265,11 @@ struct FRotator UObject::MultiplyEqual_RotatorFloat(float B, struct FRotator& A)
 	memcpy_s(&MultiplyEqual_RotatorFloat_Params.B, sizeof(MultiplyEqual_RotatorFloat_Params.B), &B, sizeof(B));
 	memcpy_s(&MultiplyEqual_RotatorFloat_Params.A, sizeof(MultiplyEqual_RotatorFloat_Params.A), &A, sizeof(A));
 
+	uFnMultiplyEqual_RotatorFloat->iNative = 0;
+	uFnMultiplyEqual_RotatorFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMultiplyEqual_RotatorFloat, &MultiplyEqual_RotatorFloat_Params, nullptr);
+	uFnMultiplyEqual_RotatorFloat->FunctionFlags |= 0x400;
+	uFnMultiplyEqual_RotatorFloat->iNative = 290;
 
 	memcpy_s(&A, sizeof(A), &MultiplyEqual_RotatorFloat_Params.A, sizeof(MultiplyEqual_RotatorFloat_Params.A));
 
@@ -6717,7 +7283,7 @@ struct FRotator UObject::MultiplyEqual_RotatorFloat(float B, struct FRotator& A)
 // struct FRotator                A                              (CPF_Parm)
 // float                          B                              (CPF_Parm)
 
-struct FRotator UObject::Divide_RotatorFloat(struct FRotator A, float B)
+struct FRotator UObject::Divide_RotatorFloat(const struct FRotator& A, float B)
 {
 	static UFunction* uFnDivide_RotatorFloat = nullptr;
 
@@ -6731,7 +7297,11 @@ struct FRotator UObject::Divide_RotatorFloat(struct FRotator A, float B)
 	memcpy_s(&Divide_RotatorFloat_Params.A, sizeof(Divide_RotatorFloat_Params.A), &A, sizeof(A));
 	memcpy_s(&Divide_RotatorFloat_Params.B, sizeof(Divide_RotatorFloat_Params.B), &B, sizeof(B));
 
+	uFnDivide_RotatorFloat->iNative = 0;
+	uFnDivide_RotatorFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnDivide_RotatorFloat, &Divide_RotatorFloat_Params, nullptr);
+	uFnDivide_RotatorFloat->FunctionFlags |= 0x400;
+	uFnDivide_RotatorFloat->iNative = 289;
 
 	return Divide_RotatorFloat_Params.ReturnValue;
 };
@@ -6743,7 +7313,7 @@ struct FRotator UObject::Divide_RotatorFloat(struct FRotator A, float B)
 // float                          A                              (CPF_Parm)
 // struct FRotator                B                              (CPF_Parm)
 
-struct FRotator UObject::Multiply_FloatRotator(float A, struct FRotator B)
+struct FRotator UObject::Multiply_FloatRotator(float A, const struct FRotator& B)
 {
 	static UFunction* uFnMultiply_FloatRotator = nullptr;
 
@@ -6757,7 +7327,11 @@ struct FRotator UObject::Multiply_FloatRotator(float A, struct FRotator B)
 	memcpy_s(&Multiply_FloatRotator_Params.A, sizeof(Multiply_FloatRotator_Params.A), &A, sizeof(A));
 	memcpy_s(&Multiply_FloatRotator_Params.B, sizeof(Multiply_FloatRotator_Params.B), &B, sizeof(B));
 
+	uFnMultiply_FloatRotator->iNative = 0;
+	uFnMultiply_FloatRotator->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMultiply_FloatRotator, &Multiply_FloatRotator_Params, nullptr);
+	uFnMultiply_FloatRotator->FunctionFlags |= 0x400;
+	uFnMultiply_FloatRotator->iNative = 288;
 
 	return Multiply_FloatRotator_Params.ReturnValue;
 };
@@ -6769,7 +7343,7 @@ struct FRotator UObject::Multiply_FloatRotator(float A, struct FRotator B)
 // struct FRotator                A                              (CPF_Parm)
 // float                          B                              (CPF_Parm)
 
-struct FRotator UObject::Multiply_RotatorFloat(struct FRotator A, float B)
+struct FRotator UObject::Multiply_RotatorFloat(const struct FRotator& A, float B)
 {
 	static UFunction* uFnMultiply_RotatorFloat = nullptr;
 
@@ -6783,7 +7357,11 @@ struct FRotator UObject::Multiply_RotatorFloat(struct FRotator A, float B)
 	memcpy_s(&Multiply_RotatorFloat_Params.A, sizeof(Multiply_RotatorFloat_Params.A), &A, sizeof(A));
 	memcpy_s(&Multiply_RotatorFloat_Params.B, sizeof(Multiply_RotatorFloat_Params.B), &B, sizeof(B));
 
+	uFnMultiply_RotatorFloat->iNative = 0;
+	uFnMultiply_RotatorFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMultiply_RotatorFloat, &Multiply_RotatorFloat_Params, nullptr);
+	uFnMultiply_RotatorFloat->FunctionFlags |= 0x400;
+	uFnMultiply_RotatorFloat->iNative = 287;
 
 	return Multiply_RotatorFloat_Params.ReturnValue;
 };
@@ -6795,7 +7373,7 @@ struct FRotator UObject::Multiply_RotatorFloat(struct FRotator A, float B)
 // struct FRotator                A                              (CPF_Parm)
 // struct FRotator                B                              (CPF_Parm)
 
-bool UObject::NotEqual_RotatorRotator(struct FRotator A, struct FRotator B)
+bool UObject::NotEqual_RotatorRotator(const struct FRotator& A, const struct FRotator& B)
 {
 	static UFunction* uFnNotEqual_RotatorRotator = nullptr;
 
@@ -6809,7 +7387,11 @@ bool UObject::NotEqual_RotatorRotator(struct FRotator A, struct FRotator B)
 	memcpy_s(&NotEqual_RotatorRotator_Params.A, sizeof(NotEqual_RotatorRotator_Params.A), &A, sizeof(A));
 	memcpy_s(&NotEqual_RotatorRotator_Params.B, sizeof(NotEqual_RotatorRotator_Params.B), &B, sizeof(B));
 
+	uFnNotEqual_RotatorRotator->iNative = 0;
+	uFnNotEqual_RotatorRotator->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnNotEqual_RotatorRotator, &NotEqual_RotatorRotator_Params, nullptr);
+	uFnNotEqual_RotatorRotator->FunctionFlags |= 0x400;
+	uFnNotEqual_RotatorRotator->iNative = 203;
 
 	return NotEqual_RotatorRotator_Params.ReturnValue;
 };
@@ -6821,7 +7403,7 @@ bool UObject::NotEqual_RotatorRotator(struct FRotator A, struct FRotator B)
 // struct FRotator                A                              (CPF_Parm)
 // struct FRotator                B                              (CPF_Parm)
 
-bool UObject::EqualEqual_RotatorRotator(struct FRotator A, struct FRotator B)
+bool UObject::EqualEqual_RotatorRotator(const struct FRotator& A, const struct FRotator& B)
 {
 	static UFunction* uFnEqualEqual_RotatorRotator = nullptr;
 
@@ -6835,7 +7417,11 @@ bool UObject::EqualEqual_RotatorRotator(struct FRotator A, struct FRotator B)
 	memcpy_s(&EqualEqual_RotatorRotator_Params.A, sizeof(EqualEqual_RotatorRotator_Params.A), &A, sizeof(A));
 	memcpy_s(&EqualEqual_RotatorRotator_Params.B, sizeof(EqualEqual_RotatorRotator_Params.B), &B, sizeof(B));
 
+	uFnEqualEqual_RotatorRotator->iNative = 0;
+	uFnEqualEqual_RotatorRotator->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnEqualEqual_RotatorRotator, &EqualEqual_RotatorRotator_Params, nullptr);
+	uFnEqualEqual_RotatorRotator->FunctionFlags |= 0x400;
+	uFnEqualEqual_RotatorRotator->iNative = 142;
 
 	return EqualEqual_RotatorRotator_Params.ReturnValue;
 };
@@ -6847,7 +7433,7 @@ bool UObject::EqualEqual_RotatorRotator(struct FRotator A, struct FRotator B)
 // struct FVector                 V0                             (CPF_Parm)
 // struct FVector                 v1                             (CPF_Parm)
 
-float UObject::GetRadiansBetweenVectors(struct FVector V0, struct FVector v1)
+float UObject::GetRadiansBetweenVectors(const struct FVector& V0, const struct FVector& v1)
 {
 	static UFunction* uFnGetRadiansBetweenVectors = nullptr;
 
@@ -6874,7 +7460,7 @@ float UObject::GetRadiansBetweenVectors(struct FVector V0, struct FVector v1)
 // struct FVector                 Min                            (CPF_Parm)
 // struct FVector                 Max                            (CPF_Parm)
 
-struct FVector UObject::VClamp(struct FVector A, struct FVector Min, struct FVector Max)
+struct FVector UObject::VClamp(const struct FVector& A, const struct FVector& Min, const struct FVector& Max)
 {
 	static UFunction* uFnVClamp = nullptr;
 
@@ -6923,16 +7509,16 @@ struct FVector UObject::vect3d(float X, float Y, float Z)
 };
 
 // Function Core.Object.InCylinder
-// [0x00824103] (FUNC_Final | FUNC_Defined | FUNC_Simulated | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasDefaults | FUNC_AllFlags)
+// [0x00824103] (FUNC_Final | FUNC_Defined | FUNC_Simulated | FUNC_OptionalParm | FUNC_Public | FUNC_HasDefaults | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FVector                 Origin                         (CPF_Parm)
 // struct FRotator                Dir                            (CPF_Parm)
 // float                          Width                          (CPF_Parm)
 // struct FVector                 A                              (CPF_Parm)
-// bool                           bIgnoreZ                       (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bIgnoreZ                       (CPF_OptionalParm | CPF_Parm)
 
-bool UObject::InCylinder(struct FVector Origin, struct FRotator Dir, float Width, struct FVector A, bool bIgnoreZ)
+bool UObject::InCylinder(const struct FVector& Origin, const struct FRotator& Dir, float Width, const struct FVector& A, bool bIgnoreZ)
 {
 	static UFunction* uFnInCylinder = nullptr;
 
@@ -6961,7 +7547,7 @@ bool UObject::InCylinder(struct FVector Origin, struct FRotator Dir, float Width
 // struct FVector                 A                              (CPF_Parm)
 // struct FVector                 B                              (CPF_Parm)
 
-float UObject::NoZDot(struct FVector A, struct FVector B)
+float UObject::NoZDot(const struct FVector& A, const struct FVector& B)
 {
 	static UFunction* uFnNoZDot = nullptr;
 
@@ -6975,7 +7561,9 @@ float UObject::NoZDot(struct FVector A, struct FVector B)
 	memcpy_s(&NoZDot_Params.A, sizeof(NoZDot_Params.A), &A, sizeof(A));
 	memcpy_s(&NoZDot_Params.B, sizeof(NoZDot_Params.B), &B, sizeof(B));
 
+	uFnNoZDot->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnNoZDot, &NoZDot_Params, nullptr);
+	uFnNoZDot->FunctionFlags |= 0x400;
 
 	return NoZDot_Params.ReturnValue;
 };
@@ -6987,7 +7575,7 @@ float UObject::NoZDot(struct FVector A, struct FVector B)
 // struct FVector                 V                              (CPF_Parm)
 // float                          MaxLength                      (CPF_Parm)
 
-struct FVector UObject::ClampLength(struct FVector V, float MaxLength)
+struct FVector UObject::ClampLength(const struct FVector& V, float MaxLength)
 {
 	static UFunction* uFnClampLength = nullptr;
 
@@ -7001,7 +7589,9 @@ struct FVector UObject::ClampLength(struct FVector V, float MaxLength)
 	memcpy_s(&ClampLength_Params.V, sizeof(ClampLength_Params.V), &V, sizeof(V));
 	memcpy_s(&ClampLength_Params.MaxLength, sizeof(ClampLength_Params.MaxLength), &MaxLength, sizeof(MaxLength));
 
+	uFnClampLength->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnClampLength, &ClampLength_Params, nullptr);
+	uFnClampLength->FunctionFlags |= 0x400;
 
 	return ClampLength_Params.ReturnValue;
 };
@@ -7015,7 +7605,7 @@ struct FVector UObject::ClampLength(struct FVector V, float MaxLength)
 // float                          DeltaTime                      (CPF_Parm)
 // float                          InterpSpeed                    (CPF_Parm)
 
-struct FVector UObject::VInterpConstantTo(struct FVector Current, struct FVector Target, float DeltaTime, float InterpSpeed)
+struct FVector UObject::VInterpConstantTo(const struct FVector& Current, const struct FVector& Target, float DeltaTime, float InterpSpeed)
 {
 	static UFunction* uFnVInterpConstantTo = nullptr;
 
@@ -7031,7 +7621,9 @@ struct FVector UObject::VInterpConstantTo(struct FVector Current, struct FVector
 	memcpy_s(&VInterpConstantTo_Params.DeltaTime, sizeof(VInterpConstantTo_Params.DeltaTime), &DeltaTime, sizeof(DeltaTime));
 	memcpy_s(&VInterpConstantTo_Params.InterpSpeed, sizeof(VInterpConstantTo_Params.InterpSpeed), &InterpSpeed, sizeof(InterpSpeed));
 
+	uFnVInterpConstantTo->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnVInterpConstantTo, &VInterpConstantTo_Params, nullptr);
+	uFnVInterpConstantTo->FunctionFlags |= 0x400;
 
 	return VInterpConstantTo_Params.ReturnValue;
 };
@@ -7045,7 +7637,7 @@ struct FVector UObject::VInterpConstantTo(struct FVector Current, struct FVector
 // float                          DeltaTime                      (CPF_Parm)
 // float                          InterpSpeed                    (CPF_Parm)
 
-struct FVector UObject::VInterpTo(struct FVector Current, struct FVector Target, float DeltaTime, float InterpSpeed)
+struct FVector UObject::VInterpTo(const struct FVector& Current, const struct FVector& Target, float DeltaTime, float InterpSpeed)
 {
 	static UFunction* uFnVInterpTo = nullptr;
 
@@ -7061,7 +7653,9 @@ struct FVector UObject::VInterpTo(struct FVector Current, struct FVector Target,
 	memcpy_s(&VInterpTo_Params.DeltaTime, sizeof(VInterpTo_Params.DeltaTime), &DeltaTime, sizeof(DeltaTime));
 	memcpy_s(&VInterpTo_Params.InterpSpeed, sizeof(VInterpTo_Params.InterpSpeed), &InterpSpeed, sizeof(InterpSpeed));
 
+	uFnVInterpTo->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnVInterpTo, &VInterpTo_Params, nullptr);
+	uFnVInterpTo->FunctionFlags |= 0x400;
 
 	return VInterpTo_Params.ReturnValue;
 };
@@ -7086,14 +7680,14 @@ void UObject::eventConstruct()
 };
 
 // Function Core.Object.ProjectOnToPlane
-// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// [0x00026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // struct FVector                 ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FVector                 InVector                       (CPF_Parm)
 // struct FVector                 InNormal                       (CPF_Parm)
 // float                          OverBounce                     (CPF_OptionalParm | CPF_Parm)
 
-struct FVector UObject::ProjectOnToPlane(struct FVector InVector, struct FVector InNormal, float OverBounce)
+struct FVector UObject::ProjectOnToPlane(const struct FVector& InVector, const struct FVector& InNormal, float OverBounce)
 {
 	static UFunction* uFnProjectOnToPlane = nullptr;
 
@@ -7108,7 +7702,9 @@ struct FVector UObject::ProjectOnToPlane(struct FVector InVector, struct FVector
 	memcpy_s(&ProjectOnToPlane_Params.InNormal, sizeof(ProjectOnToPlane_Params.InNormal), &InNormal, sizeof(InNormal));
 	memcpy_s(&ProjectOnToPlane_Params.OverBounce, sizeof(ProjectOnToPlane_Params.OverBounce), &OverBounce, sizeof(OverBounce));
 
+	uFnProjectOnToPlane->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnProjectOnToPlane, &ProjectOnToPlane_Params, nullptr);
+	uFnProjectOnToPlane->FunctionFlags |= 0x400;
 
 	return ProjectOnToPlane_Params.ReturnValue;
 };
@@ -7119,7 +7715,7 @@ struct FVector UObject::ProjectOnToPlane(struct FVector InVector, struct FVector
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FVector                 A                              (CPF_Parm)
 
-bool UObject::IsZero(struct FVector A)
+bool UObject::IsZero(const struct FVector& A)
 {
 	static UFunction* uFnIsZero = nullptr;
 
@@ -7132,7 +7728,11 @@ bool UObject::IsZero(struct FVector A)
 	memset(&IsZero_Params, 0, sizeof(IsZero_Params));
 	memcpy_s(&IsZero_Params.A, sizeof(IsZero_Params.A), &A, sizeof(A));
 
+	uFnIsZero->iNative = 0;
+	uFnIsZero->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnIsZero, &IsZero_Params, nullptr);
+	uFnIsZero->FunctionFlags |= 0x400;
+	uFnIsZero->iNative = 1501;
 
 	return IsZero_Params.ReturnValue;
 };
@@ -7144,7 +7744,7 @@ bool UObject::IsZero(struct FVector A)
 // struct FVector                 X                              (CPF_Parm)
 // struct FVector                 Y                              (CPF_Parm)
 
-struct FVector UObject::ProjectOnTo(struct FVector X, struct FVector Y)
+struct FVector UObject::ProjectOnTo(const struct FVector& X, const struct FVector& Y)
 {
 	static UFunction* uFnProjectOnTo = nullptr;
 
@@ -7158,7 +7758,11 @@ struct FVector UObject::ProjectOnTo(struct FVector X, struct FVector Y)
 	memcpy_s(&ProjectOnTo_Params.X, sizeof(ProjectOnTo_Params.X), &X, sizeof(X));
 	memcpy_s(&ProjectOnTo_Params.Y, sizeof(ProjectOnTo_Params.Y), &Y, sizeof(Y));
 
+	uFnProjectOnTo->iNative = 0;
+	uFnProjectOnTo->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnProjectOnTo, &ProjectOnTo_Params, nullptr);
+	uFnProjectOnTo->FunctionFlags |= 0x400;
+	uFnProjectOnTo->iNative = 1500;
 
 	return ProjectOnTo_Params.ReturnValue;
 };
@@ -7170,7 +7774,7 @@ struct FVector UObject::ProjectOnTo(struct FVector X, struct FVector Y)
 // struct FVector                 InVect                         (CPF_Parm)
 // struct FVector                 InNormal                       (CPF_Parm)
 
-struct FVector UObject::MirrorVectorByNormal(struct FVector InVect, struct FVector InNormal)
+struct FVector UObject::MirrorVectorByNormal(const struct FVector& InVect, const struct FVector& InNormal)
 {
 	static UFunction* uFnMirrorVectorByNormal = nullptr;
 
@@ -7184,7 +7788,11 @@ struct FVector UObject::MirrorVectorByNormal(struct FVector InVect, struct FVect
 	memcpy_s(&MirrorVectorByNormal_Params.InVect, sizeof(MirrorVectorByNormal_Params.InVect), &InVect, sizeof(InVect));
 	memcpy_s(&MirrorVectorByNormal_Params.InNormal, sizeof(MirrorVectorByNormal_Params.InNormal), &InNormal, sizeof(InNormal));
 
+	uFnMirrorVectorByNormal->iNative = 0;
+	uFnMirrorVectorByNormal->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMirrorVectorByNormal, &MirrorVectorByNormal_Params, nullptr);
+	uFnMirrorVectorByNormal->FunctionFlags |= 0x400;
+	uFnMirrorVectorByNormal->iNative = 300;
 
 	return MirrorVectorByNormal_Params.ReturnValue;
 };
@@ -7197,7 +7805,7 @@ struct FVector UObject::MirrorVectorByNormal(struct FVector InVect, struct FVect
 // float                          HorizontalConeHalfAngleRadians (CPF_Parm)
 // float                          VerticalConeHalfAngleRadians   (CPF_Parm)
 
-struct FVector UObject::VRandCone2(struct FVector Dir, float HorizontalConeHalfAngleRadians, float VerticalConeHalfAngleRadians)
+struct FVector UObject::VRandCone2(const struct FVector& Dir, float HorizontalConeHalfAngleRadians, float VerticalConeHalfAngleRadians)
 {
 	static UFunction* uFnVRandCone2 = nullptr;
 
@@ -7212,7 +7820,9 @@ struct FVector UObject::VRandCone2(struct FVector Dir, float HorizontalConeHalfA
 	memcpy_s(&VRandCone2_Params.HorizontalConeHalfAngleRadians, sizeof(VRandCone2_Params.HorizontalConeHalfAngleRadians), &HorizontalConeHalfAngleRadians, sizeof(HorizontalConeHalfAngleRadians));
 	memcpy_s(&VRandCone2_Params.VerticalConeHalfAngleRadians, sizeof(VRandCone2_Params.VerticalConeHalfAngleRadians), &VerticalConeHalfAngleRadians, sizeof(VerticalConeHalfAngleRadians));
 
+	uFnVRandCone2->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnVRandCone2, &VRandCone2_Params, nullptr);
+	uFnVRandCone2->FunctionFlags |= 0x400;
 
 	return VRandCone2_Params.ReturnValue;
 };
@@ -7224,7 +7834,7 @@ struct FVector UObject::VRandCone2(struct FVector Dir, float HorizontalConeHalfA
 // struct FVector                 Dir                            (CPF_Parm)
 // float                          ConeHalfAngleRadians           (CPF_Parm)
 
-struct FVector UObject::VRandCone(struct FVector Dir, float ConeHalfAngleRadians)
+struct FVector UObject::VRandCone(const struct FVector& Dir, float ConeHalfAngleRadians)
 {
 	static UFunction* uFnVRandCone = nullptr;
 
@@ -7238,7 +7848,9 @@ struct FVector UObject::VRandCone(struct FVector Dir, float ConeHalfAngleRadians
 	memcpy_s(&VRandCone_Params.Dir, sizeof(VRandCone_Params.Dir), &Dir, sizeof(Dir));
 	memcpy_s(&VRandCone_Params.ConeHalfAngleRadians, sizeof(VRandCone_Params.ConeHalfAngleRadians), &ConeHalfAngleRadians, sizeof(ConeHalfAngleRadians));
 
+	uFnVRandCone->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnVRandCone, &VRandCone_Params, nullptr);
+	uFnVRandCone->FunctionFlags |= 0x400;
 
 	return VRandCone_Params.ReturnValue;
 };
@@ -7260,7 +7872,11 @@ struct FVector UObject::VRand()
 	UObject_execVRand_Params VRand_Params;
 	memset(&VRand_Params, 0, sizeof(VRand_Params));
 
+	uFnVRand->iNative = 0;
+	uFnVRand->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnVRand, &VRand_Params, nullptr);
+	uFnVRand->FunctionFlags |= 0x400;
+	uFnVRand->iNative = 252;
 
 	return VRand_Params.ReturnValue;
 };
@@ -7273,7 +7889,7 @@ struct FVector UObject::VRand()
 // struct FVector                 B                              (CPF_Parm)
 // float                          Alpha                          (CPF_Parm)
 
-struct FVector UObject::VLerp(struct FVector A, struct FVector B, float Alpha)
+struct FVector UObject::VLerp(const struct FVector& A, const struct FVector& B, float Alpha)
 {
 	static UFunction* uFnVLerp = nullptr;
 
@@ -7288,7 +7904,9 @@ struct FVector UObject::VLerp(struct FVector A, struct FVector B, float Alpha)
 	memcpy_s(&VLerp_Params.B, sizeof(VLerp_Params.B), &B, sizeof(B));
 	memcpy_s(&VLerp_Params.Alpha, sizeof(VLerp_Params.Alpha), &Alpha, sizeof(Alpha));
 
+	uFnVLerp->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnVLerp, &VLerp_Params, nullptr);
+	uFnVLerp->FunctionFlags |= 0x400;
 
 	return VLerp_Params.ReturnValue;
 };
@@ -7299,7 +7917,7 @@ struct FVector UObject::VLerp(struct FVector A, struct FVector B, float Alpha)
 // struct FVector                 ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FVector                 A                              (CPF_Parm)
 
-struct FVector UObject::Normal2D(struct FVector A)
+struct FVector UObject::Normal2D(const struct FVector& A)
 {
 	static UFunction* uFnNormal2D = nullptr;
 
@@ -7312,7 +7930,11 @@ struct FVector UObject::Normal2D(struct FVector A)
 	memset(&Normal2D_Params, 0, sizeof(Normal2D_Params));
 	memcpy_s(&Normal2D_Params.A, sizeof(Normal2D_Params.A), &A, sizeof(A));
 
+	uFnNormal2D->iNative = 0;
+	uFnNormal2D->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnNormal2D, &Normal2D_Params, nullptr);
+	uFnNormal2D->FunctionFlags |= 0x400;
+	uFnNormal2D->iNative = 227;
 
 	return Normal2D_Params.ReturnValue;
 };
@@ -7323,7 +7945,7 @@ struct FVector UObject::Normal2D(struct FVector A)
 // struct FVector                 ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FVector                 A                              (CPF_Parm)
 
-struct FVector UObject::Normal(struct FVector A)
+struct FVector UObject::Normal(const struct FVector& A)
 {
 	static UFunction* uFnNormal = nullptr;
 
@@ -7336,7 +7958,11 @@ struct FVector UObject::Normal(struct FVector A)
 	memset(&Normal_Params, 0, sizeof(Normal_Params));
 	memcpy_s(&Normal_Params.A, sizeof(Normal_Params.A), &A, sizeof(A));
 
+	uFnNormal->iNative = 0;
+	uFnNormal->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnNormal, &Normal_Params, nullptr);
+	uFnNormal->FunctionFlags |= 0x400;
+	uFnNormal->iNative = 226;
 
 	return Normal_Params.ReturnValue;
 };
@@ -7347,7 +7973,7 @@ struct FVector UObject::Normal(struct FVector A)
 // float                          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FVector                 A                              (CPF_Parm)
 
-float UObject::VSizeSq2D(struct FVector A)
+float UObject::VSizeSq2D(const struct FVector& A)
 {
 	static UFunction* uFnVSizeSq2D = nullptr;
 
@@ -7360,7 +7986,9 @@ float UObject::VSizeSq2D(struct FVector A)
 	memset(&VSizeSq2D_Params, 0, sizeof(VSizeSq2D_Params));
 	memcpy_s(&VSizeSq2D_Params.A, sizeof(VSizeSq2D_Params.A), &A, sizeof(A));
 
+	uFnVSizeSq2D->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnVSizeSq2D, &VSizeSq2D_Params, nullptr);
+	uFnVSizeSq2D->FunctionFlags |= 0x400;
 
 	return VSizeSq2D_Params.ReturnValue;
 };
@@ -7371,7 +7999,7 @@ float UObject::VSizeSq2D(struct FVector A)
 // float                          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FVector                 A                              (CPF_Parm)
 
-float UObject::VSizeSq(struct FVector A)
+float UObject::VSizeSq(const struct FVector& A)
 {
 	static UFunction* uFnVSizeSq = nullptr;
 
@@ -7384,7 +8012,11 @@ float UObject::VSizeSq(struct FVector A)
 	memset(&VSizeSq_Params, 0, sizeof(VSizeSq_Params));
 	memcpy_s(&VSizeSq_Params.A, sizeof(VSizeSq_Params.A), &A, sizeof(A));
 
+	uFnVSizeSq->iNative = 0;
+	uFnVSizeSq->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnVSizeSq, &VSizeSq_Params, nullptr);
+	uFnVSizeSq->FunctionFlags |= 0x400;
+	uFnVSizeSq->iNative = 228;
 
 	return VSizeSq_Params.ReturnValue;
 };
@@ -7395,7 +8027,7 @@ float UObject::VSizeSq(struct FVector A)
 // float                          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FVector                 A                              (CPF_Parm)
 
-float UObject::VSize2D(struct FVector A)
+float UObject::VSize2D(const struct FVector& A)
 {
 	static UFunction* uFnVSize2D = nullptr;
 
@@ -7408,7 +8040,11 @@ float UObject::VSize2D(struct FVector A)
 	memset(&VSize2D_Params, 0, sizeof(VSize2D_Params));
 	memcpy_s(&VSize2D_Params.A, sizeof(VSize2D_Params.A), &A, sizeof(A));
 
+	uFnVSize2D->iNative = 0;
+	uFnVSize2D->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnVSize2D, &VSize2D_Params, nullptr);
+	uFnVSize2D->FunctionFlags |= 0x400;
+	uFnVSize2D->iNative = 233;
 
 	return VSize2D_Params.ReturnValue;
 };
@@ -7419,7 +8055,7 @@ float UObject::VSize2D(struct FVector A)
 // float                          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FVector                 A                              (CPF_Parm)
 
-float UObject::VSize(struct FVector A)
+float UObject::VSize(const struct FVector& A)
 {
 	static UFunction* uFnVSize = nullptr;
 
@@ -7432,7 +8068,11 @@ float UObject::VSize(struct FVector A)
 	memset(&VSize_Params, 0, sizeof(VSize_Params));
 	memcpy_s(&VSize_Params.A, sizeof(VSize_Params.A), &A, sizeof(A));
 
+	uFnVSize->iNative = 0;
+	uFnVSize->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnVSize, &VSize_Params, nullptr);
+	uFnVSize->FunctionFlags |= 0x400;
+	uFnVSize->iNative = 225;
 
 	return VSize_Params.ReturnValue;
 };
@@ -7444,7 +8084,7 @@ float UObject::VSize(struct FVector A)
 // struct FVector                 B                              (CPF_Parm)
 // struct FVector                 A                              (CPF_Parm | CPF_OutParm)
 
-struct FVector UObject::SubtractEqual_VectorVector(struct FVector B, struct FVector& A)
+struct FVector UObject::SubtractEqual_VectorVector(const struct FVector& B, struct FVector& A)
 {
 	static UFunction* uFnSubtractEqual_VectorVector = nullptr;
 
@@ -7458,7 +8098,11 @@ struct FVector UObject::SubtractEqual_VectorVector(struct FVector B, struct FVec
 	memcpy_s(&SubtractEqual_VectorVector_Params.B, sizeof(SubtractEqual_VectorVector_Params.B), &B, sizeof(B));
 	memcpy_s(&SubtractEqual_VectorVector_Params.A, sizeof(SubtractEqual_VectorVector_Params.A), &A, sizeof(A));
 
+	uFnSubtractEqual_VectorVector->iNative = 0;
+	uFnSubtractEqual_VectorVector->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnSubtractEqual_VectorVector, &SubtractEqual_VectorVector_Params, nullptr);
+	uFnSubtractEqual_VectorVector->FunctionFlags |= 0x400;
+	uFnSubtractEqual_VectorVector->iNative = 224;
 
 	memcpy_s(&A, sizeof(A), &SubtractEqual_VectorVector_Params.A, sizeof(SubtractEqual_VectorVector_Params.A));
 
@@ -7472,7 +8116,7 @@ struct FVector UObject::SubtractEqual_VectorVector(struct FVector B, struct FVec
 // struct FVector                 B                              (CPF_Parm)
 // struct FVector                 A                              (CPF_Parm | CPF_OutParm)
 
-struct FVector UObject::AddEqual_VectorVector(struct FVector B, struct FVector& A)
+struct FVector UObject::AddEqual_VectorVector(const struct FVector& B, struct FVector& A)
 {
 	static UFunction* uFnAddEqual_VectorVector = nullptr;
 
@@ -7486,7 +8130,11 @@ struct FVector UObject::AddEqual_VectorVector(struct FVector B, struct FVector& 
 	memcpy_s(&AddEqual_VectorVector_Params.B, sizeof(AddEqual_VectorVector_Params.B), &B, sizeof(B));
 	memcpy_s(&AddEqual_VectorVector_Params.A, sizeof(AddEqual_VectorVector_Params.A), &A, sizeof(A));
 
+	uFnAddEqual_VectorVector->iNative = 0;
+	uFnAddEqual_VectorVector->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAddEqual_VectorVector, &AddEqual_VectorVector_Params, nullptr);
+	uFnAddEqual_VectorVector->FunctionFlags |= 0x400;
+	uFnAddEqual_VectorVector->iNative = 223;
 
 	memcpy_s(&A, sizeof(A), &AddEqual_VectorVector_Params.A, sizeof(AddEqual_VectorVector_Params.A));
 
@@ -7514,7 +8162,11 @@ struct FVector UObject::DivideEqual_VectorFloat(float B, struct FVector& A)
 	memcpy_s(&DivideEqual_VectorFloat_Params.B, sizeof(DivideEqual_VectorFloat_Params.B), &B, sizeof(B));
 	memcpy_s(&DivideEqual_VectorFloat_Params.A, sizeof(DivideEqual_VectorFloat_Params.A), &A, sizeof(A));
 
+	uFnDivideEqual_VectorFloat->iNative = 0;
+	uFnDivideEqual_VectorFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnDivideEqual_VectorFloat, &DivideEqual_VectorFloat_Params, nullptr);
+	uFnDivideEqual_VectorFloat->FunctionFlags |= 0x400;
+	uFnDivideEqual_VectorFloat->iNative = 222;
 
 	memcpy_s(&A, sizeof(A), &DivideEqual_VectorFloat_Params.A, sizeof(DivideEqual_VectorFloat_Params.A));
 
@@ -7528,7 +8180,7 @@ struct FVector UObject::DivideEqual_VectorFloat(float B, struct FVector& A)
 // struct FVector                 B                              (CPF_Parm)
 // struct FVector                 A                              (CPF_Parm | CPF_OutParm)
 
-struct FVector UObject::MultiplyEqual_VectorVector(struct FVector B, struct FVector& A)
+struct FVector UObject::MultiplyEqual_VectorVector(const struct FVector& B, struct FVector& A)
 {
 	static UFunction* uFnMultiplyEqual_VectorVector = nullptr;
 
@@ -7542,7 +8194,11 @@ struct FVector UObject::MultiplyEqual_VectorVector(struct FVector B, struct FVec
 	memcpy_s(&MultiplyEqual_VectorVector_Params.B, sizeof(MultiplyEqual_VectorVector_Params.B), &B, sizeof(B));
 	memcpy_s(&MultiplyEqual_VectorVector_Params.A, sizeof(MultiplyEqual_VectorVector_Params.A), &A, sizeof(A));
 
+	uFnMultiplyEqual_VectorVector->iNative = 0;
+	uFnMultiplyEqual_VectorVector->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMultiplyEqual_VectorVector, &MultiplyEqual_VectorVector_Params, nullptr);
+	uFnMultiplyEqual_VectorVector->FunctionFlags |= 0x400;
+	uFnMultiplyEqual_VectorVector->iNative = 297;
 
 	memcpy_s(&A, sizeof(A), &MultiplyEqual_VectorVector_Params.A, sizeof(MultiplyEqual_VectorVector_Params.A));
 
@@ -7570,7 +8226,11 @@ struct FVector UObject::MultiplyEqual_VectorFloat(float B, struct FVector& A)
 	memcpy_s(&MultiplyEqual_VectorFloat_Params.B, sizeof(MultiplyEqual_VectorFloat_Params.B), &B, sizeof(B));
 	memcpy_s(&MultiplyEqual_VectorFloat_Params.A, sizeof(MultiplyEqual_VectorFloat_Params.A), &A, sizeof(A));
 
+	uFnMultiplyEqual_VectorFloat->iNative = 0;
+	uFnMultiplyEqual_VectorFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMultiplyEqual_VectorFloat, &MultiplyEqual_VectorFloat_Params, nullptr);
+	uFnMultiplyEqual_VectorFloat->FunctionFlags |= 0x400;
+	uFnMultiplyEqual_VectorFloat->iNative = 221;
 
 	memcpy_s(&A, sizeof(A), &MultiplyEqual_VectorFloat_Params.A, sizeof(MultiplyEqual_VectorFloat_Params.A));
 
@@ -7584,7 +8244,7 @@ struct FVector UObject::MultiplyEqual_VectorFloat(float B, struct FVector& A)
 // struct FVector                 A                              (CPF_Parm)
 // struct FVector                 B                              (CPF_Parm)
 
-struct FVector UObject::Cross_VectorVector(struct FVector A, struct FVector B)
+struct FVector UObject::Cross_VectorVector(const struct FVector& A, const struct FVector& B)
 {
 	static UFunction* uFnCross_VectorVector = nullptr;
 
@@ -7598,7 +8258,11 @@ struct FVector UObject::Cross_VectorVector(struct FVector A, struct FVector B)
 	memcpy_s(&Cross_VectorVector_Params.A, sizeof(Cross_VectorVector_Params.A), &A, sizeof(A));
 	memcpy_s(&Cross_VectorVector_Params.B, sizeof(Cross_VectorVector_Params.B), &B, sizeof(B));
 
+	uFnCross_VectorVector->iNative = 0;
+	uFnCross_VectorVector->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnCross_VectorVector, &Cross_VectorVector_Params, nullptr);
+	uFnCross_VectorVector->FunctionFlags |= 0x400;
+	uFnCross_VectorVector->iNative = 220;
 
 	return Cross_VectorVector_Params.ReturnValue;
 };
@@ -7610,7 +8274,7 @@ struct FVector UObject::Cross_VectorVector(struct FVector A, struct FVector B)
 // struct FVector                 A                              (CPF_Parm)
 // struct FVector                 B                              (CPF_Parm)
 
-float UObject::Dot_VectorVector(struct FVector A, struct FVector B)
+float UObject::Dot_VectorVector(const struct FVector& A, const struct FVector& B)
 {
 	static UFunction* uFnDot_VectorVector = nullptr;
 
@@ -7624,7 +8288,11 @@ float UObject::Dot_VectorVector(struct FVector A, struct FVector B)
 	memcpy_s(&Dot_VectorVector_Params.A, sizeof(Dot_VectorVector_Params.A), &A, sizeof(A));
 	memcpy_s(&Dot_VectorVector_Params.B, sizeof(Dot_VectorVector_Params.B), &B, sizeof(B));
 
+	uFnDot_VectorVector->iNative = 0;
+	uFnDot_VectorVector->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnDot_VectorVector, &Dot_VectorVector_Params, nullptr);
+	uFnDot_VectorVector->FunctionFlags |= 0x400;
+	uFnDot_VectorVector->iNative = 219;
 
 	return Dot_VectorVector_Params.ReturnValue;
 };
@@ -7636,7 +8304,7 @@ float UObject::Dot_VectorVector(struct FVector A, struct FVector B)
 // struct FVector                 A                              (CPF_Parm)
 // struct FVector                 B                              (CPF_Parm)
 
-bool UObject::NotEqual_VectorVector(struct FVector A, struct FVector B)
+bool UObject::NotEqual_VectorVector(const struct FVector& A, const struct FVector& B)
 {
 	static UFunction* uFnNotEqual_VectorVector = nullptr;
 
@@ -7650,7 +8318,11 @@ bool UObject::NotEqual_VectorVector(struct FVector A, struct FVector B)
 	memcpy_s(&NotEqual_VectorVector_Params.A, sizeof(NotEqual_VectorVector_Params.A), &A, sizeof(A));
 	memcpy_s(&NotEqual_VectorVector_Params.B, sizeof(NotEqual_VectorVector_Params.B), &B, sizeof(B));
 
+	uFnNotEqual_VectorVector->iNative = 0;
+	uFnNotEqual_VectorVector->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnNotEqual_VectorVector, &NotEqual_VectorVector_Params, nullptr);
+	uFnNotEqual_VectorVector->FunctionFlags |= 0x400;
+	uFnNotEqual_VectorVector->iNative = 218;
 
 	return NotEqual_VectorVector_Params.ReturnValue;
 };
@@ -7662,7 +8334,7 @@ bool UObject::NotEqual_VectorVector(struct FVector A, struct FVector B)
 // struct FVector                 A                              (CPF_Parm)
 // struct FVector                 B                              (CPF_Parm)
 
-bool UObject::EqualEqual_VectorVector(struct FVector A, struct FVector B)
+bool UObject::EqualEqual_VectorVector(const struct FVector& A, const struct FVector& B)
 {
 	static UFunction* uFnEqualEqual_VectorVector = nullptr;
 
@@ -7676,7 +8348,11 @@ bool UObject::EqualEqual_VectorVector(struct FVector A, struct FVector B)
 	memcpy_s(&EqualEqual_VectorVector_Params.A, sizeof(EqualEqual_VectorVector_Params.A), &A, sizeof(A));
 	memcpy_s(&EqualEqual_VectorVector_Params.B, sizeof(EqualEqual_VectorVector_Params.B), &B, sizeof(B));
 
+	uFnEqualEqual_VectorVector->iNative = 0;
+	uFnEqualEqual_VectorVector->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnEqualEqual_VectorVector, &EqualEqual_VectorVector_Params, nullptr);
+	uFnEqualEqual_VectorVector->FunctionFlags |= 0x400;
+	uFnEqualEqual_VectorVector->iNative = 217;
 
 	return EqualEqual_VectorVector_Params.ReturnValue;
 };
@@ -7688,7 +8364,7 @@ bool UObject::EqualEqual_VectorVector(struct FVector A, struct FVector B)
 // struct FVector                 A                              (CPF_Parm)
 // struct FRotator                B                              (CPF_Parm)
 
-struct FVector UObject::GreaterGreater_VectorRotator(struct FVector A, struct FRotator B)
+struct FVector UObject::GreaterGreater_VectorRotator(const struct FVector& A, const struct FRotator& B)
 {
 	static UFunction* uFnGreaterGreater_VectorRotator = nullptr;
 
@@ -7702,7 +8378,11 @@ struct FVector UObject::GreaterGreater_VectorRotator(struct FVector A, struct FR
 	memcpy_s(&GreaterGreater_VectorRotator_Params.A, sizeof(GreaterGreater_VectorRotator_Params.A), &A, sizeof(A));
 	memcpy_s(&GreaterGreater_VectorRotator_Params.B, sizeof(GreaterGreater_VectorRotator_Params.B), &B, sizeof(B));
 
+	uFnGreaterGreater_VectorRotator->iNative = 0;
+	uFnGreaterGreater_VectorRotator->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGreaterGreater_VectorRotator, &GreaterGreater_VectorRotator_Params, nullptr);
+	uFnGreaterGreater_VectorRotator->FunctionFlags |= 0x400;
+	uFnGreaterGreater_VectorRotator->iNative = 276;
 
 	return GreaterGreater_VectorRotator_Params.ReturnValue;
 };
@@ -7714,7 +8394,7 @@ struct FVector UObject::GreaterGreater_VectorRotator(struct FVector A, struct FR
 // struct FVector                 A                              (CPF_Parm)
 // struct FRotator                B                              (CPF_Parm)
 
-struct FVector UObject::LessLess_VectorRotator(struct FVector A, struct FRotator B)
+struct FVector UObject::LessLess_VectorRotator(const struct FVector& A, const struct FRotator& B)
 {
 	static UFunction* uFnLessLess_VectorRotator = nullptr;
 
@@ -7728,7 +8408,11 @@ struct FVector UObject::LessLess_VectorRotator(struct FVector A, struct FRotator
 	memcpy_s(&LessLess_VectorRotator_Params.A, sizeof(LessLess_VectorRotator_Params.A), &A, sizeof(A));
 	memcpy_s(&LessLess_VectorRotator_Params.B, sizeof(LessLess_VectorRotator_Params.B), &B, sizeof(B));
 
+	uFnLessLess_VectorRotator->iNative = 0;
+	uFnLessLess_VectorRotator->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnLessLess_VectorRotator, &LessLess_VectorRotator_Params, nullptr);
+	uFnLessLess_VectorRotator->FunctionFlags |= 0x400;
+	uFnLessLess_VectorRotator->iNative = 275;
 
 	return LessLess_VectorRotator_Params.ReturnValue;
 };
@@ -7740,7 +8424,7 @@ struct FVector UObject::LessLess_VectorRotator(struct FVector A, struct FRotator
 // struct FVector                 A                              (CPF_Parm)
 // struct FVector                 B                              (CPF_Parm)
 
-struct FVector UObject::Subtract_VectorVector(struct FVector A, struct FVector B)
+struct FVector UObject::Subtract_VectorVector(const struct FVector& A, const struct FVector& B)
 {
 	static UFunction* uFnSubtract_VectorVector = nullptr;
 
@@ -7754,7 +8438,11 @@ struct FVector UObject::Subtract_VectorVector(struct FVector A, struct FVector B
 	memcpy_s(&Subtract_VectorVector_Params.A, sizeof(Subtract_VectorVector_Params.A), &A, sizeof(A));
 	memcpy_s(&Subtract_VectorVector_Params.B, sizeof(Subtract_VectorVector_Params.B), &B, sizeof(B));
 
+	uFnSubtract_VectorVector->iNative = 0;
+	uFnSubtract_VectorVector->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnSubtract_VectorVector, &Subtract_VectorVector_Params, nullptr);
+	uFnSubtract_VectorVector->FunctionFlags |= 0x400;
+	uFnSubtract_VectorVector->iNative = 216;
 
 	return Subtract_VectorVector_Params.ReturnValue;
 };
@@ -7766,7 +8454,7 @@ struct FVector UObject::Subtract_VectorVector(struct FVector A, struct FVector B
 // struct FVector                 A                              (CPF_Parm)
 // struct FVector                 B                              (CPF_Parm)
 
-struct FVector UObject::Add_VectorVector(struct FVector A, struct FVector B)
+struct FVector UObject::Add_VectorVector(const struct FVector& A, const struct FVector& B)
 {
 	static UFunction* uFnAdd_VectorVector = nullptr;
 
@@ -7780,7 +8468,11 @@ struct FVector UObject::Add_VectorVector(struct FVector A, struct FVector B)
 	memcpy_s(&Add_VectorVector_Params.A, sizeof(Add_VectorVector_Params.A), &A, sizeof(A));
 	memcpy_s(&Add_VectorVector_Params.B, sizeof(Add_VectorVector_Params.B), &B, sizeof(B));
 
+	uFnAdd_VectorVector->iNative = 0;
+	uFnAdd_VectorVector->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAdd_VectorVector, &Add_VectorVector_Params, nullptr);
+	uFnAdd_VectorVector->FunctionFlags |= 0x400;
+	uFnAdd_VectorVector->iNative = 215;
 
 	return Add_VectorVector_Params.ReturnValue;
 };
@@ -7792,7 +8484,7 @@ struct FVector UObject::Add_VectorVector(struct FVector A, struct FVector B)
 // struct FVector                 A                              (CPF_Parm)
 // float                          B                              (CPF_Parm)
 
-struct FVector UObject::Divide_VectorFloat(struct FVector A, float B)
+struct FVector UObject::Divide_VectorFloat(const struct FVector& A, float B)
 {
 	static UFunction* uFnDivide_VectorFloat = nullptr;
 
@@ -7806,7 +8498,11 @@ struct FVector UObject::Divide_VectorFloat(struct FVector A, float B)
 	memcpy_s(&Divide_VectorFloat_Params.A, sizeof(Divide_VectorFloat_Params.A), &A, sizeof(A));
 	memcpy_s(&Divide_VectorFloat_Params.B, sizeof(Divide_VectorFloat_Params.B), &B, sizeof(B));
 
+	uFnDivide_VectorFloat->iNative = 0;
+	uFnDivide_VectorFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnDivide_VectorFloat, &Divide_VectorFloat_Params, nullptr);
+	uFnDivide_VectorFloat->FunctionFlags |= 0x400;
+	uFnDivide_VectorFloat->iNative = 214;
 
 	return Divide_VectorFloat_Params.ReturnValue;
 };
@@ -7818,7 +8514,7 @@ struct FVector UObject::Divide_VectorFloat(struct FVector A, float B)
 // struct FVector                 A                              (CPF_Parm)
 // struct FVector                 B                              (CPF_Parm)
 
-struct FVector UObject::Multiply_VectorVector(struct FVector A, struct FVector B)
+struct FVector UObject::Multiply_VectorVector(const struct FVector& A, const struct FVector& B)
 {
 	static UFunction* uFnMultiply_VectorVector = nullptr;
 
@@ -7832,7 +8528,11 @@ struct FVector UObject::Multiply_VectorVector(struct FVector A, struct FVector B
 	memcpy_s(&Multiply_VectorVector_Params.A, sizeof(Multiply_VectorVector_Params.A), &A, sizeof(A));
 	memcpy_s(&Multiply_VectorVector_Params.B, sizeof(Multiply_VectorVector_Params.B), &B, sizeof(B));
 
+	uFnMultiply_VectorVector->iNative = 0;
+	uFnMultiply_VectorVector->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMultiply_VectorVector, &Multiply_VectorVector_Params, nullptr);
+	uFnMultiply_VectorVector->FunctionFlags |= 0x400;
+	uFnMultiply_VectorVector->iNative = 296;
 
 	return Multiply_VectorVector_Params.ReturnValue;
 };
@@ -7844,7 +8544,7 @@ struct FVector UObject::Multiply_VectorVector(struct FVector A, struct FVector B
 // float                          A                              (CPF_Parm)
 // struct FVector                 B                              (CPF_Parm)
 
-struct FVector UObject::Multiply_FloatVector(float A, struct FVector B)
+struct FVector UObject::Multiply_FloatVector(float A, const struct FVector& B)
 {
 	static UFunction* uFnMultiply_FloatVector = nullptr;
 
@@ -7858,7 +8558,11 @@ struct FVector UObject::Multiply_FloatVector(float A, struct FVector B)
 	memcpy_s(&Multiply_FloatVector_Params.A, sizeof(Multiply_FloatVector_Params.A), &A, sizeof(A));
 	memcpy_s(&Multiply_FloatVector_Params.B, sizeof(Multiply_FloatVector_Params.B), &B, sizeof(B));
 
+	uFnMultiply_FloatVector->iNative = 0;
+	uFnMultiply_FloatVector->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMultiply_FloatVector, &Multiply_FloatVector_Params, nullptr);
+	uFnMultiply_FloatVector->FunctionFlags |= 0x400;
+	uFnMultiply_FloatVector->iNative = 213;
 
 	return Multiply_FloatVector_Params.ReturnValue;
 };
@@ -7870,7 +8574,7 @@ struct FVector UObject::Multiply_FloatVector(float A, struct FVector B)
 // struct FVector                 A                              (CPF_Parm)
 // float                          B                              (CPF_Parm)
 
-struct FVector UObject::Multiply_VectorFloat(struct FVector A, float B)
+struct FVector UObject::Multiply_VectorFloat(const struct FVector& A, float B)
 {
 	static UFunction* uFnMultiply_VectorFloat = nullptr;
 
@@ -7884,7 +8588,11 @@ struct FVector UObject::Multiply_VectorFloat(struct FVector A, float B)
 	memcpy_s(&Multiply_VectorFloat_Params.A, sizeof(Multiply_VectorFloat_Params.A), &A, sizeof(A));
 	memcpy_s(&Multiply_VectorFloat_Params.B, sizeof(Multiply_VectorFloat_Params.B), &B, sizeof(B));
 
+	uFnMultiply_VectorFloat->iNative = 0;
+	uFnMultiply_VectorFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMultiply_VectorFloat, &Multiply_VectorFloat_Params, nullptr);
+	uFnMultiply_VectorFloat->FunctionFlags |= 0x400;
+	uFnMultiply_VectorFloat->iNative = 212;
 
 	return Multiply_VectorFloat_Params.ReturnValue;
 };
@@ -7895,7 +8603,7 @@ struct FVector UObject::Multiply_VectorFloat(struct FVector A, float B)
 // struct FVector                 ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FVector                 A                              (CPF_Parm)
 
-struct FVector UObject::Subtract_PreVector(struct FVector A)
+struct FVector UObject::Subtract_PreVector(const struct FVector& A)
 {
 	static UFunction* uFnSubtract_PreVector = nullptr;
 
@@ -7908,7 +8616,11 @@ struct FVector UObject::Subtract_PreVector(struct FVector A)
 	memset(&Subtract_PreVector_Params, 0, sizeof(Subtract_PreVector_Params));
 	memcpy_s(&Subtract_PreVector_Params.A, sizeof(Subtract_PreVector_Params.A), &A, sizeof(A));
 
+	uFnSubtract_PreVector->iNative = 0;
+	uFnSubtract_PreVector->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnSubtract_PreVector, &Subtract_PreVector_Params, nullptr);
+	uFnSubtract_PreVector->FunctionFlags |= 0x400;
+	uFnSubtract_PreVector->iNative = 211;
 
 	return Subtract_PreVector_Params.ReturnValue;
 };
@@ -7938,7 +8650,9 @@ float UObject::FInterpConstantTo(float Current, float Target, float DeltaTime, f
 	memcpy_s(&FInterpConstantTo_Params.DeltaTime, sizeof(FInterpConstantTo_Params.DeltaTime), &DeltaTime, sizeof(DeltaTime));
 	memcpy_s(&FInterpConstantTo_Params.InterpSpeed, sizeof(FInterpConstantTo_Params.InterpSpeed), &InterpSpeed, sizeof(InterpSpeed));
 
+	uFnFInterpConstantTo->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnFInterpConstantTo, &FInterpConstantTo_Params, nullptr);
+	uFnFInterpConstantTo->FunctionFlags |= 0x400;
 
 	return FInterpConstantTo_Params.ReturnValue;
 };
@@ -7968,7 +8682,9 @@ float UObject::FInterpTo(float Current, float Target, float DeltaTime, float Int
 	memcpy_s(&FInterpTo_Params.DeltaTime, sizeof(FInterpTo_Params.DeltaTime), &DeltaTime, sizeof(DeltaTime));
 	memcpy_s(&FInterpTo_Params.InterpSpeed, sizeof(FInterpTo_Params.InterpSpeed), &InterpSpeed, sizeof(InterpSpeed));
 
+	uFnFInterpTo->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnFInterpTo, &FInterpTo_Params, nullptr);
+	uFnFInterpTo->FunctionFlags |= 0x400;
 
 	return FInterpTo_Params.ReturnValue;
 };
@@ -8002,7 +8718,7 @@ float UObject::FPctByRange(float Value, float InMin, float InMax)
 };
 
 // Function Core.Object.RandSign
-// [0x00026003] (FUNC_Final | FUNC_Defined | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// [0x00026003] (FUNC_Final | FUNC_Defined | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // float                          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // float                          Value                          (CPF_OptionalParm | CPF_Parm)
@@ -8026,7 +8742,7 @@ float UObject::RandSign(float Value)
 };
 
 // Function Core.Object.CalculateGravityPosition
-// [0x00026003] (FUNC_Final | FUNC_Defined | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// [0x00026003] (FUNC_Final | FUNC_Defined | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // struct FVector                 ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FVector                 Location                       (CPF_Parm)
@@ -8035,7 +8751,7 @@ float UObject::RandSign(float Value)
 // float                          Time                           (CPF_Parm)
 // struct FVector                 GravityDirection               (CPF_OptionalParm | CPF_Parm)
 
-struct FVector UObject::CalculateGravityPosition(struct FVector Location, struct FVector Velocity, float Gravity, float Time, struct FVector GravityDirection)
+struct FVector UObject::CalculateGravityPosition(const struct FVector& Location, const struct FVector& Velocity, float Gravity, float Time, const struct FVector& GravityDirection)
 {
 	static UFunction* uFnCalculateGravityPosition = nullptr;
 
@@ -8108,7 +8824,9 @@ float UObject::FInterpEaseInOut(float A, float B, float Alpha, float Exp)
 	memcpy_s(&FInterpEaseInOut_Params.Alpha, sizeof(FInterpEaseInOut_Params.Alpha), &Alpha, sizeof(Alpha));
 	memcpy_s(&FInterpEaseInOut_Params.Exp, sizeof(FInterpEaseInOut_Params.Exp), &Exp, sizeof(Exp));
 
+	uFnFInterpEaseInOut->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnFInterpEaseInOut, &FInterpEaseInOut_Params, nullptr);
+	uFnFInterpEaseInOut->FunctionFlags |= 0x400;
 
 	return FInterpEaseInOut_Params.ReturnValue;
 };
@@ -8138,7 +8856,9 @@ float UObject::FInterpEaseOut(float A, float B, float Alpha, float Exp)
 	memcpy_s(&FInterpEaseOut_Params.Alpha, sizeof(FInterpEaseOut_Params.Alpha), &Alpha, sizeof(Alpha));
 	memcpy_s(&FInterpEaseOut_Params.Exp, sizeof(FInterpEaseOut_Params.Exp), &Exp, sizeof(Exp));
 
+	uFnFInterpEaseOut->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnFInterpEaseOut, &FInterpEaseOut_Params, nullptr);
+	uFnFInterpEaseOut->FunctionFlags |= 0x400;
 
 	return FInterpEaseOut_Params.ReturnValue;
 };
@@ -8168,7 +8888,9 @@ float UObject::FInterpEaseIn(float A, float B, float Alpha, float Exp)
 	memcpy_s(&FInterpEaseIn_Params.Alpha, sizeof(FInterpEaseIn_Params.Alpha), &Alpha, sizeof(Alpha));
 	memcpy_s(&FInterpEaseIn_Params.Exp, sizeof(FInterpEaseIn_Params.Exp), &Exp, sizeof(Exp));
 
+	uFnFInterpEaseIn->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnFInterpEaseIn, &FInterpEaseIn_Params, nullptr);
+	uFnFInterpEaseIn->FunctionFlags |= 0x400;
 
 	return FInterpEaseIn_Params.ReturnValue;
 };
@@ -8200,7 +8922,9 @@ float UObject::FCubicInterp(float P0, float T0, float P1, float T1, float A)
 	memcpy_s(&FCubicInterp_Params.T1, sizeof(FCubicInterp_Params.T1), &T1, sizeof(T1));
 	memcpy_s(&FCubicInterp_Params.A, sizeof(FCubicInterp_Params.A), &A, sizeof(A));
 
+	uFnFCubicInterp->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnFCubicInterp, &FCubicInterp_Params, nullptr);
+	uFnFCubicInterp->FunctionFlags |= 0x400;
 
 	return FCubicInterp_Params.ReturnValue;
 };
@@ -8224,7 +8948,9 @@ int32_t UObject::FloorLog2(int32_t Value)
 	memset(&FloorLog2_Params, 0, sizeof(FloorLog2_Params));
 	memcpy_s(&FloorLog2_Params.Value, sizeof(FloorLog2_Params.Value), &Value, sizeof(Value));
 
+	uFnFloorLog2->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnFloorLog2, &FloorLog2_Params, nullptr);
+	uFnFloorLog2->FunctionFlags |= 0x400;
 
 	return FloorLog2_Params.ReturnValue;
 };
@@ -8248,7 +8974,9 @@ int32_t UObject::FCeil(float A)
 	memset(&FCeil_Params, 0, sizeof(FCeil_Params));
 	memcpy_s(&FCeil_Params.A, sizeof(FCeil_Params.A), &A, sizeof(A));
 
+	uFnFCeil->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnFCeil, &FCeil_Params, nullptr);
+	uFnFCeil->FunctionFlags |= 0x400;
 
 	return FCeil_Params.ReturnValue;
 };
@@ -8272,7 +9000,9 @@ int32_t UObject::FFloor(float A)
 	memset(&FFloor_Params, 0, sizeof(FFloor_Params));
 	memcpy_s(&FFloor_Params.A, sizeof(FFloor_Params.A), &A, sizeof(A));
 
+	uFnFFloor->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnFFloor, &FFloor_Params, nullptr);
+	uFnFFloor->FunctionFlags |= 0x400;
 
 	return FFloor_Params.ReturnValue;
 };
@@ -8296,7 +9026,11 @@ int32_t UObject::Round(float A)
 	memset(&Round_Params, 0, sizeof(Round_Params));
 	memcpy_s(&Round_Params.A, sizeof(Round_Params.A), &A, sizeof(A));
 
+	uFnRound->iNative = 0;
+	uFnRound->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnRound, &Round_Params, nullptr);
+	uFnRound->FunctionFlags |= 0x400;
+	uFnRound->iNative = 199;
 
 	return Round_Params.ReturnValue;
 };
@@ -8324,7 +9058,11 @@ float UObject::Lerp(float A, float B, float Alpha)
 	memcpy_s(&Lerp_Params.B, sizeof(Lerp_Params.B), &B, sizeof(B));
 	memcpy_s(&Lerp_Params.Alpha, sizeof(Lerp_Params.Alpha), &Alpha, sizeof(Alpha));
 
+	uFnLerp->iNative = 0;
+	uFnLerp->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnLerp, &Lerp_Params, nullptr);
+	uFnLerp->FunctionFlags |= 0x400;
+	uFnLerp->iNative = 247;
 
 	return Lerp_Params.ReturnValue;
 };
@@ -8352,7 +9090,11 @@ float UObject::FClamp(float V, float A, float B)
 	memcpy_s(&FClamp_Params.A, sizeof(FClamp_Params.A), &A, sizeof(A));
 	memcpy_s(&FClamp_Params.B, sizeof(FClamp_Params.B), &B, sizeof(B));
 
+	uFnFClamp->iNative = 0;
+	uFnFClamp->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnFClamp, &FClamp_Params, nullptr);
+	uFnFClamp->FunctionFlags |= 0x400;
+	uFnFClamp->iNative = 246;
 
 	return FClamp_Params.ReturnValue;
 };
@@ -8378,7 +9120,11 @@ float UObject::FMax(float A, float B)
 	memcpy_s(&FMax_Params.A, sizeof(FMax_Params.A), &A, sizeof(A));
 	memcpy_s(&FMax_Params.B, sizeof(FMax_Params.B), &B, sizeof(B));
 
+	uFnFMax->iNative = 0;
+	uFnFMax->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnFMax, &FMax_Params, nullptr);
+	uFnFMax->FunctionFlags |= 0x400;
+	uFnFMax->iNative = 245;
 
 	return FMax_Params.ReturnValue;
 };
@@ -8404,7 +9150,11 @@ float UObject::FMin(float A, float B)
 	memcpy_s(&FMin_Params.A, sizeof(FMin_Params.A), &A, sizeof(A));
 	memcpy_s(&FMin_Params.B, sizeof(FMin_Params.B), &B, sizeof(B));
 
+	uFnFMin->iNative = 0;
+	uFnFMin->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnFMin, &FMin_Params, nullptr);
+	uFnFMin->FunctionFlags |= 0x400;
+	uFnFMin->iNative = 244;
 
 	return FMin_Params.ReturnValue;
 };
@@ -8426,7 +9176,11 @@ float UObject::FRand()
 	UObject_execFRand_Params FRand_Params;
 	memset(&FRand_Params, 0, sizeof(FRand_Params));
 
+	uFnFRand->iNative = 0;
+	uFnFRand->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnFRand, &FRand_Params, nullptr);
+	uFnFRand->FunctionFlags |= 0x400;
+	uFnFRand->iNative = 195;
 
 	return FRand_Params.ReturnValue;
 };
@@ -8450,7 +9204,11 @@ float UObject::Square(float A)
 	memset(&Square_Params, 0, sizeof(Square_Params));
 	memcpy_s(&Square_Params.A, sizeof(Square_Params.A), &A, sizeof(A));
 
+	uFnSquare->iNative = 0;
+	uFnSquare->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnSquare, &Square_Params, nullptr);
+	uFnSquare->FunctionFlags |= 0x400;
+	uFnSquare->iNative = 194;
 
 	return Square_Params.ReturnValue;
 };
@@ -8474,7 +9232,11 @@ float UObject::Sqrt(float A)
 	memset(&Sqrt_Params, 0, sizeof(Sqrt_Params));
 	memcpy_s(&Sqrt_Params.A, sizeof(Sqrt_Params.A), &A, sizeof(A));
 
+	uFnSqrt->iNative = 0;
+	uFnSqrt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnSqrt, &Sqrt_Params, nullptr);
+	uFnSqrt->FunctionFlags |= 0x400;
+	uFnSqrt->iNative = 193;
 
 	return Sqrt_Params.ReturnValue;
 };
@@ -8498,7 +9260,11 @@ float UObject::Loge(float A)
 	memset(&Loge_Params, 0, sizeof(Loge_Params));
 	memcpy_s(&Loge_Params.A, sizeof(Loge_Params.A), &A, sizeof(A));
 
+	uFnLoge->iNative = 0;
+	uFnLoge->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnLoge, &Loge_Params, nullptr);
+	uFnLoge->FunctionFlags |= 0x400;
+	uFnLoge->iNative = 329;
 
 	return Loge_Params.ReturnValue;
 };
@@ -8522,7 +9288,11 @@ float UObject::Exp(float A)
 	memset(&Exp_Params, 0, sizeof(Exp_Params));
 	memcpy_s(&Exp_Params.A, sizeof(Exp_Params.A), &A, sizeof(A));
 
+	uFnExp->iNative = 0;
+	uFnExp->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnExp, &Exp_Params, nullptr);
+	uFnExp->FunctionFlags |= 0x400;
+	uFnExp->iNative = 328;
 
 	return Exp_Params.ReturnValue;
 };
@@ -8548,7 +9318,9 @@ float UObject::Atan2(float A, float B)
 	memcpy_s(&Atan2_Params.A, sizeof(Atan2_Params.A), &A, sizeof(A));
 	memcpy_s(&Atan2_Params.B, sizeof(Atan2_Params.B), &B, sizeof(B));
 
+	uFnAtan2->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAtan2, &Atan2_Params, nullptr);
+	uFnAtan2->FunctionFlags |= 0x400;
 
 	return Atan2_Params.ReturnValue;
 };
@@ -8572,7 +9344,11 @@ float UObject::Atan(float A)
 	memset(&Atan_Params, 0, sizeof(Atan_Params));
 	memcpy_s(&Atan_Params.A, sizeof(Atan_Params.A), &A, sizeof(A));
 
+	uFnAtan->iNative = 0;
+	uFnAtan->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAtan, &Atan_Params, nullptr);
+	uFnAtan->FunctionFlags |= 0x400;
+	uFnAtan->iNative = 190;
 
 	return Atan_Params.ReturnValue;
 };
@@ -8596,7 +9372,11 @@ float UObject::Tan(float A)
 	memset(&Tan_Params, 0, sizeof(Tan_Params));
 	memcpy_s(&Tan_Params.A, sizeof(Tan_Params.A), &A, sizeof(A));
 
+	uFnTan->iNative = 0;
+	uFnTan->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnTan, &Tan_Params, nullptr);
+	uFnTan->FunctionFlags |= 0x400;
+	uFnTan->iNative = 189;
 
 	return Tan_Params.ReturnValue;
 };
@@ -8620,7 +9400,9 @@ float UObject::Acos(float A)
 	memset(&Acos_Params, 0, sizeof(Acos_Params));
 	memcpy_s(&Acos_Params.A, sizeof(Acos_Params.A), &A, sizeof(A));
 
+	uFnAcos->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAcos, &Acos_Params, nullptr);
+	uFnAcos->FunctionFlags |= 0x400;
 
 	return Acos_Params.ReturnValue;
 };
@@ -8644,7 +9426,11 @@ float UObject::Cos(float A)
 	memset(&Cos_Params, 0, sizeof(Cos_Params));
 	memcpy_s(&Cos_Params.A, sizeof(Cos_Params.A), &A, sizeof(A));
 
+	uFnCos->iNative = 0;
+	uFnCos->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnCos, &Cos_Params, nullptr);
+	uFnCos->FunctionFlags |= 0x400;
+	uFnCos->iNative = 188;
 
 	return Cos_Params.ReturnValue;
 };
@@ -8668,7 +9454,9 @@ float UObject::Asin(float A)
 	memset(&Asin_Params, 0, sizeof(Asin_Params));
 	memcpy_s(&Asin_Params.A, sizeof(Asin_Params.A), &A, sizeof(A));
 
+	uFnAsin->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAsin, &Asin_Params, nullptr);
+	uFnAsin->FunctionFlags |= 0x400;
 
 	return Asin_Params.ReturnValue;
 };
@@ -8692,7 +9480,11 @@ float UObject::Sin(float A)
 	memset(&Sin_Params, 0, sizeof(Sin_Params));
 	memcpy_s(&Sin_Params.A, sizeof(Sin_Params.A), &A, sizeof(A));
 
+	uFnSin->iNative = 0;
+	uFnSin->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnSin, &Sin_Params, nullptr);
+	uFnSin->FunctionFlags |= 0x400;
+	uFnSin->iNative = 187;
 
 	return Sin_Params.ReturnValue;
 };
@@ -8716,7 +9508,11 @@ float UObject::Abs(float A)
 	memset(&Abs_Params, 0, sizeof(Abs_Params));
 	memcpy_s(&Abs_Params.A, sizeof(Abs_Params.A), &A, sizeof(A));
 
+	uFnAbs->iNative = 0;
+	uFnAbs->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAbs, &Abs_Params, nullptr);
+	uFnAbs->FunctionFlags |= 0x400;
+	uFnAbs->iNative = 186;
 
 	return Abs_Params.ReturnValue;
 };
@@ -8742,7 +9538,11 @@ float UObject::SubtractEqual_FloatFloat(float B, float& A)
 	memcpy_s(&SubtractEqual_FloatFloat_Params.B, sizeof(SubtractEqual_FloatFloat_Params.B), &B, sizeof(B));
 	memcpy_s(&SubtractEqual_FloatFloat_Params.A, sizeof(SubtractEqual_FloatFloat_Params.A), &A, sizeof(A));
 
+	uFnSubtractEqual_FloatFloat->iNative = 0;
+	uFnSubtractEqual_FloatFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnSubtractEqual_FloatFloat, &SubtractEqual_FloatFloat_Params, nullptr);
+	uFnSubtractEqual_FloatFloat->FunctionFlags |= 0x400;
+	uFnSubtractEqual_FloatFloat->iNative = 185;
 
 	memcpy_s(&A, sizeof(A), &SubtractEqual_FloatFloat_Params.A, sizeof(SubtractEqual_FloatFloat_Params.A));
 
@@ -8770,7 +9570,11 @@ float UObject::AddEqual_FloatFloat(float B, float& A)
 	memcpy_s(&AddEqual_FloatFloat_Params.B, sizeof(AddEqual_FloatFloat_Params.B), &B, sizeof(B));
 	memcpy_s(&AddEqual_FloatFloat_Params.A, sizeof(AddEqual_FloatFloat_Params.A), &A, sizeof(A));
 
+	uFnAddEqual_FloatFloat->iNative = 0;
+	uFnAddEqual_FloatFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAddEqual_FloatFloat, &AddEqual_FloatFloat_Params, nullptr);
+	uFnAddEqual_FloatFloat->FunctionFlags |= 0x400;
+	uFnAddEqual_FloatFloat->iNative = 184;
 
 	memcpy_s(&A, sizeof(A), &AddEqual_FloatFloat_Params.A, sizeof(AddEqual_FloatFloat_Params.A));
 
@@ -8798,7 +9602,11 @@ float UObject::DivideEqual_FloatFloat(float B, float& A)
 	memcpy_s(&DivideEqual_FloatFloat_Params.B, sizeof(DivideEqual_FloatFloat_Params.B), &B, sizeof(B));
 	memcpy_s(&DivideEqual_FloatFloat_Params.A, sizeof(DivideEqual_FloatFloat_Params.A), &A, sizeof(A));
 
+	uFnDivideEqual_FloatFloat->iNative = 0;
+	uFnDivideEqual_FloatFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnDivideEqual_FloatFloat, &DivideEqual_FloatFloat_Params, nullptr);
+	uFnDivideEqual_FloatFloat->FunctionFlags |= 0x400;
+	uFnDivideEqual_FloatFloat->iNative = 183;
 
 	memcpy_s(&A, sizeof(A), &DivideEqual_FloatFloat_Params.A, sizeof(DivideEqual_FloatFloat_Params.A));
 
@@ -8826,7 +9634,11 @@ float UObject::MultiplyEqual_FloatFloat(float B, float& A)
 	memcpy_s(&MultiplyEqual_FloatFloat_Params.B, sizeof(MultiplyEqual_FloatFloat_Params.B), &B, sizeof(B));
 	memcpy_s(&MultiplyEqual_FloatFloat_Params.A, sizeof(MultiplyEqual_FloatFloat_Params.A), &A, sizeof(A));
 
+	uFnMultiplyEqual_FloatFloat->iNative = 0;
+	uFnMultiplyEqual_FloatFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMultiplyEqual_FloatFloat, &MultiplyEqual_FloatFloat_Params, nullptr);
+	uFnMultiplyEqual_FloatFloat->FunctionFlags |= 0x400;
+	uFnMultiplyEqual_FloatFloat->iNative = 182;
 
 	memcpy_s(&A, sizeof(A), &MultiplyEqual_FloatFloat_Params.A, sizeof(MultiplyEqual_FloatFloat_Params.A));
 
@@ -8854,7 +9666,11 @@ bool UObject::NotEqual_FloatFloat(float A, float B)
 	memcpy_s(&NotEqual_FloatFloat_Params.A, sizeof(NotEqual_FloatFloat_Params.A), &A, sizeof(A));
 	memcpy_s(&NotEqual_FloatFloat_Params.B, sizeof(NotEqual_FloatFloat_Params.B), &B, sizeof(B));
 
+	uFnNotEqual_FloatFloat->iNative = 0;
+	uFnNotEqual_FloatFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnNotEqual_FloatFloat, &NotEqual_FloatFloat_Params, nullptr);
+	uFnNotEqual_FloatFloat->FunctionFlags |= 0x400;
+	uFnNotEqual_FloatFloat->iNative = 181;
 
 	return NotEqual_FloatFloat_Params.ReturnValue;
 };
@@ -8880,7 +9696,11 @@ bool UObject::ComplementEqual_FloatFloat(float A, float B)
 	memcpy_s(&ComplementEqual_FloatFloat_Params.A, sizeof(ComplementEqual_FloatFloat_Params.A), &A, sizeof(A));
 	memcpy_s(&ComplementEqual_FloatFloat_Params.B, sizeof(ComplementEqual_FloatFloat_Params.B), &B, sizeof(B));
 
+	uFnComplementEqual_FloatFloat->iNative = 0;
+	uFnComplementEqual_FloatFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnComplementEqual_FloatFloat, &ComplementEqual_FloatFloat_Params, nullptr);
+	uFnComplementEqual_FloatFloat->FunctionFlags |= 0x400;
+	uFnComplementEqual_FloatFloat->iNative = 210;
 
 	return ComplementEqual_FloatFloat_Params.ReturnValue;
 };
@@ -8906,7 +9726,11 @@ bool UObject::EqualEqual_FloatFloat(float A, float B)
 	memcpy_s(&EqualEqual_FloatFloat_Params.A, sizeof(EqualEqual_FloatFloat_Params.A), &A, sizeof(A));
 	memcpy_s(&EqualEqual_FloatFloat_Params.B, sizeof(EqualEqual_FloatFloat_Params.B), &B, sizeof(B));
 
+	uFnEqualEqual_FloatFloat->iNative = 0;
+	uFnEqualEqual_FloatFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnEqualEqual_FloatFloat, &EqualEqual_FloatFloat_Params, nullptr);
+	uFnEqualEqual_FloatFloat->FunctionFlags |= 0x400;
+	uFnEqualEqual_FloatFloat->iNative = 180;
 
 	return EqualEqual_FloatFloat_Params.ReturnValue;
 };
@@ -8932,7 +9756,11 @@ bool UObject::GreaterEqual_FloatFloat(float A, float B)
 	memcpy_s(&GreaterEqual_FloatFloat_Params.A, sizeof(GreaterEqual_FloatFloat_Params.A), &A, sizeof(A));
 	memcpy_s(&GreaterEqual_FloatFloat_Params.B, sizeof(GreaterEqual_FloatFloat_Params.B), &B, sizeof(B));
 
+	uFnGreaterEqual_FloatFloat->iNative = 0;
+	uFnGreaterEqual_FloatFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGreaterEqual_FloatFloat, &GreaterEqual_FloatFloat_Params, nullptr);
+	uFnGreaterEqual_FloatFloat->FunctionFlags |= 0x400;
+	uFnGreaterEqual_FloatFloat->iNative = 179;
 
 	return GreaterEqual_FloatFloat_Params.ReturnValue;
 };
@@ -8958,7 +9786,11 @@ bool UObject::LessEqual_FloatFloat(float A, float B)
 	memcpy_s(&LessEqual_FloatFloat_Params.A, sizeof(LessEqual_FloatFloat_Params.A), &A, sizeof(A));
 	memcpy_s(&LessEqual_FloatFloat_Params.B, sizeof(LessEqual_FloatFloat_Params.B), &B, sizeof(B));
 
+	uFnLessEqual_FloatFloat->iNative = 0;
+	uFnLessEqual_FloatFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnLessEqual_FloatFloat, &LessEqual_FloatFloat_Params, nullptr);
+	uFnLessEqual_FloatFloat->FunctionFlags |= 0x400;
+	uFnLessEqual_FloatFloat->iNative = 178;
 
 	return LessEqual_FloatFloat_Params.ReturnValue;
 };
@@ -8984,7 +9816,11 @@ bool UObject::Greater_FloatFloat(float A, float B)
 	memcpy_s(&Greater_FloatFloat_Params.A, sizeof(Greater_FloatFloat_Params.A), &A, sizeof(A));
 	memcpy_s(&Greater_FloatFloat_Params.B, sizeof(Greater_FloatFloat_Params.B), &B, sizeof(B));
 
+	uFnGreater_FloatFloat->iNative = 0;
+	uFnGreater_FloatFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGreater_FloatFloat, &Greater_FloatFloat_Params, nullptr);
+	uFnGreater_FloatFloat->FunctionFlags |= 0x400;
+	uFnGreater_FloatFloat->iNative = 177;
 
 	return Greater_FloatFloat_Params.ReturnValue;
 };
@@ -9010,7 +9846,11 @@ bool UObject::Less_FloatFloat(float A, float B)
 	memcpy_s(&Less_FloatFloat_Params.A, sizeof(Less_FloatFloat_Params.A), &A, sizeof(A));
 	memcpy_s(&Less_FloatFloat_Params.B, sizeof(Less_FloatFloat_Params.B), &B, sizeof(B));
 
+	uFnLess_FloatFloat->iNative = 0;
+	uFnLess_FloatFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnLess_FloatFloat, &Less_FloatFloat_Params, nullptr);
+	uFnLess_FloatFloat->FunctionFlags |= 0x400;
+	uFnLess_FloatFloat->iNative = 176;
 
 	return Less_FloatFloat_Params.ReturnValue;
 };
@@ -9036,7 +9876,11 @@ float UObject::Subtract_FloatFloat(float A, float B)
 	memcpy_s(&Subtract_FloatFloat_Params.A, sizeof(Subtract_FloatFloat_Params.A), &A, sizeof(A));
 	memcpy_s(&Subtract_FloatFloat_Params.B, sizeof(Subtract_FloatFloat_Params.B), &B, sizeof(B));
 
+	uFnSubtract_FloatFloat->iNative = 0;
+	uFnSubtract_FloatFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnSubtract_FloatFloat, &Subtract_FloatFloat_Params, nullptr);
+	uFnSubtract_FloatFloat->FunctionFlags |= 0x400;
+	uFnSubtract_FloatFloat->iNative = 175;
 
 	return Subtract_FloatFloat_Params.ReturnValue;
 };
@@ -9062,7 +9906,11 @@ float UObject::Add_FloatFloat(float A, float B)
 	memcpy_s(&Add_FloatFloat_Params.A, sizeof(Add_FloatFloat_Params.A), &A, sizeof(A));
 	memcpy_s(&Add_FloatFloat_Params.B, sizeof(Add_FloatFloat_Params.B), &B, sizeof(B));
 
+	uFnAdd_FloatFloat->iNative = 0;
+	uFnAdd_FloatFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAdd_FloatFloat, &Add_FloatFloat_Params, nullptr);
+	uFnAdd_FloatFloat->FunctionFlags |= 0x400;
+	uFnAdd_FloatFloat->iNative = 174;
 
 	return Add_FloatFloat_Params.ReturnValue;
 };
@@ -9088,7 +9936,11 @@ float UObject::Percent_FloatFloat(float A, float B)
 	memcpy_s(&Percent_FloatFloat_Params.A, sizeof(Percent_FloatFloat_Params.A), &A, sizeof(A));
 	memcpy_s(&Percent_FloatFloat_Params.B, sizeof(Percent_FloatFloat_Params.B), &B, sizeof(B));
 
+	uFnPercent_FloatFloat->iNative = 0;
+	uFnPercent_FloatFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnPercent_FloatFloat, &Percent_FloatFloat_Params, nullptr);
+	uFnPercent_FloatFloat->FunctionFlags |= 0x400;
+	uFnPercent_FloatFloat->iNative = 173;
 
 	return Percent_FloatFloat_Params.ReturnValue;
 };
@@ -9114,7 +9966,11 @@ float UObject::Divide_FloatFloat(float A, float B)
 	memcpy_s(&Divide_FloatFloat_Params.A, sizeof(Divide_FloatFloat_Params.A), &A, sizeof(A));
 	memcpy_s(&Divide_FloatFloat_Params.B, sizeof(Divide_FloatFloat_Params.B), &B, sizeof(B));
 
+	uFnDivide_FloatFloat->iNative = 0;
+	uFnDivide_FloatFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnDivide_FloatFloat, &Divide_FloatFloat_Params, nullptr);
+	uFnDivide_FloatFloat->FunctionFlags |= 0x400;
+	uFnDivide_FloatFloat->iNative = 172;
 
 	return Divide_FloatFloat_Params.ReturnValue;
 };
@@ -9140,7 +9996,11 @@ float UObject::Multiply_FloatFloat(float A, float B)
 	memcpy_s(&Multiply_FloatFloat_Params.A, sizeof(Multiply_FloatFloat_Params.A), &A, sizeof(A));
 	memcpy_s(&Multiply_FloatFloat_Params.B, sizeof(Multiply_FloatFloat_Params.B), &B, sizeof(B));
 
+	uFnMultiply_FloatFloat->iNative = 0;
+	uFnMultiply_FloatFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMultiply_FloatFloat, &Multiply_FloatFloat_Params, nullptr);
+	uFnMultiply_FloatFloat->FunctionFlags |= 0x400;
+	uFnMultiply_FloatFloat->iNative = 171;
 
 	return Multiply_FloatFloat_Params.ReturnValue;
 };
@@ -9166,7 +10026,11 @@ float UObject::MultiplyMultiply_FloatFloat(float Base, float Exp)
 	memcpy_s(&MultiplyMultiply_FloatFloat_Params.Base, sizeof(MultiplyMultiply_FloatFloat_Params.Base), &Base, sizeof(Base));
 	memcpy_s(&MultiplyMultiply_FloatFloat_Params.Exp, sizeof(MultiplyMultiply_FloatFloat_Params.Exp), &Exp, sizeof(Exp));
 
+	uFnMultiplyMultiply_FloatFloat->iNative = 0;
+	uFnMultiplyMultiply_FloatFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMultiplyMultiply_FloatFloat, &MultiplyMultiply_FloatFloat_Params, nullptr);
+	uFnMultiplyMultiply_FloatFloat->FunctionFlags |= 0x400;
+	uFnMultiplyMultiply_FloatFloat->iNative = 170;
 
 	return MultiplyMultiply_FloatFloat_Params.ReturnValue;
 };
@@ -9190,7 +10054,11 @@ float UObject::Subtract_PreFloat(float A)
 	memset(&Subtract_PreFloat_Params, 0, sizeof(Subtract_PreFloat_Params));
 	memcpy_s(&Subtract_PreFloat_Params.A, sizeof(Subtract_PreFloat_Params.A), &A, sizeof(A));
 
+	uFnSubtract_PreFloat->iNative = 0;
+	uFnSubtract_PreFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnSubtract_PreFloat, &Subtract_PreFloat_Params, nullptr);
+	uFnSubtract_PreFloat->FunctionFlags |= 0x400;
+	uFnSubtract_PreFloat->iNative = 169;
 
 	return Subtract_PreFloat_Params.ReturnValue;
 };
@@ -9214,7 +10082,9 @@ class FString UObject::ToHex(int32_t A)
 	memset(&ToHex_Params, 0, sizeof(ToHex_Params));
 	memcpy_s(&ToHex_Params.A, sizeof(ToHex_Params.A), &A, sizeof(A));
 
+	uFnToHex->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnToHex, &ToHex_Params, nullptr);
+	uFnToHex->FunctionFlags |= 0x400;
 
 	return ToHex_Params.ReturnValue;
 };
@@ -9242,7 +10112,11 @@ int32_t UObject::Clamp(int32_t V, int32_t A, int32_t B)
 	memcpy_s(&Clamp_Params.A, sizeof(Clamp_Params.A), &A, sizeof(A));
 	memcpy_s(&Clamp_Params.B, sizeof(Clamp_Params.B), &B, sizeof(B));
 
+	uFnClamp->iNative = 0;
+	uFnClamp->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnClamp, &Clamp_Params, nullptr);
+	uFnClamp->FunctionFlags |= 0x400;
+	uFnClamp->iNative = 251;
 
 	return Clamp_Params.ReturnValue;
 };
@@ -9268,7 +10142,11 @@ int32_t UObject::Max(int32_t A, int32_t B)
 	memcpy_s(&Max_Params.A, sizeof(Max_Params.A), &A, sizeof(A));
 	memcpy_s(&Max_Params.B, sizeof(Max_Params.B), &B, sizeof(B));
 
+	uFnMax->iNative = 0;
+	uFnMax->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMax, &Max_Params, nullptr);
+	uFnMax->FunctionFlags |= 0x400;
+	uFnMax->iNative = 250;
 
 	return Max_Params.ReturnValue;
 };
@@ -9294,7 +10172,11 @@ int32_t UObject::Min(int32_t A, int32_t B)
 	memcpy_s(&Min_Params.A, sizeof(Min_Params.A), &A, sizeof(A));
 	memcpy_s(&Min_Params.B, sizeof(Min_Params.B), &B, sizeof(B));
 
+	uFnMin->iNative = 0;
+	uFnMin->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMin, &Min_Params, nullptr);
+	uFnMin->FunctionFlags |= 0x400;
+	uFnMin->iNative = 249;
 
 	return Min_Params.ReturnValue;
 };
@@ -9318,7 +10200,11 @@ int32_t UObject::Rand(int32_t Max)
 	memset(&Rand_Params, 0, sizeof(Rand_Params));
 	memcpy_s(&Rand_Params.Max, sizeof(Rand_Params.Max), &Max, sizeof(Max));
 
+	uFnRand->iNative = 0;
+	uFnRand->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnRand, &Rand_Params, nullptr);
+	uFnRand->FunctionFlags |= 0x400;
+	uFnRand->iNative = 167;
 
 	return Rand_Params.ReturnValue;
 };
@@ -9329,7 +10215,7 @@ int32_t UObject::Rand(int32_t Max)
 // struct FColor                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Hex                            (CPF_Parm | CPF_NeedCtorLink)
 
-struct FColor UObject::FromHexColor(class FString Hex)
+struct FColor UObject::FromHexColor(const class FString& Hex)
 {
 	static UFunction* uFnFromHexColor = nullptr;
 
@@ -9353,7 +10239,7 @@ struct FColor UObject::FromHexColor(class FString Hex)
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Hex                            (CPF_Parm | CPF_NeedCtorLink)
 
-int32_t UObject::FromHex(class FString Hex)
+int32_t UObject::FromHex(const class FString& Hex)
 {
 	static UFunction* uFnFromHex = nullptr;
 
@@ -9366,7 +10252,9 @@ int32_t UObject::FromHex(class FString Hex)
 	memset(&FromHex_Params, 0, sizeof(FromHex_Params));
 	memcpy_s(&FromHex_Params.Hex, sizeof(FromHex_Params.Hex), &Hex, sizeof(Hex));
 
+	uFnFromHex->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnFromHex, &FromHex_Params, nullptr);
+	uFnFromHex->FunctionFlags |= 0x400;
 
 	return FromHex_Params.ReturnValue;
 };
@@ -9389,10 +10277,12 @@ uint64_t UObject::QMin(uint64_t A, uint64_t B)
 
 	UObject_execQMin_Params QMin_Params;
 	memset(&QMin_Params, 0, sizeof(QMin_Params));
-	QMin_Params.A = A;
-	QMin_Params.B = B;
+	memcpy_s(&QMin_Params.A, sizeof(QMin_Params.A), &A, sizeof(A));
+	memcpy_s(&QMin_Params.B, sizeof(QMin_Params.B), &B, sizeof(B));
 
+	uFnQMin->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnQMin, &QMin_Params, nullptr);
+	uFnQMin->FunctionFlags |= 0x400;
 
 	return QMin_Params.ReturnValue;
 };
@@ -9415,10 +10305,12 @@ uint64_t UObject::QMax(uint64_t A, uint64_t B)
 
 	UObject_execQMax_Params QMax_Params;
 	memset(&QMax_Params, 0, sizeof(QMax_Params));
-	QMax_Params.A = A;
-	QMax_Params.B = B;
+	memcpy_s(&QMax_Params.A, sizeof(QMax_Params.A), &A, sizeof(A));
+	memcpy_s(&QMax_Params.B, sizeof(QMax_Params.B), &B, sizeof(B));
 
+	uFnQMax->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnQMax, &QMax_Params, nullptr);
+	uFnQMax->FunctionFlags |= 0x400;
 
 	return QMax_Params.ReturnValue;
 };
@@ -9441,10 +10333,12 @@ uint64_t UObject::QSubtract(uint64_t A, uint64_t B)
 
 	UObject_execQSubtract_Params QSubtract_Params;
 	memset(&QSubtract_Params, 0, sizeof(QSubtract_Params));
-	QSubtract_Params.A = A;
-	QSubtract_Params.B = B;
+	memcpy_s(&QSubtract_Params.A, sizeof(QSubtract_Params.A), &A, sizeof(A));
+	memcpy_s(&QSubtract_Params.B, sizeof(QSubtract_Params.B), &B, sizeof(B));
 
+	uFnQSubtract->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnQSubtract, &QSubtract_Params, nullptr);
+	uFnQSubtract->FunctionFlags |= 0x400;
 
 	return QSubtract_Params.ReturnValue;
 };
@@ -9467,10 +10361,12 @@ bool UObject::NotEqual_QWordInt(uint64_t A, int32_t B)
 
 	UObject_execNotEqual_QWordInt_Params NotEqual_QWordInt_Params;
 	memset(&NotEqual_QWordInt_Params, 0, sizeof(NotEqual_QWordInt_Params));
-	NotEqual_QWordInt_Params.A = A;
+	memcpy_s(&NotEqual_QWordInt_Params.A, sizeof(NotEqual_QWordInt_Params.A), &A, sizeof(A));
 	memcpy_s(&NotEqual_QWordInt_Params.B, sizeof(NotEqual_QWordInt_Params.B), &B, sizeof(B));
 
+	uFnNotEqual_QWordInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnNotEqual_QWordInt, &NotEqual_QWordInt_Params, nullptr);
+	uFnNotEqual_QWordInt->FunctionFlags |= 0x400;
 
 	return NotEqual_QWordInt_Params.ReturnValue;
 };
@@ -9493,12 +10389,74 @@ bool UObject::EqualEqual_QWordInt(uint64_t A, int32_t B)
 
 	UObject_execEqualEqual_QWordInt_Params EqualEqual_QWordInt_Params;
 	memset(&EqualEqual_QWordInt_Params, 0, sizeof(EqualEqual_QWordInt_Params));
-	EqualEqual_QWordInt_Params.A = A;
+	memcpy_s(&EqualEqual_QWordInt_Params.A, sizeof(EqualEqual_QWordInt_Params.A), &A, sizeof(A));
 	memcpy_s(&EqualEqual_QWordInt_Params.B, sizeof(EqualEqual_QWordInt_Params.B), &B, sizeof(B));
 
+	uFnEqualEqual_QWordInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnEqualEqual_QWordInt, &EqualEqual_QWordInt_Params, nullptr);
+	uFnEqualEqual_QWordInt->FunctionFlags |= 0x400;
 
 	return EqualEqual_QWordInt_Params.ReturnValue;
+};
+
+// Function Core.Object.SubtractEqual_QWordQWord
+// [0x00423401] (FUNC_Final | FUNC_Native | FUNC_Operator | FUNC_Static | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// Parameter Info:
+// uint64_t                       ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+// uint64_t                       B                              (CPF_Parm)
+// uint64_t                       A                              (CPF_Parm | CPF_OutParm)
+
+uint64_t UObject::SubtractEqual_QWordQWord(uint64_t B, uint64_t& A)
+{
+	static UFunction* uFnSubtractEqual_QWordQWord = nullptr;
+
+	if (!uFnSubtractEqual_QWordQWord)
+	{
+		uFnSubtractEqual_QWordQWord = UFunction::FindFunction("Function Core.Object.SubtractEqual_QWordQWord");
+	}
+
+	UObject_execSubtractEqual_QWordQWord_Params SubtractEqual_QWordQWord_Params;
+	memset(&SubtractEqual_QWordQWord_Params, 0, sizeof(SubtractEqual_QWordQWord_Params));
+	memcpy_s(&SubtractEqual_QWordQWord_Params.B, sizeof(SubtractEqual_QWordQWord_Params.B), &B, sizeof(B));
+	memcpy_s(&SubtractEqual_QWordQWord_Params.A, sizeof(SubtractEqual_QWordQWord_Params.A), &A, sizeof(A));
+
+	uFnSubtractEqual_QWordQWord->FunctionFlags |= ~0x400;
+	UObject::StaticClass()->ProcessEvent(uFnSubtractEqual_QWordQWord, &SubtractEqual_QWordQWord_Params, nullptr);
+	uFnSubtractEqual_QWordQWord->FunctionFlags |= 0x400;
+
+	memcpy_s(&A, sizeof(A), &SubtractEqual_QWordQWord_Params.A, sizeof(SubtractEqual_QWordQWord_Params.A));
+
+	return SubtractEqual_QWordQWord_Params.ReturnValue;
+};
+
+// Function Core.Object.AddEqual_QWordQWord
+// [0x00423401] (FUNC_Final | FUNC_Native | FUNC_Operator | FUNC_Static | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// Parameter Info:
+// uint64_t                       ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+// uint64_t                       B                              (CPF_Parm)
+// uint64_t                       A                              (CPF_Parm | CPF_OutParm)
+
+uint64_t UObject::AddEqual_QWordQWord(uint64_t B, uint64_t& A)
+{
+	static UFunction* uFnAddEqual_QWordQWord = nullptr;
+
+	if (!uFnAddEqual_QWordQWord)
+	{
+		uFnAddEqual_QWordQWord = UFunction::FindFunction("Function Core.Object.AddEqual_QWordQWord");
+	}
+
+	UObject_execAddEqual_QWordQWord_Params AddEqual_QWordQWord_Params;
+	memset(&AddEqual_QWordQWord_Params, 0, sizeof(AddEqual_QWordQWord_Params));
+	memcpy_s(&AddEqual_QWordQWord_Params.B, sizeof(AddEqual_QWordQWord_Params.B), &B, sizeof(B));
+	memcpy_s(&AddEqual_QWordQWord_Params.A, sizeof(AddEqual_QWordQWord_Params.A), &A, sizeof(A));
+
+	uFnAddEqual_QWordQWord->FunctionFlags |= ~0x400;
+	UObject::StaticClass()->ProcessEvent(uFnAddEqual_QWordQWord, &AddEqual_QWordQWord_Params, nullptr);
+	uFnAddEqual_QWordQWord->FunctionFlags |= 0x400;
+
+	memcpy_s(&A, sizeof(A), &AddEqual_QWordQWord_Params.A, sizeof(AddEqual_QWordQWord_Params.A));
+
+	return AddEqual_QWordQWord_Params.ReturnValue;
 };
 
 // Function Core.Object.NotEqual_QWordQWord
@@ -9519,10 +10477,12 @@ bool UObject::NotEqual_QWordQWord(uint64_t A, uint64_t B)
 
 	UObject_execNotEqual_QWordQWord_Params NotEqual_QWordQWord_Params;
 	memset(&NotEqual_QWordQWord_Params, 0, sizeof(NotEqual_QWordQWord_Params));
-	NotEqual_QWordQWord_Params.A = A;
-	NotEqual_QWordQWord_Params.B = B;
+	memcpy_s(&NotEqual_QWordQWord_Params.A, sizeof(NotEqual_QWordQWord_Params.A), &A, sizeof(A));
+	memcpy_s(&NotEqual_QWordQWord_Params.B, sizeof(NotEqual_QWordQWord_Params.B), &B, sizeof(B));
 
+	uFnNotEqual_QWordQWord->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnNotEqual_QWordQWord, &NotEqual_QWordQWord_Params, nullptr);
+	uFnNotEqual_QWordQWord->FunctionFlags |= 0x400;
 
 	return NotEqual_QWordQWord_Params.ReturnValue;
 };
@@ -9545,10 +10505,12 @@ bool UObject::EqualEqual_QWordQWord(uint64_t A, uint64_t B)
 
 	UObject_execEqualEqual_QWordQWord_Params EqualEqual_QWordQWord_Params;
 	memset(&EqualEqual_QWordQWord_Params, 0, sizeof(EqualEqual_QWordQWord_Params));
-	EqualEqual_QWordQWord_Params.A = A;
-	EqualEqual_QWordQWord_Params.B = B;
+	memcpy_s(&EqualEqual_QWordQWord_Params.A, sizeof(EqualEqual_QWordQWord_Params.A), &A, sizeof(A));
+	memcpy_s(&EqualEqual_QWordQWord_Params.B, sizeof(EqualEqual_QWordQWord_Params.B), &B, sizeof(B));
 
+	uFnEqualEqual_QWordQWord->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnEqualEqual_QWordQWord, &EqualEqual_QWordQWord_Params, nullptr);
+	uFnEqualEqual_QWordQWord->FunctionFlags |= 0x400;
 
 	return EqualEqual_QWordQWord_Params.ReturnValue;
 };
@@ -9571,10 +10533,12 @@ bool UObject::GreaterEqual_QWordQWord(uint64_t A, uint64_t B)
 
 	UObject_execGreaterEqual_QWordQWord_Params GreaterEqual_QWordQWord_Params;
 	memset(&GreaterEqual_QWordQWord_Params, 0, sizeof(GreaterEqual_QWordQWord_Params));
-	GreaterEqual_QWordQWord_Params.A = A;
-	GreaterEqual_QWordQWord_Params.B = B;
+	memcpy_s(&GreaterEqual_QWordQWord_Params.A, sizeof(GreaterEqual_QWordQWord_Params.A), &A, sizeof(A));
+	memcpy_s(&GreaterEqual_QWordQWord_Params.B, sizeof(GreaterEqual_QWordQWord_Params.B), &B, sizeof(B));
 
+	uFnGreaterEqual_QWordQWord->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGreaterEqual_QWordQWord, &GreaterEqual_QWordQWord_Params, nullptr);
+	uFnGreaterEqual_QWordQWord->FunctionFlags |= 0x400;
 
 	return GreaterEqual_QWordQWord_Params.ReturnValue;
 };
@@ -9597,10 +10561,12 @@ bool UObject::LessEqual_QWordQWord(uint64_t A, uint64_t B)
 
 	UObject_execLessEqual_QWordQWord_Params LessEqual_QWordQWord_Params;
 	memset(&LessEqual_QWordQWord_Params, 0, sizeof(LessEqual_QWordQWord_Params));
-	LessEqual_QWordQWord_Params.A = A;
-	LessEqual_QWordQWord_Params.B = B;
+	memcpy_s(&LessEqual_QWordQWord_Params.A, sizeof(LessEqual_QWordQWord_Params.A), &A, sizeof(A));
+	memcpy_s(&LessEqual_QWordQWord_Params.B, sizeof(LessEqual_QWordQWord_Params.B), &B, sizeof(B));
 
+	uFnLessEqual_QWordQWord->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnLessEqual_QWordQWord, &LessEqual_QWordQWord_Params, nullptr);
+	uFnLessEqual_QWordQWord->FunctionFlags |= 0x400;
 
 	return LessEqual_QWordQWord_Params.ReturnValue;
 };
@@ -9623,10 +10589,12 @@ bool UObject::Greater_QWordQWord(uint64_t A, uint64_t B)
 
 	UObject_execGreater_QWordQWord_Params Greater_QWordQWord_Params;
 	memset(&Greater_QWordQWord_Params, 0, sizeof(Greater_QWordQWord_Params));
-	Greater_QWordQWord_Params.A = A;
-	Greater_QWordQWord_Params.B = B;
+	memcpy_s(&Greater_QWordQWord_Params.A, sizeof(Greater_QWordQWord_Params.A), &A, sizeof(A));
+	memcpy_s(&Greater_QWordQWord_Params.B, sizeof(Greater_QWordQWord_Params.B), &B, sizeof(B));
 
+	uFnGreater_QWordQWord->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGreater_QWordQWord, &Greater_QWordQWord_Params, nullptr);
+	uFnGreater_QWordQWord->FunctionFlags |= 0x400;
 
 	return Greater_QWordQWord_Params.ReturnValue;
 };
@@ -9649,10 +10617,12 @@ bool UObject::Less_QWordQWord(uint64_t A, uint64_t B)
 
 	UObject_execLess_QWordQWord_Params Less_QWordQWord_Params;
 	memset(&Less_QWordQWord_Params, 0, sizeof(Less_QWordQWord_Params));
-	Less_QWordQWord_Params.A = A;
-	Less_QWordQWord_Params.B = B;
+	memcpy_s(&Less_QWordQWord_Params.A, sizeof(Less_QWordQWord_Params.A), &A, sizeof(A));
+	memcpy_s(&Less_QWordQWord_Params.B, sizeof(Less_QWordQWord_Params.B), &B, sizeof(B));
 
+	uFnLess_QWordQWord->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnLess_QWordQWord, &Less_QWordQWord_Params, nullptr);
+	uFnLess_QWordQWord->FunctionFlags |= 0x400;
 
 	return Less_QWordQWord_Params.ReturnValue;
 };
@@ -9675,10 +10645,12 @@ int32_t UObject::Subtract_QWordQWord(uint64_t A, uint64_t B)
 
 	UObject_execSubtract_QWordQWord_Params Subtract_QWordQWord_Params;
 	memset(&Subtract_QWordQWord_Params, 0, sizeof(Subtract_QWordQWord_Params));
-	Subtract_QWordQWord_Params.A = A;
-	Subtract_QWordQWord_Params.B = B;
+	memcpy_s(&Subtract_QWordQWord_Params.A, sizeof(Subtract_QWordQWord_Params.A), &A, sizeof(A));
+	memcpy_s(&Subtract_QWordQWord_Params.B, sizeof(Subtract_QWordQWord_Params.B), &B, sizeof(B));
 
+	uFnSubtract_QWordQWord->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnSubtract_QWordQWord, &Subtract_QWordQWord_Params, nullptr);
+	uFnSubtract_QWordQWord->FunctionFlags |= 0x400;
 
 	return Subtract_QWordQWord_Params.ReturnValue;
 };
@@ -9701,12 +10673,70 @@ uint64_t UObject::Add_QWordQWord(uint64_t A, uint64_t B)
 
 	UObject_execAdd_QWordQWord_Params Add_QWordQWord_Params;
 	memset(&Add_QWordQWord_Params, 0, sizeof(Add_QWordQWord_Params));
-	Add_QWordQWord_Params.A = A;
-	Add_QWordQWord_Params.B = B;
+	memcpy_s(&Add_QWordQWord_Params.A, sizeof(Add_QWordQWord_Params.A), &A, sizeof(A));
+	memcpy_s(&Add_QWordQWord_Params.B, sizeof(Add_QWordQWord_Params.B), &B, sizeof(B));
 
+	uFnAdd_QWordQWord->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAdd_QWordQWord, &Add_QWordQWord_Params, nullptr);
+	uFnAdd_QWordQWord->FunctionFlags |= 0x400;
 
 	return Add_QWordQWord_Params.ReturnValue;
+};
+
+// Function Core.Object.Divide_QWordQWord
+// [0x00023401] (FUNC_Final | FUNC_Native | FUNC_Operator | FUNC_Static | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
+// uint64_t                       ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+// uint64_t                       A                              (CPF_Parm)
+// uint64_t                       B                              (CPF_Parm)
+
+uint64_t UObject::Divide_QWordQWord(uint64_t A, uint64_t B)
+{
+	static UFunction* uFnDivide_QWordQWord = nullptr;
+
+	if (!uFnDivide_QWordQWord)
+	{
+		uFnDivide_QWordQWord = UFunction::FindFunction("Function Core.Object.Divide_QWordQWord");
+	}
+
+	UObject_execDivide_QWordQWord_Params Divide_QWordQWord_Params;
+	memset(&Divide_QWordQWord_Params, 0, sizeof(Divide_QWordQWord_Params));
+	memcpy_s(&Divide_QWordQWord_Params.A, sizeof(Divide_QWordQWord_Params.A), &A, sizeof(A));
+	memcpy_s(&Divide_QWordQWord_Params.B, sizeof(Divide_QWordQWord_Params.B), &B, sizeof(B));
+
+	uFnDivide_QWordQWord->FunctionFlags |= ~0x400;
+	UObject::StaticClass()->ProcessEvent(uFnDivide_QWordQWord, &Divide_QWordQWord_Params, nullptr);
+	uFnDivide_QWordQWord->FunctionFlags |= 0x400;
+
+	return Divide_QWordQWord_Params.ReturnValue;
+};
+
+// Function Core.Object.Multiply_QWordQWord
+// [0x00023401] (FUNC_Final | FUNC_Native | FUNC_Operator | FUNC_Static | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
+// uint64_t                       ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
+// uint64_t                       A                              (CPF_Parm)
+// uint64_t                       B                              (CPF_Parm)
+
+uint64_t UObject::Multiply_QWordQWord(uint64_t A, uint64_t B)
+{
+	static UFunction* uFnMultiply_QWordQWord = nullptr;
+
+	if (!uFnMultiply_QWordQWord)
+	{
+		uFnMultiply_QWordQWord = UFunction::FindFunction("Function Core.Object.Multiply_QWordQWord");
+	}
+
+	UObject_execMultiply_QWordQWord_Params Multiply_QWordQWord_Params;
+	memset(&Multiply_QWordQWord_Params, 0, sizeof(Multiply_QWordQWord_Params));
+	memcpy_s(&Multiply_QWordQWord_Params.A, sizeof(Multiply_QWordQWord_Params.A), &A, sizeof(A));
+	memcpy_s(&Multiply_QWordQWord_Params.B, sizeof(Multiply_QWordQWord_Params.B), &B, sizeof(B));
+
+	uFnMultiply_QWordQWord->FunctionFlags |= ~0x400;
+	UObject::StaticClass()->ProcessEvent(uFnMultiply_QWordQWord, &Multiply_QWordQWord_Params, nullptr);
+	uFnMultiply_QWordQWord->FunctionFlags |= 0x400;
+
+	return Multiply_QWordQWord_Params.ReturnValue;
 };
 
 // Function Core.Object.SubtractSubtract_Int
@@ -9728,7 +10758,11 @@ int32_t UObject::SubtractSubtract_Int(int32_t& A)
 	memset(&SubtractSubtract_Int_Params, 0, sizeof(SubtractSubtract_Int_Params));
 	memcpy_s(&SubtractSubtract_Int_Params.A, sizeof(SubtractSubtract_Int_Params.A), &A, sizeof(A));
 
+	uFnSubtractSubtract_Int->iNative = 0;
+	uFnSubtractSubtract_Int->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnSubtractSubtract_Int, &SubtractSubtract_Int_Params, nullptr);
+	uFnSubtractSubtract_Int->FunctionFlags |= 0x400;
+	uFnSubtractSubtract_Int->iNative = 166;
 
 	memcpy_s(&A, sizeof(A), &SubtractSubtract_Int_Params.A, sizeof(SubtractSubtract_Int_Params.A));
 
@@ -9754,7 +10788,11 @@ int32_t UObject::AddAdd_Int(int32_t& A)
 	memset(&AddAdd_Int_Params, 0, sizeof(AddAdd_Int_Params));
 	memcpy_s(&AddAdd_Int_Params.A, sizeof(AddAdd_Int_Params.A), &A, sizeof(A));
 
+	uFnAddAdd_Int->iNative = 0;
+	uFnAddAdd_Int->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAddAdd_Int, &AddAdd_Int_Params, nullptr);
+	uFnAddAdd_Int->FunctionFlags |= 0x400;
+	uFnAddAdd_Int->iNative = 165;
 
 	memcpy_s(&A, sizeof(A), &AddAdd_Int_Params.A, sizeof(AddAdd_Int_Params.A));
 
@@ -9780,7 +10818,11 @@ int32_t UObject::SubtractSubtract_PreInt(int32_t& A)
 	memset(&SubtractSubtract_PreInt_Params, 0, sizeof(SubtractSubtract_PreInt_Params));
 	memcpy_s(&SubtractSubtract_PreInt_Params.A, sizeof(SubtractSubtract_PreInt_Params.A), &A, sizeof(A));
 
+	uFnSubtractSubtract_PreInt->iNative = 0;
+	uFnSubtractSubtract_PreInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnSubtractSubtract_PreInt, &SubtractSubtract_PreInt_Params, nullptr);
+	uFnSubtractSubtract_PreInt->FunctionFlags |= 0x400;
+	uFnSubtractSubtract_PreInt->iNative = 164;
 
 	memcpy_s(&A, sizeof(A), &SubtractSubtract_PreInt_Params.A, sizeof(SubtractSubtract_PreInt_Params.A));
 
@@ -9806,7 +10848,11 @@ int32_t UObject::AddAdd_PreInt(int32_t& A)
 	memset(&AddAdd_PreInt_Params, 0, sizeof(AddAdd_PreInt_Params));
 	memcpy_s(&AddAdd_PreInt_Params.A, sizeof(AddAdd_PreInt_Params.A), &A, sizeof(A));
 
+	uFnAddAdd_PreInt->iNative = 0;
+	uFnAddAdd_PreInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAddAdd_PreInt, &AddAdd_PreInt_Params, nullptr);
+	uFnAddAdd_PreInt->FunctionFlags |= 0x400;
+	uFnAddAdd_PreInt->iNative = 163;
 
 	memcpy_s(&A, sizeof(A), &AddAdd_PreInt_Params.A, sizeof(AddAdd_PreInt_Params.A));
 
@@ -9834,7 +10880,11 @@ int32_t UObject::SubtractEqual_IntInt(int32_t B, int32_t& A)
 	memcpy_s(&SubtractEqual_IntInt_Params.B, sizeof(SubtractEqual_IntInt_Params.B), &B, sizeof(B));
 	memcpy_s(&SubtractEqual_IntInt_Params.A, sizeof(SubtractEqual_IntInt_Params.A), &A, sizeof(A));
 
+	uFnSubtractEqual_IntInt->iNative = 0;
+	uFnSubtractEqual_IntInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnSubtractEqual_IntInt, &SubtractEqual_IntInt_Params, nullptr);
+	uFnSubtractEqual_IntInt->FunctionFlags |= 0x400;
+	uFnSubtractEqual_IntInt->iNative = 162;
 
 	memcpy_s(&A, sizeof(A), &SubtractEqual_IntInt_Params.A, sizeof(SubtractEqual_IntInt_Params.A));
 
@@ -9862,7 +10912,11 @@ int32_t UObject::AddEqual_IntInt(int32_t B, int32_t& A)
 	memcpy_s(&AddEqual_IntInt_Params.B, sizeof(AddEqual_IntInt_Params.B), &B, sizeof(B));
 	memcpy_s(&AddEqual_IntInt_Params.A, sizeof(AddEqual_IntInt_Params.A), &A, sizeof(A));
 
+	uFnAddEqual_IntInt->iNative = 0;
+	uFnAddEqual_IntInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAddEqual_IntInt, &AddEqual_IntInt_Params, nullptr);
+	uFnAddEqual_IntInt->FunctionFlags |= 0x400;
+	uFnAddEqual_IntInt->iNative = 161;
 
 	memcpy_s(&A, sizeof(A), &AddEqual_IntInt_Params.A, sizeof(AddEqual_IntInt_Params.A));
 
@@ -9890,7 +10944,11 @@ int32_t UObject::DivideEqual_IntFloat(float B, int32_t& A)
 	memcpy_s(&DivideEqual_IntFloat_Params.B, sizeof(DivideEqual_IntFloat_Params.B), &B, sizeof(B));
 	memcpy_s(&DivideEqual_IntFloat_Params.A, sizeof(DivideEqual_IntFloat_Params.A), &A, sizeof(A));
 
+	uFnDivideEqual_IntFloat->iNative = 0;
+	uFnDivideEqual_IntFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnDivideEqual_IntFloat, &DivideEqual_IntFloat_Params, nullptr);
+	uFnDivideEqual_IntFloat->FunctionFlags |= 0x400;
+	uFnDivideEqual_IntFloat->iNative = 160;
 
 	memcpy_s(&A, sizeof(A), &DivideEqual_IntFloat_Params.A, sizeof(DivideEqual_IntFloat_Params.A));
 
@@ -9918,7 +10976,11 @@ int32_t UObject::MultiplyEqual_IntFloat(float B, int32_t& A)
 	memcpy_s(&MultiplyEqual_IntFloat_Params.B, sizeof(MultiplyEqual_IntFloat_Params.B), &B, sizeof(B));
 	memcpy_s(&MultiplyEqual_IntFloat_Params.A, sizeof(MultiplyEqual_IntFloat_Params.A), &A, sizeof(A));
 
+	uFnMultiplyEqual_IntFloat->iNative = 0;
+	uFnMultiplyEqual_IntFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMultiplyEqual_IntFloat, &MultiplyEqual_IntFloat_Params, nullptr);
+	uFnMultiplyEqual_IntFloat->FunctionFlags |= 0x400;
+	uFnMultiplyEqual_IntFloat->iNative = 159;
 
 	memcpy_s(&A, sizeof(A), &MultiplyEqual_IntFloat_Params.A, sizeof(MultiplyEqual_IntFloat_Params.A));
 
@@ -9946,7 +11008,11 @@ int32_t UObject::Or_IntInt(int32_t A, int32_t B)
 	memcpy_s(&Or_IntInt_Params.A, sizeof(Or_IntInt_Params.A), &A, sizeof(A));
 	memcpy_s(&Or_IntInt_Params.B, sizeof(Or_IntInt_Params.B), &B, sizeof(B));
 
+	uFnOr_IntInt->iNative = 0;
+	uFnOr_IntInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnOr_IntInt, &Or_IntInt_Params, nullptr);
+	uFnOr_IntInt->FunctionFlags |= 0x400;
+	uFnOr_IntInt->iNative = 158;
 
 	return Or_IntInt_Params.ReturnValue;
 };
@@ -9972,7 +11038,11 @@ int32_t UObject::Xor_IntInt(int32_t A, int32_t B)
 	memcpy_s(&Xor_IntInt_Params.A, sizeof(Xor_IntInt_Params.A), &A, sizeof(A));
 	memcpy_s(&Xor_IntInt_Params.B, sizeof(Xor_IntInt_Params.B), &B, sizeof(B));
 
+	uFnXor_IntInt->iNative = 0;
+	uFnXor_IntInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnXor_IntInt, &Xor_IntInt_Params, nullptr);
+	uFnXor_IntInt->FunctionFlags |= 0x400;
+	uFnXor_IntInt->iNative = 157;
 
 	return Xor_IntInt_Params.ReturnValue;
 };
@@ -9998,7 +11068,11 @@ int32_t UObject::And_IntInt(int32_t A, int32_t B)
 	memcpy_s(&And_IntInt_Params.A, sizeof(And_IntInt_Params.A), &A, sizeof(A));
 	memcpy_s(&And_IntInt_Params.B, sizeof(And_IntInt_Params.B), &B, sizeof(B));
 
+	uFnAnd_IntInt->iNative = 0;
+	uFnAnd_IntInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAnd_IntInt, &And_IntInt_Params, nullptr);
+	uFnAnd_IntInt->FunctionFlags |= 0x400;
+	uFnAnd_IntInt->iNative = 156;
 
 	return And_IntInt_Params.ReturnValue;
 };
@@ -10024,7 +11098,11 @@ bool UObject::NotEqual_IntInt(int32_t A, int32_t B)
 	memcpy_s(&NotEqual_IntInt_Params.A, sizeof(NotEqual_IntInt_Params.A), &A, sizeof(A));
 	memcpy_s(&NotEqual_IntInt_Params.B, sizeof(NotEqual_IntInt_Params.B), &B, sizeof(B));
 
+	uFnNotEqual_IntInt->iNative = 0;
+	uFnNotEqual_IntInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnNotEqual_IntInt, &NotEqual_IntInt_Params, nullptr);
+	uFnNotEqual_IntInt->FunctionFlags |= 0x400;
+	uFnNotEqual_IntInt->iNative = 155;
 
 	return NotEqual_IntInt_Params.ReturnValue;
 };
@@ -10050,7 +11128,11 @@ bool UObject::EqualEqual_IntInt(int32_t A, int32_t B)
 	memcpy_s(&EqualEqual_IntInt_Params.A, sizeof(EqualEqual_IntInt_Params.A), &A, sizeof(A));
 	memcpy_s(&EqualEqual_IntInt_Params.B, sizeof(EqualEqual_IntInt_Params.B), &B, sizeof(B));
 
+	uFnEqualEqual_IntInt->iNative = 0;
+	uFnEqualEqual_IntInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnEqualEqual_IntInt, &EqualEqual_IntInt_Params, nullptr);
+	uFnEqualEqual_IntInt->FunctionFlags |= 0x400;
+	uFnEqualEqual_IntInt->iNative = 154;
 
 	return EqualEqual_IntInt_Params.ReturnValue;
 };
@@ -10076,7 +11158,11 @@ bool UObject::GreaterEqual_IntInt(int32_t A, int32_t B)
 	memcpy_s(&GreaterEqual_IntInt_Params.A, sizeof(GreaterEqual_IntInt_Params.A), &A, sizeof(A));
 	memcpy_s(&GreaterEqual_IntInt_Params.B, sizeof(GreaterEqual_IntInt_Params.B), &B, sizeof(B));
 
+	uFnGreaterEqual_IntInt->iNative = 0;
+	uFnGreaterEqual_IntInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGreaterEqual_IntInt, &GreaterEqual_IntInt_Params, nullptr);
+	uFnGreaterEqual_IntInt->FunctionFlags |= 0x400;
+	uFnGreaterEqual_IntInt->iNative = 153;
 
 	return GreaterEqual_IntInt_Params.ReturnValue;
 };
@@ -10102,7 +11188,11 @@ bool UObject::LessEqual_IntInt(int32_t A, int32_t B)
 	memcpy_s(&LessEqual_IntInt_Params.A, sizeof(LessEqual_IntInt_Params.A), &A, sizeof(A));
 	memcpy_s(&LessEqual_IntInt_Params.B, sizeof(LessEqual_IntInt_Params.B), &B, sizeof(B));
 
+	uFnLessEqual_IntInt->iNative = 0;
+	uFnLessEqual_IntInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnLessEqual_IntInt, &LessEqual_IntInt_Params, nullptr);
+	uFnLessEqual_IntInt->FunctionFlags |= 0x400;
+	uFnLessEqual_IntInt->iNative = 152;
 
 	return LessEqual_IntInt_Params.ReturnValue;
 };
@@ -10128,7 +11218,11 @@ bool UObject::Greater_IntInt(int32_t A, int32_t B)
 	memcpy_s(&Greater_IntInt_Params.A, sizeof(Greater_IntInt_Params.A), &A, sizeof(A));
 	memcpy_s(&Greater_IntInt_Params.B, sizeof(Greater_IntInt_Params.B), &B, sizeof(B));
 
+	uFnGreater_IntInt->iNative = 0;
+	uFnGreater_IntInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGreater_IntInt, &Greater_IntInt_Params, nullptr);
+	uFnGreater_IntInt->FunctionFlags |= 0x400;
+	uFnGreater_IntInt->iNative = 151;
 
 	return Greater_IntInt_Params.ReturnValue;
 };
@@ -10154,7 +11248,11 @@ bool UObject::Less_IntInt(int32_t A, int32_t B)
 	memcpy_s(&Less_IntInt_Params.A, sizeof(Less_IntInt_Params.A), &A, sizeof(A));
 	memcpy_s(&Less_IntInt_Params.B, sizeof(Less_IntInt_Params.B), &B, sizeof(B));
 
+	uFnLess_IntInt->iNative = 0;
+	uFnLess_IntInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnLess_IntInt, &Less_IntInt_Params, nullptr);
+	uFnLess_IntInt->FunctionFlags |= 0x400;
+	uFnLess_IntInt->iNative = 150;
 
 	return Less_IntInt_Params.ReturnValue;
 };
@@ -10180,7 +11278,11 @@ int32_t UObject::GreaterGreaterGreater_IntInt(int32_t A, int32_t B)
 	memcpy_s(&GreaterGreaterGreater_IntInt_Params.A, sizeof(GreaterGreaterGreater_IntInt_Params.A), &A, sizeof(A));
 	memcpy_s(&GreaterGreaterGreater_IntInt_Params.B, sizeof(GreaterGreaterGreater_IntInt_Params.B), &B, sizeof(B));
 
+	uFnGreaterGreaterGreater_IntInt->iNative = 0;
+	uFnGreaterGreaterGreater_IntInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGreaterGreaterGreater_IntInt, &GreaterGreaterGreater_IntInt_Params, nullptr);
+	uFnGreaterGreaterGreater_IntInt->FunctionFlags |= 0x400;
+	uFnGreaterGreaterGreater_IntInt->iNative = 196;
 
 	return GreaterGreaterGreater_IntInt_Params.ReturnValue;
 };
@@ -10206,7 +11308,11 @@ int32_t UObject::GreaterGreater_IntInt(int32_t A, int32_t B)
 	memcpy_s(&GreaterGreater_IntInt_Params.A, sizeof(GreaterGreater_IntInt_Params.A), &A, sizeof(A));
 	memcpy_s(&GreaterGreater_IntInt_Params.B, sizeof(GreaterGreater_IntInt_Params.B), &B, sizeof(B));
 
+	uFnGreaterGreater_IntInt->iNative = 0;
+	uFnGreaterGreater_IntInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnGreaterGreater_IntInt, &GreaterGreater_IntInt_Params, nullptr);
+	uFnGreaterGreater_IntInt->FunctionFlags |= 0x400;
+	uFnGreaterGreater_IntInt->iNative = 149;
 
 	return GreaterGreater_IntInt_Params.ReturnValue;
 };
@@ -10232,7 +11338,11 @@ int32_t UObject::LessLess_IntInt(int32_t A, int32_t B)
 	memcpy_s(&LessLess_IntInt_Params.A, sizeof(LessLess_IntInt_Params.A), &A, sizeof(A));
 	memcpy_s(&LessLess_IntInt_Params.B, sizeof(LessLess_IntInt_Params.B), &B, sizeof(B));
 
+	uFnLessLess_IntInt->iNative = 0;
+	uFnLessLess_IntInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnLessLess_IntInt, &LessLess_IntInt_Params, nullptr);
+	uFnLessLess_IntInt->FunctionFlags |= 0x400;
+	uFnLessLess_IntInt->iNative = 148;
 
 	return LessLess_IntInt_Params.ReturnValue;
 };
@@ -10258,7 +11368,11 @@ int32_t UObject::Subtract_IntInt(int32_t A, int32_t B)
 	memcpy_s(&Subtract_IntInt_Params.A, sizeof(Subtract_IntInt_Params.A), &A, sizeof(A));
 	memcpy_s(&Subtract_IntInt_Params.B, sizeof(Subtract_IntInt_Params.B), &B, sizeof(B));
 
+	uFnSubtract_IntInt->iNative = 0;
+	uFnSubtract_IntInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnSubtract_IntInt, &Subtract_IntInt_Params, nullptr);
+	uFnSubtract_IntInt->FunctionFlags |= 0x400;
+	uFnSubtract_IntInt->iNative = 147;
 
 	return Subtract_IntInt_Params.ReturnValue;
 };
@@ -10284,7 +11398,11 @@ int32_t UObject::Add_IntInt(int32_t A, int32_t B)
 	memcpy_s(&Add_IntInt_Params.A, sizeof(Add_IntInt_Params.A), &A, sizeof(A));
 	memcpy_s(&Add_IntInt_Params.B, sizeof(Add_IntInt_Params.B), &B, sizeof(B));
 
+	uFnAdd_IntInt->iNative = 0;
+	uFnAdd_IntInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAdd_IntInt, &Add_IntInt_Params, nullptr);
+	uFnAdd_IntInt->FunctionFlags |= 0x400;
+	uFnAdd_IntInt->iNative = 146;
 
 	return Add_IntInt_Params.ReturnValue;
 };
@@ -10310,7 +11428,11 @@ int32_t UObject::Percent_IntInt(int32_t A, int32_t B)
 	memcpy_s(&Percent_IntInt_Params.A, sizeof(Percent_IntInt_Params.A), &A, sizeof(A));
 	memcpy_s(&Percent_IntInt_Params.B, sizeof(Percent_IntInt_Params.B), &B, sizeof(B));
 
+	uFnPercent_IntInt->iNative = 0;
+	uFnPercent_IntInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnPercent_IntInt, &Percent_IntInt_Params, nullptr);
+	uFnPercent_IntInt->FunctionFlags |= 0x400;
+	uFnPercent_IntInt->iNative = 253;
 
 	return Percent_IntInt_Params.ReturnValue;
 };
@@ -10336,7 +11458,11 @@ int32_t UObject::Divide_IntInt(int32_t A, int32_t B)
 	memcpy_s(&Divide_IntInt_Params.A, sizeof(Divide_IntInt_Params.A), &A, sizeof(A));
 	memcpy_s(&Divide_IntInt_Params.B, sizeof(Divide_IntInt_Params.B), &B, sizeof(B));
 
+	uFnDivide_IntInt->iNative = 0;
+	uFnDivide_IntInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnDivide_IntInt, &Divide_IntInt_Params, nullptr);
+	uFnDivide_IntInt->FunctionFlags |= 0x400;
+	uFnDivide_IntInt->iNative = 145;
 
 	return Divide_IntInt_Params.ReturnValue;
 };
@@ -10362,7 +11488,11 @@ int32_t UObject::Multiply_IntInt(int32_t A, int32_t B)
 	memcpy_s(&Multiply_IntInt_Params.A, sizeof(Multiply_IntInt_Params.A), &A, sizeof(A));
 	memcpy_s(&Multiply_IntInt_Params.B, sizeof(Multiply_IntInt_Params.B), &B, sizeof(B));
 
+	uFnMultiply_IntInt->iNative = 0;
+	uFnMultiply_IntInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMultiply_IntInt, &Multiply_IntInt_Params, nullptr);
+	uFnMultiply_IntInt->FunctionFlags |= 0x400;
+	uFnMultiply_IntInt->iNative = 144;
 
 	return Multiply_IntInt_Params.ReturnValue;
 };
@@ -10386,7 +11516,11 @@ int32_t UObject::Subtract_PreInt(int32_t A)
 	memset(&Subtract_PreInt_Params, 0, sizeof(Subtract_PreInt_Params));
 	memcpy_s(&Subtract_PreInt_Params.A, sizeof(Subtract_PreInt_Params.A), &A, sizeof(A));
 
+	uFnSubtract_PreInt->iNative = 0;
+	uFnSubtract_PreInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnSubtract_PreInt, &Subtract_PreInt_Params, nullptr);
+	uFnSubtract_PreInt->FunctionFlags |= 0x400;
+	uFnSubtract_PreInt->iNative = 143;
 
 	return Subtract_PreInt_Params.ReturnValue;
 };
@@ -10410,7 +11544,11 @@ int32_t UObject::Complement_PreInt(int32_t A)
 	memset(&Complement_PreInt_Params, 0, sizeof(Complement_PreInt_Params));
 	memcpy_s(&Complement_PreInt_Params.A, sizeof(Complement_PreInt_Params.A), &A, sizeof(A));
 
+	uFnComplement_PreInt->iNative = 0;
+	uFnComplement_PreInt->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnComplement_PreInt, &Complement_PreInt_Params, nullptr);
+	uFnComplement_PreInt->FunctionFlags |= 0x400;
+	uFnComplement_PreInt->iNative = 141;
 
 	return Complement_PreInt_Params.ReturnValue;
 };
@@ -10434,7 +11572,11 @@ uint8_t UObject::SubtractSubtract_Byte(uint8_t& A)
 	memset(&SubtractSubtract_Byte_Params, 0, sizeof(SubtractSubtract_Byte_Params));
 	memcpy_s(&SubtractSubtract_Byte_Params.A, sizeof(SubtractSubtract_Byte_Params.A), &A, sizeof(A));
 
+	uFnSubtractSubtract_Byte->iNative = 0;
+	uFnSubtractSubtract_Byte->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnSubtractSubtract_Byte, &SubtractSubtract_Byte_Params, nullptr);
+	uFnSubtractSubtract_Byte->FunctionFlags |= 0x400;
+	uFnSubtractSubtract_Byte->iNative = 140;
 
 	memcpy_s(&A, sizeof(A), &SubtractSubtract_Byte_Params.A, sizeof(SubtractSubtract_Byte_Params.A));
 
@@ -10460,7 +11602,11 @@ uint8_t UObject::AddAdd_Byte(uint8_t& A)
 	memset(&AddAdd_Byte_Params, 0, sizeof(AddAdd_Byte_Params));
 	memcpy_s(&AddAdd_Byte_Params.A, sizeof(AddAdd_Byte_Params.A), &A, sizeof(A));
 
+	uFnAddAdd_Byte->iNative = 0;
+	uFnAddAdd_Byte->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAddAdd_Byte, &AddAdd_Byte_Params, nullptr);
+	uFnAddAdd_Byte->FunctionFlags |= 0x400;
+	uFnAddAdd_Byte->iNative = 139;
 
 	memcpy_s(&A, sizeof(A), &AddAdd_Byte_Params.A, sizeof(AddAdd_Byte_Params.A));
 
@@ -10486,7 +11632,11 @@ uint8_t UObject::SubtractSubtract_PreByte(uint8_t& A)
 	memset(&SubtractSubtract_PreByte_Params, 0, sizeof(SubtractSubtract_PreByte_Params));
 	memcpy_s(&SubtractSubtract_PreByte_Params.A, sizeof(SubtractSubtract_PreByte_Params.A), &A, sizeof(A));
 
+	uFnSubtractSubtract_PreByte->iNative = 0;
+	uFnSubtractSubtract_PreByte->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnSubtractSubtract_PreByte, &SubtractSubtract_PreByte_Params, nullptr);
+	uFnSubtractSubtract_PreByte->FunctionFlags |= 0x400;
+	uFnSubtractSubtract_PreByte->iNative = 138;
 
 	memcpy_s(&A, sizeof(A), &SubtractSubtract_PreByte_Params.A, sizeof(SubtractSubtract_PreByte_Params.A));
 
@@ -10512,7 +11662,11 @@ uint8_t UObject::AddAdd_PreByte(uint8_t& A)
 	memset(&AddAdd_PreByte_Params, 0, sizeof(AddAdd_PreByte_Params));
 	memcpy_s(&AddAdd_PreByte_Params.A, sizeof(AddAdd_PreByte_Params.A), &A, sizeof(A));
 
+	uFnAddAdd_PreByte->iNative = 0;
+	uFnAddAdd_PreByte->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAddAdd_PreByte, &AddAdd_PreByte_Params, nullptr);
+	uFnAddAdd_PreByte->FunctionFlags |= 0x400;
+	uFnAddAdd_PreByte->iNative = 137;
 
 	memcpy_s(&A, sizeof(A), &AddAdd_PreByte_Params.A, sizeof(AddAdd_PreByte_Params.A));
 
@@ -10540,7 +11694,11 @@ uint8_t UObject::SubtractEqual_ByteByte(uint8_t B, uint8_t& A)
 	memcpy_s(&SubtractEqual_ByteByte_Params.B, sizeof(SubtractEqual_ByteByte_Params.B), &B, sizeof(B));
 	memcpy_s(&SubtractEqual_ByteByte_Params.A, sizeof(SubtractEqual_ByteByte_Params.A), &A, sizeof(A));
 
+	uFnSubtractEqual_ByteByte->iNative = 0;
+	uFnSubtractEqual_ByteByte->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnSubtractEqual_ByteByte, &SubtractEqual_ByteByte_Params, nullptr);
+	uFnSubtractEqual_ByteByte->FunctionFlags |= 0x400;
+	uFnSubtractEqual_ByteByte->iNative = 136;
 
 	memcpy_s(&A, sizeof(A), &SubtractEqual_ByteByte_Params.A, sizeof(SubtractEqual_ByteByte_Params.A));
 
@@ -10568,7 +11726,11 @@ uint8_t UObject::AddEqual_ByteByte(uint8_t B, uint8_t& A)
 	memcpy_s(&AddEqual_ByteByte_Params.B, sizeof(AddEqual_ByteByte_Params.B), &B, sizeof(B));
 	memcpy_s(&AddEqual_ByteByte_Params.A, sizeof(AddEqual_ByteByte_Params.A), &A, sizeof(A));
 
+	uFnAddEqual_ByteByte->iNative = 0;
+	uFnAddEqual_ByteByte->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAddEqual_ByteByte, &AddEqual_ByteByte_Params, nullptr);
+	uFnAddEqual_ByteByte->FunctionFlags |= 0x400;
+	uFnAddEqual_ByteByte->iNative = 135;
 
 	memcpy_s(&A, sizeof(A), &AddEqual_ByteByte_Params.A, sizeof(AddEqual_ByteByte_Params.A));
 
@@ -10596,7 +11758,11 @@ uint8_t UObject::DivideEqual_ByteByte(uint8_t B, uint8_t& A)
 	memcpy_s(&DivideEqual_ByteByte_Params.B, sizeof(DivideEqual_ByteByte_Params.B), &B, sizeof(B));
 	memcpy_s(&DivideEqual_ByteByte_Params.A, sizeof(DivideEqual_ByteByte_Params.A), &A, sizeof(A));
 
+	uFnDivideEqual_ByteByte->iNative = 0;
+	uFnDivideEqual_ByteByte->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnDivideEqual_ByteByte, &DivideEqual_ByteByte_Params, nullptr);
+	uFnDivideEqual_ByteByte->FunctionFlags |= 0x400;
+	uFnDivideEqual_ByteByte->iNative = 134;
 
 	memcpy_s(&A, sizeof(A), &DivideEqual_ByteByte_Params.A, sizeof(DivideEqual_ByteByte_Params.A));
 
@@ -10624,7 +11790,11 @@ uint8_t UObject::MultiplyEqual_ByteFloat(float B, uint8_t& A)
 	memcpy_s(&MultiplyEqual_ByteFloat_Params.B, sizeof(MultiplyEqual_ByteFloat_Params.B), &B, sizeof(B));
 	memcpy_s(&MultiplyEqual_ByteFloat_Params.A, sizeof(MultiplyEqual_ByteFloat_Params.A), &A, sizeof(A));
 
+	uFnMultiplyEqual_ByteFloat->iNative = 0;
+	uFnMultiplyEqual_ByteFloat->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMultiplyEqual_ByteFloat, &MultiplyEqual_ByteFloat_Params, nullptr);
+	uFnMultiplyEqual_ByteFloat->FunctionFlags |= 0x400;
+	uFnMultiplyEqual_ByteFloat->iNative = 198;
 
 	memcpy_s(&A, sizeof(A), &MultiplyEqual_ByteFloat_Params.A, sizeof(MultiplyEqual_ByteFloat_Params.A));
 
@@ -10652,7 +11822,11 @@ uint8_t UObject::MultiplyEqual_ByteByte(uint8_t B, uint8_t& A)
 	memcpy_s(&MultiplyEqual_ByteByte_Params.B, sizeof(MultiplyEqual_ByteByte_Params.B), &B, sizeof(B));
 	memcpy_s(&MultiplyEqual_ByteByte_Params.A, sizeof(MultiplyEqual_ByteByte_Params.A), &A, sizeof(A));
 
+	uFnMultiplyEqual_ByteByte->iNative = 0;
+	uFnMultiplyEqual_ByteByte->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnMultiplyEqual_ByteByte, &MultiplyEqual_ByteByte_Params, nullptr);
+	uFnMultiplyEqual_ByteByte->FunctionFlags |= 0x400;
+	uFnMultiplyEqual_ByteByte->iNative = 133;
 
 	memcpy_s(&A, sizeof(A), &MultiplyEqual_ByteByte_Params.A, sizeof(MultiplyEqual_ByteByte_Params.A));
 
@@ -10663,8 +11837,8 @@ uint8_t UObject::MultiplyEqual_ByteByte(uint8_t B, uint8_t& A)
 // [0x00023401] (FUNC_Final | FUNC_Native | FUNC_Operator | FUNC_Static | FUNC_Public | FUNC_AllFlags) (iNative[132])
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// bool                           A                              (CPF_Parm)
-// bool                           B                              (CPF_Parm | CPF_SkipParm)
+// uint32_t                       A                              (CPF_Parm)
+// uint32_t                       B                              (CPF_Parm | CPF_SkipParm)
 
 bool UObject::OrOr_BoolBool(bool A, bool B)
 {
@@ -10680,7 +11854,11 @@ bool UObject::OrOr_BoolBool(bool A, bool B)
 	OrOr_BoolBool_Params.A = A;
 	OrOr_BoolBool_Params.B = B;
 
+	uFnOrOr_BoolBool->iNative = 0;
+	uFnOrOr_BoolBool->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnOrOr_BoolBool, &OrOr_BoolBool_Params, nullptr);
+	uFnOrOr_BoolBool->FunctionFlags |= 0x400;
+	uFnOrOr_BoolBool->iNative = 132;
 
 	return OrOr_BoolBool_Params.ReturnValue;
 };
@@ -10689,8 +11867,8 @@ bool UObject::OrOr_BoolBool(bool A, bool B)
 // [0x00023401] (FUNC_Final | FUNC_Native | FUNC_Operator | FUNC_Static | FUNC_Public | FUNC_AllFlags) (iNative[131])
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// bool                           A                              (CPF_Parm)
-// bool                           B                              (CPF_Parm)
+// uint32_t                       A                              (CPF_Parm)
+// uint32_t                       B                              (CPF_Parm)
 
 bool UObject::XorXor_BoolBool(bool A, bool B)
 {
@@ -10706,7 +11884,11 @@ bool UObject::XorXor_BoolBool(bool A, bool B)
 	XorXor_BoolBool_Params.A = A;
 	XorXor_BoolBool_Params.B = B;
 
+	uFnXorXor_BoolBool->iNative = 0;
+	uFnXorXor_BoolBool->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnXorXor_BoolBool, &XorXor_BoolBool_Params, nullptr);
+	uFnXorXor_BoolBool->FunctionFlags |= 0x400;
+	uFnXorXor_BoolBool->iNative = 131;
 
 	return XorXor_BoolBool_Params.ReturnValue;
 };
@@ -10715,8 +11897,8 @@ bool UObject::XorXor_BoolBool(bool A, bool B)
 // [0x00023401] (FUNC_Final | FUNC_Native | FUNC_Operator | FUNC_Static | FUNC_Public | FUNC_AllFlags) (iNative[130])
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// bool                           A                              (CPF_Parm)
-// bool                           B                              (CPF_Parm | CPF_SkipParm)
+// uint32_t                       A                              (CPF_Parm)
+// uint32_t                       B                              (CPF_Parm | CPF_SkipParm)
 
 bool UObject::AndAnd_BoolBool(bool A, bool B)
 {
@@ -10732,7 +11914,11 @@ bool UObject::AndAnd_BoolBool(bool A, bool B)
 	AndAnd_BoolBool_Params.A = A;
 	AndAnd_BoolBool_Params.B = B;
 
+	uFnAndAnd_BoolBool->iNative = 0;
+	uFnAndAnd_BoolBool->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnAndAnd_BoolBool, &AndAnd_BoolBool_Params, nullptr);
+	uFnAndAnd_BoolBool->FunctionFlags |= 0x400;
+	uFnAndAnd_BoolBool->iNative = 130;
 
 	return AndAnd_BoolBool_Params.ReturnValue;
 };
@@ -10741,8 +11927,8 @@ bool UObject::AndAnd_BoolBool(bool A, bool B)
 // [0x00023401] (FUNC_Final | FUNC_Native | FUNC_Operator | FUNC_Static | FUNC_Public | FUNC_AllFlags) (iNative[243])
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// bool                           A                              (CPF_Parm)
-// bool                           B                              (CPF_Parm)
+// uint32_t                       A                              (CPF_Parm)
+// uint32_t                       B                              (CPF_Parm)
 
 bool UObject::NotEqual_BoolBool(bool A, bool B)
 {
@@ -10758,7 +11944,11 @@ bool UObject::NotEqual_BoolBool(bool A, bool B)
 	NotEqual_BoolBool_Params.A = A;
 	NotEqual_BoolBool_Params.B = B;
 
+	uFnNotEqual_BoolBool->iNative = 0;
+	uFnNotEqual_BoolBool->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnNotEqual_BoolBool, &NotEqual_BoolBool_Params, nullptr);
+	uFnNotEqual_BoolBool->FunctionFlags |= 0x400;
+	uFnNotEqual_BoolBool->iNative = 243;
 
 	return NotEqual_BoolBool_Params.ReturnValue;
 };
@@ -10767,8 +11957,8 @@ bool UObject::NotEqual_BoolBool(bool A, bool B)
 // [0x00023401] (FUNC_Final | FUNC_Native | FUNC_Operator | FUNC_Static | FUNC_Public | FUNC_AllFlags) (iNative[242])
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// bool                           A                              (CPF_Parm)
-// bool                           B                              (CPF_Parm)
+// uint32_t                       A                              (CPF_Parm)
+// uint32_t                       B                              (CPF_Parm)
 
 bool UObject::EqualEqual_BoolBool(bool A, bool B)
 {
@@ -10784,7 +11974,11 @@ bool UObject::EqualEqual_BoolBool(bool A, bool B)
 	EqualEqual_BoolBool_Params.A = A;
 	EqualEqual_BoolBool_Params.B = B;
 
+	uFnEqualEqual_BoolBool->iNative = 0;
+	uFnEqualEqual_BoolBool->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnEqualEqual_BoolBool, &EqualEqual_BoolBool_Params, nullptr);
+	uFnEqualEqual_BoolBool->FunctionFlags |= 0x400;
+	uFnEqualEqual_BoolBool->iNative = 242;
 
 	return EqualEqual_BoolBool_Params.ReturnValue;
 };
@@ -10793,7 +11987,7 @@ bool UObject::EqualEqual_BoolBool(bool A, bool B)
 // [0x00023411] (FUNC_Final | FUNC_PreOperator | FUNC_Native | FUNC_Operator | FUNC_Static | FUNC_Public | FUNC_AllFlags) (iNative[129])
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// bool                           A                              (CPF_Parm)
+// uint32_t                       A                              (CPF_Parm)
 
 bool UObject::Not_PreBool(bool A)
 {
@@ -10808,7 +12002,11 @@ bool UObject::Not_PreBool(bool A)
 	memset(&Not_PreBool_Params, 0, sizeof(Not_PreBool_Params));
 	Not_PreBool_Params.A = A;
 
+	uFnNot_PreBool->iNative = 0;
+	uFnNot_PreBool->FunctionFlags |= ~0x400;
 	UObject::StaticClass()->ProcessEvent(uFnNot_PreBool, &Not_PreBool_Params, nullptr);
+	uFnNot_PreBool->FunctionFlags |= 0x400;
+	uFnNot_PreBool->iNative = 129;
 
 	return Not_PreBool_Params.ReturnValue;
 };
@@ -10833,7 +12031,9 @@ void UUTF8::DecodeInline(TArray<uint8_t>& Input, class FString& Output)
 	memcpy_s(&DecodeInline_Params.Input, sizeof(DecodeInline_Params.Input), &Input, sizeof(Input));
 	memcpy_s(&DecodeInline_Params.Output, sizeof(DecodeInline_Params.Output), &Output, sizeof(Output));
 
+	uFnDecodeInline->FunctionFlags |= ~0x400;
 	UUTF8::StaticClass()->ProcessEvent(uFnDecodeInline, &DecodeInline_Params, nullptr);
+	uFnDecodeInline->FunctionFlags |= 0x400;
 
 	memcpy_s(&Input, sizeof(Input), &DecodeInline_Params.Input, sizeof(DecodeInline_Params.Input));
 	memcpy_s(&Output, sizeof(Output), &DecodeInline_Params.Output, sizeof(DecodeInline_Params.Output));
@@ -10858,7 +12058,9 @@ class FString UUTF8::Decode(TArray<uint8_t>& Input)
 	memset(&Decode_Params, 0, sizeof(Decode_Params));
 	memcpy_s(&Decode_Params.Input, sizeof(Decode_Params.Input), &Input, sizeof(Input));
 
+	uFnDecode->FunctionFlags |= ~0x400;
 	UUTF8::StaticClass()->ProcessEvent(uFnDecode, &Decode_Params, nullptr);
+	uFnDecode->FunctionFlags |= 0x400;
 
 	memcpy_s(&Input, sizeof(Input), &Decode_Params.Input, sizeof(Decode_Params.Input));
 
@@ -10871,7 +12073,7 @@ class FString UUTF8::Decode(TArray<uint8_t>& Input)
 // class FString                  Input                          (CPF_Parm | CPF_NeedCtorLink)
 // TArray<uint8_t>                Output                         (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UUTF8::EncodeInline(class FString Input, TArray<uint8_t>& Output)
+void UUTF8::EncodeInline(const class FString& Input, TArray<uint8_t>& Output)
 {
 	static UFunction* uFnEncodeInline = nullptr;
 
@@ -10885,7 +12087,9 @@ void UUTF8::EncodeInline(class FString Input, TArray<uint8_t>& Output)
 	memcpy_s(&EncodeInline_Params.Input, sizeof(EncodeInline_Params.Input), &Input, sizeof(Input));
 	memcpy_s(&EncodeInline_Params.Output, sizeof(EncodeInline_Params.Output), &Output, sizeof(Output));
 
+	uFnEncodeInline->FunctionFlags |= ~0x400;
 	UUTF8::StaticClass()->ProcessEvent(uFnEncodeInline, &EncodeInline_Params, nullptr);
+	uFnEncodeInline->FunctionFlags |= 0x400;
 
 	memcpy_s(&Output, sizeof(Output), &EncodeInline_Params.Output, sizeof(EncodeInline_Params.Output));
 };
@@ -10896,7 +12100,7 @@ void UUTF8::EncodeInline(class FString Input, TArray<uint8_t>& Output)
 // TArray<uint8_t>                ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Input                          (CPF_Parm | CPF_NeedCtorLink)
 
-TArray<uint8_t> UUTF8::Encode(class FString Input)
+TArray<uint8_t> UUTF8::Encode(const class FString& Input)
 {
 	static UFunction* uFnEncode = nullptr;
 
@@ -10909,7 +12113,9 @@ TArray<uint8_t> UUTF8::Encode(class FString Input)
 	memset(&Encode_Params, 0, sizeof(Encode_Params));
 	memcpy_s(&Encode_Params.Input, sizeof(Encode_Params.Input), &Input, sizeof(Input));
 
+	uFnEncode->FunctionFlags |= ~0x400;
 	UUTF8::StaticClass()->ProcessEvent(uFnEncode, &Encode_Params, nullptr);
+	uFnEncode->FunctionFlags |= 0x400;
 
 	return Encode_Params.ReturnValue;
 };
@@ -10930,7 +12136,7 @@ void USubscription::__Subscription__TriggerAll_0x1(class USubscription* S)
 
 	USubscription_exec__Subscription__TriggerAll_0x1_Params __Subscription__TriggerAll_0x1_Params;
 	memset(&__Subscription__TriggerAll_0x1_Params, 0, sizeof(__Subscription__TriggerAll_0x1_Params));
-	memcpy_s(&__Subscription__TriggerAll_0x1_Params.S, sizeof(__Subscription__TriggerAll_0x1_Params.S), &S, sizeof(S));
+	__Subscription__TriggerAll_0x1_Params.S = S;
 
 	USubscription::StaticClass()->ProcessEvent(uFn__Subscription__TriggerAll_0x1, &__Subscription__TriggerAll_0x1_Params, nullptr);
 };
@@ -10952,7 +12158,9 @@ class USubscription* USubscription::GetNone()
 	USubscription_execGetNone_Params GetNone_Params;
 	memset(&GetNone_Params, 0, sizeof(GetNone_Params));
 
+	uFnGetNone->FunctionFlags |= ~0x400;
 	USubscription::StaticClass()->ProcessEvent(uFnGetNone, &GetNone_Params, nullptr);
+	uFnGetNone->FunctionFlags |= 0x400;
 
 	return GetNone_Params.ReturnValue;
 };
@@ -11088,7 +12296,7 @@ void USubscription::SubscriberCallback()
 // class UClass*                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FName                   ClassName                      (CPF_Parm)
 
-class UClass* UObjectUtil::FindClass(struct FName ClassName)
+class UClass* UObjectUtil::FindClass(const struct FName& ClassName)
 {
 	static UFunction* uFnFindClass = nullptr;
 
@@ -11101,7 +12309,9 @@ class UClass* UObjectUtil::FindClass(struct FName ClassName)
 	memset(&FindClass_Params, 0, sizeof(FindClass_Params));
 	memcpy_s(&FindClass_Params.ClassName, sizeof(FindClass_Params.ClassName), &ClassName, sizeof(ClassName));
 
+	uFnFindClass->FunctionFlags |= ~0x400;
 	UObjectUtil::StaticClass()->ProcessEvent(uFnFindClass, &FindClass_Params, nullptr);
+	uFnFindClass->FunctionFlags |= 0x400;
 
 	return FindClass_Params.ReturnValue;
 };
@@ -11122,9 +12332,11 @@ void UObjectUtil::ClearNaNValues(class UObject* InObject)
 
 	UObjectUtil_execClearNaNValues_Params ClearNaNValues_Params;
 	memset(&ClearNaNValues_Params, 0, sizeof(ClearNaNValues_Params));
-	memcpy_s(&ClearNaNValues_Params.InObject, sizeof(ClearNaNValues_Params.InObject), &InObject, sizeof(InObject));
+	ClearNaNValues_Params.InObject = InObject;
 
+	uFnClearNaNValues->FunctionFlags |= ~0x400;
 	UObjectUtil::StaticClass()->ProcessEvent(uFnClearNaNValues, &ClearNaNValues_Params, nullptr);
+	uFnClearNaNValues->FunctionFlags |= 0x400;
 };
 
 // Function Core.ObjectUtil.IdenticalDeep
@@ -11145,10 +12357,12 @@ bool UObjectUtil::IdenticalDeep(class UObject* Left, class UObject* Right)
 
 	UObjectUtil_execIdenticalDeep_Params IdenticalDeep_Params;
 	memset(&IdenticalDeep_Params, 0, sizeof(IdenticalDeep_Params));
-	memcpy_s(&IdenticalDeep_Params.Left, sizeof(IdenticalDeep_Params.Left), &Left, sizeof(Left));
-	memcpy_s(&IdenticalDeep_Params.Right, sizeof(IdenticalDeep_Params.Right), &Right, sizeof(Right));
+	IdenticalDeep_Params.Left = Left;
+	IdenticalDeep_Params.Right = Right;
 
+	uFnIdenticalDeep->FunctionFlags |= ~0x400;
 	UObjectUtil::StaticClass()->ProcessEvent(uFnIdenticalDeep, &IdenticalDeep_Params, nullptr);
+	uFnIdenticalDeep->FunctionFlags |= 0x400;
 
 	return IdenticalDeep_Params.ReturnValue;
 };
@@ -11171,10 +12385,12 @@ bool UObjectUtil::Identical(class UObject* Left, class UObject* Right)
 
 	UObjectUtil_execIdentical_Params Identical_Params;
 	memset(&Identical_Params, 0, sizeof(Identical_Params));
-	memcpy_s(&Identical_Params.Left, sizeof(Identical_Params.Left), &Left, sizeof(Left));
-	memcpy_s(&Identical_Params.Right, sizeof(Identical_Params.Right), &Right, sizeof(Right));
+	Identical_Params.Left = Left;
+	Identical_Params.Right = Right;
 
+	uFnIdentical->FunctionFlags |= ~0x400;
 	UObjectUtil::StaticClass()->ProcessEvent(uFnIdentical, &Identical_Params, nullptr);
+	uFnIdentical->FunctionFlags |= 0x400;
 
 	return Identical_Params.ReturnValue;
 };
@@ -11195,16 +12411,18 @@ void UObjectUtil::InitProperties(class UObject* InObject)
 
 	UObjectUtil_execInitProperties_Params InitProperties_Params;
 	memset(&InitProperties_Params, 0, sizeof(InitProperties_Params));
-	memcpy_s(&InitProperties_Params.InObject, sizeof(InitProperties_Params.InObject), &InObject, sizeof(InObject));
+	InitProperties_Params.InObject = InObject;
 
+	uFnInitProperties->FunctionFlags |= ~0x400;
 	UObjectUtil::StaticClass()->ProcessEvent(uFnInitProperties, &InitProperties_Params, nullptr);
+	uFnInitProperties->FunctionFlags |= 0x400;
 };
 
 // Function Core.ObjectUtil.AllCDOs
-// [0x00426405] (FUNC_Final | FUNC_Iterator | FUNC_Native | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// [0x00426405] (FUNC_Final | FUNC_Iterator | FUNC_Native | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class UClass*                  BaseClass                      (CPF_Parm)
-// bool                           bIncludeAbstract               (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bIncludeAbstract               (CPF_OptionalParm | CPF_Parm)
 // class UObject*                 OutCDO                         (CPF_Parm | CPF_OutParm)
 
 void UObjectUtil::AllCDOs(class UClass* BaseClass, bool bIncludeAbstract, class UObject*& OutCDO)
@@ -11218,13 +12436,15 @@ void UObjectUtil::AllCDOs(class UClass* BaseClass, bool bIncludeAbstract, class 
 
 	UObjectUtil_execAllCDOs_Params AllCDOs_Params;
 	memset(&AllCDOs_Params, 0, sizeof(AllCDOs_Params));
-	memcpy_s(&AllCDOs_Params.BaseClass, sizeof(AllCDOs_Params.BaseClass), &BaseClass, sizeof(BaseClass));
+	AllCDOs_Params.BaseClass = BaseClass;
 	AllCDOs_Params.bIncludeAbstract = bIncludeAbstract;
-	memcpy_s(&AllCDOs_Params.OutCDO, sizeof(AllCDOs_Params.OutCDO), &OutCDO, sizeof(OutCDO));
+	AllCDOs_Params.OutCDO = OutCDO;
 
+	uFnAllCDOs->FunctionFlags |= ~0x400;
 	UObjectUtil::StaticClass()->ProcessEvent(uFnAllCDOs, &AllCDOs_Params, nullptr);
+	uFnAllCDOs->FunctionFlags |= 0x400;
 
-	memcpy_s(&OutCDO, sizeof(OutCDO), &AllCDOs_Params.OutCDO, sizeof(AllCDOs_Params.OutCDO));
+	OutCDO = AllCDOs_Params.OutCDO;
 };
 
 // Function Core.ObjectUtil.GetCDO
@@ -11244,9 +12464,11 @@ class UObject* UObjectUtil::GetCDO(class UClass* InClass)
 
 	UObjectUtil_execGetCDO_Params GetCDO_Params;
 	memset(&GetCDO_Params, 0, sizeof(GetCDO_Params));
-	memcpy_s(&GetCDO_Params.InClass, sizeof(GetCDO_Params.InClass), &InClass, sizeof(InClass));
+	GetCDO_Params.InClass = InClass;
 
+	uFnGetCDO->FunctionFlags |= ~0x400;
 	UObjectUtil::StaticClass()->ProcessEvent(uFnGetCDO, &GetCDO_Params, nullptr);
+	uFnGetCDO->FunctionFlags |= 0x400;
 
 	return GetCDO_Params.ReturnValue;
 };
@@ -11268,7 +12490,9 @@ bool UFileSystem::IsCookedBuild()
 	UFileSystem_execIsCookedBuild_Params IsCookedBuild_Params;
 	memset(&IsCookedBuild_Params, 0, sizeof(IsCookedBuild_Params));
 
+	uFnIsCookedBuild->FunctionFlags |= ~0x400;
 	UFileSystem::StaticClass()->ProcessEvent(uFnIsCookedBuild, &IsCookedBuild_Params, nullptr);
+	uFnIsCookedBuild->FunctionFlags |= 0x400;
 
 	return IsCookedBuild_Params.ReturnValue;
 };
@@ -11289,7 +12513,9 @@ void UFileSystem::CloseLogFile()
 	UFileSystem_execCloseLogFile_Params CloseLogFile_Params;
 	memset(&CloseLogFile_Params, 0, sizeof(CloseLogFile_Params));
 
+	uFnCloseLogFile->FunctionFlags |= ~0x400;
 	UFileSystem::StaticClass()->ProcessEvent(uFnCloseLogFile, &CloseLogFile_Params, nullptr);
+	uFnCloseLogFile->FunctionFlags |= 0x400;
 };
 
 // Function Core.FileSystem.GetLogFileName
@@ -11309,7 +12535,9 @@ class FString UFileSystem::GetLogFileName()
 	UFileSystem_execGetLogFileName_Params GetLogFileName_Params;
 	memset(&GetLogFileName_Params, 0, sizeof(GetLogFileName_Params));
 
+	uFnGetLogFileName->FunctionFlags |= ~0x400;
 	UFileSystem::StaticClass()->ProcessEvent(uFnGetLogFileName, &GetLogFileName_Params, nullptr);
+	uFnGetLogFileName->FunctionFlags |= 0x400;
 
 	return GetLogFileName_Params.ReturnValue;
 };
@@ -11320,7 +12548,7 @@ class FString UFileSystem::GetLogFileName()
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 
-bool UFileSystem::DeleteDirectoryTree(class FString Path)
+bool UFileSystem::DeleteDirectoryTree(const class FString& Path)
 {
 	static UFunction* uFnDeleteDirectoryTree = nullptr;
 
@@ -11333,7 +12561,9 @@ bool UFileSystem::DeleteDirectoryTree(class FString Path)
 	memset(&DeleteDirectoryTree_Params, 0, sizeof(DeleteDirectoryTree_Params));
 	memcpy_s(&DeleteDirectoryTree_Params.Path, sizeof(DeleteDirectoryTree_Params.Path), &Path, sizeof(Path));
 
+	uFnDeleteDirectoryTree->FunctionFlags |= ~0x400;
 	UFileSystem::StaticClass()->ProcessEvent(uFnDeleteDirectoryTree, &DeleteDirectoryTree_Params, nullptr);
+	uFnDeleteDirectoryTree->FunctionFlags |= 0x400;
 
 	return DeleteDirectoryTree_Params.ReturnValue;
 };
@@ -11344,7 +12574,7 @@ bool UFileSystem::DeleteDirectoryTree(class FString Path)
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 
-bool UFileSystem::DeleteFileW(class FString Path)
+bool UFileSystem::DeleteFileW(const class FString& Path)
 {
 	static UFunction* uFnDeleteFileW = nullptr;
 
@@ -11357,7 +12587,9 @@ bool UFileSystem::DeleteFileW(class FString Path)
 	memset(&DeleteFileW_Params, 0, sizeof(DeleteFileW_Params));
 	memcpy_s(&DeleteFileW_Params.Path, sizeof(DeleteFileW_Params.Path), &Path, sizeof(Path));
 
+	uFnDeleteFileW->FunctionFlags |= ~0x400;
 	UFileSystem::StaticClass()->ProcessEvent(uFnDeleteFileW, &DeleteFileW_Params, nullptr);
+	uFnDeleteFileW->FunctionFlags |= 0x400;
 
 	return DeleteFileW_Params.ReturnValue;
 };
@@ -11369,7 +12601,7 @@ bool UFileSystem::DeleteFileW(class FString Path)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Text                           (CPF_Parm | CPF_NeedCtorLink)
 
-bool UFileSystem::AppendStringToFile(class FString Path, class FString Text)
+bool UFileSystem::AppendStringToFile(const class FString& Path, const class FString& Text)
 {
 	static UFunction* uFnAppendStringToFile = nullptr;
 
@@ -11383,7 +12615,9 @@ bool UFileSystem::AppendStringToFile(class FString Path, class FString Text)
 	memcpy_s(&AppendStringToFile_Params.Path, sizeof(AppendStringToFile_Params.Path), &Path, sizeof(Path));
 	memcpy_s(&AppendStringToFile_Params.Text, sizeof(AppendStringToFile_Params.Text), &Text, sizeof(Text));
 
+	uFnAppendStringToFile->FunctionFlags |= ~0x400;
 	UFileSystem::StaticClass()->ProcessEvent(uFnAppendStringToFile, &AppendStringToFile_Params, nullptr);
+	uFnAppendStringToFile->FunctionFlags |= 0x400;
 
 	return AppendStringToFile_Params.ReturnValue;
 };
@@ -11395,7 +12629,7 @@ bool UFileSystem::AppendStringToFile(class FString Path, class FString Text)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Text                           (CPF_Parm | CPF_NeedCtorLink)
 
-bool UFileSystem::SaveStringToFile(class FString Path, class FString Text)
+bool UFileSystem::SaveStringToFile(const class FString& Path, const class FString& Text)
 {
 	static UFunction* uFnSaveStringToFile = nullptr;
 
@@ -11409,7 +12643,9 @@ bool UFileSystem::SaveStringToFile(class FString Path, class FString Text)
 	memcpy_s(&SaveStringToFile_Params.Path, sizeof(SaveStringToFile_Params.Path), &Path, sizeof(Path));
 	memcpy_s(&SaveStringToFile_Params.Text, sizeof(SaveStringToFile_Params.Text), &Text, sizeof(Text));
 
+	uFnSaveStringToFile->FunctionFlags |= ~0x400;
 	UFileSystem::StaticClass()->ProcessEvent(uFnSaveStringToFile, &SaveStringToFile_Params, nullptr);
+	uFnSaveStringToFile->FunctionFlags |= 0x400;
 
 	return SaveStringToFile_Params.ReturnValue;
 };
@@ -11421,7 +12657,7 @@ bool UFileSystem::SaveStringToFile(class FString Path, class FString Text)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 // TArray<uint8_t>                Bytes                          (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UFileSystem::SaveBytesToFile(class FString Path, TArray<uint8_t>& Bytes)
+bool UFileSystem::SaveBytesToFile(const class FString& Path, TArray<uint8_t>& Bytes)
 {
 	static UFunction* uFnSaveBytesToFile = nullptr;
 
@@ -11435,7 +12671,9 @@ bool UFileSystem::SaveBytesToFile(class FString Path, TArray<uint8_t>& Bytes)
 	memcpy_s(&SaveBytesToFile_Params.Path, sizeof(SaveBytesToFile_Params.Path), &Path, sizeof(Path));
 	memcpy_s(&SaveBytesToFile_Params.Bytes, sizeof(SaveBytesToFile_Params.Bytes), &Bytes, sizeof(Bytes));
 
+	uFnSaveBytesToFile->FunctionFlags |= ~0x400;
 	UFileSystem::StaticClass()->ProcessEvent(uFnSaveBytesToFile, &SaveBytesToFile_Params, nullptr);
+	uFnSaveBytesToFile->FunctionFlags |= 0x400;
 
 	memcpy_s(&Bytes, sizeof(Bytes), &SaveBytesToFile_Params.Bytes, sizeof(SaveBytesToFile_Params.Bytes));
 
@@ -11443,7 +12681,7 @@ bool UFileSystem::SaveBytesToFile(class FString Path, TArray<uint8_t>& Bytes)
 };
 
 // Function Core.FileSystem.LoadFileToBytes
-// [0x00426401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// [0x00426401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
@@ -11451,7 +12689,7 @@ bool UFileSystem::SaveBytesToFile(class FString Path, TArray<uint8_t>& Bytes)
 // int32_t                        Length                         (CPF_OptionalParm | CPF_Parm)
 // TArray<uint8_t>                OutBytes                       (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UFileSystem::LoadFileToBytes(class FString Path, int32_t StartOffset, int32_t Length, TArray<uint8_t>& OutBytes)
+bool UFileSystem::LoadFileToBytes(const class FString& Path, int32_t StartOffset, int32_t Length, TArray<uint8_t>& OutBytes)
 {
 	static UFunction* uFnLoadFileToBytes = nullptr;
 
@@ -11467,7 +12705,9 @@ bool UFileSystem::LoadFileToBytes(class FString Path, int32_t StartOffset, int32
 	memcpy_s(&LoadFileToBytes_Params.Length, sizeof(LoadFileToBytes_Params.Length), &Length, sizeof(Length));
 	memcpy_s(&LoadFileToBytes_Params.OutBytes, sizeof(LoadFileToBytes_Params.OutBytes), &OutBytes, sizeof(OutBytes));
 
+	uFnLoadFileToBytes->FunctionFlags |= ~0x400;
 	UFileSystem::StaticClass()->ProcessEvent(uFnLoadFileToBytes, &LoadFileToBytes_Params, nullptr);
+	uFnLoadFileToBytes->FunctionFlags |= 0x400;
 
 	memcpy_s(&OutBytes, sizeof(OutBytes), &LoadFileToBytes_Params.OutBytes, sizeof(LoadFileToBytes_Params.OutBytes));
 
@@ -11481,7 +12721,7 @@ bool UFileSystem::LoadFileToBytes(class FString Path, int32_t StartOffset, int32
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  OutText                        (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UFileSystem::LoadFileToString(class FString Path, class FString& OutText)
+bool UFileSystem::LoadFileToString(const class FString& Path, class FString& OutText)
 {
 	static UFunction* uFnLoadFileToString = nullptr;
 
@@ -11495,7 +12735,9 @@ bool UFileSystem::LoadFileToString(class FString Path, class FString& OutText)
 	memcpy_s(&LoadFileToString_Params.Path, sizeof(LoadFileToString_Params.Path), &Path, sizeof(Path));
 	memcpy_s(&LoadFileToString_Params.OutText, sizeof(LoadFileToString_Params.OutText), &OutText, sizeof(OutText));
 
+	uFnLoadFileToString->FunctionFlags |= ~0x400;
 	UFileSystem::StaticClass()->ProcessEvent(uFnLoadFileToString, &LoadFileToString_Params, nullptr);
+	uFnLoadFileToString->FunctionFlags |= 0x400;
 
 	memcpy_s(&OutText, sizeof(OutText), &LoadFileToString_Params.OutText, sizeof(LoadFileToString_Params.OutText));
 
@@ -11508,7 +12750,7 @@ bool UFileSystem::LoadFileToString(class FString Path, class FString& OutText)
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 
-int32_t UFileSystem::GetFileSize(class FString Path)
+int32_t UFileSystem::GetFileSize(const class FString& Path)
 {
 	static UFunction* uFnGetFileSize = nullptr;
 
@@ -11521,7 +12763,9 @@ int32_t UFileSystem::GetFileSize(class FString Path)
 	memset(&GetFileSize_Params, 0, sizeof(GetFileSize_Params));
 	memcpy_s(&GetFileSize_Params.Path, sizeof(GetFileSize_Params.Path), &Path, sizeof(Path));
 
+	uFnGetFileSize->FunctionFlags |= ~0x400;
 	UFileSystem::StaticClass()->ProcessEvent(uFnGetFileSize, &GetFileSize_Params, nullptr);
+	uFnGetFileSize->FunctionFlags |= 0x400;
 
 	return GetFileSize_Params.ReturnValue;
 };
@@ -11532,7 +12776,7 @@ int32_t UFileSystem::GetFileSize(class FString Path)
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 
-class FString UFileSystem::GetFileExtensionWithoutDot(class FString Path)
+class FString UFileSystem::GetFileExtensionWithoutDot(const class FString& Path)
 {
 	static UFunction* uFnGetFileExtensionWithoutDot = nullptr;
 
@@ -11545,7 +12789,9 @@ class FString UFileSystem::GetFileExtensionWithoutDot(class FString Path)
 	memset(&GetFileExtensionWithoutDot_Params, 0, sizeof(GetFileExtensionWithoutDot_Params));
 	memcpy_s(&GetFileExtensionWithoutDot_Params.Path, sizeof(GetFileExtensionWithoutDot_Params.Path), &Path, sizeof(Path));
 
+	uFnGetFileExtensionWithoutDot->FunctionFlags |= ~0x400;
 	UFileSystem::StaticClass()->ProcessEvent(uFnGetFileExtensionWithoutDot, &GetFileExtensionWithoutDot_Params, nullptr);
+	uFnGetFileExtensionWithoutDot->FunctionFlags |= 0x400;
 
 	return GetFileExtensionWithoutDot_Params.ReturnValue;
 };
@@ -11556,7 +12802,7 @@ class FString UFileSystem::GetFileExtensionWithoutDot(class FString Path)
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 
-class FString UFileSystem::GetFileExtension(class FString Path)
+class FString UFileSystem::GetFileExtension(const class FString& Path)
 {
 	static UFunction* uFnGetFileExtension = nullptr;
 
@@ -11569,7 +12815,9 @@ class FString UFileSystem::GetFileExtension(class FString Path)
 	memset(&GetFileExtension_Params, 0, sizeof(GetFileExtension_Params));
 	memcpy_s(&GetFileExtension_Params.Path, sizeof(GetFileExtension_Params.Path), &Path, sizeof(Path));
 
+	uFnGetFileExtension->FunctionFlags |= ~0x400;
 	UFileSystem::StaticClass()->ProcessEvent(uFnGetFileExtension, &GetFileExtension_Params, nullptr);
+	uFnGetFileExtension->FunctionFlags |= 0x400;
 
 	return GetFileExtension_Params.ReturnValue;
 };
@@ -11580,7 +12828,7 @@ class FString UFileSystem::GetFileExtension(class FString Path)
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 
-class FString UFileSystem::GetFilePathWithoutExtension(class FString Path)
+class FString UFileSystem::GetFilePathWithoutExtension(const class FString& Path)
 {
 	static UFunction* uFnGetFilePathWithoutExtension = nullptr;
 
@@ -11593,7 +12841,9 @@ class FString UFileSystem::GetFilePathWithoutExtension(class FString Path)
 	memset(&GetFilePathWithoutExtension_Params, 0, sizeof(GetFilePathWithoutExtension_Params));
 	memcpy_s(&GetFilePathWithoutExtension_Params.Path, sizeof(GetFilePathWithoutExtension_Params.Path), &Path, sizeof(Path));
 
+	uFnGetFilePathWithoutExtension->FunctionFlags |= ~0x400;
 	UFileSystem::StaticClass()->ProcessEvent(uFnGetFilePathWithoutExtension, &GetFilePathWithoutExtension_Params, nullptr);
+	uFnGetFilePathWithoutExtension->FunctionFlags |= 0x400;
 
 	return GetFilePathWithoutExtension_Params.ReturnValue;
 };
@@ -11604,7 +12854,7 @@ class FString UFileSystem::GetFilePathWithoutExtension(class FString Path)
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 
-class FString UFileSystem::GetFileNameWithoutExtension(class FString Path)
+class FString UFileSystem::GetFileNameWithoutExtension(const class FString& Path)
 {
 	static UFunction* uFnGetFileNameWithoutExtension = nullptr;
 
@@ -11617,7 +12867,9 @@ class FString UFileSystem::GetFileNameWithoutExtension(class FString Path)
 	memset(&GetFileNameWithoutExtension_Params, 0, sizeof(GetFileNameWithoutExtension_Params));
 	memcpy_s(&GetFileNameWithoutExtension_Params.Path, sizeof(GetFileNameWithoutExtension_Params.Path), &Path, sizeof(Path));
 
+	uFnGetFileNameWithoutExtension->FunctionFlags |= ~0x400;
 	UFileSystem::StaticClass()->ProcessEvent(uFnGetFileNameWithoutExtension, &GetFileNameWithoutExtension_Params, nullptr);
+	uFnGetFileNameWithoutExtension->FunctionFlags |= 0x400;
 
 	return GetFileNameWithoutExtension_Params.ReturnValue;
 };
@@ -11628,7 +12880,7 @@ class FString UFileSystem::GetFileNameWithoutExtension(class FString Path)
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 
-class FString UFileSystem::GetFilename(class FString Path)
+class FString UFileSystem::GetFilename(const class FString& Path)
 {
 	static UFunction* uFnGetFilename = nullptr;
 
@@ -11641,7 +12893,9 @@ class FString UFileSystem::GetFilename(class FString Path)
 	memset(&GetFilename_Params, 0, sizeof(GetFilename_Params));
 	memcpy_s(&GetFilename_Params.Path, sizeof(GetFilename_Params.Path), &Path, sizeof(Path));
 
+	uFnGetFilename->FunctionFlags |= ~0x400;
 	UFileSystem::StaticClass()->ProcessEvent(uFnGetFilename, &GetFilename_Params, nullptr);
+	uFnGetFilename->FunctionFlags |= 0x400;
 
 	return GetFilename_Params.ReturnValue;
 };
@@ -11652,7 +12906,7 @@ class FString UFileSystem::GetFilename(class FString Path)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 // TArray<class FString>          OutFilenames                   (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UFileSystem::FindFiles(class FString Path, TArray<class FString>& OutFilenames)
+void UFileSystem::FindFiles(const class FString& Path, TArray<class FString>& OutFilenames)
 {
 	static UFunction* uFnFindFiles = nullptr;
 
@@ -11666,7 +12920,9 @@ void UFileSystem::FindFiles(class FString Path, TArray<class FString>& OutFilena
 	memcpy_s(&FindFiles_Params.Path, sizeof(FindFiles_Params.Path), &Path, sizeof(Path));
 	memcpy_s(&FindFiles_Params.OutFilenames, sizeof(FindFiles_Params.OutFilenames), &OutFilenames, sizeof(OutFilenames));
 
+	uFnFindFiles->FunctionFlags |= ~0x400;
 	UFileSystem::StaticClass()->ProcessEvent(uFnFindFiles, &FindFiles_Params, nullptr);
+	uFnFindFiles->FunctionFlags |= 0x400;
 
 	memcpy_s(&OutFilenames, sizeof(OutFilenames), &FindFiles_Params.OutFilenames, sizeof(FindFiles_Params.OutFilenames));
 };
@@ -11703,13 +12959,13 @@ UFunction* UFunction::FindFunction(const const std::string& functionFullName)
 }
 
 // Function Core.ErrorType.CreateError
-// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class UError*                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  InErrorMessage                 (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        InErrorCode                    (CPF_OptionalParm | CPF_Parm)
 
-class UError* UErrorType::CreateError(class FString InErrorMessage, int32_t InErrorCode)
+class UError* UErrorType::CreateError(const class FString& InErrorMessage, int32_t InErrorCode)
 {
 	static UFunction* uFnCreateError = nullptr;
 
@@ -11723,7 +12979,9 @@ class UError* UErrorType::CreateError(class FString InErrorMessage, int32_t InEr
 	memcpy_s(&CreateError_Params.InErrorMessage, sizeof(CreateError_Params.InErrorMessage), &InErrorMessage, sizeof(InErrorMessage));
 	memcpy_s(&CreateError_Params.InErrorCode, sizeof(CreateError_Params.InErrorCode), &InErrorCode, sizeof(InErrorCode));
 
+	uFnCreateError->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnCreateError, &CreateError_Params, nullptr);
+	uFnCreateError->FunctionFlags |= 0x400;
 
 	return CreateError_Params.ReturnValue;
 };
@@ -11745,7 +13003,9 @@ class FString UErrorType::GetLocalizedMessage()
 	UErrorType_execGetLocalizedMessage_Params GetLocalizedMessage_Params;
 	memset(&GetLocalizedMessage_Params, 0, sizeof(GetLocalizedMessage_Params));
 
+	uFnGetLocalizedMessage->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnGetLocalizedMessage, &GetLocalizedMessage_Params, nullptr);
+	uFnGetLocalizedMessage->FunctionFlags |= 0x400;
 
 	return GetLocalizedMessage_Params.ReturnValue;
 };
@@ -11756,7 +13016,7 @@ class FString UErrorType::GetLocalizedMessage()
 // class UErrorType*              ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FName                   Error                          (CPF_Parm)
 
-class UErrorType* UErrorList::GetErrorType(struct FName Error)
+class UErrorType* UErrorList::GetErrorType(const struct FName& Error)
 {
 	static UFunction* uFnGetErrorType = nullptr;
 
@@ -11769,7 +13029,9 @@ class UErrorType* UErrorList::GetErrorType(struct FName Error)
 	memset(&GetErrorType_Params, 0, sizeof(GetErrorType_Params));
 	memcpy_s(&GetErrorType_Params.Error, sizeof(GetErrorType_Params.Error), &Error, sizeof(Error));
 
+	uFnGetErrorType->FunctionFlags |= ~0x400;
 	UErrorList::StaticClass()->ProcessEvent(uFnGetErrorType, &GetErrorType_Params, nullptr);
+	uFnGetErrorType->FunctionFlags |= 0x400;
 
 	return GetErrorType_Params.ReturnValue;
 };
@@ -11813,7 +13075,9 @@ class FString UError::GetLocalizedMessage()
 	UError_execGetLocalizedMessage_Params GetLocalizedMessage_Params;
 	memset(&GetLocalizedMessage_Params, 0, sizeof(GetLocalizedMessage_Params));
 
+	uFnGetLocalizedMessage->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnGetLocalizedMessage, &GetLocalizedMessage_Params, nullptr);
+	uFnGetLocalizedMessage->FunctionFlags |= 0x400;
 
 	return GetLocalizedMessage_Params.ReturnValue;
 };
@@ -11837,7 +13101,9 @@ struct FScriptDelegate UDelegateTracker::RemoveDelegate(int32_t CallbackId)
 	memset(&RemoveDelegate_Params, 0, sizeof(RemoveDelegate_Params));
 	memcpy_s(&RemoveDelegate_Params.CallbackId, sizeof(RemoveDelegate_Params.CallbackId), &CallbackId, sizeof(CallbackId));
 
+	uFnRemoveDelegate->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnRemoveDelegate, &RemoveDelegate_Params, nullptr);
+	uFnRemoveDelegate->FunctionFlags |= 0x400;
 
 	return RemoveDelegate_Params.ReturnValue;
 };
@@ -11861,7 +13127,9 @@ int32_t UDelegateTracker::AddDelegate(struct FScriptDelegate Callback)
 	memset(&AddDelegate_Params, 0, sizeof(AddDelegate_Params));
 	memcpy_s(&AddDelegate_Params.Callback, sizeof(AddDelegate_Params.Callback), &Callback, sizeof(Callback));
 
+	uFnAddDelegate->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnAddDelegate, &AddDelegate_Params, nullptr);
+	uFnAddDelegate->FunctionFlags |= 0x400;
 
 	return AddDelegate_Params.ReturnValue;
 };
@@ -11905,12 +13173,12 @@ void UDebugDrawer::Reset()
 };
 
 // Function Core.DebugDrawer.PrintText
-// [0x00024002] (FUNC_Defined | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// [0x00024002] (FUNC_Defined | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  Text                           (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 // struct FColor                  InColor                        (CPF_OptionalParm | CPF_Parm)
 
-void UDebugDrawer::PrintText(class FString Text, struct FColor InColor)
+void UDebugDrawer::PrintText(const class FString& Text, const struct FColor& InColor)
 {
 	static UFunction* uFnPrintText = nullptr;
 
@@ -11934,7 +13202,7 @@ void UDebugDrawer::PrintText(class FString Text, struct FColor InColor)
 // int32_t                        Index                          (CPF_Parm)
 // class FString                  Value                          (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 
-void UDebugDrawer::eventPrintArrayProperty(class FString PropertyName, int32_t Index, class FString Value)
+void UDebugDrawer::eventPrintArrayProperty(const class FString& PropertyName, int32_t Index, const class FString& Value)
 {
 	static UFunction* uFnPrintArrayProperty = nullptr;
 
@@ -11958,7 +13226,7 @@ void UDebugDrawer::eventPrintArrayProperty(class FString PropertyName, int32_t I
 // class FString                  PropertyName                   (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 // class FString                  Value                          (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 
-void UDebugDrawer::eventPrintProperty(class FString PropertyName, class FString Value)
+void UDebugDrawer::eventPrintProperty(const class FString& PropertyName, const class FString& Value)
 {
 	static UFunction* uFnPrintProperty = nullptr;
 
@@ -12019,7 +13287,7 @@ void UDebugDrawer::eventStartSection()
 // class FString                  Title                          (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 // class UObject*                 ForObj                         (CPF_Parm)
 
-void UDebugDrawer::eventPrintObject(class FString Title, class UObject* ForObj)
+void UDebugDrawer::eventPrintObject(const class FString& Title, class UObject* ForObj)
 {
 	static UFunction* uFnPrintObject = nullptr;
 
@@ -12031,7 +13299,7 @@ void UDebugDrawer::eventPrintObject(class FString Title, class UObject* ForObj)
 	UDebugDrawer_eventPrintObject_Params PrintObject_Params;
 	memset(&PrintObject_Params, 0, sizeof(PrintObject_Params));
 	memcpy_s(&PrintObject_Params.Title, sizeof(PrintObject_Params.Title), &Title, sizeof(Title));
-	memcpy_s(&PrintObject_Params.ForObj, sizeof(PrintObject_Params.ForObj), &ForObj, sizeof(ForObj));
+	PrintObject_Params.ForObj = ForObj;
 
 	this->ProcessEvent(uFnPrintObject, &PrintObject_Params, nullptr);
 };
@@ -12062,7 +13330,7 @@ void UDebugDrawer::eventPrintSeperater()
 // int32_t                        Index                          (CPF_Parm)
 // class UObject*                 ForObj                         (CPF_Parm)
 
-void UDebugDrawer::eventDebugArrayObject(class FString Title, int32_t Index, class UObject* ForObj)
+void UDebugDrawer::eventDebugArrayObject(const class FString& Title, int32_t Index, class UObject* ForObj)
 {
 	static UFunction* uFnDebugArrayObject = nullptr;
 
@@ -12075,7 +13343,7 @@ void UDebugDrawer::eventDebugArrayObject(class FString Title, int32_t Index, cla
 	memset(&DebugArrayObject_Params, 0, sizeof(DebugArrayObject_Params));
 	memcpy_s(&DebugArrayObject_Params.Title, sizeof(DebugArrayObject_Params.Title), &Title, sizeof(Title));
 	memcpy_s(&DebugArrayObject_Params.Index, sizeof(DebugArrayObject_Params.Index), &Index, sizeof(Index));
-	memcpy_s(&DebugArrayObject_Params.ForObj, sizeof(DebugArrayObject_Params.ForObj), &ForObj, sizeof(ForObj));
+	DebugArrayObject_Params.ForObj = ForObj;
 
 	this->ProcessEvent(uFnDebugArrayObject, &DebugArrayObject_Params, nullptr);
 };
@@ -12086,7 +13354,7 @@ void UDebugDrawer::eventDebugArrayObject(class FString Title, int32_t Index, cla
 // class FString                  Title                          (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 // class UObject*                 ForObj                         (CPF_Parm)
 
-void UDebugDrawer::eventDebugObject(class FString Title, class UObject* ForObj)
+void UDebugDrawer::eventDebugObject(const class FString& Title, class UObject* ForObj)
 {
 	static UFunction* uFnDebugObject = nullptr;
 
@@ -12098,7 +13366,7 @@ void UDebugDrawer::eventDebugObject(class FString Title, class UObject* ForObj)
 	UDebugDrawer_eventDebugObject_Params DebugObject_Params;
 	memset(&DebugObject_Params, 0, sizeof(DebugObject_Params));
 	memcpy_s(&DebugObject_Params.Title, sizeof(DebugObject_Params.Title), &Title, sizeof(Title));
-	memcpy_s(&DebugObject_Params.ForObj, sizeof(DebugObject_Params.ForObj), &ForObj, sizeof(ForObj));
+	DebugObject_Params.ForObj = ForObj;
 
 	this->ProcessEvent(uFnDebugObject, &DebugObject_Params, nullptr);
 };
@@ -12109,7 +13377,7 @@ void UDebugDrawer::eventDebugObject(class FString Title, class UObject* ForObj)
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FName                   Category                       (CPF_Parm)
 
-bool UDebugDrawer::ShouldDisplayDebug(struct FName Category)
+bool UDebugDrawer::ShouldDisplayDebug(const struct FName& Category)
 {
 	static UFunction* uFnShouldDisplayDebug = nullptr;
 
@@ -12132,7 +13400,7 @@ bool UDebugDrawer::ShouldDisplayDebug(struct FName Category)
 // Parameter Info:
 // class FString                  Str                            (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 
-void UDebugDrawer::LogFunc(class FString Str)
+void UDebugDrawer::LogFunc(const class FString& Str)
 {
 	static UFunction* uFnLogFunc = nullptr;
 
@@ -12169,7 +13437,9 @@ bool UCompression::ZLibCompress(TArray<uint8_t>& Uncompressed, TArray<uint8_t>& 
 	memcpy_s(&ZLibCompress_Params.Uncompressed, sizeof(ZLibCompress_Params.Uncompressed), &Uncompressed, sizeof(Uncompressed));
 	memcpy_s(&ZLibCompress_Params.OutCompressed, sizeof(ZLibCompress_Params.OutCompressed), &OutCompressed, sizeof(OutCompressed));
 
+	uFnZLibCompress->FunctionFlags |= ~0x400;
 	UCompression::StaticClass()->ProcessEvent(uFnZLibCompress, &ZLibCompress_Params, nullptr);
+	uFnZLibCompress->FunctionFlags |= 0x400;
 
 	memcpy_s(&Uncompressed, sizeof(Uncompressed), &ZLibCompress_Params.Uncompressed, sizeof(ZLibCompress_Params.Uncompressed));
 	memcpy_s(&OutCompressed, sizeof(OutCompressed), &ZLibCompress_Params.OutCompressed, sizeof(ZLibCompress_Params.OutCompressed));
@@ -12183,7 +13453,7 @@ bool UCompression::ZLibCompress(TArray<uint8_t>& Uncompressed, TArray<uint8_t>& 
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Key                            (CPF_Parm | CPF_NeedCtorLink)
 
-bool UStringObjectMap::Contains(class FString Key)
+bool UStringObjectMap::Contains(const class FString& Key)
 {
 	static UFunction* uFnContains = nullptr;
 
@@ -12196,7 +13466,9 @@ bool UStringObjectMap::Contains(class FString Key)
 	memset(&Contains_Params, 0, sizeof(Contains_Params));
 	memcpy_s(&Contains_Params.Key, sizeof(Contains_Params.Key), &Key, sizeof(Key));
 
+	uFnContains->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnContains, &Contains_Params, nullptr);
+	uFnContains->FunctionFlags |= 0x400;
 
 	return Contains_Params.ReturnValue;
 };
@@ -12206,7 +13478,7 @@ bool UStringObjectMap::Contains(class FString Key)
 // Parameter Info:
 // class FString                  Key                            (CPF_Parm | CPF_NeedCtorLink)
 
-void UStringObjectMap::Remove(class FString Key)
+void UStringObjectMap::Remove(const class FString& Key)
 {
 	static UFunction* uFnRemove = nullptr;
 
@@ -12219,7 +13491,9 @@ void UStringObjectMap::Remove(class FString Key)
 	memset(&Remove_Params, 0, sizeof(Remove_Params));
 	memcpy_s(&Remove_Params.Key, sizeof(Remove_Params.Key), &Key, sizeof(Key));
 
+	uFnRemove->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnRemove, &Remove_Params, nullptr);
+	uFnRemove->FunctionFlags |= 0x400;
 };
 
 // Function Core.StringObjectMap.TryGetObject
@@ -12229,7 +13503,7 @@ void UStringObjectMap::Remove(class FString Key)
 // class FString                  Key                            (CPF_Parm | CPF_NeedCtorLink)
 // class UObject*                 OutValue                       (CPF_Parm | CPF_OutParm)
 
-bool UStringObjectMap::TryGetObjectW(class FString Key, class UObject*& OutValue)
+bool UStringObjectMap::TryGetObjectW(const class FString& Key, class UObject*& OutValue)
 {
 	static UFunction* uFnTryGetObjectW = nullptr;
 
@@ -12241,11 +13515,13 @@ bool UStringObjectMap::TryGetObjectW(class FString Key, class UObject*& OutValue
 	UStringObjectMap_execTryGetObjectW_Params TryGetObjectW_Params;
 	memset(&TryGetObjectW_Params, 0, sizeof(TryGetObjectW_Params));
 	memcpy_s(&TryGetObjectW_Params.Key, sizeof(TryGetObjectW_Params.Key), &Key, sizeof(Key));
-	memcpy_s(&TryGetObjectW_Params.OutValue, sizeof(TryGetObjectW_Params.OutValue), &OutValue, sizeof(OutValue));
+	TryGetObjectW_Params.OutValue = OutValue;
 
+	uFnTryGetObjectW->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnTryGetObjectW, &TryGetObjectW_Params, nullptr);
+	uFnTryGetObjectW->FunctionFlags |= 0x400;
 
-	memcpy_s(&OutValue, sizeof(OutValue), &TryGetObjectW_Params.OutValue, sizeof(TryGetObjectW_Params.OutValue));
+	OutValue = TryGetObjectW_Params.OutValue;
 
 	return TryGetObjectW_Params.ReturnValue;
 };
@@ -12275,7 +13551,7 @@ void UStringObjectMap::TryGet()
 // class UObject*                 ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Key                            (CPF_Parm | CPF_NeedCtorLink)
 
-class UObject* UStringObjectMap::GetObjectW(class FString Key)
+class UObject* UStringObjectMap::GetObjectW(const class FString& Key)
 {
 	static UFunction* uFnGetObjectW = nullptr;
 
@@ -12288,7 +13564,9 @@ class UObject* UStringObjectMap::GetObjectW(class FString Key)
 	memset(&GetObjectW_Params, 0, sizeof(GetObjectW_Params));
 	memcpy_s(&GetObjectW_Params.Key, sizeof(GetObjectW_Params.Key), &Key, sizeof(Key));
 
+	uFnGetObjectW->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnGetObjectW, &GetObjectW_Params, nullptr);
+	uFnGetObjectW->FunctionFlags |= 0x400;
 
 	return GetObjectW_Params.ReturnValue;
 };
@@ -12318,7 +13596,7 @@ void UStringObjectMap::Get()
 // class FString                  Key                            (CPF_Parm | CPF_NeedCtorLink)
 // class UObject*                 Value                          (CPF_Parm)
 
-void UStringObjectMap::Set(class FString Key, class UObject* Value)
+void UStringObjectMap::Set(const class FString& Key, class UObject* Value)
 {
 	static UFunction* uFnSet = nullptr;
 
@@ -12330,9 +13608,11 @@ void UStringObjectMap::Set(class FString Key, class UObject* Value)
 	UStringObjectMap_execSet_Params Set_Params;
 	memset(&Set_Params, 0, sizeof(Set_Params));
 	memcpy_s(&Set_Params.Key, sizeof(Set_Params.Key), &Key, sizeof(Key));
-	memcpy_s(&Set_Params.Value, sizeof(Set_Params.Value), &Value, sizeof(Value));
+	Set_Params.Value = Value;
 
+	uFnSet->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSet, &Set_Params, nullptr);
+	uFnSet->FunctionFlags |= 0x400;
 };
 
 // Function Core.StringMap.ForEach
@@ -12353,7 +13633,9 @@ void UStringMap::ForEach(struct FScriptDelegate Callback)
 	memset(&ForEach_Params, 0, sizeof(ForEach_Params));
 	memcpy_s(&ForEach_Params.Callback, sizeof(ForEach_Params.Callback), &Callback, sizeof(Callback));
 
+	uFnForEach->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnForEach, &ForEach_Params, nullptr);
+	uFnForEach->FunctionFlags |= 0x400;
 };
 
 // Function Core.StringMap.Append
@@ -12372,9 +13654,11 @@ void UStringMap::Append(class UStringMap* Other)
 
 	UStringMap_execAppend_Params Append_Params;
 	memset(&Append_Params, 0, sizeof(Append_Params));
-	memcpy_s(&Append_Params.Other, sizeof(Append_Params.Other), &Other, sizeof(Other));
+	Append_Params.Other = Other;
 
+	uFnAppend->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnAppend, &Append_Params, nullptr);
+	uFnAppend->FunctionFlags |= 0x400;
 };
 
 // Function Core.StringMap.Contains
@@ -12383,7 +13667,7 @@ void UStringMap::Append(class UStringMap* Other)
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Key                            (CPF_Parm | CPF_NeedCtorLink)
 
-bool UStringMap::Contains(class FString Key)
+bool UStringMap::Contains(const class FString& Key)
 {
 	static UFunction* uFnContains = nullptr;
 
@@ -12396,7 +13680,9 @@ bool UStringMap::Contains(class FString Key)
 	memset(&Contains_Params, 0, sizeof(Contains_Params));
 	memcpy_s(&Contains_Params.Key, sizeof(Contains_Params.Key), &Key, sizeof(Key));
 
+	uFnContains->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnContains, &Contains_Params, nullptr);
+	uFnContains->FunctionFlags |= 0x400;
 
 	return Contains_Params.ReturnValue;
 };
@@ -12406,7 +13692,7 @@ bool UStringMap::Contains(class FString Key)
 // Parameter Info:
 // class FString                  Key                            (CPF_Parm | CPF_NeedCtorLink)
 
-void UStringMap::Remove(class FString Key)
+void UStringMap::Remove(const class FString& Key)
 {
 	static UFunction* uFnRemove = nullptr;
 
@@ -12419,7 +13705,9 @@ void UStringMap::Remove(class FString Key)
 	memset(&Remove_Params, 0, sizeof(Remove_Params));
 	memcpy_s(&Remove_Params.Key, sizeof(Remove_Params.Key), &Key, sizeof(Key));
 
+	uFnRemove->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnRemove, &Remove_Params, nullptr);
+	uFnRemove->FunctionFlags |= 0x400;
 };
 
 // Function Core.StringMap.TryGet
@@ -12429,7 +13717,7 @@ void UStringMap::Remove(class FString Key)
 // class FString                  Key                            (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  OutValue                       (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UStringMap::TryGet(class FString Key, class FString& OutValue)
+bool UStringMap::TryGet(const class FString& Key, class FString& OutValue)
 {
 	static UFunction* uFnTryGet = nullptr;
 
@@ -12443,7 +13731,9 @@ bool UStringMap::TryGet(class FString Key, class FString& OutValue)
 	memcpy_s(&TryGet_Params.Key, sizeof(TryGet_Params.Key), &Key, sizeof(Key));
 	memcpy_s(&TryGet_Params.OutValue, sizeof(TryGet_Params.OutValue), &OutValue, sizeof(OutValue));
 
+	uFnTryGet->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnTryGet, &TryGet_Params, nullptr);
+	uFnTryGet->FunctionFlags |= 0x400;
 
 	memcpy_s(&OutValue, sizeof(OutValue), &TryGet_Params.OutValue, sizeof(TryGet_Params.OutValue));
 
@@ -12456,7 +13746,7 @@ bool UStringMap::TryGet(class FString Key, class FString& OutValue)
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Key                            (CPF_Parm | CPF_NeedCtorLink)
 
-class FString UStringMap::Get(class FString Key)
+class FString UStringMap::Get(const class FString& Key)
 {
 	static UFunction* uFnGet = nullptr;
 
@@ -12469,7 +13759,9 @@ class FString UStringMap::Get(class FString Key)
 	memset(&Get_Params, 0, sizeof(Get_Params));
 	memcpy_s(&Get_Params.Key, sizeof(Get_Params.Key), &Key, sizeof(Key));
 
+	uFnGet->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnGet, &Get_Params, nullptr);
+	uFnGet->FunctionFlags |= 0x400;
 
 	return Get_Params.ReturnValue;
 };
@@ -12480,7 +13772,7 @@ class FString UStringMap::Get(class FString Key)
 // class FString                  Key                            (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Value                          (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 
-void UStringMap::Set(class FString Key, class FString Value)
+void UStringMap::Set(const class FString& Key, const class FString& Value)
 {
 	static UFunction* uFnSet = nullptr;
 
@@ -12494,7 +13786,9 @@ void UStringMap::Set(class FString Key, class FString Value)
 	memcpy_s(&Set_Params.Key, sizeof(Set_Params.Key), &Key, sizeof(Key));
 	memcpy_s(&Set_Params.Value, sizeof(Set_Params.Value), &Value, sizeof(Value));
 
+	uFnSet->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSet, &Set_Params, nullptr);
+	uFnSet->FunctionFlags |= 0x400;
 };
 
 // Function Core.StringMap.PairCallback
@@ -12503,7 +13797,7 @@ void UStringMap::Set(class FString Key, class FString Value)
 // class FString                  Key                            (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Value                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UStringMap::PairCallback(class FString Key, class FString Value)
+void UStringMap::PairCallback(const class FString& Key, const class FString& Value)
 {
 	static UFunction* uFnPairCallback = nullptr;
 
@@ -12536,9 +13830,11 @@ void UObjectProvider::SetParent(class UObjectProvider* InParent)
 
 	UObjectProvider_execSetParent_Params SetParent_Params;
 	memset(&SetParent_Params, 0, sizeof(SetParent_Params));
-	memcpy_s(&SetParent_Params.InParent, sizeof(SetParent_Params.InParent), &InParent, sizeof(InParent));
+	SetParent_Params.InParent = InParent;
 
+	uFnSetParent->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSetParent, &SetParent_Params, nullptr);
+	uFnSetParent->FunctionFlags |= 0x400;
 };
 
 // Function Core.ObjectProvider.RemoveProxy
@@ -12557,9 +13853,11 @@ void UObjectProvider::RemoveProxy(class UObjectProvider* InProxy)
 
 	UObjectProvider_execRemoveProxy_Params RemoveProxy_Params;
 	memset(&RemoveProxy_Params, 0, sizeof(RemoveProxy_Params));
-	memcpy_s(&RemoveProxy_Params.InProxy, sizeof(RemoveProxy_Params.InProxy), &InProxy, sizeof(InProxy));
+	RemoveProxy_Params.InProxy = InProxy;
 
+	uFnRemoveProxy->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnRemoveProxy, &RemoveProxy_Params, nullptr);
+	uFnRemoveProxy->FunctionFlags |= 0x400;
 };
 
 // Function Core.ObjectProvider.AddProxy
@@ -12578,9 +13876,11 @@ void UObjectProvider::AddProxy(class UObjectProvider* InProxy)
 
 	UObjectProvider_execAddProxy_Params AddProxy_Params;
 	memset(&AddProxy_Params, 0, sizeof(AddProxy_Params));
-	memcpy_s(&AddProxy_Params.InProxy, sizeof(AddProxy_Params.InProxy), &InProxy, sizeof(InProxy));
+	AddProxy_Params.InProxy = InProxy;
 
+	uFnAddProxy->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnAddProxy, &AddProxy_Params, nullptr);
+	uFnAddProxy->FunctionFlags |= 0x400;
 };
 
 // Function Core.ObjectProvider.SetSingleton
@@ -12600,10 +13900,12 @@ void UObjectProvider::SetSingleton(class UClass* ObjClass, class UObject* Replac
 
 	UObjectProvider_execSetSingleton_Params SetSingleton_Params;
 	memset(&SetSingleton_Params, 0, sizeof(SetSingleton_Params));
-	memcpy_s(&SetSingleton_Params.ObjClass, sizeof(SetSingleton_Params.ObjClass), &ObjClass, sizeof(ObjClass));
-	memcpy_s(&SetSingleton_Params.Replacement, sizeof(SetSingleton_Params.Replacement), &Replacement, sizeof(Replacement));
+	SetSingleton_Params.ObjClass = ObjClass;
+	SetSingleton_Params.Replacement = Replacement;
 
+	uFnSetSingleton->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSetSingleton, &SetSingleton_Params, nullptr);
+	uFnSetSingleton->FunctionFlags |= 0x400;
 };
 
 // Function Core.ObjectProvider.Replace
@@ -12623,10 +13925,12 @@ void UObjectProvider::Replace(class UObject* Existing, class UObject* Replacemen
 
 	UObjectProvider_execReplace_Params Replace_Params;
 	memset(&Replace_Params, 0, sizeof(Replace_Params));
-	memcpy_s(&Replace_Params.Existing, sizeof(Replace_Params.Existing), &Existing, sizeof(Existing));
-	memcpy_s(&Replace_Params.Replacement, sizeof(Replace_Params.Replacement), &Replacement, sizeof(Replacement));
+	Replace_Params.Existing = Existing;
+	Replace_Params.Replacement = Replacement;
 
+	uFnReplace->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnReplace, &Replace_Params, nullptr);
+	uFnReplace->FunctionFlags |= 0x400;
 };
 
 // Function Core.ObjectProvider.AddAndRemoveObjects
@@ -12649,7 +13953,9 @@ void UObjectProvider::AddAndRemoveObjects(TArray<class UObject*>& AddObjects, TA
 	memcpy_s(&AddAndRemoveObjects_Params.AddObjects, sizeof(AddAndRemoveObjects_Params.AddObjects), &AddObjects, sizeof(AddObjects));
 	memcpy_s(&AddAndRemoveObjects_Params.RemoveObjects, sizeof(AddAndRemoveObjects_Params.RemoveObjects), &RemoveObjects, sizeof(RemoveObjects));
 
+	uFnAddAndRemoveObjects->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnAddAndRemoveObjects, &AddAndRemoveObjects_Params, nullptr);
+	uFnAddAndRemoveObjects->FunctionFlags |= 0x400;
 
 	memcpy_s(&AddObjects, sizeof(AddObjects), &AddAndRemoveObjects_Params.AddObjects, sizeof(AddAndRemoveObjects_Params.AddObjects));
 	memcpy_s(&RemoveObjects, sizeof(RemoveObjects), &AddAndRemoveObjects_Params.RemoveObjects, sizeof(AddAndRemoveObjects_Params.RemoveObjects));
@@ -12673,7 +13979,9 @@ void UObjectProvider::RemoveObjects(TArray<class UObject*>& InObjects)
 	memset(&RemoveObjects_Params, 0, sizeof(RemoveObjects_Params));
 	memcpy_s(&RemoveObjects_Params.InObjects, sizeof(RemoveObjects_Params.InObjects), &InObjects, sizeof(InObjects));
 
+	uFnRemoveObjects->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnRemoveObjects, &RemoveObjects_Params, nullptr);
+	uFnRemoveObjects->FunctionFlags |= 0x400;
 
 	memcpy_s(&InObjects, sizeof(InObjects), &RemoveObjects_Params.InObjects, sizeof(RemoveObjects_Params.InObjects));
 };
@@ -12694,9 +14002,11 @@ void UObjectProvider::RemoveAllObjects(class UClass* ObjectClass)
 
 	UObjectProvider_execRemoveAllObjects_Params RemoveAllObjects_Params;
 	memset(&RemoveAllObjects_Params, 0, sizeof(RemoveAllObjects_Params));
-	memcpy_s(&RemoveAllObjects_Params.ObjectClass, sizeof(RemoveAllObjects_Params.ObjectClass), &ObjectClass, sizeof(ObjectClass));
+	RemoveAllObjects_Params.ObjectClass = ObjectClass;
 
+	uFnRemoveAllObjects->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnRemoveAllObjects, &RemoveAllObjects_Params, nullptr);
+	uFnRemoveAllObjects->FunctionFlags |= 0x400;
 };
 
 // Function Core.ObjectProvider.RemoveObject
@@ -12715,9 +14025,11 @@ void UObjectProvider::RemoveObject(class UObject* Obj)
 
 	UObjectProvider_execRemoveObject_Params RemoveObject_Params;
 	memset(&RemoveObject_Params, 0, sizeof(RemoveObject_Params));
-	memcpy_s(&RemoveObject_Params.Obj, sizeof(RemoveObject_Params.Obj), &Obj, sizeof(Obj));
+	RemoveObject_Params.Obj = Obj;
 
+	uFnRemoveObject->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnRemoveObject, &RemoveObject_Params, nullptr);
+	uFnRemoveObject->FunctionFlags |= 0x400;
 };
 
 // Function Core.ObjectProvider.AddObjects
@@ -12738,7 +14050,9 @@ void UObjectProvider::AddObjects(TArray<class UObject*>& InObjects)
 	memset(&AddObjects_Params, 0, sizeof(AddObjects_Params));
 	memcpy_s(&AddObjects_Params.InObjects, sizeof(AddObjects_Params.InObjects), &InObjects, sizeof(InObjects));
 
+	uFnAddObjects->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnAddObjects, &AddObjects_Params, nullptr);
+	uFnAddObjects->FunctionFlags |= 0x400;
 
 	memcpy_s(&InObjects, sizeof(InObjects), &AddObjects_Params.InObjects, sizeof(AddObjects_Params.InObjects));
 };
@@ -12759,9 +14073,11 @@ void UObjectProvider::AddObject(class UObject* Obj)
 
 	UObjectProvider_execAddObject_Params AddObject_Params;
 	memset(&AddObject_Params, 0, sizeof(AddObject_Params));
-	memcpy_s(&AddObject_Params.Obj, sizeof(AddObject_Params.Obj), &Obj, sizeof(Obj));
+	AddObject_Params.Obj = Obj;
 
+	uFnAddObject->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnAddObject, &AddObject_Params, nullptr);
+	uFnAddObject->FunctionFlags |= 0x400;
 };
 
 // Function Core.ObjectProvider.GetExactCount
@@ -12781,9 +14097,11 @@ int32_t UObjectProvider::GetExactCount(class UClass* ObjClass)
 
 	UObjectProvider_execGetExactCount_Params GetExactCount_Params;
 	memset(&GetExactCount_Params, 0, sizeof(GetExactCount_Params));
-	memcpy_s(&GetExactCount_Params.ObjClass, sizeof(GetExactCount_Params.ObjClass), &ObjClass, sizeof(ObjClass));
+	GetExactCount_Params.ObjClass = ObjClass;
 
+	uFnGetExactCount->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnGetExactCount, &GetExactCount_Params, nullptr);
+	uFnGetExactCount->FunctionFlags |= 0x400;
 
 	return GetExactCount_Params.ReturnValue;
 };
@@ -12805,9 +14123,11 @@ int32_t UObjectProvider::GetCount(class UClass* ObjClass)
 
 	UObjectProvider_execGetCount_Params GetCount_Params;
 	memset(&GetCount_Params, 0, sizeof(GetCount_Params));
-	memcpy_s(&GetCount_Params.ObjClass, sizeof(GetCount_Params.ObjClass), &ObjClass, sizeof(ObjClass));
+	GetCount_Params.ObjClass = ObjClass;
 
+	uFnGetCount->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnGetCount, &GetCount_Params, nullptr);
+	uFnGetCount->FunctionFlags |= 0x400;
 
 	return GetCount_Params.ReturnValue;
 };
@@ -12829,9 +14149,11 @@ class UObject* UObjectProvider::GetOrCreate(class UClass* ObjClass)
 
 	UObjectProvider_execGetOrCreate_Params GetOrCreate_Params;
 	memset(&GetOrCreate_Params, 0, sizeof(GetOrCreate_Params));
-	memcpy_s(&GetOrCreate_Params.ObjClass, sizeof(GetOrCreate_Params.ObjClass), &ObjClass, sizeof(ObjClass));
+	GetOrCreate_Params.ObjClass = ObjClass;
 
+	uFnGetOrCreate->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnGetOrCreate, &GetOrCreate_Params, nullptr);
+	uFnGetOrCreate->FunctionFlags |= 0x400;
 
 	return GetOrCreate_Params.ReturnValue;
 };
@@ -12853,9 +14175,11 @@ class UObject* UObjectProvider::GetExact(class UClass* ObjClass)
 
 	UObjectProvider_execGetExact_Params GetExact_Params;
 	memset(&GetExact_Params, 0, sizeof(GetExact_Params));
-	memcpy_s(&GetExact_Params.ObjClass, sizeof(GetExact_Params.ObjClass), &ObjClass, sizeof(ObjClass));
+	GetExact_Params.ObjClass = ObjClass;
 
+	uFnGetExact->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnGetExact, &GetExact_Params, nullptr);
+	uFnGetExact->FunctionFlags |= 0x400;
 
 	return GetExact_Params.ReturnValue;
 };
@@ -12877,9 +14201,11 @@ class UObject* UObjectProvider::GetUnsafe(class UClass* ObjClass)
 
 	UObjectProvider_execGetUnsafe_Params GetUnsafe_Params;
 	memset(&GetUnsafe_Params, 0, sizeof(GetUnsafe_Params));
-	memcpy_s(&GetUnsafe_Params.ObjClass, sizeof(GetUnsafe_Params.ObjClass), &ObjClass, sizeof(ObjClass));
+	GetUnsafe_Params.ObjClass = ObjClass;
 
+	uFnGetUnsafe->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnGetUnsafe, &GetUnsafe_Params, nullptr);
+	uFnGetUnsafe->FunctionFlags |= 0x400;
 
 	return GetUnsafe_Params.ReturnValue;
 };
@@ -12901,15 +14227,17 @@ class UObject* UObjectProvider::Get(class UClass* ObjClass)
 
 	UObjectProvider_execGet_Params Get_Params;
 	memset(&Get_Params, 0, sizeof(Get_Params));
-	memcpy_s(&Get_Params.ObjClass, sizeof(Get_Params.ObjClass), &ObjClass, sizeof(ObjClass));
+	Get_Params.ObjClass = ObjClass;
 
+	uFnGet->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnGet, &Get_Params, nullptr);
+	uFnGet->FunctionFlags |= 0x400;
 
 	return Get_Params.ReturnValue;
 };
 
 // Function Core.ObjectProvider.AllObjects
-// [0x00424405] (FUNC_Final | FUNC_Iterator | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
+// [0x00424405] (FUNC_Final | FUNC_Iterator | FUNC_Native | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class UClass*                  BaseClass                      (CPF_Parm)
 // class UClass*                  InterfaceClass                 (CPF_OptionalParm | CPF_Parm)
@@ -12926,13 +14254,15 @@ void UObjectProvider::AllObjects(class UClass* BaseClass, class UClass* Interfac
 
 	UObjectProvider_execAllObjects_Params AllObjects_Params;
 	memset(&AllObjects_Params, 0, sizeof(AllObjects_Params));
-	memcpy_s(&AllObjects_Params.BaseClass, sizeof(AllObjects_Params.BaseClass), &BaseClass, sizeof(BaseClass));
-	memcpy_s(&AllObjects_Params.InterfaceClass, sizeof(AllObjects_Params.InterfaceClass), &InterfaceClass, sizeof(InterfaceClass));
-	memcpy_s(&AllObjects_Params.Obj, sizeof(AllObjects_Params.Obj), &Obj, sizeof(Obj));
+	AllObjects_Params.BaseClass = BaseClass;
+	AllObjects_Params.InterfaceClass = InterfaceClass;
+	AllObjects_Params.Obj = Obj;
 
+	uFnAllObjects->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnAllObjects, &AllObjects_Params, nullptr);
+	uFnAllObjects->FunctionFlags |= 0x400;
 
-	memcpy_s(&Obj, sizeof(Obj), &AllObjects_Params.Obj, sizeof(AllObjects_Params.Obj));
+	Obj = AllObjects_Params.Obj;
 };
 
 // Function Core.ObjectProvider.IsRegisteredForInjection
@@ -12952,9 +14282,11 @@ bool UObjectProvider::IsRegisteredForInjection(class UObject* Subscriber)
 
 	UObjectProvider_execIsRegisteredForInjection_Params IsRegisteredForInjection_Params;
 	memset(&IsRegisteredForInjection_Params, 0, sizeof(IsRegisteredForInjection_Params));
-	memcpy_s(&IsRegisteredForInjection_Params.Subscriber, sizeof(IsRegisteredForInjection_Params.Subscriber), &Subscriber, sizeof(Subscriber));
+	IsRegisteredForInjection_Params.Subscriber = Subscriber;
 
+	uFnIsRegisteredForInjection->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnIsRegisteredForInjection, &IsRegisteredForInjection_Params, nullptr);
+	uFnIsRegisteredForInjection->FunctionFlags |= 0x400;
 
 	return IsRegisteredForInjection_Params.ReturnValue;
 };
@@ -12975,9 +14307,11 @@ void UObjectProvider::InjectDelayed(class UObject* Subscriber)
 
 	UObjectProvider_execInjectDelayed_Params InjectDelayed_Params;
 	memset(&InjectDelayed_Params, 0, sizeof(InjectDelayed_Params));
-	memcpy_s(&InjectDelayed_Params.Subscriber, sizeof(InjectDelayed_Params.Subscriber), &Subscriber, sizeof(Subscriber));
+	InjectDelayed_Params.Subscriber = Subscriber;
 
+	uFnInjectDelayed->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnInjectDelayed, &InjectDelayed_Params, nullptr);
+	uFnInjectDelayed->FunctionFlags |= 0x400;
 };
 
 // Function Core.ObjectProvider.Inject
@@ -12996,9 +14330,11 @@ void UObjectProvider::Inject(class UObject* Subscriber)
 
 	UObjectProvider_execInject_Params Inject_Params;
 	memset(&Inject_Params, 0, sizeof(Inject_Params));
-	memcpy_s(&Inject_Params.Subscriber, sizeof(Inject_Params.Subscriber), &Subscriber, sizeof(Subscriber));
+	Inject_Params.Subscriber = Subscriber;
 
+	uFnInject->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnInject, &Inject_Params, nullptr);
+	uFnInject->FunctionFlags |= 0x400;
 };
 
 // Function Core.ObjectProvider.UnsubscribeAll
@@ -13017,13 +14353,15 @@ void UObjectProvider::UnsubscribeAll(class UObject* Subscriber)
 
 	UObjectProvider_execUnsubscribeAll_Params UnsubscribeAll_Params;
 	memset(&UnsubscribeAll_Params, 0, sizeof(UnsubscribeAll_Params));
-	memcpy_s(&UnsubscribeAll_Params.Subscriber, sizeof(UnsubscribeAll_Params.Subscriber), &Subscriber, sizeof(Subscriber));
+	UnsubscribeAll_Params.Subscriber = Subscriber;
 
+	uFnUnsubscribeAll->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnUnsubscribeAll, &UnsubscribeAll_Params, nullptr);
+	uFnUnsubscribeAll->FunctionFlags |= 0x400;
 };
 
 // Function Core.ObjectProvider.Unsubscribe
-// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // struct FScriptDelegate         Callback                       (CPF_Parm | CPF_NeedCtorLink)
 // struct FScriptDelegate         Callback2                      (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
@@ -13042,7 +14380,9 @@ void UObjectProvider::Unsubscribe(struct FScriptDelegate Callback, struct FScrip
 	memcpy_s(&Unsubscribe_Params.Callback, sizeof(Unsubscribe_Params.Callback), &Callback, sizeof(Callback));
 	memcpy_s(&Unsubscribe_Params.Callback2, sizeof(Unsubscribe_Params.Callback2), &Callback2, sizeof(Callback2));
 
+	uFnUnsubscribe->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnUnsubscribe, &Unsubscribe_Params, nullptr);
+	uFnUnsubscribe->FunctionFlags |= 0x400;
 };
 
 // Function Core.ObjectProvider.SubscribeList
@@ -13062,14 +14402,16 @@ void UObjectProvider::SubscribeList(class UClass* BaseClass, struct FScriptDeleg
 
 	UObjectProvider_execSubscribeList_Params SubscribeList_Params;
 	memset(&SubscribeList_Params, 0, sizeof(SubscribeList_Params));
-	memcpy_s(&SubscribeList_Params.BaseClass, sizeof(SubscribeList_Params.BaseClass), &BaseClass, sizeof(BaseClass));
+	SubscribeList_Params.BaseClass = BaseClass;
 	memcpy_s(&SubscribeList_Params.Callback, sizeof(SubscribeList_Params.Callback), &Callback, sizeof(Callback));
 
+	uFnSubscribeList->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSubscribeList, &SubscribeList_Params, nullptr);
+	uFnSubscribeList->FunctionFlags |= 0x400;
 };
 
 // Function Core.ObjectProvider.SubscribeOnce
-// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class UClass*                  BaseClass                      (CPF_Parm)
 // struct FScriptDelegate         OnAdd                          (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
@@ -13086,15 +14428,17 @@ void UObjectProvider::SubscribeOnce(class UClass* BaseClass, struct FScriptDeleg
 
 	UObjectProvider_execSubscribeOnce_Params SubscribeOnce_Params;
 	memset(&SubscribeOnce_Params, 0, sizeof(SubscribeOnce_Params));
-	memcpy_s(&SubscribeOnce_Params.BaseClass, sizeof(SubscribeOnce_Params.BaseClass), &BaseClass, sizeof(BaseClass));
+	SubscribeOnce_Params.BaseClass = BaseClass;
 	memcpy_s(&SubscribeOnce_Params.OnAdd, sizeof(SubscribeOnce_Params.OnAdd), &OnAdd, sizeof(OnAdd));
 	memcpy_s(&SubscribeOnce_Params.OnRemove, sizeof(SubscribeOnce_Params.OnRemove), &OnRemove, sizeof(OnRemove));
 
+	uFnSubscribeOnce->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSubscribeOnce, &SubscribeOnce_Params, nullptr);
+	uFnSubscribeOnce->FunctionFlags |= 0x400;
 };
 
 // Function Core.ObjectProvider.Subscribe
-// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class UClass*                  BaseClass                      (CPF_Parm)
 // struct FScriptDelegate         OnAdd                          (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
@@ -13111,11 +14455,13 @@ void UObjectProvider::Subscribe(class UClass* BaseClass, struct FScriptDelegate 
 
 	UObjectProvider_execSubscribe_Params Subscribe_Params;
 	memset(&Subscribe_Params, 0, sizeof(Subscribe_Params));
-	memcpy_s(&Subscribe_Params.BaseClass, sizeof(Subscribe_Params.BaseClass), &BaseClass, sizeof(BaseClass));
+	Subscribe_Params.BaseClass = BaseClass;
 	memcpy_s(&Subscribe_Params.OnAdd, sizeof(Subscribe_Params.OnAdd), &OnAdd, sizeof(OnAdd));
 	memcpy_s(&Subscribe_Params.OnRemove, sizeof(Subscribe_Params.OnRemove), &OnRemove, sizeof(OnRemove));
 
+	uFnSubscribe->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSubscribe, &Subscribe_Params, nullptr);
+	uFnSubscribe->FunctionFlags |= 0x400;
 };
 
 // Function Core.ObjectProvider.ObjectChangeCallback
@@ -13153,7 +14499,7 @@ void UObjectProvider::ObjectListSubscriptionCallback(class UObjectProvider* Prov
 
 	UObjectProvider_execObjectListSubscriptionCallback_Params ObjectListSubscriptionCallback_Params;
 	memset(&ObjectListSubscriptionCallback_Params, 0, sizeof(ObjectListSubscriptionCallback_Params));
-	memcpy_s(&ObjectListSubscriptionCallback_Params.Provider, sizeof(ObjectListSubscriptionCallback_Params.Provider), &Provider, sizeof(Provider));
+	ObjectListSubscriptionCallback_Params.Provider = Provider;
 
 	this->ProcessEvent(uFnObjectListSubscriptionCallback, &ObjectListSubscriptionCallback_Params, nullptr);
 };
@@ -13174,13 +14520,13 @@ void UObjectProvider::ObjectSubscriptionCallback(class UObject* Obj)
 
 	UObjectProvider_execObjectSubscriptionCallback_Params ObjectSubscriptionCallback_Params;
 	memset(&ObjectSubscriptionCallback_Params, 0, sizeof(ObjectSubscriptionCallback_Params));
-	memcpy_s(&ObjectSubscriptionCallback_Params.Obj, sizeof(ObjectSubscriptionCallback_Params.Obj), &Obj, sizeof(Obj));
+	ObjectSubscriptionCallback_Params.Obj = Obj;
 
 	this->ProcessEvent(uFnObjectSubscriptionCallback, &ObjectSubscriptionCallback_Params, nullptr);
 };
 
 // Function Core.DistributionVector.GetVectorValue
-// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // struct FVector                 ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // float                          F                              (CPF_OptionalParm | CPF_Parm)
@@ -13200,13 +14546,15 @@ struct FVector UDistributionVector::GetVectorValue(float F, int32_t LastExtreme)
 	memcpy_s(&GetVectorValue_Params.F, sizeof(GetVectorValue_Params.F), &F, sizeof(F));
 	memcpy_s(&GetVectorValue_Params.LastExtreme, sizeof(GetVectorValue_Params.LastExtreme), &LastExtreme, sizeof(LastExtreme));
 
+	uFnGetVectorValue->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnGetVectorValue, &GetVectorValue_Params, nullptr);
+	uFnGetVectorValue->FunctionFlags |= 0x400;
 
 	return GetVectorValue_Params.ReturnValue;
 };
 
 // Function Core.DistributionFloat.GetFloatValue
-// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // float                          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // float                          F                              (CPF_OptionalParm | CPF_Parm)
@@ -13224,18 +14572,20 @@ float UDistributionFloat::GetFloatValue(float F)
 	memset(&GetFloatValue_Params, 0, sizeof(GetFloatValue_Params));
 	memcpy_s(&GetFloatValue_Params.F, sizeof(GetFloatValue_Params.F), &F, sizeof(F));
 
+	uFnGetFloatValue->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnGetFloatValue, &GetFloatValue_Params, nullptr);
+	uFnGetFloatValue->FunctionFlags |= 0x400;
 
 	return GetFloatValue_Params.ReturnValue;
 };
 
 // Function Core.HelpCommandlet.Main
-// [0x400020800] (FUNC_Event | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020800] (FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Params                         (CPF_Parm | CPF_NeedCtorLink)
 
-int32_t UHelpCommandlet::eventMain(class FString Params)
+int32_t UHelpCommandlet::eventMain(const class FString& Params)
 {
 	static UFunction* uFnMain = nullptr;
 
@@ -13259,7 +14609,7 @@ int32_t UHelpCommandlet::eventMain(class FString Params)
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Params                         (CPF_Parm | CPF_NeedCtorLink)
 
-int32_t UCommandlet::eventMain(class FString Params)
+int32_t UCommandlet::eventMain(const class FString& Params)
 {
 	static UFunction* uFnMain = nullptr;
 
@@ -13283,7 +14633,7 @@ int32_t UCommandlet::eventMain(class FString Params)
 // class FString                  Category                       (CPF_Parm | CPF_NeedCtorLink)
 // float                          Value                          (CPF_Parm)
 
-void UBreadcrumbs::BreadcrumbFloat(class FString Category, float Value)
+void UBreadcrumbs::BreadcrumbFloat(const class FString& Category, float Value)
 {
 	static UFunction* uFnBreadcrumbFloat = nullptr;
 
@@ -13297,7 +14647,9 @@ void UBreadcrumbs::BreadcrumbFloat(class FString Category, float Value)
 	memcpy_s(&BreadcrumbFloat_Params.Category, sizeof(BreadcrumbFloat_Params.Category), &Category, sizeof(Category));
 	memcpy_s(&BreadcrumbFloat_Params.Value, sizeof(BreadcrumbFloat_Params.Value), &Value, sizeof(Value));
 
+	uFnBreadcrumbFloat->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnBreadcrumbFloat, &BreadcrumbFloat_Params, nullptr);
+	uFnBreadcrumbFloat->FunctionFlags |= 0x400;
 };
 
 // Function Core.Breadcrumbs.BreadcrumbString
@@ -13306,7 +14658,7 @@ void UBreadcrumbs::BreadcrumbFloat(class FString Category, float Value)
 // class FString                  Category                       (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Value                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UBreadcrumbs::BreadcrumbString(class FString Category, class FString Value)
+void UBreadcrumbs::BreadcrumbString(const class FString& Category, const class FString& Value)
 {
 	static UFunction* uFnBreadcrumbString = nullptr;
 
@@ -13320,7 +14672,33 @@ void UBreadcrumbs::BreadcrumbString(class FString Category, class FString Value)
 	memcpy_s(&BreadcrumbString_Params.Category, sizeof(BreadcrumbString_Params.Category), &Category, sizeof(Category));
 	memcpy_s(&BreadcrumbString_Params.Value, sizeof(BreadcrumbString_Params.Value), &Value, sizeof(Value));
 
+	uFnBreadcrumbString->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnBreadcrumbString, &BreadcrumbString_Params, nullptr);
+	uFnBreadcrumbString->FunctionFlags |= 0x400;
+};
+
+// Function Core.Base64.PadAndDecodeString
+// [0x00022003] (FUNC_Final | FUNC_Defined | FUNC_Static | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
+// TArray<uint8_t>                ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
+// class FString                  Input                          (CPF_Parm | CPF_NeedCtorLink)
+
+TArray<uint8_t> UBase64::PadAndDecodeString(const class FString& Input)
+{
+	static UFunction* uFnPadAndDecodeString = nullptr;
+
+	if (!uFnPadAndDecodeString)
+	{
+		uFnPadAndDecodeString = UFunction::FindFunction("Function Core.Base64.PadAndDecodeString");
+	}
+
+	UBase64_execPadAndDecodeString_Params PadAndDecodeString_Params;
+	memset(&PadAndDecodeString_Params, 0, sizeof(PadAndDecodeString_Params));
+	memcpy_s(&PadAndDecodeString_Params.Input, sizeof(PadAndDecodeString_Params.Input), &Input, sizeof(Input));
+
+	UBase64::StaticClass()->ProcessEvent(uFnPadAndDecodeString, &PadAndDecodeString_Params, nullptr);
+
+	return PadAndDecodeString_Params.ReturnValue;
 };
 
 // Function Core.Base64.DecodeStringInline
@@ -13329,7 +14707,7 @@ void UBreadcrumbs::BreadcrumbString(class FString Category, class FString Value)
 // class FString                  Input                          (CPF_Parm | CPF_NeedCtorLink)
 // TArray<uint8_t>                Output                         (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UBase64::DecodeStringInline(class FString Input, TArray<uint8_t>& Output)
+void UBase64::DecodeStringInline(const class FString& Input, TArray<uint8_t>& Output)
 {
 	static UFunction* uFnDecodeStringInline = nullptr;
 
@@ -13343,7 +14721,9 @@ void UBase64::DecodeStringInline(class FString Input, TArray<uint8_t>& Output)
 	memcpy_s(&DecodeStringInline_Params.Input, sizeof(DecodeStringInline_Params.Input), &Input, sizeof(Input));
 	memcpy_s(&DecodeStringInline_Params.Output, sizeof(DecodeStringInline_Params.Output), &Output, sizeof(Output));
 
+	uFnDecodeStringInline->FunctionFlags |= ~0x400;
 	UBase64::StaticClass()->ProcessEvent(uFnDecodeStringInline, &DecodeStringInline_Params, nullptr);
+	uFnDecodeStringInline->FunctionFlags |= 0x400;
 
 	memcpy_s(&Output, sizeof(Output), &DecodeStringInline_Params.Output, sizeof(DecodeStringInline_Params.Output));
 };
@@ -13354,7 +14734,7 @@ void UBase64::DecodeStringInline(class FString Input, TArray<uint8_t>& Output)
 // TArray<uint8_t>                ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Input                          (CPF_Parm | CPF_NeedCtorLink)
 
-TArray<uint8_t> UBase64::DecodeString(class FString Input)
+TArray<uint8_t> UBase64::DecodeString(const class FString& Input)
 {
 	static UFunction* uFnDecodeString = nullptr;
 
@@ -13367,7 +14747,9 @@ TArray<uint8_t> UBase64::DecodeString(class FString Input)
 	memset(&DecodeString_Params, 0, sizeof(DecodeString_Params));
 	memcpy_s(&DecodeString_Params.Input, sizeof(DecodeString_Params.Input), &Input, sizeof(Input));
 
+	uFnDecodeString->FunctionFlags |= ~0x400;
 	UBase64::StaticClass()->ProcessEvent(uFnDecodeString, &DecodeString_Params, nullptr);
+	uFnDecodeString->FunctionFlags |= 0x400;
 
 	return DecodeString_Params.ReturnValue;
 };
@@ -13392,7 +14774,9 @@ void UBase64::DecodeInline(TArray<uint8_t>& Input, TArray<uint8_t>& Output)
 	memcpy_s(&DecodeInline_Params.Input, sizeof(DecodeInline_Params.Input), &Input, sizeof(Input));
 	memcpy_s(&DecodeInline_Params.Output, sizeof(DecodeInline_Params.Output), &Output, sizeof(Output));
 
+	uFnDecodeInline->FunctionFlags |= ~0x400;
 	UBase64::StaticClass()->ProcessEvent(uFnDecodeInline, &DecodeInline_Params, nullptr);
+	uFnDecodeInline->FunctionFlags |= 0x400;
 
 	memcpy_s(&Input, sizeof(Input), &DecodeInline_Params.Input, sizeof(DecodeInline_Params.Input));
 	memcpy_s(&Output, sizeof(Output), &DecodeInline_Params.Output, sizeof(DecodeInline_Params.Output));
@@ -13417,7 +14801,9 @@ TArray<uint8_t> UBase64::Decode(TArray<uint8_t>& Input)
 	memset(&Decode_Params, 0, sizeof(Decode_Params));
 	memcpy_s(&Decode_Params.Input, sizeof(Decode_Params.Input), &Input, sizeof(Input));
 
+	uFnDecode->FunctionFlags |= ~0x400;
 	UBase64::StaticClass()->ProcessEvent(uFnDecode, &Decode_Params, nullptr);
+	uFnDecode->FunctionFlags |= 0x400;
 
 	memcpy_s(&Input, sizeof(Input), &Decode_Params.Input, sizeof(Decode_Params.Input));
 
@@ -13444,7 +14830,9 @@ void UBase64::EncodeStringInline(TArray<uint8_t>& Input, class FString& Output)
 	memcpy_s(&EncodeStringInline_Params.Input, sizeof(EncodeStringInline_Params.Input), &Input, sizeof(Input));
 	memcpy_s(&EncodeStringInline_Params.Output, sizeof(EncodeStringInline_Params.Output), &Output, sizeof(Output));
 
+	uFnEncodeStringInline->FunctionFlags |= ~0x400;
 	UBase64::StaticClass()->ProcessEvent(uFnEncodeStringInline, &EncodeStringInline_Params, nullptr);
+	uFnEncodeStringInline->FunctionFlags |= 0x400;
 
 	memcpy_s(&Input, sizeof(Input), &EncodeStringInline_Params.Input, sizeof(EncodeStringInline_Params.Input));
 	memcpy_s(&Output, sizeof(Output), &EncodeStringInline_Params.Output, sizeof(EncodeStringInline_Params.Output));
@@ -13469,7 +14857,9 @@ class FString UBase64::EncodeString(TArray<uint8_t>& Input)
 	memset(&EncodeString_Params, 0, sizeof(EncodeString_Params));
 	memcpy_s(&EncodeString_Params.Input, sizeof(EncodeString_Params.Input), &Input, sizeof(Input));
 
+	uFnEncodeString->FunctionFlags |= ~0x400;
 	UBase64::StaticClass()->ProcessEvent(uFnEncodeString, &EncodeString_Params, nullptr);
+	uFnEncodeString->FunctionFlags |= 0x400;
 
 	memcpy_s(&Input, sizeof(Input), &EncodeString_Params.Input, sizeof(EncodeString_Params.Input));
 
@@ -13496,7 +14886,9 @@ void UBase64::EncodeInline(TArray<uint8_t>& Input, TArray<uint8_t>& Output)
 	memcpy_s(&EncodeInline_Params.Input, sizeof(EncodeInline_Params.Input), &Input, sizeof(Input));
 	memcpy_s(&EncodeInline_Params.Output, sizeof(EncodeInline_Params.Output), &Output, sizeof(Output));
 
+	uFnEncodeInline->FunctionFlags |= ~0x400;
 	UBase64::StaticClass()->ProcessEvent(uFnEncodeInline, &EncodeInline_Params, nullptr);
+	uFnEncodeInline->FunctionFlags |= 0x400;
 
 	memcpy_s(&Input, sizeof(Input), &EncodeInline_Params.Input, sizeof(EncodeInline_Params.Input));
 	memcpy_s(&Output, sizeof(Output), &EncodeInline_Params.Output, sizeof(EncodeInline_Params.Output));
@@ -13521,7 +14913,9 @@ TArray<uint8_t> UBase64::Encode(TArray<uint8_t>& Input)
 	memset(&Encode_Params, 0, sizeof(Encode_Params));
 	memcpy_s(&Encode_Params.Input, sizeof(Encode_Params.Input), &Input, sizeof(Input));
 
+	uFnEncode->FunctionFlags |= ~0x400;
 	UBase64::StaticClass()->ProcessEvent(uFnEncode, &Encode_Params, nullptr);
+	uFnEncode->FunctionFlags |= 0x400;
 
 	memcpy_s(&Input, sizeof(Input), &Encode_Params.Input, sizeof(Encode_Params.Input));
 
@@ -13544,7 +14938,9 @@ void UAsyncTask::QueCallbacks()
 	UAsyncTask_execQueCallbacks_Params QueCallbacks_Params;
 	memset(&QueCallbacks_Params, 0, sizeof(QueCallbacks_Params));
 
+	uFnQueCallbacks->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnQueCallbacks, &QueCallbacks_Params, nullptr);
+	uFnQueCallbacks->FunctionFlags |= 0x400;
 };
 
 // Function Core.AsyncTask.CreateError
@@ -13564,7 +14960,7 @@ class UAsyncTask* UAsyncTask::CreateError(class UError* InError)
 
 	UAsyncTask_execCreateError_Params CreateError_Params;
 	memset(&CreateError_Params, 0, sizeof(CreateError_Params));
-	memcpy_s(&CreateError_Params.InError, sizeof(CreateError_Params.InError), &InError, sizeof(InError));
+	CreateError_Params.InError = InError;
 
 	UAsyncTask::StaticClass()->ProcessEvent(uFnCreateError, &CreateError_Params, nullptr);
 
@@ -13632,7 +15028,7 @@ class UAsyncTask* UAsyncTask::Watch(class UAsyncTask* Other)
 
 	UAsyncTask_execWatch_Params Watch_Params;
 	memset(&Watch_Params, 0, sizeof(Watch_Params));
-	memcpy_s(&Watch_Params.Other, sizeof(Watch_Params.Other), &Other, sizeof(Other));
+	Watch_Params.Other = Other;
 
 	this->ProcessEvent(uFnWatch, &Watch_Params, nullptr);
 
@@ -13645,7 +15041,7 @@ class UAsyncTask* UAsyncTask::Watch(class UAsyncTask* Other)
 // class UAsyncTask*              ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // TArray<class UAsyncTask*>      Dependents                     (CPF_Parm | CPF_NeedCtorLink)
 
-class UAsyncTask* UAsyncTask::All(TArray<class UAsyncTask*> Dependents)
+class UAsyncTask* UAsyncTask::All(const TArray<class UAsyncTask*>& Dependents)
 {
 	static UFunction* uFnAll = nullptr;
 
@@ -13680,7 +15076,7 @@ class UAsyncTask* UAsyncTask::DependOn(class UAsyncTask* Other)
 
 	UAsyncTask_execDependOn_Params DependOn_Params;
 	memset(&DependOn_Params, 0, sizeof(DependOn_Params));
-	memcpy_s(&DependOn_Params.Other, sizeof(DependOn_Params.Other), &Other, sizeof(Other));
+	DependOn_Params.Other = Other;
 
 	this->ProcessEvent(uFnDependOn, &DependOn_Params, nullptr);
 
@@ -13750,7 +15146,7 @@ void UAsyncTask::eventDispose()
 };
 
 // Function Core.AsyncTask.SetComplete
-// [0x00024003] (FUNC_Final | FUNC_Defined | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// [0x00024003] (FUNC_Final | FUNC_Defined | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class UError*                  InError                        (CPF_OptionalParm | CPF_Parm)
 
@@ -13765,7 +15161,7 @@ void UAsyncTask::SetComplete(class UError* InError)
 
 	UAsyncTask_execSetComplete_Params SetComplete_Params;
 	memset(&SetComplete_Params, 0, sizeof(SetComplete_Params));
-	memcpy_s(&SetComplete_Params.InError, sizeof(SetComplete_Params.InError), &InError, sizeof(InError));
+	SetComplete_Params.InError = InError;
 
 	this->ProcessEvent(uFnSetComplete, &SetComplete_Params, nullptr);
 };
@@ -13786,7 +15182,7 @@ void UAsyncTask::eventSetError(class UError* InError)
 
 	UAsyncTask_eventSetError_Params SetError_Params;
 	memset(&SetError_Params, 0, sizeof(SetError_Params));
-	memcpy_s(&SetError_Params.InError, sizeof(SetError_Params.InError), &InError, sizeof(InError));
+	SetError_Params.InError = InError;
 
 	this->ProcessEvent(uFnSetError, &SetError_Params, nullptr);
 };
@@ -13898,7 +15294,7 @@ void UAsyncTask::EventAsyncTaskComplete(class UError* TaskError)
 
 	UAsyncTask_execEventAsyncTaskComplete_Params EventAsyncTaskComplete_Params;
 	memset(&EventAsyncTaskComplete_Params, 0, sizeof(EventAsyncTaskComplete_Params));
-	memcpy_s(&EventAsyncTaskComplete_Params.TaskError, sizeof(EventAsyncTaskComplete_Params.TaskError), &TaskError, sizeof(TaskError));
+	EventAsyncTaskComplete_Params.TaskError = TaskError;
 
 	this->ProcessEvent(uFnEventAsyncTaskComplete, &EventAsyncTaskComplete_Params, nullptr);
 };
@@ -13919,7 +15315,7 @@ void UAsyncTask::EventAsyncTaskFail(class UError* TaskError)
 
 	UAsyncTask_execEventAsyncTaskFail_Params EventAsyncTaskFail_Params;
 	memset(&EventAsyncTaskFail_Params, 0, sizeof(EventAsyncTaskFail_Params));
-	memcpy_s(&EventAsyncTaskFail_Params.TaskError, sizeof(EventAsyncTaskFail_Params.TaskError), &TaskError, sizeof(TaskError));
+	EventAsyncTaskFail_Params.TaskError = TaskError;
 
 	this->ProcessEvent(uFnEventAsyncTaskFail, &EventAsyncTaskFail_Params, nullptr);
 };
@@ -14044,7 +15440,7 @@ void UIDisposable::eventDispose()
 // struct FRotatorRadians         ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FRotator                InRotator                      (CPF_Const | CPF_Parm)
 
-struct FRotatorRadians URotatorConversions::GetAsRadians(struct FRotator InRotator)
+struct FRotatorRadians URotatorConversions::GetAsRadians(const struct FRotator& InRotator)
 {
 	static UFunction* uFnGetAsRadians = nullptr;
 
@@ -14068,7 +15464,7 @@ struct FRotatorRadians URotatorConversions::GetAsRadians(struct FRotator InRotat
 // struct FRotatorDegrees         ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FRotator                InRotator                      (CPF_Const | CPF_Parm)
 
-struct FRotatorDegrees URotatorConversions::GetAsDegrees(struct FRotator InRotator)
+struct FRotatorDegrees URotatorConversions::GetAsDegrees(const struct FRotator& InRotator)
 {
 	static UFunction* uFnGetAsDegrees = nullptr;
 
@@ -14093,5 +15489,5 @@ struct FRotatorDegrees URotatorConversions::GetAsDegrees(struct FRotator InRotat
 */
 
 #ifdef _MSC_VER
-	#pragma pack(pop)
+#pragma pack(pop)
 #endif

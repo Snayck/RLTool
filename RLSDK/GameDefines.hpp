@@ -1,16 +1,16 @@
 /*
 #############################################################################################
-# RocketLeague (1.0.10897.0) SDK
-# Generated with the CodeRedGenerator v1.0.2
+# RocketLeague (RLSDK) SDK 1.0.0
+# Generated with the CodeRedGenerator v1.1.6
 # ========================================================================================= #
 # File: GameDefines.hpp
 # ========================================================================================= #
-# Credits: TheFeckless, ItsBranK
-# Links: www.github.com/CodeRedModding/CodeRed-Generator, www.twitter.com/ItsBranK
+# Credits: ItsBranK, TheFeckless
+# Links: www.github.com/CodeRedModding/CodeRed-Generator
 #############################################################################################
 */
 #pragma once
-#include <Windows.h>
+#include <windows.h>
 #include <algorithm>
 #include <locale>
 #include <stdlib.h>
@@ -19,7 +19,10 @@
 #include <chrono>
 #include <thread>
 #include <vector>
+#include <string>
 #include <map>
+#include <windows.h>
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
 
 /*
 # ========================================================================================= #
@@ -167,6 +170,10 @@ enum EObjectFlags
 # ========================================================================================= #
 */
 
+// GObjects
+#define GObjects_Offset		(uintptr_t)0x023ED5B8
+// GNames
+#define GNames_Offset		(uintptr_t)0x023ED570
 
 /*
 # ========================================================================================= #
@@ -187,9 +194,10 @@ private:
 	ElementPointer IteratorData;
 
 public:
-	TIterator(ElementPointer inElementPointer) : IteratorData(inElementPointer) {}
-
-	~TIterator() {}
+	TIterator(ElementPointer inElementPointer)
+	{
+		IteratorData = inElementPointer;
+	}
 
 public:
 	TIterator& operator++()
@@ -252,7 +260,6 @@ public:
 	using ElementType = InElementType;
 	using ElementPointer = ElementType*;
 	using ElementReference = ElementType&;
-	using ElementConstPointer = const ElementType*;
 	using ElementConstReference = const ElementType&;
 	using Iterator = TIterator<TArray<ElementType>>;
 
@@ -269,34 +276,41 @@ public:
 
 	~TArray()
 	{
-		//clear();
+		//Clear();
 		//::operator delete(ArrayData, ArrayMax * sizeof(ElementType));
 	}
 
 public:
 	ElementConstReference operator[](int32_t index) const
 	{
-		return ArrayData[index];
+		if (index <= ArrayCount)
+		{
+			return ArrayData[index];
+		}
 	}
 
 	ElementReference operator[](int32_t index)
 	{
-		return ArrayData[index];
+		if (index <= ArrayCount)
+		{
+			return ArrayData[index];
+		}
 	}
 
 	ElementConstReference At(int32_t index) const
 	{
-		return ArrayData[index];
+		if (index <= ArrayCount)
+		{
+			return ArrayData[index];
+		}
 	}
 
 	ElementReference At(int32_t index)
 	{
-		return ArrayData[index];
-	}
-
-	ElementConstPointer data() const
-	{
-		return ArrayData;
+		if (index <= ArrayCount)
+		{
+			return ArrayData[index];
+		}
 	}
 
 	void Add(ElementConstReference newElement)
@@ -319,6 +333,53 @@ public:
 
 		new(&ArrayData[ArrayCount]) ElementType(newElement);
 		ArrayCount++;
+	}
+
+	void Add_EM(ElementReference& newElement)
+	{
+		if (ArrayCount >= ArrayMax)
+		{
+			ReAllocate_EM(sizeof(ElementType) * (ArrayCount + 1));
+		}
+
+		new(&ArrayData[ArrayCount]) ElementType(newElement);
+		ArrayCount++;
+	}
+
+	void Add_EM(ElementConstReference& newElement)
+	{
+		if (ArrayCount >= ArrayMax)
+		{
+			ReAllocate_EM(sizeof(ElementType) * (ArrayCount + 1));
+		}
+
+		new(&ArrayData[ArrayCount]) ElementType(newElement);
+		ArrayCount++;
+	}
+
+	void ReAllocate_EM_UCALL(int32_t newArrayMax)
+	{
+		ElementPointer newArrayData = (ElementPointer)VirtualAlloc(nullptr, newArrayMax * sizeof(ElementType), MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+		int32_t newNum = ArrayCount;
+
+		if (newArrayMax < newNum)
+		{
+			newNum = newArrayMax;
+		}
+
+		for (int32_t i = 0; i < newNum; i++)
+		{
+			new(newArrayData + i) ElementType(std::move(ArrayData[i]));
+		}
+
+		for (int32_t i = 0; i < ArrayCount; i++)
+		{
+			ArrayData[i].~ElementType();
+		}
+
+		VirtualFree(ArrayData, 0, MEM_RELEASE);
+		ArrayData = newArrayData;
+		ArrayMax = newArrayMax;
 	}
 
 	void PopBack()
@@ -348,16 +409,6 @@ public:
 	int32_t Max() const
 	{
 		return ArrayMax;
-	}
-
-	bool empty() const
-	{
-		if (ArrayData)
-		{
-			return (Max() == 0);
-		}
-
-		return true;
 	}
 
 	Iterator begin()
@@ -395,6 +446,46 @@ private:
 		ArrayData = newArrayData;
 		ArrayMax = newArrayMax;
 	}
+
+	void Resize(int32_t size)
+	{
+		ElementPointer newArrayData = static_cast<ElementPointer>(VirtualAlloc(nullptr, size * sizeof(ElementPointer), MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE));
+		if (size != 0)
+			memcpy_s(newArrayData, size * sizeof(ElementPointer), ArrayData, MIN(ArrayCount, size) * sizeof(ElementPointer));
+		if (size < ArrayCount) {
+			for (int32_t i = size; i < ArrayCount; ++i)
+				ArrayData[i].~ElementType();
+			ArrayCount = size;
+		}
+		VirtualFree(ArrayData, 0, MEM_RELEASE);
+		ArrayData = newArrayData;
+		ArrayMax = size;
+	}
+
+	void ReAllocate_EM(int32_t newArrayMax)
+	{
+		ElementPointer newArrayData = (ElementPointer)VirtualAlloc(nullptr, newArrayMax * sizeof(ElementType), MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+		int32_t newNum = ArrayCount;
+
+		if (newArrayMax < newNum)
+		{
+			newNum = newArrayMax;
+		}
+
+		for (int32_t i = 0; i < newNum; i++)
+		{
+			new(newArrayData + i) ElementType(std::move(ArrayData[i]));
+		}
+
+		for (int32_t i = 0; i < ArrayCount; i++)
+		{
+			ArrayData[i].~ElementType();
+		}
+
+		VirtualFree(ArrayData, 0, MEM_RELEASE);
+		ArrayData = newArrayData;
+		ArrayMax = newArrayMax;
+	}
 };
 
 template<typename TKey, typename TValue>
@@ -414,91 +505,68 @@ public:
 	using ElementPointer = ElementType*;
 	using ElementReference = ElementType&;
 	using ElementConstReference = const ElementType&;
-	using Iterator = TIterator<TArray<ElementType>>;
+	using Iterator = TIterator<TMap<TKey, TValue>>;
 
 public:
-	TArray<ElementType> Elements;									// 0x0000 (0x0010)
-	uintptr_t IndirectData;											// 0x0010 (0x0008)
-	int32_t InlineData[0x4];										// 0x0018 (0x0010)
-	int32_t NumBits;												// 0x0028 (0x0004)
-	int32_t MaxBits;												// 0x002C (0x0004)
-	int32_t FirstFreeIndex;											// 0x0030 (0x0004)
-	int32_t NumFreeIndices;											// 0x0034 (0x0004)
-	int64_t InlineHash;												// 0x0038 (0x0008)
-	int32_t* Hash;													// 0x0040 (0x0008)
-	int32_t HashCount;												// 0x0048 (0x0004)
+	ElementPointer ElementData; // 0x0000 (0x0008)
+	int32_t ElementCount; // 0x0008 (0x0004)
+	int32_t ElementMax; // 0x000C (0x0004)
+	uintptr_t IndirectData; // 0x0010 (0x0008)
+	int32_t InlineData[0x4]; // 0x0018 (0x0010)
+	int32_t NumBits; // 0x0028 (0x0004)
+	int32_t MaxBits; // 0x002C (0x0004)
+	int32_t FirstFreeIndex; // 0x0030 (0x0004)
+	int32_t NumFreeIndices; // 0x0034 (0x0004)
+	int64_t InlineHash; // 0x0038 (0x0008)
+	int32_t* Hash; // 0x0040 (0x0008)
+	int32_t HashCount; // 0x0048 (0x0004)
 
 public:
-	TMap() :
-		IndirectData(NULL),
-		NumBits(0),
-		MaxBits(0),
-		FirstFreeIndex(0),
-		NumFreeIndices(0),
-		InlineHash(0),
-		Hash(nullptr),
-		HashCount(0)
+	TMap()
 	{
-
+		ElementData = nullptr;
+		ElementCount = 0;
+		ElementMax = 0;
+		IndirectData = NULL;
+		NumBits = 0;
+		MaxBits = 0;
+		FirstFreeIndex = 0;
+		NumFreeIndices = 0;
+		InlineHash = 0;
+		Hash = nullptr;
+		HashCount = 0;
 	}
 
-	TMap(struct FMap_Mirror& other) :
-		IndirectData(NULL),
-		NumBits(0),
-		MaxBits(0),
-		FirstFreeIndex(0),
-		NumFreeIndices(0),
-		InlineHash(0),
-		Hash(nullptr),
-		HashCount(0)
+	TMap(struct FMap_Mirror& fMap)
 	{
-		assign(other);
-	}
-
-	TMap(const TMap<TKey, TValue>& other) :
-		IndirectData(NULL),
-		NumBits(0),
-		MaxBits(0),
-		FirstFreeIndex(0),
-		NumFreeIndices(0),
-		InlineHash(0),
-		Hash(nullptr),
-		HashCount(0)
-	{
-		assign(other);
+		*this = *reinterpret_cast<TMap<TKey, TValue>*>(&fMap);
 	}
 
 	~TMap() {}
 
 public:
-	TMap<TKey, TValue>& assign(struct FMap_Mirror& other)
+	ElementConstReference operator[](const int32_t index) const
 	{
-		*this = *reinterpret_cast<TMap<TKey, TValue>*>(&other);
-		return *this;
-	}
-
-	TMap<TKey, TValue>& assign(const TMap<TKey, TValue>& other)
-	{
-		Elements = other.Elements;
-		IndirectData = other.IndirectData;
-		InlineData[0] = other.InlineData[0];
-		InlineData[1] = other.InlineData[1];
-		InlineData[2] = other.InlineData[2];
-		InlineData[3] = other.InlineData[3];
-		NumBits = other.NumBits;
-		MaxBits = other.MaxBits;
-		FirstFreeIndex = other.FirstFreeIndex;
-		NumFreeIndices = other.NumFreeIndices;
-		InlineHash = other.InlineHash;
-		Hash = other.Hash;
-		HashCount = other.HashCount;
-		return *this;
-	}
-
-	TValue& at(const TKey& key)
-	{
-		for (TPair& pair : Elements)
+		if (index <= ElementCount)
 		{
+			return ElementData[index];
+		}
+	}
+
+	ElementReference operator[](const int32_t index)
+	{
+		if (index <= ElementCount)
+		{
+			return ElementData[index];
+		}
+	}
+
+	const TValue& operator[](const TKey key) const
+	{
+		for (int32_t i = 0; i < Num(); i++)
+		{
+			const TPair& pair = ElementData[i];
+
 			if (pair.Key == key)
 			{
 				return pair.Value;
@@ -506,10 +574,12 @@ public:
 		}
 	}
 
-	const TValue& at(const TKey& key) const
+	TValue& operator[](const TKey key)
 	{
-		for (const TPair& pair : Elements)
+		for (int32_t i = 0; i < Num(); i++)
 		{
+			TPair& pair = ElementData[i];
+
 			if (pair.Key == key)
 			{
 				return pair.Value;
@@ -517,68 +587,48 @@ public:
 		}
 	}
 
-	TPair& at_index(int32_t index)
+	TMap<TKey, TValue> operator=(const struct FMap_Mirror& fMap)
 	{
-		return Elements[index];
+		*this = *reinterpret_cast<TMap<TKey, TValue>*>(&fMap);
+		return *this;
 	}
 
-	const TPair& at_index(int32_t index) const
+	ElementConstReference At(const int32_t index) const
 	{
-		return Elements[index];
+		if (index <= ElementCount)
+		{
+			return ElementData[index];
+		}
 	}
 
-	int32_t size() const
+	ElementReference At(const int32_t index)
 	{
-		return Elements.size();
+		if (index <= ElementCount)
+		{
+			return ElementData[index];
+		}
 	}
 
-	int32_t capacity() const
+	int32_t Num() const
 	{
-		return Elements.capacity();
+		return ElementCount;
 	}
 
-	bool empty() const
+	int32_t Max() const
 	{
-		return Elements.empty();
+		return ElementMax;
 	}
 
 	Iterator begin()
 	{
-		return Elements.begin();
+		return Iterator(ElementData);
 	}
 
 	Iterator end()
 	{
-		return Elements.end();
-	}
-
-public:
-	TValue& operator[](const TKey& key)
-	{
-		return at(key);
-	}
-
-	const TValue& operator[](const TKey& key) const
-	{
-		return at(key);
-	}
-
-	TMap<TKey, TValue>& operator=(const struct FMap_Mirror& other)
-	{
-		return assign(other);
-	}
-
-	TMap<TKey, TValue>& operator=(const TMap<TKey, TValue>& other)
-	{
-		return assign(other);
+		return Iterator(ElementData + ElementCount);
 	}
 };
-
-/*
-# ========================================================================================= #
-# Globals
-# ========================================================================================= #
-*/
 
 extern TArray<class UObject*>* GObjects;
 extern TArray<struct FNameEntry*>* GNames;
@@ -596,43 +646,41 @@ public:
 	int32_t Index; // 0x0008 (0x0004)
 	uint8_t UnknownData00[0xC]; // 0x000C (0x000C) DYNAMIC FIELD PADDING
 	wchar_t Name[0x400]; // 0x0018 (0x0002)
-
 public:
-	FNameEntry() : Flags(0), Index(-1) {}
+	FNameEntry() {}
 	~FNameEntry() {}
 
-public:
-	uint64_t GetFlags() const
+	union
 	{
-		return Flags;
-	}
+		char AnsiName[1024];
+		wchar_t WideName[1024];
+	};
 
+public:
 	int32_t GetIndex() const
 	{
 		return Index;
 	}
 
+	std::string ToString() const
+	{
+		if (Name[0] != L'\0')
+		{
+			// Ensure null-termination by limiting to buffer size
+			size_t length = wcsnlen(Name, 0x400);
+			if (length > 0 && length < 0x400)
+			{
+				std::wstring ws(Name, length);
+				std::string str(ws.begin(), ws.end());
+				return str;
+			}
+		}
+		return std::string("");
+	}
+
 	const wchar_t* GetWideName() const
 	{
 		return Name;
-	}
-
-	std::wstring ToWideString() const
-	{
-		const wchar_t* wideName = GetWideName();
-
-		if (wideName)
-		{
-			return std::wstring(wideName);
-		}
-
-		return L"";
-	}
-
-	std::string ToString() const
-	{
-		std::wstring wstr = ToWideString();
-		return std::string(wstr.begin(), wstr.end());
 	}
 };
 
@@ -647,19 +695,23 @@ private:
 	int32_t			InstanceNumber;									// 0x0004 (0x04)
 
 public:
-	FName() : FNameEntryId(-1), InstanceNumber(0) {}
+	FName() : FNameEntryId(0), InstanceNumber(0) {}
 
 	FName(int32_t id) : FNameEntryId(id), InstanceNumber(0) {}
 
-	FName(const ElementPointer nameToFind) : FNameEntryId(-1), InstanceNumber(0)
+	FName(const ElementPointer nameToFind) : FNameEntryId(0), InstanceNumber(0)
 	{
-		static std::vector<int32_t> foundNames{};
+		if (!nameToFind || !Names())
+			return;
 
-		for (int32_t entryId : foundNames)
+		static std::vector<int32_t> nameCache{};
+
+		for (int32_t entryId : nameCache)
 		{
-			if (Names()->At(entryId))
+			FNameEntry* entry = Names()->At(entryId);
+			if (entry && entry->Name[0] != L'\0')
 			{
-				if (!wcscmp(Names()->At(entryId)->Name, nameToFind))
+				if (!wcscmp(entry->Name, nameToFind))
 				{
 					FNameEntryId = entryId;
 					return;
@@ -667,29 +719,28 @@ public:
 			}
 		}
 
-		for (int32_t i = 0; i < Names()->Max(); i++)
+		for (int32_t i = 0; i < Names()->Num(); i++)
 		{
-			if (Names()->At(i))
+			FNameEntry* entry = Names()->At(i);
+			if (entry && entry->Name[0] != L'\0')
 			{
-				if (!wcscmp(Names()->At(i)->Name, nameToFind))
+				if (!wcscmp(entry->Name, nameToFind))
 				{
-					foundNames.push_back(i);
+					nameCache.push_back(i);
 					FNameEntryId = i;
-					return;
 				}
 			}
 		}
 	}
 
-	FName(const FName& name) : FNameEntryId(name.FNameEntryId), InstanceNumber(name.InstanceNumber) {}
-
 	~FName() {}
 
 public:
-	static TArray<FNameEntry*>* Names()
+	static class TArray<struct FNameEntry*>* Names()
 	{
-		TArray<FNameEntry*>* recastedArray = reinterpret_cast<TArray<FNameEntry*>*>(GNames);
-		return recastedArray;
+		TArray<FNameEntry*>* GNamesArray = reinterpret_cast<TArray<FNameEntry*>*>(GNames);
+		return GNamesArray;
+
 	}
 
 	int32_t GetDisplayIndex() const
@@ -697,19 +748,23 @@ public:
 		return FNameEntryId;
 	}
 
-	const FNameEntry GetDisplayNameEntry() const
+	const struct FNameEntry GetDisplayNameEntry() const
 	{
 		if (IsValid())
 		{
-			return *Names()->At(FNameEntryId);
+			FNameEntry* entry = Names()->At(FNameEntryId);
+			if (entry)
+			{
+				return *entry;
+			}
 		}
 
 		return FNameEntry();
 	}
 
-	FNameEntry* GetEntry()
+	struct FNameEntry* GetEntry()
 	{
-		if (IsValid())
+		if (IsValid() && Names())
 		{
 			return Names()->At(FNameEntryId);
 		}
@@ -717,29 +772,36 @@ public:
 		return nullptr;
 	}
 
-	int32_t GetInstance() const
+	int32_t GetNumber() const
 	{
 		return InstanceNumber;
 	}
 
-	void SetInstance(int32_t newNumber)
+	void SetNumber(int32_t newNumber)
 	{
 		InstanceNumber = newNumber;
 	}
 
 	std::string ToString() const
 	{
-		if (IsValid())
+		if (IsValid() && Names())
 		{
-			return GetDisplayNameEntry().ToString();
+			FNameEntry* entry = Names()->At(FNameEntryId);
+			if (entry)
+			{
+				return entry->ToString();
+			}
 		}
 
-		return "UnknownName";
+		return std::string("UnknownName");
 	}
 
 	bool IsValid() const
 	{
-		if ((FNameEntryId < 0 || FNameEntryId > Names()->Max()))
+		if (!Names())
+			return false;
+
+		if (FNameEntryId < 0 || FNameEntryId >= Names()->Num())
 		{
 			return false;
 		}
@@ -748,19 +810,19 @@ public:
 	}
 
 public:
-	FName& operator=(const FName& other)
+	struct FName& operator=(const struct FName& other)
 	{
 		FNameEntryId = other.FNameEntryId;
 		InstanceNumber = other.InstanceNumber;
 		return *this;
 	}
 
-	bool operator==(const FName& other) const
+	bool operator==(const struct FName& other) const
 	{
 		return (FNameEntryId == other.FNameEntryId);
 	}
 
-	bool operator!=(const FName& other) const
+	bool operator!=(const struct FName& other) const
 	{
 		return (FNameEntryId != other.FNameEntryId);
 	}
@@ -780,107 +842,79 @@ private:
 public:
 	FString() : ArrayData(nullptr), ArrayCount(0), ArrayMax(0) {}
 
-	FString(ElementPointer other) : ArrayData(nullptr), ArrayCount(0), ArrayMax(0) { assign(other); }
-
-	FString(const std::string& other) : ArrayData(nullptr), ArrayCount(0), ArrayMax(0) { assign(other); }
+	FString(ElementPointer other) : ArrayData(nullptr), ArrayCount(0), ArrayMax(0)
+	{
+		if (other && *other)
+		{
+			ArrayMax = ArrayCount = (wcslen(other) + 1);
+			ArrayData = other;
+		}
+	}
 
 	~FString() {}
 
 public:
-	FString& assign(ElementPointer other)
-	{
-		ArrayCount = (other ? (wcslen(other) + 1) : 0);
-		ArrayMax = ArrayCount;
-		ArrayData = (ArrayCount > 0 ? other : nullptr);
-		return *this;
-	}
-
-	FString& assign(const std::string& other)
-	{
-		if (!other.empty())
-		{
-			std::wstring wideStr(other.begin(), other.end());
-			size_t size = (wideStr.length() + 1);
-			wchar_t* wideChar = new wchar_t[size];
-			memset(wideChar, 0, size);
-			wcscpy_s(wideChar, size, wideStr.data());
-			return assign(wideChar);
-		}
-
-		return *this;
-	}
-
-	std::wstring ToWideString() const
-	{
-		if (!empty())
-		{
-			return std::wstring(c_str());
-		}
-
-		return L"";
-	}
-
 	std::string ToString() const
 	{
-		if (!empty())
+		if (IsValid())
 		{
-			std::wstring wstr = ToWideString();
-			return std::string(wstr.begin(), wstr.end());
+			// Use ArrayCount to safely construct the string, accounting for null terminator
+			int32_t length = ArrayCount > 0 ? ArrayCount - 1 : 0;
+			if (length > 0 && length < 100000) // Sanity check to prevent huge allocations
+			{
+				std::wstring wideStr(ArrayData, length);
+				std::string str(wideStr.begin(), wideStr.end());
+				return str;
+			}
 		}
 
-		return "";
+		return std::string("null");
 	}
 
-	ElementPointer c_str() const
+	bool IsValid() const
 	{
-		return ArrayData;
+		return (ArrayData != nullptr && ArrayCount > 0);
 	}
 
-	bool empty() const
+	class FString& operator=(ElementPointer other)
 	{
-		if (ArrayData)
+		if (ArrayData != other)
 		{
-			return (ArrayCount == 0);
+			if (other && *other)
+			{
+				ArrayMax = ArrayCount = (wcslen(other) + 1);
+				ArrayData = other;
+			}
+			else
+			{
+				ArrayData = nullptr;
+				ArrayCount = 0;
+				ArrayMax = 0;
+			}
 		}
 
-		return true;
-	}
-
-	int32_t length() const
-	{
-		return ArrayCount;
-	}
-
-	int32_t size() const
-	{
-		return ArrayMax;
+		return *this;
 	}
 
 public:
-	FString& operator=(ElementPointer other)
+	bool operator==(const class FString& other)
 	{
-		return assign(other);
-	}
-
-	FString& operator=(const FString& other)
-	{
-		return assign(other.c_str());
-	}
-
-	bool operator==(const FString& other)
-	{
+		if (!IsValid() && !other.IsValid())
+			return true;
+		if (!IsValid() || !other.IsValid())
+			return false;
 		return (!wcscmp(ArrayData, other.ArrayData));
 	}
 
-	bool operator!=(const FString& other)
+	bool operator!=(const class FString& other)
 	{
-		return (wcscmp(ArrayData, other.ArrayData));
+		return !(*this == other);
 	}
 };
 
 struct FScriptDelegate
 {
-	uint8_t UnknownData00[0x18];										// 0x0000 (0x18)
+	uint8_t UnknownData00[0x18];
 };
 
 struct FPointer

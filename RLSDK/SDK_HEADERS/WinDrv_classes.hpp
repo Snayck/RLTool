@@ -1,18 +1,18 @@
 /*
 #############################################################################################
-# RocketLeague (1.0.10897.0) SDK
-# Generated with the CodeRedGenerator v1.0.2
+# RocketLeague (RLSDK) SDK 1.0.0
+# Generated with the CodeRedGenerator v1.1.6
 # ========================================================================================= #
 # File: WinDrv_classes.hpp
 # ========================================================================================= #
-# Credits: TheFeckless, ItsBranK
-# Links: www.github.com/CodeRedModding/CodeRed-Generator, www.twitter.com/ItsBranK
+# Credits: ItsBranK, TheFeckless
+# Links: www.github.com/CodeRedModding/CodeRed-Generator
 #############################################################################################
 */
 #pragma once
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+#pragma pack(push, 0x8)
 #endif
 
 /*
@@ -61,8 +61,8 @@ public:
 	void OnFacebookMeRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* Response, bool bDidSucceed);
 	void eventRequestFacebookMeInfo();
 	void FacebookRequestCallback(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* Response, bool bDidSucceed);
-	void ProcessFacebookRequest(class FString Payload, int32_t ResponseCode);
-	void FacebookRequest(class FString GraphRequest, class FString optionalHTTPMethod, TArray<class FString> optionalParamKeysAndValues);
+	void ProcessFacebookRequest(const class FString& Payload, int32_t ResponseCode);
+	void FacebookRequest(const class FString& GraphRequest, const class FString& optionalHTTPMethod, const TArray<class FString>& optionalParamKeysAndValues);
 	void Disconnect();
 	bool IsAuthorized();
 	bool Authorize();
@@ -93,19 +93,19 @@ public:
 	};
 
 	bool ProcessRequest();
-	class UHttpRequestInterface* SetHeader(class FString HeaderName, class FString HeaderValue);
-	class UHttpRequestInterface* SetContentAsString(class FString ContentString);
-	class UHttpRequestInterface* SetContent(TArray<uint8_t>& ContentPayload);
-	class UHttpRequestInterface* SetURL(class FString URL);
-	class UHttpRequestInterface* SetVerb(class FString Verb);
+	class UHttpRequestInterface* SetHeader(const class FString& HeaderName, const class FString& HeaderValue);
+	class UHttpRequestInterface* SetContentAsString(const class FString& ContentString);
+	class UHttpRequestInterface* SetContent(TArray<uint8_t>& outContentPayload);
+	class UHttpRequestInterface* SetURL(const class FString& URL);
+	class UHttpRequestInterface* SetVerb(const class FString& Verb);
 	class FString GetVerb();
-	void GetContent(TArray<uint8_t>& Content);
+	void GetContent(TArray<uint8_t>& outContent);
 	class FString GetURL();
 	int32_t GetContentLength();
 	class FString GetContentType();
-	class FString GetURLParameter(class FString ParameterName);
+	class FString GetURLParameter(const class FString& ParameterName);
 	TArray<class FString> GetHeaders();
-	class FString GetHeader(class FString HeaderName);
+	class FString GetHeader(const class FString& HeaderName);
 };
 
 // Class WinDrv.HttpResponseWindows
@@ -131,13 +131,13 @@ public:
 
 	int32_t GetResponseCode();
 	class FString GetContentAsString();
-	void GetContent(TArray<uint8_t>& Content);
+	void GetContent(TArray<uint8_t>& outContent);
 	class FString GetURL();
 	int32_t GetContentLength();
 	class FString GetContentType();
-	class FString GetURLParameter(class FString ParameterName);
+	class FString GetURLParameter(const class FString& ParameterName);
 	TArray<class FString> GetHeaders();
-	class FString GetHeader(class FString HeaderName);
+	class FString GetHeader(const class FString& HeaderName);
 };
 
 // Class WinDrv.WindowsClient
@@ -145,11 +145,11 @@ public:
 class UWindowsClient : public UClient
 {
 public:
-	uint8_t                                           UnknownData00[0x200];                          // 0x0078 (0x0200) MISSED OFFSET
+	uint8_t                                            UnknownData00[0x200];                          // 0x0078 (0x0200) MISSED OFFSET
 	class UClass*                                      AudioDeviceClass;                              // 0x0278 (0x0008) [0x0000000000004000] (CPF_Config)  
-	uint8_t                                           UnknownData01[0x38];                           // 0x0280 (0x0038) MISSED OFFSET
+	uint8_t                                            UnknownData01[0x38];                            // 0x0280 (0x0038) MISSED OFFSET
 	int32_t                                            AllowJoystickInput;                            // 0x02B8 (0x0004) [0x0000000000004000] (CPF_Config)  
-	uint8_t                                           UnknownData02[0x104];                          // 0x02BC (0x0104) MISSED OFFSET
+	uint8_t                                            UnknownData02[0x104];                          // 0x02BC (0x0104) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()
@@ -171,7 +171,7 @@ public:
 class UXnaForceFeedbackManager : public UForceFeedbackManager
 {
 public:
-	uint8_t                                           UnknownData00[0x18];                           // 0x0098 (0x0018) MISSED OFFSET
+	uint8_t                                            UnknownData00[0x18];                            // 0x0098 (0x0018) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()
@@ -219,5 +219,5 @@ public:
 */
 
 #ifdef _MSC_VER
-	#pragma pack(pop)
+#pragma pack(pop)
 #endif

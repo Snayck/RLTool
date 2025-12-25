@@ -1,18 +1,18 @@
 /*
 #############################################################################################
-# RocketLeague (1.0.10897.0) SDK
-# Generated with the CodeRedGenerator v1.0.2
+# RocketLeague (RLSDK) SDK 1.0.0
+# Generated with the CodeRedGenerator v1.1.6
 # ========================================================================================= #
 # File: AkAudio_classes.cpp
 # ========================================================================================= #
-# Credits: TheFeckless, ItsBranK
-# Links: www.github.com/CodeRedModding/CodeRed-Generator, www.twitter.com/ItsBranK
+# Credits: ItsBranK, TheFeckless
+# Links: www.github.com/CodeRedModding/CodeRed-Generator
 #############################################################################################
 */
 #include "../SdkHeaders.hpp"
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+#pragma pack(push, 0x8)
 #endif
 
 /*
@@ -27,7 +27,7 @@
 // struct FName                   BusName                        (CPF_Parm)
 // EBusEmitterType                BusType                        (CPF_Parm)
 
-void AAkBusActor::RegisterReflectionEmitter(struct FName BusName, EBusEmitterType BusType)
+void AAkBusActor::RegisterReflectionEmitter(const struct FName& BusName, EBusEmitterType BusType)
 {
 	static UFunction* uFnRegisterReflectionEmitter = nullptr;
 
@@ -41,7 +41,9 @@ void AAkBusActor::RegisterReflectionEmitter(struct FName BusName, EBusEmitterTyp
 	memcpy_s(&RegisterReflectionEmitter_Params.BusName, sizeof(RegisterReflectionEmitter_Params.BusName), &BusName, sizeof(BusName));
 	memcpy_s(&RegisterReflectionEmitter_Params.BusType, sizeof(RegisterReflectionEmitter_Params.BusType), &BusType, sizeof(BusType));
 
+	uFnRegisterReflectionEmitter->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnRegisterReflectionEmitter, &RegisterReflectionEmitter_Params, nullptr);
+	uFnRegisterReflectionEmitter->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkBusActor.SetPinnedAxis
@@ -62,17 +64,19 @@ void AAkBusActor::SetPinnedAxis(EPinnedAxisType AxisToPin)
 	memset(&SetPinnedAxis_Params, 0, sizeof(SetPinnedAxis_Params));
 	memcpy_s(&SetPinnedAxis_Params.AxisToPin, sizeof(SetPinnedAxis_Params.AxisToPin), &AxisToPin, sizeof(AxisToPin));
 
+	uFnSetPinnedAxis->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSetPinnedAxis, &SetPinnedAxis_Params, nullptr);
+	uFnSetPinnedAxis->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkDevice.SetBusEffect
-// [0x04026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_K2Call | FUNC_AllFlags)
+// [0x04026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_K2Call | FUNC_AllFlags)
 // Parameter Info:
 // struct FName                   BusName                        (CPF_Parm)
 // struct FName                   EffectSetting                  (CPF_Parm)
 // int32_t                        EffectSlot                     (CPF_OptionalParm | CPF_Parm)
 
-void UAkDevice::SetBusEffect(struct FName BusName, struct FName EffectSetting, int32_t EffectSlot)
+void UAkDevice::SetBusEffect(const struct FName& BusName, const struct FName& EffectSetting, int32_t EffectSlot)
 {
 	static UFunction* uFnSetBusEffect = nullptr;
 
@@ -87,7 +91,9 @@ void UAkDevice::SetBusEffect(struct FName BusName, struct FName EffectSetting, i
 	memcpy_s(&SetBusEffect_Params.EffectSetting, sizeof(SetBusEffect_Params.EffectSetting), &EffectSetting, sizeof(EffectSetting));
 	memcpy_s(&SetBusEffect_Params.EffectSlot, sizeof(SetBusEffect_Params.EffectSlot), &EffectSlot, sizeof(EffectSlot));
 
+	uFnSetBusEffect->FunctionFlags |= ~0x400;
 	UAkDevice::StaticClass()->ProcessEvent(uFnSetBusEffect, &SetBusEffect_Params, nullptr);
+	uFnSetBusEffect->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkDevice.ResetSlapbackObjects
@@ -106,7 +112,9 @@ void UAkDevice::ResetSlapbackObjects()
 	UAkDevice_execResetSlapbackObjects_Params ResetSlapbackObjects_Params;
 	memset(&ResetSlapbackObjects_Params, 0, sizeof(ResetSlapbackObjects_Params));
 
+	uFnResetSlapbackObjects->FunctionFlags |= ~0x400;
 	UAkDevice::StaticClass()->ProcessEvent(uFnResetSlapbackObjects, &ResetSlapbackObjects_Params, nullptr);
+	uFnResetSlapbackObjects->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkDevice.SetSoundEnvironment
@@ -126,10 +134,12 @@ void UAkDevice::SetSoundEnvironment(class AActor* Actor, EAkEnvironmentType Envi
 
 	UAkDevice_execSetSoundEnvironment_Params SetSoundEnvironment_Params;
 	memset(&SetSoundEnvironment_Params, 0, sizeof(SetSoundEnvironment_Params));
-	memcpy_s(&SetSoundEnvironment_Params.Actor, sizeof(SetSoundEnvironment_Params.Actor), &Actor, sizeof(Actor));
+	SetSoundEnvironment_Params.Actor = Actor;
 	memcpy_s(&SetSoundEnvironment_Params.EnvironmentType, sizeof(SetSoundEnvironment_Params.EnvironmentType), &EnvironmentType, sizeof(EnvironmentType));
 
+	uFnSetSoundEnvironment->FunctionFlags |= ~0x400;
 	UAkDevice::StaticClass()->ProcessEvent(uFnSetSoundEnvironment, &SetSoundEnvironment_Params, nullptr);
+	uFnSetSoundEnvironment->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkDevice.GetEnvironments
@@ -149,7 +159,9 @@ class UAkEnvironments* UAkDevice::GetEnvironments()
 	UAkDevice_execGetEnvironments_Params GetEnvironments_Params;
 	memset(&GetEnvironments_Params, 0, sizeof(GetEnvironments_Params));
 
+	uFnGetEnvironments->FunctionFlags |= ~0x400;
 	UAkDevice::StaticClass()->ProcessEvent(uFnGetEnvironments, &GetEnvironments_Params, nullptr);
+	uFnGetEnvironments->FunctionFlags |= 0x400;
 
 	return GetEnvironments_Params.ReturnValue;
 };
@@ -172,7 +184,9 @@ void UAkDevice::NotifyWhenInitialized(struct FScriptDelegate Callback)
 	memset(&NotifyWhenInitialized_Params, 0, sizeof(NotifyWhenInitialized_Params));
 	memcpy_s(&NotifyWhenInitialized_Params.Callback, sizeof(NotifyWhenInitialized_Params.Callback), &Callback, sizeof(Callback));
 
+	uFnNotifyWhenInitialized->FunctionFlags |= ~0x400;
 	UAkDevice::StaticClass()->ProcessEvent(uFnNotifyWhenInitialized, &NotifyWhenInitialized_Params, nullptr);
+	uFnNotifyWhenInitialized->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkDevice.ProfileStop
@@ -191,7 +205,9 @@ void UAkDevice::ProfileStop()
 	UAkDevice_execProfileStop_Params ProfileStop_Params;
 	memset(&ProfileStop_Params, 0, sizeof(ProfileStop_Params));
 
+	uFnProfileStop->FunctionFlags |= ~0x400;
 	UAkDevice::StaticClass()->ProcessEvent(uFnProfileStop, &ProfileStop_Params, nullptr);
+	uFnProfileStop->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkDevice.ProfileStart
@@ -210,7 +226,9 @@ void UAkDevice::ProfileStart()
 	UAkDevice_execProfileStart_Params ProfileStart_Params;
 	memset(&ProfileStart_Params, 0, sizeof(ProfileStart_Params));
 
+	uFnProfileStart->FunctionFlags |= ~0x400;
 	UAkDevice::StaticClass()->ProcessEvent(uFnProfileStart, &ProfileStart_Params, nullptr);
+	uFnProfileStart->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkDevice.PrintData
@@ -229,7 +247,9 @@ void UAkDevice::PrintData()
 	UAkDevice_execPrintData_Params PrintData_Params;
 	memset(&PrintData_Params, 0, sizeof(PrintData_Params));
 
+	uFnPrintData->FunctionFlags |= ~0x400;
 	UAkDevice::StaticClass()->ProcessEvent(uFnPrintData, &PrintData_Params, nullptr);
+	uFnPrintData->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkDevice.SetDynamicRange
@@ -250,7 +270,9 @@ void UAkDevice::SetDynamicRange(EAkDynamicRangeType Type)
 	memset(&SetDynamicRange_Params, 0, sizeof(SetDynamicRange_Params));
 	memcpy_s(&SetDynamicRange_Params.Type, sizeof(SetDynamicRange_Params.Type), &Type, sizeof(Type));
 
+	uFnSetDynamicRange->FunctionFlags |= ~0x400;
 	UAkDevice::StaticClass()->ProcessEvent(uFnSetDynamicRange, &SetDynamicRange_Params, nullptr);
+	uFnSetDynamicRange->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkDevice.SetOutputType
@@ -271,7 +293,9 @@ void UAkDevice::SetOutputType(EAkOutputType Type)
 	memset(&SetOutputType_Params, 0, sizeof(SetOutputType_Params));
 	memcpy_s(&SetOutputType_Params.Type, sizeof(SetOutputType_Params.Type), &Type, sizeof(Type));
 
+	uFnSetOutputType->FunctionFlags |= ~0x400;
 	UAkDevice::StaticClass()->ProcessEvent(uFnSetOutputType, &SetOutputType_Params, nullptr);
+	uFnSetOutputType->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkDevice.SetListenerSpatialization
@@ -291,16 +315,18 @@ void UAkDevice::SetListenerSpatialization(class ULocalPlayer* Player, EAkListene
 
 	UAkDevice_execSetListenerSpatialization_Params SetListenerSpatialization_Params;
 	memset(&SetListenerSpatialization_Params, 0, sizeof(SetListenerSpatialization_Params));
-	memcpy_s(&SetListenerSpatialization_Params.Player, sizeof(SetListenerSpatialization_Params.Player), &Player, sizeof(Player));
+	SetListenerSpatialization_Params.Player = Player;
 	memcpy_s(&SetListenerSpatialization_Params.Value, sizeof(SetListenerSpatialization_Params.Value), &Value, sizeof(Value));
 
+	uFnSetListenerSpatialization->FunctionFlags |= ~0x400;
 	UAkDevice::StaticClass()->ProcessEvent(uFnSetListenerSpatialization, &SetListenerSpatialization_Params, nullptr);
+	uFnSetListenerSpatialization->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkDevice.SetSplitScreenListenerEnabled
 // [0x04022401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_Public | FUNC_K2Call | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bEnable                        (CPF_Parm)
+// uint32_t                       bEnable                        (CPF_Parm)
 
 void UAkDevice::SetSplitScreenListenerEnabled(bool bEnable)
 {
@@ -315,7 +341,9 @@ void UAkDevice::SetSplitScreenListenerEnabled(bool bEnable)
 	memset(&SetSplitScreenListenerEnabled_Params, 0, sizeof(SetSplitScreenListenerEnabled_Params));
 	SetSplitScreenListenerEnabled_Params.bEnable = bEnable;
 
+	uFnSetSplitScreenListenerEnabled->FunctionFlags |= ~0x400;
 	UAkDevice::StaticClass()->ProcessEvent(uFnSetSplitScreenListenerEnabled, &SetSplitScreenListenerEnabled_Params, nullptr);
+	uFnSetSplitScreenListenerEnabled->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkDevice.SetSplitScreenListenerPosition
@@ -323,7 +351,7 @@ void UAkDevice::SetSplitScreenListenerEnabled(bool bEnable)
 // Parameter Info:
 // struct FVector                 Location                       (CPF_Parm)
 
-void UAkDevice::SetSplitScreenListenerPosition(struct FVector Location)
+void UAkDevice::SetSplitScreenListenerPosition(const struct FVector& Location)
 {
 	static UFunction* uFnSetSplitScreenListenerPosition = nullptr;
 
@@ -336,7 +364,9 @@ void UAkDevice::SetSplitScreenListenerPosition(struct FVector Location)
 	memset(&SetSplitScreenListenerPosition_Params, 0, sizeof(SetSplitScreenListenerPosition_Params));
 	memcpy_s(&SetSplitScreenListenerPosition_Params.Location, sizeof(SetSplitScreenListenerPosition_Params.Location), &Location, sizeof(Location));
 
+	uFnSetSplitScreenListenerPosition->FunctionFlags |= ~0x400;
 	UAkDevice::StaticClass()->ProcessEvent(uFnSetSplitScreenListenerPosition, &SetSplitScreenListenerPosition_Params, nullptr);
+	uFnSetSplitScreenListenerPosition->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkDevice.UpdateSecondaryOutputs
@@ -355,7 +385,9 @@ void UAkDevice::UpdateSecondaryOutputs()
 	UAkDevice_execUpdateSecondaryOutputs_Params UpdateSecondaryOutputs_Params;
 	memset(&UpdateSecondaryOutputs_Params, 0, sizeof(UpdateSecondaryOutputs_Params));
 
+	uFnUpdateSecondaryOutputs->FunctionFlags |= ~0x400;
 	UAkDevice::StaticClass()->ProcessEvent(uFnUpdateSecondaryOutputs, &UpdateSecondaryOutputs_Params, nullptr);
+	uFnUpdateSecondaryOutputs->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkDevice.SetGlobalRTCP
@@ -364,7 +396,7 @@ void UAkDevice::UpdateSecondaryOutputs()
 // struct FName                   Key                            (CPF_Parm)
 // float                          Value                          (CPF_Parm)
 
-void UAkDevice::SetGlobalRTCP(struct FName Key, float Value)
+void UAkDevice::SetGlobalRTCP(const struct FName& Key, float Value)
 {
 	static UFunction* uFnSetGlobalRTCP = nullptr;
 
@@ -378,7 +410,9 @@ void UAkDevice::SetGlobalRTCP(struct FName Key, float Value)
 	memcpy_s(&SetGlobalRTCP_Params.Key, sizeof(SetGlobalRTCP_Params.Key), &Key, sizeof(Key));
 	memcpy_s(&SetGlobalRTCP_Params.Value, sizeof(SetGlobalRTCP_Params.Value), &Value, sizeof(Value));
 
+	uFnSetGlobalRTCP->FunctionFlags |= ~0x400;
 	UAkDevice::StaticClass()->ProcessEvent(uFnSetGlobalRTCP, &SetGlobalRTCP_Params, nullptr);
+	uFnSetGlobalRTCP->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkDevice.StopGlobalSound
@@ -397,9 +431,11 @@ void UAkDevice::StopGlobalSound(class UAkSoundCue* Sound)
 
 	UAkDevice_execStopGlobalSound_Params StopGlobalSound_Params;
 	memset(&StopGlobalSound_Params, 0, sizeof(StopGlobalSound_Params));
-	memcpy_s(&StopGlobalSound_Params.Sound, sizeof(StopGlobalSound_Params.Sound), &Sound, sizeof(Sound));
+	StopGlobalSound_Params.Sound = Sound;
 
+	uFnStopGlobalSound->FunctionFlags |= ~0x400;
 	UAkDevice::StaticClass()->ProcessEvent(uFnStopGlobalSound, &StopGlobalSound_Params, nullptr);
+	uFnStopGlobalSound->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkDevice.PlayGlobalSound
@@ -418,9 +454,11 @@ void UAkDevice::PlayGlobalSound(class UAkSoundCue* Sound)
 
 	UAkDevice_execPlayGlobalSound_Params PlayGlobalSound_Params;
 	memset(&PlayGlobalSound_Params, 0, sizeof(PlayGlobalSound_Params));
-	memcpy_s(&PlayGlobalSound_Params.Sound, sizeof(PlayGlobalSound_Params.Sound), &Sound, sizeof(Sound));
+	PlayGlobalSound_Params.Sound = Sound;
 
+	uFnPlayGlobalSound->FunctionFlags |= ~0x400;
 	UAkDevice::StaticClass()->ProcessEvent(uFnPlayGlobalSound, &PlayGlobalSound_Params, nullptr);
+	uFnPlayGlobalSound->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkDevice.SetState
@@ -429,7 +467,7 @@ void UAkDevice::PlayGlobalSound(class UAkSoundCue* Sound)
 // struct FName                   InStateGroup                   (CPF_Parm)
 // struct FName                   InState                        (CPF_Parm)
 
-void UAkDevice::SetState(struct FName InStateGroup, struct FName InState)
+void UAkDevice::SetState(const struct FName& InStateGroup, const struct FName& InState)
 {
 	static UFunction* uFnSetState = nullptr;
 
@@ -443,7 +481,9 @@ void UAkDevice::SetState(struct FName InStateGroup, struct FName InState)
 	memcpy_s(&SetState_Params.InStateGroup, sizeof(SetState_Params.InStateGroup), &InStateGroup, sizeof(InStateGroup));
 	memcpy_s(&SetState_Params.InState, sizeof(SetState_Params.InState), &InState, sizeof(InState));
 
+	uFnSetState->FunctionFlags |= ~0x400;
 	UAkDevice::StaticClass()->ProcessEvent(uFnSetState, &SetState_Params, nullptr);
+	uFnSetState->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkDevice.SetSwitch
@@ -453,7 +493,7 @@ void UAkDevice::SetState(struct FName InStateGroup, struct FName InState)
 // struct FName                   Key                            (CPF_Parm)
 // struct FName                   Value                          (CPF_Parm)
 
-void UAkDevice::SetSwitch(class AActor* SourceActor, struct FName Key, struct FName Value)
+void UAkDevice::SetSwitch(class AActor* SourceActor, const struct FName& Key, const struct FName& Value)
 {
 	static UFunction* uFnSetSwitch = nullptr;
 
@@ -464,11 +504,13 @@ void UAkDevice::SetSwitch(class AActor* SourceActor, struct FName Key, struct FN
 
 	UAkDevice_execSetSwitch_Params SetSwitch_Params;
 	memset(&SetSwitch_Params, 0, sizeof(SetSwitch_Params));
-	memcpy_s(&SetSwitch_Params.SourceActor, sizeof(SetSwitch_Params.SourceActor), &SourceActor, sizeof(SourceActor));
+	SetSwitch_Params.SourceActor = SourceActor;
 	memcpy_s(&SetSwitch_Params.Key, sizeof(SetSwitch_Params.Key), &Key, sizeof(Key));
 	memcpy_s(&SetSwitch_Params.Value, sizeof(SetSwitch_Params.Value), &Value, sizeof(Value));
 
+	uFnSetSwitch->FunctionFlags |= ~0x400;
 	UAkDevice::StaticClass()->ProcessEvent(uFnSetSwitch, &SetSwitch_Params, nullptr);
+	uFnSetSwitch->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkDevice.SetRTCP
@@ -478,7 +520,7 @@ void UAkDevice::SetSwitch(class AActor* SourceActor, struct FName Key, struct FN
 // struct FName                   Key                            (CPF_Parm)
 // float                          Value                          (CPF_Parm)
 
-void UAkDevice::SetRTCP(class AActor* SourceActor, struct FName Key, float Value)
+void UAkDevice::SetRTCP(class AActor* SourceActor, const struct FName& Key, float Value)
 {
 	static UFunction* uFnSetRTCP = nullptr;
 
@@ -489,11 +531,13 @@ void UAkDevice::SetRTCP(class AActor* SourceActor, struct FName Key, float Value
 
 	UAkDevice_execSetRTCP_Params SetRTCP_Params;
 	memset(&SetRTCP_Params, 0, sizeof(SetRTCP_Params));
-	memcpy_s(&SetRTCP_Params.SourceActor, sizeof(SetRTCP_Params.SourceActor), &SourceActor, sizeof(SourceActor));
+	SetRTCP_Params.SourceActor = SourceActor;
 	memcpy_s(&SetRTCP_Params.Key, sizeof(SetRTCP_Params.Key), &Key, sizeof(Key));
 	memcpy_s(&SetRTCP_Params.Value, sizeof(SetRTCP_Params.Value), &Value, sizeof(Value));
 
+	uFnSetRTCP->FunctionFlags |= ~0x400;
 	UAkDevice::StaticClass()->ProcessEvent(uFnSetRTCP, &SetRTCP_Params, nullptr);
+	uFnSetRTCP->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkDevice.StopAllSounds
@@ -512,9 +556,11 @@ void UAkDevice::StopAllSounds(class AActor* SourceActor)
 
 	UAkDevice_execStopAllSounds_Params StopAllSounds_Params;
 	memset(&StopAllSounds_Params, 0, sizeof(StopAllSounds_Params));
-	memcpy_s(&StopAllSounds_Params.SourceActor, sizeof(StopAllSounds_Params.SourceActor), &SourceActor, sizeof(SourceActor));
+	StopAllSounds_Params.SourceActor = SourceActor;
 
+	uFnStopAllSounds->FunctionFlags |= ~0x400;
 	UAkDevice::StaticClass()->ProcessEvent(uFnStopAllSounds, &StopAllSounds_Params, nullptr);
+	uFnStopAllSounds->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkDevice.StopSound
@@ -534,14 +580,16 @@ void UAkDevice::StopSound(class AActor* SourceActor, class UAkSoundCue* Sound)
 
 	UAkDevice_execStopSound_Params StopSound_Params;
 	memset(&StopSound_Params, 0, sizeof(StopSound_Params));
-	memcpy_s(&StopSound_Params.SourceActor, sizeof(StopSound_Params.SourceActor), &SourceActor, sizeof(SourceActor));
-	memcpy_s(&StopSound_Params.Sound, sizeof(StopSound_Params.Sound), &Sound, sizeof(Sound));
+	StopSound_Params.SourceActor = SourceActor;
+	StopSound_Params.Sound = Sound;
 
+	uFnStopSound->FunctionFlags |= ~0x400;
 	UAkDevice::StaticClass()->ProcessEvent(uFnStopSound, &StopSound_Params, nullptr);
+	uFnStopSound->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkDevice.PlaySound
-// [0x04026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_K2Call | FUNC_AllFlags)
+// [0x04026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_K2Call | FUNC_AllFlags)
 // Parameter Info:
 // class UAkSoundSource*          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_EditInline)
 // class AActor*                  SourceActor                    (CPF_Parm)
@@ -549,36 +597,38 @@ void UAkDevice::StopSound(class AActor* SourceActor, class UAkSoundCue* Sound)
 // struct FVector                 Translation                    (CPF_OptionalParm | CPF_Parm)
 // struct FRotator                Rotation                       (CPF_OptionalParm | CPF_Parm)
 
-class UAkSoundSource* UAkDevice::PlaySound(class AActor* SourceActor, class UAkSoundCue* Sound, struct FVector Translation, struct FRotator Rotation)
+class UAkSoundSource* UAkDevice::PlaySoundW(class AActor* SourceActor, class UAkSoundCue* Sound, const struct FVector& Translation, const struct FRotator& Rotation)
 {
-	static UFunction* uFnPlaySound = nullptr;
+	static UFunction* uFnPlaySoundW = nullptr;
 
-	if (!uFnPlaySound)
+	if (!uFnPlaySoundW)
 	{
-		uFnPlaySound = UFunction::FindFunction("Function AkAudio.AkDevice.PlaySound");
+		uFnPlaySoundW = UFunction::FindFunction("Function AkAudio.AkDevice.PlaySound");
 	}
 
-	UAkDevice_execPlaySound_Params PlaySound_Params;
-	memset(&PlaySound_Params, 0, sizeof(PlaySound_Params));
-	memcpy_s(&PlaySound_Params.SourceActor, sizeof(PlaySound_Params.SourceActor), &SourceActor, sizeof(SourceActor));
-	memcpy_s(&PlaySound_Params.Sound, sizeof(PlaySound_Params.Sound), &Sound, sizeof(Sound));
-	memcpy_s(&PlaySound_Params.Translation, sizeof(PlaySound_Params.Translation), &Translation, sizeof(Translation));
-	memcpy_s(&PlaySound_Params.Rotation, sizeof(PlaySound_Params.Rotation), &Rotation, sizeof(Rotation));
+	UAkDevice_execPlaySoundW_Params PlaySoundW_Params;
+	memset(&PlaySoundW_Params, 0, sizeof(PlaySoundW_Params));
+	PlaySoundW_Params.SourceActor = SourceActor;
+	PlaySoundW_Params.Sound = Sound;
+	memcpy_s(&PlaySoundW_Params.Translation, sizeof(PlaySoundW_Params.Translation), &Translation, sizeof(Translation));
+	memcpy_s(&PlaySoundW_Params.Rotation, sizeof(PlaySoundW_Params.Rotation), &Rotation, sizeof(Rotation));
 
-	UAkDevice::StaticClass()->ProcessEvent(uFnPlaySound, &PlaySound_Params, nullptr);
+	uFnPlaySoundW->FunctionFlags |= ~0x400;
+	UAkDevice::StaticClass()->ProcessEvent(uFnPlaySoundW, &PlaySoundW_Params, nullptr);
+	uFnPlaySoundW->FunctionFlags |= 0x400;
 
-	return PlaySound_Params.ReturnValue;
+	return PlaySoundW_Params.ReturnValue;
 };
 
 // Function AkAudio.AkDevice.GetSoundSource
-// [0x04026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_K2Call | FUNC_AllFlags)
+// [0x04026401] (FUNC_Final | FUNC_Native | FUNC_Static | FUNC_OptionalParm | FUNC_Public | FUNC_K2Call | FUNC_AllFlags)
 // Parameter Info:
 // class UAkSoundSource*          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_EditInline)
 // class AActor*                  SourceActor                    (CPF_Parm)
 // struct FVector                 Translation                    (CPF_OptionalParm | CPF_Parm)
 // struct FRotator                Rotation                       (CPF_OptionalParm | CPF_Parm)
 
-class UAkSoundSource* UAkDevice::GetSoundSource(class AActor* SourceActor, struct FVector Translation, struct FRotator Rotation)
+class UAkSoundSource* UAkDevice::GetSoundSource(class AActor* SourceActor, const struct FVector& Translation, const struct FRotator& Rotation)
 {
 	static UFunction* uFnGetSoundSource = nullptr;
 
@@ -589,11 +639,13 @@ class UAkSoundSource* UAkDevice::GetSoundSource(class AActor* SourceActor, struc
 
 	UAkDevice_execGetSoundSource_Params GetSoundSource_Params;
 	memset(&GetSoundSource_Params, 0, sizeof(GetSoundSource_Params));
-	memcpy_s(&GetSoundSource_Params.SourceActor, sizeof(GetSoundSource_Params.SourceActor), &SourceActor, sizeof(SourceActor));
+	GetSoundSource_Params.SourceActor = SourceActor;
 	memcpy_s(&GetSoundSource_Params.Translation, sizeof(GetSoundSource_Params.Translation), &Translation, sizeof(Translation));
 	memcpy_s(&GetSoundSource_Params.Rotation, sizeof(GetSoundSource_Params.Rotation), &Rotation, sizeof(Rotation));
 
+	uFnGetSoundSource->FunctionFlags |= ~0x400;
 	UAkDevice::StaticClass()->ProcessEvent(uFnGetSoundSource, &GetSoundSource_Params, nullptr);
+	uFnGetSoundSource->FunctionFlags |= 0x400;
 
 	return GetSoundSource_Params.ReturnValue;
 };
@@ -634,10 +686,12 @@ void UAkEnvironments::RemoveActorEnvironment(class AActor* TargetActor, class FS
 
 	UAkEnvironments_execRemoveActorEnvironment_Params RemoveActorEnvironment_Params;
 	memset(&RemoveActorEnvironment_Params, 0, sizeof(RemoveActorEnvironment_Params));
-	memcpy_s(&RemoveActorEnvironment_Params.TargetActor, sizeof(RemoveActorEnvironment_Params.TargetActor), &TargetActor, sizeof(TargetActor));
+	RemoveActorEnvironment_Params.TargetActor = TargetActor;
 	memcpy_s(&RemoveActorEnvironment_Params.EnvironmentID, sizeof(RemoveActorEnvironment_Params.EnvironmentID), &EnvironmentID, sizeof(EnvironmentID));
 
+	uFnRemoveActorEnvironment->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnRemoveActorEnvironment, &RemoveActorEnvironment_Params, nullptr);
+	uFnRemoveActorEnvironment->FunctionFlags |= 0x400;
 
 	memcpy_s(&EnvironmentID, sizeof(EnvironmentID), &RemoveActorEnvironment_Params.EnvironmentID, sizeof(RemoveActorEnvironment_Params.EnvironmentID));
 };
@@ -659,10 +713,12 @@ void UAkEnvironments::AddActorEnvironment(class AActor* TargetActor, struct FAkE
 
 	UAkEnvironments_execAddActorEnvironment_Params AddActorEnvironment_Params;
 	memset(&AddActorEnvironment_Params, 0, sizeof(AddActorEnvironment_Params));
-	memcpy_s(&AddActorEnvironment_Params.TargetActor, sizeof(AddActorEnvironment_Params.TargetActor), &TargetActor, sizeof(TargetActor));
+	AddActorEnvironment_Params.TargetActor = TargetActor;
 	memcpy_s(&AddActorEnvironment_Params.Environment, sizeof(AddActorEnvironment_Params.Environment), &Environment, sizeof(Environment));
 
+	uFnAddActorEnvironment->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnAddActorEnvironment, &AddActorEnvironment_Params, nullptr);
+	uFnAddActorEnvironment->FunctionFlags |= 0x400;
 
 	memcpy_s(&Environment, sizeof(Environment), &AddActorEnvironment_Params.Environment, sizeof(AddActorEnvironment_Params.Environment));
 };
@@ -685,7 +741,9 @@ void UAkEnvironments::AddLevelDefault(struct FAkEnvironment& Environment)
 	memset(&AddLevelDefault_Params, 0, sizeof(AddLevelDefault_Params));
 	memcpy_s(&AddLevelDefault_Params.Environment, sizeof(AddLevelDefault_Params.Environment), &Environment, sizeof(Environment));
 
+	uFnAddLevelDefault->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnAddLevelDefault, &AddLevelDefault_Params, nullptr);
+	uFnAddLevelDefault->FunctionFlags |= 0x400;
 
 	memcpy_s(&Environment, sizeof(Environment), &AddLevelDefault_Params.Environment, sizeof(AddLevelDefault_Params.Environment));
 };
@@ -708,7 +766,9 @@ void UAkMusicAnalysis::UpdateSmoothedMusicInfo(float DeltaTime)
 	memset(&UpdateSmoothedMusicInfo_Params, 0, sizeof(UpdateSmoothedMusicInfo_Params));
 	memcpy_s(&UpdateSmoothedMusicInfo_Params.DeltaTime, sizeof(UpdateSmoothedMusicInfo_Params.DeltaTime), &DeltaTime, sizeof(DeltaTime));
 
+	uFnUpdateSmoothedMusicInfo->FunctionFlags |= ~0x400;
 	UAkMusicAnalysis::StaticClass()->ProcessEvent(uFnUpdateSmoothedMusicInfo, &UpdateSmoothedMusicInfo_Params, nullptr);
+	uFnUpdateSmoothedMusicInfo->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkMusicAnalysis.UpdateMusicInfo
@@ -729,7 +789,9 @@ void UAkMusicAnalysis::UpdateMusicInfo(struct FMusicAnalysisInfo& NewValues)
 	memset(&UpdateMusicInfo_Params, 0, sizeof(UpdateMusicInfo_Params));
 	memcpy_s(&UpdateMusicInfo_Params.NewValues, sizeof(UpdateMusicInfo_Params.NewValues), &NewValues, sizeof(NewValues));
 
+	uFnUpdateMusicInfo->FunctionFlags |= ~0x400;
 	UAkMusicAnalysis::StaticClass()->ProcessEvent(uFnUpdateMusicInfo, &UpdateMusicInfo_Params, nullptr);
+	uFnUpdateMusicInfo->FunctionFlags |= 0x400;
 
 	memcpy_s(&NewValues, sizeof(NewValues), &UpdateMusicInfo_Params.NewValues, sizeof(UpdateMusicInfo_Params.NewValues));
 };
@@ -752,7 +814,9 @@ void UAkMusicAnalysis::OnNewTrack(int32_t NewBPM)
 	memset(&OnNewTrack_Params, 0, sizeof(OnNewTrack_Params));
 	memcpy_s(&OnNewTrack_Params.NewBPM, sizeof(OnNewTrack_Params.NewBPM), &NewBPM, sizeof(NewBPM));
 
+	uFnOnNewTrack->FunctionFlags |= ~0x400;
 	UAkMusicAnalysis::StaticClass()->ProcessEvent(uFnOnNewTrack, &OnNewTrack_Params, nullptr);
+	uFnOnNewTrack->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkMusicAnalysis.GetInstance
@@ -772,7 +836,9 @@ class UAkMusicAnalysis* UAkMusicAnalysis::GetInstance()
 	UAkMusicAnalysis_execGetInstance_Params GetInstance_Params;
 	memset(&GetInstance_Params, 0, sizeof(GetInstance_Params));
 
+	uFnGetInstance->FunctionFlags |= ~0x400;
 	UAkMusicAnalysis::StaticClass()->ProcessEvent(uFnGetInstance, &GetInstance_Params, nullptr);
+	uFnGetInstance->FunctionFlags |= 0x400;
 
 	return GetInstance_Params.ReturnValue;
 };
@@ -855,10 +921,12 @@ void UAkMusicDevice::Seek(class UAkSoundCue* Sound, float PositionSeconds)
 
 	UAkMusicDevice_execSeek_Params Seek_Params;
 	memset(&Seek_Params, 0, sizeof(Seek_Params));
-	memcpy_s(&Seek_Params.Sound, sizeof(Seek_Params.Sound), &Sound, sizeof(Sound));
+	Seek_Params.Sound = Sound;
 	memcpy_s(&Seek_Params.PositionSeconds, sizeof(Seek_Params.PositionSeconds), &PositionSeconds, sizeof(PositionSeconds));
 
+	uFnSeek->FunctionFlags |= ~0x400;
 	UAkMusicDevice::StaticClass()->ProcessEvent(uFnSeek, &Seek_Params, nullptr);
+	uFnSeek->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkMusicDevice.SetRTCP
@@ -867,7 +935,7 @@ void UAkMusicDevice::Seek(class UAkSoundCue* Sound, float PositionSeconds)
 // struct FName                   Key                            (CPF_Parm)
 // float                          Value                          (CPF_Parm)
 
-void UAkMusicDevice::SetRTCP(struct FName Key, float Value)
+void UAkMusicDevice::SetRTCP(const struct FName& Key, float Value)
 {
 	static UFunction* uFnSetRTCP = nullptr;
 
@@ -881,7 +949,9 @@ void UAkMusicDevice::SetRTCP(struct FName Key, float Value)
 	memcpy_s(&SetRTCP_Params.Key, sizeof(SetRTCP_Params.Key), &Key, sizeof(Key));
 	memcpy_s(&SetRTCP_Params.Value, sizeof(SetRTCP_Params.Value), &Value, sizeof(Value));
 
+	uFnSetRTCP->FunctionFlags |= ~0x400;
 	UAkMusicDevice::StaticClass()->ProcessEvent(uFnSetRTCP, &SetRTCP_Params, nullptr);
+	uFnSetRTCP->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkMusicDevice.StopPlayingID
@@ -902,7 +972,9 @@ void UAkMusicDevice::StopPlayingID(int32_t PlayingID)
 	memset(&StopPlayingID_Params, 0, sizeof(StopPlayingID_Params));
 	memcpy_s(&StopPlayingID_Params.PlayingID, sizeof(StopPlayingID_Params.PlayingID), &PlayingID, sizeof(PlayingID));
 
+	uFnStopPlayingID->FunctionFlags |= ~0x400;
 	UAkMusicDevice::StaticClass()->ProcessEvent(uFnStopPlayingID, &StopPlayingID_Params, nullptr);
+	uFnStopPlayingID->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkMusicDevice.Stop
@@ -921,9 +993,11 @@ void UAkMusicDevice::Stop(class UAkSoundCue* Sound)
 
 	UAkMusicDevice_execStop_Params Stop_Params;
 	memset(&Stop_Params, 0, sizeof(Stop_Params));
-	memcpy_s(&Stop_Params.Sound, sizeof(Stop_Params.Sound), &Sound, sizeof(Sound));
+	Stop_Params.Sound = Sound;
 
+	uFnStop->FunctionFlags |= ~0x400;
 	UAkMusicDevice::StaticClass()->ProcessEvent(uFnStop, &Stop_Params, nullptr);
+	uFnStop->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkMusicDevice.Play
@@ -943,9 +1017,11 @@ int32_t UAkMusicDevice::Play(class UAkSoundCue* Sound)
 
 	UAkMusicDevice_execPlay_Params Play_Params;
 	memset(&Play_Params, 0, sizeof(Play_Params));
-	memcpy_s(&Play_Params.Sound, sizeof(Play_Params.Sound), &Sound, sizeof(Sound));
+	Play_Params.Sound = Sound;
 
+	uFnPlay->FunctionFlags |= ~0x400;
 	UAkMusicDevice::StaticClass()->ProcessEvent(uFnPlay, &Play_Params, nullptr);
+	uFnPlay->FunctionFlags |= 0x400;
 
 	return Play_Params.ReturnValue;
 };
@@ -977,7 +1053,7 @@ void UAkMusicDevice::EventTrackEnd(int32_t PlayingID)
 // int32_t                        PlayingID                      (CPF_Parm)
 // class FString                  FileMarker                     (CPF_Parm | CPF_NeedCtorLink)
 
-void UAkMusicDevice::EventTrackStart(int32_t PlayingID, class FString FileMarker)
+void UAkMusicDevice::EventTrackStart(int32_t PlayingID, const class FString& FileMarker)
 {
 	static UFunction* uFnEventTrackStart = nullptr;
 
@@ -997,7 +1073,7 @@ void UAkMusicDevice::EventTrackStart(int32_t PlayingID, class FString FileMarker
 // Function AkAudio.AkParamGroup.SetSendToSlapbacks
 // [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bSend                          (CPF_Parm)
+// uint32_t                       bSend                          (CPF_Parm)
 
 void UAkParamGroup::SetSendToSlapbacks(bool bSend)
 {
@@ -1075,7 +1151,7 @@ void UAkParamGroup::DisableObjectAttenuation()
 };
 
 // Function AkAudio.AkParamGroup.PrintDebugInfo
-// [0x400020102] (FUNC_Defined | FUNC_Simulated | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020102] (FUNC_Defined | FUNC_Simulated | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class UDebugDrawer*            Drawer                         (CPF_Parm)
 
@@ -1090,7 +1166,7 @@ void UAkParamGroup::PrintDebugInfo(class UDebugDrawer* Drawer)
 
 	UAkParamGroup_execPrintDebugInfo_Params PrintDebugInfo_Params;
 	memset(&PrintDebugInfo_Params, 0, sizeof(PrintDebugInfo_Params));
-	memcpy_s(&PrintDebugInfo_Params.Drawer, sizeof(PrintDebugInfo_Params.Drawer), &Drawer, sizeof(Drawer));
+	PrintDebugInfo_Params.Drawer = Drawer;
 
 	this->ProcessEvent(uFnPrintDebugInfo, &PrintDebugInfo_Params, nullptr);
 };
@@ -1111,7 +1187,9 @@ void UAkParamGroup::UpdateSoundSourceAttenuationScaling()
 	UAkParamGroup_execUpdateSoundSourceAttenuationScaling_Params UpdateSoundSourceAttenuationScaling_Params;
 	memset(&UpdateSoundSourceAttenuationScaling_Params, 0, sizeof(UpdateSoundSourceAttenuationScaling_Params));
 
+	uFnUpdateSoundSourceAttenuationScaling->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnUpdateSoundSourceAttenuationScaling, &UpdateSoundSourceAttenuationScaling_Params, nullptr);
+	uFnUpdateSoundSourceAttenuationScaling->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkParamGroup.SetActorParameter
@@ -1120,7 +1198,7 @@ void UAkParamGroup::UpdateSoundSourceAttenuationScaling()
 // struct FName                   Key                            (CPF_Parm)
 // class AActor*                  Value                          (CPF_Parm)
 
-void UAkParamGroup::SetActorParameter(struct FName Key, class AActor* Value)
+void UAkParamGroup::SetActorParameter(const struct FName& Key, class AActor* Value)
 {
 	static UFunction* uFnSetActorParameter = nullptr;
 
@@ -1132,9 +1210,11 @@ void UAkParamGroup::SetActorParameter(struct FName Key, class AActor* Value)
 	UAkParamGroup_execSetActorParameter_Params SetActorParameter_Params;
 	memset(&SetActorParameter_Params, 0, sizeof(SetActorParameter_Params));
 	memcpy_s(&SetActorParameter_Params.Key, sizeof(SetActorParameter_Params.Key), &Key, sizeof(Key));
-	memcpy_s(&SetActorParameter_Params.Value, sizeof(SetActorParameter_Params.Value), &Value, sizeof(Value));
+	SetActorParameter_Params.Value = Value;
 
+	uFnSetActorParameter->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSetActorParameter, &SetActorParameter_Params, nullptr);
+	uFnSetActorParameter->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkParamGroup.SetLinearColorParameter
@@ -1143,7 +1223,7 @@ void UAkParamGroup::SetActorParameter(struct FName Key, class AActor* Value)
 // struct FName                   Key                            (CPF_Parm)
 // struct FLinearColor            Value                          (CPF_Parm)
 
-void UAkParamGroup::SetLinearColorParameter(struct FName Key, struct FLinearColor Value)
+void UAkParamGroup::SetLinearColorParameter(const struct FName& Key, const struct FLinearColor& Value)
 {
 	static UFunction* uFnSetLinearColorParameter = nullptr;
 
@@ -1157,7 +1237,9 @@ void UAkParamGroup::SetLinearColorParameter(struct FName Key, struct FLinearColo
 	memcpy_s(&SetLinearColorParameter_Params.Key, sizeof(SetLinearColorParameter_Params.Key), &Key, sizeof(Key));
 	memcpy_s(&SetLinearColorParameter_Params.Value, sizeof(SetLinearColorParameter_Params.Value), &Value, sizeof(Value));
 
+	uFnSetLinearColorParameter->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSetLinearColorParameter, &SetLinearColorParameter_Params, nullptr);
+	uFnSetLinearColorParameter->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkParamGroup.SetVectorParameter
@@ -1166,7 +1248,7 @@ void UAkParamGroup::SetLinearColorParameter(struct FName Key, struct FLinearColo
 // struct FName                   Key                            (CPF_Parm)
 // struct FVector                 Value                          (CPF_Parm)
 
-void UAkParamGroup::SetVectorParameter(struct FName Key, struct FVector Value)
+void UAkParamGroup::SetVectorParameter(const struct FName& Key, const struct FVector& Value)
 {
 	static UFunction* uFnSetVectorParameter = nullptr;
 
@@ -1180,7 +1262,9 @@ void UAkParamGroup::SetVectorParameter(struct FName Key, struct FVector Value)
 	memcpy_s(&SetVectorParameter_Params.Key, sizeof(SetVectorParameter_Params.Key), &Key, sizeof(Key));
 	memcpy_s(&SetVectorParameter_Params.Value, sizeof(SetVectorParameter_Params.Value), &Value, sizeof(Value));
 
+	uFnSetVectorParameter->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSetVectorParameter, &SetVectorParameter_Params, nullptr);
+	uFnSetVectorParameter->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkParamGroup.SetFloatParameter
@@ -1189,7 +1273,7 @@ void UAkParamGroup::SetVectorParameter(struct FName Key, struct FVector Value)
 // struct FName                   Key                            (CPF_Parm)
 // float                          Value                          (CPF_Parm)
 
-void UAkParamGroup::SetFloatParameter(struct FName Key, float Value)
+void UAkParamGroup::SetFloatParameter(const struct FName& Key, float Value)
 {
 	static UFunction* uFnSetFloatParameter = nullptr;
 
@@ -1203,7 +1287,9 @@ void UAkParamGroup::SetFloatParameter(struct FName Key, float Value)
 	memcpy_s(&SetFloatParameter_Params.Key, sizeof(SetFloatParameter_Params.Key), &Key, sizeof(Key));
 	memcpy_s(&SetFloatParameter_Params.Value, sizeof(SetFloatParameter_Params.Value), &Value, sizeof(Value));
 
+	uFnSetFloatParameter->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSetFloatParameter, &SetFloatParameter_Params, nullptr);
+	uFnSetFloatParameter->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkParamGroup.SetNameParameter
@@ -1212,7 +1298,7 @@ void UAkParamGroup::SetFloatParameter(struct FName Key, float Value)
 // struct FName                   Key                            (CPF_Parm)
 // struct FName                   Value                          (CPF_Parm)
 
-void UAkParamGroup::SetNameParameter(struct FName Key, struct FName Value)
+void UAkParamGroup::SetNameParameter(const struct FName& Key, const struct FName& Value)
 {
 	static UFunction* uFnSetNameParameter = nullptr;
 
@@ -1226,7 +1312,9 @@ void UAkParamGroup::SetNameParameter(struct FName Key, struct FName Value)
 	memcpy_s(&SetNameParameter_Params.Key, sizeof(SetNameParameter_Params.Key), &Key, sizeof(Key));
 	memcpy_s(&SetNameParameter_Params.Value, sizeof(SetNameParameter_Params.Value), &Value, sizeof(Value));
 
+	uFnSetNameParameter->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSetNameParameter, &SetNameParameter_Params, nullptr);
+	uFnSetNameParameter->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkParamGroup.GetDebugData
@@ -1253,7 +1341,9 @@ void UAkParamGroup::GetDebugData(TArray<struct FName>& RTCPKeys, TArray<float>& 
 	memcpy_s(&GetDebugData_Params.SwitchKeys, sizeof(GetDebugData_Params.SwitchKeys), &SwitchKeys, sizeof(SwitchKeys));
 	memcpy_s(&GetDebugData_Params.SwitchValues, sizeof(GetDebugData_Params.SwitchValues), &SwitchValues, sizeof(SwitchValues));
 
+	uFnGetDebugData->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnGetDebugData, &GetDebugData_Params, nullptr);
+	uFnGetDebugData->FunctionFlags |= 0x400;
 
 	memcpy_s(&RTCPKeys, sizeof(RTCPKeys), &GetDebugData_Params.RTCPKeys, sizeof(GetDebugData_Params.RTCPKeys));
 	memcpy_s(&RTCPValues, sizeof(RTCPValues), &GetDebugData_Params.RTCPValues, sizeof(GetDebugData_Params.RTCPValues));
@@ -1277,37 +1367,41 @@ void UAkParamGroup::StopSound(class UAkSoundCue* Sound)
 
 	UAkParamGroup_execStopSound_Params StopSound_Params;
 	memset(&StopSound_Params, 0, sizeof(StopSound_Params));
-	memcpy_s(&StopSound_Params.Sound, sizeof(StopSound_Params.Sound), &Sound, sizeof(Sound));
+	StopSound_Params.Sound = Sound;
 
+	uFnStopSound->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnStopSound, &StopSound_Params, nullptr);
+	uFnStopSound->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkParamGroup.PlaySound
-// [0x04024401] (FUNC_Final | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_K2Call | FUNC_AllFlags)
+// [0x04024401] (FUNC_Final | FUNC_Native | FUNC_OptionalParm | FUNC_Public | FUNC_K2Call | FUNC_AllFlags)
 // Parameter Info:
 // class UAkSoundSource*          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_EditInline)
 // class UAkSoundCue*             Sound                          (CPF_Parm)
 // struct FVector                 Translation                    (CPF_OptionalParm | CPF_Parm)
 // struct FRotator                Rotation                       (CPF_OptionalParm | CPF_Parm)
 
-class UAkSoundSource* UAkParamGroup::PlaySound(class UAkSoundCue* Sound, struct FVector Translation, struct FRotator Rotation)
+class UAkSoundSource* UAkParamGroup::PlaySoundW(class UAkSoundCue* Sound, const struct FVector& Translation, const struct FRotator& Rotation)
 {
-	static UFunction* uFnPlaySound = nullptr;
+	static UFunction* uFnPlaySoundW = nullptr;
 
-	if (!uFnPlaySound)
+	if (!uFnPlaySoundW)
 	{
-		uFnPlaySound = UFunction::FindFunction("Function AkAudio.AkParamGroup.PlaySound");
+		uFnPlaySoundW = UFunction::FindFunction("Function AkAudio.AkParamGroup.PlaySound");
 	}
 
-	UAkParamGroup_execPlaySound_Params PlaySound_Params;
-	memset(&PlaySound_Params, 0, sizeof(PlaySound_Params));
-	memcpy_s(&PlaySound_Params.Sound, sizeof(PlaySound_Params.Sound), &Sound, sizeof(Sound));
-	memcpy_s(&PlaySound_Params.Translation, sizeof(PlaySound_Params.Translation), &Translation, sizeof(Translation));
-	memcpy_s(&PlaySound_Params.Rotation, sizeof(PlaySound_Params.Rotation), &Rotation, sizeof(Rotation));
+	UAkParamGroup_execPlaySoundW_Params PlaySoundW_Params;
+	memset(&PlaySoundW_Params, 0, sizeof(PlaySoundW_Params));
+	PlaySoundW_Params.Sound = Sound;
+	memcpy_s(&PlaySoundW_Params.Translation, sizeof(PlaySoundW_Params.Translation), &Translation, sizeof(Translation));
+	memcpy_s(&PlaySoundW_Params.Rotation, sizeof(PlaySoundW_Params.Rotation), &Rotation, sizeof(Rotation));
 
-	this->ProcessEvent(uFnPlaySound, &PlaySound_Params, nullptr);
+	uFnPlaySoundW->FunctionFlags |= ~0x400;
+	this->ProcessEvent(uFnPlaySoundW, &PlaySoundW_Params, nullptr);
+	uFnPlaySoundW->FunctionFlags |= 0x400;
 
-	return PlaySound_Params.ReturnValue;
+	return PlaySoundW_Params.ReturnValue;
 };
 
 // Function AkAudio.AkParamGroup.SetSwitch
@@ -1316,7 +1410,7 @@ class UAkSoundSource* UAkParamGroup::PlaySound(class UAkSoundCue* Sound, struct 
 // struct FName                   Key                            (CPF_Parm)
 // struct FName                   Value                          (CPF_Parm)
 
-void UAkParamGroup::SetSwitch(struct FName Key, struct FName Value)
+void UAkParamGroup::SetSwitch(const struct FName& Key, const struct FName& Value)
 {
 	static UFunction* uFnSetSwitch = nullptr;
 
@@ -1330,7 +1424,9 @@ void UAkParamGroup::SetSwitch(struct FName Key, struct FName Value)
 	memcpy_s(&SetSwitch_Params.Key, sizeof(SetSwitch_Params.Key), &Key, sizeof(Key));
 	memcpy_s(&SetSwitch_Params.Value, sizeof(SetSwitch_Params.Value), &Value, sizeof(Value));
 
+	uFnSetSwitch->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSetSwitch, &SetSwitch_Params, nullptr);
+	uFnSetSwitch->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkParamGroup.SetRTCP
@@ -1339,7 +1435,7 @@ void UAkParamGroup::SetSwitch(struct FName Key, struct FName Value)
 // struct FName                   Key                            (CPF_Parm)
 // float                          Value                          (CPF_Parm)
 
-void UAkParamGroup::SetRTCP(struct FName Key, float Value)
+void UAkParamGroup::SetRTCP(const struct FName& Key, float Value)
 {
 	static UFunction* uFnSetRTCP = nullptr;
 
@@ -1353,7 +1449,9 @@ void UAkParamGroup::SetRTCP(struct FName Key, float Value)
 	memcpy_s(&SetRTCP_Params.Key, sizeof(SetRTCP_Params.Key), &Key, sizeof(Key));
 	memcpy_s(&SetRTCP_Params.Value, sizeof(SetRTCP_Params.Value), &Value, sizeof(Value));
 
+	uFnSetRTCP->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSetRTCP, &SetRTCP_Params, nullptr);
+	uFnSetRTCP->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkPlaySoundComponent.SetActorParameter
@@ -1362,7 +1460,7 @@ void UAkParamGroup::SetRTCP(struct FName Key, float Value)
 // struct FName                   Key                            (CPF_Parm)
 // class AActor*                  Value                          (CPF_Parm)
 
-void UAkPlaySoundComponent::SetActorParameter(struct FName Key, class AActor* Value)
+void UAkPlaySoundComponent::SetActorParameter(const struct FName& Key, class AActor* Value)
 {
 	static UFunction* uFnSetActorParameter = nullptr;
 
@@ -1374,9 +1472,11 @@ void UAkPlaySoundComponent::SetActorParameter(struct FName Key, class AActor* Va
 	UAkPlaySoundComponent_execSetActorParameter_Params SetActorParameter_Params;
 	memset(&SetActorParameter_Params, 0, sizeof(SetActorParameter_Params));
 	memcpy_s(&SetActorParameter_Params.Key, sizeof(SetActorParameter_Params.Key), &Key, sizeof(Key));
-	memcpy_s(&SetActorParameter_Params.Value, sizeof(SetActorParameter_Params.Value), &Value, sizeof(Value));
+	SetActorParameter_Params.Value = Value;
 
+	uFnSetActorParameter->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSetActorParameter, &SetActorParameter_Params, nullptr);
+	uFnSetActorParameter->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkPlaySoundComponent.SetLinearColorParameter
@@ -1385,7 +1485,7 @@ void UAkPlaySoundComponent::SetActorParameter(struct FName Key, class AActor* Va
 // struct FName                   Key                            (CPF_Parm)
 // struct FLinearColor            Value                          (CPF_Parm)
 
-void UAkPlaySoundComponent::SetLinearColorParameter(struct FName Key, struct FLinearColor Value)
+void UAkPlaySoundComponent::SetLinearColorParameter(const struct FName& Key, const struct FLinearColor& Value)
 {
 	static UFunction* uFnSetLinearColorParameter = nullptr;
 
@@ -1399,7 +1499,9 @@ void UAkPlaySoundComponent::SetLinearColorParameter(struct FName Key, struct FLi
 	memcpy_s(&SetLinearColorParameter_Params.Key, sizeof(SetLinearColorParameter_Params.Key), &Key, sizeof(Key));
 	memcpy_s(&SetLinearColorParameter_Params.Value, sizeof(SetLinearColorParameter_Params.Value), &Value, sizeof(Value));
 
+	uFnSetLinearColorParameter->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSetLinearColorParameter, &SetLinearColorParameter_Params, nullptr);
+	uFnSetLinearColorParameter->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkPlaySoundComponent.SetVectorParameter
@@ -1408,7 +1510,7 @@ void UAkPlaySoundComponent::SetLinearColorParameter(struct FName Key, struct FLi
 // struct FName                   Key                            (CPF_Parm)
 // struct FVector                 Value                          (CPF_Parm)
 
-void UAkPlaySoundComponent::SetVectorParameter(struct FName Key, struct FVector Value)
+void UAkPlaySoundComponent::SetVectorParameter(const struct FName& Key, const struct FVector& Value)
 {
 	static UFunction* uFnSetVectorParameter = nullptr;
 
@@ -1422,7 +1524,9 @@ void UAkPlaySoundComponent::SetVectorParameter(struct FName Key, struct FVector 
 	memcpy_s(&SetVectorParameter_Params.Key, sizeof(SetVectorParameter_Params.Key), &Key, sizeof(Key));
 	memcpy_s(&SetVectorParameter_Params.Value, sizeof(SetVectorParameter_Params.Value), &Value, sizeof(Value));
 
+	uFnSetVectorParameter->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSetVectorParameter, &SetVectorParameter_Params, nullptr);
+	uFnSetVectorParameter->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkPlaySoundComponent.SetFloatParameter
@@ -1431,7 +1535,7 @@ void UAkPlaySoundComponent::SetVectorParameter(struct FName Key, struct FVector 
 // struct FName                   Key                            (CPF_Parm)
 // float                          Value                          (CPF_Parm)
 
-void UAkPlaySoundComponent::SetFloatParameter(struct FName Key, float Value)
+void UAkPlaySoundComponent::SetFloatParameter(const struct FName& Key, float Value)
 {
 	static UFunction* uFnSetFloatParameter = nullptr;
 
@@ -1445,7 +1549,9 @@ void UAkPlaySoundComponent::SetFloatParameter(struct FName Key, float Value)
 	memcpy_s(&SetFloatParameter_Params.Key, sizeof(SetFloatParameter_Params.Key), &Key, sizeof(Key));
 	memcpy_s(&SetFloatParameter_Params.Value, sizeof(SetFloatParameter_Params.Value), &Value, sizeof(Value));
 
+	uFnSetFloatParameter->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSetFloatParameter, &SetFloatParameter_Params, nullptr);
+	uFnSetFloatParameter->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkPlaySoundComponent.SetNameParameter
@@ -1454,7 +1560,7 @@ void UAkPlaySoundComponent::SetFloatParameter(struct FName Key, float Value)
 // struct FName                   Key                            (CPF_Parm)
 // struct FName                   Value                          (CPF_Parm)
 
-void UAkPlaySoundComponent::SetNameParameter(struct FName Key, struct FName Value)
+void UAkPlaySoundComponent::SetNameParameter(const struct FName& Key, const struct FName& Value)
 {
 	static UFunction* uFnSetNameParameter = nullptr;
 
@@ -1468,7 +1574,9 @@ void UAkPlaySoundComponent::SetNameParameter(struct FName Key, struct FName Valu
 	memcpy_s(&SetNameParameter_Params.Key, sizeof(SetNameParameter_Params.Key), &Key, sizeof(Key));
 	memcpy_s(&SetNameParameter_Params.Value, sizeof(SetNameParameter_Params.Value), &Value, sizeof(Value));
 
+	uFnSetNameParameter->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSetNameParameter, &SetNameParameter_Params, nullptr);
+	uFnSetNameParameter->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkPlaySoundComponent.SetRTCP
@@ -1477,7 +1585,7 @@ void UAkPlaySoundComponent::SetNameParameter(struct FName Key, struct FName Valu
 // struct FName                   Key                            (CPF_Parm)
 // float                          Value                          (CPF_Parm)
 
-void UAkPlaySoundComponent::SetRTCP(struct FName Key, float Value)
+void UAkPlaySoundComponent::SetRTCP(const struct FName& Key, float Value)
 {
 	static UFunction* uFnSetRTCP = nullptr;
 
@@ -1491,7 +1599,9 @@ void UAkPlaySoundComponent::SetRTCP(struct FName Key, float Value)
 	memcpy_s(&SetRTCP_Params.Key, sizeof(SetRTCP_Params.Key), &Key, sizeof(Key));
 	memcpy_s(&SetRTCP_Params.Value, sizeof(SetRTCP_Params.Value), &Value, sizeof(Value));
 
+	uFnSetRTCP->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSetRTCP, &SetRTCP_Params, nullptr);
+	uFnSetRTCP->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkPlaySoundComponent.SetSwitch
@@ -1500,7 +1610,7 @@ void UAkPlaySoundComponent::SetRTCP(struct FName Key, float Value)
 // struct FName                   Key                            (CPF_Parm)
 // struct FName                   Value                          (CPF_Parm)
 
-void UAkPlaySoundComponent::SetSwitch(struct FName Key, struct FName Value)
+void UAkPlaySoundComponent::SetSwitch(const struct FName& Key, const struct FName& Value)
 {
 	static UFunction* uFnSetSwitch = nullptr;
 
@@ -1514,7 +1624,9 @@ void UAkPlaySoundComponent::SetSwitch(struct FName Key, struct FName Value)
 	memcpy_s(&SetSwitch_Params.Key, sizeof(SetSwitch_Params.Key), &Key, sizeof(Key));
 	memcpy_s(&SetSwitch_Params.Value, sizeof(SetSwitch_Params.Value), &Value, sizeof(Value));
 
+	uFnSetSwitch->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSetSwitch, &SetSwitch_Params, nullptr);
+	uFnSetSwitch->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkPlaySoundComponent.IsPlaying
@@ -1534,7 +1646,9 @@ bool UAkPlaySoundComponent::IsPlaying()
 	UAkPlaySoundComponent_execIsPlaying_Params IsPlaying_Params;
 	memset(&IsPlaying_Params, 0, sizeof(IsPlaying_Params));
 
+	uFnIsPlaying->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnIsPlaying, &IsPlaying_Params, nullptr);
+	uFnIsPlaying->FunctionFlags |= 0x400;
 
 	return IsPlaying_Params.ReturnValue;
 };
@@ -1555,7 +1669,9 @@ void UAkPlaySoundComponent::Stop()
 	UAkPlaySoundComponent_execStop_Params Stop_Params;
 	memset(&Stop_Params, 0, sizeof(Stop_Params));
 
+	uFnStop->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnStop, &Stop_Params, nullptr);
+	uFnStop->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkPlaySoundComponent.Play
@@ -1574,11 +1690,13 @@ void UAkPlaySoundComponent::Play()
 	UAkPlaySoundComponent_execPlay_Params Play_Params;
 	memset(&Play_Params, 0, sizeof(Play_Params));
 
+	uFnPlay->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnPlay, &Play_Params, nullptr);
+	uFnPlay->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkRevPhysicsSimulation.PrintDebugInfo
-// [0x400020102] (FUNC_Defined | FUNC_Simulated | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020102] (FUNC_Defined | FUNC_Simulated | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class UDebugDrawer*            Drawer                         (CPF_Parm)
 
@@ -1593,7 +1711,7 @@ void UAkRevPhysicsSimulation::PrintDebugInfo(class UDebugDrawer* Drawer)
 
 	UAkRevPhysicsSimulation_execPrintDebugInfo_Params PrintDebugInfo_Params;
 	memset(&PrintDebugInfo_Params, 0, sizeof(PrintDebugInfo_Params));
-	memcpy_s(&PrintDebugInfo_Params.Drawer, sizeof(PrintDebugInfo_Params.Drawer), &Drawer, sizeof(Drawer));
+	PrintDebugInfo_Params.Drawer = Drawer;
 
 	this->ProcessEvent(uFnPrintDebugInfo, &PrintDebugInfo_Params, nullptr);
 };
@@ -1619,7 +1737,9 @@ float UAkRevPhysicsSimulation::InterpGearRatio(int32_t Gear, struct FAkRevSimUpd
 	memcpy_s(&InterpGearRatio_Params.Gear, sizeof(InterpGearRatio_Params.Gear), &Gear, sizeof(Gear));
 	memcpy_s(&InterpGearRatio_Params.SimUpdate, sizeof(InterpGearRatio_Params.SimUpdate), &SimUpdate, sizeof(SimUpdate));
 
+	uFnInterpGearRatio->FunctionFlags |= ~0x400;
 	UAkRevPhysicsSimulation::StaticClass()->ProcessEvent(uFnInterpGearRatio, &InterpGearRatio_Params, nullptr);
+	uFnInterpGearRatio->FunctionFlags |= 0x400;
 
 	memcpy_s(&SimUpdate, sizeof(SimUpdate), &InterpGearRatio_Params.SimUpdate, sizeof(InterpGearRatio_Params.SimUpdate));
 
@@ -1645,7 +1765,9 @@ float UAkRevPhysicsSimulation::GetGearRatio(struct FAkRevSimUpdateParams& SimUpd
 	memset(&GetGearRatio_Params, 0, sizeof(GetGearRatio_Params));
 	memcpy_s(&GetGearRatio_Params.SimUpdate, sizeof(GetGearRatio_Params.SimUpdate), &SimUpdate, sizeof(SimUpdate));
 
+	uFnGetGearRatio->FunctionFlags |= ~0x400;
 	UAkRevPhysicsSimulation::StaticClass()->ProcessEvent(uFnGetGearRatio, &GetGearRatio_Params, nullptr);
+	uFnGetGearRatio->FunctionFlags |= 0x400;
 
 	memcpy_s(&SimUpdate, sizeof(SimUpdate), &GetGearRatio_Params.SimUpdate, sizeof(GetGearRatio_Params.SimUpdate));
 
@@ -1673,7 +1795,9 @@ float UAkRevPhysicsSimulation::CalcVelocity(float GearRatio, float RPM)
 	memcpy_s(&CalcVelocity_Params.GearRatio, sizeof(CalcVelocity_Params.GearRatio), &GearRatio, sizeof(GearRatio));
 	memcpy_s(&CalcVelocity_Params.RPM, sizeof(CalcVelocity_Params.RPM), &RPM, sizeof(RPM));
 
+	uFnCalcVelocity->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnCalcVelocity, &CalcVelocity_Params, nullptr);
+	uFnCalcVelocity->FunctionFlags |= 0x400;
 
 	return CalcVelocity_Params.ReturnValue;
 };
@@ -1699,7 +1823,9 @@ float UAkRevPhysicsSimulation::CalcRPM(float GearRatio, float Velocity)
 	memcpy_s(&CalcRPM_Params.GearRatio, sizeof(CalcRPM_Params.GearRatio), &GearRatio, sizeof(GearRatio));
 	memcpy_s(&CalcRPM_Params.Velocity, sizeof(CalcRPM_Params.Velocity), &Velocity, sizeof(Velocity));
 
+	uFnCalcRPM->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnCalcRPM, &CalcRPM_Params, nullptr);
+	uFnCalcRPM->FunctionFlags |= 0x400;
 
 	return CalcRPM_Params.ReturnValue;
 };
@@ -1725,7 +1851,9 @@ struct FAkRevSimFrame UAkRevPhysicsSimulation::Step(float DeltaTime, struct FAkR
 	memcpy_s(&Step_Params.DeltaTime, sizeof(Step_Params.DeltaTime), &DeltaTime, sizeof(DeltaTime));
 	memcpy_s(&Step_Params.Params, sizeof(Step_Params.Params), &Params, sizeof(Params));
 
+	uFnStep->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnStep, &Step_Params, nullptr);
+	uFnStep->FunctionFlags |= 0x400;
 
 	memcpy_s(&Params, sizeof(Params), &Step_Params.Params, sizeof(Step_Params.Params));
 
@@ -1748,7 +1876,7 @@ void UAkRevPhysicsSimulation::EventGearChange(class UAkRevPhysicsSimulation* Sim
 
 	UAkRevPhysicsSimulation_execEventGearChange_Params EventGearChange_Params;
 	memset(&EventGearChange_Params, 0, sizeof(EventGearChange_Params));
-	memcpy_s(&EventGearChange_Params.Simulation, sizeof(EventGearChange_Params.Simulation), &Simulation, sizeof(Simulation));
+	EventGearChange_Params.Simulation = Simulation;
 
 	this->ProcessEvent(uFnEventGearChange, &EventGearChange_Params, nullptr);
 };
@@ -1759,7 +1887,7 @@ void UAkRevPhysicsSimulation::EventGearChange(class UAkRevPhysicsSimulation* Sim
 // class UAkSoundBanksInfo*       ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Text                           (CPF_Parm | CPF_NeedCtorLink)
 
-class UAkSoundBanksInfo* UAkSoundBanksInfo::Parse(class FString Text)
+class UAkSoundBanksInfo* UAkSoundBanksInfo::Parse(const class FString& Text)
 {
 	static UFunction* uFnParse = nullptr;
 
@@ -1772,7 +1900,9 @@ class UAkSoundBanksInfo* UAkSoundBanksInfo::Parse(class FString Text)
 	memset(&Parse_Params, 0, sizeof(Parse_Params));
 	memcpy_s(&Parse_Params.Text, sizeof(Parse_Params.Text), &Text, sizeof(Text));
 
+	uFnParse->FunctionFlags |= ~0x400;
 	UAkSoundBanksInfo::StaticClass()->ProcessEvent(uFnParse, &Parse_Params, nullptr);
+	uFnParse->FunctionFlags |= 0x400;
 
 	return Parse_Params.ReturnValue;
 };
@@ -1794,7 +1924,9 @@ class UAkSoundBanksInfo* UAkSoundBanksInfo::LoadForNativePlatform()
 	UAkSoundBanksInfo_execLoadForNativePlatform_Params LoadForNativePlatform_Params;
 	memset(&LoadForNativePlatform_Params, 0, sizeof(LoadForNativePlatform_Params));
 
+	uFnLoadForNativePlatform->FunctionFlags |= ~0x400;
 	UAkSoundBanksInfo::StaticClass()->ProcessEvent(uFnLoadForNativePlatform, &LoadForNativePlatform_Params, nullptr);
+	uFnLoadForNativePlatform->FunctionFlags |= 0x400;
 
 	return LoadForNativePlatform_Params.ReturnValue;
 };
@@ -1802,7 +1934,7 @@ class UAkSoundBanksInfo* UAkSoundBanksInfo::LoadForNativePlatform()
 // Function AkAudio.AkSoundSource.SetSubtitlesEnabled
 // [0x04020803] (FUNC_Final | FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_K2Call | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bValue                         (CPF_Parm)
+// uint32_t                       bValue                         (CPF_Parm)
 
 void UAkSoundSource::eventSetSubtitlesEnabled(bool bValue)
 {
@@ -1838,7 +1970,9 @@ void UAkSoundSource::SetAttenuationScaling(EAttenuationType AttenuationType)
 	memset(&SetAttenuationScaling_Params, 0, sizeof(SetAttenuationScaling_Params));
 	memcpy_s(&SetAttenuationScaling_Params.AttenuationType, sizeof(SetAttenuationScaling_Params.AttenuationType), &AttenuationType, sizeof(AttenuationType));
 
+	uFnSetAttenuationScaling->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSetAttenuationScaling, &SetAttenuationScaling_Params, nullptr);
+	uFnSetAttenuationScaling->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkSoundSource.ForceUpdatePosition
@@ -1857,7 +1991,9 @@ void UAkSoundSource::ForceUpdatePosition()
 	UAkSoundSource_execForceUpdatePosition_Params ForceUpdatePosition_Params;
 	memset(&ForceUpdatePosition_Params, 0, sizeof(ForceUpdatePosition_Params));
 
+	uFnForceUpdatePosition->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnForceUpdatePosition, &ForceUpdatePosition_Params, nullptr);
+	uFnForceUpdatePosition->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkSoundSource.RegisterReflectionEmitter
@@ -1866,7 +2002,7 @@ void UAkSoundSource::ForceUpdatePosition()
 // struct FName                   BusName                        (CPF_Parm)
 // EBusEmitterType                BusType                        (CPF_Parm)
 
-void UAkSoundSource::RegisterReflectionEmitter(struct FName BusName, EBusEmitterType BusType)
+void UAkSoundSource::RegisterReflectionEmitter(const struct FName& BusName, EBusEmitterType BusType)
 {
 	static UFunction* uFnRegisterReflectionEmitter = nullptr;
 
@@ -1880,7 +2016,9 @@ void UAkSoundSource::RegisterReflectionEmitter(struct FName BusName, EBusEmitter
 	memcpy_s(&RegisterReflectionEmitter_Params.BusName, sizeof(RegisterReflectionEmitter_Params.BusName), &BusName, sizeof(BusName));
 	memcpy_s(&RegisterReflectionEmitter_Params.BusType, sizeof(RegisterReflectionEmitter_Params.BusType), &BusType, sizeof(BusType));
 
+	uFnRegisterReflectionEmitter->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnRegisterReflectionEmitter, &RegisterReflectionEmitter_Params, nullptr);
+	uFnRegisterReflectionEmitter->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkSoundSource.IsPlayingAny
@@ -1900,7 +2038,9 @@ bool UAkSoundSource::IsPlayingAny()
 	UAkSoundSource_execIsPlayingAny_Params IsPlayingAny_Params;
 	memset(&IsPlayingAny_Params, 0, sizeof(IsPlayingAny_Params));
 
+	uFnIsPlayingAny->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnIsPlayingAny, &IsPlayingAny_Params, nullptr);
+	uFnIsPlayingAny->FunctionFlags |= 0x400;
 
 	return IsPlayingAny_Params.ReturnValue;
 };
@@ -1922,9 +2062,11 @@ bool UAkSoundSource::IsPlaying(class UAkSoundCue* Sound)
 
 	UAkSoundSource_execIsPlaying_Params IsPlaying_Params;
 	memset(&IsPlaying_Params, 0, sizeof(IsPlaying_Params));
-	memcpy_s(&IsPlaying_Params.Sound, sizeof(IsPlaying_Params.Sound), &Sound, sizeof(Sound));
+	IsPlaying_Params.Sound = Sound;
 
+	uFnIsPlaying->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnIsPlaying, &IsPlaying_Params, nullptr);
+	uFnIsPlaying->FunctionFlags |= 0x400;
 
 	return IsPlaying_Params.ReturnValue;
 };
@@ -1946,10 +2088,12 @@ void UAkSoundSource::Seek(class UAkSoundCue* Sound, float SeekSeconds)
 
 	UAkSoundSource_execSeek_Params Seek_Params;
 	memset(&Seek_Params, 0, sizeof(Seek_Params));
-	memcpy_s(&Seek_Params.Sound, sizeof(Seek_Params.Sound), &Sound, sizeof(Sound));
+	Seek_Params.Sound = Sound;
 	memcpy_s(&Seek_Params.SeekSeconds, sizeof(Seek_Params.SeekSeconds), &SeekSeconds, sizeof(SeekSeconds));
 
+	uFnSeek->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnSeek, &Seek_Params, nullptr);
+	uFnSeek->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkSoundSource.StopAll
@@ -1968,7 +2112,9 @@ void UAkSoundSource::StopAll()
 	UAkSoundSource_execStopAll_Params StopAll_Params;
 	memset(&StopAll_Params, 0, sizeof(StopAll_Params));
 
+	uFnStopAll->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnStopAll, &StopAll_Params, nullptr);
+	uFnStopAll->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkSoundSource.Stop
@@ -1987,9 +2133,11 @@ void UAkSoundSource::Stop(class UAkSoundCue* Sound)
 
 	UAkSoundSource_execStop_Params Stop_Params;
 	memset(&Stop_Params, 0, sizeof(Stop_Params));
-	memcpy_s(&Stop_Params.Sound, sizeof(Stop_Params.Sound), &Sound, sizeof(Sound));
+	Stop_Params.Sound = Sound;
 
+	uFnStop->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnStop, &Stop_Params, nullptr);
+	uFnStop->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkSoundSource.Play
@@ -2009,9 +2157,11 @@ int32_t UAkSoundSource::Play(class UAkSoundCue* Sound)
 
 	UAkSoundSource_execPlay_Params Play_Params;
 	memset(&Play_Params, 0, sizeof(Play_Params));
-	memcpy_s(&Play_Params.Sound, sizeof(Play_Params.Sound), &Sound, sizeof(Sound));
+	Play_Params.Sound = Sound;
 
+	uFnPlay->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnPlay, &Play_Params, nullptr);
+	uFnPlay->FunctionFlags |= 0x400;
 
 	return Play_Params.ReturnValue;
 };
@@ -2034,7 +2184,7 @@ void UAkSoundSource::EventDuration(class UAkSoundSource* Source, int32_t Playing
 
 	UAkSoundSource_execEventDuration_Params EventDuration_Params;
 	memset(&EventDuration_Params, 0, sizeof(EventDuration_Params));
-	memcpy_s(&EventDuration_Params.Source, sizeof(EventDuration_Params.Source), &Source, sizeof(Source));
+	EventDuration_Params.Source = Source;
 	memcpy_s(&EventDuration_Params.PlayingID, sizeof(EventDuration_Params.PlayingID), &PlayingID, sizeof(PlayingID));
 	memcpy_s(&EventDuration_Params.DurationMS, sizeof(EventDuration_Params.DurationMS), &DurationMS, sizeof(DurationMS));
 
@@ -2048,7 +2198,7 @@ void UAkSoundSource::EventDuration(class UAkSoundSource* Source, int32_t Playing
 // int32_t                        PlayingID                      (CPF_Parm)
 // class FString                  Marker                         (CPF_Parm | CPF_NeedCtorLink)
 
-void UAkSoundSource::EventMarker(class UAkSoundSource* Source, int32_t PlayingID, class FString Marker)
+void UAkSoundSource::EventMarker(class UAkSoundSource* Source, int32_t PlayingID, const class FString& Marker)
 {
 	static UFunction* uFnEventMarker = nullptr;
 
@@ -2059,7 +2209,7 @@ void UAkSoundSource::EventMarker(class UAkSoundSource* Source, int32_t PlayingID
 
 	UAkSoundSource_execEventMarker_Params EventMarker_Params;
 	memset(&EventMarker_Params, 0, sizeof(EventMarker_Params));
-	memcpy_s(&EventMarker_Params.Source, sizeof(EventMarker_Params.Source), &Source, sizeof(Source));
+	EventMarker_Params.Source = Source;
 	memcpy_s(&EventMarker_Params.PlayingID, sizeof(EventMarker_Params.PlayingID), &PlayingID, sizeof(PlayingID));
 	memcpy_s(&EventMarker_Params.Marker, sizeof(EventMarker_Params.Marker), &Marker, sizeof(Marker));
 
@@ -2083,7 +2233,7 @@ void UAkSoundSource::EventFinished(class UAkSoundSource* Source, int32_t Playing
 
 	UAkSoundSource_execEventFinished_Params EventFinished_Params;
 	memset(&EventFinished_Params, 0, sizeof(EventFinished_Params));
-	memcpy_s(&EventFinished_Params.Source, sizeof(EventFinished_Params.Source), &Source, sizeof(Source));
+	EventFinished_Params.Source = Source;
 	memcpy_s(&EventFinished_Params.PlayingID, sizeof(EventFinished_Params.PlayingID), &PlayingID, sizeof(PlayingID));
 
 	this->ProcessEvent(uFnEventFinished, &EventFinished_Params, nullptr);
@@ -2094,7 +2244,7 @@ void UAkSoundSource::EventFinished(class UAkSoundSource* Source, int32_t Playing
 // Parameter Info:
 // class FString                  CueName                        (CPF_Parm | CPF_NeedCtorLink)
 
-void USeqAct_AkPlayMusicWithCues::eventTriggerEvents(class FString CueName)
+void USeqAct_AkPlayMusicWithCues::eventTriggerEvents(const class FString& CueName)
 {
 	static UFunction* uFnTriggerEvents = nullptr;
 
@@ -2114,7 +2264,7 @@ void USeqAct_AkPlayMusicWithCues::eventTriggerEvents(class FString CueName)
 // [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class AActor*                  A                              (CPF_Parm)
-// bool                           bPlay                          (CPF_Parm)
+// uint32_t                       bPlay                          (CPF_Parm)
 
 void USeqAct_AkPlaySound::ToggleSoundFor(class AActor* A, bool bPlay)
 {
@@ -2127,7 +2277,7 @@ void USeqAct_AkPlaySound::ToggleSoundFor(class AActor* A, bool bPlay)
 
 	USeqAct_AkPlaySound_execToggleSoundFor_Params ToggleSoundFor_Params;
 	memset(&ToggleSoundFor_Params, 0, sizeof(ToggleSoundFor_Params));
-	memcpy_s(&ToggleSoundFor_Params.A, sizeof(ToggleSoundFor_Params.A), &A, sizeof(A));
+	ToggleSoundFor_Params.A = A;
 	ToggleSoundFor_Params.bPlay = bPlay;
 
 	this->ProcessEvent(uFnToggleSoundFor, &ToggleSoundFor_Params, nullptr);
@@ -2136,7 +2286,7 @@ void USeqAct_AkPlaySound::ToggleSoundFor(class AActor* A, bool bPlay)
 // Function AkAudio.SeqAct_AkPlaySound.ToggleSound
 // [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bPlay                          (CPF_Parm)
+// uint32_t                       bPlay                          (CPF_Parm)
 
 void USeqAct_AkPlaySound::ToggleSound(bool bPlay)
 {
@@ -2155,7 +2305,7 @@ void USeqAct_AkPlaySound::ToggleSound(bool bPlay)
 };
 
 // Function AkAudio.SeqAct_AkPlaySound.Activated
-// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 
 void USeqAct_AkPlaySound::eventActivated()
@@ -2190,10 +2340,12 @@ void USeqAct_AkPostEvent::eventHandleSoundCueFinished(class UAkSoundSource* Sour
 
 	USeqAct_AkPostEvent_eventHandleSoundCueFinished_Params HandleSoundCueFinished_Params;
 	memset(&HandleSoundCueFinished_Params, 0, sizeof(HandleSoundCueFinished_Params));
-	memcpy_s(&HandleSoundCueFinished_Params.Source, sizeof(HandleSoundCueFinished_Params.Source), &Source, sizeof(Source));
+	HandleSoundCueFinished_Params.Source = Source;
 	memcpy_s(&HandleSoundCueFinished_Params.PlayingID, sizeof(HandleSoundCueFinished_Params.PlayingID), &PlayingID, sizeof(PlayingID));
 
+	uFnHandleSoundCueFinished->FunctionFlags |= ~0x400;
 	this->ProcessEvent(uFnHandleSoundCueFinished, &HandleSoundCueFinished_Params, nullptr);
+	uFnHandleSoundCueFinished->FunctionFlags |= 0x400;
 };
 
 // Function AkAudio.AkAmbientSoundActor.OnToggle
@@ -2212,7 +2364,7 @@ void AAkAmbientSoundActor::OnToggle(class USeqAct_Toggle* Action)
 
 	AAkAmbientSoundActor_execOnToggle_Params OnToggle_Params;
 	memset(&OnToggle_Params, 0, sizeof(OnToggle_Params));
-	memcpy_s(&OnToggle_Params.Action, sizeof(OnToggle_Params.Action), &Action, sizeof(Action));
+	OnToggle_Params.Action = Action;
 
 	this->ProcessEvent(uFnOnToggle, &OnToggle_Params, nullptr);
 };
@@ -2221,7 +2373,7 @@ void AAkAmbientSoundActor::OnToggle(class USeqAct_Toggle* Action)
 // [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class AActor*                  A                              (CPF_Parm)
-// bool                           bPlay                          (CPF_Parm)
+// uint32_t                       bPlay                          (CPF_Parm)
 
 void USeqAct_AkPlaySoundAndSeek::ToggleSoundFor(class AActor* A, bool bPlay)
 {
@@ -2234,7 +2386,7 @@ void USeqAct_AkPlaySoundAndSeek::ToggleSoundFor(class AActor* A, bool bPlay)
 
 	USeqAct_AkPlaySoundAndSeek_execToggleSoundFor_Params ToggleSoundFor_Params;
 	memset(&ToggleSoundFor_Params, 0, sizeof(ToggleSoundFor_Params));
-	memcpy_s(&ToggleSoundFor_Params.A, sizeof(ToggleSoundFor_Params.A), &A, sizeof(A));
+	ToggleSoundFor_Params.A = A;
 	ToggleSoundFor_Params.bPlay = bPlay;
 
 	this->ProcessEvent(uFnToggleSoundFor, &ToggleSoundFor_Params, nullptr);
@@ -2243,7 +2395,7 @@ void USeqAct_AkPlaySoundAndSeek::ToggleSoundFor(class AActor* A, bool bPlay)
 // Function AkAudio.SeqAct_AkPlaySoundAndSeek.ToggleSound
 // [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bPlay                          (CPF_Parm)
+// uint32_t                       bPlay                          (CPF_Parm)
 
 void USeqAct_AkPlaySoundAndSeek::ToggleSound(bool bPlay)
 {
@@ -2262,7 +2414,7 @@ void USeqAct_AkPlaySoundAndSeek::ToggleSound(bool bPlay)
 };
 
 // Function AkAudio.SeqAct_AkPlaySoundAndSeek.Activated
-// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 
 void USeqAct_AkPlaySoundAndSeek::eventActivated()
@@ -2287,5 +2439,5 @@ void USeqAct_AkPlaySoundAndSeek::eventActivated()
 */
 
 #ifdef _MSC_VER
-	#pragma pack(pop)
+#pragma pack(pop)
 #endif

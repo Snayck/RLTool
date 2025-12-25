@@ -750,8 +750,6 @@ void netTab() {
 	renderMessagePanel("Outgoing", Events.rpcOut, GUIComponent::outgoingWhitelist, GUIComponent::outgoingBlacklist, halfWidth, windowSize.y);
 	ImGui::SameLine();
 	renderMessagePanel("Incoming", Events.rpcIn, GUIComponent::incomingWhitelist, GUIComponent::incomingBlacklist, halfWidth, windowSize.y);
-	ImGui::EndTabItem();
-	
 }
 
 

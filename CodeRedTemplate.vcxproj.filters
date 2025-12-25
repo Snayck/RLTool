@@ -155,9 +155,6 @@
     <ClCompile Include="Components\Components\Main.cpp">
       <Filter>Components\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Modules\Mods\Drawing.cpp">
-      <Filter>Modules\Mods</Filter>
-    </ClCompile>
     <ClCompile Include="Components\Components\FunctionLogger.cpp" />
     <ClCompile Include="Extensions\Extensions\VEH.cpp" />
   </ItemGroup>
@@ -356,9 +353,6 @@
     </ClInclude>
     <ClInclude Include="Components\Components\Main.hpp">
       <Filter>Components\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Modules\Mods\Drawing.hpp">
-      <Filter>Modules\Mods</Filter>
     </ClInclude>
     <ClInclude Include="Extensions\Extensions\XorStr.hpp">
       <Filter>CodeRed</Filter>

@@ -1,6 +1,6 @@
 #pragma once
 #include "../Component.hpp"
-#include "../Modules/Includes.hpp"
+#include "../Modules/Module.hpp"
 
 enum class ThreadTypes : uint8_t
 {

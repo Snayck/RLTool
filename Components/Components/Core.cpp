@@ -1,5 +1,9 @@
 #include "Core.hpp"
 #include "../Includes.hpp"
+#include <vector>
+#include <cstring>
+#include <Psapi.h>
+#pragma comment(lib, "Psapi.lib")
 
 CoreComponent::CoreComponent() : Component("Core", "Initializes globals, components, and modules.") { OnCreate(); }
 
@@ -24,51 +28,83 @@ void CoreComponent::DestroyThread()
 	CloseHandle(MainThread);
 }
 
-uintptr_t CoreComponent::GetGObjects() {
-	HANDLE CurrentBaseHandle = GetCurrentProcess();
+bool CoreComponent::ValidateTArray(HANDLE hProcess, uintptr_t address) {
+	if (!address) return false;
 
-	BYTE Bytes[4];
-	uintptr_t offset;
-	//E8 ?? ?? ?? ?? 8B 5D BF 48
-	offset = Memory::FindPattern(GetModuleHandleW(NULL), (const unsigned char*)"\xE8\x00\x00\x00\x00\x8B\x5D\xBF\x48", "x????xxxx");
+	struct TArrayHeader {
+		void* Data;
+		int32_t Num;
+		int32_t Max;
+	};
 
-	// Offset to memory portion to read of the instruction.
-	offset += 0x01;
+	TArrayHeader header;
+	SIZE_T bytesRead = 0;
 
-	// Offset to add
-	offset += *reinterpret_cast<int*>(offset);
+	if (!ReadProcessMemory(hProcess, reinterpret_cast<LPCVOID>(address), &header, sizeof(TArrayHeader), &bytesRead)) {
+		return false;
+	}
 
-	// Add additional 0x04 (size of the  previous int we read)
-	offset += 0x04;
+	return (header.Data != nullptr && header.Num > 0 && header.Max > header.Num);
+}
 
-	// Offset to pointer from pattern.
-	offset += 0x65;
+std::vector<uintptr_t> CoreComponent::FindPattern(HANDLE hProcess, uintptr_t baseAddress, SIZE_T moduleSize) {
+	std::vector<uintptr_t> results;
+	std::vector<unsigned char> buffer(moduleSize);
+	SIZE_T bytesRead = 0;
 
-	// Offset to memory portion to read of the instruction.
-	offset += 0x3;
+	if (!ReadProcessMemory(hProcess, reinterpret_cast<LPCVOID>(baseAddress), buffer.data(), moduleSize, &bytesRead)) {
+		return results;
+	}
 
-	// Offset to add
-	offset += *reinterpret_cast<int*>(offset);
+	unsigned char pattern[] = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x35\x25\x02\x00";
+	const char* mask = "??????xx??xxxxxx";
+	size_t maskLength = strlen(mask);
 
-	// Add additional 0x04 (size of the  previous int we read)
-	offset += 0x04;
+	for (size_t i = 0; i < bytesRead - maskLength; i++) {
+		bool found = true;
+		for (size_t j = 0; j < maskLength; j++) {
+			if (mask[j] != '?' && buffer[i + j] != pattern[j]) {
+				found = false;
+				break;
+			}
+		}
+		if (found) {
+			results.push_back(baseAddress + i);
+		}
+	}
 
-	return offset;
+	return results;
 }
 
 uintptr_t CoreComponent::GetGNames() {
-	HANDLE CurrentBaseHandle = GetCurrentProcess();
+	HANDLE hProcess = GetCurrentProcess();
+	HMODULE hModule = GetModuleHandleW(NULL);
 
-	BYTE Bytes[4];
-	uintptr_t Pattern;
+	// Get module size
+	MODULEINFO moduleInfo;
+	if (!GetModuleInformation(hProcess, hModule, &moduleInfo, sizeof(moduleInfo))) {
+		return 0;
+	}
 
-	Pattern = Memory::FindPattern(GetModuleHandleW(NULL), (const unsigned char*)"\xE8\x00\x00\x00\x00\x48\xC7\xC7", "x????xxx") + 1;
-	ReadProcessMemory(CurrentBaseHandle, (LPCVOID)Pattern, Bytes, sizeof(Bytes), NULL);
-	Pattern += Memory::BytesToInt32(Bytes, 0) + 0x33;
-	ReadProcessMemory(CurrentBaseHandle, (LPCVOID)(Pattern + 3), Bytes, sizeof(Bytes), NULL);
-	Pattern += Memory::BytesToInt32(Bytes, 0) + 7;
+	uintptr_t baseAddress = reinterpret_cast<uintptr_t>(hModule);
+	SIZE_T moduleSize = moduleInfo.SizeOfImage;
 
-	return Pattern;
+	std::vector<uintptr_t> matches = FindPattern(hProcess, baseAddress, moduleSize);
+
+	// The pattern finds GNames, validate both GNames and GObjects (GNames + 0x48)
+	for (uintptr_t candidate : matches) {
+		if (ValidateTArray(hProcess, candidate) && ValidateTArray(hProcess, candidate + 0x48)) {
+			return candidate; // Return GNames address
+		}
+	}
+
+	// Fallback to first match if validation fails
+	return matches.empty() ? 0 : matches[0];
+}
+
+uintptr_t CoreComponent::GetGObjects() {
+	uintptr_t gnames = GetGNames();
+	return gnames ? gnames + 0x48 : 0;
 }
 
 void CoreComponent::InitializeGlobals(HMODULE hModule)
