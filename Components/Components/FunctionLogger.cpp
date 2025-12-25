@@ -200,6 +200,28 @@ std::string FunctionLogger::processType(UProperty* prop) {
 		}
 		return _("Array<invalid>");
 	}
+	else if (prop->IsA<UEnum>()) {
+		UEnum* enumProp = (UEnum*)prop;
+		if (!enumProp || IsBadReadPtr(enumProp, sizeof(UEnum))) {
+			return _("Enum <invalid>");
+		}
+		// Try to get the enum name
+		if (!IsBadReadPtr(&enumProp->Name, sizeof(FName)) && enumProp->Name.IsValid()) {
+			return _("Enum ") + enumProp->Name.ToString();
+		}
+		return _("Enum");
+	}
+	else if (prop->IsA<UConst>()) {
+		UConst* constProp = (UConst*)prop;
+		if (!constProp || IsBadReadPtr(constProp, sizeof(UConst))) {
+			return _("Const <invalid>");
+		}
+		// Try to get the const name
+		if (!IsBadReadPtr(&constProp->Name, sizeof(FName)) && constProp->Name.IsValid()) {
+			return _("Const ") + constProp->Name.ToString();
+		}
+		return _("Const");
+	}
 
 	return removeProperty(prop->Class->GetName());
 }
@@ -575,9 +597,43 @@ std::string FunctionLogger::processFieldValue(UProperty* prop, object Object, ui
 
 			ImGui::SameLine();
 			if (byteProp->Enum && !IsBadReadPtr(byteProp->Enum, sizeof(UEnum))) {
-				// It's an enum byte property
-				std::string enumName = byteProp->Enum->GetName();
-				ImGui::Text("Enum %s: %d", enumName.c_str(), (int)*valueAddress);
+				// It's an enum byte property - show as combobox
+				UEnum* enumObj = byteProp->Enum;
+				int currentValue = (int)*valueAddress;
+
+				// Get current enum name
+				std::string currentEnumName = "Unknown";
+				if (!IsBadReadPtr(&enumObj->Names, sizeof(TArray<FName>))) {
+					int numNames = enumObj->Names.Num();
+					if (currentValue >= 0 && currentValue < numNames) {
+						FName enumValueName = enumObj->Names[currentValue];
+						if (enumValueName.IsValid()) {
+							currentEnumName = enumValueName.ToString();
+						}
+					}
+				}
+
+				ImGui::SetNextItemWidth(150);
+				if (ImGui::BeginCombo(textBoxID.c_str(), currentEnumName.c_str())) {
+					// List all enum values
+					if (!IsBadReadPtr(&enumObj->Names, sizeof(TArray<FName>))) {
+						int numNames = enumObj->Names.Num();
+						for (int i = 0; i < numNames && i < 100; i++) {
+							FName enumValueName = enumObj->Names[i];
+							if (enumValueName.IsValid()) {
+								bool isSelected = (i == currentValue);
+								std::string displayName = enumValueName.ToString();
+								if (ImGui::Selectable(displayName.c_str(), isSelected)) {
+									*valueAddress = (BYTE)i;
+								}
+								if (isSelected) {
+									ImGui::SetItemDefaultFocus();
+								}
+							}
+						}
+					}
+					ImGui::EndCombo();
+				}
 			}
 			else {
 				// Regular byte property
@@ -690,7 +746,49 @@ std::string FunctionLogger::processFieldValue(UProperty* prop, object Object, ui
 			}
 		}
 		else if (prop->IsA<UEnum>()) {
+			ImGui::SameLine();
+			UEnum* enumProp = (UEnum*)prop;
 
+			// Validate enum pointer
+			if (!enumProp || IsBadReadPtr(enumProp, sizeof(UEnum))) {
+				ImGui::Text("Invalid Enum");
+				return "Invalid Enum";
+			}
+
+			if (ImGui::TreeNode(textBoxID.c_str()))
+			{
+				// Validate Names array
+				if (!IsBadReadPtr(&enumProp->Names, sizeof(TArray<FName>))) {
+					int numValues = enumProp->Names.Num();
+					for (int i = 0; i < numValues && i < 100; i++) {
+						FName enumName = enumProp->Names[i];
+						if (enumName.IsValid()) {
+							ImGui::Text("[%d] %s", i, enumName.ToString().c_str());
+						}
+					}
+				} else {
+					ImGui::Text("Invalid enum names");
+				}
+				ImGui::TreePop();
+			}
+		}
+		else if (prop->IsA<UConst>()) {
+			ImGui::SameLine();
+			UConst* constProp = (UConst*)prop;
+
+			// Validate const pointer
+			if (!constProp || IsBadReadPtr(constProp, sizeof(UConst))) {
+				ImGui::Text("Invalid Const");
+				return "Invalid Const";
+			}
+
+			// Display const value (read-only)
+			if (!IsBadReadPtr(&constProp->Value, sizeof(FString))) {
+				std::string constValue = constProp->Value.ToString();
+				ImGui::Text("= %s", constValue.c_str());
+			} else {
+				ImGui::Text("Invalid const value");
+			}
 		}
 		else {
 			return _("NOT HANDLED");
