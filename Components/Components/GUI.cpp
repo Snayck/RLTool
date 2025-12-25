@@ -694,62 +694,101 @@ void renderJson(const std::string& jsonString, const std::string& title = "JSON"
 }
 
 
-std::string GUIComponent::incomingWhitelist = "";
-std::string GUIComponent::incomingBlacklist = "";
-std::string GUIComponent::outgoingWhitelist = "";
-std::string GUIComponent::outgoingBlacklist = "";
+std::string GUIComponent::psynetWhitelist = "";
+std::string GUIComponent::psynetBlacklist = "";
 
-void renderMessage(const EventsComponent::psyMsg& msg, size_t index) {
-	if (!ImGui::TreeNode(("[" + std::to_string(index) + "] " + msg.ID).c_str()))
+void renderPairedMessage(const EventsComponent::PsyNetMessagePair& pair, size_t index) {
+	if (pair.requestID.empty())
 		return;
 
-	if (ImGui::TreeNode(("Headers ##" + std::to_string(index)).c_str())) {
-		for (const auto& [key, value] : msg.headersMap) {
-			// Method 1: Using TextColored for better readability
-			ImGui::TextColored(ImVec4(0.4f, 0.8f, 1.0f, 1.0f), "%s", key.c_str());  // Light blue for keys
-			ImGui::SameLine();
-			ImGui::TextColored(ImVec4(0.7f, 0.7f, 0.7f, 1.0f), " -> ");             // Gray arrow
-			ImGui::SameLine();
-			ImGui::TextColored(ImVec4(0.8f, 1.0f, 0.4f, 1.0f), "%s", value.c_str()); // Light green for values
-		}
-		ImGui::TreePop();
+	std::string treeLabel = "[" + std::to_string(index) + "] " + pair.requestID;
+
+	if (pair.outgoing.exists && pair.outgoing.headersMap.find("PsyService") != pair.outgoing.headersMap.end()) {
+		treeLabel += " - " + pair.outgoing.headersMap.at("PsyService");
 	}
-	renderJson(msg.bodyText, "Body");
+
+	if (!pair.outgoing.exists && pair.incoming.exists)
+		treeLabel += " (Incoming Only)";
+	else if (pair.outgoing.exists && !pair.incoming.exists)
+		treeLabel += " (Outgoing Only)";
+
+	if (!ImGui::TreeNode(treeLabel.c_str()))
+		return;
+
+	if (pair.outgoing.exists) {
+		ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.0f, 0.6f, 0.3f, 1.0f));
+		if (ImGui::TreeNode(("Outgoing##" + std::to_string(index)).c_str())) {
+			ImGui::PopStyleColor();
+			if (ImGui::TreeNode(("Headers##Out" + std::to_string(index)).c_str())) {
+				for (const auto& [key, value] : pair.outgoing.headersMap) {
+					ImGui::TextColored(ImVec4(0.4f, 0.8f, 1.0f, 1.0f), "%s", key.c_str());
+					ImGui::SameLine();
+					ImGui::TextColored(ImVec4(0.7f, 0.7f, 0.7f, 1.0f), " -> ");
+					ImGui::SameLine();
+					ImGui::TextColored(ImVec4(0.8f, 1.0f, 0.4f, 1.0f), "%s", value.c_str());
+				}
+				ImGui::TreePop();
+			}
+			renderJson(pair.outgoing.bodyText, "Body Out");
+			ImGui::TreePop();
+		} else {
+			ImGui::PopStyleColor();
+		}
+	}
+
+	if (pair.incoming.exists) {
+		ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.3f, 1.0f, 0.6f, 1.0f));
+		if (ImGui::TreeNode(("Incoming##" + std::to_string(index)).c_str())) {
+			ImGui::PopStyleColor();
+			if (ImGui::TreeNode(("Headers##In" + std::to_string(index)).c_str())) {
+				for (const auto& [key, value] : pair.incoming.headersMap) {
+					ImGui::TextColored(ImVec4(0.4f, 0.8f, 1.0f, 1.0f), "%s", key.c_str());
+					ImGui::SameLine();
+					ImGui::TextColored(ImVec4(0.7f, 0.7f, 0.7f, 1.0f), " -> ");
+					ImGui::SameLine();
+					ImGui::TextColored(ImVec4(0.8f, 1.0f, 0.4f, 1.0f), "%s", value.c_str());
+				}
+				ImGui::TreePop();
+			}
+			renderJson(pair.incoming.bodyText, "Body In");
+			ImGui::TreePop();
+		} else {
+			ImGui::PopStyleColor();
+		}
+	}
 
 	ImGui::TreePop();
-}
-
-void renderMessagePanel(const char* title, std::vector<EventsComponent::psyMsg>& messages, std::string& whitelist, std::string& blacklist, float width, float height) {
-	ImGui::BeginChild((std::string("##") + title).c_str(), ImVec2(width, height), true, ImGuiWindowFlags_MenuBar);
-	if (ImGui::BeginMenuBar()) {
-		ImGui::Text((title));
-		ImGui::EndMenuBar();
-	}
-	ImGui::InputText((std::string("Whitelist ##") + title).c_str(), &whitelist);
-	ImGui::SameLine();
-	if (ImGui::Button("Clear")) messages.clear();
-	ImGui::InputText((std::string("Blacklist ##") + title).c_str(), &blacklist);
-
-	// Replace BeginListBox with BeginChild for horizontal scrolling
-	if (ImGui::BeginChild("##messageListChild", ImGui::GetContentRegionAvail(), true,
-		ImGuiWindowFlags_HorizontalScrollbar | ImGuiWindowFlags_AlwaysVerticalScrollbar)) {
-		for (size_t i = 0; i < messages.size(); i++) {
-			renderMessage(messages[i], i);
-		}
-		ImGui::EndChild();
-	}
-
-	ImGui::EndChild();
 }
 
 
 void netTab() {
 	ImVec2 windowSize = ImGui::GetContentRegionAvail();
-	float halfWidth = windowSize.x * 0.5f - ImGui::GetStyle().ItemSpacing.x / 2;
 
-	renderMessagePanel("Outgoing", Events.rpcOut, GUIComponent::outgoingWhitelist, GUIComponent::outgoingBlacklist, halfWidth, windowSize.y);
+	ImGui::BeginChild("##PsyNetMessages", windowSize, true, ImGuiWindowFlags_MenuBar);
+	if (ImGui::BeginMenuBar()) {
+		ImGui::Text("PsyNet Messages");
+		ImGui::EndMenuBar();
+	}
+
+	ImGui::InputText("Whitelist", &GUIComponent::psynetWhitelist);
+	ImGui::InputText("Blacklist", &GUIComponent::psynetBlacklist);
 	ImGui::SameLine();
-	renderMessagePanel("Incoming", Events.rpcIn, GUIComponent::incomingWhitelist, GUIComponent::incomingBlacklist, halfWidth, windowSize.y);
+	if (ImGui::Button("Clear"))
+		Events.rpcMessages.clear();
+
+	ImGui::BeginChild("##messageListChild", ImGui::GetContentRegionAvail(), true,
+		ImGuiWindowFlags_HorizontalScrollbar | ImGuiWindowFlags_AlwaysVerticalScrollbar);
+
+	size_t messageCount = Events.rpcMessages.size();
+	for (size_t i = 0; i < messageCount; i++) {
+		if (i < Events.rpcMessages.size()) {
+			renderPairedMessage(Events.rpcMessages[i], i);
+		}
+	}
+
+	ImGui::EndChild();
+
+	ImGui::EndChild();
 }
 
 

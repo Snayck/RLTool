@@ -24,11 +24,8 @@ public:
 	static std::string whitelist;
 	static std::string blacklist;
 
-	static std::string outgoingWhitelist;
-	static std::string outgoingBlacklist;
-
-	static std::string incomingWhitelist;
-	static std::string incomingBlacklist;
+	static std::string psynetWhitelist;
+	static std::string psynetBlacklist;
 
 	int DisplayX;
 	int DisplayY;

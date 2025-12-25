@@ -155,14 +155,17 @@ public:
 	struct psyMsg {
 		std::unordered_map<std::string, std::string> headersMap;
 		std::string bodyText;
-
 		std::string ID;
+		bool exists = false;
 	};
 
-	//std::unordered_map<std::string, std::pair<psyMsg, psyMsg>> linkedMessages;
+	struct PsyNetMessagePair {
+		psyMsg outgoing;
+		psyMsg incoming;
+		std::string requestID;
+	};
 
-	std::vector<psyMsg> rpcOut = {};
-	std::vector<psyMsg> rpcIn = {};
+	std::vector<PsyNetMessagePair> rpcMessages = {};
 };
 
 extern class EventsComponent Events;

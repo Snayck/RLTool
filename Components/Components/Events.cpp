@@ -913,14 +913,29 @@ void EventsComponent::Initialize()
 			newMsg.headersMap[key] = value;
 		}
 
-		if (filterInput(GUIComponent::outgoingWhitelist, GUIComponent::outgoingBlacklist, allHeaders))
+		if (filterInput(GUIComponent::psynetWhitelist, GUIComponent::psynetBlacklist, allHeaders))
+			return;
+
+		if (newMsg.headersMap.find("psypong") != newMsg.headersMap.end())
 			return;
 
 		newMsg.bodyText = msg->Message->GetBodyText().ToString();
 		if (newMsg.headersMap.find("PsyRequestID") != newMsg.headersMap.end()) {
 			newMsg.ID = newMsg.headersMap["PsyRequestID"];
 		}
-		Events.rpcOut.push_back(newMsg);
+		newMsg.exists = true;
+
+		auto it = std::find_if(Events.rpcMessages.begin(), Events.rpcMessages.end(),
+			[&](const EventsComponent::PsyNetMessagePair& pair) { return pair.requestID == newMsg.ID; });
+
+		if (it != Events.rpcMessages.end()) {
+			it->outgoing = newMsg;
+		} else {
+			EventsComponent::PsyNetMessagePair newPair;
+			newPair.requestID = newMsg.ID;
+			newPair.outgoing = newMsg;
+			Events.rpcMessages.push_back(newPair);
+		}
 		});
 
 	HookEventPost("Function ProjectX.PsyNetMessenger_X.EventMessageReceived", [&](const PostEvent& event) {
@@ -942,14 +957,29 @@ void EventsComponent::Initialize()
 			newMsg.headersMap[key] = value;
 		}
 
-		if (filterInput(GUIComponent::incomingWhitelist, GUIComponent::incomingBlacklist, allHeaders))
+		if (filterInput(GUIComponent::psynetWhitelist, GUIComponent::psynetBlacklist, allHeaders))
+			return;
+
+		if (newMsg.headersMap.find("psypong") != newMsg.headersMap.end())
 			return;
 
 		newMsg.bodyText = msg->Message->GetBodyText().ToString();
 		if (newMsg.headersMap.find("PsyResponseID") != newMsg.headersMap.end()) {
 			newMsg.ID = newMsg.headersMap["PsyResponseID"];
 		}
-		Events.rpcIn.push_back(newMsg);
+		newMsg.exists = true;
+
+		auto it = std::find_if(Events.rpcMessages.begin(), Events.rpcMessages.end(),
+			[&](const EventsComponent::PsyNetMessagePair& pair) { return pair.requestID == newMsg.ID; });
+
+		if (it != Events.rpcMessages.end()) {
+			it->incoming = newMsg;
+		} else {
+			EventsComponent::PsyNetMessagePair newPair;
+			newPair.requestID = newMsg.ID;
+			newPair.incoming = newMsg;
+			Events.rpcMessages.push_back(newPair);
+		}
 
 		});
 
