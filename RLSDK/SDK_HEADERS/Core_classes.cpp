@@ -29,6 +29,14 @@ TArray<class UObject*>* UObject::GObjObjects()
 
 std::string UObject::GetName()
 {
+	// Validate this pointer
+	if (!this || IsBadReadPtr(this, sizeof(UObject)))
+		return "InvalidObject";
+
+	// Validate Name member before accessing
+	if (IsBadReadPtr(&this->Name, sizeof(FName)))
+		return "InvalidName";
+
 	return this->Name.ToString();
 }
 
@@ -70,14 +78,37 @@ std::string UObject::GetNameCPP()
 
 std::string UObject::GetFullName()
 {
+	// Validate this pointer
+	if (!this || IsBadReadPtr(this, sizeof(UObject)))
+		return "InvalidObject";
+
+	// Validate Name before accessing
+	if (IsBadReadPtr(&this->Name, sizeof(FName)))
+		return "InvalidObjectName";
+
 	std::string fullName = this->GetName();
 
-	for (UObject* uOuter = this->Outer; uOuter; uOuter = uOuter->Outer)
+	// Validate Outer chain
+	int outerDepth = 0;
+	for (UObject* uOuter = this->Outer; uOuter && outerDepth < 100; uOuter = uOuter->Outer)
 	{
+		// Validate each Outer pointer
+		if (IsBadReadPtr(uOuter, sizeof(UObject)) || IsBadReadPtr(&uOuter->Name, sizeof(FName)))
+			break;
+
 		fullName = (uOuter->GetName() + "." + fullName);
+		outerDepth++;
 	}
 
-	fullName = (this->Class->GetName() + " " + fullName);
+	// Validate Class pointer before accessing
+	if (this->Class && !IsBadReadPtr(this->Class, sizeof(UClass)) && !IsBadReadPtr(&this->Class->Name, sizeof(FName)))
+	{
+		fullName = (this->Class->GetName() + " " + fullName);
+	}
+	else
+	{
+		fullName = "InvalidClass " + fullName;
+	}
 
 	return fullName;
 }

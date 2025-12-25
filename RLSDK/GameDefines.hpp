@@ -283,34 +283,42 @@ public:
 public:
 	ElementConstReference operator[](int32_t index) const
 	{
-		if (index <= ArrayCount)
+		if (index >= 0 && index < ArrayCount && ArrayData && !IsBadReadPtr(ArrayData, sizeof(ElementType) * ArrayCount))
 		{
 			return ArrayData[index];
 		}
+		static ElementType nullElement = nullptr;
+		return nullElement;
 	}
 
 	ElementReference operator[](int32_t index)
 	{
-		if (index <= ArrayCount)
+		if (index >= 0 && index < ArrayCount && ArrayData && !IsBadReadPtr(ArrayData, sizeof(ElementType) * ArrayCount))
 		{
 			return ArrayData[index];
 		}
+		static ElementType nullElement = nullptr;
+		return nullElement;
 	}
 
 	ElementConstReference At(int32_t index) const
 	{
-		if (index <= ArrayCount)
+		if (index >= 0 && index < ArrayCount && ArrayData && !IsBadReadPtr(ArrayData, sizeof(ElementType) * ArrayCount))
 		{
 			return ArrayData[index];
 		}
+		static ElementType nullElement = nullptr;
+		return nullElement;
 	}
 
 	ElementReference At(int32_t index)
 	{
-		if (index <= ArrayCount)
+		if (index >= 0 && index < ArrayCount && ArrayData && !IsBadReadPtr(ArrayData, sizeof(ElementType) * ArrayCount))
 		{
 			return ArrayData[index];
 		}
+		static ElementType nullElement = nullptr;
+		return nullElement;
 	}
 
 	void Add(ElementConstReference newElement)
@@ -403,11 +411,17 @@ public:
 
 	int32_t Num() const
 	{
+		// Sanity check to prevent crashes from corrupted data
+		if (ArrayCount < 0 || ArrayCount > 1000000)
+			return 0;
 		return ArrayCount;
 	}
 
 	int32_t Max() const
 	{
+		// Sanity check to prevent crashes from corrupted data
+		if (ArrayMax < 0 || ArrayMax > 1000000)
+			return 0;
 		return ArrayMax;
 	}
 
@@ -701,15 +715,19 @@ public:
 
 	FName(const ElementPointer nameToFind) : FNameEntryId(0), InstanceNumber(0)
 	{
-		if (!nameToFind || !Names())
+		if (!nameToFind)
+			return;
+
+		TArray<FNameEntry*>* names = Names();
+		if (!names || IsBadReadPtr(names, sizeof(TArray<FNameEntry*>)))
 			return;
 
 		static std::vector<int32_t> nameCache{};
 
 		for (int32_t entryId : nameCache)
 		{
-			FNameEntry* entry = Names()->At(entryId);
-			if (entry && entry->Name[0] != L'\0')
+			FNameEntry* entry = names->At(entryId);
+			if (entry && !IsBadReadPtr(entry, sizeof(FNameEntry)) && entry->Name[0] != L'\0')
 			{
 				if (!wcscmp(entry->Name, nameToFind))
 				{
@@ -719,10 +737,11 @@ public:
 			}
 		}
 
-		for (int32_t i = 0; i < Names()->Num(); i++)
+		int32_t numNames = names->Num();
+		for (int32_t i = 0; i < numNames; i++)
 		{
-			FNameEntry* entry = Names()->At(i);
-			if (entry && entry->Name[0] != L'\0')
+			FNameEntry* entry = names->At(i);
+			if (entry && !IsBadReadPtr(entry, sizeof(FNameEntry)) && entry->Name[0] != L'\0')
 			{
 				if (!wcscmp(entry->Name, nameToFind))
 				{
@@ -738,6 +757,10 @@ public:
 public:
 	static class TArray<struct FNameEntry*>* Names()
 	{
+		// Validate GNames pointer before using it
+		if (!GNames || IsBadReadPtr(GNames, sizeof(TArray<FNameEntry*>)))
+			return nullptr;
+
 		TArray<FNameEntry*>* GNamesArray = reinterpret_cast<TArray<FNameEntry*>*>(GNames);
 		return GNamesArray;
 
@@ -750,26 +773,36 @@ public:
 
 	const struct FNameEntry GetDisplayNameEntry() const
 	{
-		if (IsValid())
-		{
-			FNameEntry* entry = Names()->At(FNameEntryId);
-			if (entry)
-			{
-				return *entry;
-			}
-		}
+		TArray<FNameEntry*>* names = Names();
+		if (!names || IsBadReadPtr(names, sizeof(TArray<FNameEntry*>)))
+			return FNameEntry();
 
-		return FNameEntry();
+		int32_t numNames = names->Num();
+		if (FNameEntryId < 0 || FNameEntryId >= numNames)
+			return FNameEntry();
+
+		FNameEntry* entry = names->At(FNameEntryId);
+		if (!entry || IsBadReadPtr(entry, sizeof(FNameEntry)))
+			return FNameEntry();
+
+		return *entry;
 	}
 
 	struct FNameEntry* GetEntry()
 	{
-		if (IsValid() && Names())
-		{
-			return Names()->At(FNameEntryId);
-		}
+		TArray<FNameEntry*>* names = Names();
+		if (!names || IsBadReadPtr(names, sizeof(TArray<FNameEntry*>)))
+			return nullptr;
 
-		return nullptr;
+		int32_t numNames = names->Num();
+		if (FNameEntryId < 0 || FNameEntryId >= numNames)
+			return nullptr;
+
+		FNameEntry* entry = names->At(FNameEntryId);
+		if (!entry || IsBadReadPtr(entry, sizeof(FNameEntry)))
+			return nullptr;
+
+		return entry;
 	}
 
 	int32_t GetNumber() const
@@ -784,24 +817,29 @@ public:
 
 	std::string ToString() const
 	{
-		if (IsValid() && Names())
-		{
-			FNameEntry* entry = Names()->At(FNameEntryId);
-			if (entry)
-			{
-				return entry->ToString();
-			}
-		}
+		TArray<FNameEntry*>* names = Names();
+		if (!names || IsBadReadPtr(names, sizeof(TArray<FNameEntry*>)))
+			return std::string("UnknownName");
 
-		return std::string("UnknownName");
+		int32_t numNames = names->Num();
+		if (FNameEntryId < 0 || FNameEntryId >= numNames)
+			return std::string("UnknownName");
+
+		FNameEntry* entry = names->At(FNameEntryId);
+		if (!entry || IsBadReadPtr(entry, sizeof(FNameEntry)))
+			return std::string("UnknownName");
+
+		return entry->ToString();
 	}
 
 	bool IsValid() const
 	{
-		if (!Names())
+		TArray<FNameEntry*>* names = Names();
+		if (!names || IsBadReadPtr(names, sizeof(TArray<FNameEntry*>)))
 			return false;
 
-		if (FNameEntryId < 0 || FNameEntryId >= Names()->Num())
+		int32_t numNames = names->Num();
+		if (FNameEntryId < 0 || FNameEntryId >= numNames)
 		{
 			return false;
 		}

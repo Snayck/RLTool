@@ -65,17 +65,45 @@ object FunctionLogger::createObject(UClass* Class, UObject* Object) {
 	if (!Class || !Object)
 		return obj;
 
+	// Validate Class pointer before accessing its methods
+	if (IsBadReadPtr(Class, sizeof(UClass))) {
+		return obj;
+	}
+
+	// Validate Object pointer
+	if (IsBadReadPtr(Object, sizeof(UObject))) {
+		return obj;
+	}
+
 	obj.Obj = Object;
 	obj.Class = Class;
 	obj.className = Class->GetName();
 	obj.fullName = Class->GetFullName();
 
-	for (UField* field = Class->Children; field; field = field->Next) {
-		UProperty* prop = reinterpret_cast<UProperty*>(field);
-		if (prop->Class->GetName() == _("Function"))
-			obj.functions.push_back(prop);
-		else
-			obj.fields.push_back(prop);
+	// Validate Children pointer before iterating
+	if (!IsBadReadPtr(&Class->Children, sizeof(void*)) && Class->Children) {
+		int fieldCount = 0;
+		for (UField* field = Class->Children; field && fieldCount < 1000; field = field->Next) {
+			// Validate field pointer
+			if (!field || IsBadReadPtr(field, sizeof(UField)))
+				break;
+
+			fieldCount++;
+
+			// Validate Next pointer for next iteration
+			if (field->Next && IsBadReadPtr(field->Next, sizeof(UField)))
+				break;
+
+			UProperty* prop = reinterpret_cast<UProperty*>(field);
+			if (!prop || !prop->Class || IsBadReadPtr(prop->Class, sizeof(UClass)))
+				continue;
+
+			std::string propClassName = prop->Class->GetName();
+			if (propClassName == _("Function"))
+				obj.functions.push_back(prop);
+			else
+				obj.fields.push_back(prop);
+		}
 	}
 	return obj;
 }
@@ -115,7 +143,11 @@ std::string FunctionLogger::processType(UProperty* prop) {
 		return _("NULL");
 
 	if (prop->IsA<UStructProperty>()) {
-		return _("Struct ") + (((UStructProperty*)prop)->Struct)->GetName();
+		UStructProperty* structProp = (UStructProperty*)prop;
+		if (structProp->Struct && !IsBadReadPtr(structProp->Struct, sizeof(UStruct))) {
+			return _("Struct ") + structProp->Struct->GetName();
+		}
+		return _("Struct <invalid>");
 	}
 	else if (prop->IsA<UStrProperty>()) {
 
@@ -124,7 +156,11 @@ std::string FunctionLogger::processType(UProperty* prop) {
 
 	}
 	else if (prop->IsA<UObjectProperty>()) {
-		return (((UObjectProperty*)prop)->PropertyClass)->GetName() + _("*");
+		UObjectProperty* objProp = (UObjectProperty*)prop;
+		if (objProp->PropertyClass && !IsBadReadPtr(objProp->PropertyClass, sizeof(UClass))) {
+			return objProp->PropertyClass->GetName() + _("*");
+		}
+		return _("Object* <invalid>");
 	}
 	else if (prop->IsA<UComponentProperty>()) {
 
@@ -157,8 +193,12 @@ std::string FunctionLogger::processType(UProperty* prop) {
 
 	}
 	else if (prop->IsA<UArrayProperty>()) {
-		std::string type = (processType(((UArrayProperty*)prop)->Inner));
-		return _("Array<") + type + _(">");
+		UArrayProperty* arrayProp = (UArrayProperty*)prop;
+		if (arrayProp->Inner && !IsBadReadPtr(arrayProp->Inner, sizeof(UProperty))) {
+			std::string type = processType(arrayProp->Inner);
+			return _("Array<") + type + _(">");
+		}
+		return _("Array<invalid>");
 	}
 
 	return removeProperty(prop->Class->GetName());
@@ -253,12 +293,29 @@ std::string FunctionLogger::processFieldValue(UProperty* prop, object Object, ui
 	if (!prop || !Object.Obj)
 		return _("NULL");
 
+	// Validate prop pointer is readable
+	if (IsBadReadPtr(prop, sizeof(UProperty))) {
+		return _("Invalid Property");
+	}
+
+	// Validate Class pointer before using IsA
+	if (!prop->Class || IsBadReadPtr(prop->Class, sizeof(UClass))) {
+		return _("Invalid Property Class");
+	}
+
 	BYTE* obj = (BYTE*)Object.Obj;
 	if (prop->PropertyFlags & 0x400 || prop->PropertyFlags & 0x100) {}
 	else {
 		void* propPtr = reinterpret_cast<void*>((prop));
 		std::stringstream ss; ss << propPtr;
-		std::string textBoxID = _("## ") + ss.str() + " " + prop->Name.ToString() + std::to_string(offset);
+
+		// Safely get property name
+		std::string propName = "UnknownProp";
+		if (!IsBadReadPtr(&prop->Name, sizeof(FName)) && prop->Name.IsValid()) {
+			propName = prop->Name.ToString();
+		}
+
+		std::string textBoxID = _("## ") + ss.str() + " " + propName + std::to_string(offset);
 
 		void* valuePtr = reinterpret_cast<void*>(obj + prop->Offset + offset);
 		std::stringstream ss1; ss1 << valuePtr;
@@ -267,19 +324,51 @@ std::string FunctionLogger::processFieldValue(UProperty* prop, object Object, ui
 
 		if (prop->IsA<UStructProperty>()) {
 			ImGui::SameLine();
+			UStructProperty* structProp = (UStructProperty*)prop;
+
+			// Validate struct pointer before accessing
+			if (!structProp || !structProp->Struct || IsBadReadPtr(structProp->Struct, sizeof(UStruct))) {
+				ImGui::Text("Invalid Struct");
+				return "Invalid Struct";
+			}
+
+			// Validate Children pointer
+			if (IsBadReadPtr(&structProp->Struct->Children, sizeof(void*))) {
+				ImGui::Text("Invalid Struct Children");
+				return "Invalid Struct Children";
+			}
+
 			if (ImGui::TreeNode((_("## am a struct") + textBoxID).c_str()))
 			{
 				offset = prop->Offset;
-				for (UField* field = ((UStructProperty*)prop)->Struct->Children; field; field = field->Next) {
-					std::string type = processType((UProperty*)field);
-					std::string name = field->Name.ToString();
 
-					ImGui::TextColored(ImVec4(0.36f, 0.52f, 0.93f, 1.0f), type.c_str()); ImGui::SameLine();
-					ImGui::TextColored(ImVec4(0.93f, 0.72f, 0.36f, 1.0f), name.c_str());
+				if (structProp->Struct->Children) {
+					int fieldCount = 0;
+					for (UField* field = structProp->Struct->Children; field && fieldCount < 100; field = field->Next) {
+						// Validate field pointer before dereferencing
+						if (!field || IsBadReadPtr(field, sizeof(UField))) break;
 
-					UProperty* newProp = reinterpret_cast<UProperty*>(field);
-					std::string item = (processFieldValue(newProp, Object, offset)).c_str();
+						fieldCount++;
 
+						// Validate Next pointer for next iteration
+						if (field->Next && IsBadReadPtr(field->Next, sizeof(UField))) break;
+
+						UProperty* newProp = reinterpret_cast<UProperty*>(field);
+						if (!newProp || !newProp->Class) continue;
+
+						std::string type = processType(newProp);
+
+						// Safely get the field name - validate FName before calling ToString
+						std::string name = "UnknownField";
+						if (!IsBadReadPtr(&field->Name, sizeof(FName)) && field->Name.IsValid()) {
+							name = field->Name.ToString();
+						}
+
+						ImGui::TextColored(ImVec4(0.36f, 0.52f, 0.93f, 1.0f), type.c_str()); ImGui::SameLine();
+						ImGui::TextColored(ImVec4(0.93f, 0.72f, 0.36f, 1.0f), name.c_str());
+
+						processFieldValue(newProp, Object, offset);
+					}
 				}
 
 				ImGui::TreePop();
@@ -287,19 +376,51 @@ std::string FunctionLogger::processFieldValue(UProperty* prop, object Object, ui
 		}
 		else if (prop->IsA<UScriptStruct>()) {
 			ImGui::SameLine();
+			UScriptStruct* scriptStruct = (UScriptStruct*)prop;
+
+			// Validate script struct pointer
+			if (!scriptStruct || IsBadReadPtr(scriptStruct, sizeof(UScriptStruct))) {
+				ImGui::Text("Invalid ScriptStruct");
+				return "Invalid ScriptStruct";
+			}
+
+			// Validate Children pointer
+			if (IsBadReadPtr(&scriptStruct->Children, sizeof(void*))) {
+				ImGui::Text("Invalid ScriptStruct Children");
+				return "Invalid ScriptStruct Children";
+			}
+
 			if (ImGui::TreeNode((_("## am a sstruct") + textBoxID).c_str()))
 			{
 				offset = prop->Offset;
-				for (UField* field = ((UScriptStruct*)prop)->Children; field; field = field->Next) {
-					std::string type = processType((UProperty*)field);
-					std::string name = field->Name.ToString();
 
-					ImGui::TextColored(ImVec4(0.36f, 0.52f, 0.93f, 1.0f), type.c_str()); ImGui::SameLine();
-					ImGui::TextColored(ImVec4(0.93f, 0.72f, 0.36f, 1.0f), name.c_str());
+				if (scriptStruct->Children) {
+					int fieldCount = 0;
+					for (UField* field = scriptStruct->Children; field && fieldCount < 100; field = field->Next) {
+						// Validate field pointer before dereferencing
+						if (!field || IsBadReadPtr(field, sizeof(UField))) break;
 
-					UProperty* newProp = reinterpret_cast<UProperty*>(field);
-					std::string item = (processFieldValue(newProp, Object, offset)).c_str();
+						fieldCount++;
 
+						// Validate Next pointer for next iteration
+						if (field->Next && IsBadReadPtr(field->Next, sizeof(UField))) break;
+
+						UProperty* newProp = reinterpret_cast<UProperty*>(field);
+						if (!newProp || !newProp->Class) continue;
+
+						std::string type = processType(newProp);
+
+						// Safely get the field name - validate FName before calling ToString
+						std::string name = "UnknownField";
+						if (!IsBadReadPtr(&field->Name, sizeof(FName)) && field->Name.IsValid()) {
+							name = field->Name.ToString();
+						}
+
+						ImGui::TextColored(ImVec4(0.36f, 0.52f, 0.93f, 1.0f), type.c_str()); ImGui::SameLine();
+						ImGui::TextColored(ImVec4(0.93f, 0.72f, 0.36f, 1.0f), name.c_str());
+
+						processFieldValue(newProp, Object, offset);
+					}
 				}
 
 				ImGui::TreePop();
@@ -328,26 +449,50 @@ std::string FunctionLogger::processFieldValue(UProperty* prop, object Object, ui
 			}
 		}
 		else if (prop->IsA<UObjectProperty>()) {
+			// Validate the memory before reading the pointer
+			if (IsBadReadPtr(valuePtr, sizeof(UObject*))) {
+				ImGui::SameLine();
+				ImGui::Text("Invalid Memory");
+				return "Invalid Memory";
+			}
+
 			UObject** valueAddress = (UObject**)valuePtr;
 			UObject* objectValue = *valueAddress;
 
 			ImGui::SameLine();
-			if (objectValue) {
-				generateInfo(createObject(objectValue->Class, objectValue));
+			if (objectValue && !IsBadReadPtr(objectValue, sizeof(UObject))) {
+				if (objectValue->Class && !IsBadReadPtr(objectValue->Class, sizeof(UClass))) {
+					generateInfo(createObject(objectValue->Class, objectValue));
+				} else {
+					ImGui::Text("Invalid Class");
+				}
 			}
 			else {
 				ImGui::Text("NULL");
 			}
 		}
 		else if (prop->IsA<UComponentProperty>()) {
-			// Similar to UObjectProperty but specifically for components
+			// Validate the memory before reading the pointer
+			if (IsBadReadPtr(valuePtr, sizeof(UObject*))) {
+				ImGui::SameLine();
+				ImGui::Text("Invalid Memory");
+				return "Invalid Memory";
+			}
+
 			UObject** valueAddress = (UObject**)valuePtr;
 			UObject* componentValue = *valueAddress;
 
 			ImGui::SameLine();
-			if (componentValue) {
-				std::string componentName = componentValue->GetName();
-				std::string componentClass = componentValue->Class ? componentValue->Class->GetName() : "Unknown";
+			if (componentValue && !IsBadReadPtr(componentValue, sizeof(UObject))) {
+				std::string componentName = "Unknown";
+				std::string componentClass = "Unknown";
+
+				if (!IsBadReadPtr(componentValue, sizeof(UObject))) {
+					componentName = componentValue->GetName();
+					if (componentValue->Class && !IsBadReadPtr(componentValue->Class, sizeof(UClass))) {
+						componentClass = componentValue->Class->GetName();
+					}
+				}
 
 				std::string displayText = "Component: " + componentClass + ": " + componentName;
 				ImGui::Text("%s", displayText.c_str());
@@ -357,11 +502,18 @@ std::string FunctionLogger::processFieldValue(UProperty* prop, object Object, ui
 			}
 		}
 		else if (prop->IsA<UClassProperty>()) {
+			// Validate the memory before reading the pointer
+			if (IsBadReadPtr(valuePtr, sizeof(UClass*))) {
+				ImGui::SameLine();
+				ImGui::Text("Invalid Memory");
+				return "Invalid Memory";
+			}
+
 			UClass** valueAddress = (UClass**)valuePtr;
 			UClass* classValue = *valueAddress;
 
 			ImGui::SameLine();
-			if (classValue) {
+			if (classValue && !IsBadReadPtr(classValue, sizeof(UClass))) {
 				std::string className = classValue->GetName();
 				ImGui::Text("Class: %s", className.c_str());
 			}
@@ -422,7 +574,7 @@ std::string FunctionLogger::processFieldValue(UProperty* prop, object Object, ui
 			BYTE* valueAddress = (BYTE*)valuePtr;
 
 			ImGui::SameLine();
-			if (byteProp->Enum) {
+			if (byteProp->Enum && !IsBadReadPtr(byteProp->Enum, sizeof(UEnum))) {
 				// It's an enum byte property
 				std::string enumName = byteProp->Enum->GetName();
 				ImGui::Text("Enum %s: %d", enumName.c_str(), (int)*valueAddress);
@@ -464,13 +616,21 @@ std::string FunctionLogger::processFieldValue(UProperty* prop, object Object, ui
 			{
 				// Get the UArrayProperty
 				UArrayProperty* arrayProp = (UArrayProperty*)(prop);
-				if (!arrayProp || !arrayProp->Inner) {
+				if (!arrayProp || !arrayProp->Inner || IsBadReadPtr(arrayProp->Inner, sizeof(UProperty))) {
+					ImGui::Text("Invalid array property.");
 					ImGui::TreePop();
 					return "Invalid array property.";
 				}
 
 				// Calculate the pointer to the array's data in the object
 				BYTE* basePtr = obj + arrayProp->Offset + offset;
+
+				// Validate basePtr is readable
+				if (IsBadReadPtr(basePtr, sizeof(void*) + sizeof(int32_t) * 2)) {
+					ImGui::Text("Invalid array memory.");
+					ImGui::TreePop();
+					return "Invalid array memory.";
+				}
 
 				// Unreal Engine TArray structure layout:
 				// struct TArray {
@@ -482,7 +642,7 @@ std::string FunctionLogger::processFieldValue(UProperty* prop, object Object, ui
 				void** dataPtr = reinterpret_cast<void**>(basePtr);
 				int* numElements = reinterpret_cast<int*>(basePtr + sizeof(void*));
 
-				if (!dataPtr || !*dataPtr || !numElements || *numElements <= 0)
+				if (!dataPtr || !*dataPtr || !numElements || *numElements <= 0 || *numElements > 10000)
 				{
 					ImGui::Text("Array is empty or invalid.");
 					ImGui::TreePop();
@@ -493,11 +653,24 @@ std::string FunctionLogger::processFieldValue(UProperty* prop, object Object, ui
 				int arraySize = *numElements;
 				int elementSize = arrayProp->Inner->ElementSize;
 
+				// Validate array data pointer
+				if (IsBadReadPtr(arrayData, elementSize * arraySize)) {
+					ImGui::Text("Invalid array data memory.");
+					ImGui::TreePop();
+					return "Invalid array data memory.";
+				}
+
 				// Iterate over the array elements
 				for (int i = 0; i < arraySize && i < 100; ++i) // Limit to 100 elements for safety
 				{
 					// Calculate the pointer to each element's data
 					BYTE* elementDataPtr = reinterpret_cast<BYTE*>(arrayData) + (i * elementSize);
+
+					// Validate element pointer
+					if (IsBadReadPtr(elementDataPtr, elementSize)) {
+						ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.0f), "[%d] Invalid element", i);
+						continue;
+					}
 
 					// Create a temporary object to represent this array element
 					object tempObj = Object; // Copy the original object
@@ -551,13 +724,21 @@ void FunctionLogger::generateInfo(object obj) {
 		if (ImGui::TreeNode((_("Fields") + ID).c_str()))
 		{
 			for (int i = 0; i < obj.fields.size(); i++) {
-				std::string type = processType(obj.fields[i]);
-				std::string name = obj.fields[i]->Name.ToString();
+				UProperty* field = obj.fields[i];
+				if (!field) continue;
+
+				std::string type = processType(field);
+
+				// Safely get the field name - validate FName before calling ToString
+				std::string name = "UnknownField";
+				if (!IsBadReadPtr(&field->Name, sizeof(FName)) && field->Name.IsValid()) {
+					name = field->Name.ToString();
+				}
 
 				ImGui::TextColored(ImVec4(0.36f, 0.52f, 0.93f, 1.0f), type.c_str()); ImGui::SameLine();
 				ImGui::TextColored(ImVec4(0.93f, 0.72f, 0.36f, 1.0f), name.c_str());
 
-				processFieldValue(obj.fields[i], obj);
+				processFieldValue(field, obj);
 
 			}
 
